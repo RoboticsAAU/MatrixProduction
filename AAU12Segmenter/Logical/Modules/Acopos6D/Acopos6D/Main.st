@@ -441,7 +441,9 @@ PROGRAM _CYCLIC
 					FOR i := 0 TO NUM_SHUTTLES DO
 						//pShuttle ACCESS ADR(gShuttles[i]);
 						//pShuttle.par.shuttleID := i;
-						testProgram;
+						CASE i OF 0..3:
+							testProgram;
+						END_CASE
 					END_FOR
 				
 				END_CASE

@@ -12,6 +12,18 @@ ACTION testProgram:
 	
 	positionContainerTestProgram[3].initXPos := 0.060;
 	positionContainerTestProgram[3].initYPos := 0.420;
+	
+	positionContainerTestProgram[4].initXPos := 0.900;
+	positionContainerTestProgram[4].initYPos := 0.900;
+	
+	positionContainerTestProgram[5].initXPos := 0.900;
+	positionContainerTestProgram[5].initYPos := 0.780;
+	
+	positionContainerTestProgram[6].initXPos := 0.780;
+	positionContainerTestProgram[6].initYPos := 0.900;
+	
+	positionContainerTestProgram[7].initXPos := 0.780;
+	positionContainerTestProgram[7].initYPos := 0.780;
 
 	CASE em.substate OF
 		16000:
@@ -30,6 +42,12 @@ ACTION testProgram:
 				em.substate := 16010;
 			END_IF
 		
+		16010:
+			em.description := "Shuttles move in a staircase movement"
+			
+END_ACTION
+
+ACTION TestMovements:
 		16010:
 			em.description := 'Start linear movement of the four shuttles';
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[i].shuttleRef);
@@ -52,12 +70,13 @@ ACTION testProgram:
 			em.description := 'Check if position is reached';
 			IF gAcp6DCtrl.Status.ShuttleInfo[i].Position.X >= positionContainerTestProgram[i].initXPos + (i+1)*0.120 - 0.005 THEN
 				testObj.targetReached[i] := TRUE;
-				em.substate := 16030;
+				em.substate := 16025;
 			END_IF
 		
 		16025: 
 			em.description := 'Waiting to move back to start position';
 			IF testObj.targetReached[0] AND testObj.targetReached[1] AND testObj.targetReached[2] AND testObj.targetReached[3] THEN
+				testObj.targetReached[0] := testObj.targetReached[1] := testObj.targetReached[2] := testObj.targetReached[3] := FALSE; 
 				em.substate := 16030;
 			END_IF
 			
@@ -76,11 +95,25 @@ ACTION testProgram:
 			MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF MC_BR_MoveArc_Acp6D_0.Acknowledge THEN  // Try to change to DONE
 				MC_BR_MoveArc_Acp6D_0.Execute := FALSE;
+				em.substate := 16040;
+			END_IF
+		
+		16040:
+			em.description := 'Check if position is reached';
+			IF gAcp6DCtrl.Status.ShuttleInfo[i].Position.X <= positionContainerTestProgram[i].initXPos + 0.005 THEN
+				testObj.targetReached[i] := TRUE;
+				em.substate := 16045;
+			END_IF
+		
+		16045: 
+			em.description := 'Waiting to move back to start position';
+			IF testObj.targetReached[0] AND testObj.targetReached[1] AND testObj.targetReached[2] AND testObj.targetReached[3] THEN
+				testObj.targetReached[0] := testObj.targetReached[1] := testObj.targetReached[2] := testObj.targetReached[3] := FALSE; 
+				
 				em.substate := 16010;
 			END_IF
-
 			
 	END_CASE
-	
-	
+			
+			
 END_ACTION
