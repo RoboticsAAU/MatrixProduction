@@ -4,6 +4,8 @@
 /AAU12Segmenter/Temp/
 /AAU12Segmenter/*.set
 
+*.isopen
+
 
 ### DEFAULT STRUCTURED TEXT .gitignore ###
 yarn.lock
