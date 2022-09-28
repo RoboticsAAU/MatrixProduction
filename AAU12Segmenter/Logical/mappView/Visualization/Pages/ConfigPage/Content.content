@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Content id="content_configPage" height="768" width="1246" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Widgets>
+    <Widget xsi:type="widgets.brease.Label" id="Label1" top="0" left="0" width="600" height="90" zIndex="0" text="Settings" textAlign="left" fontSize="45px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label4" top="40" left="560" width="180" zIndex="1" text="Velocity" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label5" top="100" left="560" width="330" zIndex="2" text="Acceleration/Decceleration" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="inputWaitTime1" top="40" left="950" zIndex="3" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" limitViolationPolicy="setToLimit" maxValue="2" minValue="0.1" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="inputWaitTime2" top="100" left="950" zIndex="4" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" limitViolationPolicy="setToLimit" maxValue="20" minValue="0.1" />
+    <Widget xsi:type="widgets.brease.Label" id="Label7" top="40" left="1040" width="180" zIndex="5" text="m/s" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label8" top="100" left="1040" width="180" zIndex="6" text="m/s^2" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.PushButton" id="PushButton1" top="370" left="280" width="120" height="110" zIndex="7" image="Media/Buttons/playButton.svg" imageHeight="50" imageWidth="50" cornerRadius="10px" backColor="rgba(224, 224, 224, 1)" borderColor="rgba(255, 255, 255, 1)" textColor="rgba(255, 255, 255, 1)" />
+    <Widget xsi:type="widgets.brease.PushButton" id="PushButton9" top="370" left="20" width="120" height="110" zIndex="8" image="Media/Buttons/pause.svg" imageHeight="50" imageWidth="50" cornerRadius="10px" backColor="rgba(224, 224, 224, 1)" borderColor="rgba(255, 255, 255, 1)" textColor="rgba(255, 255, 255, 1)" visible="false" />
+    <Widget xsi:type="widgets.brease.PushButton" id="PushButton2" top="370" left="150" width="120" height="110" zIndex="9" image="Media/Buttons/Reset.svg" imageHeight="50" imageWidth="50" cornerRadius="10px" backColor="rgba(224, 224, 224, 1)" borderColor="rgba(255, 255, 255, 1)" textColor="rgba(255, 255, 255, 1)" />
+    <Widget xsi:type="widgets.brease.PushButton" id="PushButton3" top="370" left="410" width="130" height="110" zIndex="10" image="Media/Buttons/stop.svg" imageHeight="50" imageWidth="50" cornerRadius="10px" backColor="rgba(224, 224, 224, 1)" borderColor="rgba(255, 255, 255, 1)" textColor="rgba(255, 255, 255, 1)" />
+    <Widget xsi:type="widgets.brease.ImageList" id="ImageList1" top="80" left="20" width="60" height="60" zIndex="11" imageList="['Media/statusIcon.png', 'Media/statusGreen.png']" />
+    <Widget xsi:type="widgets.brease.ImageList" id="ImageList2" top="220" left="20" width="60" height="60" zIndex="12" imageList="['Media/statusIcon.png', 'Media/statusRed.png']" />
+    <Widget xsi:type="widgets.brease.ImageList" id="ImageList3" top="150" left="20" width="60" height="60" zIndex="13" imageList="['Media/statusIcon.png', 'Media/Status_Orange.png']" />
+    <Widget xsi:type="widgets.brease.ImageList" id="ImageList4" top="290" left="20" width="60" height="60" zIndex="14" imageList="['Media/statusIcon.png', 'Media/statusRed.png']" />
+    <Widget xsi:type="widgets.brease.Label" id="Label2" top="90" left="80" width="600" height="40" zIndex="15" text="Running" textAlign="left" fontSize="40px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label3" top="160" left="80" width="600" height="40" zIndex="16" text="Ready to Start" textAlign="left" fontSize="40px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label6" top="230" left="80" width="600" height="40" zIndex="17" text="Stopped" textAlign="left" fontSize="40px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label9" top="300" left="80" width="600" height="40" zIndex="18" text="Error" textAlign="left" fontSize="40px" bold="true" />
+    <Widget xsi:type="widgets.brease.PushButton" id="PushButton10" top="640" left="1100" width="140" height="120" zIndex="19" image="Media/BuR_Logo.jpg" imageHeight="70" imageWidth="100" cornerRadius="10px" backColor="rgba(255, 255, 255, 0)" borderColor="rgba(255, 255, 255, 1)" textColor="rgba(255, 255, 255, 1)" mouseDownBackColor="rgba(255, 255, 255, 0)" padding="0px 0px" />
+    <Widget xsi:type="widgets.brease.Label" id="Label10" top="150" left="550" width="330" height="40" zIndex="20" text="ControlLight" textAlign="left" fontSize="40px" bold="true" />
+    <Widget xsi:type="widgets.brease.ToggleSwitch" id="ToggleSwitch1" top="190" left="960" height="20" zIndex="21" mouseDownText="LightOn" text="Light" />
+    <Widget xsi:type="widgets.brease.Label" id="Label11" top="190" left="570" width="330" zIndex="22" text="Vision" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label12" top="230" left="570" width="330" zIndex="23" text="Link Movement" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label13" top="270" left="570" width="330" zIndex="24" text="Game Program" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label14" top="310" left="570" width="330" zIndex="25" text="Weight" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label15" top="350" left="570" width="330" zIndex="26" text="Shuttle Precision" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label16" top="390" left="570" width="330" zIndex="27" text="Demo Program" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.ToggleSwitch" id="ToggleSwitch2" top="230" left="960" height="20" zIndex="28" mouseDownText="LightOn" text="Light" />
+    <Widget xsi:type="widgets.brease.Label" id="Label17" top="430" left="570" width="330" zIndex="29" text="Conveyor Movement" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label18" top="470" left="570" width="330" zIndex="30" text="Intelligent Movement" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.ToggleSwitch" id="ToggleSwitch3" top="270" left="960" height="20" zIndex="31" mouseDownText="LightOn" text="Light" />
+    <Widget xsi:type="widgets.brease.ToggleSwitch" id="ToggleSwitch4" top="310" left="960" height="20" zIndex="32" mouseDownText="LightOn" text="Light" />
+    <Widget xsi:type="widgets.brease.ToggleSwitch" id="ToggleSwitch5" top="350" left="960" height="20" zIndex="33" mouseDownText="LightOn" text="Light" />
+    <Widget xsi:type="widgets.brease.ToggleSwitch" id="ToggleSwitch6" top="390" left="960" height="20" zIndex="34" mouseDownText="LightOn" text="Light" />
+    <Widget xsi:type="widgets.brease.ToggleSwitch" id="ToggleSwitch7" top="430" left="960" height="20" zIndex="35" mouseDownText="LightOn" text="Light" />
+    <Widget xsi:type="widgets.brease.ToggleSwitch" id="ToggleSwitch8" top="470" left="960" height="20" zIndex="36" mouseDownText="LightOn" text="Light" />
+    <Widget xsi:type="widgets.brease.PushButton" id="PushButton4" top="660" left="20" width="140" height="40" zIndex="37" text="Reset Light" imageHeight="50" imageWidth="50" cornerRadius="10px" backColor="rgba(224, 224, 224, 1)" borderColor="rgba(255, 255, 255, 1)" textColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.PushButton" id="PushButton5" top="610" left="20" width="140" height="40" zIndex="38" text="MainStage X" imageHeight="50" imageWidth="50" cornerRadius="10px" backColor="rgba(224, 224, 224, 1)" borderColor="rgba(255, 255, 255, 1)" textColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Label" id="Label19" top="610" left="180" width="330" zIndex="39" text="WeightProgram Flying hight" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput1" top="650" left="270" zIndex="40" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="inputWaitTime3" top="705" left="820" zIndex="41" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" limitViolationPolicy="setToLimit" maxValue="2" minValue="0.1" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="inputWaitTime4" top="655" left="820" zIndex="42" format="{'metric':{'decimalPlaces':2,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" limitViolationPolicy="setToLimit" maxValue="2" minValue="0.1" />
+    <Widget xsi:type="widgets.brease.Label" id="Label20" top="615" left="785" width="190" zIndex="43" text="Flask Program" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label21" top="655" left="620" width="140" zIndex="44" text="Acceleration" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label22" top="705" left="620" width="140" zIndex="45" text="Velocity" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label23" top="580" left="620" width="190" zIndex="46" text="SteelSheet height" textAlign="left" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="inputWaitTime5" top="580" left="820" zIndex="47" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" limitViolationPolicy="setToLimit" maxValue="4" minValue="2" unit="{'metric':'MMT','imperial':'MMT','imperial-us':'MMT'}" unitAlign="right" />
+  </Widgets>
+</Content>

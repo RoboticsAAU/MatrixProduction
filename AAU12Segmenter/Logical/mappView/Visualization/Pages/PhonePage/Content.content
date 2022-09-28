@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Content id="content_phonePage" height="1200" width="600" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Widgets>
+    <Widget xsi:type="widgets.brease.TextInput" id="TextInput1" top="450" left="110" width="400" height="60" zIndex="0" cornerRadius="10px" borderColor="rgba(85, 85, 85, 1)" activeTextColor="rgba(51, 51, 51, 1)" textAlign="left" />
+    <Widget xsi:type="widgets.brease.TextInput" id="TextInput2" top="570" left="110" width="400" height="60" zIndex="1" cornerRadius="10px" borderColor="rgba(85, 85, 85, 1)" activeTextColor="rgba(51, 51, 51, 1)" textAlign="left" />
+    <Widget xsi:type="widgets.brease.TextInput" id="TextInput3" top="690" left="110" width="400" height="60" zIndex="2" cornerRadius="10px" borderColor="rgba(85, 85, 85, 1)" activeTextColor="rgba(51, 51, 51, 1)" textAlign="left" />
+    <Widget xsi:type="widgets.brease.Image" id="Image1" top="70" left="140" width="340" height="190" zIndex="3" image="Media/BuR_Logo.jpg" />
+    <Widget xsi:type="widgets.brease.Label" id="Label1" top="290" left="30" width="550" height="100" zIndex="4" breakWord="true" multiLine="true" text="Enter you're information below to have a chance at the B&amp;R 6D Shuttle game" fontSize="30px" underline="false" />
+    <Widget xsi:type="widgets.brease.Label" id="Label2" top="420" left="100" width="100" zIndex="5" text="* First name" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label3" top="540" left="100" width="100" zIndex="6" text="* Last name" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label4" top="660" left="100" width="100" zIndex="7" text="* Email" bold="true" />
+    <Widget xsi:type="widgets.brease.CheckBox" id="CheckBox1" top="790" left="120" zIndex="8" text="* News Mail" />
+    <Widget xsi:type="widgets.brease.CheckBox" id="CheckBox2" top="850" left="120" width="170" zIndex="9" text="Technology Magasin" />
+    <Widget xsi:type="widgets.brease.CheckBox" id="CheckBox3" top="910" left="120" width="360" zIndex="13" text="* I have read the Privacy Notices and acknowlegde it" />
+    <Widget xsi:type="widgets.brease.PushButton" id="PushButton1" top="1040" left="190" width="250" height="70" zIndex="10" text="I am ready to win!" cornerRadius="10px" backColor="rgba(128, 255, 128, 1)" borderColor="rgba(91, 124, 112, 0)" fontSize="20px" />
+    <Widget xsi:type="widgets.brease.Label" id="Label5" top="980" left="110" width="100" zIndex="11" text="* Required" />
+    <Widget xsi:type="widgets.brease.Label" id="Label6" top="940" left="140" width="130" zIndex="12" text="Privacy Notices" textColor="rgba(0, 139, 139, 1)" underline="true" />
+  </Widgets>
+</Content>

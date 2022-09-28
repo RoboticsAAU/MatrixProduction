@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Content id="content_digitalTwin" height="1000" width="1480" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Widgets>
+    <Widget xsi:type="widgets.brease.Label" id="Label14" top="70" left="0" width="1480" height="120" zIndex="1" text="Digital twin" textAlign="center" fontSize="90px" />
+    <Widget xsi:type="widgets.brease.Paper" id="Paper2" top="-799" left="440" width="1910" height="1450" zIndex="0" colorList="#FFCC66,#FF8800,#FFCC99,#993333,#ffffff" maxZoomLevel="100" minZoomLevel="100" svgFilePath="Media/svgFiler/TableWithshuttles.svg" transitionTime="200" borderWidth="0px" />
+  </Widgets>
+</Content>

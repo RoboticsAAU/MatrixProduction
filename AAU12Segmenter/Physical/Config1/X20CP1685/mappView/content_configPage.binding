@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BindingsSet id="content_configPage_binding" xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Bindings>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAcp6DCtrl.Par.Acceleration" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="inputWaitTime2" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gAcp6DCtrl.Par.Velocity" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="inputWaitTime1" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gMain.cmd.pause" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="PushButton9" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gMain.cmd.reset" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="PushButton2" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gMain.cmd.start" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="PushButton1" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gMain.cmd.stop" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="PushButton3" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gMain.status.error" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="ImageList4" attribute="selectedIndex" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gMain.status.powerOff" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="ImageList2" attribute="selectedIndex" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gMain.status.powerOn" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="ImageList3" attribute="selectedIndex" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gMain.status.running" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="ImageList1" attribute="selectedIndex" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gMain.cmd.restartCtrl" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="PushButton10" attribute="value" />
+</Binding>
+
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:controlLight.visionProgram" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="ToggleSwitch1" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:controlLight.linkProgram" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="ToggleSwitch2" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:controlLight.gameProgram" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="ToggleSwitch3" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:controlLight.weightProgram" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="ToggleSwitch4" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:controlLight.shuttlePrecision" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="ToggleSwitch5" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:controlLight.demoProgram" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="ToggleSwitch6" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:controlLight.coneveyorMovementProgram" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="ToggleSwitch7" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:controlLight.intelligentMovementProgram" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="ToggleSwitch8" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:weightProgramFlyingHight" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="NumericInput1" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:flaskProgramAcceleration" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="inputWaitTime4" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:flaskProgramVelocity" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_configPage" widgetRefId="inputWaitTime3" attribute="value" />
+</Binding>
+</Bindings>
+</BindingsSet>

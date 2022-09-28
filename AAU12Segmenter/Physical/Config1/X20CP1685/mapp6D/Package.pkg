@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package SubType="mapp6D" PackageType="mapp6D" xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="File">Config_1.assembly6d</Object>
+    <Object Type="File">Config_2.layout6d</Object>
+  </Objects>
+</Package>

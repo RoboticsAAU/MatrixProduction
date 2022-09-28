@@ -1,0 +1,4 @@
+VAR
+	FBin : Mc6DControllerFBIOType;
+	FBout : Mc6DControllerFBIOType;
+END_VAR

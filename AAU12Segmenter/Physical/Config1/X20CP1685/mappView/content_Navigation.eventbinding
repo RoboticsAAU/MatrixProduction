@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EventBindingSet id="content_Navigation_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Bindings>
+		<!--<EventBinding id="content_Navigation.NavigationButton3.Click">
+			<Source xsi:type="widgets.brease.NavigationButton.Event" contentRefId="content_Navigation" widgetRefId="NavigationButton3" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="clientSystem.Action">
+						<Method xsi:type="clientSystem.Action.OpenDialog" dialogId="dialog_settings" horizontalPos="center" verticalPos="middle" autoClose="true" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>-->
+  </Bindings>
+</EventBindingSet>

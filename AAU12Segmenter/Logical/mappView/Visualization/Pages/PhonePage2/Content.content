@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Content id="content_phonePage2" height="1200" width="600" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Widgets>
+    <Widget xsi:type="widgets.brease.Image" id="Image1" top="70" left="140" width="340" height="190" zIndex="0" image="Media/BuR_Logo.jpg" />
+    <Widget xsi:type="widgets.brease.Label" id="Label1" top="290" left="10" width="590" height="120" zIndex="1" breakWord="true" multiLine="true" text="Thanks for joining the game, you have shuttle id" textAlign="center" fontSize="30px" underline="false" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput1" top="400" left="10" width="590" height="260" zIndex="2" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" borderStyle="none" textAlign="center" fontSize="200px" />
+    <Widget xsi:type="widgets.brease.Label" id="Label2" top="610" left="10" width="590" height="100" zIndex="3" breakWord="true" multiLine="true" text="Good luck!" textAlign="center" fontSize="30px" underline="false" />
+  </Widgets>
+</Content>

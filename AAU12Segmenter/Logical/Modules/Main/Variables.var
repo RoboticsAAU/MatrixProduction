@@ -1,0 +1,4 @@
+VAR
+	gMain : gMain_typ;
+	modeSelector : USINT;
+END_VAR

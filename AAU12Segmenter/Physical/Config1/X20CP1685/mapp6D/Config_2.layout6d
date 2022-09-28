@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Configuration>
+  <Element ID="Layout6D_1" Type="layout6d">
+    <Group ID="Segments">
+      <Property ID="SegRow" Value="4" />
+      <Property ID="SegCol" Value="4" />
+      <Group ID="Segment[1]">
+        <Property ID="X" Value="0" />
+        <Property ID="Y" Value="0" />
+        <Property ID="Name" />
+        <Property ID="IsMaster" Value="True" />
+      </Group>
+      <Group ID="Segment[2]">
+        <Property ID="X" Value="0" />
+        <Property ID="Y" Value="1" />
+        <Property ID="Name" />
+        <Property ID="IsMaster" Value="False" />
+      </Group>
+      <Group ID="Segment[3]">
+        <Property ID="X" Value="1" />
+        <Property ID="Y" Value="0" />
+        <Property ID="Name" />
+        <Property ID="IsMaster" Value="False" />
+      </Group>
+      <Group ID="Segment[4]">
+        <Property ID="X" Value="1" />
+        <Property ID="Y" Value="1" />
+        <Property ID="Name" />
+        <Property ID="IsMaster" Value="False" />
+      </Group>
+      <Group ID="Segment[5]">
+        <Property ID="X" Value="1" />
+        <Property ID="Y" Value="2" />
+        <Property ID="Name" />
+        <Property ID="IsMaster" Value="False" />
+      </Group>
+      <Group ID="Segment[6]">
+        <Property ID="X" Value="1" />
+        <Property ID="Y" Value="3" />
+        <Property ID="Name" />
+        <Property ID="IsMaster" Value="False" />
+      </Group>
+      <Group ID="Segment[7]">
+        <Property ID="X" Value="2" />
+        <Property ID="Y" Value="0" />
+        <Property ID="Name" />
+        <Property ID="IsMaster" Value="False" />
+      </Group>
+      <Group ID="Segment[8]">
+        <Property ID="X" Value="2" />
+        <Property ID="Y" Value="1" />
+        <Property ID="Name" />
+        <Property ID="IsMaster" Value="False" />
+      </Group>
+      <Group ID="Segment[9]">
+        <Property ID="X" Value="2" />
+        <Property ID="Y" Value="3" />
+        <Property ID="Name" />
+        <Property ID="IsMaster" Value="False" />
+      </Group>
+      <Group ID="Segment[10]">
+        <Property ID="X" Value="3" />
+        <Property ID="Y" Value="1" />
+        <Property ID="Name" />
+        <Property ID="IsMaster" Value="False" />
+      </Group>
+      <Group ID="Segment[11]">
+        <Property ID="X" Value="3" />
+        <Property ID="Y" Value="2" />
+        <Property ID="Name" />
+        <Property ID="IsMaster" Value="False" />
+      </Group>
+      <Group ID="Segment[12]">
+        <Property ID="X" Value="3" />
+        <Property ID="Y" Value="3" />
+        <Property ID="Name" />
+        <Property ID="IsMaster" Value="False" />
+      </Group>
+    </Group>
+  </Element>
+</Configuration>

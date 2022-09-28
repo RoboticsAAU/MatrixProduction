@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Package SubType="PagesPackage" PackageType="PagesPackage" xmlns="http://br-automation.co.at/AS/Package">
+  <Objects>
+    <Object Type="Package" Description="AreaContents">AreaContents</Object>
+    <Object Type="Package">ConfigPage</Object>
+    <Object Type="Package">MainPage</Object>
+    <Object Type="Package">PhonePage</Object>
+    <Object Type="Package">PhonePage2</Object>
+    <Object Type="Package">PrivacyNotice</Object>
+    <Object Type="Package">CameraPage</Object>
+    <Object Type="Package">WeightPage</Object>
+    <Object Type="Package">GamePage</Object>
+    <Object Type="Package">DigitalTwin</Object>
+    <Object Type="Package">ConveyorPage</Object>
+    <Object Type="Package">WorkstationPage</Object>
+    <Object Type="Package">DanfossPage</Object>
+    <Object Type="Package">fixturePage</Object>
+  </Objects>
+</Package>

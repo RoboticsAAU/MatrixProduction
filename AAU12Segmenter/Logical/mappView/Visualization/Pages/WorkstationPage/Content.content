@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Content id="content_workStation" height="768" width="1246" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Widgets>
+    <Widget xsi:type="widgets.brease.Label" id="Label14" top="20" left="0" width="1220" height="120" zIndex="2" text="Intelligent Movement" textAlign="center" fontSize="90px" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput1" top="695" left="650" width="98" height="71" zIndex="3" maxValue="4" minValue="1" borderColor="rgba(85, 85, 85, 0)" activeBorderColor="rgba(255, 136, 0, 0)" fontSize="30px" italic="false" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput2" top="695" left="390" width="98" height="71" zIndex="1" maxValue="4" minValue="1" borderColor="rgba(85, 85, 85, 0)" activeBorderColor="rgba(255, 136, 0, 0)" fontSize="30px" italic="false" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle3" top="580" left="334" width="145" height="130" zIndex="8" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle4" top="580" left="484" width="145" height="130" zIndex="9" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle6" top="645" left="715" width="60" height="60" zIndex="17" cornerRadius="100px" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle7" top="580" left="634" width="145" height="130" zIndex="10" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle8" top="445" left="634" width="145" height="130" zIndex="11" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle9" top="445" left="484" width="145" height="130" zIndex="12" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle10" top="445" left="334" width="145" height="130" zIndex="13" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle11" top="445" left="784" width="145" height="130" zIndex="14" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle12" top="310" left="784" width="145" height="130" zIndex="15" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle13" top="175" left="784" width="145" height="130" zIndex="16" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle14" top="510" left="864" width="60" height="60" zIndex="18" cornerRadius="100px" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle15" top="180" left="789" width="60" height="60" zIndex="19" cornerRadius="100px" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle16" top="450" left="640" width="60" height="60" zIndex="20" cornerRadius="100px" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle17" top="450" left="344" width="60" height="60" zIndex="21" cornerRadius="100px" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle18" top="645" left="414" width="60" height="60" zIndex="22" cornerRadius="100px" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput5" top="400" left="615" width="97" height="61" zIndex="7" maxValue="4" minValue="1" value="2" borderColor="rgba(85, 85, 85, 0)" activeBorderColor="rgba(255, 136, 0, 0)" fontSize="30px" italic="false" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput6" top="130" left="764" width="97" height="61" zIndex="6" maxValue="4" minValue="1" value="2" borderColor="rgba(85, 85, 85, 0)" activeBorderColor="rgba(255, 136, 0, 0)" fontSize="30px" italic="false" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput7" top="515" left="905" width="97" height="61" zIndex="4" maxValue="4" minValue="1" value="2" borderColor="rgba(85, 85, 85, 0)" activeBorderColor="rgba(255, 136, 0, 0)" fontSize="30px" italic="false" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput8" top="400" left="320" width="97" height="61" zIndex="5" maxValue="4" minValue="1" value="2" borderColor="rgba(85, 85, 85, 0)" activeBorderColor="rgba(255, 136, 0, 0)" fontSize="30px" italic="false" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle19" top="645" left="645" width="60" height="60" zIndex="23" cornerRadius="100px" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle20" top="310" left="485" width="145" height="130" zIndex="25" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle21" top="175" left="485" width="145" height="130" zIndex="0" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle22" top="175" left="635" width="145" height="130" zIndex="26" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle23" top="180" left="490" width="60" height="60" zIndex="24" cornerRadius="100px" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput9" top="130" left="465" width="97" height="61" zIndex="27" maxValue="4" minValue="1" value="2" backColor="rgba(255, 255, 255, 0)" borderColor="rgba(85, 85, 85, 0)" activeBorderColor="rgba(255, 136, 0, 0)" activeBackColor="rgba(241, 241, 241, 0)" fontSize="30px" italic="false" />
+  </Widgets>
+</Content>
