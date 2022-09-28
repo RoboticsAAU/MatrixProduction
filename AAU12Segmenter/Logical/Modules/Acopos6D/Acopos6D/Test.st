@@ -43,13 +43,16 @@ ACTION testProgram:
 			END_IF
 		
 		16010:
-			em.description := "Shuttles move in a staircase movement"
-			
+			em.description := 'Shuttles move in a staircase movement';	
+	
+	END_CASE
+	
 END_ACTION
 
-ACTION TestMovements:
-		16010:
-			em.description := 'Start linear movement of the four shuttles';
+ACTION testMovements:
+	CASE cm.state OF		
+		0:
+			cm.description := 'Start linear movement of the four shuttles';
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[i].shuttleRef);
 			
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode         := 0; //Absolute movement
@@ -63,25 +66,25 @@ ACTION TestMovements:
 			MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF MC_BR_MoveArc_Acp6D_0.Acknowledge THEN  // Try to change to DONE
 				MC_BR_MoveArc_Acp6D_0.Execute := FALSE;
-				em.substate := 16020;
+				cm.state := 10;
 			END_IF
 			
-		16020:
-			em.description := 'Check if position is reached';
+		10:
+			cm.description := 'Check if position is reached';
 			IF gAcp6DCtrl.Status.ShuttleInfo[i].Position.X >= positionContainerTestProgram[i].initXPos + (i+1)*0.120 - 0.005 THEN
 				testObj.targetReached[i] := TRUE;
-				em.substate := 16025;
+				cm.state := 15;
 			END_IF
 		
-		16025: 
-			em.description := 'Waiting to move back to start position';
+		15: 
+			cm.description := 'Waiting to move back to start position';
 			IF testObj.targetReached[0] AND testObj.targetReached[1] AND testObj.targetReached[2] AND testObj.targetReached[3] THEN
 				testObj.targetReached[0] := testObj.targetReached[1] := testObj.targetReached[2] := testObj.targetReached[3] := FALSE; 
-				em.substate := 16030;
+				cm.state := 20;
 			END_IF
 			
-		16030: 
-			em.description := 'Moving back to start position';
+		20: 
+			cm.description := 'Moving back to start position';
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[i].shuttleRef);
 			
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode         := 1; //Relative movement
@@ -95,25 +98,28 @@ ACTION TestMovements:
 			MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF MC_BR_MoveArc_Acp6D_0.Acknowledge THEN  // Try to change to DONE
 				MC_BR_MoveArc_Acp6D_0.Execute := FALSE;
-				em.substate := 16040;
+				cm.state := 30;
 			END_IF
 		
-		16040:
-			em.description := 'Check if position is reached';
+		30:
+			cm.description := 'Check if position is reached';
 			IF gAcp6DCtrl.Status.ShuttleInfo[i].Position.X <= positionContainerTestProgram[i].initXPos + 0.005 THEN
 				testObj.targetReached[i] := TRUE;
-				em.substate := 16045;
+				cm.state := 35;
 			END_IF
 		
-		16045: 
-			em.description := 'Waiting to move back to start position';
+		35: 
+			cm.description := 'Waiting to move back to start position';
 			IF testObj.targetReached[0] AND testObj.targetReached[1] AND testObj.targetReached[2] AND testObj.targetReached[3] THEN
 				testObj.targetReached[0] := testObj.targetReached[1] := testObj.targetReached[2] := testObj.targetReached[3] := FALSE; 
 				
-				em.substate := 16010;
+				cm.state := 0;
 			END_IF
 			
 	END_CASE
-			
+	
+	cm();	
+	MC_BR_MoveInPlane_Acp6D_0();
+	MC_BR_Move6D_Acp6D_0();
 			
 END_ACTION
