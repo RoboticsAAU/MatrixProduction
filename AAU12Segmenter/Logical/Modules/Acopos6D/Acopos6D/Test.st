@@ -43,7 +43,7 @@ ACTION testProgram:
 			END_IF
 		
 		16010:
-			em.description := 'Shuttles move in a staircase movement';	
+			em.description := 'Move shuttles in a staircase movement';
 	
 	END_CASE
 	
@@ -71,7 +71,7 @@ ACTION testMovements:
 			
 		10:
 			cm.description := 'Check if position is reached';
-			IF gAcp6DCtrl.Status.ShuttleInfo[i].Position.X >= positionContainerTestProgram[i].initXPos + (i+1)*0.120 - 0.01 THEN
+			IF gAcp6DCtrl.Status.ShuttleInfo[i].Position.X >= positionContainerTestProgram[i].initXPos + (i+1)*0.120 - 0.001 THEN
 				testObj.targetReached[i] := TRUE;
 				cm.state := 15;
 			END_IF
@@ -104,7 +104,7 @@ ACTION testMovements:
 		
 		30:
 			cm.description := 'Check if position is reached';
-			IF gAcp6DCtrl.Status.ShuttleInfo[i].Position.X <= positionContainerTestProgram[i].initXPos + 0.01 THEN
+			IF gAcp6DCtrl.Status.ShuttleInfo[i].Position.X <= positionContainerTestProgram[i].initXPos + 0.001 THEN
 				testObj.targetReached[i] := TRUE;
 				cm.state := 35;
 			END_IF
@@ -119,8 +119,7 @@ ACTION testMovements:
 			
 	END_CASE
 	
-	cm();	
+	cm();
 	MC_BR_MoveInPlane_Acp6D_0();
-	MC_BR_Move6D_Acp6D_0();
 			
 END_ACTION

@@ -433,17 +433,18 @@ PROGRAM _CYCLIC
 					END_FOR
 					
 				16000..16009:
-					em.description := 'Test program';
+					em.description := 'Test program - setup';
 					testProgram;
 					
 				16010..16999:
-					em.description := 'Test program part 2';
+					em.description := 'Test program - execution';
+					testProgram;
 					FOR i := 0 TO NUM_SHUTTLES DO
-						pShuttle ACCESS ADR(gShuttles[i]);
 						cm ACCESS ADR (gShuttles[i].cm);
-						pShuttle.cm.setup.parent.name := 'main';
-						pShuttle.cm.setup.nameIdx := i;
-						pShuttle.par.shuttleID := i;
+						//pShuttle ACCESS ADR(gShuttles[i]);
+						//pShuttle.cm.setup.parent.name := 'main';
+						//pShuttle.cm.setup.nameIdx := i;
+						//pShuttle.par.shuttleID := i;
 						
 						CASE i OF 0..3: 
 							testMovements;
