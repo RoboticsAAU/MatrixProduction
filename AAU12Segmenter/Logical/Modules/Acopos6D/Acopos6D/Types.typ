@@ -24,7 +24,7 @@ TYPE
 		yPos : REAL;
 	END_STRUCT;
 	test_typ : 	STRUCT 
-		targetReached : ARRAY[0..3]OF BOOL;
+		targetReached : ARRAY[0..3]OF BOOL := [4(FALSE)];
 	END_STRUCT;
 	thisShuttleSetup : 	STRUCT 
 		Shuttle2 : shuttlePos;
