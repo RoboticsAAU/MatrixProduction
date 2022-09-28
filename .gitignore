@@ -1,3 +1,11 @@
+### ADDED IGNORES ###
+/AAU12Segmenter/Binaries/
+/AAU12Segmenter/Diagnosis/
+/AAU12Segmenter/Temp/
+/AAU12Segmenter/*.set
+
+
+### DEFAULT STRUCTURED TEXT .gitignore ###
 yarn.lock
 
 # Logs
@@ -43,8 +51,3 @@ yarn.lock
 
 **/.rpt2_cache
 .vscode/settings.json
-
-/AAU12Segmenter/Binaries/
-/AAU12Segmenter/Diagnosis/
-/AAU12Segmenter/Temp/
-/AAU12Segmenter/*.set
