@@ -240,6 +240,8 @@ PROGRAM _CYCLIC
 						boxProgram: em.substate := 13000;
 						rotationProgram: em.substate := 14000;
 						steelSheet: em.substate := 15000;
+						test: em.substate := 16000;
+						
 					END_CASE
 					
 				1000..1029:
@@ -430,6 +432,18 @@ PROGRAM _CYCLIC
 						steelSheetStation;
 					END_FOR
 					
+				16000..16009:
+					em.description := 'test program';
+					testProgram;
+					
+				16010..16999:
+					em.description := 'test program';
+					FOR i := 0 TO NUM_SHUTTLES DO
+						//pShuttle ACCESS ADR(gShuttles[i]);
+						//pShuttle.par.shuttleID := i;
+						testProgram;
+					END_FOR
+				
 				END_CASE
 			
 		STATE_STOPPING,STATE_ABORTING:

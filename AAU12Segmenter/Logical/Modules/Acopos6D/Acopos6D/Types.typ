@@ -23,6 +23,9 @@ TYPE
 		xPos : REAL;
 		yPos : REAL;
 	END_STRUCT;
+	test_typ : 	STRUCT 
+		targetReached : ARRAY[0..3]OF BOOL;
+	END_STRUCT;
 	thisShuttleSetup : 	STRUCT 
 		Shuttle2 : shuttlePos;
 		Shuttle3 : shuttlePos;

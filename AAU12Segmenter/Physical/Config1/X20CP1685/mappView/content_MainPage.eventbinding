@@ -156,5 +156,15 @@
         </Action>
       </EventHandler>
     </EventBinding>
+    <EventBinding id="content_MainPage.RadioButton11.Click">
+      <Source xsi:type="widgets.brease.RadioButton.Event" contentRefId="content_MainPage" widgetRefId="RadioButton11" event="Click" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:modeSelector">
+            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="16" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
   </Bindings>
 </EventBindingSet>

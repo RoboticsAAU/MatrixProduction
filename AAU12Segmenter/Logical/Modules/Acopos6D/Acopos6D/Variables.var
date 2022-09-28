@@ -64,6 +64,8 @@ VAR
 	positionContainerDemo_0 : ARRAY[0..3] OF shuttleStartup_typ;
 	positionContainerDialGauge : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerFlaskProgram : ARRAY[0..9] OF shuttleStartup_typ;
+	testObj : test_typ;
+	positionContainerTestProgram : ARRAY[0..3] OF shuttleStartup_typ;
 	positionContainerGameProgram : ARRAY[0..3] OF shuttleStartup_typ;
 	positionContainerLinkMovement : ARRAY[0..7] OF thisShuttleSetup;
 	positionContainerLoosingShuttles : ARRAY[0..2] OF shuttleStartup_typ;

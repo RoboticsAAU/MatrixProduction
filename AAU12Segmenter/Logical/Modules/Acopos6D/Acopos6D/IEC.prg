@@ -19,6 +19,7 @@
     <File>DemoProgram.st</File>
     <File>rotationProgram.st</File>
     <File>steelSheet.st</File>
+    <File>Test.st</File>
     <File Description="Local data types" Private="true">Types.typ</File>
     <File Description="Local variables" Private="true">Variables.var</File>
   </Files>
