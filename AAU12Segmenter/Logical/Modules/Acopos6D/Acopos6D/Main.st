@@ -441,13 +441,13 @@ PROGRAM _CYCLIC
 					testProgram;
 					FOR i := 0 TO NUM_SHUTTLES DO
 						cm ACCESS ADR (gShuttles[i].cm);
-						//pShuttle ACCESS ADR(gShuttles[i]);
-						//pShuttle.cm.setup.parent.name := 'main';
-						//pShuttle.cm.setup.nameIdx := i;
-						//pShuttle.par.shuttleID := i;
+						pShuttle ACCESS ADR(gShuttles[i]);
+						pShuttle.cm.setup.parent.name := 'main';
+						pShuttle.cm.setup.nameIdx := i;
+						pShuttle.par.shuttleID := i;
 						
-						CASE i OF 0..3: 
-							testMovements;
+						CASE i OF 
+							0..3: testMovements;
 						END_CASE
 					END_FOR
 				
