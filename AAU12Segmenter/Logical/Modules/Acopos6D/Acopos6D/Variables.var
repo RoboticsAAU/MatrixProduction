@@ -105,4 +105,7 @@ END_VAR
 VAR
 	WorkStation1MovementTimer : REAL := 2;
 	WorkStation2And3MovementTimer : REAL := 4;
+	OpenGripper : BOOL;
+	GripperWhitePin : BOOL := FALSE;
+	GripperBlackPin : BOOL := FALSE;
 END_VAR

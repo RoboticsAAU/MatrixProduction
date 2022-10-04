@@ -440,10 +440,6 @@ VAR_CONFIG
 	::Vision:codeReaderVariable1.codeType AT %QB."VSS122Q25.061P-000".SymbolType;
 	::Vision:codeReaderVariable1.NumberSearch AT %QB."VSS122Q25.061P-000".NumSearchMax;
 	::NettimeCurrent_us AT %ID."X20CP1685".SystemTime;
-	::HMI:lightOutputs[0] AT %QX."X20DO6529".DigitalOutput01;
-	::HMI:lightOutputs[1] AT %QX."X20DO6529".DigitalOutput02;
-	::HMI:lightOutputs[2] AT %QX."X20DO6529".DigitalOutput03;
-	::HMI:lightOutputs[3] AT %QX."X20DO6529".DigitalOutput04;
-	::HMI:lightOutputs[4] AT %QX."X20DO6529".DigitalOutput05;
-	::HMI:lightOutputs[5] AT %QX."X20DO6529".DigitalOutput06;
+	::Acopos6D:GripperWhitePin AT %QX."X20DO9322".DigitalOutput01;
+	::Acopos6D:GripperBlackPin AT %QX."X20DO9322".DigitalOutput02;
 END_VAR

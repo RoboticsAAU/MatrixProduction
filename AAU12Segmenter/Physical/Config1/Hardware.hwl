@@ -2,15 +2,31 @@
 <?AutomationStudio FileVersion="4.9"?>
 <BR.AS.HardwareTopology>
   <TimeStamps>
-    <TimeStamp LogicalPath="Config1.Hardware.hw" LastWriteTime="09/28/2022 09:10:27" />
+    <TimeStamp LogicalPath="Config1.Hardware.hw" LastWriteTime="10/04/2022 10:16:05" />
   </TimeStamps>
   <Modules>
     <Module Name="8YFLM01.0000.00I-1" Type="8YFLM01.0000.00I-1" X="299" Y="199" />
     <Module Name="X20CP1685" Type="X20CP1685" X="100" Y="100" />
     <Module Name="X20IF10E1_1" Type="X20IF10E1-1" X="212" Y="100" />
     <Module Name="X20BM11" Type="X20BM11" X="250" Y="100" />
-    <Module Name="X20DO6529" Type="X20DO6529" X="250" Y="100" />
+    <Module Name="X20DI8371" Type="X20DI8371" X="250" Y="100" />
     <Module Name="X20TB12" Type="X20TB12" X="250" Y="127" />
+    <Module Name="X20BM11a" Type="X20BM11" X="263" Y="100" />
+    <Module Name="X20DI8371a" Type="X20DI8371" X="263" Y="100" />
+    <Module Name="X20TB12a" Type="X20TB12" X="263" Y="127" />
+    <Module Name="X20BM11b" Type="X20BM11" X="276" Y="100" />
+    <Module Name="X20DO9322" Type="X20DO9322" X="276" Y="100" />
+    <Module Name="X20TB12b" Type="X20TB12" X="276" Y="127" />
+    <Module Name="X20BM33" Type="X20BM33" X="289" Y="100" />
+    <Module Name="X20SLX806" Type="X20SLX806" X="289" Y="100" />
+    <Module Name="X20TB52a" Type="X20TB52" X="302" Y="126" />
+    <Module Name="X20TB52" Type="X20TB52" X="289" Y="126" />
+    <Module Name="X20BM13" Type="X20BM13" X="315" Y="100" />
+    <Module Name="X20SI8110" Type="X20SI8110" X="315" Y="100" />
+    <Module Name="X20TB52b" Type="X20TB52" X="315" Y="126" />
+    <Module Name="X20BM33a" Type="X20BM33" X="328" Y="100" />
+    <Module Name="X20SO6530" Type="X20SO6530" X="328" Y="100" />
+    <Module Name="X20TB72" Type="X20TB72" X="328" Y="126" />
     <Module Name="VSS122Q25.061P-000" Type="VSS122Q25.061P-000" X="453" Y="100" />
   </Modules>
   <Links>
