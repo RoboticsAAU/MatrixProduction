@@ -1,16 +1,16 @@
 
 ACTION testProgram: 
 //setup
-	positionContainerTestProgram[0].initXPos := 0.060;
+	positionContainerTestProgram[0].initXPos := 0.050;
 	positionContainerTestProgram[0].initYPos := 0.060;
 	
-	positionContainerTestProgram[1].initXPos := 0.060;
+	positionContainerTestProgram[1].initXPos := 0.050;
 	positionContainerTestProgram[1].initYPos := 0.180;
 	
-	positionContainerTestProgram[2].initXPos := 0.060;
+	positionContainerTestProgram[2].initXPos := 0.050;
 	positionContainerTestProgram[2].initYPos := 0.300;
 	
-	positionContainerTestProgram[3].initXPos := 0.060;
+	positionContainerTestProgram[3].initXPos := 0.050;
 	positionContainerTestProgram[3].initYPos := 0.420;
 	
 	positionContainerTestProgram[4].initXPos := 0.900;
@@ -122,8 +122,6 @@ ACTION testMovements:
 //	cm();
 //	MC_BR_MoveInPlane_Acp6D_0();
 	
-	pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
-	
 	CASE cm.state OF
 		0:
 			cm.description := 'Start linear movement of the four shuttles';
@@ -132,8 +130,8 @@ ACTION testMovements:
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode         := 0; //Absolute movement
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X   := positionContainerTestProgram[pShuttle.par.shuttleID].initXPos + (USINT_TO_REAL(pShuttle.par.shuttleID)+1)*0.120;
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y   := positionContainerTestProgram[pShuttle.par.shuttleID].initYPos;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := 1.0;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity     := 1.0;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := 5.0;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity     := 2.0;
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.EndVelocity  := 0.0;
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path         := 0; //mcACP6D_PATH_DIRECT
 			
@@ -153,10 +151,14 @@ ACTION testMovements:
 		15: 
 			cm.description := 'Waiting to move back to start position';
 			IF testObj.targetReached[0] AND testObj.targetReached[1] AND testObj.targetReached[2] AND testObj.targetReached[3] THEN
-				//IF testObj.targetReached[i] THEN
-				testObj.targetReached[0] := testObj.targetReached[1] := testObj.targetReached[2] := testObj.targetReached[3] := FALSE; 
-				cm.state := 20;
+			//IF testObj.targetReached[i] THEN
+				cm.state := 16;
 			END_IF
+			
+		16:
+			cm.description := 'Setting all targetReached to false';
+			testObj.targetReached[i] := FALSE; 
+			cm.state := 20;
 			
 		20: 
 			cm.description := 'Moving back to the starting position';
@@ -164,9 +166,9 @@ ACTION testMovements:
 			
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode         := 1; //Relative movement
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X   := -(USINT_TO_REAL(pShuttle.par.shuttleID)+1)*0.120;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y   := 0;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := 1.0;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity     := 1.0;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y   := 0.0;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := 5.0;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity     := 2.0;
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.EndVelocity  := 0.0;
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path         := 0; //mcACP6D_PATH_DIRECT
 			
@@ -186,10 +188,14 @@ ACTION testMovements:
 		35: 
 			cm.description := 'Waiting to go back to start of loop';
 			IF testObj.targetReached[0] AND testObj.targetReached[1] AND testObj.targetReached[2] AND testObj.targetReached[3] THEN
-				//IF testObj.targetReached[i] THEN
-				testObj.targetReached[0] := testObj.targetReached[1] := testObj.targetReached[2] := testObj.targetReached[3] := FALSE; 
-				cm.state := 0;
+			//IF testObj.targetReached[i] THEN
+				cm.state := 36;
 			END_IF
+		
+		36:
+			cm.description := 'Setting all targetReached to false';
+			testObj.targetReached[i] := FALSE; 
+			cm.state := 0;
 			
 	END_CASE
 	
