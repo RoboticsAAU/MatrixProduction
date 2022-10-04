@@ -129,11 +129,11 @@ ACTION testMovements:
 			
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode         := 0; //Absolute movement
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X   := positionContainerTestProgram[pShuttle.par.shuttleID].initXPos + (USINT_TO_REAL(pShuttle.par.shuttleID)+1)*0.120;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y   := positionContainerTestProgram[pShuttle.par.shuttleID].initYPos;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := 5.0;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity     := 2.0;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y   := positionContainerTestProgram[pShuttle.par.shuttleID].initYPos - (USINT_TO_REAL(pShuttle.par.shuttleID))*0.120;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := 1.0;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity     := 0.8;
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.EndVelocity  := 0.0;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path         := 0; //mcACP6D_PATH_DIRECT
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path         := 1; //mcACP6D_PATH_X_THEN_Y
 			
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN  // Try to change to DONE
@@ -143,7 +143,8 @@ ACTION testMovements:
 			
 		10:
 			cm.description := 'Check if position is reached';
-			IF gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.X > positionContainerTestProgram[pShuttle.par.shuttleID].initXPos + (USINT_TO_REAL(pShuttle.par.shuttleID)+1)*0.120 - 0.001 THEN
+			IF gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.X > positionContainerTestProgram[pShuttle.par.shuttleID].initXPos + (USINT_TO_REAL(pShuttle.par.shuttleID)+1)*0.120 - 0.001 AND
+				gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y < positionContainerTestProgram[pShuttle.par.shuttleID].initYPos - (USINT_TO_REAL(pShuttle.par.shuttleID))*0.120 + 0.001 THEN
 				testObj.targetReached[pShuttle.par.shuttleID] := TRUE;
 				cm.state := 15;
 			END_IF
@@ -166,11 +167,11 @@ ACTION testMovements:
 			
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode         := 1; //Relative movement
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X   := -(USINT_TO_REAL(pShuttle.par.shuttleID)+1)*0.120;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y   := 0.0;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := 5.0;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity     := 2.0;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y   := (USINT_TO_REAL(pShuttle.par.shuttleID))*0.120;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := 1.0;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity     := 0.8;
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.EndVelocity  := 0.0;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path         := 0; //mcACP6D_PATH_DIRECT
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path         := 2; //mcACP6D_PATH_Y_THEN_X
 			
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN  // Try to change to DONE
@@ -180,7 +181,8 @@ ACTION testMovements:
 		
 		30:
 			cm.description := 'Check if position is reached';
-			IF gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.X < positionContainerTestProgram[pShuttle.par.shuttleID].initXPos + 0.001 THEN
+			IF gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.X < positionContainerTestProgram[pShuttle.par.shuttleID].initXPos + 0.001 AND
+				gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y > positionContainerTestProgram[pShuttle.par.shuttleID].initYPos - 0.001 THEN
 				testObj.targetReached[pShuttle.par.shuttleID] := TRUE;
 				cm.state := 35;
 			END_IF
