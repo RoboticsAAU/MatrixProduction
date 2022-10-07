@@ -1,0 +1,87 @@
+(*********************************************************************************
+ * Copyright: Bernecker + Rainer
+ * Author:    reschl
+ * Created:   July 02, 2015/4:23 PM 
+ *********************************************************************************
+ * Global variables of project
+ *********************************************************************************)
+(*KRC <----> PLC communication*)
+VAR
+	KRC4_Input_1 : ARRAY[0..254] OF BYTE; (*Variable with the BYTE information from KRC*)
+	KRC4_Input : ARRAY[0..254] OF BYTE; (*Variable with the BYTE information from KRC*)
+	KRC4_Output_1 : ARRAY[0..254] OF BYTE; (*Variable with the BYTE information to KRC*)
+	KRC4_Output : ARRAY[0..254] OF BYTE; (*Variable with the BYTE infromation to KRC*)
+	InputVariablePL_1 : ARRAY[0..255] OF USINT;
+	InputVariablePL : ARRAY[0..255] OF USINT;
+	OutputVariablePL_1 : ARRAY[0..255] OF USINT;
+	OutputVariablePL : ARRAY[0..255] OF USINT;
+END_VAR
+(*PositonArray, Coordsys etc*)
+VAR RETAIN
+	TeachPosition : POSITION_ARRAY; (*TeachingPositions -> retain to be save when restarting*)
+END_VAR
+VAR
+	JogPosAxis : E6AXIS := (A2:=-90,A3:=90);
+	JoggingCoordSys : COORDSYS; (*Variable for the CoordSystem when Jogging*)
+	Coordsys_1 : COORDSYS;
+END_VAR
+VAR RETAIN
+	gParameter : USINT;
+END_VAR
+(*HMI Variablen*)
+VAR
+	gCurrentPage : INT; (*Shows current page index of the Visualization*)
+	HMI_Base_act : INT;
+	HMI_Tool_act : INT;
+	HMI_ExeAbort : BOOL;
+	HMI_ExeMoveDirect : BOOL;
+	HMI_AxisGroup : INT;
+	HMI_R2_MessageReset : BOOL;
+	HMI_R2_Override : INT;
+	HMI_R2_AutoStart : BOOL;
+	HMI_R2_EXT_START : BOOL;
+	HMI_R2_Error_DrivesNotReady : BOOL;
+	HMI_R2_Error_Activ : BOOL;
+	HMI_R2_Error_General_ID : DINT;
+	HMI_R2_Error_General : BOOL;
+	HMI_R2_Init_Error_ID : DINT;
+	HMI_R2_Init_Error : BOOL;
+	HMI_R2_Init_Done : BOOL;
+	HMI_R1_MessageReset : BOOL;
+	HMI_R1_Override : INT;
+	HMI_R1_AutoStart : BOOL;
+	HMI_R1_EXT_START : BOOL;
+	HMI_R1_Error_DrivesNotReady : BOOL;
+	HMI_R1_Error_Activ : BOOL;
+	HMI_R1_Error_General_ID : DINT;
+	HMI_R1_Error_General : BOOL;
+	HMI_R1_Init_Error_ID : DINT;
+	HMI_R1_Init_Error : BOOL;
+	HMI_R1_Init_Done : BOOL;
+	HMI_A6 : REAL;
+	HMI_A5 : REAL;
+	HMI_A4 : REAL;
+	HMI_A3 : REAL;
+	HMI_A2 : REAL;
+	HMI_A1 : REAL;
+	HMI_C : REAL;
+	HMI_B : REAL;
+	HMI_A : REAL;
+	HMI_Z : REAL;
+	HMI_Y : REAL;
+	HMI_X : REAL;
+	HMI_A6_C_M : BOOL;
+	HMI_A6_C_P : BOOL;
+	HMI_A5_B_M : BOOL;
+	HMI_A5_B_P : BOOL;
+	HMI_A4_A_M : BOOL;
+	HMI_A4_A_P : BOOL;
+	HMI_A3_Z_M : BOOL;
+	HMI_A3_Z_P : BOOL;
+	HMI_A2_Y_M : BOOL;
+	HMI_A2_Y_P : BOOL;
+	HMI_A1_X_M : BOOL;
+	HMI_A1_X_P : BOOL;
+	HMI_Increment : INT;
+	HMI_MoveType : INT;
+END_VAR

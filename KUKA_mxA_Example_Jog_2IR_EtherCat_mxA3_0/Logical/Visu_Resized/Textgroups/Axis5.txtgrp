@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="4.3.3.196"?>
+<TextGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="Axis5">
+  <Property Name="Description" Value=""/>
+  <Property Name="Index" Value="11"/>
+  <TextSnippets/>
+  <TextLayer LanguageId="en">
+    <Text ID="96766" Value="A5"/>
+    <Text ID="96767" Value="B"/>
+  </TextLayer>
+  <TextLayer LanguageId="de">
+    <Text ID="96766" Value="A5"/>
+    <Text ID="96767" Value="B"/>
+  </TextLayer>
+  <IndexMap>
+    <Index ID="96766" Value="0"/>
+    <Index ID="96767" Value="1"/>
+  </IndexMap>
+</TextGroup>

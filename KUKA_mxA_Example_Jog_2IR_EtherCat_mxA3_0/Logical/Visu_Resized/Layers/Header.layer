@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="4.3.3.196"?>
+<Layer xmlns="http://br-automation.co.at/AS/VC/Project" Name="Header">
+  <Property Name="BackColor" Value="9"/>
+  <Property Name="Description" Value=""/>
+  <Property Name="Height" Value="768"/>
+  <Property Name="Left" Value="0"/>
+  <Property Name="StatusDatapoint" Value="None"/>
+  <Property Name="Top" Value="0"/>
+  <Property Name="Width" Value="1024"/>
+  <TextGroup>
+    <TextLayer LanguageId="en">
+      <Text ID="97938" Value="%H:%M:%S"/>
+      <Text ID="97939" Value="%m/%d/%Y"/>
+      <Text ID="97940" Value="S"/>
+      <Text ID="97941" Value="I"/>
+      <Text ID="97942" Value="R"/>
+      <Text ID="97943" Value="EXT"/>
+      <Text ID="97944" Value="P"/>
+    </TextLayer>
+    <TextLayer LanguageId="de">
+      <Text ID="97938" Value="%H:%M:%S"/>
+      <Text ID="97939" Value="%d.%m.%Y"/>
+      <Text ID="97940" Value="S"/>
+      <Text ID="97941" Value="I"/>
+      <Text ID="97942" Value="R"/>
+      <Text ID="97943" Value="EXT"/>
+      <Text ID="97944" Value="P"/>
+    </TextLayer>
+    <IndexMap>
+      <Index ID="97938" Value="0"/>
+      <Index ID="97939" Value="1"/>
+      <Index ID="97940" Value="2"/>
+      <Index ID="97941" Value="3"/>
+      <Index ID="97942" Value="4"/>
+      <Index ID="97943" Value="5"/>
+      <Index ID="97944" Value="6"/>
+    </IndexMap>
+  </TextGroup>
+  <Controls>
+    <Control ClassId="0x00001005" Name="bmp_KukaLogo">
+      <Property Name="Bitmap" Value="Source[local].Bitmap[kuka_logo_1]"/>
+      <Property Name="BitmapSource" Value="SingleBitmap"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="FillStyle" Value="Transparent"/>
+      <Property Name="Height" Value="47"/>
+      <Property Name="IndexDatapoint" Value="None"/>
+      <Property Name="Left" Value="745"/>
+      <Property Name="SimulationValue" Value="0"/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Bitmap]"/>
+      <Property Name="Top" Value="14"/>
+      <Property Name="Width" Value="215"/>
+    </Control>
+    <Control ClassId="0x00001005" Name="bmp_BuRLogo">
+      <Property Name="Bitmap" Value="Source[local].Bitmap[BuR_Logo]"/>
+      <Property Name="BitmapSource" Value="SingleBitmap"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="FillStyle" Value="Transparent"/>
+      <Property Name="Height" Value="46"/>
+      <Property Name="IndexDatapoint" Value="None"/>
+      <Property Name="Left" Value="7"/>
+      <Property Name="SimulationValue" Value="0"/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Bitmap]"/>
+      <Property Name="Top" Value="14"/>
+      <Property Name="Width" Value="82"/>
+    </Control>
+    <Control ClassId="0x0000100A" Name="dat_Hours">
+      <Property Name="AlignmentHorizontal" Value="Center"/>
+      <Property Name="Border" Value="None"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="FillStyle" Value="Transparent"/>
+      <Property Name="Font" Value="Source[local].Font[Arial14px]"/>
+      <Property Name="Height" Value="46"/>
+      <Property Name="Left" Value="98"/>
+      <Property Name="SimulationValue" Value=""/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
+      <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+      <Property Name="TextIndex" Value="0"/>
+      <Property Name="TextSource" Value="SingleText"/>
+      <Property Name="Top" Value="4"/>
+      <Property Name="ValueDatapoint" Value="None"/>
+      <Property Name="Width" Value="174"/>
+    </Control>
+    <Control ClassId="0x0000100A" Name="dat_Year">
+      <Property Name="AlignmentHorizontal" Value="Center"/>
+      <Property Name="Border" Value="None"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="FillStyle" Value="Transparent"/>
+      <Property Name="Font" Value="Source[local].Font[Arial14px]"/>
+      <Property Name="Height" Value="32"/>
+      <Property Name="Left" Value="98"/>
+      <Property Name="SimulationValue" Value=""/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
+      <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+      <Property Name="TextIndex" Value="1"/>
+      <Property Name="TextSource" Value="SingleText"/>
+      <Property Name="Top" Value="34"/>
+      <Property Name="ValueDatapoint" Value="None"/>
+      <Property Name="Width" Value="174"/>
+    </Control>
+    <Control ClassId="0x00001001" Name="shp_S">
+      <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.CTRL.Status_S]"/>
+      <Property Name="ColorMap" Value="Source[local].ColorMap[Status]"/>
+      <Property Name="ColorMapIndexOffset" Value="0"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="Height" Value="40"/>
+      <Property Name="Left" Value="358"/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+      <Property Name="Top" Value="20"/>
+      <Property Name="Width" Value="40"/>
+    </Control>
+    <Control ClassId="0x00001004" Name="txt_S">
+      <Property Name="AlignmentHorizontal" Value="Center"/>
+      <Property Name="AlignmentVertical" Value="Center"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="Height" Value="40"/>
+      <Property Name="Left" Value="358"/>
+      <Property Name="SimulationIndex" Value="0"/>
+      <Property Name="SimulationValue" Value=""/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+      <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+      <Property Name="TextIndexOffset" Value="2"/>
+      <Property Name="TextSource" Value="SingleText"/>
+      <Property Name="Top" Value="20"/>
+      <Property Name="Width" Value="40"/>
+    </Control>
+    <Control ClassId="0x00001001" Name="shp_Ext">
+      <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.CTRL.Status_EXT]"/>
+      <Property Name="ColorMap" Value="Source[local].ColorMap[Status]"/>
+      <Property Name="ColorMapIndexOffset" Value="0"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="Height" Value="40"/>
+      <Property Name="Left" Value="511"/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+      <Property Name="Top" Value="20"/>
+      <Property Name="Width" Value="40"/>
+    </Control>
+    <Control ClassId="0x00001001" Name="shp_R">
+      <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.CTRL.Status_R]"/>
+      <Property Name="ColorMap" Value="Source[local].ColorMap[Status]"/>
+      <Property Name="ColorMapIndexOffset" Value="0"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="Height" Value="40"/>
+      <Property Name="Left" Value="460"/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+      <Property Name="Top" Value="20"/>
+      <Property Name="Width" Value="40"/>
+    </Control>
+    <Control ClassId="0x00001001" Name="shp_I">
+      <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.CTRL.Status_I]"/>
+      <Property Name="ColorMap" Value="Source[local].ColorMap[Status_I]"/>
+      <Property Name="ColorMapIndexOffset" Value="0"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="Height" Value="40"/>
+      <Property Name="Left" Value="409"/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+      <Property Name="Top" Value="20"/>
+      <Property Name="Width" Value="40"/>
+    </Control>
+    <Control ClassId="0x00001004" Name="txt_I">
+      <Property Name="AlignmentHorizontal" Value="Center"/>
+      <Property Name="AlignmentVertical" Value="Center"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="Height" Value="40"/>
+      <Property Name="Left" Value="409"/>
+      <Property Name="SimulationIndex" Value="0"/>
+      <Property Name="SimulationValue" Value=""/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+      <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+      <Property Name="TextIndexOffset" Value="3"/>
+      <Property Name="TextSource" Value="SingleText"/>
+      <Property Name="Top" Value="20"/>
+      <Property Name="Width" Value="40"/>
+    </Control>
+    <Control ClassId="0x00001004" Name="txt_R">
+      <Property Name="AlignmentHorizontal" Value="Center"/>
+      <Property Name="AlignmentVertical" Value="Center"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="Height" Value="40"/>
+      <Property Name="Left" Value="460"/>
+      <Property Name="SimulationIndex" Value="0"/>
+      <Property Name="SimulationValue" Value=""/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+      <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+      <Property Name="TextIndexOffset" Value="4"/>
+      <Property Name="TextSource" Value="SingleText"/>
+      <Property Name="Top" Value="20"/>
+      <Property Name="Width" Value="40"/>
+    </Control>
+    <Control ClassId="0x00001004" Name="txt_EXT">
+      <Property Name="AlignmentHorizontal" Value="Center"/>
+      <Property Name="AlignmentVertical" Value="Center"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="Height" Value="40"/>
+      <Property Name="Left" Value="511"/>
+      <Property Name="SimulationIndex" Value="0"/>
+      <Property Name="SimulationValue" Value=""/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+      <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+      <Property Name="TextIndexOffset" Value="5"/>
+      <Property Name="TextSource" Value="SingleText"/>
+      <Property Name="Top" Value="20"/>
+      <Property Name="Width" Value="40"/>
+    </Control>
+    <Control ClassId="0x00001001" Name="shp_P">
+      <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.CTRL.Status_P]"/>
+      <Property Name="ColorMap" Value="Source[local].ColorMap[Status]"/>
+      <Property Name="ColorMapIndexOffset" Value="0"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="Height" Value="40"/>
+      <Property Name="Left" Value="564"/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+      <Property Name="Top" Value="20"/>
+      <Property Name="Width" Value="40"/>
+    </Control>
+    <Control ClassId="0x00001004" Name="txt_P">
+      <Property Name="AlignmentHorizontal" Value="Center"/>
+      <Property Name="AlignmentVertical" Value="Center"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="Height" Value="40"/>
+      <Property Name="Left" Value="564"/>
+      <Property Name="SimulationIndex" Value="0"/>
+      <Property Name="SimulationValue" Value=""/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+      <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+      <Property Name="TextIndexOffset" Value="6"/>
+      <Property Name="TextSource" Value="SingleText"/>
+      <Property Name="Top" Value="20"/>
+      <Property Name="Width" Value="40"/>
+    </Control>
+    <Control ClassId="0x00001005" Name="bmp_EButton">
+      <Property Name="BitmapGroup" Value="Source[local].BitmapGroup[E_Button]"/>
+      <Property Name="BitmapIndex" Value="0"/>
+      <Property Name="BitmapSource" Value="MultipleBitmaps"/>
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="FillStyle" Value="Transparent"/>
+      <Property Name="Height" Value="84"/>
+      <Property Name="IndexDatapoint" Value="Source[global].Variable[DataSource.CTRL.KRC_Abort_1.ExecuteCmd]"/>
+      <Property Name="Left" Value="21"/>
+      <Property Name="SimulationValue" Value="0"/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Bitmap]"/>
+      <Property Name="Top" Value="684"/>
+      <Property Name="Width" Value="84"/>
+    </Control>
+    <Control ClassId="0x00001003" Name="hot_EButton">
+      <Property Name="ControlID" Value="0"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="EmbVirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_35]"/>
+      <Property Name="Height" Value="84"/>
+      <Property Name="KeyMatrixOffset" Value="None"/>
+      <Property Name="Left" Value="21"/>
+      <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[HotSpot]"/>
+      <Property Name="Top" Value="684"/>
+      <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_35]"/>
+      <Property Name="Width" Value="84"/>
+    </Control>
+  </Controls>
+  <KeyMapping>
+    <VirtualKey Name="%embVirtualKey_35">
+      <Property Name="Description" Value=""/>
+      <Property Name="VirtualKey_LED" Value="False"/>
+      <KeyActions>
+        <KeyAction ClassId="0x0000016B">
+          <Property Name="CompletionDatapoint" Value="None"/>
+          <Property Name="CompletionValue" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Locking" Value="Never"/>
+          <Property Name="Name" Value="Action_0"/>
+          <Property Name="ResetValue" Value="0"/>
+          <Property Name="SetValue" Value="1"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.HMI_ExeAbort]"/>
+        </KeyAction>
+      </KeyActions>
+    </VirtualKey>
+  </KeyMapping>
+</Layer>

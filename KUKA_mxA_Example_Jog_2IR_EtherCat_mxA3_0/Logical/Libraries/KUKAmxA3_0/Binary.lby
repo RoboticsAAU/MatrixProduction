@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.7.2.98?>
+<Library Version="3.00.2" SubType="Binary" xmlns="http://br-automation.co.at/AS/Library">
+  <Files>
+    <File Description="Exported constants">Constants.var</File>
+    <File>KUKAmxA3_0.fun</File>
+    <File Description="Exported data types">Types.typ</File>
+    <File>APO.typ</File>
+    <File>COORDSYS.typ</File>
+    <File>E6AXIS.typ</File>
+    <File>E6POS.typ</File>
+    <File>FRAME.typ</File>
+    <File>MXA_AUTEXT_CONTROL.typ</File>
+    <File>MXA_AUTEXT_STATE.typ</File>
+    <File>MXA_CMD_STATE_RET.typ</File>
+    <File>MXA_COMMAND.typ</File>
+    <File>MXA_COMMAND_STATUS.typ</File>
+    <File>MXA_KRC_CONTROL.typ</File>
+    <File>MXA_KRC_STATE.typ</File>
+    <File>PNetWriteData.typ</File>
+    <File>POSITION.typ</File>
+    <File>AXBOX.typ</File>
+    <File>BOX.typ</File>
+  </Files>
+  <Dependencies>
+    <Dependency ObjectName="asieccon" FromVersion="0.00.0" />
+    <Dependency ObjectName="runtime" FromVersion="0.00.0" />
+    <Dependency ObjectName="standard" FromVersion="0.00.0" />
+  </Dependencies>
+</Library>

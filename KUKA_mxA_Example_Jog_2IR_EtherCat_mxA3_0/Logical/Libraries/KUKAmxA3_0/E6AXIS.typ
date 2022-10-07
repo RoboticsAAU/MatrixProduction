@@ -1,0 +1,16 @@
+TYPE E6AXIS :
+STRUCT
+		A1	:	REAL;
+		A2	:	REAL;
+		A3	:	REAL;
+		A4	:	REAL;
+		A5	:	REAL;
+		A6	:	REAL;
+		E1	:	REAL;
+		E2	:	REAL;
+		E3	:	REAL;
+		E4	:	REAL;
+		E5	:	REAL;
+		E6	:	REAL;
+END_STRUCT;
+END_TYPE

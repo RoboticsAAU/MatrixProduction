@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?AutomationStudio FileVersion="4.9"?>
+<BR.AS.HardwareTopology>
+  <TimeStamps>
+    <TimeStamp LogicalPath="Config1.Hardware.hw" LastWriteTime="10/07/2022 09:21:35" />
+  </TimeStamps>
+  <Modules>
+    <Module Name="X20CP1685" Type="X20CP1685" X="100" Y="100" />
+    <Module Name="X20IF10E1_1" Type="X20IF10E1-1" X="212" Y="100" />
+    <Module Name="KRC4_ProfiNet_3_2" Type="FBD.Hilscher.PNIOGenDevDTM2.KRC4-ProfiNet_3.2" X="250" Y="249" />
+  </Modules>
+  <Links>
+    <Link From="KRC4_ProfiNet_3_2" To="X20IF10E1_1" FromPort="PN1" ToPort="IF1" IsRoutedByUser="False">
+      <Point X="269" Y="288" />
+      <Point X="269" Y="288" />
+      <Point X="269" Y="300" />
+      <Point X="269" Y="305" />
+      <Point X="226" Y="305" />
+      <Point X="226" Y="200" />
+      <Point X="226" Y="191" />
+      <Point X="226" Y="191" />
+    </Link>
+  </Links>
+  <InfoElements />
+</BR.AS.HardwareTopology>

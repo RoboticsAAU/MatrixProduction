@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="4.3.3.196"?>
+<TextGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="Roboter">
+  <Property Name="Description" Value=""/>
+  <Property Name="Index" Value="15"/>
+  <TextSnippets/>
+  <TextLayer LanguageId="en">
+    <Text ID="99017" Value=""/>
+    <Text ID="99018" Value="Robot 1"/>
+    <Text ID="99019" Value="Robot 4"/>
+    <Text ID="99020" Value="Robot 2"/>
+    <Text ID="99021" Value="Robot 3"/>
+    <Text ID="99229" Value="Robot 5"/>
+  </TextLayer>
+  <TextLayer LanguageId="de">
+    <Text ID="99017" Value=""/>
+    <Text ID="99018" Value="Roboter 1"/>
+    <Text ID="99019" Value="Roboter 4"/>
+    <Text ID="99020" Value="Roboter 2"/>
+    <Text ID="99021" Value="Roboter 3"/>
+    <Text ID="99229" Value="Roboter 5"/>
+  </TextLayer>
+  <IndexMap>
+    <Index ID="99017" Value="0"/>
+    <Index ID="99018" Value="1"/>
+    <Index ID="99019" Value="4"/>
+    <Index ID="99020" Value="2"/>
+    <Index ID="99021" Value="3"/>
+    <Index ID="99229" Value="5"/>
+  </IndexMap>
+</TextGroup>

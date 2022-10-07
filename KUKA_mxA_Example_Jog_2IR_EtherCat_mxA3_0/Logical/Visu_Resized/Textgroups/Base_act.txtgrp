@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?AutomationStudio Version="4.3.3.196"?>
+<TextGroup xmlns="http://br-automation.co.at/AS/VC/Project" Name="Base_act">
+  <Property Name="Description" Value=""/>
+  <Property Name="Index" Value="4"/>
+  <TextSnippets/>
+  <TextLayer LanguageId="en">
+    <Text ID="99671" Value="Base_0"/>
+    <Text ID="99672" Value="Base_1"/>
+    <Text ID="99673" Value="Base_2"/>
+    <Text ID="99674" Value="Base_3"/>
+    <Text ID="99675" Value="Base_4"/>
+    <Text ID="99676" Value="Base_5"/>
+    <Text ID="99677" Value="Base_6"/>
+    <Text ID="99678" Value="Base_7"/>
+    <Text ID="99679" Value="Base_8"/>
+    <Text ID="99680" Value="Base_9"/>
+    <Text ID="99681" Value="Base_10"/>
+    <Text ID="99682" Value="Base_11"/>
+    <Text ID="99683" Value="Base_12"/>
+    <Text ID="99684" Value="Base_13"/>
+    <Text ID="99685" Value="Base_14"/>
+    <Text ID="99686" Value="Base_15"/>
+  </TextLayer>
+  <TextLayer LanguageId="de">
+    <Text ID="99671" Value="Base_0"/>
+    <Text ID="99672" Value="Base_1"/>
+    <Text ID="99673" Value="Base_2"/>
+    <Text ID="99674" Value="Bse_3"/>
+    <Text ID="99675" Value="Base_4"/>
+    <Text ID="99676" Value="Base_5"/>
+    <Text ID="99677" Value="Base_6"/>
+    <Text ID="99678" Value="Base_7"/>
+    <Text ID="99679" Value="Base_8"/>
+    <Text ID="99680" Value="Base_9"/>
+    <Text ID="99681" Value="Base_10"/>
+    <Text ID="99682" Value="Base_11"/>
+    <Text ID="99683" Value="Base_12"/>
+    <Text ID="99684" Value="Base_13"/>
+    <Text ID="99685" Value="Base_14"/>
+    <Text ID="99686" Value="Base_15"/>
+  </TextLayer>
+  <IndexMap>
+    <Index ID="99671" Value="0"/>
+    <Index ID="99672" Value="1"/>
+    <Index ID="99673" Value="2"/>
+    <Index ID="99674" Value="3"/>
+    <Index ID="99675" Value="4"/>
+    <Index ID="99676" Value="5"/>
+    <Index ID="99677" Value="6"/>
+    <Index ID="99678" Value="7"/>
+    <Index ID="99679" Value="8"/>
+    <Index ID="99680" Value="9"/>
+    <Index ID="99681" Value="10"/>
+    <Index ID="99682" Value="11"/>
+    <Index ID="99683" Value="12"/>
+    <Index ID="99684" Value="13"/>
+    <Index ID="99685" Value="14"/>
+    <Index ID="99686" Value="15"/>
+  </IndexMap>
+</TextGroup>
