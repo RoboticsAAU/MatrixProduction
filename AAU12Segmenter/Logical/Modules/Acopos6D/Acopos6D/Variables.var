@@ -65,7 +65,6 @@ VAR
 	positionContainerDialGauge : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerFlaskProgram : ARRAY[0..9] OF shuttleStartup_typ;
 	testObj : test_typ;
-	positionContainerTestProgram : ARRAY[0..7] OF shuttleStartup_typ;
 	positionContainerGameProgram : ARRAY[0..3] OF shuttleStartup_typ;
 	positionContainerLinkMovement : ARRAY[0..7] OF thisShuttleSetup;
 	positionContainerLoosingShuttles : ARRAY[0..2] OF shuttleStartup_typ;
@@ -76,6 +75,8 @@ VAR
 	positionContainerSteelSheet : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerRotation : ARRAY[0..9] OF shuttleStartup_typ;
 	posotionContainerSunMovement : ARRAY[0..3] OF shuttleStartup_typ;
+	positionContainerTestProgram : ARRAY[0..7] OF shuttleStartup_typ;
+	positionContainerSmartLabProgram : ARRAY[0..7] OF shuttleStartup_typ;
 	pShuttle : REFERENCE TO shuttle_typ;
 	pWorkStations : REFERENCE TO workStation_typ;
 	shGroupShuttle1_2 : UDINT;
@@ -108,4 +109,8 @@ VAR
 	OpenGripper : BOOL;
 	GripperWhitePin : BOOL := FALSE;
 	GripperBlackPin : BOOL := FALSE;
+END_VAR
+VAR RETAIN
+	executeOrder : BOOL := FALSE;
+	orderAmount : USINT := 0;
 END_VAR

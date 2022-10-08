@@ -241,6 +241,7 @@ PROGRAM _CYCLIC
 						rotationProgram: em.substate := 14000;
 						steelSheet: em.substate := 15000;
 						test: em.substate := 16000;
+						smartLab: em.substate := 17000;
 						
 					END_CASE
 					
@@ -326,7 +327,7 @@ PROGRAM _CYCLIC
 						
 						
 				8000..8005:
-				workStationSetup;
+					workStationSetup;
 					
 				8006..8999:
 					workStationSetup;
@@ -433,11 +434,11 @@ PROGRAM _CYCLIC
 					END_FOR
 					
 				16000..16009:
-					em.description := 'Test program - setup';
+					em.description := 'Test program';
 					testProgram;
 					
 				16010..16999:
-					em.description := 'Test program - execution';
+					em.description := 'Test program';
 					testProgram;
 					FOR i := 0 TO NUM_SHUTTLES DO
 						cm ACCESS ADR (gShuttles[i].cm);
@@ -451,7 +452,23 @@ PROGRAM _CYCLIC
 						END_CASE
 					END_FOR
 				
-				END_CASE
+				17000..17009:
+					em.description := 'Smart Lab program';
+					smartLabSetup;
+					
+				17010..17999:
+					em.description := 'Smart Lab program';
+					
+					FOR i := 0 TO NR_OF_WORKSTATIONS DO
+						pWorkStations ACCESS ADR (gWorkStations[i]); 
+						cm ACCESS ADR (gWorkStations[i].cm);
+						pWorkStations.cm.setup.parent.name := 'main';
+
+						smartLabProg;
+					END_FOR
+				
+				
+			END_CASE
 			
 		STATE_STOPPING,STATE_ABORTING:
 			ResetInput;

@@ -16,5 +16,6 @@
     <Object Type="Package">WorkstationPage</Object>
     <Object Type="Package">DanfossPage</Object>
     <Object Type="Package">fixturePage</Object>
+    <Object Type="Package">SmartLabPage</Object>
   </Objects>
 </Package>
