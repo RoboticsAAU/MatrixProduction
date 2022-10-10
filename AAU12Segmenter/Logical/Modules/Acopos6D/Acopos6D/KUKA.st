@@ -1,5 +1,5 @@
 
-ACTION KUKA:
+ACTION KUKA_program:
 	
 
 END_ACTION

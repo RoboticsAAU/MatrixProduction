@@ -2,7 +2,7 @@
 <?AutomationStudio FileVersion="4.9"?>
 <BR.AS.HardwareTopology>
   <TimeStamps>
-    <TimeStamp LogicalPath="Config1.Hardware.hw" LastWriteTime="10/07/2022 14:38:16" />
+    <TimeStamp LogicalPath="Config1.Hardware.hw" LastWriteTime="10/10/2022 15:27:09" />
   </TimeStamps>
   <Modules>
     <Module Name="8YFLM01.0000.00I-1" Type="8YFLM01.0000.00I-1" X="299" Y="199" />
@@ -32,25 +32,26 @@
   </Modules>
   <Links>
     <Link From="8YFLM01.0000.00I-1" To="X20CP1685" FromPort="PLK1" ToPort="IF3" IsRoutedByUser="False">
-      <Point X="303" Y="203" />
-      <Point X="303" Y="203" />
-      <Point X="298" Y="203" />
-      <Point X="156" Y="203" />
+      <Point X="332" Y="243" />
+      <Point X="332" Y="243" />
+      <Point X="332" Y="250" />
+      <Point X="332" Y="255" />
+      <Point X="156" Y="255" />
       <Point X="156" Y="200" />
       <Point X="156" Y="187" />
       <Point X="156" Y="187" />
     </Link>
     <Link From="8YFLM01.0000.00I-1" To="VSS122Q25.061P-000" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
-      <Point X="303" Y="203" />
-      <Point X="303" Y="200" />
-      <Point X="308" Y="200" />
-      <Point X="308" Y="235" />
-      <Point X="471" Y="235" />
+      <Point X="357" Y="243" />
+      <Point X="357" Y="243" />
+      <Point X="357" Y="250" />
+      <Point X="357" Y="255" />
+      <Point X="471" Y="255" />
       <Point X="471" Y="223" />
       <Point X="471" Y="218" />
       <Point X="471" Y="218" />
     </Link>
-    <Link From="X20IF10E1_1" To="KRC4_ProfiNet_3_2" FromPort="IF1" ToPort="PN1" IsRoutedByUser="False">
+    <Link From="KRC4_ProfiNet_3_2" To="X20IF10E1_1" FromPort="PN1" ToPort="IF1" IsRoutedByUser="False">
       <Point X="226" Y="191" />
       <Point X="226" Y="191" />
       <Point X="226" Y="200" />
