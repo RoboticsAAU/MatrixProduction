@@ -241,6 +241,7 @@ PROGRAM _CYCLIC
 						rotationProgram: em.substate := 14000;
 						steelSheet: em.substate := 15000;
 						test: em.substate := 16000;
+						KUKA: em.substate := 17000;
 						
 					END_CASE
 					
@@ -450,6 +451,16 @@ PROGRAM _CYCLIC
 							0..3: testMovements;
 						END_CASE
 					END_FOR
+				
+				17000..17009:
+					em.description := 'KUKA program - setup';
+					KUKA;
+				
+				17010..17999:
+					em.description := 'KUKA program - execution';
+					KUKA;
+					
+				
 				
 				END_CASE
 			

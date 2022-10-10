@@ -8,7 +8,10 @@
     <Connection Connector="PLK2" TargetModule="VSS122Q25.061P-000" TargetConnector="PLK1" NodeNumber="20">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Parameter ID="Supervision" Value="off" />
+  </Module>
+  <Module Name="KRC4_ProfiNet_3_2" Type="FBD.Hilscher.PNIOGenDevDTM2.KRC4-ProfiNet_3.2" Version="3.2" OrderNumber="KRC4-ProfiNet_3.2" VendorAddress="krc4">
+    <Connection Connector="PN1" TargetModule="X20IF10E1_1" TargetConnector="IF1" />
+    <Parameter ID="DtmId" Value="c34e5730-df71-41b7-a3cd-50aa813d780b" />
   </Module>
   <Module Name="VSS122Q25.061P-000" Type="VSS122Q25.061P-000" Version="1.6.0.546">
     <Connection Connector="PLK1" TargetModule="8YFLM01.0000.00I-1" TargetConnector="PLK2" NodeNumber="8">

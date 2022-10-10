@@ -4,5 +4,6 @@
   <Objects>
     <Object Type="File">X20IF10E1_1.dtm</Object>
     <Object Type="Package">X20IF10E1_1_IF1</Object>
+    <Object Type="Package">KRC4_ProfiNet_3_2</Object>
   </Objects>
 </Package>

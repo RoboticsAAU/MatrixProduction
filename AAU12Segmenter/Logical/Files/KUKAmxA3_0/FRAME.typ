@@ -1,0 +1,10 @@
+TYPE FRAME :
+STRUCT
+		X	:	REAL;
+		Y	:	REAL;
+		Z	:	REAL;
+		A	:	REAL;
+		B	:	REAL;
+		C	:	REAL;
+END_STRUCT;
+END_TYPE
