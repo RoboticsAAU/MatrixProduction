@@ -112,5 +112,5 @@ VAR
 END_VAR
 VAR RETAIN
 	executeOrder : BOOL := FALSE;
-	orderAmount : USINT := 0;
+	productOrder : product_order;
 END_VAR

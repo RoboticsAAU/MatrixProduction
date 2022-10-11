@@ -102,13 +102,18 @@ ACTION smartLabProg:
 		0: 
 			cm.description := 'Check if new order has been placed';
 			IF executeOrder AND orderAmount <> 0 THEN
-				executeOrder := FALSE;
 				cm.state := 10;
 			END_IF
 		
 		10:
 			cm.description := 'Initiate movement to start position of first shuttle position';	
 			
+		
+		
+		200:
+			cm.description := 'Current product order has been finished';
+			executeOrder := FALSE;
+			cm.state := 0;
 		
 	END_CASE
 	

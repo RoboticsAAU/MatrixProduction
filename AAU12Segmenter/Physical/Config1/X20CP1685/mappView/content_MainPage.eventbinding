@@ -169,11 +169,22 @@
     <EventBinding id="content_MainPage.RadioButton12.Click">
       <Source xsi:type="widgets.brease.RadioButton.Event" contentRefId="content_MainPage" widgetRefId="RadioButton12" event="Click" />
       <EventHandler>
-        <Action>
-          <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:modeSelector">
-            <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="17" />
-          </Target>
-        </Action>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:modeSelector">
+                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="17" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="clientSystem.Action">
+                <Method xsi:type="clientSystem.Action.Navigate" pageId="page_smartLabPage" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
       </EventHandler>
     </EventBinding>
   </Bindings>

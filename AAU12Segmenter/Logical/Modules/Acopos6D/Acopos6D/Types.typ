@@ -54,4 +54,18 @@ TYPE
 		returnSmallWeightMovement : BOOL;
 		startBigWeightMovement : BOOL;
 	END_STRUCT;
+	product_order : 	STRUCT 
+		amount : USINT;
+		topCover : cover_types;
+		bottomCover : cover_types;
+		PCB : BOOL;
+		Fuses : USINT;
+	END_STRUCT;
+	cover_types : 
+		(
+		none := 0,
+		black := 1,
+		white := 2,
+		blue := 3
+		);
 END_TYPE
