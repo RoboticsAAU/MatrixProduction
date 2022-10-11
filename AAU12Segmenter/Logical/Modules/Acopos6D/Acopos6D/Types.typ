@@ -63,9 +63,9 @@ TYPE
 	END_STRUCT;
 	cover_types : 
 		(
-		none := 0,
-		black := 1,
-		white := 2,
-		blue := 3
+		noCover := 0,
+		blackCover := 1,
+		whiteCover := 2,
+		blueCover := 3
 		);
 END_TYPE

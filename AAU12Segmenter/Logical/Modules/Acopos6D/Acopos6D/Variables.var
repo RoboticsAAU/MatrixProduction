@@ -114,3 +114,7 @@ VAR RETAIN
 	executeOrder : BOOL := FALSE;
 	productOrder : product_order;
 END_VAR
+VAR
+	parkingSpotIdx : USINT;
+	orderFinished : BOOL := FALSE;
+END_VAR

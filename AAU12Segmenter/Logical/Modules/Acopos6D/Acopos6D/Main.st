@@ -467,7 +467,6 @@ PROGRAM _CYCLIC
 						smartLabProg;
 					END_FOR
 				
-				
 			END_CASE
 			
 		STATE_STOPPING,STATE_ABORTING:
