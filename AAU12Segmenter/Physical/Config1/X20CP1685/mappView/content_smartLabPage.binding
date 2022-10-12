@@ -4,7 +4,12 @@
 <Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:productOrder.amount" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericInput1" attribute="value" />
-</Binding>
+		</Binding>
 
+
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:orderFinished" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="PushButton1" attribute="enable" />
+</Binding>
 </Bindings>
 </BindingsSet>

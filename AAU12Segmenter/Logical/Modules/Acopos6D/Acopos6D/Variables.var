@@ -75,7 +75,7 @@ VAR
 	positionContainerSteelSheet : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerRotation : ARRAY[0..9] OF shuttleStartup_typ;
 	posotionContainerSunMovement : ARRAY[0..3] OF shuttleStartup_typ;
-	positionContainerTestProgram : ARRAY[0..7] OF shuttleStartup_typ;
+	positionContainerTestProgram : REFERENCE TO ARRAY[0..7] OF shuttleStartup_typ;
 	positionContainerSmartLabProgram : ARRAY[0..7] OF shuttleStartup_typ;
 	pShuttle : REFERENCE TO shuttle_typ;
 	pWorkStations : REFERENCE TO workStation_typ;
@@ -116,5 +116,6 @@ VAR RETAIN
 END_VAR
 VAR
 	parkingSpotIdx : USINT;
-	orderFinished : BOOL := FALSE;
+	orderFinished : BOOL := TRUE;
+	smartLabNumWorkstations : USINT := 4;
 END_VAR

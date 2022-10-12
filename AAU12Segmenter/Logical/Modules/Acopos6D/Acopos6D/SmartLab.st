@@ -89,12 +89,8 @@ ACTION smartLabSetup:
 				MC_BR_MoveInPlaneAsync_Acp6D_0.Execute := FALSE;
 				em.substate := 17010;
 			END_IF
-		
-		17010:
-			em.description := 'Execute Smart Lab program';
 	
 	END_CASE
-	
 END_ACTION
 
 ACTION smartLabProg:
@@ -102,6 +98,7 @@ ACTION smartLabProg:
 		0: 
 			cm.description := 'Check if new order has been placed';
 			IF executeOrder AND productOrder.amount <> 0 THEN
+				orderFinished := FALSE;
 				cm.state := 10;
 			END_IF
 		
@@ -109,7 +106,7 @@ ACTION smartLabProg:
 			cm.description := 'Initiate movement to start position of first shuttle';	
 			parkingSpotIdx := productOrder.amount - 1; // For position of shuttles when they are done with all processes
 			
-			FOR k := 0 TO (productOrder.amount + 1) DO
+			FOR k := 0 TO (productOrder.amount - 1) DO
 				MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
 				MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 				MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[i].shuttleRef);
@@ -123,13 +120,29 @@ ACTION smartLabProg:
 					MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
 				END_IF
 			END_FOR
-			cm.state := 20;
+			cm.state := 12;
 		
-		///// STATE /////
+		12:
+			cm.description := 'Initiate movement to first workstation';
+			FOR k := 0 TO (productOrder.amount - 1) DO
+				MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
+				MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
+				MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[i].shuttleRef);
+				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[0].par.xLocation;
+				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[0].par.yLocation;
+				MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; //X then Y
+				MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0;
+				
+				MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
+				IF MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
+					MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
+				END_IF
+			END_FOR
+			cm.state := 20;
 			
 		20:
 			cm.description := 'Check what shuttle is on top of workstation';
-			FOR k := 0 TO (productOrder.amount + 1) DO
+			FOR k := 0 TO (productOrder.amount - 1) DO
 				IF (gAcp6DCtrl.Status.ShuttleInfo[k].Position.X > pWorkStations.par.xLocation - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[k].Position.X < pWorkStations.par.xLocation + MARGIN) AND
 					(gAcp6DCtrl.Status.ShuttleInfo[k].Position.Y > pWorkStations.par.yLocation - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[k].Position.Y < pWorkStations.par.yLocation + MARGIN) THEN
 					IF gAcp6DCtrl.Status.ShuttleInfo[k].State = mcACP6D_SH_STATE_IDLING THEN
@@ -189,7 +202,7 @@ ACTION smartLabProg:
 			IF pWorkStations.par.nextStationSelector = 'END' THEN
 				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := positionContainerSmartLabProgram[parkingSpotIdx].initXPos;
 				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := positionContainerSmartLabProgram[parkingSpotIdx].initYPos;
-				parkingSpotIdx := parkingSpotIdx - 1; // NOTE: Problem with second (and subsequenc) product order since indexing of shuttles has changed
+				parkingSpotIdx := parkingSpotIdx - 1; // NOTE: Problem with second (and subsequent) product order since indexing of shuttles has changed
 				IF parkingSpotIdx = -1 THEN
 					orderFinished := TRUE;
 				END_IF
@@ -202,18 +215,17 @@ ACTION smartLabProg:
 			pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := pWorkStations.par.pathRouting; //0 Diagonal, 1 First X then Y, 2 First Y then X
 			pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
-				pWorkStations.status.oneshot := FALSE;
 				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
 				IF NOT orderFinished THEN
 					cm.state := 20;
 				ELSE
 					cm.state := 70;
-				END_IF		
+				END_IF
 			END_IF
 			
 		70:
 			cm.description := 'Current product order has finished';
-			orderFinished := FALSE;
+			orderFinished := TRUE;
 			executeOrder := FALSE;
 			cm.state := 0;
 		

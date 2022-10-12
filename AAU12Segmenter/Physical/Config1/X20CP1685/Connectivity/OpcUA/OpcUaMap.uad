@@ -124,6 +124,7 @@
           <Variable Name="Fuses" />
         </Variable>
         <Variable Name="executeOrder" />
+        <Variable Name="orderFinished" />
       </Task>
       <Task Name="Vision">
         <Variable Name="codeReaderVariable">

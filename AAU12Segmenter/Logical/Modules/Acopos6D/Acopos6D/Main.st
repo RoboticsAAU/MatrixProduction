@@ -246,7 +246,6 @@ PROGRAM _CYCLIC
 					END_CASE
 					
 				1000..1029:
-						
 					em.description := 'Vision Movement';
 					VisionMovement;
 					
@@ -459,11 +458,11 @@ PROGRAM _CYCLIC
 				17010..17999:
 					em.description := 'Smart Lab program';
 					
-					FOR i := 0 TO NR_OF_WORKSTATIONS DO
+					FOR i := 0 TO (smartLabNumWorkstations - 1) DO
 						pWorkStations ACCESS ADR (gWorkStations[i]); 
 						cm ACCESS ADR (gWorkStations[i].cm);
 						pWorkStations.cm.setup.parent.name := 'main';
-
+						
 						smartLabProg;
 					END_FOR
 				
