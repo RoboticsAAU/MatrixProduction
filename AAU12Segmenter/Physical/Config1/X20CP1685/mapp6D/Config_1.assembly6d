@@ -5,7 +5,7 @@
     <Property ID="Simulation6D" Value="SimOff" />
     <Group ID="Shuttles">
       <Property ID="MaxShuttleCount" Value="8" />
-      <Property ID="ShuttleIDMode" Value="AbsoluteIDNoR" />
+      <Property ID="ShuttleIDMode" Value="RealTimeID" />
       <Group ID="DefaultPosition">
         <Property ID="DefZ" Value="1.0" />
         <Property ID="DefRx" Value="0" />

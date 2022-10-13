@@ -15,7 +15,7 @@ ACTION smartLabWorkstationSetup:
 	gWorkStations[0].par.yLocation										:= 0.060;
 	gWorkStations[0].par.nextStationSelector							:= '1';
 	gWorkStations[0].par.processTime									:= 2.0;
-	gWorkStations[0].par.pathRouting									:= 1;
+	gWorkStations[0].par.pathRouting									:= 2;
 	gWorkStations[0].par.ArcMovement									:= FALSE;
 	gWorkStations[0].par.landBeforeProcess								:= FALSE;
 	
@@ -42,7 +42,7 @@ ACTION smartLabWorkstationSetup:
 	gWorkStations[3].par.pathRouting									:= 2;
 	gWorkStations[3].par.ArcMovement									:= FALSE;
 	gWorkStations[3].par.landBeforeProcess								:= FALSE;
-			
+	
 END_ACTION
 	
 ACTION smartLabSetup: 
@@ -81,8 +81,8 @@ ACTION smartLabSetup:
 			MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			FOR i := 0 TO UINT_TO_USINT(localCurrentNumShuttles-1) DO
 				MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.AsyncPar[i].Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[i].shuttleRef);
-				MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.AsyncPar[i].X := positionContainerTestProgram[i].initXPos;
-				MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.AsyncPar[i].Y := positionContainerTestProgram[i].initYPos;
+				MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.AsyncPar[i].X := positionContainerSmartLabProgram[i].initXPos;
+				MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.AsyncPar[i].Y := positionContainerSmartLabProgram[i].initYPos;
 			END_FOR
 			MC_BR_MoveInPlaneAsync_Acp6D_0.Execute := TRUE;
 			IF MC_BR_MoveInPlaneAsync_Acp6D_0.Done THEN
@@ -93,54 +93,57 @@ ACTION smartLabSetup:
 	END_CASE
 END_ACTION
 
-ACTION smartLabProg:
+ACTION smartLabInitialMovement:		
 	CASE cm.state OF
-		0: 
-			cm.description := 'Check if new order has been placed';
-			IF executeOrder AND productOrder.amount <> 0 THEN
-				orderFinished := FALSE;
-				cm.state := 10;
-			END_IF
-		
-		10:
+		0:
 			cm.description := 'Initiate movement to start position of first shuttle';	
-			parkingSpotIdx := productOrder.amount - 1; // For position of shuttles when they are done with all processes
-			
-			FOR k := 0 TO (productOrder.amount - 1) DO
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
-				MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[i].shuttleRef);
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := positionContainerSmartLabProgram[0].initXPos;
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := positionContainerSmartLabProgram[0].initXPos;
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; //X then Y
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0;
+			IF pShuttle.par.shuttleID <> 0 THEN 
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := positionContainerSmartLabProgram[0].initXPos;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := positionContainerSmartLabProgram[0].initYPos;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; //X then Y
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0;
 				
-				MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
-				IF MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
-					MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
+				IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
+					pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
 				END_IF
-			END_FOR
-			cm.state := 12;
-		
-		12:
+			END_IF
+			cm.state := 10;
+			
+		10:
 			cm.description := 'Initiate movement to first workstation';
-			FOR k := 0 TO (productOrder.amount - 1) DO
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
-				MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[i].shuttleRef);
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[0].par.xLocation;
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[0].par.yLocation;
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; //X then Y
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0;
-				
-				MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
-				IF MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
-					MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
-				END_IF
-			END_FOR
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[0].par.xLocation;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[0].par.yLocation;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; //X then Y
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0;
+					
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
+			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
+			END_IF
 			cm.state := 20;
-			
+		
 		20:
+			cm.state := 0;
+			em.substate := 17020;
+		
+	END_CASE
+	
+	// Calls
+	pShuttle.function.MC_BR_MoveInPlane_Acp6D_0();
+	cm();
+	
+END_ACTION
+
+ACTION smartLabWorkstationMovement:
+	CASE cm.state OF
+		0:
 			cm.description := 'Check what shuttle is on top of workstation';
 			FOR k := 0 TO (productOrder.amount - 1) DO
 				IF (gAcp6DCtrl.Status.ShuttleInfo[k].Position.X > pWorkStations.par.xLocation - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[k].Position.X < pWorkStations.par.xLocation + MARGIN) AND
@@ -148,15 +151,15 @@ ACTION smartLabProg:
 					IF gAcp6DCtrl.Status.ShuttleInfo[k].State = mcACP6D_SH_STATE_IDLING THEN
 						pWorkStations.par.tempShuttleID := k;
 						IF pWorkStations.par.landBeforeProcess THEN
-							cm.state := 30;
+							cm.state := 10;
 						ELSE
-							cm.state := 40;
+							cm.state := 20;
 						END_IF
 					END_IF
 				END_IF
 			END_FOR
 		
-		30:
+		10:
 			cm.description := 'Land shuttle if required';
 			IF gAcp6DCtrl.Status.ShuttleInfo[pWorkStations.par.tempShuttleID].State = mcACP6D_SH_STATE_IDLING THEN
 				pWorkStations.MC_BR_ShLevitation_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pWorkStations.par.tempShuttleID].shuttleRef);
@@ -166,23 +169,23 @@ ACTION smartLabProg:
 			END_IF
 			IF pWorkStations.MC_BR_ShLevitation_Acp6D_0.Done THEN
 				pWorkStations.MC_BR_ShLevitation_Acp6D_0.Execute := FALSE;
-				cm.state := 40;
+				cm.state := 20;
 			END_IF
 			
-		40:
+		20:
 			cm.description := 'Wait for process to finish';
 			pWorkStations.TON_0.PT := REAL_TO_TIME(pWorkStations.par.processTime*1000);
 			pWorkStations.TON_0.IN := TRUE;
 			IF pWorkStations.TON_0.Q THEN
 				pWorkStations.TON_0.IN := FALSE;
 				IF pWorkStations.par.landBeforeProcess THEN
-					cm.state := 50;
+					cm.state := 30;
 				ELSE
-					cm.state := 60;
+					cm.state := 40;
 				END_IF
 			END_IF
 			
-		50:
+		30:
 			cm.description := 'Leviate shuttle if landed before process';
 			pWorkStations.MC_BR_ShLevitation_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pWorkStations.par.tempShuttleID].shuttleRef);
 			pWorkStations.MC_BR_ShLevitation_Acp6D_0.Parameters.Level := 1; //Leviate
@@ -190,10 +193,10 @@ ACTION smartLabProg:
 			pWorkStations.MC_BR_ShLevitation_Acp6D_0.Execute := TRUE;
 			IF pWorkStations.MC_BR_ShLevitation_Acp6D_0.Done THEN
 				pWorkStations.MC_BR_ShLevitation_Acp6D_0.Execute := FALSE;
-				cm.state := 60;
+				cm.state := 40;
 			END_IF
 			
-		60:
+		40:
 			cm.description := 'Move to next workstation';
 			pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pWorkStations.par.tempShuttleID].shuttleRef);
 			pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
@@ -217,22 +220,22 @@ ACTION smartLabProg:
 			IF pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
 				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
 				IF NOT orderFinished THEN
-					cm.state := 20;
+					cm.state := 0;
 				ELSE
-					cm.state := 70;
+					cm.state := 50;
 				END_IF
 			END_IF
 			
-		70:
+		50:
 			cm.description := 'Current product order has finished';
 			orderFinished := TRUE;
 			executeOrder := FALSE;
 			cm.state := 0;
+			em.substate := 17000; // Probably change to 17010 (needs fix though)
 		
 	END_CASE
 	
 	//Calls
-	MC_BR_MoveInPlane_Acp6D_0();
 	pWorkStations.MC_BR_MoveInPlane_Acp6D_0();
 	pWorkStations.MC_BR_MoveArc_Acp6D_0();
 	pWorkStations.MC_BR_ShLevitation_Acp6D_0();

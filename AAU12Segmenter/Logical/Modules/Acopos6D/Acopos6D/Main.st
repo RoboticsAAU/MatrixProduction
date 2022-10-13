@@ -452,18 +452,35 @@ PROGRAM _CYCLIC
 					END_FOR
 				
 				17000..17009:
-					em.description := 'Smart Lab program';
+					em.description := 'Smart Lab program - Setup';
 					smartLabSetup;
+				
+				17010..17019:
+					em.description := 'Smart Lab Program - Check if new order has been placed';
+					IF executeOrder AND productOrder.amount <> 0 THEN
+						orderFinished := FALSE;
+						parkingSpotIdx := productOrder.amount - 1;
+						
+						FOR i := 0 TO (productOrder.amount - 1) DO
+							pShuttle ACCESS ADR(gShuttles[i]);
+							cm ACCESS ADR (gShuttles[i].cm);
+							pShuttle.cm.setup.parent.name := 'main';
+							pShuttle.cm.setup.nameIdx := i;
+							pShuttle.par.shuttleID := i;
+							
+							smartLabInitialMovement;
+						END_FOR
+					END_IF
 					
-				17010..17999:
-					em.description := 'Smart Lab program';
+				17020..17999:
+					em.description := 'Smart Lab program - Workstation movement';
 					
 					FOR i := 0 TO (smartLabNumWorkstations - 1) DO
 						pWorkStations ACCESS ADR (gWorkStations[i]); 
 						cm ACCESS ADR (gWorkStations[i].cm);
 						pWorkStations.cm.setup.parent.name := 'main';
 						
-						smartLabProg;
+						smartLabWorkstationMovement;
 					END_FOR
 				
 			END_CASE

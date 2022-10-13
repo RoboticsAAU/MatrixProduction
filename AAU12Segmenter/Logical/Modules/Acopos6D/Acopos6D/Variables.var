@@ -109,13 +109,13 @@ VAR
 	OpenGripper : BOOL;
 	GripperWhitePin : BOOL := FALSE;
 	GripperBlackPin : BOOL := FALSE;
+	executeOrder : BOOL := FALSE;
 END_VAR
 VAR RETAIN
-	executeOrder : BOOL := FALSE;
 	productOrder : product_order;
 END_VAR
 VAR
-	parkingSpotIdx : USINT;
+	parkingSpotIdx : SINT;
 	orderFinished : BOOL := TRUE;
 	smartLabNumWorkstations : USINT := 4;
 END_VAR
