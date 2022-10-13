@@ -14,6 +14,7 @@
       <Group ID="Vnc1" />
       <Parameter ID="VncVcObjectName1" Value="Visu_R" />
       <Parameter ID="VncKeyMappingFile1" Value="VC\PS2-Keyboard.dis" />
+      <Parameter ID="VncMaxConnections1" Value="5" />
       <Parameter ID="VncRefreshRate1" Value="100" />
     </Connector>
     <Connector Name="IF3">
