@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ExternalHardware>
-  <Modules>
-    <Module ModuleID="FBD.Hilscher.PNIOGenDevDTM2.KRC4-ProfiNet_3.2" Version="3.2" OrderNumber="KRC4-ProfiNet_3.2">
-      <SourceFile OriginalFile="GSDML-V2.31-KUKA-KRC4-ProfiNet_3.2-20140908.xml" TranslationFile="UH180IC5.ext" />
-    </Module>
-  </Modules>
-</ExternalHardware>
