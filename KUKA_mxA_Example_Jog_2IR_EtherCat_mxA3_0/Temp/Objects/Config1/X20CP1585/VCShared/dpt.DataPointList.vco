@@ -1,0 +1,1574 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0?>
+<Intermediate xmlns="http://br.automation.co.at/AS/VC/Intermediate">
+  <Folder Name="DPV">
+    <Folder Name="POBJ">
+      <Object Name="DataSource.CTRL.KRC_Abort_1.ExecuteCmd" ClsId="0x0" Version="0" TargetIndex="0" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.KRC_Abort_1.ExecuteCmd]" />
+      <Object Name="DataSource.CTRL.KRC_SetOverride_0.Override" ClsId="0x0" Version="0" TargetIndex="1" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.KRC_SetOverride_0.Override]" />
+      <Object Name="DataSource.CTRL.AxisRef[1].KRCState.AxisAct.A3" ClsId="0x0" Version="0" TargetIndex="2" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.AxisRef[1].KRCState.AxisAct.A3]" />
+      <Object Name="DataSource.CTRL.AxisRef[1].KRCState.AxisAct.A1" ClsId="0x0" Version="0" TargetIndex="3" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.AxisRef[1].KRCState.AxisAct.A1]" />
+      <Object Name="DataSource.CTRL.AxisRef[1].KRCState.AxisAct.A5" ClsId="0x0" Version="0" TargetIndex="4" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.AxisRef[1].KRCState.AxisAct.A5]" />
+      <Object Name="DataSource.CTRL.AxisRef[1].KRCState.AxisAct.A2" ClsId="0x0" Version="0" TargetIndex="5" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.AxisRef[1].KRCState.AxisAct.A2]" />
+      <Object Name="DataSource.CTRL.AxisRef[1].KRCState.AxisAct.A6" ClsId="0x0" Version="0" TargetIndex="6" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.AxisRef[1].KRCState.AxisAct.A6]" />
+      <Object Name="DataSource.CTRL.AxisRef[1].KRCState.AxisAct.A4" ClsId="0x0" Version="0" TargetIndex="7" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.AxisRef[1].KRCState.AxisAct.A4]" />
+      <Object Name="DataSource.CTRL.AxisRef[1].KRCState.PosAct.X" ClsId="0x0" Version="0" TargetIndex="8" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.AxisRef[1].KRCState.PosAct.X]" />
+      <Object Name="DataSource.CTRL.AxisRef[1].KRCState.PosAct.Y" ClsId="0x0" Version="0" TargetIndex="9" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.AxisRef[1].KRCState.PosAct.Y]" />
+      <Object Name="DataSource.CTRL.AxisRef[1].KRCState.PosAct.Z" ClsId="0x0" Version="0" TargetIndex="10" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.AxisRef[1].KRCState.PosAct.Z]" />
+      <Object Name="DataSource.CTRL.AxisRef[1].KRCState.PosAct.A" ClsId="0x0" Version="0" TargetIndex="11" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.AxisRef[1].KRCState.PosAct.A]" />
+      <Object Name="DataSource.CTRL.AxisRef[1].KRCState.PosAct.B" ClsId="0x0" Version="0" TargetIndex="12" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.AxisRef[1].KRCState.PosAct.B]" />
+      <Object Name="DataSource.CTRL.AxisRef[1].KRCState.PosAct.C" ClsId="0x0" Version="0" TargetIndex="13" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.AxisRef[1].KRCState.PosAct.C]" />
+      <Object Name="DataSource.CTRL.TouchUp" ClsId="0x0" Version="0" TargetIndex="14" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TouchUp]" />
+      <Object Name="DataSource.CTRL.ReloadMsg" ClsId="0x0" Version="0" TargetIndex="15" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.ReloadMsg]" />
+      <Object Name="DataSource.CTRL.Status_I" ClsId="0x0" Version="0" TargetIndex="16" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.Status_I]" />
+      <Object Name="DataSource.CTRL.UnlockReset" ClsId="0x0" Version="0" TargetIndex="17" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.UnlockReset]" />
+      <Object Name="DataSource.CTRL.Status_R" ClsId="0x0" Version="0" TargetIndex="18" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.Status_R]" />
+      <Object Name="DataSource.CTRL.Status_S" ClsId="0x0" Version="0" TargetIndex="19" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.Status_S]" />
+      <Object Name="DataSource.CTRL.Status_P" ClsId="0x0" Version="0" TargetIndex="20" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.Status_P]" />
+      <Object Name="DataSource.CTRL.Status_EXT" ClsId="0x0" Version="0" TargetIndex="21" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.Status_EXT]" />
+      <Object Name="DataSource.CTRL.TextArray" ClsId="0x0" Version="0" TargetIndex="22" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray]" />
+      <Object Name="DataSource.CTRL.TextArray[13]" ClsId="0x0" Version="0" TargetIndex="23" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray[13]]" />
+      <Object Name="DataSource.CTRL.TextArray[12]" ClsId="0x0" Version="0" TargetIndex="24" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray[12]]" />
+      <Object Name="DataSource.CTRL.TextArray[11]" ClsId="0x0" Version="0" TargetIndex="25" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray[11]]" />
+      <Object Name="DataSource.CTRL.TextArray[10]" ClsId="0x0" Version="0" TargetIndex="26" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray[10]]" />
+      <Object Name="DataSource.CTRL.TextArray[14]" ClsId="0x0" Version="0" TargetIndex="27" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray[14]]" />
+      <Object Name="DataSource.CTRL.TextArray[0]" ClsId="0x0" Version="0" TargetIndex="28" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray[0]]" />
+      <Object Name="DataSource.CTRL.TextArray[2]" ClsId="0x0" Version="0" TargetIndex="29" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray[2]]" />
+      <Object Name="DataSource.CTRL.TextArray[4]" ClsId="0x0" Version="0" TargetIndex="30" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray[4]]" />
+      <Object Name="DataSource.CTRL.TextArray[8]" ClsId="0x0" Version="0" TargetIndex="31" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray[8]]" />
+      <Object Name="DataSource.CTRL.TextArray[3]" ClsId="0x0" Version="0" TargetIndex="32" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray[3]]" />
+      <Object Name="DataSource.CTRL.TextArray[1]" ClsId="0x0" Version="0" TargetIndex="33" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray[1]]" />
+      <Object Name="DataSource.CTRL.TextArray[7]" ClsId="0x0" Version="0" TargetIndex="34" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray[7]]" />
+      <Object Name="DataSource.CTRL.TextArray[5]" ClsId="0x0" Version="0" TargetIndex="35" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray[5]]" />
+      <Object Name="DataSource.CTRL.TextArray[6]" ClsId="0x0" Version="0" TargetIndex="36" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray[6]]" />
+      <Object Name="DataSource.CTRL.TextArray[9]" ClsId="0x0" Version="0" TargetIndex="37" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.TextArray[9]]" />
+      <Object Name="DataSource.CTRL.UnlockConfMess" ClsId="0x0" Version="0" TargetIndex="38" Type="DP" RefString="Source[global].Variable[DataSource.CTRL.UnlockConfMess]" />
+      <Object Name="DataSource.JogPosAxis.A6" ClsId="0x0" Version="0" TargetIndex="39" Type="DP" RefString="Source[global].Variable[DataSource.JogPosAxis.A6]" />
+      <Object Name="DataSource.JogPosAxis.A5" ClsId="0x0" Version="0" TargetIndex="40" Type="DP" RefString="Source[global].Variable[DataSource.JogPosAxis.A5]" />
+      <Object Name="DataSource.JogPosAxis.A2" ClsId="0x0" Version="0" TargetIndex="41" Type="DP" RefString="Source[global].Variable[DataSource.JogPosAxis.A2]" />
+      <Object Name="DataSource.JogPosAxis.A4" ClsId="0x0" Version="0" TargetIndex="42" Type="DP" RefString="Source[global].Variable[DataSource.JogPosAxis.A4]" />
+      <Object Name="DataSource.JogPosAxis.A3" ClsId="0x0" Version="0" TargetIndex="43" Type="DP" RefString="Source[global].Variable[DataSource.JogPosAxis.A3]" />
+      <Object Name="DataSource.JogPosAxis.A1" ClsId="0x0" Version="0" TargetIndex="44" Type="DP" RefString="Source[global].Variable[DataSource.JogPosAxis.A1]" />
+      <Object Name="DataSource.gParameter.Move.Velocity" ClsId="0x0" Version="0" TargetIndex="45" Type="DP" RefString="Source[global].Variable[DataSource.gParameter.Move.Velocity]" />
+      <Object Name="DataSource.gParameter.Move.Acceleration" ClsId="0x0" Version="0" TargetIndex="46" Type="DP" RefString="Source[global].Variable[DataSource.gParameter.Move.Acceleration]" />
+      <Object Name="DataSource.gParameter.Jog.Acceleration" ClsId="0x0" Version="0" TargetIndex="47" Type="DP" RefString="Source[global].Variable[DataSource.gParameter.Jog.Acceleration]" />
+      <Object Name="DataSource.gParameter.Jog.Velocity" ClsId="0x0" Version="0" TargetIndex="48" Type="DP" RefString="Source[global].Variable[DataSource.gParameter.Jog.Velocity]" />
+      <Object Name="DataSource.JoggingCTRL.JoggingType" ClsId="0x0" Version="0" TargetIndex="49" Type="DP" RefString="Source[global].Variable[DataSource.JoggingCTRL.JoggingType]" />
+      <Object Name="DataSource.gSoftwareLimits.Read.A4Min" ClsId="0x0" Version="0" TargetIndex="50" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Read.A4Min]" />
+      <Object Name="DataSource.gSoftwareLimits.Read.A1Max" ClsId="0x0" Version="0" TargetIndex="51" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Read.A1Max]" />
+      <Object Name="DataSource.gSoftwareLimits.Read.A5Max" ClsId="0x0" Version="0" TargetIndex="52" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Read.A5Max]" />
+      <Object Name="DataSource.gSoftwareLimits.Read.A3Max" ClsId="0x0" Version="0" TargetIndex="53" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Read.A3Max]" />
+      <Object Name="DataSource.gSoftwareLimits.Read.A2Min" ClsId="0x0" Version="0" TargetIndex="54" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Read.A2Min]" />
+      <Object Name="DataSource.gSoftwareLimits.Read.A1Min" ClsId="0x0" Version="0" TargetIndex="55" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Read.A1Min]" />
+      <Object Name="DataSource.gSoftwareLimits.Read.A5Min" ClsId="0x0" Version="0" TargetIndex="56" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Read.A5Min]" />
+      <Object Name="DataSource.gSoftwareLimits.Read.A3Min" ClsId="0x0" Version="0" TargetIndex="57" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Read.A3Min]" />
+      <Object Name="DataSource.gSoftwareLimits.Read.A2Max" ClsId="0x0" Version="0" TargetIndex="58" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Read.A2Max]" />
+      <Object Name="DataSource.gSoftwareLimits.Read.A6Max" ClsId="0x0" Version="0" TargetIndex="59" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Read.A6Max]" />
+      <Object Name="DataSource.gSoftwareLimits.Read.A4Max" ClsId="0x0" Version="0" TargetIndex="60" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Read.A4Max]" />
+      <Object Name="DataSource.gSoftwareLimits.Read.A6Min" ClsId="0x0" Version="0" TargetIndex="61" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Read.A6Min]" />
+      <Object Name="DataSource.gSoftwareLimits.Write.A4Max" ClsId="0x0" Version="0" TargetIndex="62" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Write.A4Max]" />
+      <Object Name="DataSource.gSoftwareLimits.Write.A4Min" ClsId="0x0" Version="0" TargetIndex="63" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Write.A4Min]" />
+      <Object Name="DataSource.gSoftwareLimits.Write.A6Min" ClsId="0x0" Version="0" TargetIndex="64" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Write.A6Min]" />
+      <Object Name="DataSource.gSoftwareLimits.Write.A6Max" ClsId="0x0" Version="0" TargetIndex="65" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Write.A6Max]" />
+      <Object Name="DataSource.gSoftwareLimits.Write.A3Max" ClsId="0x0" Version="0" TargetIndex="66" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Write.A3Max]" />
+      <Object Name="DataSource.gSoftwareLimits.Write.A5Max" ClsId="0x0" Version="0" TargetIndex="67" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Write.A5Max]" />
+      <Object Name="DataSource.gSoftwareLimits.Write.A2Max" ClsId="0x0" Version="0" TargetIndex="68" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Write.A2Max]" />
+      <Object Name="DataSource.gSoftwareLimits.Write.A5Min" ClsId="0x0" Version="0" TargetIndex="69" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Write.A5Min]" />
+      <Object Name="DataSource.gSoftwareLimits.Write.A1Min" ClsId="0x0" Version="0" TargetIndex="70" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Write.A1Min]" />
+      <Object Name="DataSource.gSoftwareLimits.Write.A3Min" ClsId="0x0" Version="0" TargetIndex="71" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Write.A3Min]" />
+      <Object Name="DataSource.gSoftwareLimits.Write.A2Min" ClsId="0x0" Version="0" TargetIndex="72" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Write.A2Min]" />
+      <Object Name="DataSource.gSoftwareLimits.Write.A1Max" ClsId="0x0" Version="0" TargetIndex="73" Type="DP" RefString="Source[global].Variable[DataSource.gSoftwareLimits.Write.A1Max]" />
+      <Object Name="DataSource.HMI_B" ClsId="0x0" Version="0" TargetIndex="74" Type="DP" RefString="Source[global].Variable[DataSource.HMI_B]" />
+      <Object Name="DataSource.HMI_A3_Z_P" ClsId="0x0" Version="0" TargetIndex="75" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A3_Z_P]" />
+      <Object Name="DataSource.HMI_Y" ClsId="0x0" Version="0" TargetIndex="76" Type="DP" RefString="Source[global].Variable[DataSource.HMI_Y]" />
+      <Object Name="DataSource.HMI_A6_C_M" ClsId="0x0" Version="0" TargetIndex="77" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A6_C_M]" />
+      <Object Name="DataSource.HMI_A5" ClsId="0x0" Version="0" TargetIndex="78" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A5]" />
+      <Object Name="DataSource.HMI_X" ClsId="0x0" Version="0" TargetIndex="79" Type="DP" RefString="Source[global].Variable[DataSource.HMI_X]" />
+      <Object Name="DataSource.HMI_A3_Z_M" ClsId="0x0" Version="0" TargetIndex="80" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A3_Z_M]" />
+      <Object Name="DataSource.HMI_A5_B_P" ClsId="0x0" Version="0" TargetIndex="81" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A5_B_P]" />
+      <Object Name="DataSource.HMI_AxisGroup" ClsId="0x0" Version="0" TargetIndex="82" Type="DP" RefString="Source[global].Variable[DataSource.HMI_AxisGroup]" />
+      <Object Name="DataSource.HMI_R1_AutoStart" ClsId="0x0" Version="0" TargetIndex="83" Type="DP" RefString="Source[global].Variable[DataSource.HMI_R1_AutoStart]" />
+      <Object Name="DataSource.HMI_A2_Y_M" ClsId="0x0" Version="0" TargetIndex="84" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A2_Y_M]" />
+      <Object Name="DataSource.HMI_A" ClsId="0x0" Version="0" TargetIndex="85" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A]" />
+      <Object Name="DataSource.HMI_R2_Override" ClsId="0x0" Version="0" TargetIndex="86" Type="DP" RefString="Source[global].Variable[DataSource.HMI_R2_Override]" />
+      <Object Name="DataSource.HMI_A4_A_M" ClsId="0x0" Version="0" TargetIndex="87" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A4_A_M]" />
+      <Object Name="DataSource.HMI_A1" ClsId="0x0" Version="0" TargetIndex="88" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A1]" />
+      <Object Name="DataSource.HMI_Z" ClsId="0x0" Version="0" TargetIndex="89" Type="DP" RefString="Source[global].Variable[DataSource.HMI_Z]" />
+      <Object Name="DataSource.gCurrentPage" ClsId="0x0" Version="0" TargetIndex="90" Type="DP" RefString="Source[global].Variable[DataSource.gCurrentPage]" />
+      <Object Name="DataSource.HMI_A4" ClsId="0x0" Version="0" TargetIndex="91" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A4]" />
+      <Object Name="DataSource.HMI_A3" ClsId="0x0" Version="0" TargetIndex="92" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A3]" />
+      <Object Name="DataSource.HMI_A6" ClsId="0x0" Version="0" TargetIndex="93" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A6]" />
+      <Object Name="DataSource.HMI_A4_A_P" ClsId="0x0" Version="0" TargetIndex="94" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A4_A_P]" />
+      <Object Name="DataSource.HMI_C" ClsId="0x0" Version="0" TargetIndex="95" Type="DP" RefString="Source[global].Variable[DataSource.HMI_C]" />
+      <Object Name="DataSource.HMI_A2_Y_P" ClsId="0x0" Version="0" TargetIndex="96" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A2_Y_P]" />
+      <Object Name="DataSource.HMI_A5_B_M" ClsId="0x0" Version="0" TargetIndex="97" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A5_B_M]" />
+      <Object Name="DataSource.HMI_A1_X_M" ClsId="0x0" Version="0" TargetIndex="98" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A1_X_M]" />
+      <Object Name="DataSource.HMI_ExeAbort" ClsId="0x0" Version="0" TargetIndex="99" Type="DP" RefString="Source[global].Variable[DataSource.HMI_ExeAbort]" />
+      <Object Name="DataSource.HMI_MoveType" ClsId="0x0" Version="0" TargetIndex="100" Type="DP" RefString="Source[global].Variable[DataSource.HMI_MoveType]" />
+      <Object Name="DataSource.HMI_A1_X_P" ClsId="0x0" Version="0" TargetIndex="101" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A1_X_P]" />
+      <Object Name="DataSource.HMI_A6_C_P" ClsId="0x0" Version="0" TargetIndex="102" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A6_C_P]" />
+      <Object Name="DataSource.HMI_A2" ClsId="0x0" Version="0" TargetIndex="103" Type="DP" RefString="Source[global].Variable[DataSource.HMI_A2]" />
+      <Object Name="DataSource.HMI_R1_MessageReset" ClsId="0x0" Version="0" TargetIndex="104" Type="DP" RefString="Source[global].Variable[DataSource.HMI_R1_MessageReset]" />
+      <Object Name="DataSource.HMI_R2_AutoStart" ClsId="0x0" Version="0" TargetIndex="105" Type="DP" RefString="Source[global].Variable[DataSource.HMI_R2_AutoStart]" />
+      <Object Name="DataSource.HMI_R2_MessageReset" ClsId="0x0" Version="0" TargetIndex="106" Type="DP" RefString="Source[global].Variable[DataSource.HMI_R2_MessageReset]" />
+      <Object Name="DataSource.HMI_R1_Override" ClsId="0x0" Version="0" TargetIndex="107" Type="DP" RefString="Source[global].Variable[DataSource.HMI_R1_Override]" />
+      <Object Name="DataSource.HMI_ExeMoveDirect" ClsId="0x0" Version="0" TargetIndex="108" Type="DP" RefString="Source[global].Variable[DataSource.HMI_ExeMoveDirect]" />
+      <Object Name="DataSource.HMI_Tool_act" ClsId="0x0" Version="0" TargetIndex="109" Type="DP" RefString="Source[global].Variable[DataSource.HMI_Tool_act]" />
+      <Object Name="DataSource.HMI_Base_act" ClsId="0x0" Version="0" TargetIndex="110" Type="DP" RefString="Source[global].Variable[DataSource.HMI_Base_act]" />
+      <Object Name="DataSource.HMI_R1_EXT_START" ClsId="0x0" Version="0" TargetIndex="111" Type="DP" RefString="Source[global].Variable[DataSource.HMI_R1_EXT_START]" />
+      <Object Name="DataSource.HMI_R2_EXT_START" ClsId="0x0" Version="0" TargetIndex="112" Type="DP" RefString="Source[global].Variable[DataSource.HMI_R2_EXT_START]" />
+      <Object Name="Internal.Display.Brightness" ClsId="0x0" Version="0" TargetIndex="113" Type="DP" RefString="Source[global].Variable[Internal.Display.Brightness]" />
+      <Object Name="Internal.Display.Contrast" ClsId="0x0" Version="0" TargetIndex="114" Type="DP" RefString="Source[global].Variable[Internal.Display.Contrast]" />
+      <Object Name="Internal.Display.BackLight" ClsId="0x0" Version="0" TargetIndex="115" Type="DP" RefString="Source[global].Variable[Internal.Display.BackLight]" />
+      <Object Name="Internal.Connection.IPAddress" ClsId="0x0" Version="0" TargetIndex="116" Type="DP" RefString="Source[global].Variable[Internal.Connection.IPAddress]" />
+      <Object Name="Internal.Connection.NodeNumber" ClsId="0x0" Version="0" TargetIndex="117" Type="DP" RefString="Source[global].Variable[Internal.Connection.NodeNumber]" />
+      <Object Name="Internal.Temperature.CPU" ClsId="0x0" Version="0" TargetIndex="118" Type="DP" RefString="Source[global].Variable[Internal.Temperature.CPU]" />
+      <Object Name="Internal.Temperature.Room" ClsId="0x0" Version="0" TargetIndex="119" Type="DP" RefString="Source[global].Variable[Internal.Temperature.Room]" />
+      <Object Name="Internal.DateTime.Day" ClsId="0x0" Version="0" TargetIndex="120" Type="DP" RefString="Source[global].Variable[Internal.DateTime.Day]" />
+      <Object Name="Internal.DateTime.Hour" ClsId="0x0" Version="0" TargetIndex="121" Type="DP" RefString="Source[global].Variable[Internal.DateTime.Hour]" />
+      <Object Name="Internal.DateTime.Minute" ClsId="0x0" Version="0" TargetIndex="122" Type="DP" RefString="Source[global].Variable[Internal.DateTime.Minute]" />
+      <Object Name="Internal.DateTime.Month" ClsId="0x0" Version="0" TargetIndex="123" Type="DP" RefString="Source[global].Variable[Internal.DateTime.Month]" />
+      <Object Name="Internal.DateTime.Second" ClsId="0x0" Version="0" TargetIndex="124" Type="DP" RefString="Source[global].Variable[Internal.DateTime.Second]" />
+      <Object Name="Internal.DateTime.Year" ClsId="0x0" Version="0" TargetIndex="125" Type="DP" RefString="Source[global].Variable[Internal.DateTime.Year]" />
+      <Object Name="Internal.DateTime.DayOfWeek" ClsId="0x0" Version="0" TargetIndex="126" Type="DP" RefString="Source[global].Variable[Internal.DateTime.DayOfWeek]" />
+      <Object Name="Internal.Memory.LargestFreeBlock" ClsId="0x0" Version="0" TargetIndex="127" Type="DP" RefString="Source[global].Variable[Internal.Memory.LargestFreeBlock]" />
+      <Object Name="Internal.Memory.TotalFree" ClsId="0x0" Version="0" TargetIndex="128" Type="DP" RefString="Source[global].Variable[Internal.Memory.TotalFree]" />
+      <Object Name="Internal.Memory.TotalInstalled" ClsId="0x0" Version="0" TargetIndex="129" Type="DP" RefString="Source[global].Variable[Internal.Memory.TotalInstalled]" />
+      <Object Name="DPV" ClsId="0x100" Version="1" Type="DPM" RefString="Source[global].DPV[]">
+        <Byte Name="TaskPrior">200</Byte>
+        <Byte Name="Reserved">0</Byte>
+        <UInt16 Name="Reserved">0</UInt16>
+        <UInt32 Name="DPCount">130</UInt32>
+        <Group Name="CTRL.KRC_Abort_1.ExecuteCmd">
+          <UInt32 Name="DPID">0</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">0</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.KRC_SetOverride_0.Override">
+          <UInt32 Name="DPID">1</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">1</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Percent]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Percent].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.AxisRef[1].KRCState.AxisAct.A3">
+          <UInt32 Name="DPID">2</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">2</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.AxisRef[1].KRCState.AxisAct.A1">
+          <UInt32 Name="DPID">3</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">3</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.AxisRef[1].KRCState.AxisAct.A5">
+          <UInt32 Name="DPID">4</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">4</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.AxisRef[1].KRCState.AxisAct.A2">
+          <UInt32 Name="DPID">5</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">5</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.AxisRef[1].KRCState.AxisAct.A6">
+          <UInt32 Name="DPID">6</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">6</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.AxisRef[1].KRCState.AxisAct.A4">
+          <UInt32 Name="DPID">7</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">7</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.AxisRef[1].KRCState.PosAct.X">
+          <UInt32 Name="DPID">8</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">8</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Milimeter]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Milimeter].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.AxisRef[1].KRCState.PosAct.Y">
+          <UInt32 Name="DPID">9</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">9</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Milimeter]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Milimeter].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.AxisRef[1].KRCState.PosAct.Z">
+          <UInt32 Name="DPID">10</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">10</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Milimeter]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Milimeter].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.AxisRef[1].KRCState.PosAct.A">
+          <UInt32 Name="DPID">11</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">11</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.AxisRef[1].KRCState.PosAct.B">
+          <UInt32 Name="DPID">12</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">12</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.AxisRef[1].KRCState.PosAct.C">
+          <UInt32 Name="DPID">13</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">13</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TouchUp">
+          <UInt32 Name="DPID">14</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">14</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.ReloadMsg">
+          <UInt32 Name="DPID">15</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">15</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.Status_I">
+          <UInt32 Name="DPID">16</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">16</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.UnlockReset">
+          <UInt32 Name="DPID">17</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">17</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.Status_R">
+          <UInt32 Name="DPID">18</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">18</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.Status_S">
+          <UInt32 Name="DPID">19</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">19</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.Status_P">
+          <UInt32 Name="DPID">20</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">20</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.Status_EXT">
+          <UInt32 Name="DPID">21</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">21</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray">
+          <UInt32 Name="DPID">22</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">22</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray[13]">
+          <UInt32 Name="DPID">23</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">23</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray[12]">
+          <UInt32 Name="DPID">24</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">24</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray[11]">
+          <UInt32 Name="DPID">25</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">25</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray[10]">
+          <UInt32 Name="DPID">26</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">26</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray[14]">
+          <UInt32 Name="DPID">27</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">27</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray[0]">
+          <UInt32 Name="DPID">28</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">28</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray[2]">
+          <UInt32 Name="DPID">29</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">29</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray[4]">
+          <UInt32 Name="DPID">30</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">30</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray[8]">
+          <UInt32 Name="DPID">31</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">31</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray[3]">
+          <UInt32 Name="DPID">32</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">32</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray[1]">
+          <UInt32 Name="DPID">33</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">33</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray[7]">
+          <UInt32 Name="DPID">34</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">34</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray[5]">
+          <UInt32 Name="DPID">35</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">35</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray[6]">
+          <UInt32 Name="DPID">36</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">36</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.TextArray[9]">
+          <UInt32 Name="DPID">37</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">37</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="CTRL.UnlockConfMess">
+          <UInt32 Name="DPID">38</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">38</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="JogPosAxis.A6">
+          <UInt32 Name="DPID">39</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">39</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="JogPosAxis.A5">
+          <UInt32 Name="DPID">40</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">40</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="JogPosAxis.A2">
+          <UInt32 Name="DPID">41</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">41</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="JogPosAxis.A4">
+          <UInt32 Name="DPID">42</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">42</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="JogPosAxis.A3">
+          <UInt32 Name="DPID">43</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">43</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="JogPosAxis.A1">
+          <UInt32 Name="DPID">44</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">44</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gParameter.Move.Velocity">
+          <UInt32 Name="DPID">45</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">45</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Percent]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Percent].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gParameter.Move.Acceleration">
+          <UInt32 Name="DPID">46</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">46</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Percent]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Percent].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gParameter.Jog.Acceleration">
+          <UInt32 Name="DPID">47</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">47</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Percent]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Percent].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gParameter.Jog.Velocity">
+          <UInt32 Name="DPID">48</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">48</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Percent]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Percent].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="JoggingCTRL.JoggingType">
+          <UInt32 Name="DPID">49</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">49</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Read.A4Min">
+          <UInt32 Name="DPID">50</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">50</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Read.A1Max">
+          <UInt32 Name="DPID">51</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">51</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Read.A5Max">
+          <UInt32 Name="DPID">52</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">52</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Read.A3Max">
+          <UInt32 Name="DPID">53</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">53</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Read.A2Min">
+          <UInt32 Name="DPID">54</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">54</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Read.A1Min">
+          <UInt32 Name="DPID">55</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">55</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Read.A5Min">
+          <UInt32 Name="DPID">56</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">56</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Read.A3Min">
+          <UInt32 Name="DPID">57</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">57</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Read.A2Max">
+          <UInt32 Name="DPID">58</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">58</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Read.A6Max">
+          <UInt32 Name="DPID">59</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">59</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Read.A4Max">
+          <UInt32 Name="DPID">60</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">60</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Read.A6Min">
+          <UInt32 Name="DPID">61</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">61</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Write.A4Max">
+          <UInt32 Name="DPID">62</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">62</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Write.A4Min">
+          <UInt32 Name="DPID">63</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">63</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Write.A6Min">
+          <UInt32 Name="DPID">64</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">64</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Write.A6Max">
+          <UInt32 Name="DPID">65</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">65</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Write.A3Max">
+          <UInt32 Name="DPID">66</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">66</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Write.A5Max">
+          <UInt32 Name="DPID">67</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">67</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Write.A2Max">
+          <UInt32 Name="DPID">68</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">68</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Write.A5Min">
+          <UInt32 Name="DPID">69</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">69</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Write.A1Min">
+          <UInt32 Name="DPID">70</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">70</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Write.A3Min">
+          <UInt32 Name="DPID">71</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">71</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Write.A2Min">
+          <UInt32 Name="DPID">72</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">72</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gSoftwareLimits.Write.A1Max">
+          <UInt32 Name="DPID">73</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">73</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Degree]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Degree].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_B">
+          <UInt32 Name="DPID">74</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">74</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A3_Z_P">
+          <UInt32 Name="DPID">75</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">75</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_Y">
+          <UInt32 Name="DPID">76</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">76</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A6_C_M">
+          <UInt32 Name="DPID">77</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">77</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A5">
+          <UInt32 Name="DPID">78</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">78</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_X">
+          <UInt32 Name="DPID">79</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">79</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A3_Z_M">
+          <UInt32 Name="DPID">80</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">80</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A5_B_P">
+          <UInt32 Name="DPID">81</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">81</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_AxisGroup">
+          <UInt32 Name="DPID">82</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">82</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_R1_AutoStart">
+          <UInt32 Name="DPID">83</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">83</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A2_Y_M">
+          <UInt32 Name="DPID">84</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">84</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A">
+          <UInt32 Name="DPID">85</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">85</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_R2_Override">
+          <UInt32 Name="DPID">86</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">86</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A4_A_M">
+          <UInt32 Name="DPID">87</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">87</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A1">
+          <UInt32 Name="DPID">88</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">88</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_Z">
+          <UInt32 Name="DPID">89</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">89</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="gCurrentPage">
+          <UInt32 Name="DPID">90</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">90</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A4">
+          <UInt32 Name="DPID">91</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">91</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A3">
+          <UInt32 Name="DPID">92</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">92</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A6">
+          <UInt32 Name="DPID">93</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">93</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A4_A_P">
+          <UInt32 Name="DPID">94</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">94</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_C">
+          <UInt32 Name="DPID">95</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">95</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A2_Y_P">
+          <UInt32 Name="DPID">96</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">96</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A5_B_M">
+          <UInt32 Name="DPID">97</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">97</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A1_X_M">
+          <UInt32 Name="DPID">98</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">98</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_ExeAbort">
+          <UInt32 Name="DPID">99</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">99</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_MoveType">
+          <UInt32 Name="DPID">100</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">100</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A1_X_P">
+          <UInt32 Name="DPID">101</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">101</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A6_C_P">
+          <UInt32 Name="DPID">102</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">102</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_A2">
+          <UInt32 Name="DPID">103</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">103</UInt16>
+          <Reference Name="UG" Type="UG">None</Reference>
+          <Reference Name="UGPLC" Type="UNIT">None</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_R1_MessageReset">
+          <UInt32 Name="DPID">104</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">104</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_R2_AutoStart">
+          <UInt32 Name="DPID">105</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">105</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_R2_MessageReset">
+          <UInt32 Name="DPID">106</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">106</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_R1_Override">
+          <UInt32 Name="DPID">107</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">107</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_ExeMoveDirect">
+          <UInt32 Name="DPID">108</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">108</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_Tool_act">
+          <UInt32 Name="DPID">109</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">109</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_Base_act">
+          <UInt32 Name="DPID">110</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">110</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_R1_EXT_START">
+          <UInt32 Name="DPID">111</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">111</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="HMI_R2_EXT_START">
+          <UInt32 Name="DPID">112</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">112</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="Display.Brightness">
+          <UInt32 Name="DPID">113</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">0</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="Display.Contrast">
+          <UInt32 Name="DPID">114</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">1</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="Display.BackLight">
+          <UInt32 Name="DPID">115</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">2</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="Connection.IPAddress">
+          <UInt32 Name="DPID">116</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">3</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="Connection.NodeNumber">
+          <UInt32 Name="DPID">117</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">4</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="Temperature.CPU">
+          <UInt32 Name="DPID">118</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">5</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Temperatures]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Temperatures].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="Temperature.Room">
+          <UInt32 Name="DPID">119</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">6</UInt16>
+          <Reference Name="UG" Type="UG">Source[global].UnitGroup[Temperatures]</Reference>
+          <Reference Name="UGPLC" Type="UNIT">Source[global].UnitGroup[Temperatures].Unit[$default]</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="DateTime.Day">
+          <UInt32 Name="DPID">120</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">7</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="DateTime.Hour">
+          <UInt32 Name="DPID">121</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">8</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="DateTime.Minute">
+          <UInt32 Name="DPID">122</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">9</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="DateTime.Month">
+          <UInt32 Name="DPID">123</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">10</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="DateTime.Second">
+          <UInt32 Name="DPID">124</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">11</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="DateTime.Year">
+          <UInt32 Name="DPID">125</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">12</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="DateTime.DayOfWeek">
+          <UInt32 Name="DPID">126</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">13</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="Memory.LargestFreeBlock">
+          <UInt32 Name="DPID">127</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">14</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="Memory.TotalFree">
+          <UInt32 Name="DPID">128</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">15</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+        <Group Name="Memory.TotalInstalled">
+          <UInt32 Name="DPID">129</UInt32>
+          <Reference Name="DS" Type="DS">Source[global].DataSource[Internal]</Reference>
+          <UInt16 Name="UpdtTime">200</UInt16>
+          <UInt16 Name="PVID">16</UInt16>
+          <Reference Name="UG" Type="UG">none</Reference>
+          <Reference Name="UGPLC" Type="UNIT">none</Reference>
+          <UInt32 Name="Limit">4294967295</UInt32>
+          <UInt16 Name="UserID">65535</UInt16>
+          <UInt16 Name="ConnectionCount">1</UInt16>
+        </Group>
+      </Object>
+    </Folder>
+  </Folder>
+</Intermediate>

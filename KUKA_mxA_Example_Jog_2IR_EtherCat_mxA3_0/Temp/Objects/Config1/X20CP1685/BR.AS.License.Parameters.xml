@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Parameters>
+  <Connection>
+    <DeviceParameters>/IF=tcpip /LOPO=11159 /SA=1</DeviceParameters>
+    <ConnectionParameters>/COMT=2500 /RT=1000 /AM=* /SDT=5 /DAIP=192.168.1.140 /REPO=11159 /ANSL=1 /PT=11169</ConnectionParameters>
+  </Connection>
+  <AsProject>
+    <ApjFullFileName>C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0.apj</ApjFullFileName>
+    <ProjectName>KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0</ProjectName>
+    <ActiveConfigurationName>Config1</ActiveConfigurationName>
+    <LicenseDataFolder>C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Temp\Objects\Config1\X20CP1685</LicenseDataFolder>
+  </AsProject>
+  <General>
+    <DeleteParameterFile>false</DeleteParameterFile>
+  </General>
+</Parameters>

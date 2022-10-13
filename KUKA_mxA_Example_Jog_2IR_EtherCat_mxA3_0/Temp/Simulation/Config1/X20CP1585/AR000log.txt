@@ -1,0 +1,35 @@
+
+
+Tue Dec 04 13:04:27 2018
+No ARsim registration found!
+  Bernecker & Rainer 
+
+
+
+Tue Dec 04 13:04:27 2018
+COMMAND_COLDSTART
+InstanceName : 01d48bc98117b950
+
+WorkingPath :
+C:\Users\Administrator\Desktop\KukaIntegration_Example1\Temp\Simulation\Config1\X20CP1585\
+
+
+
+Tue Dec 04 13:04:27 2018
+COMMAND_COLDSTART
+Version : I4.33
+
+
+
+Tue Dec 04 13:06:06 2018
+COMMAND_TERMINATE
+
+
+Tue Dec 04 13:06:07 2018
+
+
+Tue Dec 04 13:06:07 2018
+COMMAND_TERMINATE
+
+
+Tue Dec 04 13:06:07 2018

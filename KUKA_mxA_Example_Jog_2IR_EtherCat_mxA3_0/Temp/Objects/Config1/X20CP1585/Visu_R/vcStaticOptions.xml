@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<Options>
+  <WindowsTerminal>False</WindowsTerminal>
+  <IsArmTarget>False</IsArmTarget>
+  <Bitmap32bit>
+    <Bitmap>Source[local].Bitmap[kuka_logo_1]</Bitmap>
+    <Bitmap>Source[local].Bitmap[BuR_Logo]</Bitmap>
+    <Bitmap>Source[local].Bitmap[rounded54]</Bitmap>
+    <Bitmap>Source[local].Bitmap[minus75]</Bitmap>
+    <Bitmap>Source[local].Bitmap[Slider]</Bitmap>
+    <Bitmap>Source[local].Bitmap[BackgroundXGA_NoLogo]</Bitmap>
+    <Bitmap>Source[local].Bitmap[nav_plain_red]</Bitmap>
+    <Bitmap>Source[local].Bitmap[nav_plain_red_pressed]</Bitmap>
+  </Bitmap32bit>
+</Options>

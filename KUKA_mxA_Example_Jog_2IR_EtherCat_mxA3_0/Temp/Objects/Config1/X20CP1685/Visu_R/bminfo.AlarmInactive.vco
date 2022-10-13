@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0?>
+<Intermediate xmlns="http://br.automation.co.at/AS/VC/Intermediate">
+  <Folder Name="Bitmaps">
+    <Folder Name="POBJ">
+      <Object Name="AlarmInactive" ClsId="0x306" Version="1" TargetIndex="14" Type="GFX" RefString="Source[local].Bitmap[AlarmInactive]">
+        <UInt16 Name="Width">27</UInt16>
+        <UInt16 Name="Height">24</UInt16>
+        <UInt32 Name="BitsPerPixel">8</UInt32>
+        <Byte Name="Transparency">1</Byte>
+        <Byte Name="TargetFormat">1</Byte>
+        <UInt16 Name="Reserved">0</UInt16>
+        <Int32 Name="TransparentColor">15</Int32>
+        <Int32 Name="FillAreas">0</Int32>
+        <Binary Name="BitmapData" Encoding="Base64">Dw8PDw8PDw/89wAAAAAAAPUHDw8PDw8PDw8PDw8PDw/7CJGRCGZmZmZmZgiRkZE7Dw8PDw8PDw8PD/kH97z2B/n5Ozv6+fqRvLwIO/wPDw8PDw8PDwi8Zjs7+vn5Zv87+fk7OzuR9/kPDw8PDw/5Zv8IO/n5+TtmkZEIB/n5+flm/wg7Dw8PDw879f/5+fn5+Qf39/f3Zvn5+fn5B/X/Dw8PDw879f/5+fn5+Qf39/f3Zvn5+fn5B/X/Dw8PDzsIkWb5+fn5+Qf39/f3Zvn5+fn5O5H/B/sPD5H2O/n5+fn5+Qf39/f3Zvn5+fn5+fn/9TsPD5H2O/n5+fn5+Qf39/f3Zvn5+fn5+fn/9TsPD5H2O/n5+fn5+Qf39/f3Zvn5+fn5+fn/9TsPD5H2O/n5+fn5+Qf39/f3Zvn5+fn5+fn/9TsPD5H2O/n5+fn5+TtmkZEIB/n5+fn5+fn/9TsPD5H2O/n5+fn5+fn5Zv87+fn5+fn5+fn/9TsPD5H2O/n5+fn5+fn5Ozv6+fn5+fn5+fn/9TsPD2aRCAf5+fn5+fn5Owf6+fn5+fn5O2b///oPDw879f/5+fn5+fn5ZpE7+fn5+fn5B/X/Dw8PDw879f/5+fn5+TsIkff/B/n5+fn5B/X/Dw8PDw879/8H+vn5+Tv/kfeRB/n5+fk7ZvdmDw8PDw/8+/+8B/n5+fk7CJEH+vn5+fmR9zv8Dw8PDw8PDzsI////O/n5Bwf6+fpm////ZvsPDw8PDw8PDw/59/X1Zjs7Ozs7Owf39fUHDw8PDw8PDw8PDw/8OzsHkby8vLy8vPZmOzv7Dw8PDw8PDw8PDw8PDw/89wAAAAAAAPUHDw8PDw8PDw8P</Binary>
+      </Object>
+    </Folder>
+  </Folder>
+</Intermediate>

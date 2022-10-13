@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSetOptions UsesUTCTime="True">
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\ashwac.br">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2020-02-04 14:50:38" />
+    <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Physical\Config1\Hardware.hw&quot;  -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\ashwac.br&quot; -L &quot;AsBrStr: V*, AsIecCon: V*, asstring: V*, astime: V*, AsUDP: V*, AsZip: V*, CoTrace: V5.06.0, FileIO: V*, KUKAmxA3_0: V3.00.2, operator: V*, runtime: V*, standard: V*&quot; -c &quot;Config1&quot; -Z &quot;Connectivity: n.d, UnitSystem: n.d, TextSystem: n.d, ProgrammingSystem: n.d, AAS: n.d&quot; -M IA32 -B C4.72 -P &quot;$(AS_PROJECT_PATH)&quot; -s &quot;Config1&quot; -T SG4 " />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\sysconf.br">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2020-02-04 14:50:38" />
+    <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Physical\Config1\Hardware.hw&quot;  -c &quot;Config1&quot; -sysconf -S &quot;X20CP1585&quot; -Z &quot;Connectivity: n.d, UnitSystem: n.d, TextSystem: n.d, ProgrammingSystem: n.d, AAS: n.d&quot; -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\sysconf.br&quot; -T SG4 -B C4.72 -P &quot;$(AS_PROJECT_PATH)&quot; -s &quot;Config1&quot; " />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\asfw.br">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2020-02-04 14:50:38" />
+    <Prerequisite ID="c:\program files\bur\as47\upgrades\modified.txt" LastWriteTime="2019-11-25 07:50:14" />
+    <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Physical\Config1\Hardware.hw&quot;  -v V1.00.0 -S &quot;X20CP1585&quot; -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\asfw.br&quot; -T SG4 -B C4.72 -P &quot;$(AS_PROJECT_PATH)&quot; -c &quot;Config1&quot; -zip -s &quot;Config1&quot; -firmware -Z &quot;Connectivity: n.d, UnitSystem: n.d, TextSystem: n.d, ProgrammingSystem: n.d, AAS: n.d&quot; " />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\ashwd.br">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2020-02-04 14:50:38" />
+    <Prerequisite ID="c:\program files\bur\as47\upgrades\modified.txt" LastWriteTime="2019-11-25 07:50:14" />
+    <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Physical\Config1\Hardware.hw&quot;  -v V1.00.0 -S &quot;X20CP1585&quot; -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\ashwd.br&quot; -T SG4 -B C4.72 -P &quot;$(AS_PROJECT_PATH)&quot; -c &quot;Config1&quot; -zip -s &quot;Config1&quot; -hwd -Z &quot;Connectivity: n.d, UnitSystem: n.d, TextSystem: n.d, ProgrammingSystem: n.d, AAS: n.d&quot; " />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\arconfig.br">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2020-02-04 14:50:38" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1585\iomap.iom" LastWriteTime="2020-02-05 06:29:14" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1585\dtm\x20if10g3_1\x20if10g3_1.dtm" LastWriteTime="2020-02-05 06:09:44" />
+    <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Physical\Config1\Hardware.hw&quot; &quot;$(AS_PROJECT_PATH)\Physical\Config1\X20CP1585\IoMap.iom&quot;  -arconfig -C &quot;/COMT=2500 /RT=1000 /AM=* /SDT=5 /DAIP=192.168.1.140 /REPO=11159 /ANSL=1 /PT=11169&quot; -D &quot;/IF=tcpip /LOPO=11159 /SA=1&quot; -c &quot;Config1&quot; -v V1.00.0 -S &quot;X20CP1585&quot; -Z &quot;Connectivity: n.d, UnitSystem: n.d, TextSystem: n.d, ProgrammingSystem: n.d, AAS: n.d&quot; -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\arconfig.br&quot; &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\ChannelConfiguration.xml&quot; &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\HardwareConfiguration.xml&quot; &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\ReActionTechnologyConfiguration.xml&quot; -T SG4 -B C4.72 -P &quot;$(AS_PROJECT_PATH)&quot; -s &quot;Config1&quot; " />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\udbdef.br">
+    <Prerequisite ID="c:\program files\bur\as47\as\technologypackages\unitsystem\n.d\transfer\modules\sg4\udbdef.br" LastWriteTime="2019-10-10 08:00:38" />
+    <CommandLine Parameter="C:\Program Files\BuR\AS47\AS\TechnologyPackages\UnitSystem\n.d\Transfer\Modules\SG4\udbdef.br, $(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\udbdef.br" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\iomap.br">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1585\iomap.iom" LastWriteTime="2020-02-05 06:29:14" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1585\pvmap.vvm" LastWriteTime="2015-07-02 09:23:36" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2020-02-04 14:50:38" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1585\cpu.sw" LastWriteTime="2020-02-05 14:04:56" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\channelconfiguration.xml" LastWriteTime="2020-02-05 14:05:12" />
+    <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Physical\Config1\X20CP1585\IoMap.iom&quot; &quot;$(AS_PROJECT_PATH)\Physical\Config1\X20CP1585\PvMap.vvm&quot;  -m &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\ConfigInfo.cfi&quot; -g &quot;$(AS_PROJECT_PATH)\Temp\Objects\Declarations.lst&quot; -x &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\ChannelConfiguration.xml&quot; -v V1.00.0 -f &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585&quot; -iomap -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\iomap.br&quot; -T SG4 -B C4.72 -P &quot;$(AS_PROJECT_PATH)&quot; -s &quot;Config1.X20CP1585&quot;" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\tcdata\tcdata.imx">
+    <Prerequisite ID="c:\program files\bur\as47\as\technologypackages\textsystem\n.d\objectcatalog\elements\textconfig\template\tc.textconfig" LastWriteTime="2019-10-10 08:00:38" />
+    <CommandLine Parameter=" -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\TCData\TCData.imx&quot; -c &quot;C:\Program Files\BuR\AS47\AS\TechnologyPackages\TextSystem\n.d\ObjectCatalog\Elements\TextConfig\Template\TC.textconfig&quot; -I &quot;C:\Program Files\BuR\AS\System\C0472&quot; &quot;C:\Program Files\BuR\AS47\AS\TechnologyPackages\UnitSystem\n.d&quot; -P &quot;$(AS_PROJECT_PATH)&quot;" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\tcdata\tcdata.s18d">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\tcdata\tcdata.imx" LastWriteTime="2020-02-05 14:05:14" />
+    <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\TCData\TCData.imx&quot; -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\TCData\TCData.s18d&quot;" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\tcdata.br">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\tcdata\tcdata.s18d" LastWriteTime="2020-02-05 14:05:16" />
+    <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\TCData\TCData.s18d&quot;  -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\TCData.br&quot; -t TextModule" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\ctrl.br">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\ctrl\ctrl.ox" LastWriteTime="2020-02-05 14:05:06" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1585\cpu.per" LastWriteTime="2018-12-12 07:54:12" />
+    <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\CTRL\CTRL.ox&quot;  -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\CTRL.br&quot; -v V1.00.0 -f &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\NT.ofs&quot; -offsetLT &quot;$(AS_PROJECT_PATH)\Binaries\Config1\X20CP1585\LT.ofs&quot; -T SG4 -M IA32 -B C4.72 -G V4.1.2  -extConstants -d &quot;runtime: V* - V*,asieccon: V* - V*&quot; -r Cyclic1 -p 2 -s &quot;CTRL&quot; -L &quot;AsBrStr: V*, AsIecCon: V*, asstring: V*, astime: V*, AsUDP: V*, AsZip: V*, CoTrace: V5.06.0, FileIO: V*, KUKAmxA3_0: V3.00.2, operator: V*, runtime: V*, standard: V*&quot; -P &quot;$(AS_PROJECT_PATH)&quot; " />
+    <AdditionalBuildTrigger Key="VolatileMemory" Value="65535" />
+    <AdditionalBuildTrigger Key="PermanentAnalogMemory" Value="0" />
+    <AdditionalBuildTrigger Key="PermanentDigitalMemory" Value="11000" />
+    <AdditionalBuildTrigger Key="RemanentMemory" Value="4096" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\ctrl\ctrl.ox">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\ctrl\a.out" LastWriteTime="2020-02-05 14:05:06" />
+    <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\CTRL\a.out&quot;  -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\CTRL\CTRL.ox&quot; -T SG4 -r Cyclic1 -G V4.1.2  -B C4.72 " />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\ctrl\a.out">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\ctrl\mxa_main.st.o" LastWriteTime="2020-02-05 14:05:04" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\ctrl\_bur_pvdef.st.o" LastWriteTime="2020-02-05 14:05:04" />
+    <CommandLine Parameter=" -link &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\CTRL\mxA_Main.st.o&quot; &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\CTRL\_bur_pvdef.st.o&quot;  -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\CTRL\a.out&quot; -G V4.1.2  -T SG4 -M IA32 &quot;-Wl,$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\SG4\libKUKAmxA3_0.a&quot; &quot;-Wl,$(AS_PROJECT_PATH)\Logical\Libraries\CoTrace\SG4\Ia32\libCoTrace.a&quot; &quot;-Wl,C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\libAsIecCon.a&quot; &quot;-Wl,C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\libFileIO.a&quot; &quot;-Wl,C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\libAsZip.a&quot; &quot;-Wl,C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\libAsUDP.a&quot; &quot;-Wl,C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\libastime.a&quot; &quot;-Wl,C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\libAsBrStr.a&quot; &quot;-Wl,C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\libasstring.a&quot; &quot;-Wl,C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\libstandard.a&quot; &quot;-Wl,C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\libruntime.a&quot; &quot;-Wl,C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\liboperator.a&quot; -specs=I386specs_brelf -nostdlib" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\ctrl\mxa_main.st.o">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\logical\ctrl\mxa_main.st" LastWriteTime="2020-02-04 10:00:18" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\logical\ctrl\mxa_start.st" LastWriteTime="2018-12-18 13:50:40" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\logical\ctrl\mxa_motion.fbd" LastWriteTime="2018-12-12 07:18:46" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\logical\ctrl\mxa_errormessage.st" LastWriteTime="2018-12-12 08:03:14" />
+    <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Logical\CTRL\mxA_Main.st&quot;  -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\CTRL\mxA_Main.st.o&quot; -T SG4 -M IA32 -B C4.72 -G V4.1.2  -s &quot;CTRL&quot; -t &quot;$(AS_PROJECT_PATH)\Temp&quot; -pointers -extComments -extBitAccess -extConstants -D _SG4 -a &quot;$(AS_PROJECT_PATH)\Logical\CTRL\mxA_Start.st&quot; &quot;$(AS_PROJECT_PATH)\Logical\CTRL\mxA_Motion.fbd&quot; &quot;$(AS_PROJECT_PATH)\Logical\CTRL\mxA_ErrorMessage.st&quot; -l &quot;$(AS_PROJECT_PATH)\Logical\CTRL\Types.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\CTRL\Variables.var&quot; -g &quot;$(AS_PROJECT_PATH)\Logical\Global.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\operator\operator.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\runtime\runtime.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\astime\astime.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsIecCon\AsIecCon.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\standard\standard.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\asstring\asstring.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsUDP\AsUDP.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsBrStr\AsBrStr.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\CoTrace\CoTrace.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsZip\AsZip.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\FileIO\FileIO.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\Types.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\APO.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\COORDSYS.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\E6AXIS.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\E6POS.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\FRAME.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\MXA_AUTEXT_CONTROL.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\MXA_AUTEXT_STATE.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\MXA_CMD_STATE_RET.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\MXA_COMMAND.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\MXA_COMMAND_STATUS.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\MXA_KRC_CONTROL.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\MXA_KRC_STATE.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\PNetWriteData.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\POSITION.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\AXBOX.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\BOX.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\operator\operator.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\runtime\runtime.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\astime\astime.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsIecCon\AsIecCon.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\standard\standard.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\asstring\asstring.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsUDP\AsUDP.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsBrStr\AsBrStr.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\CoTrace\CoTrace.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsZip\AsZip.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\FileIO\FileIO.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\KUKAmxA3_0.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Global.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\operator\operator.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\runtime\runtime.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\astime\astime.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsIecCon\AsIecCon.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\standard\standard.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\asstring\asstring.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsUDP\AsUDP.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsBrStr\AsBrStr.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\CoTrace\CoTrace.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsZip\AsZip.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\FileIO\FileIO.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\Constants.var&quot; -P &quot;$(AS_PROJECT_PATH)&quot; " />
+    <AdditionalBuildTrigger Key="IecDeclarationsInAnsiC" Value="False" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\ctrl\_bur_pvdef.st.o">
+    <Prerequisite ID="c:\program files\bur\as47\as\gnuinst\v4.1.2\i386-elf\include\bur\_bur_pvdef.st" LastWriteTime="2019-10-10 08:00:38" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\ctrl\mxa_main.st.o" LastWriteTime="2020-02-05 14:05:04" />
+    <CommandLine Parameter="&quot;C:\Program Files\BuR\AS47\AS\GnuInst\V4.1.2\i386-elf\include\bur\_bur_pvdef.st&quot;  -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\CTRL\_bur_pvdef.st.o&quot; -S &quot;mxA_Main.st&quot;  -T SG4 -M IA32 -B C4.72 -G V4.1.2  -s &quot;CTRL&quot; -t &quot;$(AS_PROJECT_PATH)\Temp&quot; -pointers -extComments -extBitAccess -extConstants -D _SG4 -a &quot;$(AS_PROJECT_PATH)\Logical\CTRL\mxA_Start.st&quot; &quot;$(AS_PROJECT_PATH)\Logical\CTRL\mxA_Motion.fbd&quot; &quot;$(AS_PROJECT_PATH)\Logical\CTRL\mxA_ErrorMessage.st&quot; -l &quot;$(AS_PROJECT_PATH)\Logical\CTRL\Types.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\CTRL\Variables.var&quot; -g &quot;$(AS_PROJECT_PATH)\Logical\Global.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\operator\operator.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\runtime\runtime.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\astime\astime.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsIecCon\AsIecCon.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\standard\standard.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\asstring\asstring.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsUDP\AsUDP.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsBrStr\AsBrStr.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\CoTrace\CoTrace.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsZip\AsZip.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\FileIO\FileIO.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\Types.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\APO.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\COORDSYS.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\E6AXIS.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\E6POS.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\FRAME.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\MXA_AUTEXT_CONTROL.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\MXA_AUTEXT_STATE.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\MXA_CMD_STATE_RET.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\MXA_COMMAND.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\MXA_COMMAND_STATUS.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\MXA_KRC_CONTROL.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\MXA_KRC_STATE.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\PNetWriteData.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\POSITION.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\AXBOX.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\BOX.typ&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\operator\operator.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\runtime\runtime.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\astime\astime.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsIecCon\AsIecCon.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\standard\standard.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\asstring\asstring.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsUDP\AsUDP.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsBrStr\AsBrStr.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\CoTrace\CoTrace.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsZip\AsZip.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\FileIO\FileIO.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\KUKAmxA3_0.fun&quot; &quot;$(AS_PROJECT_PATH)\Logical\Global.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\operator\operator.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\runtime\runtime.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\astime\astime.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsIecCon\AsIecCon.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\standard\standard.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\asstring\asstring.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsUDP\AsUDP.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsBrStr\AsBrStr.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\CoTrace\CoTrace.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\AsZip\AsZip.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\FileIO\FileIO.var&quot; &quot;$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\Constants.var&quot; -P &quot;$(AS_PROJECT_PATH)&quot; " />
+    <AdditionalBuildTrigger Key="IecDeclarationsInAnsiC" Value="False" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\standard.br">
+    <Prerequisite ID="c:\program files\bur\as\system\c0472\sg4\ia32\standard.br" LastWriteTime="2019-11-23 02:20:22" />
+    <CommandLine Parameter="C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\standard.br, $(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\standard.br" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\operator.br">
+    <Prerequisite ID="c:\program files\bur\as\system\c0472\sg4\ia32\operator.br" LastWriteTime="2019-11-23 02:20:22" />
+    <CommandLine Parameter="C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\operator.br, $(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\operator.br" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\runtime.br">
+    <Prerequisite ID="c:\program files\bur\as\system\c0472\sg4\ia32\runtime.br" LastWriteTime="2019-11-23 02:20:22" />
+    <CommandLine Parameter="C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\runtime.br, $(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\runtime.br" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\astime.br">
+    <Prerequisite ID="c:\program files\bur\as\system\c0472\sg4\ia32\astime.br" LastWriteTime="2019-11-23 02:20:18" />
+    <CommandLine Parameter="C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\astime.br, $(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\astime.br" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\asieccon.br">
+    <Prerequisite ID="c:\program files\bur\as\system\c0472\sg4\ia32\asieccon.br" LastWriteTime="2019-11-23 02:20:12" />
+    <CommandLine Parameter="C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\AsIecCon.br, $(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\AsIecCon.br" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\asstring.br">
+    <Prerequisite ID="c:\program files\bur\as\system\c0472\sg4\ia32\asstring.br" LastWriteTime="2019-11-23 02:20:18" />
+    <CommandLine Parameter="C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\asstring.br, $(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\asstring.br" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\asudp.br">
+    <Prerequisite ID="c:\program files\bur\as\system\c0472\sg4\ia32\asudp.br" LastWriteTime="2019-11-23 02:20:18" />
+    <CommandLine Parameter="C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\AsUDP.br, $(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\AsUDP.br" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\asbrstr.br">
+    <Prerequisite ID="c:\program files\bur\as\system\c0472\sg4\ia32\asbrstr.br" LastWriteTime="2019-11-23 02:20:10" />
+    <CommandLine Parameter="C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\AsBrStr.br, $(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\AsBrStr.br" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\cotrace.br">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\logical\libraries\cotrace\sg4\ia32\cotrace.br" LastWriteTime="2019-01-28 15:06:42" />
+    <CommandLine Parameter="$(AS_PROJECT_PATH)\Logical\Libraries\CoTrace\SG4\Ia32\CoTrace.br, $(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\CoTrace.br" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\aszip.br">
+    <Prerequisite ID="c:\program files\bur\as\system\c0472\sg4\ia32\aszip.br" LastWriteTime="2019-11-23 02:20:20" />
+    <CommandLine Parameter="C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\AsZip.br, $(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\AsZip.br" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\fileio.br">
+    <Prerequisite ID="c:\program files\bur\as\system\c0472\sg4\ia32\fileio.br" LastWriteTime="2019-11-23 02:20:22" />
+    <CommandLine Parameter="C:\Program Files\BuR\AS\System\C0472\SG4\Ia32\FileIO.br, $(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\FileIO.br" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\kukamxa3_0.br">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\logical\libraries\kukamxa3_0\sg4\kukamxa3_0.br" LastWriteTime="2018-04-25 20:38:04" />
+    <CommandLine Parameter="$(AS_PROJECT_PATH)\Logical\Libraries\KUKAmxA3_0\SG4\KUKAmxA3_0.br, $(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\KUKAmxA3_0.br" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\asnxdb1.br">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1585\dtm\x20if10g3_1\x20if10g3_1.dtm" LastWriteTime="2020-02-05 06:09:44" />
+    <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Physical\Config1\X20CP1585\DTM\X20IF10G3_1\X20IF10G3_1.dtm&quot;  -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\asnxdb1.br&quot; -P &quot;$(AS_PROJECT_PATH)&quot; -c &quot;Config1&quot; " />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\visu_r\visu_r.mak">
+    <CommandLine Parameter="&quot;Visu_Resized&quot; -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\Visu_R.br&quot; -T SG4 -B C4.72 -c &quot;Config1&quot; -S &quot;X20CP1585&quot; -P &quot;$(AS_PROJECT_PATH)&quot; -t &quot;$(AS_PROJECT_PATH)\Temp&quot; -H &quot;$(AS_PROJECT_PATH)\Physical\Config1\Hardware.hw&quot; -V &quot;V4.72.0&quot; -apj &quot;KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0&quot; -v V1.00.0 -all -m &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\ConfigInfo.cfi&quot; -g &quot;$(AS_PROJECT_PATH)\Temp\Objects\Declarations.lst&quot; -w2 -sfas" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\visu_r.br">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\visu_r\visu_r.mak" LastWriteTime="2020-02-05 14:05:10" />
+    <CommandLine Parameter=" -r -f &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\#cpu_vc.mak&quot; -k" />
+  </Rule>
+  <Rule ID="#cpu_tp.mak">
+    <CommandLine Parameter=" -r -f &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1585\#cpu_tp.mak&quot; -k" />
+  </Rule>
+  <Rule ID="$(AS_PROJECT_PATH)\binaries\config1\x20cp1585\transfer.lst">
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\ashwac.br" LastWriteTime="2020-02-05 14:05:12" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\sysconf.br" LastWriteTime="2020-02-05 14:05:14" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\asfw.br" LastWriteTime="2020-02-05 14:05:14" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\ashwd.br" LastWriteTime="2020-02-05 14:05:14" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\arconfig.br" LastWriteTime="2020-02-05 14:05:14" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\udbdef.br" LastWriteTime="2019-10-10 08:00:38" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\iomap.br" LastWriteTime="2020-02-05 14:05:14" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\tcdata.br" LastWriteTime="2020-02-05 14:05:18" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\ctrl.br" LastWriteTime="2020-02-05 14:05:06" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\standard.br" LastWriteTime="2019-11-23 02:20:22" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\operator.br" LastWriteTime="2019-11-23 02:20:22" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\runtime.br" LastWriteTime="2019-11-23 02:20:22" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\astime.br" LastWriteTime="2019-11-23 02:20:18" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\asieccon.br" LastWriteTime="2019-11-23 02:20:12" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\asstring.br" LastWriteTime="2019-11-23 02:20:18" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\asudp.br" LastWriteTime="2019-11-23 02:20:18" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\asbrstr.br" LastWriteTime="2019-11-23 02:20:10" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\cotrace.br" LastWriteTime="2019-01-28 15:06:42" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\aszip.br" LastWriteTime="2019-11-23 02:20:20" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\fileio.br" LastWriteTime="2019-11-23 02:20:22" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\kukamxa3_0.br" LastWriteTime="2018-04-25 20:38:04" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\asnxdb1.br" LastWriteTime="2020-02-05 14:05:10" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1585\visu_r.br" LastWriteTime="2020-02-05 14:05:36" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1585\cpu.sw" LastWriteTime="2020-02-05 14:04:56" />
+    <CommandLine Parameter=" &quot;$(AS_PROJECT_PATH)\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0.apj&quot; -t &quot;$(AS_PROJECT_PATH)\Temp&quot; -o &quot;$(AS_PROJECT_PATH)\Binaries&quot; -c &quot;Config1&quot; -i &quot;C:\Program Files\BuR\AS47&quot; -S &quot;X20CP1585&quot; -all -A &quot;X20CP1585&quot; -pil -swFiles &quot;$(AS_PROJECT_PATH)\Physical\Config1\X20CP1585\Cpu.sw&quot; -Z &quot;Connectivity: n.d, UnitSystem: n.d, TextSystem: n.d, ProgrammingSystem: n.d, AAS: n.d&quot; -C &quot;/COMT=2500 /RT=1000 /AM=* /SDT=5 /DAIP=192.168.1.140 /REPO=11159 /ANSL=1 /PT=11169&quot; -D &quot;/IF=tcpip /LOPO=11159 /SA=1&quot; -M IA32 -T SG4" />
+  </Rule>
+</RuleSetOptions>

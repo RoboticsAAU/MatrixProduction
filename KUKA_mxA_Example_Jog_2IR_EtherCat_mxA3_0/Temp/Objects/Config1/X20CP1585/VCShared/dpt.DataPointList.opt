@@ -1,0 +1,9 @@
+<BuildOptions>
+  <BuildOption>
+    <SourceFile Value="C:/Users/Wuenschp/Desktop/KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0/Physical/Config1/X20CP1585/Cpu.sw" />
+    <Query Value="/ns:SwConfiguration/ns:TaskClass/*$$Name,Source" />
+    <Xml>
+      <Task Name="CTRL" Source="CTRL.prg" />
+    </Xml>
+  </BuildOption>
+</BuildOptions>

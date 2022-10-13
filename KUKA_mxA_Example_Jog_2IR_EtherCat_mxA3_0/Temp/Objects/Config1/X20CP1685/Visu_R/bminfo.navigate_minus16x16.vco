@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0?>
+<Intermediate xmlns="http://br.automation.co.at/AS/VC/Intermediate">
+  <Folder Name="Bitmaps">
+    <Folder Name="POBJ">
+      <Object Name="navigate_minus16x16" ClsId="0x306" Version="1" TargetIndex="73" Type="GFX" RefString="Source[local].Bitmap[navigate_minus16x16]">
+        <UInt16 Name="Width">26</UInt16>
+        <UInt16 Name="Height">26</UInt16>
+        <UInt32 Name="BitsPerPixel">8</UInt32>
+        <Byte Name="Transparency">1</Byte>
+        <Byte Name="TargetFormat">1</Byte>
+        <UInt16 Name="Reserved">0</UInt16>
+        <Int32 Name="TransparentColor">0</Int32>
+        <Int32 Name="FillAreas">0</Int32>
+        <Binary Name="BitmapData" Encoding="Base64">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC12bW1tdnZ2bXZ2dra2tra2tra2tra2tra2trZ2dnZ2dnZ2dnZ2tra2tra2tra2tra2trata+vr6+vr6+vr6+vr6+vr6+vr6+vr6+12tq1r66KioqKioqKioqKiouLi4uLi4uLr6/a2tmvr6+vr6+vr6+vr6+vr6+vr6+vr6+vr9ra2q+pqKipqampqampqampqampqampqKmv2trar6ioqKioqKioqKioqKioqKioqKioqKna4NqvqKiEqKioqKioqKioqKioqKioqKioqNrg2q+oqKioqKioqKioqKioqKioqKioqKiv2uDa2tra2tra2tra2tra2tra2tra2tra2trg4Nra2trg4ODg4ODg4ODg4ODg4ODg4ODg4ODgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</Binary>
+      </Object>
+    </Folder>
+  </Folder>
+</Intermediate>

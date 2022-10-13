@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0?>
+<Intermediate xmlns="http://br.automation.co.at/AS/VC/Intermediate">
+  <Folder Name="Bitmaps">
+    <Folder Name="POBJ">
+      <Object Name="AcknowledgeReset" ClsId="0x306" Version="1" TargetIndex="0" Type="GFX" RefString="Source[local].Bitmap[AcknowledgeReset]">
+        <UInt16 Name="Width">27</UInt16>
+        <UInt16 Name="Height">24</UInt16>
+        <UInt32 Name="BitsPerPixel">8</UInt32>
+        <Byte Name="Transparency">0</Byte>
+        <Byte Name="TargetFormat">1</Byte>
+        <UInt16 Name="Reserved">0</UInt16>
+        <Int32 Name="TransparentColor">0</Int32>
+        <Int32 Name="FillAreas">0</Int32>
+        <Binary Name="BitmapData" Encoding="Base64">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ14eHh4eHh4eHh4eHh4eHh4eHh4eHh4eMIAAHguLi4uLi4uLi4uLk1TUy5TUy4uLi4uU8IAAHguLi4uLi4uLi4uR2y8eC6dnS4uLi4uU8IAAHguLi4uLi4uLi5NbPedUy7CnS4uLi4uU8IAAHguLi4uLi4uLk1m98JTLi7CnS4uLi4uU8IAAHguLi4uLi4uR2y892wuLi7CnS4uLi4uU8IAAHgueHh4Li4ucvf2bEcuLi7CnS4uLi4uU8IAAHhT9QDCUy4unbxmTS4uLi7CnS4uLi4uU8IAAHgueJ0AwnJHvMJNKC4uLi7CnS4uLi4uU8IAAHguLnjCALz/9pcuLi4uLi7CnS4uLi4uU8IAAHguLi5TwgD1kWwuLi4uLi7CnS4uLi4uU8IAAHguLi5TwgAAck0uLi54Uy7CnS5TeC4uU8IAAHguLi5TwgDCUy4uLlPCnVPCwlOdnVMuU8IAAHguLi5Twp1TLi4uLi5TeMIA9cJ4Uy4uU8IAAHguLi4ueHguLi4uLi4uU531wp1TLi4uU8IAAHguLi4uLi4uLi4uLi4uLi7CnS4uLi4uU8IAAHguLi4uLi4uLi4uLi4uLi7CnS4uLi4uU8IAAHguLi4uLi4uLi4uLi4uLi7CwlNTU1NTU8IAAHguLi4uLi4uLi4uLi4uLi7CAPXCwsJ4U8IAAHguLi4uLi4uLi4uLi4uLi54eHh4eHhTU8IAAHhTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU8IAAMLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</Binary>
+      </Object>
+    </Folder>
+  </Folder>
+</Intermediate>

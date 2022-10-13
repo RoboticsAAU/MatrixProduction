@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version="4.12.2.93"?>
+<Objects>
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Package.pkg"
+    LogicalPath=""
+    Type="Package.ParentUnknown"
+    LastWriteTime="133093561734608497" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Global.typ"
+    LogicalPath="Global.typ"
+    Type="File"
+    LastWriteTime="133093561734282462"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Global.var"
+    LogicalPath="Global.var"
+    Type="File"
+    LastWriteTime="133093561734438216"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\Package.pkg"
+    LogicalPath="Libraries"
+    Type="Package"
+    LastWriteTime="133093561735931467" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\operator\Binary.lby"
+    LogicalPath="Libraries.operator"
+    Type="Library"
+    LastWriteTime="130802954180000000" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\operator\operator.fun"
+    LogicalPath="Libraries.operator.operator.fun"
+    Type="File"
+    LastWriteTime="133093561747864734"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\operator\operator.typ"
+    LogicalPath="Libraries.operator.operator.typ"
+    Type="File"
+    LastWriteTime="133093561747973910"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\operator\operator.var"
+    LogicalPath="Libraries.operator.operator.var"
+    Type="File"
+    LastWriteTime="133093561748084415"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\runtime\Binary.lby"
+    LogicalPath="Libraries.runtime"
+    Type="Library"
+    LastWriteTime="130802954180000000" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\runtime\runtime.fun"
+    LogicalPath="Libraries.runtime.runtime.fun"
+    Type="File"
+    LastWriteTime="133093561748893936"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\runtime\runtime.typ"
+    LogicalPath="Libraries.runtime.runtime.typ"
+    Type="File"
+    LastWriteTime="133093561749048917"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\runtime\runtime.var"
+    LogicalPath="Libraries.runtime.runtime.var"
+    Type="File"
+    LastWriteTime="133093561749202563"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\astime\Binary.lby"
+    LogicalPath="Libraries.astime"
+    Type="Library"
+    LastWriteTime="130802954200000000" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\astime\astime.fun"
+    LogicalPath="Libraries.astime.astime.fun"
+    Type="File"
+    LastWriteTime="133093561739125617"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\astime\astime.typ"
+    LogicalPath="Libraries.astime.astime.typ"
+    Type="File"
+    LastWriteTime="133093561739276144"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\astime\astime.var"
+    LogicalPath="Libraries.astime.astime.var"
+    Type="File"
+    LastWriteTime="133093561739421700"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsIecCon\Binary.lby"
+    LogicalPath="Libraries.AsIecCon"
+    Type="Library"
+    LastWriteTime="130802954200000000" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsIecCon\AsIecCon.fun"
+    LogicalPath="Libraries.AsIecCon.AsIecCon.fun"
+    Type="File"
+    LastWriteTime="133093561737122940"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsIecCon\AsIecCon.typ"
+    LogicalPath="Libraries.AsIecCon.AsIecCon.typ"
+    Type="File"
+    LastWriteTime="133093561737243232"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsIecCon\AsIecCon.var"
+    LogicalPath="Libraries.AsIecCon.AsIecCon.var"
+    Type="File"
+    LastWriteTime="133093561737354342"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\standard\Binary.lby"
+    LogicalPath="Libraries.standard"
+    Type="Library"
+    LastWriteTime="130807224840000000" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\standard\standard.fun"
+    LogicalPath="Libraries.standard.standard.fun"
+    Type="File"
+    LastWriteTime="130807224840000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\standard\standard.typ"
+    LogicalPath="Libraries.standard.standard.typ"
+    Type="File"
+    LastWriteTime="130807224840000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\standard\standard.var"
+    LogicalPath="Libraries.standard.standard.var"
+    Type="File"
+    LastWriteTime="130807224840000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\asstring\Binary.lby"
+    LogicalPath="Libraries.asstring"
+    Type="Library"
+    LastWriteTime="130887479800000000" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\asstring\asstring.fun"
+    LogicalPath="Libraries.asstring.asstring.fun"
+    Type="File"
+    LastWriteTime="130887479800000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\asstring\asstring.typ"
+    LogicalPath="Libraries.asstring.asstring.typ"
+    Type="File"
+    LastWriteTime="130887479800000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\asstring\asstring.var"
+    LogicalPath="Libraries.asstring.asstring.var"
+    Type="File"
+    LastWriteTime="130887479800000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsUDP\Binary.lby"
+    LogicalPath="Libraries.AsUDP"
+    Type="Library"
+    LastWriteTime="130904010000000000" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsUDP\AsUDP.fun"
+    LogicalPath="Libraries.AsUDP.AsUDP.fun"
+    Type="File"
+    LastWriteTime="130904010000000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsUDP\AsUDP.typ"
+    LogicalPath="Libraries.AsUDP.AsUDP.typ"
+    Type="File"
+    LastWriteTime="130904010000000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsUDP\AsUDP.var"
+    LogicalPath="Libraries.AsUDP.AsUDP.var"
+    Type="File"
+    LastWriteTime="130904010000000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsBrStr\Binary.lby"
+    LogicalPath="Libraries.AsBrStr"
+    Type="Library"
+    LastWriteTime="131496870080000000" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsBrStr\AsBrStr.fun"
+    LogicalPath="Libraries.AsBrStr.AsBrStr.fun"
+    Type="File"
+    LastWriteTime="131496870080000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsBrStr\AsBrStr.typ"
+    LogicalPath="Libraries.AsBrStr.AsBrStr.typ"
+    Type="File"
+    LastWriteTime="131496870080000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsBrStr\AsBrStr.var"
+    LogicalPath="Libraries.AsBrStr.AsBrStr.var"
+    Type="File"
+    LastWriteTime="131496870080000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\CoTrace\binary.lby"
+    LogicalPath="Libraries.CoTrace"
+    Type="Library"
+    LastWriteTime="132252717680000000" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\CoTrace\CoTrace.fun"
+    LogicalPath="Libraries.CoTrace.CoTrace.fun"
+    Type="File"
+    LastWriteTime="132252717680000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\CoTrace\CoTrace.typ"
+    LogicalPath="Libraries.CoTrace.CoTrace.typ"
+    Type="File"
+    LastWriteTime="132252717680000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\CoTrace\CoTrace.var"
+    LogicalPath="Libraries.CoTrace.CoTrace.var"
+    Type="File"
+    LastWriteTime="132252717680000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsZip\binary.lby"
+    LogicalPath="Libraries.AsZip"
+    Type="Library"
+    LastWriteTime="132252717680000000" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsZip\AsZip.fun"
+    LogicalPath="Libraries.AsZip.AsZip.fun"
+    Type="File"
+    LastWriteTime="132252717680000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsZip\AsZip.typ"
+    LogicalPath="Libraries.AsZip.AsZip.typ"
+    Type="File"
+    LastWriteTime="132252717680000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsZip\AsZip.var"
+    LogicalPath="Libraries.AsZip.AsZip.var"
+    Type="File"
+    LastWriteTime="132252717680000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\FileIO\binary.lby"
+    LogicalPath="Libraries.FileIO"
+    Type="Library"
+    LastWriteTime="132252717680000000" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\FileIO\FileIO.fun"
+    LogicalPath="Libraries.FileIO.FileIO.fun"
+    Type="File"
+    LastWriteTime="132252717680000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\FileIO\FileIO.typ"
+    LogicalPath="Libraries.FileIO.FileIO.typ"
+    Type="File"
+    LastWriteTime="132252717680000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\FileIO\FileIO.var"
+    LogicalPath="Libraries.FileIO.FileIO.var"
+    Type="File"
+    LastWriteTime="132252717680000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\Binary.lby"
+    LogicalPath="Libraries.KUKAmxA3_0"
+    Type="Library"
+    LastWriteTime="132253778920000000" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\Constants.var"
+    LogicalPath="Libraries.KUKAmxA3_0.Constants.var"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\KUKAmxA3_0.fun"
+    LogicalPath="Libraries.KUKAmxA3_0.KUKAmxA3_0.fun"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\Types.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.Types.typ"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\APO.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.APO.typ"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\COORDSYS.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.COORDSYS.typ"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\E6AXIS.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.E6AXIS.typ"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\E6POS.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.E6POS.typ"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\FRAME.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.FRAME.typ"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\MXA_AUTEXT_CONTROL.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.MXA_AUTEXT_CONTROL.typ"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\MXA_AUTEXT_STATE.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.MXA_AUTEXT_STATE.typ"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\MXA_CMD_STATE_RET.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.MXA_CMD_STATE_RET.typ"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\MXA_COMMAND.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.MXA_COMMAND.typ"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\MXA_COMMAND_STATUS.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.MXA_COMMAND_STATUS.typ"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\MXA_KRC_CONTROL.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.MXA_KRC_CONTROL.typ"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\MXA_KRC_STATE.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.MXA_KRC_STATE.typ"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\PNetWriteData.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.PNetWriteData.typ"
+    Type="File"
+    LastWriteTime="132253778900000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\POSITION.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.POSITION.typ"
+    Type="File"
+    LastWriteTime="132253778920000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\AXBOX.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.AXBOX.typ"
+    Type="File"
+    LastWriteTime="132253778920000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\BOX.typ"
+    LogicalPath="Libraries.KUKAmxA3_0.BOX.typ"
+    Type="File"
+    LastWriteTime="132253778920000000"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\IEC.prg"
+    LogicalPath="CTRL"
+    Type="Program"
+    LastWriteTime="133093561734799001" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\Types.typ"
+    LogicalPath="CTRL.Types.typ"
+    Type="File"
+    LastWriteTime="133093561735580550"
+    Private="true" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\Variables.var"
+    LogicalPath="CTRL.Variables.var"
+    Type="File"
+    LastWriteTime="133093561735740963"
+    Private="true" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\mxA_Main.st"
+    LogicalPath="CTRL.mxA_Main.st"
+    Type="File"
+    LastWriteTime="133093561735121838"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\mxA_Start.st"
+    LogicalPath="CTRL.mxA_Start.st"
+    Type="File"
+    LastWriteTime="133093561735470446"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\mxA_Motion.fbd"
+    LogicalPath="CTRL.mxA_Motion.fbd"
+    Type="File"
+    LastWriteTime="133093561735278724"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\mxA_ErrorMessage.st"
+    LogicalPath="CTRL.mxA_ErrorMessage.st"
+    Type="File"
+    LastWriteTime="133093561734959421"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Visu_Resized\Vc.dob"
+    LogicalPath="Visu_Resized"
+    Type="DataObject"
+    LastWriteTime="133093561755338533" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Visu_Resized\VCObject.vc"
+    LogicalPath="Visu_Resized.VCObject.vc"
+    Type="File"
+    LastWriteTime="133093561755539029"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\Config.pkg"
+    LogicalPath="Config1"
+    Type="Configuration.ParentUnknown"
+    LastWriteTime="133093572886355903" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\Hardware.hw"
+    LogicalPath="Config1.Hardware.hw"
+    Type="File"
+    LastWriteTime="133096008952462942"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\Hardware.hwl"
+    LogicalPath="Config1.Hardware.hwl"
+    Type="File"
+    LastWriteTime="133096011849551863"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\Cpu.pkg"
+    LogicalPath="Config1.X20CP1685"
+    Type="Cpu"
+    LastWriteTime="133096054157044915" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\Cpu.sw"
+    LogicalPath="Config1.X20CP1685.Cpu.sw"
+    Type="File"
+    LastWriteTime="133093561796790415"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\Cpu.per"
+    LogicalPath="Config1.X20CP1685.Cpu.per"
+    Type="File"
+    LastWriteTime="133093561796441888"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\IoMap.iom"
+    LogicalPath="Config1.X20CP1685.IoMap.iom"
+    Type="File"
+    LastWriteTime="133093573371312112"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\PvMap.vvm"
+    LogicalPath="Config1.X20CP1685.PvMap.vvm"
+    Type="File"
+    LastWriteTime="133093561797101231"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\mapp\Package.pkg"
+    LogicalPath="Config1.X20CP1685.mapp"
+    Type="Package"
+    LastWriteTime="133093561798733831" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\Package.pkg"
+    LogicalPath="Config1.X20CP1685.DTM"
+    Type="Package"
+    LastWriteTime="133093573541229196" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\Package.pkg"
+    LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1"
+    Type="Package"
+    LastWriteTime="133096008938045635" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\X20IF10E1_1.dtm"
+    LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1.X20IF10E1_1.dtm"
+    Type="File"
+    LastWriteTime="133096070916726785"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\X20IF10E1_1_IF1\Package.pkg"
+    LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1.X20IF10E1_1_IF1"
+    Type="Package"
+    LastWriteTime="133093573549023055" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\X20IF10E1_1_IF1\X20IF10E1_1_IF1.dtmdre"
+    LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1.X20IF10E1_1_IF1.X20IF10E1_1_IF1.dtmdre"
+    Type="File"
+    LastWriteTime="133096070874450490"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\X20IF10E1_1_IF1\X20IF10E1_1_IF1.dtmdra"
+    LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1.X20IF10E1_1_IF1.X20IF10E1_1_IF1.dtmdra"
+    Type="File"
+    LastWriteTime="133093573545049396"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\X20IF10E1_1_IF1\X20IF10E1_1_IF1.dtmtre"
+    LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1.X20IF10E1_1_IF1.X20IF10E1_1_IF1.dtmtre"
+    Type="File"
+    LastWriteTime="133096008942815589"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\X20IF10E1_1_IF1\X20IF10E1_1_IF1.dtmdri"
+    LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1.X20IF10E1_1_IF1.X20IF10E1_1_IF1.dtmdri"
+    Type="File"
+    LastWriteTime="133096070874430443"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\KRC4_ProfiNet_3_2\Package.pkg"
+    LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1.KRC4_ProfiNet_3_2"
+    Type="Package"
+    LastWriteTime="133096008949020124" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\KRC4_ProfiNet_3_2\KRC4_ProfiNet_3_2.dtmdre"
+    LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1.KRC4_ProfiNet_3_2.KRC4_ProfiNet_3_2.dtmdre"
+    Type="File"
+    LastWriteTime="133096070874575993"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\KRC4_ProfiNet_3_2\KRC4_ProfiNet_3_2.dtmtre"
+    LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1.KRC4_ProfiNet_3_2.KRC4_ProfiNet_3_2.dtmtre"
+    Type="File"
+    LastWriteTime="133096008942935910"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\KRC4_ProfiNet_3_2\KRC4_ProfiNet_3_2.dtmdri"
+    LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1.KRC4_ProfiNet_3_2.KRC4_ProfiNet_3_2.dtmdri"
+    Type="File"
+    LastWriteTime="133096070874534665"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\VC\Package.pkg"
+    LogicalPath="Config1.X20CP1685.VC"
+    Type="Package"
+    LastWriteTime="133093572871105749" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\VC\PS2-Keyboard.dis"
+    LogicalPath="Config1.X20CP1685.VC.PS2-Keyboard.dis"
+    Type="File"
+    LastWriteTime="133093561799100931"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\VC\PS2-Keyboard1.dis"
+    LogicalPath="Config1.X20CP1685.VC.PS2-Keyboard1.dis"
+    Type="File"
+    LastWriteTime="133093561799291964"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\VC\PS2-Keyboard2.dis"
+    LogicalPath="Config1.X20CP1685.VC.PS2-Keyboard2.dis"
+    Type="File"
+    LastWriteTime="133093572871345888"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\ExternalHardware\Package.pkg"
+    LogicalPath="Config1.X20CP1685.ExternalHardware"
+    Type="Package"
+    LastWriteTime="133096008933669997" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\ExternalHardware\UH180IC5.ext"
+    LogicalPath="Config1.X20CP1685.ExternalHardware.UH180IC5.ext"
+    Type="File"
+    LastWriteTime="133094528438089470"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\ExternalHardware\ExternalHardwareDevices.xml"
+    LogicalPath="Config1.X20CP1685.ExternalHardware.ExternalHardwareDevices.xml"
+    Type="File"
+    LastWriteTime="133096008933682507"
+    Private="false" />
+  <Object
+    Path="C:\Users\danie\OneDrive\Skrivebord\P5Code\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\Hardware.jpg"
+    LogicalPath="Config1.Hardware.jpg"
+    Type="File"
+    LastWriteTime="133096011850781031"
+    Private="false" />
+</Objects>
