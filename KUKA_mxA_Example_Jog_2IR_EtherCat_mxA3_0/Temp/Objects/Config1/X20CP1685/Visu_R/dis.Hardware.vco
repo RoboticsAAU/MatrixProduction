@@ -10,7 +10,7 @@
         <UInt16 Name="ResolutionY">768</UInt16>
         <UInt16 Name="Port">5900</UInt16>
         <UInt16 Name="RefreshRate">100</UInt16>
-        <UInt16 Name="MaxClients">1</UInt16>
+        <UInt16 Name="MaxClients">5</UInt16>
         <Byte Name="AuthenticationDisable">1</Byte>
         <Byte Name="Reserved">0</Byte>
         <Binary Name="Password" Encoding="Base64">WrLNwLrcrxM=</Binary>

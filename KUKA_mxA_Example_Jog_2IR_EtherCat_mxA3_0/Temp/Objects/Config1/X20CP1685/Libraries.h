@@ -1,8 +1,8 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
 
-#ifndef _LIBRARIES_20221007114600_
-#define _LIBRARIES_20221007114600_
+#ifndef _LIBRARIES_20221014134614_
+#define _LIBRARIES_20221014134614_
 
 __asm__(".section \".plc\"");
 
@@ -726,5 +726,5 @@ __asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/BOX.typ\\\" scope \\\
 __asm__(".previous");
 
 
-#endif /* _LIBRARIES_20221007114600_ */
+#endif /* _LIBRARIES_20221014134614_ */
 

@@ -59,7 +59,7 @@
     <Parameter ID="ConfigFile" Value="X20IF10E1_1.dtm" />
     <Parameter ID="ConfigModule" Value="asnxdb1" />
     <Parameter ID="CycleTime" Value="10000" Type="UDINT" />
-    <Parameter ID="ConfigUID" Value="2401365117" Type="UDINT" />
+    <Parameter ID="ConfigUID" Value="785056700" Type="UDINT" />
   </Module>
   <Module ID="SS1.IF1.NETX" Hardware="NETX" />
   <Module ID="SS1.IF1.NETX.BUS" Hardware="X20IF10E1-1">
@@ -141,21 +141,21 @@
       <Parameter ID="Direction" Value="IN" />
       <Parameter ID="Type" Value="UDINT" />
     </Channel>
-    <Channel ID="SlaveConfig_krc4">
+    <Channel ID="SlaveConfig_krc4_1">
       <Parameter ID="Ext" Value="/HW" />
       <Parameter ID="Address" Value="268" Type="UDINT" />
       <Parameter ID="BitOffset" Value="0" Type="UDINT" />
       <Parameter ID="Direction" Value="IN" />
       <Parameter ID="Type" Value="BOOL" />
     </Channel>
-    <Channel ID="SlaveState_krc4">
+    <Channel ID="SlaveState_krc4_1">
       <Parameter ID="Ext" Value="/HW" />
       <Parameter ID="Address" Value="284" Type="UDINT" />
       <Parameter ID="BitOffset" Value="0" Type="UDINT" />
       <Parameter ID="Direction" Value="IN" />
       <Parameter ID="Type" Value="BOOL" />
     </Channel>
-    <Channel ID="SlaveDiag_krc4">
+    <Channel ID="SlaveDiag_krc4_1">
       <Parameter ID="Ext" Value="/HW" />
       <Parameter ID="Address" Value="300" Type="UDINT" />
       <Parameter ID="BitOffset" Value="0" Type="UDINT" />
@@ -164,8 +164,8 @@
     </Channel>
   </Module>
   <Module ID="SS1.IF1.ST1" Hardware="NetX_any">
-    <Parameter ID="HardwareModuleName" Value="KRC4_ProfiNet_3_2" />
-    <Parameter ID="OrderNumber" Value="KRC4-ProfiNet_3.2" />
+    <Parameter ID="HardwareModuleName" Value="KRC4_ProfiNet_4_1" />
+    <Parameter ID="OrderNumber" Value="KRC4-ProfiNet_4.1" />
   </Module>
   <Module ID="SS1.IF1.ST1.IO" Hardware="NetX_any">
     <Parameter ID="Supervision" Value="off" />
@@ -3373,4 +3373,4 @@
   <Module ID="SS1.IO" Hardware="X20IF10E1-1">
     <Parameter ID="FunctionModel" Value="Standard" />
   </Module>
-</IOCFG>   
+</IOCFG>  

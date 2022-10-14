@@ -57,7 +57,7 @@ LIB_LOCAL_OBJ_Visu_R=$(TEMP_PATH_Visu_R)/localobj.vca
 # Hardware sources
 PANEL_HW_OBJECT_Visu_R=$(TEMP_PATH_ROOT_Visu_R)/Objects/$(AS_CONFIGURATION)/$(AS_TEMP_PLC)/Visu_R/dis.Hardware.vco
 PANEL_HW_VCI_Visu_R=$(TEMP_PATH_ROOT_Visu_R)/Objects/$(AS_CONFIGURATION)/$(AS_TEMP_PLC)/Visu_R/dis.Hardware.vci
-PANEL_HW_SOURCE_Visu_R=C:/Users/danie/OneDrive/Skrivebord/P5Code/KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0/Physical/Config1/Hardware.hw 
+PANEL_HW_SOURCE_Visu_R=C:/Users/victo/Documents/AAU/MatrixProduction/KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0/Physical/Config1/Hardware.hw 
 DIS_OBJECTS_Visu_R=$(PANEL_HW_OBJECT_Visu_R) $(KEYMAP_OBJECTS_Visu_R)
 
 # KeyMapping flags
@@ -334,27 +334,27 @@ $(VCVK_OBJECTS_Visu_R): $(VC_LANGUAGES_Visu_R)
 TPR_OBJECTS_Visu_R = $(addprefix $(TEMP_PATH_Visu_R)/tpr., $(notdir $(TPR_SOURCES_Visu_R:.tpr=.vco)))
 
 $(TEMP_PATH_Visu_R)/tpr.NumPad.vco: $(AS_PROJECT_PATH)/Logical/Visu_Resized/TouchPads/NumPad.tpr
-	 $(VCC) -f '$<' -o '$@' -l '$(AS_PROJECT_PATH)/Logical/VCShared/Languages.vcr' -cv '$(AS_PROJECT_PATH)/Logical/VCShared/ControlVersion.cvinfo' -pal '$(PALFILE_Visu_R)' $(VCCFLAGS_Visu_R) -prj 'C:/Users/danie/OneDrive/Skrivebord/P5Code/KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0/Logical/Visu_Resized' -p Visu_R -so $(VC_STATIC_OPTIONS_Visu_R) -vcr 4726 -sfas
+	 $(VCC) -f '$<' -o '$@' -l '$(AS_PROJECT_PATH)/Logical/VCShared/Languages.vcr' -cv '$(AS_PROJECT_PATH)/Logical/VCShared/ControlVersion.cvinfo' -pal '$(PALFILE_Visu_R)' $(VCCFLAGS_Visu_R) -prj 'C:/Users/victo/Documents/AAU/MatrixProduction/KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0/Logical/Visu_Resized' -p Visu_R -so $(VC_STATIC_OPTIONS_Visu_R) -vcr 4726 -sfas
 
 
 $(TEMP_PATH_Visu_R)/tpr.AlphaPadQVGA.vco: $(AS_PROJECT_PATH)/Logical/Visu_Resized/TouchPads/AlphaPadQVGA.tpr
-	 $(VCC) -f '$<' -o '$@' -l '$(AS_PROJECT_PATH)/Logical/VCShared/Languages.vcr' -cv '$(AS_PROJECT_PATH)/Logical/VCShared/ControlVersion.cvinfo' -pal '$(PALFILE_Visu_R)' $(VCCFLAGS_Visu_R) -prj 'C:/Users/danie/OneDrive/Skrivebord/P5Code/KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0/Logical/Visu_Resized' -p Visu_R -so $(VC_STATIC_OPTIONS_Visu_R) -vcr 4726 -sfas
+	 $(VCC) -f '$<' -o '$@' -l '$(AS_PROJECT_PATH)/Logical/VCShared/Languages.vcr' -cv '$(AS_PROJECT_PATH)/Logical/VCShared/ControlVersion.cvinfo' -pal '$(PALFILE_Visu_R)' $(VCCFLAGS_Visu_R) -prj 'C:/Users/victo/Documents/AAU/MatrixProduction/KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0/Logical/Visu_Resized' -p Visu_R -so $(VC_STATIC_OPTIONS_Visu_R) -vcr 4726 -sfas
 
 
 $(TEMP_PATH_Visu_R)/tpr.AlphaPad.vco: $(AS_PROJECT_PATH)/Logical/Visu_Resized/TouchPads/AlphaPad.tpr
-	 $(VCC) -f '$<' -o '$@' -l '$(AS_PROJECT_PATH)/Logical/VCShared/Languages.vcr' -cv '$(AS_PROJECT_PATH)/Logical/VCShared/ControlVersion.cvinfo' -pal '$(PALFILE_Visu_R)' $(VCCFLAGS_Visu_R) -prj 'C:/Users/danie/OneDrive/Skrivebord/P5Code/KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0/Logical/Visu_Resized' -p Visu_R -so $(VC_STATIC_OPTIONS_Visu_R) -vcr 4726 -sfas
+	 $(VCC) -f '$<' -o '$@' -l '$(AS_PROJECT_PATH)/Logical/VCShared/Languages.vcr' -cv '$(AS_PROJECT_PATH)/Logical/VCShared/ControlVersion.cvinfo' -pal '$(PALFILE_Visu_R)' $(VCCFLAGS_Visu_R) -prj 'C:/Users/victo/Documents/AAU/MatrixProduction/KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0/Logical/Visu_Resized' -p Visu_R -so $(VC_STATIC_OPTIONS_Visu_R) -vcr 4726 -sfas
 
 
 $(TEMP_PATH_Visu_R)/tpr.NavigationPad_ver.vco: $(AS_PROJECT_PATH)/Logical/Visu_Resized/TouchPads/NavigationPad_ver.tpr
-	 $(VCC) -f '$<' -o '$@' -l '$(AS_PROJECT_PATH)/Logical/VCShared/Languages.vcr' -cv '$(AS_PROJECT_PATH)/Logical/VCShared/ControlVersion.cvinfo' -pal '$(PALFILE_Visu_R)' $(VCCFLAGS_Visu_R) -prj 'C:/Users/danie/OneDrive/Skrivebord/P5Code/KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0/Logical/Visu_Resized' -p Visu_R -so $(VC_STATIC_OPTIONS_Visu_R) -vcr 4726 -sfas
+	 $(VCC) -f '$<' -o '$@' -l '$(AS_PROJECT_PATH)/Logical/VCShared/Languages.vcr' -cv '$(AS_PROJECT_PATH)/Logical/VCShared/ControlVersion.cvinfo' -pal '$(PALFILE_Visu_R)' $(VCCFLAGS_Visu_R) -prj 'C:/Users/victo/Documents/AAU/MatrixProduction/KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0/Logical/Visu_Resized' -p Visu_R -so $(VC_STATIC_OPTIONS_Visu_R) -vcr 4726 -sfas
 
 
 $(TEMP_PATH_Visu_R)/tpr.NavigationPad_hor.vco: $(AS_PROJECT_PATH)/Logical/Visu_Resized/TouchPads/NavigationPad_hor.tpr
-	 $(VCC) -f '$<' -o '$@' -l '$(AS_PROJECT_PATH)/Logical/VCShared/Languages.vcr' -cv '$(AS_PROJECT_PATH)/Logical/VCShared/ControlVersion.cvinfo' -pal '$(PALFILE_Visu_R)' $(VCCFLAGS_Visu_R) -prj 'C:/Users/danie/OneDrive/Skrivebord/P5Code/KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0/Logical/Visu_Resized' -p Visu_R -so $(VC_STATIC_OPTIONS_Visu_R) -vcr 4726 -sfas
+	 $(VCC) -f '$<' -o '$@' -l '$(AS_PROJECT_PATH)/Logical/VCShared/Languages.vcr' -cv '$(AS_PROJECT_PATH)/Logical/VCShared/ControlVersion.cvinfo' -pal '$(PALFILE_Visu_R)' $(VCCFLAGS_Visu_R) -prj 'C:/Users/victo/Documents/AAU/MatrixProduction/KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0/Logical/Visu_Resized' -p Visu_R -so $(VC_STATIC_OPTIONS_Visu_R) -vcr 4726 -sfas
 
 
 $(TEMP_PATH_Visu_R)/tpr.EditPad.vco: $(AS_PROJECT_PATH)/Logical/Visu_Resized/TouchPads/EditPad.tpr
-	 $(VCC) -f '$<' -o '$@' -l '$(AS_PROJECT_PATH)/Logical/VCShared/Languages.vcr' -cv '$(AS_PROJECT_PATH)/Logical/VCShared/ControlVersion.cvinfo' -pal '$(PALFILE_Visu_R)' $(VCCFLAGS_Visu_R) -prj 'C:/Users/danie/OneDrive/Skrivebord/P5Code/KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0/Logical/Visu_Resized' -p Visu_R -so $(VC_STATIC_OPTIONS_Visu_R) -vcr 4726 -sfas
+	 $(VCC) -f '$<' -o '$@' -l '$(AS_PROJECT_PATH)/Logical/VCShared/Languages.vcr' -cv '$(AS_PROJECT_PATH)/Logical/VCShared/ControlVersion.cvinfo' -pal '$(PALFILE_Visu_R)' $(VCCFLAGS_Visu_R) -prj 'C:/Users/victo/Documents/AAU/MatrixProduction/KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0/Logical/Visu_Resized' -p Visu_R -so $(VC_STATIC_OPTIONS_Visu_R) -vcr 4726 -sfas
 
 
 #Touch Pads END
