@@ -459,14 +459,14 @@ PROGRAM _CYCLIC
 					em.description := 'Smart Lab Program - Check if new order has been placed';
 					IF executeOrder AND productOrder.amount <> 0 THEN
 						orderFinished := FALSE;
-						parkingSpotIdx := productOrder.amount - 1;
+						amountProductsFinished := 0;
+						parkingSpotIndex := productOrder.amount - 1;
 						
 						FOR i := 0 TO (productOrder.amount - 1) DO
-							pShuttle ACCESS ADR(gShuttles[i]);
-							cm ACCESS ADR (gShuttles[i].cm);
+							pShuttle ACCESS ADR(gShuttles[shuttleIndexAtPosition[i]]);
+							cm ACCESS ADR (gShuttles[shuttleIndexAtPosition[i]].cm);
 							pShuttle.cm.setup.parent.name := 'main';
-							pShuttle.cm.setup.nameIdx := i;
-							pShuttle.par.shuttleID := i;
+							pShuttle.par.shuttleID := shuttleIndexAtPosition[i]; // For the correct order of shuttles
 							
 							smartLabInitialMovement;
 						END_FOR
@@ -474,7 +474,6 @@ PROGRAM _CYCLIC
 					
 				17020..17999:
 					em.description := 'Smart Lab program - Workstation movement';
-					
 					FOR i := 0 TO (smartLabNumWorkstations - 1) DO
 						pWorkStations ACCESS ADR (gWorkStations[i]); 
 						cm ACCESS ADR (gWorkStations[i].cm);

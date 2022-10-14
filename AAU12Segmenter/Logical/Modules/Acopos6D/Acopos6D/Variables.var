@@ -110,12 +110,10 @@ VAR
 	GripperWhitePin : BOOL := FALSE;
 	GripperBlackPin : BOOL := FALSE;
 	executeOrder : BOOL := FALSE;
-END_VAR
-VAR RETAIN
-	productOrder : product_order;
-END_VAR
-VAR
-	parkingSpotIdx : SINT;
 	orderFinished : BOOL := TRUE;
+	productOrder : product_order := (amount:=1,topCover:=blackCover,bottomCover:=blackCover,PCB:=TRUE,Fuses:=2);
+	amountProductsFinished : USINT := 0;
+	parkingSpotIndex : SINT;
+	shuttleIndexAtPosition : ARRAY[0..7] OF USINT := [0,1,2,3,4,5,6,7];
 	smartLabNumWorkstations : USINT := 4;
 END_VAR

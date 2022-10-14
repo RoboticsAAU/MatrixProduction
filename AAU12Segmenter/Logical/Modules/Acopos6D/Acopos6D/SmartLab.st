@@ -115,19 +115,22 @@ ACTION smartLabInitialMovement:
 			
 		10:
 			cm.description := 'Initiate movement to first workstation';
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[0].par.xLocation;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[0].par.yLocation;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; //X then Y
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0;
-					
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
-			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
-				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
+			IF (gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.X > positionContainerSmartLabProgram[0].initXPos - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.X < positionContainerSmartLabProgram[0].initXPos + MARGIN) AND
+				(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y > positionContainerSmartLabProgram[0].initYPos - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y < positionContainerSmartLabProgram[0].initYPos + MARGIN) THEN
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[0].par.xLocation;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[0].par.yLocation;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; //X then Y
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0;
+				
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
+				IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
+					pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
+				END_IF
+				cm.state := 20;
 			END_IF
-			cm.state := 20;
 		
 		20:
 			cm.state := 0;
@@ -203,10 +206,14 @@ ACTION smartLabWorkstationMovement:
 			pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
 			
 			IF pWorkStations.par.nextStationSelector = 'END' THEN
-				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := positionContainerSmartLabProgram[parkingSpotIdx].initXPos;
-				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := positionContainerSmartLabProgram[parkingSpotIdx].initYPos;
-				parkingSpotIdx := parkingSpotIdx - 1; // NOTE: Problem with second (and subsequent) product order since indexing of shuttles has changed
-				IF parkingSpotIdx = -1 THEN
+				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := positionContainerSmartLabProgram[parkingSpotIndex].initXPos;
+				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := positionContainerSmartLabProgram[parkingSpotIndex].initYPos;
+				
+				amountProductsFinished := amountProductsFinished + 1;
+				
+				shuttleIndexAtPosition[parkingSpotIndex] := k; // Make the shuttle index correspond to the given position (see Smart Lab page for reference)
+				parkingSpotIndex := parkingSpotIndex - 1;
+				IF parkingSpotIndex = -1 THEN
 					orderFinished := TRUE;
 				END_IF
 			ELSE
@@ -227,12 +234,15 @@ ACTION smartLabWorkstationMovement:
 			END_IF
 			
 		50:
-			cm.description := 'Current product order has finished';
-			orderFinished := TRUE;
-			executeOrder := FALSE;
-			cm.state := 0;
-			em.substate := 17000; // Probably change to 17010 (needs fix though)
-		
+			cm.description := 'Waiting for current product order to finish';
+			IF (gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[0]].Position.X > positionContainerSmartLabProgram[0].initXPos - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[0]].Position.X < positionContainerSmartLabProgram[0].initXPos + MARGIN) AND
+				(gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[0]].Position.Y > positionContainerSmartLabProgram[0].initYPos - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[0]].Position.Y < positionContainerSmartLabProgram[0].initYPos + MARGIN) THEN
+				orderFinished := TRUE;
+				executeOrder := FALSE;
+				cm.state := 0;
+				em.substate := 17010;
+			END_IF
+			
 	END_CASE
 	
 	//Calls

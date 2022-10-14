@@ -125,6 +125,7 @@
         </Variable>
         <Variable Name="executeOrder" />
         <Variable Name="orderFinished" />
+        <Variable Name="amountProductsFinished" />
       </Task>
       <Task Name="Vision">
         <Variable Name="codeReaderVariable">
