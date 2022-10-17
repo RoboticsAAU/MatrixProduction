@@ -460,12 +460,12 @@ PROGRAM _CYCLIC
 					IF executeOrder THEN
 						orderFinished := FALSE;
 						amountProductsFinished := 0;
-						parkingSpotIndex := productOrder.amount - 1;
 						
 						TON_0.PT := REAL_TO_TIME(500);
 						TON_0.IN := TRUE;
 						IF TON_0.Q THEN
 							TON_0.IN := FALSE;
+							parkingSpotIndex := productOrder.amount - 1;
 							em.substate := 17020;
 						END_IF
 					
@@ -476,7 +476,7 @@ PROGRAM _CYCLIC
 					FOR i := 0 TO (productOrder.amount - 1) DO
 						IF (gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[i]].Position.X > positionContainerSmartLabProgram[i].initXPos - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[i]].Position.X < positionContainerSmartLabProgram[i].initXPos + MARGIN) AND
 							(gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[i]].Position.Y > positionContainerSmartLabProgram[i].initYPos - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[i]].Position.Y < positionContainerSmartLabProgram[i].initYPos + MARGIN) THEN			
-							TON_0.PT := REAL_TO_TIME(1000);
+							TON_0.PT := REAL_TO_TIME(500);
 							TON_0.IN := TRUE;
 							IF TON_0.Q THEN
 								TON_0.IN := FALSE;
