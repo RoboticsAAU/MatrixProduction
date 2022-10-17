@@ -457,23 +457,50 @@ PROGRAM _CYCLIC
 				
 				17010..17019:
 					em.description := 'Smart Lab Program - Check if new order has been placed';
-					IF executeOrder AND productOrder.amount <> 0 THEN
+					IF executeOrder THEN
 						orderFinished := FALSE;
 						amountProductsFinished := 0;
 						parkingSpotIndex := productOrder.amount - 1;
 						
-						FOR i := 0 TO (productOrder.amount - 1) DO
-							pShuttle ACCESS ADR(gShuttles[shuttleIndexAtPosition[i]]);
-							cm ACCESS ADR (gShuttles[shuttleIndexAtPosition[i]].cm);
-							pShuttle.cm.setup.parent.name := 'main';
-							pShuttle.par.shuttleID := shuttleIndexAtPosition[i]; // For the correct order of shuttles
-							
-							smartLabInitialMovement;
-						END_FOR
+						TON_0.PT := REAL_TO_TIME(500);
+						TON_0.IN := TRUE;
+						IF TON_0.Q THEN
+							TON_0.IN := FALSE;
+							em.substate := 17020;
+						END_IF
+					
 					END_IF
 					
 				17020..17999:
 					em.description := 'Smart Lab program - Workstation movement';
+					FOR i := 0 TO (productOrder.amount - 1) DO
+						IF (gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[i]].Position.X > positionContainerSmartLabProgram[i].initXPos - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[i]].Position.X < positionContainerSmartLabProgram[i].initXPos + MARGIN) AND
+							(gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[i]].Position.Y > positionContainerSmartLabProgram[i].initYPos - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[i]].Position.Y < positionContainerSmartLabProgram[i].initYPos + MARGIN) THEN			
+							TON_0.PT := REAL_TO_TIME(1000);
+							TON_0.IN := TRUE;
+							IF TON_0.Q THEN
+								TON_0.IN := FALSE;
+								moveToStartWorkstation := TRUE;
+							END_IF
+						ELSE
+							TON_0.PT := REAL_TO_TIME(1000);
+							TON_0.IN := TRUE;
+							IF TON_0.Q THEN
+								TON_0.IN := FALSE;
+								moveToStartWorkstation := FALSE;
+							END_IF
+							EXIT;
+						END_IF
+					END_FOR
+					FOR i := 0 TO (productOrder.amount - 1) DO
+						pShuttle ACCESS ADR(gShuttles[shuttleIndexAtPosition[i]]);
+						cm ACCESS ADR (gShuttles[shuttleIndexAtPosition[i]].cm);
+						pShuttle.cm.setup.parent.name := 'main';
+						pShuttle.par.shuttleID := shuttleIndexAtPosition[i]; // For the correct order of shuttles
+						
+						smartLabInitialMovement;
+					END_FOR
+					
 					FOR i := 0 TO (smartLabNumWorkstations - 1) DO
 						pWorkStations ACCESS ADR (gWorkStations[i]); 
 						cm ACCESS ADR (gWorkStations[i].cm);

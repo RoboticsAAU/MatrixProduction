@@ -116,4 +116,5 @@ VAR
 	parkingSpotIndex : SINT;
 	shuttleIndexAtPosition : ARRAY[0..7] OF USINT := [0,1,2,3,4,5,6,7];
 	smartLabNumWorkstations : USINT := 4;
+	moveToStartWorkstation : BOOL := FALSE;
 END_VAR
