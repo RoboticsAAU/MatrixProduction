@@ -80,9 +80,9 @@
     <Channel ID="Configured_Slaves" Description="" Direction="IN" Ext="/HW /STATE /PSEUDOCYCLIC" Type="UDINT" Address="48" />
     <Channel ID="Active_Slaves" Description="" Direction="IN" Ext="/HW /STATE /PSEUDOCYCLIC" Type="UDINT" Address="52" />
     <Channel ID="Faulted_Slaves" Description="" Direction="IN" Ext="/HW /STATE /PSEUDOCYCLIC" Type="UDINT" Address="56" />
-    <Channel ID="SlaveConfig_kuka_noname" Description="" Direction="IN" Ext="/HW" Type="BOOL" BitOffset="0" Address="256" />
-    <Channel ID="SlaveState_kuka_noname" Description="" Direction="IN" Ext="/HW" Type="BOOL" BitOffset="0" Address="272" />
-    <Channel ID="SlaveDiag_kuka_noname" Description="" Direction="IN" Ext="/HW" Type="BOOL" BitOffset="0" Address="288" />
+    <Channel ID="SlaveConfig_krc4_1" Description="" Direction="IN" Ext="/HW" Type="BOOL" BitOffset="0" Address="256" />
+    <Channel ID="SlaveState_krc4_1" Description="" Direction="IN" Ext="/HW" Type="BOOL" BitOffset="0" Address="272" />
+    <Channel ID="SlaveDiag_krc4_1" Description="" Direction="IN" Ext="/HW" Type="BOOL" BitOffset="0" Address="288" />
   </Module>
   <Module ID="SS1.IF1.ST1" Hardware="NetX_any" HardwareModuleName="KRC4_ProfiNet_4_1" ModuleID="1" Simulatable="true">
     <Channel ID="ModuleOk" Description="Module status (1 = module present)" Description-de="Modul Status (1 = Modul gesteckt)" Description-fr="TODO" Direction="IN" Ext="/OK" Type="BOOL" BitOffset="0" Address="272" Sig_St_Bool="1" />

@@ -2,40 +2,40 @@
 <?AutomationStudio FileVersion="4.9" WorkingVersion="4.12"?>
 <RuleSetOptions UsesUTCTime="True">
   <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\asnxdb1.br">
-    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\dtm\x20if10e1_1\x20if10e1_1.dtm" LastWriteTime="2022-10-17 12.32.22" />
-    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\dtm\x20if10e1_1\krc4_profinet_4_1\krc4_profinet_4_1.dtmdre" LastWriteTime="2022-10-17 12.32.18" />
-    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\dtm\x20if10e1_1\krc4_profinet_4_1\krc4_profinet_4_1.dtmdri" LastWriteTime="2022-10-17 12.32.18" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\dtm\x20if10e1_1\x20if10e1_1.dtm" LastWriteTime="2022-10-17 12.53.00" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\dtm\x20if10e1_1\krc4_profinet_4_1\krc4_profinet_4_1.dtmdre" LastWriteTime="2022-10-17 12.52.56" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\dtm\x20if10e1_1\krc4_profinet_4_1\krc4_profinet_4_1.dtmdri" LastWriteTime="2022-10-17 12.52.56" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\dtm\x20if10e1_1\krc4_profinet_4_1\krc4_profinet_4_1.dtmtre" LastWriteTime="2022-10-17 07.49.18" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\dtm\x20if10e1_1\x20if10e1_1_if1\x20if10e1_1_if1.dtmdra" LastWriteTime="2022-10-17 07.49.18" />
-    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\dtm\x20if10e1_1\x20if10e1_1_if1\x20if10e1_1_if1.dtmdre" LastWriteTime="2022-10-17 12.32.18" />
-    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\dtm\x20if10e1_1\x20if10e1_1_if1\x20if10e1_1_if1.dtmdri" LastWriteTime="2022-10-17 12.32.18" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\dtm\x20if10e1_1\x20if10e1_1_if1\x20if10e1_1_if1.dtmdre" LastWriteTime="2022-10-17 12.52.56" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\dtm\x20if10e1_1\x20if10e1_1_if1\x20if10e1_1_if1.dtmdri" LastWriteTime="2022-10-17 12.52.56" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\dtm\x20if10e1_1\x20if10e1_1_if1\x20if10e1_1_if1.dtmtre" LastWriteTime="2022-10-17 07.49.18" />
-    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\arconfig.br" LastWriteTime="2022-10-17 12.37.12" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\arconfig.br" LastWriteTime="2022-10-17 12.56.02" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\ashwd.br" LastWriteTime="2022-10-17 07.49.18" />
     <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\X20IF10E1_1.dtm&quot; -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685\asnxdb1.br&quot; -H &quot;$(AS_PROJECT_PATH)\Physical\Config1\Hardware.hw&quot; -c Config1 -B B4.91 -P &quot;$(AS_PROJECT_PATH)&quot; " />
   </Rule>
   <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\ashwac.br">
-    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2022-10-17 07.49.18" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2022-10-17 12.52.58" />
     <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Physical\Config1\Hardware.hw&quot;  -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685\ashwac.br&quot; -L &quot;AsBrStr: V*, AsIecCon: V*, asstring: V*, astime: V*, AsUDP: V*, AsZip: V*, CoTrace: V5.06.0, FileIO: V*, KUKAmxA3_0: V3.00.2, operator: V*, runtime: V*, standard: V*&quot; -c &quot;Config1&quot; -Z &quot;FMUExport: n.d, Connectivity: n.d, UnitSystem: n.d, TextSystem: n.d, ProgrammingSystem: n.d, RemanentData: n.d, AAS: n.d&quot; -M IA32 -B B4.91 -P &quot;$(AS_PROJECT_PATH)&quot; -s &quot;Config1&quot; -T SG4 " />
   </Rule>
   <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\sysconf.br">
-    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2022-10-17 07.49.18" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2022-10-17 12.52.58" />
     <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Physical\Config1\Hardware.hw&quot;  -c &quot;Config1&quot; -sysconf -S &quot;X20CP1685&quot; -Z &quot;FMUExport: n.d, Connectivity: n.d, UnitSystem: n.d, TextSystem: n.d, ProgrammingSystem: n.d, RemanentData: n.d, AAS: n.d&quot; -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685\sysconf.br&quot; -T SG4 -B B4.91 -P &quot;$(AS_PROJECT_PATH)&quot; -s &quot;Config1&quot; " />
   </Rule>
   <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\asfw.br">
-    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2022-10-17 07.49.18" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2022-10-17 12.52.58" />
     <Prerequisite ID="c:\brautomation\as412\upgrades\modified.txt" LastWriteTime="2022-10-04 11.28.10" />
     <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Physical\Config1\Hardware.hw&quot;  -v V1.00.0 -S &quot;X20CP1685&quot; -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685\asfw.br&quot; -T SG4 -B B4.91 -P &quot;$(AS_PROJECT_PATH)&quot; -c &quot;Config1&quot; -zip -s &quot;Config1&quot; -firmware -Z &quot;FMUExport: n.d, Connectivity: n.d, UnitSystem: n.d, TextSystem: n.d, ProgrammingSystem: n.d, RemanentData: n.d, AAS: n.d&quot; " />
   </Rule>
   <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\ashwd.br">
-    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2022-10-17 07.49.18" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2022-10-17 12.52.58" />
     <Prerequisite ID="c:\brautomation\as412\upgrades\modified.txt" LastWriteTime="2022-10-04 11.28.10" />
     <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Physical\Config1\Hardware.hw&quot;  -v V1.00.0 -S &quot;X20CP1685&quot; -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685\ashwd.br&quot; -T SG4 -B B4.91 -P &quot;$(AS_PROJECT_PATH)&quot; -c &quot;Config1&quot; -zip -s &quot;Config1&quot; -hwd -Z &quot;FMUExport: n.d, Connectivity: n.d, UnitSystem: n.d, TextSystem: n.d, ProgrammingSystem: n.d, RemanentData: n.d, AAS: n.d&quot; " />
   </Rule>
   <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\arconfig.br">
-    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2022-10-17 07.49.18" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2022-10-17 12.52.58" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\iomap.iom" LastWriteTime="2022-10-17 12.34.58" />
-    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\dtm\x20if10e1_1\x20if10e1_1.dtm" LastWriteTime="2022-10-17 12.32.22" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\dtm\x20if10e1_1\x20if10e1_1.dtm" LastWriteTime="2022-10-17 12.53.00" />
     <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Physical\Config1\Hardware.hw&quot; &quot;$(AS_PROJECT_PATH)\Physical\Config1\X20CP1685\IoMap.iom&quot;  -arconfig -C &quot;/COMT=2500 /RT=1000 /AM=* /SDT=5 /DAIP=192.168.1.140 /REPO=11159 /ANSL=1 /PT=11169&quot; -D &quot;/IF=tcpip /LOPO=11159 /SA=1&quot; -c &quot;Config1&quot; -v V1.00.0 -S &quot;X20CP1685&quot; -Z &quot;FMUExport: n.d, Connectivity: n.d, UnitSystem: n.d, TextSystem: n.d, ProgrammingSystem: n.d, RemanentData: n.d, AAS: n.d&quot; -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685\arconfig.br&quot; &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685\ChannelConfiguration.xml&quot; &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685\ReActionTechnologyConfiguration.xml&quot; -T SG4 -B B4.91 -P &quot;$(AS_PROJECT_PATH)&quot; -s &quot;Config1&quot; " />
   </Rule>
   <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\udbdef.br">
@@ -45,9 +45,9 @@
   <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\iomap.br">
     <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\iomap.iom" LastWriteTime="2022-10-17 12.34.58" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\pvmap.vvm" LastWriteTime="2022-10-17 07.49.18" />
-    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2022-10-17 07.49.18" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\hardware.hw" LastWriteTime="2022-10-17 12.52.58" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\cpu.sw" LastWriteTime="2022-10-17 07.49.18" />
-    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\channelconfiguration.xml" LastWriteTime="2022-10-17 12.37.10" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\channelconfiguration.xml" LastWriteTime="2022-10-17 12.56.00" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\logical\global.var" LastWriteTime="2022-10-17 07.49.18" />
     <CommandLine Parameter="&quot;$(AS_PROJECT_PATH)\Physical\Config1\X20CP1685\IoMap.iom&quot; &quot;$(AS_PROJECT_PATH)\Physical\Config1\X20CP1685\PvMap.vvm&quot;  -m &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685\ConfigInfo.cfi&quot; -g &quot;$(AS_PROJECT_PATH)\Temp\Objects\Declarations.lst&quot; -x &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685\ChannelConfiguration.xml&quot; -v V1.00.0 -f &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685&quot; -iomap -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685\iomap.br&quot; -T SG4 -B B4.91 -P &quot;$(AS_PROJECT_PATH)&quot; -s &quot;Config1.X20CP1685&quot;" />
   </Rule>
@@ -242,21 +242,21 @@
     <CommandLine Parameter="&quot;Visu_Resized&quot; -o &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685\Visu_R.br&quot; -T SG4 -B B4.91 -c &quot;Config1&quot; -S &quot;X20CP1685&quot; -P &quot;$(AS_PROJECT_PATH)&quot; -t &quot;$(AS_PROJECT_PATH)\Temp&quot; -H &quot;$(AS_PROJECT_PATH)\Physical\Config1\Hardware.hw&quot; -V &quot;V4.72.6&quot; -apj &quot;KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0&quot; -v V1.00.0 -m &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685\ConfigInfo.cfi&quot; -g &quot;$(AS_PROJECT_PATH)\Temp\Objects\Declarations.lst&quot; -w2 -sfas" />
   </Rule>
   <Rule ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\visu_r.br">
-    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\visu_r\visu_r.mak" LastWriteTime="2022-10-17 12.38.34" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\visu_r\visu_r.mak" LastWriteTime="2022-10-17 12.55.58" />
     <CommandLine Parameter=" -r -f &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685\#cpu_vc.mak&quot; -k" />
   </Rule>
   <Rule ID="#cpu_tp.mak">
     <CommandLine Parameter=" -r -f &quot;$(AS_PROJECT_PATH)\Temp\Objects\Config1\X20CP1685\#cpu_tp.mak&quot; -k" />
   </Rule>
   <Rule ID="$(AS_PROJECT_PATH)\binaries\config1\x20cp1685\transfer.lst">
-    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\asnxdb1.br" LastWriteTime="2022-10-17 12.37.18" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\asnxdb1.br" LastWriteTime="2022-10-17 12.56.08" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\ashwac.br" LastWriteTime="2022-10-17 07.49.18" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\sysconf.br" LastWriteTime="2022-10-17 07.49.18" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\asfw.br" LastWriteTime="2022-10-17 07.49.18" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\ashwd.br" LastWriteTime="2022-10-17 07.49.18" />
-    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\arconfig.br" LastWriteTime="2022-10-17 12.37.12" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\arconfig.br" LastWriteTime="2022-10-17 12.56.02" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\udbdef.br" LastWriteTime="2022-10-17 07.49.18" />
-    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\iomap.br" LastWriteTime="2022-10-17 12.37.12" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\iomap.br" LastWriteTime="2022-10-17 12.56.02" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\tcdata.br" LastWriteTime="2022-10-17 07.53.36" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\ctrl.br" LastWriteTime="2022-10-17 07.53.36" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\standard.br" LastWriteTime="2022-10-17 07.49.18" />
@@ -271,7 +271,7 @@
     <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\aszip.br" LastWriteTime="2022-10-17 07.49.18" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\fileio.br" LastWriteTime="2022-10-17 07.49.18" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\kukamxa3_0.br" LastWriteTime="2022-10-17 07.49.18" />
-    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\visu_r.br" LastWriteTime="2022-10-17 07.49.18" />
+    <Prerequisite ID="$(AS_PROJECT_PATH)\temp\objects\config1\x20cp1685\visu_r.br" LastWriteTime="2022-10-17 12.56.16" />
     <Prerequisite ID="$(AS_PROJECT_PATH)\physical\config1\x20cp1685\cpu.sw" LastWriteTime="2022-10-17 07.49.18" />
     <CommandLine Parameter=" &quot;$(AS_PROJECT_PATH)\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0.apj&quot; -t &quot;$(AS_PROJECT_PATH)\Temp&quot; -o &quot;$(AS_PROJECT_PATH)\Binaries&quot; -c &quot;Config1&quot; -i &quot;C:\BRAutomation\AS412&quot; -S &quot;X20CP1685&quot; -A &quot;X20CPx68x&quot; -pil -swFiles &quot;$(AS_PROJECT_PATH)\Physical\Config1\X20CP1685\Cpu.sw&quot; -Z &quot;FMUExport: n.d, Connectivity: n.d, UnitSystem: n.d, TextSystem: n.d, ProgrammingSystem: n.d, RemanentData: n.d, AAS: n.d&quot; -C &quot;/COMT=2500 /RT=1000 /AM=* /SDT=5 /DAIP=192.168.1.140 /REPO=11159 /ANSL=1 /PT=11169&quot; -D &quot;/IF=tcpip /LOPO=11159 /SA=1&quot; -M IA32 -T SG4" />
   </Rule>

@@ -230,14 +230,14 @@
 <LN ID="%ID.SS1.Faulted_Slaves" Type="UDINT">
 <Prod Device="SS1" DPName="Faulted_Slaves" Kind="io"/>
 </LN>
-<LN ID="%IX.SS1.SlaveConfig_kuka_noname" Type="BOOL">
-<Prod Device="SS1" DPName="SlaveConfig_kuka_noname" Kind="io"/>
+<LN ID="%IX.SS1.SlaveConfig_krc4_1" Type="BOOL">
+<Prod Device="SS1" DPName="SlaveConfig_krc4_1" Kind="io"/>
 </LN>
-<LN ID="%IX.SS1.SlaveState_kuka_noname" Type="BOOL">
-<Prod Device="SS1" DPName="SlaveState_kuka_noname" Kind="io"/>
+<LN ID="%IX.SS1.SlaveState_krc4_1" Type="BOOL">
+<Prod Device="SS1" DPName="SlaveState_krc4_1" Kind="io"/>
 </LN>
-<LN ID="%IX.SS1.SlaveDiag_kuka_noname" Type="BOOL">
-<Prod Device="SS1" DPName="SlaveDiag_kuka_noname" Kind="io"/>
+<LN ID="%IX.SS1.SlaveDiag_krc4_1" Type="BOOL">
+<Prod Device="SS1" DPName="SlaveDiag_krc4_1" Kind="io"/>
 </LN>
 <LN ID="%IX.SS1.IF1.ST1.ModuleOk" Type="BOOL">
 <Prod Device="SS1.IF1.ST1" DPName="ModuleOk" Kind="io"/>
