@@ -10,8 +10,13 @@
     <ExpandedNodes>
       <ExpandedNode Row="0" />
       <ExpandedNode Row="3" />
+      <ExpandedNode Row="16" />
+      <ExpandedNode Row="21" />
+      <ExpandedNode Row="23" />
     </ExpandedNodes>
-    <SelectedNodes />
+    <SelectedNodes>
+      <SelectedNode Row="24" />
+    </SelectedNodes>
     <ZoomIndices />
   </TreeView>
 </State>
