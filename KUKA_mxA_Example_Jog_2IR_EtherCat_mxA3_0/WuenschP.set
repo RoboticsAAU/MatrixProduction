@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version="4.7.2.98"?>
-<ProjectSettings xmlns="http://br-automation.co.at/AS/ProjectSettings">
-  <ConfigurationManager ActiveConfigurationName="Config1" />
-  <Deployment Value="ActiveCpu" />
-  <ExportProject ExportFilePath="C:\Users\Wuenschp\Desktop\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0.zip" />
-  <Print Footer="%cPage: %p" Header="%lProject: %n%c%x" />
-</ProjectSettings>
