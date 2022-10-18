@@ -9,17 +9,19 @@
       Source="CTRL"
       Language="IEC">
       <File
-        Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\Types.typ" />
+        Path="C:\Users\victo\Documents\AAU\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\Types.typ" />
       <File
-        Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\Variables.var" />
+        Path="C:\Users\victo\Documents\AAU\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\Variables.var" />
       <InternalFile
-        Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Temp\Objects\Config1\X20CP1685\CTRL\mxA_Main.st.var" />
+        Path="C:\Users\victo\Documents\AAU\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Temp\Objects\Config1\X20CP1685\CTRL\mxA_Main.st.var" />
       <InternalFile
-        Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Temp\Objects\Config1\X20CP1685\CTRL\mxA_Start.st.var" />
+        Path="C:\Users\victo\Documents\AAU\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Temp\Objects\Config1\X20CP1685\CTRL\mxA_Start.st.var" />
       <InternalFile
-        Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Temp\Objects\Config1\X20CP1685\CTRL\mxA_Motion.fbd.var" />
+        Path="C:\Users\victo\Documents\AAU\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Temp\Objects\Config1\X20CP1685\CTRL\mxA_Motion.fbd.var" />
       <InternalFile
-        Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Temp\Objects\Config1\X20CP1685\CTRL\mxA_ErrorMessage.st.var" />
+        Path="C:\Users\victo\Documents\AAU\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Temp\Objects\Config1\X20CP1685\CTRL\mxA_ErrorMessage.st.var" />
+      <InternalFile
+        Path="C:\Users\victo\Documents\AAU\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Temp\Objects\Config1\X20CP1685\CTRL\mxA_BottomCover.st.var" />
     </Task>
   </TaskClass>
   <TaskClass

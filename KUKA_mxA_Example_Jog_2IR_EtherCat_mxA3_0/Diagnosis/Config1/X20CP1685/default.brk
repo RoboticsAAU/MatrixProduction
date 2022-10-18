@@ -1,2 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<breakpoints />
+<breakpoints>
+  <breakpoint>
+    <status>Y</status>
+    <file>Logical/CTRL/mxA_BottomCover.st</file>
+    <position>13</position>
+    <condition></condition>
+    <instance></instance>
+    <program>CTRL</program>
+  </breakpoint>
+</breakpoints>

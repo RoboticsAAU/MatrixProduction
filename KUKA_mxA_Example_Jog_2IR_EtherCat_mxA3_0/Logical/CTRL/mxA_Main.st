@@ -38,8 +38,10 @@ PROGRAM _CYCLIC
 	/////////////////////////////////////////////////////
 
 	mxA_Start;
+	mxA_BottomCover;
 	mxA_Motion;
 	mxA_ErrorMessage;
+
 	
 	
 	

@@ -69,4 +69,5 @@ VAR
 	Status_S : INT; (*Variable used to show correct color in Visualization for the S-Shape*)
 	KRC_ReadMXAError_0 : KRC_ReadMXAError;
 	KRC_Diag_2 : KRC_Diag;
+	position1 : E6AXIS;
 END_VAR
