@@ -50,11 +50,11 @@
     UseAsStatic="false"
     Version="" />
   <Library
-    Name="KUKAmxA3_0"
+    Name="KUKAmxA3_1"
     IsDeployed="true"
     IsStatic="false"
     UseAsStatic="false"
-    Version="3.00.2" />
+    Version="3.01.1" />
   <Library
     Name="operator"
     IsDeployed="true"

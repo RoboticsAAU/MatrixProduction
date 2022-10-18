@@ -41,6 +41,7 @@ extern "C"
  #define udpIP_MULTICAST_IF_SET 2003U
  #define udpIP_DROP_MEMBERSHIP 2002U
  #define udpIP_ADD_MEMBERSHIP 2001U
+ #define udpSO_BINDTODEVICE 1008U
  #define udpSO_ADDRESS_GET 1007U
  #define udpSO_RCVBUF_GET 1006U
  #define udpSO_RCVBUF_SET 1005U
@@ -52,6 +53,7 @@ extern "C"
  #define udpERR_SOCKET_CONNECT 32552U
  #define udpERR_SOCKET_BIND 32551U
  #define udpERR_SOCKET_CREATE 32550U
+ #define udpERR_FIREWALL 32512U
  #define udpERR_INTERFACE 32511U
  #define udpERR_UNREACHABLE 32510U
  #define udpERR_ACCESS 32509U
@@ -92,6 +94,7 @@ extern "C"
  _GLOBAL_CONST unsigned long udpIP_MULTICAST_IF_SET;
  _GLOBAL_CONST unsigned long udpIP_DROP_MEMBERSHIP;
  _GLOBAL_CONST unsigned long udpIP_ADD_MEMBERSHIP;
+ _GLOBAL_CONST unsigned long udpSO_BINDTODEVICE;
  _GLOBAL_CONST unsigned long udpSO_ADDRESS_GET;
  _GLOBAL_CONST unsigned long udpSO_RCVBUF_GET;
  _GLOBAL_CONST unsigned long udpSO_RCVBUF_SET;
@@ -103,6 +106,7 @@ extern "C"
  _GLOBAL_CONST unsigned short udpERR_SOCKET_CONNECT;
  _GLOBAL_CONST unsigned short udpERR_SOCKET_BIND;
  _GLOBAL_CONST unsigned short udpERR_SOCKET_CREATE;
+ _GLOBAL_CONST unsigned short udpERR_FIREWALL;
  _GLOBAL_CONST unsigned short udpERR_INTERFACE;
  _GLOBAL_CONST unsigned short udpERR_UNREACHABLE;
  _GLOBAL_CONST unsigned short udpERR_ACCESS;

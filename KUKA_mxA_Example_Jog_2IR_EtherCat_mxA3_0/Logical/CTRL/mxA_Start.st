@@ -57,7 +57,7 @@ ACTION mxA_Start:
 	
 	//////////////////////////////////////////////////////
 	// KRC_AutomaticExternal allows to control the 		//
-	// Robot with the SPS								//
+	// Robot with the PLC								//
 	//////////////////////////////////////////////////////
 	
 	KRC_AutomaticExternal_0.AxisGroupIdx 		:= 1;

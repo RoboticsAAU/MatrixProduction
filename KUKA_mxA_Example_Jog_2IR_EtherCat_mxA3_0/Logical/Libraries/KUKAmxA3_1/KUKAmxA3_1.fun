@@ -597,6 +597,7 @@ FUNCTION_BLOCK KRC_Jog
 		E5_M_Last : BOOL;
 		E6_P_Last : BOOL;
 		E6_M_Last : BOOL;
+		m_ExecuteCmd_Finished : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 

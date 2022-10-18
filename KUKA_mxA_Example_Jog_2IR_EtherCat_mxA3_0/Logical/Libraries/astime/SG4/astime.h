@@ -345,7 +345,7 @@ _BUR_PUBLIC void LocalDTStructure_TO_UtcDT(struct LocalDTStructure_TO_UtcDT* ins
 _BUR_PUBLIC void TimeDeviceGetInfo(struct TimeDeviceGetInfo* inst);
 _BUR_PUBLIC void DstGetInfo(struct DstGetInfo* inst);
 _BUR_PUBLIC void DstGetInfoDT(struct DstGetInfoDT* inst);
-_BUR_PUBLIC plctime clock_ms();
+_BUR_PUBLIC plctime clock_ms(void);
 _BUR_PUBLIC unsigned long ascTIMEStructure(unsigned long pTIMEStructure, unsigned long pStr, unsigned long len);
 _BUR_PUBLIC unsigned long ascDTStructure(unsigned long pDTStructure, unsigned long pStr, unsigned long len);
 _BUR_PUBLIC unsigned long ascTIME(plctime TIME1, unsigned long pStr, unsigned long len);

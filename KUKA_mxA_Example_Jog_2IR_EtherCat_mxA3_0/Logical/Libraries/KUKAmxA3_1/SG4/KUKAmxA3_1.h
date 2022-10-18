@@ -1,15 +1,15 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* KUKAmxA3_0 3.00.2 */
+/* KUKAmxA3_1 3.01.1 */
 
-#ifndef _KUKAMXA3_0_
-#define _KUKAMXA3_0_
+#ifndef _KUKAMXA3_1_
+#define _KUKAMXA3_1_
 #ifdef __cplusplus
 extern "C" 
 {
 #endif
-#ifndef _KUKAmxA3_0_VERSION
-#define _KUKAmxA3_0_VERSION 3.00.2
+#ifndef _KUKAmxA3_1_VERSION
+#define _KUKAmxA3_1_VERSION 3.01.1
 #endif
 
 #include <bur/plctypes.h>
@@ -1081,6 +1081,7 @@ typedef struct KRC_Jog
 	plcbit E5_M_Last;
 	plcbit E6_P_Last;
 	plcbit E6_M_Last;
+	plcbit m_ExecuteCmd_Finished;
 } KRC_Jog_typ;
 
 typedef struct KRC_JogLinearRelative
@@ -3250,5 +3251,5 @@ _BUR_PUBLIC plcbit mxA_WriteIO_WORD(signed short BytePos, plcword Val, plcbyte K
 #ifdef __cplusplus
 };
 #endif
-#endif /* _KUKAMXA3_0_ */
+#endif /* _KUKAMXA3_1_ */
 

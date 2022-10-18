@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.7.2.98?>
-<Library Version="3.00.2" SubType="Binary" xmlns="http://br-automation.co.at/AS/Library">
+<?AutomationStudio Version=4.3.4.121 SP?>
+<Library Version="3.01.1" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported constants">Constants.var</File>
-    <File>KUKAmxA3_0.fun</File>
+    <File>KUKAmxA3_1.fun</File>
     <File Description="Exported data types">Types.typ</File>
     <File>APO.typ</File>
     <File>COORDSYS.typ</File>

@@ -59,7 +59,7 @@
     <Parameter ID="ConfigFile" Value="X20IF10E1_1.dtm" />
     <Parameter ID="ConfigModule" Value="asnxdb1" />
     <Parameter ID="CycleTime" Value="10000" Type="UDINT" />
-    <Parameter ID="ConfigUID" Value="25259201" Type="UDINT" />
+    <Parameter ID="ConfigUID" Value="3642890507" Type="UDINT" />
   </Module>
   <Module ID="SS1.IF1.NETX" Hardware="NETX" />
   <Module ID="SS1.IF1.NETX.BUS" Hardware="X20IF10E1-1">

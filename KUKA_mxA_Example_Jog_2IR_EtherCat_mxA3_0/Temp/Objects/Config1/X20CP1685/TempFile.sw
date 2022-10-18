@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?AutomationStudio Version=4.7.2.98?>
+<?AutomationStudio FileVersion="4.9"?>
 <SwConfiguration CpuAddress="SL1" xmlns="http://br-automation.co.at/AS/SwConfiguration">
   <TaskClass Name="Cyclic#1">
     <Task Name="CTRL" Source="CTRL.prg" Memory="UserROM" Language="IEC" Debugging="true" />
@@ -78,6 +78,6 @@
     <LibraryObject Name="CoTrace" Source="Libraries.CoTrace.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="AsZip" Source="Libraries.AsZip.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="FileIO" Source="Libraries.FileIO.lby" Memory="UserROM" Language="binary" Debugging="true" />
-    <LibraryObject Name="KUKAmxA3_0" Source="Libraries.KUKAmxA3_0.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="KUKAmxA3_1" Source="Libraries.KUKAmxA3_1.lby" Memory="UserROM" Language="Binary" Debugging="true" />
   </Libraries>
 </SwConfiguration>

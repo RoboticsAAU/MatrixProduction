@@ -1,12 +1,13 @@
 ACTION mxA_Motion:
 
+<?AutomationStudio FileVersion="4.9"?>
 (* GRAPHIC_INFORMATION_27DEE8E8_593B_45A1_8A15_7A695968B886_BEGIN *)
 1CFCFBD-EditorFbdChart5.004.031
 CFBDDoc1
 
 CBaseDoc0
 
-CPageFormat100NO326
+CPageFormat100NO556
 CProject6
 
 CCfgEditObject1-1
@@ -364,18 +365,18 @@ CClass2NONO3NODINTNO
 
 CCfgEditObject1ErrorID7
 CTRparamtype0
-CPageFormat100NO326
+CPageFormat100NO556
 CExtend_IEC_Info00
-CFBDDiagramChart01
+CFBDDiagramChart05
 
 CFunctionChart41NO
 
 CCfgEditObject1-1
-CPageFormat100NO3264
+CPageFormat100NO5565
 CTRblocks6
 8
 CFBDNetworkBlockType1
-CPageFormat100NO329
+CPageFormat100NO5510
 CFBDNetworkBlock1NO
 
 CFreeCompoundBlock1NO
@@ -393,12 +394,12 @@ CTRparams0
 CFunctionChart42NO
 
 CCfgEditObject1-1
-CPageFormat100NO329
+CPageFormat100NO5510
 CTRblocks1
 0mxa_ValuesToCOORDSYSmxa_ValuesToCOORDSYS
 CFirmwareBlock0mxa_ValuesToCOORDSYS_0
 
-CBlock71125631NO
+CBlock71125931NO
 
 CCfgEditObject1mxa_ValuesToCOORDSYS1mxa_ValuesToCOORDSYS10
 CTRoutputs1
@@ -444,7 +445,7 @@ CTRinputs0
 CTRparams0
 8
 CFBDNetworkBlockType1
-CPageFormat100NO3220
+CPageFormat100NO5520
 CFBDNetworkBlock1NO
 
 CFreeCompoundBlock1NO
@@ -462,12 +463,12 @@ CTRparams0
 CFunctionChart42NO
 
 CCfgEditObject1-1
-CPageFormat100NO3220
+CPageFormat100NO5520
 CTRblocks2
 0ADRADR
 CFirmwareBlock0
 
-CBlock7152321NO
+CBlock7141421NO
 
 CCfgEditObject1ADR1ADR10
 CTRoutputs1
@@ -491,7 +492,7 @@ CTRparams0
 0KRC_JogKRC_Jog
 CFirmwareBlock0KRC_Jog_0
 
-CBlock711126172NO
+CBlock711818172NO
 
 CCfgEditObject1KRC_Jog1KRC_Jog15
 CTRoutputs6
@@ -769,7 +770,7 @@ CTRinputs0
 CTRparams0
 8
 CFBDNetworkBlockType1
-CPageFormat100NO3210
+CPageFormat100NO5510
 CFBDNetworkBlock1NO
 
 CFreeCompoundBlock1NO
@@ -787,12 +788,12 @@ CTRparams0
 CFunctionChart42NO
 
 CCfgEditObject1-1
-CPageFormat100NO3210
+CPageFormat100NO5510
 CTRblocks2
 0ADRADR
 CFirmwareBlock0
 
-CBlock7242321NO
+CBlock7242421NO
 
 CCfgEditObject1ADR2ADR10
 CTRoutputs1
@@ -816,7 +817,7 @@ CTRparams0
 0KRC_ReadActualAxisPositionKRC_ReadActualAxisPosition
 CFirmwareBlock0KRC_ReadActualAxisPosition_0
 
-CBlock71101782NO
+CBlock711011082NO
 
 CCfgEditObject1KRC_ReadActualAxisPosition1KRC_ReadActualAxisPosition15
 CTRoutputs14
@@ -947,7 +948,7 @@ CTRinputs0
 CTRparams0
 8
 CFBDNetworkBlockType1
-CPageFormat100NO329
+CPageFormat100NO559
 CFBDNetworkBlock1NO
 
 CFreeCompoundBlock1NO
@@ -965,12 +966,12 @@ CTRparams0
 CFunctionChart42NO
 
 CCfgEditObject1-1
-CPageFormat100NO329
+CPageFormat100NO559
 CTRblocks2
 0ADRADR
 CFirmwareBlock0
 
-CBlock7151321NO
+CBlock7151421NO
 
 CCfgEditObject1ADR1ADR10
 CTRoutputs1
@@ -994,7 +995,7 @@ CTRparams0
 0KRC_ReadActualPositionKRC_ReadActualPosition
 CFirmwareBlock0KRC_ReadActualPosition_0
 
-CBlock71110682NO
+CBlock71110982NO
 
 CCfgEditObject1KRC_ReadActualPosition1KRC_ReadActualPosition15
 CTRoutputs13
@@ -1118,7 +1119,7 @@ CTRinputs0
 CTRparams0
 8
 CFBDNetworkBlockType1
-CPageFormat100NO3210
+CPageFormat100NO5510
 CFBDNetworkBlock1NO
 
 CFreeCompoundBlock1NO
@@ -1136,12 +1137,12 @@ CTRparams0
 CFunctionChart42NO
 
 CCfgEditObject1-1
-CPageFormat100NO3210
+CPageFormat100NO5510
 CTRblocks2
 0ADRADR
 CFirmwareBlock0
 
-CBlock7142321NO
+CBlock7142421NO
 
 CCfgEditObject1ADR1ADR10
 CTRoutputs1
@@ -1165,7 +1166,7 @@ CTRparams0
 0KRC_MoveAxisAbsoluteKRC_MoveAxisAbsolute
 CFirmwareBlock0KRC_MoveAxisAbsolute_0
 
-CBlock71121652NO
+CBlock71121852NO
 
 CCfgEditObject1KRC_MoveAxisAbsolute1KRC_MoveAxisAbsolute15
 CTRoutputs6
@@ -1282,7 +1283,7 @@ CTRinputs0
 CTRparams0
 8
 CFBDNetworkBlockType1
-CPageFormat100NO326
+CPageFormat100NO556
 CFBDNetworkBlock1NO
 
 CFreeCompoundBlock1NO
@@ -1300,12 +1301,12 @@ CTRparams0
 CFunctionChart42NO
 
 CCfgEditObject1-1
-CPageFormat100NO326
+CPageFormat100NO556
 CTRblocks2
 0ADRADR
 CFirmwareBlock0
 
-CBlock7181321NO
+CBlock7181421NO
 
 CCfgEditObject1ADR1ADR10
 CTRoutputs1
@@ -1329,7 +1330,7 @@ CTRparams0
 0KRC_AbortKRC_Abort
 CFirmwareBlock0KRC_Abort_0
 
-CBlock71141632NO
+CBlock71141832NO
 
 CCfgEditObject1KRC_Abort1KRC_Abort15
 CTRoutputs4

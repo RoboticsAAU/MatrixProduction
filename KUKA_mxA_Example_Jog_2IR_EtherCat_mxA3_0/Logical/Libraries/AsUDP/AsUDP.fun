@@ -1,12 +1,3 @@
-(********************************************************************
- * COPYRIGHT -- Bernecker + Rainer
- ********************************************************************
- * Library: AsUDP
- * File: AsUDP.fun
- * Author: B+R
- ********************************************************************
- * Functions and function blocks of library AsUDP
- ********************************************************************)
                                                                       
 {REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK UdpOpen					(*opens a UDP port; asynchronous execution*)
 	VAR_INPUT

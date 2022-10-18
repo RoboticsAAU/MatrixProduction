@@ -22,190 +22,190 @@
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\Package.pkg"
     LogicalPath="Libraries"
     Type="Package"
-    LastWriteTime="133104665582313502" />
+    LastWriteTime="133105716309579384" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\operator\Binary.lby"
     LogicalPath="Libraries.operator"
     Type="Library"
-    LastWriteTime="133104665582486274" />
+    LastWriteTime="133003566140000000" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\operator\operator.fun"
     LogicalPath="Libraries.operator.operator.fun"
     Type="File"
-    LastWriteTime="133104665582530922"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\operator\operator.typ"
     LogicalPath="Libraries.operator.operator.typ"
     Type="File"
-    LastWriteTime="133104665582541012"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\operator\operator.var"
     LogicalPath="Libraries.operator.operator.var"
     Type="File"
-    LastWriteTime="133104665582551062"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\runtime\Binary.lby"
     LogicalPath="Libraries.runtime"
     Type="Library"
-    LastWriteTime="133104665582561124" />
+    LastWriteTime="133003566140000000" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\runtime\runtime.fun"
     LogicalPath="Libraries.runtime.runtime.fun"
     Type="File"
-    LastWriteTime="133104665582611206"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\runtime\runtime.typ"
     LogicalPath="Libraries.runtime.runtime.typ"
     Type="File"
-    LastWriteTime="133104665582621232"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\runtime\runtime.var"
     LogicalPath="Libraries.runtime.runtime.var"
     Type="File"
-    LastWriteTime="133104665582621232"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\astime\Binary.lby"
     LogicalPath="Libraries.astime"
     Type="Library"
-    LastWriteTime="133104665582419311" />
+    LastWriteTime="133003566140000000" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\astime\astime.fun"
     LogicalPath="Libraries.astime.astime.fun"
     Type="File"
-    LastWriteTime="133104665582466136"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\astime\astime.typ"
     LogicalPath="Libraries.astime.astime.typ"
     Type="File"
-    LastWriteTime="133104665582476225"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\astime\astime.var"
     LogicalPath="Libraries.astime.astime.var"
     Type="File"
-    LastWriteTime="133104665582476225"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsIecCon\Binary.lby"
     LogicalPath="Libraries.AsIecCon"
     Type="Library"
-    LastWriteTime="133104665581546905" />
+    LastWriteTime="133003566140000000" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsIecCon\AsIecCon.fun"
     LogicalPath="Libraries.AsIecCon.AsIecCon.fun"
     Type="File"
-    LastWriteTime="133104665581524966"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsIecCon\AsIecCon.typ"
     LogicalPath="Libraries.AsIecCon.AsIecCon.typ"
     Type="File"
-    LastWriteTime="133104665581535046"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsIecCon\AsIecCon.var"
     LogicalPath="Libraries.AsIecCon.AsIecCon.var"
     Type="File"
-    LastWriteTime="133104665581546905"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\standard\Binary.lby"
     LogicalPath="Libraries.standard"
     Type="Library"
-    LastWriteTime="133104665582631258" />
+    LastWriteTime="133003566140000000" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\standard\standard.fun"
     LogicalPath="Libraries.standard.standard.fun"
     Type="File"
-    LastWriteTime="133104665582681398"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\standard\standard.typ"
     LogicalPath="Libraries.standard.standard.typ"
     Type="File"
-    LastWriteTime="133104665582691416"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\standard\standard.var"
     LogicalPath="Libraries.standard.standard.var"
     Type="File"
-    LastWriteTime="133104665582701695"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\asstring\Binary.lby"
     LogicalPath="Libraries.asstring"
     Type="Library"
-    LastWriteTime="133104665582325602" />
+    LastWriteTime="133003566140000000" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\asstring\asstring.fun"
     LogicalPath="Libraries.asstring.asstring.fun"
     Type="File"
-    LastWriteTime="133104665582378284"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\asstring\asstring.typ"
     LogicalPath="Libraries.asstring.asstring.typ"
     Type="File"
-    LastWriteTime="133104665582388308"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\asstring\asstring.var"
     LogicalPath="Libraries.asstring.asstring.var"
     Type="File"
-    LastWriteTime="133104665582409228"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsUDP\Binary.lby"
     LogicalPath="Libraries.AsUDP"
     Type="Library"
-    LastWriteTime="133104665581629521" />
+    LastWriteTime="133003566140000000" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsUDP\AsUDP.fun"
     LogicalPath="Libraries.AsUDP.AsUDP.fun"
     Type="File"
-    LastWriteTime="133104665581599329"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsUDP\AsUDP.typ"
     LogicalPath="Libraries.AsUDP.AsUDP.typ"
     Type="File"
-    LastWriteTime="133104665581619493"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsUDP\AsUDP.var"
     LogicalPath="Libraries.AsUDP.AsUDP.var"
     Type="File"
-    LastWriteTime="133104665581629521"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsBrStr\Binary.lby"
     LogicalPath="Libraries.AsBrStr"
     Type="Library"
-    LastWriteTime="133104665581481994" />
+    LastWriteTime="133003566140000000" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsBrStr\AsBrStr.fun"
     LogicalPath="Libraries.AsBrStr.AsBrStr.fun"
     Type="File"
-    LastWriteTime="133104665581450625"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsBrStr\AsBrStr.typ"
     LogicalPath="Libraries.AsBrStr.AsBrStr.typ"
     Type="File"
-    LastWriteTime="133104665581460811"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsBrStr\AsBrStr.var"
     LogicalPath="Libraries.AsBrStr.AsBrStr.var"
     Type="File"
-    LastWriteTime="133104665581471607"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\CoTrace\binary.lby"
@@ -234,166 +234,166 @@
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsZip\binary.lby"
     LogicalPath="Libraries.AsZip"
     Type="Library"
-    LastWriteTime="133104665581734072" />
+    LastWriteTime="133003566140000000" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsZip\AsZip.fun"
     LogicalPath="Libraries.AsZip.AsZip.fun"
     Type="File"
-    LastWriteTime="133104665581693965"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsZip\AsZip.typ"
     LogicalPath="Libraries.AsZip.AsZip.typ"
     Type="File"
-    LastWriteTime="133104665581703990"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\AsZip\AsZip.var"
     LogicalPath="Libraries.AsZip.AsZip.var"
     Type="File"
-    LastWriteTime="133104665581714023"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\FileIO\binary.lby"
     LogicalPath="Libraries.FileIO"
     Type="Library"
-    LastWriteTime="133104665582038285" />
+    LastWriteTime="133003566140000000" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\FileIO\FileIO.fun"
     LogicalPath="Libraries.FileIO.FileIO.fun"
     Type="File"
-    LastWriteTime="133104665581993446"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\FileIO\FileIO.typ"
     LogicalPath="Libraries.FileIO.FileIO.typ"
     Type="File"
-    LastWriteTime="133104665582003534"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\FileIO\FileIO.var"
     LogicalPath="Libraries.FileIO.FileIO.var"
     Type="File"
-    LastWriteTime="133104665582013584"
+    LastWriteTime="133003566140000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\Binary.lby"
-    LogicalPath="Libraries.KUKAmxA3_0"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\Binary.lby"
+    LogicalPath="Libraries.KUKAmxA3_1"
     Type="Library"
-    LastWriteTime="133104665582068546" />
+    LastWriteTime="132528624020000000" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\Constants.var"
-    LogicalPath="Libraries.KUKAmxA3_0.Constants.var"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\Constants.var"
+    LogicalPath="Libraries.KUKAmxA3_1.Constants.var"
     Type="File"
-    LastWriteTime="133104665582097439"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\KUKAmxA3_0.fun"
-    LogicalPath="Libraries.KUKAmxA3_0.KUKAmxA3_0.fun"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\KUKAmxA3_1.fun"
+    LogicalPath="Libraries.KUKAmxA3_1.KUKAmxA3_1.fun"
     Type="File"
-    LastWriteTime="133104665582127669"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\Types.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.Types.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\Types.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.Types.typ"
     Type="File"
-    LastWriteTime="133104665582303089"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\APO.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.APO.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\APO.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.APO.typ"
     Type="File"
-    LastWriteTime="133104665582058472"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\COORDSYS.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.COORDSYS.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\COORDSYS.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.COORDSYS.typ"
     Type="File"
-    LastWriteTime="133104665582087389"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\E6AXIS.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.E6AXIS.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\E6AXIS.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.E6AXIS.typ"
     Type="File"
-    LastWriteTime="133104665582107460"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\E6POS.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.E6POS.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\E6POS.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.E6POS.typ"
     Type="File"
-    LastWriteTime="133104665582117481"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\FRAME.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.FRAME.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\FRAME.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.FRAME.typ"
     Type="File"
-    LastWriteTime="133104665582117481"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\MXA_AUTEXT_CONTROL.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.MXA_AUTEXT_CONTROL.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\MXA_AUTEXT_CONTROL.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.MXA_AUTEXT_CONTROL.typ"
     Type="File"
-    LastWriteTime="133104665582137732"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\MXA_AUTEXT_STATE.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.MXA_AUTEXT_STATE.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\MXA_AUTEXT_STATE.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.MXA_AUTEXT_STATE.typ"
     Type="File"
-    LastWriteTime="133104665582137732"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\MXA_CMD_STATE_RET.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.MXA_CMD_STATE_RET.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\MXA_CMD_STATE_RET.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.MXA_CMD_STATE_RET.typ"
     Type="File"
-    LastWriteTime="133104665582147831"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\MXA_COMMAND.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.MXA_COMMAND.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\MXA_COMMAND.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.MXA_COMMAND.typ"
     Type="File"
-    LastWriteTime="133104665582157949"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\MXA_COMMAND_STATUS.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.MXA_COMMAND_STATUS.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\MXA_COMMAND_STATUS.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.MXA_COMMAND_STATUS.typ"
     Type="File"
-    LastWriteTime="133104665582168935"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\MXA_KRC_CONTROL.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.MXA_KRC_CONTROL.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\MXA_KRC_CONTROL.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.MXA_KRC_CONTROL.typ"
     Type="File"
-    LastWriteTime="133104665582178989"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\MXA_KRC_STATE.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.MXA_KRC_STATE.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\MXA_KRC_STATE.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.MXA_KRC_STATE.typ"
     Type="File"
-    LastWriteTime="133104665582178989"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\PNetWriteData.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.PNetWriteData.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\PNetWriteData.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.PNetWriteData.typ"
     Type="File"
-    LastWriteTime="133104665582193274"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\POSITION.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.POSITION.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\POSITION.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.POSITION.typ"
     Type="File"
-    LastWriteTime="133104665582203339"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\AXBOX.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.AXBOX.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\AXBOX.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.AXBOX.typ"
     Type="File"
-    LastWriteTime="133104665582058472"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
-    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_0\BOX.typ"
-    LogicalPath="Libraries.KUKAmxA3_0.BOX.typ"
+    Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\Libraries\KUKAmxA3_1\BOX.typ"
+    LogicalPath="Libraries.KUKAmxA3_1.BOX.typ"
     Type="File"
-    LastWriteTime="133104665582068546"
+    LastWriteTime="132528624000000000"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\IEC.prg"
@@ -410,7 +410,7 @@
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\Variables.var"
     LogicalPath="CTRL.Variables.var"
     Type="File"
-    LastWriteTime="133104665581387917"
+    LastWriteTime="133105705456598106"
     Private="true" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\mxA_Main.st"
@@ -422,13 +422,13 @@
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\mxA_Start.st"
     LogicalPath="CTRL.mxA_Start.st"
     Type="File"
-    LastWriteTime="133104665581430375"
+    LastWriteTime="133105512158495054"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\mxA_Motion.fbd"
     LogicalPath="CTRL.mxA_Motion.fbd"
     Type="File"
-    LastWriteTime="133104665581420227"
+    LastWriteTime="133105705456497583"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Logical\CTRL\mxA_ErrorMessage.st"
@@ -462,18 +462,18 @@
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\Hardware.hwl"
     LogicalPath="Config1.Hardware.hwl"
     Type="File"
-    LastWriteTime="133104784361193637"
+    LastWriteTime="133105483736955674"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\Cpu.pkg"
     LogicalPath="Config1.X20CP1685"
     Type="Cpu"
-    LastWriteTime="133104839269341260" />
+    LastWriteTime="133105695264671044" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\Cpu.sw"
     LogicalPath="Config1.X20CP1685.Cpu.sw"
     Type="File"
-    LastWriteTime="133104665586629225"
+    LastWriteTime="133105716309890454"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\Cpu.per"
@@ -512,7 +512,7 @@
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\X20IF10E1_1.dtm"
     LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1.X20IF10E1_1.dtm"
     Type="File"
-    LastWriteTime="133104847815854278"
+    LastWriteTime="133105525851621945"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\X20IF10E1_1_IF1\Package.pkg"
@@ -523,7 +523,7 @@
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\X20IF10E1_1_IF1\X20IF10E1_1_IF1.dtmdre"
     LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1.X20IF10E1_1_IF1.X20IF10E1_1_IF1.dtmdre"
     Type="File"
-    LastWriteTime="133104847770459738"
+    LastWriteTime="133105525824108568"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\X20IF10E1_1_IF1\X20IF10E1_1_IF1.dtmdra"
@@ -541,7 +541,7 @@
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\X20IF10E1_1_IF1\X20IF10E1_1_IF1.dtmdri"
     LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1.X20IF10E1_1_IF1.X20IF10E1_1_IF1.dtmdri"
     Type="File"
-    LastWriteTime="133104847770439682"
+    LastWriteTime="133105525824088442"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\KRC4_ProfiNet_4_1\Package.pkg"
@@ -552,7 +552,7 @@
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\KRC4_ProfiNet_4_1\KRC4_ProfiNet_4_1.dtmdre"
     LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1.KRC4_ProfiNet_4_1.KRC4_ProfiNet_4_1.dtmdre"
     Type="File"
-    LastWriteTime="133104847768467582"
+    LastWriteTime="133105525647864737"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\KRC4_ProfiNet_4_1\KRC4_ProfiNet_4_1.dtmtre"
@@ -564,7 +564,7 @@
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\DTM\X20IF10E1_1\KRC4_ProfiNet_4_1\KRC4_ProfiNet_4_1.dtmdri"
     LogicalPath="Config1.X20CP1685.DTM.X20IF10E1_1.KRC4_ProfiNet_4_1.KRC4_ProfiNet_4_1.dtmdri"
     Type="File"
-    LastWriteTime="133104847768449516"
+    LastWriteTime="133105525647821797"
     Private="false" />
   <Object
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\X20CP1685\VC\Package.pkg"
@@ -610,6 +610,6 @@
     Path="C:\Users\danie\OneDrive\Documents\Github\MatrixProduction\KUKA_mxA_Example_Jog_2IR_EtherCat_mxA3_0\Physical\Config1\Hardware.jpg"
     LogicalPath="Config1.Hardware.jpg"
     Type="File"
-    LastWriteTime="133104784362994163"
+    LastWriteTime="133105483738709924"
     Private="false" />
 </Objects>

@@ -29,7 +29,7 @@
   <Operation Delete="vccddbox.br"/>
   <Operation Delete="vcdsloc.br"/>
   <Operation Delete="vccovl.br"/>
-  <Operation Delete="KUKAmxA3_0.br"/>
+  <Operation Delete="KUKAmxA3_1.br"/>
   <Operation Delete="AsUDP.br"/>
   <Operation Delete="vcshared.br"/>
   <Operation Delete="arial.br"/>
@@ -80,7 +80,7 @@
   <Operation Download="arial.br" Memory="UserROM"/>
   <Operation Download="vcshared.br" Memory="UserROM"/>
   <Operation Download="AsUDP.br" Memory="UserROM"/>
-  <Operation Download="KUKAmxA3_0.br" Memory="UserROM"/>
+  <Operation Download="KUKAmxA3_1.br" Memory="UserROM"/>
   <Operation Download="vccovl.br" Memory="UserROM"/>
   <Operation Download="vcdsloc.br" Memory="UserROM"/>
   <Operation Download="vccddbox.br" Memory="UserROM"/>

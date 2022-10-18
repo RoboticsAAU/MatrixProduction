@@ -1,12 +1,3 @@
-(********************************************************************
- * COPYRIGHT -- Bernecker + Rainer
- ********************************************************************
- * Library: standard
- * File: standard.fun
- * Author: B+R
- ********************************************************************
- * Functions and function blocks of library standard
- ********************************************************************)
                                                                       
 {REDUND_OK} FUNCTION_BLOCK RF_TRIG 				(*recognizes both edges of BOOL values*)
 	VAR_INPUT
@@ -129,7 +120,7 @@ END_FUNCTION_BLOCK
 	VAR
 		StartTime	:TIME;			(*internal variable*)
 		M	:BOOL;					(*internal variable*)
-		Restart	:UDINT;				(*internal variable*)
+		Restart	: {REDUND_UNREPLICABLE} UDINT; (*internal variable*)
 	END_VAR
 END_FUNCTION_BLOCK
 {REDUND_OK} FUNCTION_BLOCK TOF 					(*implements a switch off delay*)
@@ -144,7 +135,7 @@ END_FUNCTION_BLOCK
 	VAR
 		M	:BOOL;					(*internal variable*)
 		StartTime	:TIME;			(*internal variable*)
-		Restart	:UDINT;				(*internal variable*)
+		Restart	: {REDUND_UNREPLICABLE} UDINT; (*internal variable*)
 	END_VAR
 END_FUNCTION_BLOCK
 {REDUND_OK} FUNCTION_BLOCK TP 					(*implements a pulse generator*)
@@ -158,7 +149,7 @@ END_FUNCTION_BLOCK
 	END_VAR
 	VAR
 		StartTime	:TIME;			(*internal variable*)
-		Restart	:UDINT;				(*internal variable*)
+		Restart	: {REDUND_UNREPLICABLE} UDINT; (*internal variable*)
 	END_VAR	
 END_FUNCTION_BLOCK
 {REDUND_OK} FUNCTION_BLOCK TON_10ms 			(*implements a switch on delay based on 10 ms steps*)

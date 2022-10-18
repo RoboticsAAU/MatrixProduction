@@ -1,12 +1,3 @@
-(********************************************************************
- * COPYRIGHT -- Bernecker + Rainer
- ********************************************************************
- * Library: asstring
- * File: asstring.fun
- * Author: B+R
- ********************************************************************
- * Functions and function blocks of library asstring
- ********************************************************************)
                                                                       
 {REDUND_CONTEXT} {REDUND_UNREPLICABLE}  FUNCTION ftoa : UINT		(*converts a REAL value into a character string*)
 	VAR_INPUT

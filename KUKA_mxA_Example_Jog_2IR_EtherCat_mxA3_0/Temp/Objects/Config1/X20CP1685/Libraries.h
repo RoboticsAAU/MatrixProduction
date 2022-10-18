@@ -1,8 +1,8 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
 
-#ifndef _LIBRARIES_20221017145551_
-#define _LIBRARIES_20221017145551_
+#ifndef _LIBRARIES_20221018150106_
+#define _LIBRARIES_20221018150106_
 
 __asm__(".section \".plc\"");
 
@@ -40,25 +40,25 @@ __asm__(".ascii \"iecfile \\\"Logical/Libraries/AsZip/AsZip.var\\\" scope \\\"gl
 __asm__(".ascii \"iecfile \\\"Logical/Libraries/FileIO/FileIO.fun\\\" scope \\\"global\\\"\\n\"");
 __asm__(".ascii \"iecfile \\\"Logical/Libraries/FileIO/FileIO.typ\\\" scope \\\"global\\\"\\n\"");
 __asm__(".ascii \"iecfile \\\"Logical/Libraries/FileIO/FileIO.var\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/Constants.var\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/KUKAmxA3_0.fun\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/Types.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/APO.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/COORDSYS.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/E6AXIS.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/E6POS.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/FRAME.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/MXA_AUTEXT_CONTROL.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/MXA_AUTEXT_STATE.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/MXA_CMD_STATE_RET.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/MXA_COMMAND.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/MXA_COMMAND_STATUS.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/MXA_KRC_CONTROL.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/MXA_KRC_STATE.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/PNetWriteData.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/POSITION.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/AXBOX.typ\\\" scope \\\"global\\\"\\n\"");
-__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/BOX.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/Constants.var\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/KUKAmxA3_1.fun\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/Types.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/APO.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/COORDSYS.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/E6AXIS.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/E6POS.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/FRAME.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/MXA_AUTEXT_CONTROL.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/MXA_AUTEXT_STATE.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/MXA_CMD_STATE_RET.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/MXA_COMMAND.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/MXA_COMMAND_STATUS.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/MXA_KRC_CONTROL.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/MXA_KRC_STATE.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/PNetWriteData.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/POSITION.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/AXBOX.typ\\\" scope \\\"global\\\"\\n\"");
+__asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_1/BOX.typ\\\" scope \\\"global\\\"\\n\"");
 
 /* Exported library functions and function blocks */
 #ifdef _OPERATOR_EXPORT
@@ -608,7 +608,7 @@ __asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/BOX.typ\\\" scope \\\
 	__asm__(".ascii \"plcexport \\\"GetVolumeSerialNo\\\" FUB\\n\"");
 	__asm__(".ascii \"plcexport \\\"FileIoGetSysError\\\" FUN\\n\"");
 #endif
-#ifdef _KUKAMXA3_0_EXPORT
+#ifdef _KUKAMXA3_1_EXPORT
 	__asm__(".ascii \"plcexport \\\"KRC_Abort\\\" FUB\\n\"");
 	__asm__(".ascii \"plcexport \\\"KRC_ActivateConvInterrupt\\\" FUB\\n\"");
 	__asm__(".ascii \"plcexport \\\"KRC_ActivateInterrupt\\\" FUB\\n\"");
@@ -726,5 +726,5 @@ __asm__(".ascii \"iecfile \\\"Logical/Libraries/KUKAmxA3_0/BOX.typ\\\" scope \\\
 __asm__(".previous");
 
 
-#endif /* _LIBRARIES_20221017145551_ */
+#endif /* _LIBRARIES_20221018150106_ */
 
