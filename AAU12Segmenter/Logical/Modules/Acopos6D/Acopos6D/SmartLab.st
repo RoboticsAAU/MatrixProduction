@@ -81,7 +81,6 @@ ACTION smartLabSetup:
 	CASE em.substate OF
 		17000:
 			em.description := 'Move shuttles to pre pos';
-			tempShuttleCounter := 0;
 			MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
 			MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			FOR i := 0 TO UINT_TO_USINT(localCurrentNumShuttles-1) DO

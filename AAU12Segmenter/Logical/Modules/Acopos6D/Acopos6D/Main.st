@@ -433,11 +433,11 @@ PROGRAM _CYCLIC
 					END_FOR
 					
 				16000..16009:
-					em.description := 'Test program';
+					em.description := 'Test program - Setup';
 					testProgram;
 					
 				16010..16999:
-					em.description := 'Test program';
+					em.description := 'Test program - Movements';
 					testProgram;
 					FOR i := 0 TO NUM_SHUTTLES DO
 						cm ACCESS ADR (gShuttles[i].cm);
@@ -476,17 +476,6 @@ PROGRAM _CYCLIC
 					
 				17020..17999:
 					em.description := 'Smart Lab program - Workstation movement';
-					
-//					FOR i := 0 TO (productOrder.amount - 1) DO
-//						IF (gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[i]].Position.X > positionContainerSmartLabProgram[i].initXPos - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[i]].Position.X < positionContainerSmartLabProgram[i].initXPos + MARGIN) AND
-//							(gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[i]].Position.Y > positionContainerSmartLabProgram[i].initYPos - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[i]].Position.Y < positionContainerSmartLabProgram[i].initYPos + MARGIN) THEN
-//							moveToStartWorkstation := TRUE;
-//						ELSE
-//							moveToStartWorkstation := FALSE;
-//							EXIT;
-//						END_IF
-					//	END_FOR
-					
 					FOR i := 0 TO (productOrder.amount - 1) DO
 						pShuttle ACCESS ADR(gShuttles[shuttleIndexAtPosition[i]]);
 						cm ACCESS ADR (gShuttles[shuttleIndexAtPosition[i]].cm);

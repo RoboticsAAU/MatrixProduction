@@ -1,16 +1,16 @@
 
 ACTION testProgram: 
 //setup
-	positionContainerTestProgram[0].initXPos := 0.060;
+	positionContainerTestProgram[0].initXPos := 0.050;
 	positionContainerTestProgram[0].initYPos := 0.060;
 	
-	positionContainerTestProgram[1].initXPos := 0.060;
+	positionContainerTestProgram[1].initXPos := 0.050;
 	positionContainerTestProgram[1].initYPos := 0.180;
 	
-	positionContainerTestProgram[2].initXPos := 0.060;
+	positionContainerTestProgram[2].initXPos := 0.050;
 	positionContainerTestProgram[2].initYPos := 0.300;
 	
-	positionContainerTestProgram[3].initXPos := 0.060;
+	positionContainerTestProgram[3].initXPos := 0.050;
 	positionContainerTestProgram[3].initYPos := 0.420;
 	
 	positionContainerTestProgram[4].initXPos := 0.900;
@@ -28,10 +28,9 @@ ACTION testProgram:
 	CASE em.substate OF
 		16000:
 			em.description := 'Move shuttles to pre pos';
-			tempShuttleCounter := 0;
 			MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
 			MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
-			FOR i := 0 TO UINT_TO_USINT(localCurrentNumShuttles-1) DO
+			FOR i := 0 TO NUM_SHUTTLES DO
 				MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.AsyncPar[i].Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[i].shuttleRef);
 				MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.AsyncPar[i].X := positionContainerTestProgram[i].initXPos;
 				MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.AsyncPar[i].Y := positionContainerTestProgram[i].initYPos;
