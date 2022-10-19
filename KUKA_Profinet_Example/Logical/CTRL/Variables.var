@@ -70,4 +70,9 @@ VAR
 	KRC_ReadMXAError_0 : KRC_ReadMXAError;
 	KRC_Diag_2 : KRC_Diag;
 	position1 : E6AXIS;
+	cartesianPosition1 : E6POS;
+	KRC_MoveLinearAbsolute_0 : KRC_MoveLinearAbsolute;
+	baseFrame : COORDSYS;
+	KRC_SetCoordSys_0 : KRC_SetCoordSys;
+	KRC_ReadBaseData_0 : KRC_ReadBaseData;
 END_VAR
