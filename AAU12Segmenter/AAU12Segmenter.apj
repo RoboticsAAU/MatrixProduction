@@ -12,6 +12,7 @@
     <mapp6D Version="1.2.47924" />
     <mappCockpit Version="5.16.0" />
     <mappMotion McDriveLog="5.16.2" Version="5.16.2" />
+    <mappSafety Version="5.16.0" />
     <mappView Version="5.16.1" />
     <mappVision Version="5.16.1" />
   </TechnologyPackages>

@@ -1,8 +1,8 @@
 ### ADDED IGNORES ###
-/AAU12Segmenter/Binaries/
-/AAU12Segmenter/Diagnosis/
-/AAU12Segmenter/Temp/
-/AAU12Segmenter/*.set
+/*/Binaries/
+/*/Diagnosis/
+/*/Temp/
+/*/*.set
 
 *.isopen
 

@@ -12,6 +12,7 @@
 		<Page refId="page_workStation"/>
 		<Page refId="page_danfoss"/>
 		<Page refId="page_fixture"/>
+		<Page refId="page_smartLabPage"/>
 	</Pages>
   <Navigations>
     <!--<Navigation refId="" />-->
@@ -28,12 +29,14 @@
 		<BindingsSet refId="content_workStation_binding" />
 		<BindingsSet refId="content_danfoss_binding" />
 		<BindingsSet refId="content_fixture_binding" />
+		<BindingsSet refId="content_smartLabPage_binding" />
 	</BindingsSets>
   <EventBindingsSets>
 		<EventBindingsSet refId="content_Navigation_eventbinding" />
 		<EventBindingsSet refId="content_MainPage_eventbinding" />
 		<EventBindingsSet refId="content_camera_eventbinding" />
 		<EventBindingsSet refId="content_configPage_eventbinding" />
+		<EventBindingsSet refId="content_smartLabPage_eventbinding" />
 	</EventBindingsSets>
   <Dialogs>
 	</Dialogs>

@@ -240,10 +240,12 @@ PROGRAM _CYCLIC
 						boxProgram: em.substate := 13000;
 						rotationProgram: em.substate := 14000;
 						steelSheet: em.substate := 15000;
+						test: em.substate := 16000;
+						smartLab: em.substate := 17000;
+						
 					END_CASE
 					
 				1000..1029:
-						
 					em.description := 'Vision Movement';
 					VisionMovement;
 					
@@ -324,7 +326,7 @@ PROGRAM _CYCLIC
 						
 						
 				8000..8005:
-				workStationSetup;
+					workStationSetup;
 					
 				8006..8999:
 					workStationSetup;
@@ -430,7 +432,68 @@ PROGRAM _CYCLIC
 						steelSheetStation;
 					END_FOR
 					
-				END_CASE
+				16000..16009:
+					em.description := 'Test program - Setup';
+					testProgram;
+					
+				16010..16999:
+					em.description := 'Test program - Movements';
+					testProgram;
+					FOR i := 0 TO NUM_SHUTTLES DO
+						cm ACCESS ADR (gShuttles[i].cm);
+						pShuttle ACCESS ADR(gShuttles[i]);
+						pShuttle.cm.setup.parent.name := 'main';
+						pShuttle.cm.setup.nameIdx := i;
+						pShuttle.par.shuttleID := i;
+						
+						CASE i OF 
+							0..3: testMovements;
+						END_CASE
+					END_FOR
+				
+				17000..17009:
+					em.description := 'Smart Lab program - Setup';
+					smartLabSetup;
+				
+				17010..17019:
+					em.description := 'Smart Lab Program - Check if new order has been placed';
+					IF executeOrder THEN
+						FOR i := 0 TO (productOrder.amount - 1) DO
+							moveToStartWorkstation[i] := TRUE;
+						END_FOR
+						orderFinished := FALSE;
+						amountProductsFinished := 0;
+						
+						TON_0.PT := REAL_TO_TIME(500);
+						TON_0.IN := TRUE;
+						IF TON_0.Q THEN
+							TON_0.IN := FALSE;
+							parkingSpotIndex := productOrder.amount - 1;
+							em.substate := 17020;
+						END_IF
+					
+					END_IF
+					
+				17020..17999:
+					em.description := 'Smart Lab program - Workstation movement';
+					FOR i := 0 TO (productOrder.amount - 1) DO
+						pShuttle ACCESS ADR(gShuttles[shuttleIndexAtPosition[i]]);
+						cm ACCESS ADR (gShuttles[shuttleIndexAtPosition[i]].cm);
+						pShuttle.cm.setup.parent.name := 'main';
+						pShuttle.par.shuttleID := shuttleIndexAtPosition[i]; // For the correct order of shuttles
+						
+						smartLabInitialMovement;
+					END_FOR
+					
+					FOR i := 0 TO (smartLabNumWorkstations - 1) DO
+						pWorkStations ACCESS ADR (gWorkStations[i]); 
+						cm ACCESS ADR (gWorkStations[i].cm);
+						pWorkStations.cm.setup.parent.name := 'main';
+						
+						smartLabWorkstationMovement;
+					END_FOR
+				
+			END_CASE
 			
 		STATE_STOPPING,STATE_ABORTING:
 			ResetInput;

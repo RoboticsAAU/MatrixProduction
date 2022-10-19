@@ -24,5 +24,7 @@
     <Object Type="File">content_configPage.eventbinding</Object>
     <Object Type="File">content_danfoss.binding</Object>
     <Object Type="File">content_fixture.binding</Object>
+    <Object Type="File">content_smartLabPage.binding</Object>
+    <Object Type="File">content_smartLabPage.eventbinding</Object>
   </Objects>
 </Package>

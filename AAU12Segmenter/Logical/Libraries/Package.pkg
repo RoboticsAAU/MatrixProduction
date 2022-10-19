@@ -32,6 +32,8 @@
     <Object Type="Library" Language="binary" Description="[mapp Vision] Base library">ViBase</Object>
     <Object Type="Library" Language="binary" Description="This library contains functionality to execute traces (to sample numeric values periodically for a defined time-span)">CoTrace</Object>
     <Object Type="Library" Language="binary" Description="[mapp Motion] Base library">McBase</Object>
+    <Object Type="Library" Language="Binary" Description="[mapp Safety] SafeDOMAIN management library">SfDomain</Object>
+    <Object Type="Library" Language="Binary" Description="Core library for mapp components">MpBase</Object>
     <Object Type="Library" Language="binary" Description="[mapp 6D] Technology package for Acopos 6D ">McAcp6D</Object>
   </Objects>
 </Package>

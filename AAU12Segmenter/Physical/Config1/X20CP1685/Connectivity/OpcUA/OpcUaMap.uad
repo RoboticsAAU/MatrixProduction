@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
-<OpcUaSource FileVersion="7" ArVersion="B4.91">
+<OpcUaSource FileVersion="9" ArVersion="B4.91">
   <Aliases>
     <ACLAliases />
     <EURangeViolationAliases />
@@ -68,7 +68,7 @@
             <Variable Name="modeSelector" />
           </Variable>
         </Variable>
-        <Variable Name="gVisionSensor" EnableArrayElements="True" />
+        <Variable Name="gVisionSensor" RecursiveEnable="1" />
       </GlobalVariables>
       <Task Name="Main">
         <Variable Name="modeSelectorOldValue" />
@@ -105,7 +105,7 @@
           <Variable Name="showHMIButton" />
           <Variable Name="showStartBtnHMI" />
           <Variable Name="playerNumeric" />
-          <Variable Name="players" EnableArrayElements="True" />
+          <Variable Name="players" RecursiveEnable="1" />
           <Variable Name="loosingShuttlesIDs" />
           <Variable Name="winningShuttleID" />
           <Variable Name="showWinningNumber" />
@@ -116,6 +116,16 @@
         <Variable Name="WorkStation1MovementTimer" />
         <Variable Name="WorkStation2And3MovementTimer" />
         <Variable Name="steelSheetFlyingHeight" EngineeringUnitId="1" />
+        <Variable Name="productOrder">
+          <Variable Name="amount" />
+          <Variable Name="topCover" />
+          <Variable Name="bottomCover" />
+          <Variable Name="PCB" />
+          <Variable Name="Fuses" />
+        </Variable>
+        <Variable Name="executeOrder" />
+        <Variable Name="orderFinished" />
+        <Variable Name="amountProductsFinished" />
       </Task>
       <Task Name="Vision">
         <Variable Name="codeReaderVariable">

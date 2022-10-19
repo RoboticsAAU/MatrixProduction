@@ -55,7 +55,9 @@ TYPE
 		flaskProgram := 12,
 		boxProgram := 13,
 		rotationProgram := 14,
-		steelSheet := 15
+		steelSheet := 15,
+		test := 16,
+		smartLab := 17
 		);
 	ShuttleInfoType : 	STRUCT 
 		ID : UINT;
