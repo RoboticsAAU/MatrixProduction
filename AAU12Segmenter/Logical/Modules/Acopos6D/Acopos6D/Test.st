@@ -1,16 +1,16 @@
 
 ACTION testProgram: 
 //setup
-	positionContainerTestProgram[0].initXPos := 0.050;
+	positionContainerTestProgram[0].initXPos := 0.060;
 	positionContainerTestProgram[0].initYPos := 0.060;
 	
-	positionContainerTestProgram[1].initXPos := 0.050;
+	positionContainerTestProgram[1].initXPos := 0.060;
 	positionContainerTestProgram[1].initYPos := 0.180;
 	
-	positionContainerTestProgram[2].initXPos := 0.050;
+	positionContainerTestProgram[2].initXPos := 0.060;
 	positionContainerTestProgram[2].initYPos := 0.300;
 	
-	positionContainerTestProgram[3].initXPos := 0.050;
+	positionContainerTestProgram[3].initXPos := 0.060;
 	positionContainerTestProgram[3].initYPos := 0.420;
 	
 	positionContainerTestProgram[4].initXPos := 0.900;
@@ -65,18 +65,18 @@ ACTION testMovements:
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path         := 1; //mcACP6D_PATH_X_THEN_Y
 			
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
-			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Done THEN  // Try to change to DONE
+			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN  // Try to change to DONE
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
 				cm.state := 10;
 			END_IF
 			
 		10:
 			cm.description := 'Check if position is reached';
-			//IF gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.X > positionContainerTestProgram[pShuttle.par.shuttleID].initXPos + (USINT_TO_REAL(pShuttle.par.shuttleID)+1)*0.120 - 0.001 AND
-			//	gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y < positionContainerTestProgram[pShuttle.par.shuttleID].initYPos - (USINT_TO_REAL(pShuttle.par.shuttleID))*0.120 + 0.001 THEN
+			IF gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.X > positionContainerTestProgram[pShuttle.par.shuttleID].initXPos + (USINT_TO_REAL(pShuttle.par.shuttleID)+1)*0.120 - 0.001 AND
+				gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y < positionContainerTestProgram[pShuttle.par.shuttleID].initYPos - (USINT_TO_REAL(pShuttle.par.shuttleID))*0.120 + 0.001 THEN
 				testObj.targetReached[pShuttle.par.shuttleID] := TRUE;
 				cm.state := 15;
-			//END_IF
+			END_IF
 		
 		15: 
 			cm.description := 'Waiting to move back to start position';
@@ -87,7 +87,7 @@ ACTION testMovements:
 			
 		16:
 			cm.description := 'Setting all targetReached to false';
-			testObj.targetReached[i] := FALSE; 
+			testObj.targetReached[pShuttle.par.shuttleID] := FALSE; 
 			OpenGripper := TRUE;
 			GripperMovement;
 			cm.state := 20;
@@ -127,7 +127,7 @@ ACTION testMovements:
 		
 		36:
 			cm.description := 'Setting all targetReached to false';
-			testObj.targetReached[i] := FALSE;
+			testObj.targetReached[pShuttle.par.shuttleID] := FALSE;
 			OpenGripper := FALSE;
 			GripperMovement;
 			cm.state := 0;

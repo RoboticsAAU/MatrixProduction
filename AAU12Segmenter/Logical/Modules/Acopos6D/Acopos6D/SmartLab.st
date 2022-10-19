@@ -76,7 +76,7 @@ ACTION smartLabSetup:
 	FOR i := 0 TO 7 DO
 		shuttleIndexAtPosition[i] := i;
 	END_FOR
-	
+	tempShuttleIndexAtPosition := shuttleIndexAtPosition;
 	
 	CASE em.substate OF
 		17000:
@@ -130,10 +130,10 @@ ACTION smartLabWorkstationMovement:
 		0:
 			cm.description := 'Check what shuttle is on top of workstation';
 			FOR k := 0 TO (productOrder.amount - 1) DO
-				IF (gAcp6DCtrl.Status.ShuttleInfo[k].Position.X > pWorkStations.par.xLocation - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[k].Position.X < pWorkStations.par.xLocation + MARGIN) AND
-					(gAcp6DCtrl.Status.ShuttleInfo[k].Position.Y > pWorkStations.par.yLocation - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[k].Position.Y < pWorkStations.par.yLocation + MARGIN) THEN
-					IF gAcp6DCtrl.Status.ShuttleInfo[k].State = mcACP6D_SH_STATE_IDLING THEN
-						pWorkStations.par.tempShuttleID := k;
+				IF (gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[k]].Position.X > pWorkStations.par.xLocation - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[k]].Position.X < pWorkStations.par.xLocation + MARGIN) AND
+					(gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[k]].Position.Y > pWorkStations.par.yLocation - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[k]].Position.Y < pWorkStations.par.yLocation + MARGIN) THEN
+					IF gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[k]].State = mcACP6D_SH_STATE_IDLING THEN
+						pWorkStations.par.tempShuttleID := shuttleIndexAtPosition[k];
 						IF pWorkStations.par.landBeforeProcess THEN
 							cm.state := 10;
 						ELSE
@@ -197,7 +197,7 @@ ACTION smartLabWorkstationMovement:
 					pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
 					
 					amountProductsFinished := amountProductsFinished + 1;
-					shuttleIndexAtPosition[parkingSpotIndex] := pWorkStations.par.tempShuttleID; // Make the shuttle index correspond to the given position (see Smart Lab page for reference)
+					tempShuttleIndexAtPosition[parkingSpotIndex] := pWorkStations.par.tempShuttleID; // Make the shuttle index correspond to the given position (see Smart Lab page for reference)
 					parkingSpotIndex := parkingSpotIndex - 1;
 					IF parkingSpotIndex = -1 THEN
 						cm.state := 50;
@@ -219,10 +219,11 @@ ACTION smartLabWorkstationMovement:
 			
 		50:
 			cm.description := 'Waiting for current product order to finish';
-			IF (gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[0]].Position.X > positionContainerSmartLabProgram[0].initXPos - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[0]].Position.X < positionContainerSmartLabProgram[0].initXPos + MARGIN) AND
-				(gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[0]].Position.Y > positionContainerSmartLabProgram[0].initYPos - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[0]].Position.Y < positionContainerSmartLabProgram[0].initYPos + MARGIN) THEN
+			IF (gAcp6DCtrl.Status.ShuttleInfo[tempShuttleIndexAtPosition[0]].Position.X > positionContainerSmartLabProgram[0].initXPos - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[tempShuttleIndexAtPosition[0]].Position.X < positionContainerSmartLabProgram[0].initXPos + MARGIN) AND
+				(gAcp6DCtrl.Status.ShuttleInfo[tempShuttleIndexAtPosition[0]].Position.Y > positionContainerSmartLabProgram[0].initYPos - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[tempShuttleIndexAtPosition[0]].Position.Y < positionContainerSmartLabProgram[0].initYPos + MARGIN) THEN
 				orderFinished := TRUE;
 				executeOrder := FALSE;
+				shuttleIndexAtPosition := tempShuttleIndexAtPosition;
 				cm.state := 0;
 				em.substate := 17010;
 			END_IF
