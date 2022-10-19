@@ -64,18 +64,15 @@ ACTION testMovements:
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path         := 1; //mcACP6D_PATH_X_THEN_Y
 			
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
-			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN  // Try to change to DONE
+			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Done THEN  // Try to change to DONE
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
 				cm.state := 10;
 			END_IF
 			
 		10:
 			cm.description := 'Check if position is reached';
-			IF gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.X > positionContainerTestProgram[pShuttle.par.shuttleID].initXPos + (USINT_TO_REAL(pShuttle.par.shuttleID)+1)*0.120 - 0.001 AND
-				gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y < positionContainerTestProgram[pShuttle.par.shuttleID].initYPos - (USINT_TO_REAL(pShuttle.par.shuttleID))*0.120 + 0.001 THEN
-				testObj.targetReached[pShuttle.par.shuttleID] := TRUE;
-				cm.state := 15;
-			END_IF
+			testObj.targetReached[pShuttle.par.shuttleID] := TRUE;
+			cm.state := 15;
 		
 		15: 
 			cm.description := 'Waiting to move back to start position';
