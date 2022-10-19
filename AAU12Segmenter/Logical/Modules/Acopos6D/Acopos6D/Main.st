@@ -458,7 +458,9 @@ PROGRAM _CYCLIC
 				17010..17019:
 					em.description := 'Smart Lab Program - Check if new order has been placed';
 					IF executeOrder THEN
-						moveToStartWorkstation := TRUE;
+						FOR i := 0 TO (productOrder.amount - 1) DO
+							moveToStartWorkstation[i] := TRUE;
+						END_FOR
 						orderFinished := FALSE;
 						amountProductsFinished := 0;
 						
@@ -483,7 +485,8 @@ PROGRAM _CYCLIC
 //							moveToStartWorkstation := FALSE;
 //							EXIT;
 //						END_IF
-//					END_FOR
+					//	END_FOR
+					
 					FOR i := 0 TO (productOrder.amount - 1) DO
 						pShuttle ACCESS ADR(gShuttles[shuttleIndexAtPosition[i]]);
 						cm ACCESS ADR (gShuttles[shuttleIndexAtPosition[i]].cm);
@@ -492,7 +495,6 @@ PROGRAM _CYCLIC
 						
 						smartLabInitialMovement;
 					END_FOR
-					moveToStartWorkstation := FALSE;
 					
 					FOR i := 0 TO (smartLabNumWorkstations - 1) DO
 						pWorkStations ACCESS ADR (gWorkStations[i]); 

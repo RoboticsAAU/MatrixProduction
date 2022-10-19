@@ -117,5 +117,5 @@ VAR
 	shuttleIndexAtPosition : ARRAY[0..7] OF USINT;
 	tempShuttleIndexAtPosition : ARRAY[0..7] OF USINT;
 	smartLabNumWorkstations : USINT := 4;
-	moveToStartWorkstation : BOOL := FALSE;
+	moveToStartWorkstation : ARRAY[0..7] OF BOOL := [8(FALSE)];
 END_VAR
