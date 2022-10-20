@@ -451,27 +451,34 @@ PROGRAM _CYCLIC
 						END_CASE
 					END_FOR
 				
+					
+					
 				17000..17009:
 					em.description := 'Smart Lab program - Setup';
 					smartLabSetup;
 				
 				17010..17019:
-					em.description := 'Smart Lab Program - Check if new order has been placed';
-					IF executeOrder THEN
-						FOR i := 0 TO (productOrder.amount - 1) DO
-							moveToStartWorkstation[i] := TRUE;
-						END_FOR
-						orderFinished := FALSE;
-						amountProductsFinished := 0;
-						
-						TON_0.PT := REAL_TO_TIME(500);
-						TON_0.IN := TRUE;
-						IF TON_0.Q THEN
-							TON_0.IN := FALSE;
-							parkingSpotIndex := productOrder.amount - 1;
-							em.substate := 17020;
-						END_IF
 					
+					em.description := 'Smart Lab Program - Check if new order has been placed';
+					
+					IF executeOrder THEN
+						executeOrder := FALSE;
+						writeOrder;
+						
+						IF orderFinished THEN
+							readOrder;
+							FOR i := 0 TO (productOrder.amount - 1) DO
+								moveToStartWorkstation[i] := TRUE;
+							END_FOR
+							orderFinished := FALSE;
+							amountProductsFinished := 0;
+							
+							parkingSpotIndex := productOrder.amount - 1;
+							
+						END_IF
+						
+						em.substate := 17020;
+						
 					END_IF
 					
 				17020..17999:
@@ -492,6 +499,10 @@ PROGRAM _CYCLIC
 						
 						smartLabWorkstationMovement;
 					END_FOR
+					
+					IF executeOrder THEN
+						em.substate := 17010;
+					END_IF
 				
 			END_CASE
 			

@@ -73,10 +73,12 @@ ACTION smartLabSetup:
 
 	smartLabWorkstationSetup; // Setup workstations
 	
-	FOR i := 0 TO 7 DO
+	FOR i := 0 TO NUM_SHUTTLES DO
 		shuttleIndexAtPosition[i] := i;
 	END_FOR
 	tempShuttleIndexAtPosition := shuttleIndexAtPosition;
+	
+	bufferSize := SIZEOF(orderBuffer)/SIZEOF(orderBuffer[0]);
 	
 	CASE em.substate OF
 		17000:
@@ -220,12 +222,11 @@ ACTION smartLabWorkstationMovement:
 			END_IF
 			
 		50:
-			cm.description := 'Waiting for current product order to finish';
+			cm.description := 'Current product order has finished';
 			orderFinished := TRUE;
-				executeOrder := FALSE;
-				shuttleIndexAtPosition := tempShuttleIndexAtPosition;
-				cm.state := 0;
-				em.substate := 17010;
+			shuttleIndexAtPosition := tempShuttleIndexAtPosition;
+			cm.state := 0;
+			em.substate := 17010;
 			
 	END_CASE
 	

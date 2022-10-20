@@ -4,22 +4,11 @@
     <EventBinding id="content_smartLabPage.PushButton1.Click">
       <Source xsi:type="widgets.brease.PushButton.Event" contentRefId="content_smartLabPage" widgetRefId="PushButton1" event="Click" />
       <EventHandler>
-        <Sequence>
-          <Step order="0">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Acopos6D:executeOrder">
-                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="1">
-            <Action>
-              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="content_smartLabPage" widgetRefId="NumericInput1">
-                <Method xsi:type="widgets.brease.NumericInput.Action.SubmitChange" />
-              </Target>
-            </Action>
-          </Step>
-        </Sequence>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Acopos6D:executeOrder">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
       </EventHandler>
     </EventBinding>
   </Bindings>

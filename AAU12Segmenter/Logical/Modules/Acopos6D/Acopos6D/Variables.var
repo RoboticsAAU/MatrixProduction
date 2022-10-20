@@ -111,6 +111,7 @@ VAR
 	GripperBlackPin : BOOL := FALSE;
 	executeOrder : BOOL := FALSE;
 	orderFinished : BOOL := TRUE;
+	tempProductOrder : product_order := (amount:=1,topCover:=blackCover,bottomCover:=blackCover,PCB:=TRUE,Fuses:=2);
 	productOrder : product_order := (amount:=1,topCover:=blackCover,bottomCover:=blackCover,PCB:=TRUE,Fuses:=2);
 	amountProductsFinished : USINT := 0;
 	parkingSpotIndex : SINT;
@@ -118,4 +119,11 @@ VAR
 	tempShuttleIndexAtPosition : ARRAY[0..7] OF USINT;
 	smartLabNumWorkstations : USINT := 4;
 	moveToStartWorkstation : ARRAY[0..7] OF BOOL := [8(FALSE)];
+	shuttlePlans : ARRAY[0..7] OF shuttle_plan;
+	orderBuffer : ARRAY[0..9] OF product_order := [10((amount:=0,bottomCover:=noCover,topCover:=noCover,PCB:=FALSE,Fuses:=0,ID:=0))];
+	writeIndex : USINT;
+	readIndex : USINT;
+	bufferFull : BOOL := FALSE;
+	bufferSize : {REDUND_UNREPLICABLE} USINT;
+	executeActive : REFERENCE TO BOOL;
 END_VAR

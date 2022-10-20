@@ -56,10 +56,11 @@ TYPE
 	END_STRUCT;
 	product_order : 	STRUCT 
 		amount : USINT;
-		topCover : cover_types;
 		bottomCover : cover_types;
+		topCover : cover_types;
 		PCB : BOOL;
 		Fuses : USINT;
+		ID : UINT;
 	END_STRUCT;
 	cover_types : 
 		(
@@ -68,4 +69,10 @@ TYPE
 		whiteCover := 2,
 		blueCover := 3
 		);
+	shuttle_plan : 	STRUCT 
+		shuttleIdx : USINT;
+		productOrder : REFERENCE TO product_order;
+		routingSheet : REFERENCE TO ARRAY[0..3]OF SINT;
+		progressSheet : ARRAY[0..3]OF SINT;
+	END_STRUCT;
 END_TYPE

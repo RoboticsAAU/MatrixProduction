@@ -1,24 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet id="content_smartLabPage_binding" xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Bindings>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:productOrder.amount" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericInput1" attribute="value" />
-		</Binding>
 
 
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:orderFinished" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="PushButton1" attribute="enable" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:productOrder.PCB" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="CheckBox1" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:productOrder.Fuses" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericInput5" attribute="value" />
-</Binding>
+
+
+
+
 
 
 <Binding mode="twoWay">
@@ -29,17 +17,37 @@
 <Source xsi:type="opcUa" refId="::Acopos6D:amountProductsFinished" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="ProgressBar1" attribute="value" />
 </Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:productOrder.topCover" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="DropDownBox2" attribute="selectedIndex" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:productOrder.bottomCover" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="DropDownBox1" attribute="selectedIndex" />
-</Binding>
+
+
 <Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:executeOrder" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="ProgressBar1" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.bottomCover" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="DropDownBox2" attribute="selectedIndex" />
+</Binding>
+
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.PCB" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="CheckBox1" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.Fuses" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericInput5" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.amount" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericInput1" attribute="value" />
+</Binding>
+
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:executeOrder" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="PushButton1" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.topCover" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="DropDownBox1" attribute="selectedIndex" />
 </Binding>
 </Bindings>
 </BindingsSet>
