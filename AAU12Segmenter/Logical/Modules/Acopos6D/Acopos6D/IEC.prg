@@ -24,5 +24,7 @@
     <File>SmartLab.st</File>
     <File Description="Local data types" Private="true">Types.typ</File>
     <File Description="Local variables" Private="true">Variables.var</File>
+    <File Private="true">LocalFunctions.fun</File>
+    <File>createRouteSheet.st</File>
   </Files>
 </Program>

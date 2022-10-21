@@ -1,12 +1,13 @@
 VAR
-	gWorkStations : {REDUND_UNREPLICABLE} ARRAY[0..NR_OF_WORKSTATIONS] OF workStation_typ;
-	shuttleStartupInfo : ARRAY[0..NUM_SHUTTLES] OF shuttleStartup_typ;
 	cmdBoxProgram : box_typ;
 	gAcp6DCtrl : Acp6DCtrlType;
-	ShuttleYPos_m : LREAL;
+END_VAR
+VAR CONSTANT
+	NR_OF_WORKSTATIONS : USINT := 9; (*10[0..9]*)
+	NUM_SHUTTLES : USINT := 7; (*8[0..7]*)
 END_VAR
 (*Constants*)
-VAR CONSTANT
-	NUM_SHUTTLES : USINT := 7; (*8[0..7]*)
-	NR_OF_WORKSTATIONS : USINT := 9; (*10[0..9]*)
+VAR
+	shuttleStartupInfo : ARRAY[0..NUM_SHUTTLES] OF shuttleStartup_typ;
+	ShuttleYPos_m : LREAL;
 END_VAR

@@ -455,33 +455,64 @@ PROGRAM _CYCLIC
 					
 				17000..17009:
 					em.description := 'Smart Lab program - Setup';
-					smartLabSetup;
-				
-				17010..17019:
+					smartLabSetup;					
+					
+				17010..17014:
 					
 					em.description := 'Smart Lab Program - Check if new order has been placed';
 					
+					// The user has requested an order which is added to the buffer
+					
 					IF executeOrder THEN
-						executeOrder := FALSE;
-						writeOrder;
 						
-						IF orderFinished THEN
-							readOrder;
-							FOR i := 0 TO (productOrder.amount - 1) DO
-								moveToStartWorkstation[i] := TRUE;
-							END_FOR
-							orderFinished := FALSE;
-							amountProductsFinished := 0;
-							
-							parkingSpotIndex := productOrder.amount - 1;
-							
+						TON_0.PT := REAL_TO_TIME(200);
+						TON_0.IN := TRUE;
+						IF TON_0.Q THEN
+							TON_0.IN := FALSE;
+							executeOrder := FALSE;
+						
+							IF bufferEmpty THEN
+								writeOrder;
+								em.substate := 17015;
+							ELSE
+								IF NOT bufferFull THEN
+									writeOrder;
+								END_IF
+								em.substate := 17020;
+							END_IF
 						END_IF
+					END_IF
 						
-						em.substate := 17020;
+				
+				17015..17019:
+					em.description := 'Read order';
+					IF orderFinished THEN
+						
+						orderFinished := FALSE;
+						readOrder;
+						
+						FOR i := 0 TO (productOrder.amount - 1) DO
+							
+							moveToStartWorkstation[shuttleIndexAtPosition[i]] := TRUE;
+							
+							shuttlePlans[shuttleIndexAtPosition[i]].productOrder := productOrder;
+							createRouteSheet_0(inputProductOrder := productOrder);							
+							shuttlePlans[shuttleIndexAtPosition[i]].routingSheet := createRouteSheet_0.outputRouteSheet;
+							shuttlePlans[shuttleIndexAtPosition[i]].progressIndex := 0;
+							shuttlePlans[shuttleIndexAtPosition[i]].shuttleIdx := shuttleIndexAtPosition[i];
+							
+						END_FOR
+					
+						amountProductsFinished := 0;
+						
+						parkingSpotIndex := productOrder.amount - 1;
 						
 					END_IF
 					
+					em.substate := 17020;
+					
 				17020..17999:
+													
 					em.description := 'Smart Lab program - Workstation movement';
 					FOR i := 0 TO (productOrder.amount - 1) DO
 						pShuttle ACCESS ADR(gShuttles[shuttleIndexAtPosition[i]]);

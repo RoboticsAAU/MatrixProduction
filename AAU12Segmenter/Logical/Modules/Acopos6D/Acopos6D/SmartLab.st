@@ -4,6 +4,10 @@ ACTION smartLabWorkstationSetup:
 	FOR i := 0 TO NR_OF_WORKSTATIONS DO
 		gWorkStations[i].par.xLocation										:= 0.0;
 		gWorkStations[i].par.yLocation										:= 0.0;
+		gWorkStations[i].par.approachPosX									:= 0.0;
+		gWorkStations[i].par.approachPosY									:= 0.0;
+		gWorkStations[i].par.departPosX										:= 0.0;
+		gWorkStations[i].par.departPosY										:= 0.0;
 		gWorkStations[i].par.nextStationSelector							:= '0';
 		gWorkStations[i].par.processTime									:= 0;
 		gWorkStations[i].par.pathRouting									:= 0;
@@ -13,6 +17,10 @@ ACTION smartLabWorkstationSetup:
 	
 	gWorkStations[0].par.xLocation										:= 0.660;
 	gWorkStations[0].par.yLocation										:= 0.060;
+	gWorkStations[0].par.approachPosX									:= 0.0;
+	gWorkStations[0].par.approachPosY									:= 0.0;
+	gWorkStations[0].par.departPosX										:= 0.0;
+	gWorkStations[0].par.departPosY										:= 0.0;
 	gWorkStations[0].par.nextStationSelector							:= '1';
 	gWorkStations[0].par.processTime									:= 1.0;
 	gWorkStations[0].par.pathRouting									:= 2;
@@ -25,7 +33,7 @@ ACTION smartLabWorkstationSetup:
 	gWorkStations[1].par.processTime									:= 1.0;
 	gWorkStations[1].par.pathRouting									:= 2;
 	gWorkStations[1].par.ArcMovement									:= FALSE;
-	gWorkStations[1].par.landBeforeProcess								:= TRUE;
+	gWorkStations[1].par.landBeforeProcess								:= FALSE;
 	
 	gWorkStations[2].par.xLocation										:= 0.780;
 	gWorkStations[2].par.yLocation										:= 0.900;
@@ -37,7 +45,7 @@ ACTION smartLabWorkstationSetup:
 	
 	gWorkStations[3].par.xLocation										:= 0.300;
 	gWorkStations[3].par.yLocation										:= 0.900;
-	gWorkStations[3].par.nextStationSelector							:= 'END';
+	gWorkStations[3].par.nextStationSelector							:= '-1';
 	gWorkStations[3].par.processTime									:= 1.0;
 	gWorkStations[3].par.pathRouting									:= 2;
 	gWorkStations[3].par.ArcMovement									:= FALSE;
@@ -75,6 +83,8 @@ ACTION smartLabSetup:
 	
 	FOR i := 0 TO NUM_SHUTTLES DO
 		shuttleIndexAtPosition[i] := i;
+		gShuttles[shuttleIndexAtPosition[i]].cm.state := 0;
+		gWorkStations[i].cm.state := 0;
 	END_FOR
 	tempShuttleIndexAtPosition := shuttleIndexAtPosition;
 	
@@ -103,7 +113,7 @@ ACTION smartLabInitialMovement:
 	CASE cm.state OF
 		0:
 			cm.description := 'Initiate movement to first workstation';
-			IF moveToStartWorkstation[i] THEN
+			IF moveToStartWorkstation[shuttleIndexAtPosition[i]] THEN
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
@@ -116,7 +126,7 @@ ACTION smartLabInitialMovement:
 				IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
 					pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
 					
-					moveToStartWorkstation[i] := FALSE;
+					moveToStartWorkstation[shuttleIndexAtPosition[i]] := FALSE;
 					//cm.state := 10;
 				END_IF
 			END_IF
@@ -192,7 +202,12 @@ ACTION smartLabWorkstationMovement:
 			pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0; //Absolute
 			pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := pWorkStations.par.pathRouting; //0 Diagonal, 1 First X then Y, 2 First Y then X
 			
-			IF pWorkStations.par.nextStationSelector = 'END' THEN
+			pWorkStations.par.tempShuttlePlan := shuttlePlans[pWorkStations.par.tempShuttleID];
+			
+			pWorkStations.par.nextStationSelector := pWorkStations.par.tempShuttlePlan.routingSheet[pWorkStations.par.tempShuttlePlan.progressIndex];
+			pWorkStations.par.tempShuttlePlan.progressIndex := pWorkStations.par.tempShuttlePlan.progressIndex + 1;
+			
+			IF pWorkStations.par.nextStationSelector = '-1' THEN
 				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := positionContainerSmartLabProgram[parkingSpotIndex].initXPos;
 				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := positionContainerSmartLabProgram[parkingSpotIndex].initYPos;
 				
@@ -226,7 +241,11 @@ ACTION smartLabWorkstationMovement:
 			orderFinished := TRUE;
 			shuttleIndexAtPosition := tempShuttleIndexAtPosition;
 			cm.state := 0;
-			em.substate := 17010;
+			IF bufferEmpty THEN
+				em.substate := 17010;
+			ELSE
+				em.substate := 17015;
+			END_IF
 			
 	END_CASE
 	

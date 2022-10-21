@@ -3,12 +3,6 @@
   <Bindings>
 
 
-
-
-
-
-
-
 <Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:productOrder.amount" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="ProgressBar1" attribute="maxValue" />

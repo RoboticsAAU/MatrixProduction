@@ -77,38 +77,4 @@ TYPE
 		initRyPos : REAL;
 		initRzPos : REAL;
 	END_STRUCT;
-	workStation_cmd_typ : 	STRUCT 
-		dummy : USINT;
-	END_STRUCT;
-	workStation_par_typ : 	STRUCT 
-		landBeforeProcess : BOOL; (*TRUE = yes*)
-		yLocation : REAL;
-		xLocation : REAL;
-		tempShuttleID : USINT;
-		processTime : REAL;
-		pathRouting : USINT := 0; (*0 Diagonal, 1 First X then Y, 2 First Y then X*)
-		nextStationSelector : STRING[80];
-		ArcMovement : BOOL;
-		internalCounter : USINT;
-		tempCounter : USINT;
-	END_STRUCT;
-	workStation_status_typ : 	STRUCT 
-		componentName : STRING[80];
-		active : BOOL;
-		oneshot : BOOL;
-	END_STRUCT;
-	workStation_typ : 	STRUCT 
-		par : workStation_par_typ;
-		status : workStation_status_typ;
-		cmd : workStation_cmd_typ;
-		cm : brdkCM;
-		MC_BR_RotaryMotionSpin_Acp6D_0 : MC_BR_RotaryMotionSpin_Acp6D;
-		MC_BR_RotaryMotion_Acp6D_0 : MC_BR_RotaryMotion_Acp6D;
-		MC_BR_MoveInPlane_Acp6D_0 : MC_BR_MoveInPlane_Acp6D;
-		MC_BR_ShLevitation_Acp6D_0 : MC_BR_ShLevitation_Acp6D;
-		TON_0 : TON;
-		workstationSwitcher : BOOL;
-		MC_BR_MoveArc_Acp6D_0 : MC_BR_MoveArc_Acp6D;
-		MC_BR_Move6D_Acp6D_0 : MC_BR_Move6D_Acp6D;
-	END_STRUCT;
 END_TYPE
