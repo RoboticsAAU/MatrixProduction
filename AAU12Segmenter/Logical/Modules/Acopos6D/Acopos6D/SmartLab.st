@@ -15,11 +15,13 @@ ACTION smartLabWorkstationSetup:
 		gWorkStations[i].par.landBeforeProcess								:= FALSE;
 	END_FOR
 	
-	gWorkStations[0].par.xLocation										:= 0.660;
-	gWorkStations[0].par.yLocation										:= 0.060;
-	gWorkStations[0].par.approachPosX									:= 0.0;
-	gWorkStations[0].par.approachPosY									:= 0.0;
-	gWorkStations[0].par.departPosX										:= 0.0;
+	
+	// Unloading workstation
+	gWorkStations[0].par.xLocation										:= quadrantIdxToPos(5);
+	gWorkStations[0].par.yLocation										:= quadrantIdxToPos(0);
+	gWorkStations[0].par.approachPosX									:= quadrantIdxToPos(5);
+	gWorkStations[0].par.approachPosY									:= quadrantIdxToPos(2);
+	gWorkStations[0].par.departPosX										:= quadrantIdxToPos(5);
 	gWorkStations[0].par.departPosY										:= 0.0;
 	gWorkStations[0].par.nextStationSelector							:= '1';
 	gWorkStations[0].par.processTime									:= 1.0;

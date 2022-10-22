@@ -12,3 +12,9 @@
 		i : USINT;
 	END_VAR
 END_FUNCTION_BLOCK
+
+FUNCTION quadrantIdxToPos : REAL
+	VAR_INPUT
+		quadrantIdx : USINT;
+	END_VAR
+END_FUNCTION
