@@ -9,18 +9,15 @@ ACTION flaskProgramTask:
 	positionContainerFlaskProgram[2].initYPos := 0.120;
 	positionContainerFlaskProgram[3].initXPos := 0.360;
 	positionContainerFlaskProgram[3].initYPos := 0.120;
-	positionContainerFlaskProgram[4].initXPos := 0.780;
+	positionContainerFlaskProgram[4].initXPos := 0.540;
 	positionContainerFlaskProgram[4].initYPos := 0.900;
-	positionContainerFlaskProgram[5].initXPos := 0.900;
+	positionContainerFlaskProgram[5].initXPos := 0.660;
 	positionContainerFlaskProgram[5].initYPos := 0.900;
-	positionContainerFlaskProgram[6].initXPos := 0.780;
+	positionContainerFlaskProgram[6].initXPos := 0.540;
 	positionContainerFlaskProgram[6].initYPos := 0.780;
-	positionContainerFlaskProgram[7].initXPos := 0.900;
+	positionContainerFlaskProgram[7].initXPos := 0.660;
 	positionContainerFlaskProgram[7].initYPos := 0.780;
-	positionContainerFlaskProgram[8].initXPos := 0.780;
-	positionContainerFlaskProgram[8].initYPos := 0.660;
-	positionContainerFlaskProgram[9].initXPos := 0.900;
-	positionContainerFlaskProgram[9].initYPos := 0.660;
+
 	CASE em.substate OF
 		12000:
 			em.description := 'Move shuttle to pre pos';

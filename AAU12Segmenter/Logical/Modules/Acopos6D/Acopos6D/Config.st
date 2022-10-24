@@ -1,7 +1,6 @@
 
 ACTION config: 
 	gAcp6DCtrl.Status.Ready := FALSE;
-	gameBrain.showHMIButton := FALSE;
 	enableButtons := TRUE;
 	
 	shuttleStartupInfo[0].initXPos := 0.060;

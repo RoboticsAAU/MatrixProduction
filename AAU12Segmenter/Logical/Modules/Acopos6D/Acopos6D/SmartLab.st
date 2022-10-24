@@ -15,19 +15,19 @@ ACTION smartLabWorkstationSetup:
 	gWorkStations[0].par.yLocation										:= 0.060;
 	gWorkStations[0].par.nextStationSelector							:= '1';
 	gWorkStations[0].par.processTime									:= 1.0;
-	gWorkStations[0].par.pathRouting									:= 2;
+	gWorkStations[0].par.pathRouting									:= 1;
 	gWorkStations[0].par.ArcMovement									:= FALSE;
 	gWorkStations[0].par.landBeforeProcess								:= FALSE;
 	
-	gWorkStations[1].par.xLocation										:= 0.900;
-	gWorkStations[1].par.yLocation										:= 0.300;
+	gWorkStations[1].par.xLocation										:= 0.060;
+	gWorkStations[1].par.yLocation										:= 0.060;
 	gWorkStations[1].par.nextStationSelector							:= '2';
 	gWorkStations[1].par.processTime									:= 1.0;
 	gWorkStations[1].par.pathRouting									:= 2;
 	gWorkStations[1].par.ArcMovement									:= FALSE;
 	gWorkStations[1].par.landBeforeProcess								:= FALSE;
 	
-	gWorkStations[2].par.xLocation										:= 0.780;
+	gWorkStations[2].par.xLocation										:= 0.060;
 	gWorkStations[2].par.yLocation										:= 0.900;
 	gWorkStations[2].par.nextStationSelector							:= '3';
 	gWorkStations[2].par.processTime									:= 1.0;
@@ -35,7 +35,7 @@ ACTION smartLabWorkstationSetup:
 	gWorkStations[2].par.ArcMovement									:= FALSE;
 	gWorkStations[2].par.landBeforeProcess								:= FALSE;
 	
-	gWorkStations[3].par.xLocation										:= 0.300;
+	gWorkStations[3].par.xLocation										:= 0.660;
 	gWorkStations[3].par.yLocation										:= 0.900;
 	gWorkStations[3].par.nextStationSelector							:= 'END';
 	gWorkStations[3].par.processTime									:= 1.0;
@@ -47,33 +47,33 @@ END_ACTION
 	
 ACTION smartLabSetup: 
 	
-	positionContainerSmartLabProgram[0].initXPos := 0.180;
-	positionContainerSmartLabProgram[0].initYPos := 0.060;
+	positionContainerSmartLabProgram[0].initXPos := 0.420;
+	positionContainerSmartLabProgram[0].initYPos := 0.300;
 	
-	positionContainerSmartLabProgram[1].initXPos := 0.180;
-	positionContainerSmartLabProgram[1].initYPos := 0.180;
+	positionContainerSmartLabProgram[1].initXPos := 0.420;
+	positionContainerSmartLabProgram[1].initYPos := 0.420;
 	
-	positionContainerSmartLabProgram[2].initXPos := 0.180;
-	positionContainerSmartLabProgram[2].initYPos := 0.300;
+	positionContainerSmartLabProgram[2].initXPos := 0.420;
+	positionContainerSmartLabProgram[2].initYPos := 0.540;
 	
-	positionContainerSmartLabProgram[3].initXPos := 0.180;
-	positionContainerSmartLabProgram[3].initYPos := 0.420;
+	positionContainerSmartLabProgram[3].initXPos := 0.420;
+	positionContainerSmartLabProgram[3].initYPos := 0.660;
 	
-	positionContainerSmartLabProgram[4].initXPos := 0.060;
-	positionContainerSmartLabProgram[4].initYPos := 0.060;
+	positionContainerSmartLabProgram[4].initXPos := 0.300;
+	positionContainerSmartLabProgram[4].initYPos := 0.300;
 	
-	positionContainerSmartLabProgram[5].initXPos := 0.060;
-	positionContainerSmartLabProgram[5].initYPos := 0.180;
+	positionContainerSmartLabProgram[5].initXPos := 0.300;
+	positionContainerSmartLabProgram[5].initYPos := 0.420;
 	
-	positionContainerSmartLabProgram[6].initXPos := 0.060;
-	positionContainerSmartLabProgram[6].initYPos := 0.300;
+	positionContainerSmartLabProgram[6].initXPos := 0.300;
+	positionContainerSmartLabProgram[6].initYPos := 0.540;
 	
-	positionContainerSmartLabProgram[7].initXPos := 0.060;
-	positionContainerSmartLabProgram[7].initYPos := 0.420;
+	positionContainerSmartLabProgram[7].initXPos := 0.300;
+	positionContainerSmartLabProgram[7].initYPos := 0.660;
 
 	smartLabWorkstationSetup; // Setup workstations
 	
-	FOR i := 0 TO 7 DO
+	FOR i := 0 TO NUM_SHUTTLES DO
 		shuttleIndexAtPosition[i] := i;
 	END_FOR
 	tempShuttleIndexAtPosition := shuttleIndexAtPosition;
@@ -106,7 +106,7 @@ ACTION smartLabInitialMovement:
 		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[0].par.xLocation;
 		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[0].par.yLocation;
-		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 2; //Y then X
+		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; //Y then X
 		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0;
 		
 		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;

@@ -64,13 +64,13 @@ ACTION linkMovementProgram:
 	positionContainerLinkMovement[6].Shuttle4.xPos := 0.120;
 	positionContainerLinkMovement[6].Shuttle4.yPos := 0.360;
 	
-	positionContainerLinkMovementNew[0].initXPos := 0.780;
+	positionContainerLinkMovementNew[0].initXPos := 0.540;
 	positionContainerLinkMovementNew[0].initYPos := 0.300;
-	positionContainerLinkMovementNew[1].initXPos := 0.780;
+	positionContainerLinkMovementNew[1].initXPos := 0.540;
 	positionContainerLinkMovementNew[1].initYPos := 0.420;
-	positionContainerLinkMovementNew[2].initXPos := 0.900;
+	positionContainerLinkMovementNew[2].initXPos := 0.660;
 	positionContainerLinkMovementNew[2].initYPos := 0.540;
-	positionContainerLinkMovementNew[3].initXPos := 0.900;
+	positionContainerLinkMovementNew[3].initXPos := 0.660;
 	positionContainerLinkMovementNew[3].initYPos := 0.660;
 	
 	positionContainerLinkMovementNew[4].initXPos := 0.120;
@@ -81,9 +81,9 @@ ACTION linkMovementProgram:
 	positionContainerLinkMovementNew[6].initYPos := 0.240;
 	positionContainerLinkMovementNew[7].initXPos := 0.240;
 	positionContainerLinkMovementNew[7].initYPos := 0.120;
-	positionContainerLinkMovementNew[8].initXPos := 0.780;
+	positionContainerLinkMovementNew[8].initXPos := 0.540;
 	positionContainerLinkMovementNew[8].initYPos := 0.900;
-	positionContainerLinkMovementNew[9].initXPos := 0.900;
+	positionContainerLinkMovementNew[9].initXPos := 0.660;
 	positionContainerLinkMovementNew[9].initYPos := 0.900;
 	
 	CASE em.substate OF
@@ -124,16 +124,16 @@ ACTION linkMovementProgram:
 				MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[tempShuttleCounter].shuttleRef);
 				CASE tempShuttleCounter OF
 					0:
-						MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.780;
+						MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.540;
 						MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.300;
 					1:
-						MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.780;
+						MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.540;
 						MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.420;
 					2:
-						MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.900;
+						MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.660;
 						MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.540;
 					3:
-						MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.900;
+						MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.660;
 						MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.660;
 				END_CASE
 				
@@ -227,7 +227,7 @@ ACTION linkMovementProgram:
 				em.substate := 3070;
 			ELSE
 				MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[0].shuttleRef);
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.900;
+				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.660;
 				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.540;
 				MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; //X then Y
 				MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
@@ -241,7 +241,7 @@ ACTION linkMovementProgram:
 			em.description := 'Move group of shuttle around';
 			em.cmd.sc := FALSE;
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[0].shuttleRef);
-			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.780;
+			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.540;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.300;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
@@ -261,7 +261,7 @@ ACTION linkMovementProgram:
 				em.substate := 3090;
 			ELSE
 				MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[2].shuttleRef);
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.780;
+				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.540;
 				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.300;
 				MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; //X then Y
 				MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
@@ -275,7 +275,7 @@ ACTION linkMovementProgram:
 			em.description := 'Move group of shuttle around';
 			em.cmd.sc := FALSE;
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[2].shuttleRef);
-			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.900;
+			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.660;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.540;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
@@ -303,7 +303,7 @@ ACTION linkMovementProgram:
 		3100:
 			em.description := 'Wait for shuttle to reach pos';
 			em.cmd.sc := FALSE;
-			IF((gAcp6DCtrl.Status.ShuttleInfo[2].Position.X > 0.900 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[2].Position.X < 0.900 + MARGIN) AND
+			IF((gAcp6DCtrl.Status.ShuttleInfo[2].Position.X > 0.660 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[2].Position.X < 0.660 + MARGIN) AND
 				gAcp6DCtrl.Status.ShuttleInfo[2].Position.Y > 0.540 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[2].Position.Y < 0.540 + MARGIN) THEN
 				IF gAcp6DCtrl.Status.ShuttleInfo[2].State = mcACP6D_SH_STATE_IDLING THEN
 					em.substate := 3110;
@@ -314,7 +314,7 @@ ACTION linkMovementProgram:
 			em.description := 'Move right group up';
 			em.cmd.sc := FALSE;
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[2].shuttleRef);
-			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.780;
+			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.540;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.540;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
@@ -342,7 +342,7 @@ ACTION linkMovementProgram:
 			em.description := 'rotationMove part 1';
 			em.cmd.sc := FALSE;
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[1].shuttleRef);
-			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.900;
+			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.660;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.300;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
@@ -357,7 +357,7 @@ ACTION linkMovementProgram:
 			em.description := 'rotationMove part 2';
 			em.cmd.sc := FALSE;
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[3].shuttleRef);
-			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.900;
+			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.660;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.420;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
@@ -372,7 +372,7 @@ ACTION linkMovementProgram:
 			em.description := 'rotationMove part 3';
 			em.cmd.sc := FALSE;
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[3].shuttleRef);
-			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.780;
+			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.540;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.420;
@@ -386,7 +386,7 @@ ACTION linkMovementProgram:
 		3160:
 			em.description := 'Check switch is done part 1';
 			em.cmd.sc := FALSE;
-			IF((gAcp6DCtrl.Status.ShuttleInfo[3].Position.X > 0.780 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[3].Position.X < 0.780 + MARGIN) AND
+			IF((gAcp6DCtrl.Status.ShuttleInfo[3].Position.X > 0.540 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[3].Position.X < 0.540 + MARGIN) AND
 				gAcp6DCtrl.Status.ShuttleInfo[3].Position.Y > 0.420 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[3].Position.Y < 0.420 + MARGIN) THEN
 				IF gAcp6DCtrl.Status.ShuttleInfo[3].State = mcACP6D_SH_STATE_IDLING THEN
 					em.substate := 3170;
@@ -397,7 +397,7 @@ ACTION linkMovementProgram:
 			em.description := 'rotationMove part 4';
 			em.cmd.sc := FALSE;
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[1].shuttleRef);
-			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.780;
+			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.540;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.660;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
@@ -411,7 +411,7 @@ ACTION linkMovementProgram:
 		3180:
 			em.description := 'Check switch is done part 2';
 			em.cmd.sc := FALSE;
-			IF((gAcp6DCtrl.Status.ShuttleInfo[1].Position.X > 0.780 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[1].Position.X < 0.780 + MARGIN) AND
+			IF((gAcp6DCtrl.Status.ShuttleInfo[1].Position.X > 0.540 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[1].Position.X < 0.540 + MARGIN) AND
 				gAcp6DCtrl.Status.ShuttleInfo[1].Position.Y > 0.660 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[1].Position.Y < 0.660 + MARGIN) THEN
 				IF gAcp6DCtrl.Status.ShuttleInfo[1].State = mcACP6D_SH_STATE_IDLING THEN
 					em.substate := 3190;
@@ -449,7 +449,7 @@ ACTION linkMovementProgram:
 			em.description := 'Move right side down';
 			em.cmd.sc := FALSE;
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[2].shuttleRef);
-			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.900;
+			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.660;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.540;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
@@ -468,7 +468,7 @@ ACTION linkMovementProgram:
 				em.substate := 3250;
 			ELSE
 				MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[0].shuttleRef);
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.900;
+				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.660;
 				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.540;
 				MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 2; //Y then X
 				MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
@@ -482,7 +482,7 @@ ACTION linkMovementProgram:
 			em.description := 'Move group of shuttle around';
 			em.cmd.sc := FALSE;
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[0].shuttleRef);
-			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.780;
+			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.540;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.300;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
@@ -502,7 +502,7 @@ ACTION linkMovementProgram:
 				em.substate := 3270;
 			ELSE
 				MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[2].shuttleRef);
-				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.780;
+				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.540;
 				MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.300;
 				MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 2; //Y then X
 				MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
@@ -516,7 +516,7 @@ ACTION linkMovementProgram:
 			em.description := 'Move group of shuttle around';
 			em.cmd.sc := FALSE;
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[2].shuttleRef);
-			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.900;
+			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.660;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.540;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
@@ -530,7 +530,7 @@ ACTION linkMovementProgram:
 		
 		3270:
 			em.cmd.sc := FALSE;
-			IF((gAcp6DCtrl.Status.ShuttleInfo[2].Position.X > 0.900 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[2].Position.X < 0.900 + MARGIN) AND
+			IF((gAcp6DCtrl.Status.ShuttleInfo[2].Position.X > 0.660 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[2].Position.X < 0.660 + MARGIN) AND
 				gAcp6DCtrl.Status.ShuttleInfo[2].Position.Y > 0.540 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[2].Position.Y < 0.540 + MARGIN) THEN
 				IF gAcp6DCtrl.Status.ShuttleInfo[2].State = mcACP6D_SH_STATE_IDLING THEN
 					em.substate := 3280;
@@ -541,7 +541,7 @@ ACTION linkMovementProgram:
 			em.description := 'Move right group up';
 			em.cmd.sc := FALSE;
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[2].shuttleRef);
-			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.780;
+			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.540;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.540;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
@@ -582,7 +582,7 @@ ACTION linkMovementProgram:
 			em.description := 'rotationMove part 1';
 			em.cmd.sc := FALSE;
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[3].shuttleRef);
-			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.900;
+			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.660;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.300;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
@@ -597,7 +597,7 @@ ACTION linkMovementProgram:
 			em.description := 'rotationMove part 2';
 			em.cmd.sc := FALSE;
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[1].shuttleRef);
-			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.900;
+			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.660;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.420;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
@@ -612,7 +612,7 @@ ACTION linkMovementProgram:
 			em.description := 'rotationMove part 3';
 			em.cmd.sc := FALSE;
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[1].shuttleRef);
-			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.780;
+			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.540;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.420;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
@@ -625,7 +625,7 @@ ACTION linkMovementProgram:
 		
 		3340:
 			em.cmd.sc := FALSE;
-			IF((gAcp6DCtrl.Status.ShuttleInfo[1].Position.X > 0.780 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[1].Position.X < 0.780 + MARGIN) AND
+			IF((gAcp6DCtrl.Status.ShuttleInfo[1].Position.X > 0.540 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[1].Position.X < 0.540 + MARGIN) AND
 				gAcp6DCtrl.Status.ShuttleInfo[1].Position.Y > 0.420 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[1].Position.Y < 0.420 + MARGIN) THEN
 				IF gAcp6DCtrl.Status.ShuttleInfo[1].State = mcACP6D_SH_STATE_IDLING THEN
 					em.substate := 3350;
@@ -636,7 +636,7 @@ ACTION linkMovementProgram:
 			em.description := 'rotationMove part 4';
 			em.cmd.sc := FALSE;
 			MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[3].shuttleRef);
-			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.780;
+			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0.540;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := 0.660;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
@@ -649,7 +649,7 @@ ACTION linkMovementProgram:
 		
 		3360:
 			em.cmd.sc := FALSE;
-			IF((gAcp6DCtrl.Status.ShuttleInfo[3].Position.X > 0.780 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[3].Position.X < 0.780 + MARGIN) AND
+			IF((gAcp6DCtrl.Status.ShuttleInfo[3].Position.X > 0.540 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[3].Position.X < 0.540 + MARGIN) AND
 				gAcp6DCtrl.Status.ShuttleInfo[3].Position.Y > 0.660 - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[3].Position.Y < 0.660 + MARGIN) THEN
 				IF gAcp6DCtrl.Status.ShuttleInfo[3].State = mcACP6D_SH_STATE_IDLING THEN
 					em.substate := 3370;

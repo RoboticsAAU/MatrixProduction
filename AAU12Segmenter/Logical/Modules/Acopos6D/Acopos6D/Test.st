@@ -13,16 +13,16 @@ ACTION testProgram:
 	positionContainerTestProgram[3].initXPos := 0.050;
 	positionContainerTestProgram[3].initYPos := 0.420;
 	
-	positionContainerTestProgram[4].initXPos := 0.900;
+	positionContainerTestProgram[4].initXPos := 0.660;
 	positionContainerTestProgram[4].initYPos := 0.900;
 	
-	positionContainerTestProgram[5].initXPos := 0.900;
+	positionContainerTestProgram[5].initXPos := 0.660;
 	positionContainerTestProgram[5].initYPos := 0.780;
 	
-	positionContainerTestProgram[6].initXPos := 0.780;
+	positionContainerTestProgram[6].initXPos := 0.540;
 	positionContainerTestProgram[6].initYPos := 0.900;
 	
-	positionContainerTestProgram[7].initXPos := 0.780;
+	positionContainerTestProgram[7].initXPos := 0.540;
 	positionContainerTestProgram[7].initYPos := 0.780;
 
 	CASE em.substate OF

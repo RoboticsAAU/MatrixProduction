@@ -18,7 +18,6 @@ VAR
 	fbPayload : REAL;
 	flaskProgramAcceleration : REAL := 0.2;
 	flaskProgramVelocity : REAL := 2;
-	gameBrain : gameMemory_typ;
 	gShuttles : ARRAY[0..NUM_SHUTTLES] OF shuttle_typ;
 	i : USINT;
 	j : USINT;
@@ -47,7 +46,6 @@ VAR
 	MC_BR_MoveInPlaneAsync_Acp6D_0 : MC_BR_MoveInPlaneAsync_Acp6D;
 	MC_BR_MoveInPlane_Acp6D_0 : MC_BR_MoveInPlane_Acp6D;
 	MC_BR_MoveShortAxis_Acp6D_0 : ARRAY[0..3] OF MC_BR_MoveShortAxis_Acp6D;
-	MC_BR_MoveShortAxis_Acp6D_winner : MC_BR_MoveShortAxis_Acp6D;
 	MC_BR_ShGroupAddShuttle_Acp6D_0 : MC_BR_ShGroupAddShuttle_Acp6D;
 	MC_BR_ShGroupCoupleCtrl_Acp6D_0 : MC_BR_ShGroupCoupleCtrl_Acp6D;
 	MC_BR_ShGroupCreate_Acp6D_0 : MC_BR_ShGroupCreate_Acp6D;
@@ -58,23 +56,17 @@ VAR
 	MC_BR_ShGroupGetInfo_Acp6D_0 : MC_BR_ShGroupGetInfo_Acp6D;
 	MC_BR_ShLevitation_Acp6D_0 : MC_BR_ShLevitation_Acp6D;
 	MC_BR_ShReadInfo_Acp6D_0 : ARRAY[0..NUM_SHUTTLES] OF MC_BR_ShReadInfo_Acp6D;
-	modeSelectorString : STRING[80];
 	positionContainerLinkMovementNew : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerBoxProgram : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerDemo_0 : ARRAY[0..3] OF shuttleStartup_typ;
-	positionContainerDialGauge : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerFlaskProgram : ARRAY[0..9] OF shuttleStartup_typ;
 	testObj : test_typ;
-	positionContainerGameProgram : ARRAY[0..3] OF shuttleStartup_typ;
 	positionContainerLinkMovement : ARRAY[0..7] OF thisShuttleSetup;
-	positionContainerLoosingShuttles : ARRAY[0..2] OF shuttleStartup_typ;
-	positionContainerShuttleToConv : ARRAY[0..3] OF shuttleStartup_typ;
 	positionContainerVisionMovement : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerWorkstationMov : ARRAY[0..9] OF shuttleStartup_typ;
 	positionDanfoss : ARRAY[0..3] OF shuttleStartup_typ;
 	positionContainerSteelSheet : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerRotation : ARRAY[0..9] OF shuttleStartup_typ;
-	posotionContainerSunMovement : ARRAY[0..3] OF shuttleStartup_typ;
 	positionContainerTestProgram : ARRAY[0..7] OF shuttleStartup_typ;
 	positionContainerSmartLabProgram : ARRAY[0..7] OF shuttleStartup_typ;
 	pShuttle : REFERENCE TO shuttle_typ;
@@ -84,27 +76,21 @@ VAR
 	shGroupShuttle2_3 : UDINT;
 	shGroupShuttle5_6_7_8 : UDINT;
 	shGroupShuttle3_4 : UDINT;
-	shuttle : USINT;
 	shuttlePayload : REAL;
 	shuttleToTakePictureOf : USINT;
 	tempCounter : USINT;
 	tempShuttleCnt : USINT;
 	tempShuttleCounter : USINT;
-	tempShuttleID : USINT;
-	tmpCnt : USINT;
 	TON_0 : TON;
 	TON_watchdog : TON;
 	visionFlipFlop : BOOL;
 	visionLightTON : TON;
-	watchPShuttle : {REDUND_UNREPLICABLE} USINT;
-	watchPWorkstation : USINT;
 	weightCalibration : REAL;
 END_VAR
 VAR RETAIN
 	weightProgramFlyingHight : REAL := 1.3;
 END_VAR
 VAR
-	WorkStation1MovementTimer : REAL := 2;
 	WorkStation2And3MovementTimer : REAL := 4;
 	OpenGripper : BOOL;
 	GripperWhitePin : BOOL := FALSE;

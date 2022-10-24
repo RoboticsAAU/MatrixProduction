@@ -1,7 +1,6 @@
 VAR
 	em : brdkEM;
 	MC_BR_MoveInPlane_Acp6D_0 : MC_BR_MoveInPlane_Acp6D;
-	shuttleCounter : USINT;
 	modeSelectorOldValue : driveModes;
 	TON_0 : TON;
 	MC_BR_AsmReboot_Acp6D_0 : MC_BR_AsmReboot_Acp6D;

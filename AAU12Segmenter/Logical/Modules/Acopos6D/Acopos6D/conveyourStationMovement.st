@@ -36,7 +36,7 @@ ACTION conveyorStationSetup:
 	gWorkStations[2].par.ArcMovement									:= FALSE;
 	gWorkStations[2].par.landBeforeProcess								:= FALSE;
 	
-	gWorkStations[3].par.xLocation										:= 0.900;
+	gWorkStations[3].par.xLocation										:= 0.660;
 	gWorkStations[3].par.yLocation										:= 0.300;
 	gWorkStations[3].par.nextStationSelector							:= '4';
 	gWorkStations[3].par.processTime									:= ConveyorMovementWorkstation1Time;
@@ -44,7 +44,7 @@ ACTION conveyorStationSetup:
 	gWorkStations[3].par.ArcMovement									:= FALSE;
 	gWorkStations[3].par.landBeforeProcess								:= FALSE;
 	
-	gWorkStations[4].par.xLocation										:= 0.780;
+	gWorkStations[4].par.xLocation										:= 0.540;
 	gWorkStations[4].par.yLocation										:= 0.900;
 	gWorkStations[4].par.nextStationSelector							:= '5';
 	gWorkStations[4].par.processTime									:= ConveyorMovementWorkstation1Time;
@@ -52,7 +52,7 @@ ACTION conveyorStationSetup:
 	gWorkStations[4].par.ArcMovement									:= FALSE;
 	gWorkStations[4].par.landBeforeProcess								:= FALSE;
 	
-	gWorkStations[5].par.xLocation										:= 0.540;
+	gWorkStations[5].par.xLocation										:= 0.420;
 	gWorkStations[5].par.yLocation										:= 0.420;
 	gWorkStations[5].par.nextStationSelector							:= '6';
 	gWorkStations[5].par.processTime									:= 4;
@@ -82,21 +82,17 @@ ACTION conveyorStationSetup:
 	positionContainerWorkstationMov[1].initYPos							:= 0.060;
 	positionContainerWorkstationMov[2].initXPos							:= 0.420;
 	positionContainerWorkstationMov[2].initYPos							:= 0.060;
-	positionContainerWorkstationMov[3].initXPos							:= 0.780;
+	positionContainerWorkstationMov[3].initXPos							:= 0.540;
 	positionContainerWorkstationMov[3].initYPos							:= 0.300;
 	
 	positionContainerWorkstationMov[4].initXPos							:= 0.060;
 	positionContainerWorkstationMov[4].initYPos							:= 0.180;
 	positionContainerWorkstationMov[5].initXPos							:= 0.060;
 	positionContainerWorkstationMov[5].initYPos							:= 0.300;
-	positionContainerWorkstationMov[6].initXPos							:= 0.900;
+	positionContainerWorkstationMov[6].initXPos							:= 0.660;
 	positionContainerWorkstationMov[6].initYPos							:= 0.300;
-	positionContainerWorkstationMov[7].initXPos							:= 0.780;
+	positionContainerWorkstationMov[7].initXPos							:= 0.540;
 	positionContainerWorkstationMov[7].initYPos							:= 0.900;
-	positionContainerWorkstationMov[8].initXPos							:= 0.420;
-	positionContainerWorkstationMov[8].initYPos							:= 0.420;
-	positionContainerWorkstationMov[9].initXPos							:= 0.060;
-	positionContainerWorkstationMov[9].initYPos							:= 0.420;
 	
 	CASE em.substate OF
 		9000:
