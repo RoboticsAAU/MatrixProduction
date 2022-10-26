@@ -1,23 +1,15 @@
 VAR
 	writeIndex : USINT;
-	WorkStation2And3MovementTimer : REAL := 4;
-	WorkStation1MovementTimer : REAL := 2;
 END_VAR
 VAR RETAIN
 	weightProgramFlyingHight : REAL := 1.3;
 END_VAR
 VAR
 	weightCalibration : REAL;
-	watchPWorkstation : USINT;
-	watchPShuttle : {REDUND_UNREPLICABLE} USINT;
-	visionLightTON : TON;
-	visionFlipFlop : BOOL;
 	TON_watchdog : TON;
 	TON_0 : TON;
-	tmpCnt : USINT;
 	testObj : test_typ;
 	tempShuttleIndexAtPosition : ARRAY[0..7] OF USINT;
-	tempShuttleID : USINT;
 	tempShuttleCounter : USINT;
 	tempShuttleCnt : USINT;
 	tempProductOrder : product_order := (amount:=1,topCover:=blackCover,bottomCover:=blackCover,PCB:=TRUE,Fuses:=2);
@@ -28,7 +20,6 @@ VAR
 	shuttlePlans : ARRAY[0..7] OF shuttle_plan;
 	shuttlePayload : REAL;
 	shuttleIndexAtPosition : ARRAY[0..7] OF USINT;
-	shuttle : USINT;
 	shGroupShuttle5_6_7_8 : UDINT;
 	shGroupShuttle3_4 : UDINT;
 	shGroupShuttle2_3 : UDINT;
@@ -38,29 +29,20 @@ VAR
 	pWorkStations : REFERENCE TO workStation_typ;
 	pShuttle : REFERENCE TO shuttle_typ;
 	productOrder : product_order := (amount:=1,topCover:=blackCover,bottomCover:=blackCover,PCB:=TRUE,Fuses:=2);
-	posotionContainerSunMovement : ARRAY[0..3] OF shuttleStartup_typ;
-	positionDanfoss : ARRAY[0..3] OF shuttleStartup_typ;
 	positionContainerWorkstationMov : ARRAY[0..9] OF shuttleStartup_typ;
-	positionContainerVisionMovement : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerTestProgram : ARRAY[0..7] OF shuttleStartup_typ;
 	positionContainerSteelSheet : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerSmartLabProgram : ARRAY[0..7] OF shuttleStartup_typ;
-	positionContainerShuttleToConv : ARRAY[0..3] OF shuttleStartup_typ;
 	positionContainerRotation : ARRAY[0..9] OF shuttleStartup_typ;
-	positionContainerLoosingShuttles : ARRAY[0..2] OF shuttleStartup_typ;
 	positionContainerLinkMovementNew : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerLinkMovement : ARRAY[0..7] OF thisShuttleSetup;
-	positionContainerGameProgram : ARRAY[0..3] OF shuttleStartup_typ;
 	positionContainerFlaskProgram : ARRAY[0..9] OF shuttleStartup_typ;
-	positionContainerDialGauge : ARRAY[0..9] OF shuttleStartup_typ;
-	positionContainerDemo_0 : ARRAY[0..3] OF shuttleStartup_typ;
 	positionContainerBoxProgram : ARRAY[0..9] OF shuttleStartup_typ;
 	parkingSpotIndex : SINT;
 	orderFinished : BOOL := TRUE;
 	orderBuffer : ARRAY[0..9] OF product_order := [10((amount:=0,bottomCover:=noCover,topCover:=noCover,PCB:=FALSE,Fuses:=0,ID:=0))];
 	OpenGripper : BOOL;
 	moveToStartWorkstation : ARRAY[0..7] OF BOOL := [8(FALSE)];
-	modeSelectorString : STRING[80];
 	MC_BR_ShReadInfo_Acp6D_0 : ARRAY[0..NUM_SHUTTLES] OF MC_BR_ShReadInfo_Acp6D;
 	MC_BR_ShLevitation_Acp6D_0 : MC_BR_ShLevitation_Acp6D;
 	MC_BR_ShGroupGetInfo_Acp6D_0 : MC_BR_ShGroupGetInfo_Acp6D;
@@ -77,7 +59,6 @@ VAR
 	MC_BR_ReadCyclicPosition_Acp6D_2 : MC_BR_ReadCyclicPosition_Acp6D;
 	MC_BR_ReadCyclicPosition_Acp6D_1 : MC_BR_ReadCyclicPosition_Acp6D;
 	MC_BR_ReadCyclicPosition_Acp6D_0 : MC_BR_ReadCyclicPosition_Acp6D;
-	MC_BR_MoveShortAxis_Acp6D_winner : MC_BR_MoveShortAxis_Acp6D;
 	MC_BR_MoveShortAxis_Acp6D_0 : ARRAY[0..3] OF MC_BR_MoveShortAxis_Acp6D;
 	MC_BR_MoveInPlane_Acp6D_0 : MC_BR_MoveInPlane_Acp6D;
 	MC_BR_MoveInPlaneAsync_Acp6D_0 : MC_BR_MoveInPlaneAsync_Acp6D;
@@ -103,25 +84,14 @@ VAR
 	gShuttles : ARRAY[0..NUM_SHUTTLES] OF shuttle_typ;
 	GripperWhitePin : BOOL := FALSE;
 	GripperBlackPin : BOOL := FALSE;
-	gameBrain : gameMemory_typ;
 	flaskProgramVelocity : REAL := 2;
 	flaskProgramAcceleration : REAL := 0.2;
 	fbPayload : REAL;
 	executeOrder : BOOL := FALSE;
 	enableButtons : BOOL;
 	em : brdkEM;
-END_VAR
-VAR RETAIN
-	danfossWorkStation2Timer : USINT := 8;
-	danfossWorkStation2NUMRotations : USINT := 5;
-	danfossWorkStation1Timer : USINT := 8;
-	danfossWorkStation1NUMRotations : USINT := 5;
-END_VAR
-VAR
 	createShGroup : USINT;
 	createRouteSheet_0 : createRouteSheet;
-	ConveyorMovementWorkstation2Time : REAL := 4;
-	ConveyorMovementWorkstation1Time : REAL := 2;
 	cm : REFERENCE TO brdkCM;
 	bufferSize : {REDUND_UNREPLICABLE} USINT;
 	bufferFull : BOOL := FALSE;

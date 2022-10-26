@@ -1,27 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="content_MainPage_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Bindings>
-    <EventBinding id="content_MainPage.RadioButton1.Click">
-      <Source xsi:type="widgets.brease.RadioButton.Event" contentRefId="content_MainPage" widgetRefId="RadioButton1" event="Click" />
-      <EventHandler>
-        <Sequence>
-          <Step order="0">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:modeSelector">
-                <Method xsi:type="opcUa.NodeAction.SetValueNumber" value="1" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="1">
-            <Action>
-              <Target xsi:type="clientSystem.Action">
-                <Method xsi:type="clientSystem.Action.Navigate" pageId="page_camera" />
-              </Target>
-            </Action>
-          </Step>
-        </Sequence>
-      </EventHandler>
-    </EventBinding>
     <EventBinding id="content_MainPage.RadioButton2.Click">
       <Source xsi:type="widgets.brease.RadioButton.Event" contentRefId="content_MainPage" widgetRefId="RadioButton2" event="Click" />
       <EventHandler>
