@@ -14,7 +14,7 @@ ACTION conveyorStationSetup:
 	gWorkStations[0].par.xLocation										:= 0.180;
 	gWorkStations[0].par.yLocation										:= 0.060;
 	gWorkStations[0].par.nextStationSelector							:= '1';
-	gWorkStations[0].par.processTime									:= ConveyorMovementWorkstation1Time;
+	gWorkStations[0].par.processTime									:= 1;
 	gWorkStations[0].par.pathRouting									:= 1;
 	gWorkStations[0].par.ArcMovement									:= FALSE;
 	gWorkStations[0].par.landBeforeProcess								:= FALSE;
@@ -22,7 +22,7 @@ ACTION conveyorStationSetup:
 	gWorkStations[1].par.xLocation										:= 0.660;
 	gWorkStations[1].par.yLocation										:= 0.060;
 	gWorkStations[1].par.nextStationSelector							:= '3';
-	gWorkStations[1].par.processTime									:= ConveyorMovementWorkstation2Time;
+	gWorkStations[1].par.processTime									:= 2;
 	gWorkStations[1].par.pathRouting									:= 2;
 	gWorkStations[1].par.ArcMovement									:= FALSE;
 	gWorkStations[1].par.landBeforeProcess								:= FALSE;
@@ -39,7 +39,7 @@ ACTION conveyorStationSetup:
 	gWorkStations[3].par.xLocation										:= 0.660;
 	gWorkStations[3].par.yLocation										:= 0.300;
 	gWorkStations[3].par.nextStationSelector							:= '4';
-	gWorkStations[3].par.processTime									:= ConveyorMovementWorkstation1Time;
+	gWorkStations[3].par.processTime									:= 1;
 	gWorkStations[3].par.pathRouting									:= 2;
 	gWorkStations[3].par.ArcMovement									:= FALSE;
 	gWorkStations[3].par.landBeforeProcess								:= FALSE;
@@ -47,7 +47,7 @@ ACTION conveyorStationSetup:
 	gWorkStations[4].par.xLocation										:= 0.540;
 	gWorkStations[4].par.yLocation										:= 0.900;
 	gWorkStations[4].par.nextStationSelector							:= '5';
-	gWorkStations[4].par.processTime									:= ConveyorMovementWorkstation1Time;
+	gWorkStations[4].par.processTime									:= 1;
 	gWorkStations[4].par.pathRouting									:= 2;
 	gWorkStations[4].par.ArcMovement									:= FALSE;
 	gWorkStations[4].par.landBeforeProcess								:= FALSE;
@@ -55,7 +55,7 @@ ACTION conveyorStationSetup:
 	gWorkStations[5].par.xLocation										:= 0.420;
 	gWorkStations[5].par.yLocation										:= 0.420;
 	gWorkStations[5].par.nextStationSelector							:= '6';
-	gWorkStations[5].par.processTime									:= 4;
+	gWorkStations[5].par.processTime									:= 2;
 	gWorkStations[5].par.pathRouting									:= 0;
 	gWorkStations[5].par.ArcMovement									:= FALSE;
 	gWorkStations[5].par.landBeforeProcess								:= FALSE;
@@ -63,7 +63,7 @@ ACTION conveyorStationSetup:
 	gWorkStations[6].par.xLocation										:= 0.060;
 	gWorkStations[6].par.yLocation										:= 0.420;
 	gWorkStations[6].par.nextStationSelector							:= '0';
-	gWorkStations[6].par.processTime									:= ConveyorMovementWorkstation1Time;
+	gWorkStations[6].par.processTime									:= 1;
 	gWorkStations[6].par.pathRouting									:= 2;
 	gWorkStations[6].par.ArcMovement									:= FALSE;
 	gWorkStations[6].par.landBeforeProcess								:= FALSE;
@@ -71,7 +71,7 @@ ACTION conveyorStationSetup:
 	gWorkStations[7].par.xLocation										:= 0.300;
 	gWorkStations[7].par.yLocation										:= 0.900;
 	gWorkStations[7].par.nextStationSelector							:= '6';
-	gWorkStations[7].par.processTime									:= 4;
+	gWorkStations[7].par.processTime									:= 2;
 	gWorkStations[7].par.pathRouting									:= 2;
 	gWorkStations[7].par.ArcMovement									:= FALSE;
 	gWorkStations[7].par.landBeforeProcess								:= FALSE;
@@ -182,9 +182,6 @@ ACTION conveyorStationSetup:
 			END_IF
 		
 		9006:
-			// Change timer on the fly
-			gWorkStations[0].par.processTime									:= ConveyorMovementWorkstation1Time;
-			gWorkStations[1].par.processTime									:= ConveyorMovementWorkstation2Time;
 		
 			
 	END_CASE

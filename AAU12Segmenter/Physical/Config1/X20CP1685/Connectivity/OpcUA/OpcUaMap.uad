@@ -85,19 +85,12 @@
           <Variable Name="returnSmallWeightMovement" />
           <Variable Name="startBigWeightMovement" />
         </Variable>
-        <Variable Name="ConveyorMovementWorkstation1Time" />
-        <Variable Name="ConveyorMovementWorkstation2Time" />
         <Variable Name="createShGroup" />
-        <Variable Name="danfossWorkStation1NUMRotations" />
-        <Variable Name="danfossWorkStation1Timer" />
-        <Variable Name="danfossWorkStation2NUMRotations" />
-        <Variable Name="danfossWorkStation2Timer" />
         <Variable Name="enableButtons" />
         <Variable Name="flaskProgramAcceleration" />
         <Variable Name="flaskProgramVelocity" />
         <Variable Name="shuttlePayload" />
         <Variable Name="weightProgramFlyingHight" />
-        <Variable Name="WorkStation2And3MovementTimer" />
         <Variable Name="steelSheetFlyingHeight" EngineeringUnitId="1" />
         <Variable Name="productOrder">
           <Variable Name="amount" />

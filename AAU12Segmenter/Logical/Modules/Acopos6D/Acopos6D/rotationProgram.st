@@ -30,7 +30,7 @@ ACTION rotationTask:
 	gWorkStations[1].par.xLocation										:= 0.060;
 	gWorkStations[1].par.yLocation										:= 0.180;
 	gWorkStations[1].par.nextStationSelector							:= '0';
-	gWorkStations[1].par.processTime									:= WorkStation2And3MovementTimer;
+	gWorkStations[1].par.processTime									:= 2;
 	gWorkStations[1].par.pathRouting									:= 1;
 	gWorkStations[1].par.landBeforeProcess								:= TRUE;
 	gWorkStations[1].par.ArcMovement									:= FALSE;

@@ -2,17 +2,7 @@ VAR
 	steelSheetFlyingHeight : REAL := 0.002;
 	ABBRobot : ABB_typ;
 	cm : REFERENCE TO brdkCM;
-	ConveyorMovementWorkstation1Time : REAL := 2;
-	ConveyorMovementWorkstation2Time : REAL := 4;
 	createShGroup : USINT;
-END_VAR
-VAR RETAIN
-	danfossWorkStation1NUMRotations : USINT := 5;
-	danfossWorkStation1Timer : USINT := 8;
-	danfossWorkStation2NUMRotations : USINT := 5;
-	danfossWorkStation2Timer : USINT := 8;
-END_VAR
-VAR
 	em : brdkEM;
 	enableButtons : BOOL;
 	fbPayload : REAL;
@@ -58,13 +48,10 @@ VAR
 	MC_BR_ShReadInfo_Acp6D_0 : ARRAY[0..NUM_SHUTTLES] OF MC_BR_ShReadInfo_Acp6D;
 	positionContainerLinkMovementNew : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerBoxProgram : ARRAY[0..9] OF shuttleStartup_typ;
-	positionContainerDemo_0 : ARRAY[0..3] OF shuttleStartup_typ;
 	positionContainerFlaskProgram : ARRAY[0..9] OF shuttleStartup_typ;
 	testObj : test_typ;
 	positionContainerLinkMovement : ARRAY[0..7] OF thisShuttleSetup;
-	positionContainerVisionMovement : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerWorkstationMov : ARRAY[0..9] OF shuttleStartup_typ;
-	positionDanfoss : ARRAY[0..3] OF shuttleStartup_typ;
 	positionContainerSteelSheet : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerRotation : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerTestProgram : ARRAY[0..7] OF shuttleStartup_typ;
@@ -83,15 +70,12 @@ VAR
 	tempShuttleCounter : USINT;
 	TON_0 : TON;
 	TON_watchdog : TON;
-	visionFlipFlop : BOOL;
-	visionLightTON : TON;
 	weightCalibration : REAL;
 END_VAR
 VAR RETAIN
 	weightProgramFlyingHight : REAL := 1.3;
 END_VAR
 VAR
-	WorkStation2And3MovementTimer : REAL := 4;
 	OpenGripper : BOOL;
 	GripperWhitePin : BOOL := FALSE;
 	GripperBlackPin : BOOL := FALSE;

@@ -6,53 +6,53 @@
     <Widget xsi:type="widgets.brease.Label" id="Label17" top="640" left="80" width="180" height="40" zIndex="2" text="Place order:" textAlign="left" fontSize="30px" bold="true" padding="0px 15px 0px 0px" />
     <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput1" top="280" left="320" height="40" zIndex="3" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1,'maximumIntegerDigits':8},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="8" minValue="1" submitOnChange="false" value="1" borderWidth="2px 6px 2px 2px" activeBorderWidth="2px 6px 2px 2px" borderColor="rgba(0, 0, 0, 1)" fontSize="30px" unitFontSize="14px" />
     <Widget xsi:type="widgets.brease.PushButton" id="PushButton1" top="643" left="320" height="35" zIndex="4" text="Execute" borderWidth="2px" backColor="rgba(255, 255, 255, 1)" disabledBackColor="rgba(220, 220, 220, 1)" borderColor="rgba(0, 0, 0, 1)" fontSize="20px" bold="true" italic="false" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle3" top="610" left="685" width="130" height="130" zIndex="6" backColor="rgba(0, 0, 0, 1)" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle4" top="610" left="820" width="130" height="130" zIndex="7" backColor="rgba(0, 0, 0, 1)" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle6" top="675" left="1020" width="60" height="60" zIndex="15" cornerRadius="100px" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle7" top="610" left="955" width="130" height="130" zIndex="8" backColor="rgba(0, 0, 0, 1)" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle8" top="475" left="955" width="130" height="130" zIndex="9" backColor="rgba(0, 0, 0, 1)" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle9" top="475" left="820" width="130" height="130" zIndex="10" backColor="rgba(0, 0, 0, 1)" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle10" top="475" left="685" width="130" height="130" zIndex="11" backColor="rgba(0, 0, 0, 1)" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle11" top="475" left="1090" width="130" height="130" zIndex="12" backColor="rgba(0, 0, 0, 1)" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle12" top="340" left="1090" width="130" height="130" zIndex="13" backColor="rgba(0, 0, 0, 1)" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle13" top="205" left="1090" width="130" height="130" zIndex="14" backColor="rgba(0, 0, 0, 1)" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle14" top="540" left="1155" width="60" height="60" zIndex="16" cornerRadius="100px" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle15" top="210" left="1095" width="60" height="60" zIndex="17" cornerRadius="100px" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle4" top="610" left="820" width="130" height="130" zIndex="6" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle7" top="610" left="955" width="130" height="130" zIndex="7" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle8" top="475" left="955" width="130" height="130" zIndex="8" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle9" top="475" left="820" width="130" height="130" zIndex="9" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle11" top="475" left="1090" width="130" height="130" zIndex="10" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle12" top="340" left="1090" width="130" height="130" zIndex="11" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle13" top="205" left="1090" width="130" height="130" zIndex="12" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle14" top="675" left="827" width="60" height="60" zIndex="13" cornerRadius="100px" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle15" top="210" left="1155" width="60" height="60" zIndex="14" cornerRadius="100px" />
     <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle19" top="340" left="820" width="130" height="130" zIndex="5" backColor="rgba(0, 0, 0, 1)" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle20" top="205" left="820" width="130" height="130" zIndex="18" backColor="rgba(0, 0, 0, 1)" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle21" top="205" left="955" width="130" height="130" zIndex="19" backColor="rgba(0, 0, 0, 1)" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle22" top="210" left="825" width="60" height="60" zIndex="20" cornerRadius="100px" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle1" top="480" left="690" width="60" height="60" zIndex="21" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle2" top="480" left="750" width="60" height="60" zIndex="22" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle5" top="540" left="690" width="60" height="60" zIndex="23" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle16" top="540" left="750" width="60" height="60" zIndex="24" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle17" top="615" left="690" width="60" height="60" zIndex="25" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle18" top="615" left="750" width="60" height="60" zIndex="26" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle23" top="675" left="690" width="60" height="60" zIndex="27" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
-    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle24" top="675" left="750" width="60" height="60" zIndex="28" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
-    <Widget xsi:type="widgets.brease.Label" id="Label1" top="690" left="770" width="20" zIndex="29" text="1" textAlign="center" fontSize="30px" bold="true" />
-    <Widget xsi:type="widgets.brease.Label" id="Label2" top="630" left="770" width="20" zIndex="30" text="2" textAlign="center" fontSize="30px" bold="true" />
-    <Widget xsi:type="widgets.brease.Label" id="Label3" top="555" left="770" width="20" zIndex="31" text="3" textAlign="center" fontSize="30px" bold="true" />
-    <Widget xsi:type="widgets.brease.Label" id="Label4" top="495" left="770" width="20" zIndex="32" text="4" textAlign="center" fontSize="30px" bold="true" />
-    <Widget xsi:type="widgets.brease.Label" id="Label5" top="690" left="710" width="20" zIndex="33" text="5" textAlign="center" fontSize="30px" bold="true" />
-    <Widget xsi:type="widgets.brease.Label" id="Label6" top="630" left="710" width="20" zIndex="34" text="6" textAlign="center" fontSize="30px" bold="true" />
-    <Widget xsi:type="widgets.brease.Label" id="Label7" top="555" left="710" width="20" zIndex="35" text="7" textAlign="center" fontSize="30px" bold="true" />
-    <Widget xsi:type="widgets.brease.Label" id="Label8" top="495" left="710" width="20" zIndex="36" text="8" textAlign="center" fontSize="30px" bold="true" />
-    <Widget xsi:type="widgets.brease.Label" id="Label9" top="690" left="1022" width="55" zIndex="37" text="W1" textAlign="center" fontSize="30px" bold="true" />
-    <Widget xsi:type="widgets.brease.Label" id="Label10" top="555" left="1158" width="55" zIndex="38" text="W2" textAlign="center" fontSize="30px" bold="true" />
-    <Widget xsi:type="widgets.brease.Label" id="Label11" top="225" left="1097" width="55" zIndex="39" text="W3" textAlign="center" fontSize="30px" bold="true" />
-    <Widget xsi:type="widgets.brease.Label" id="Label12" top="225" left="828" width="55" zIndex="40" text="W4" textAlign="center" fontSize="30px" bold="true" />
-    <Widget xsi:type="widgets.brease.Line" id="Line1" zIndex="41" x1="60" x2="580" y1="260" y2="260" lineWidth="2px" />
-    <Widget xsi:type="widgets.brease.Line" id="Line2" zIndex="42" x1="60" x2="580" y1="620" y2="620" lineWidth="2px" />
-    <Widget xsi:type="widgets.brease.Label" id="Label18" top="440" left="80" width="200" height="40" zIndex="43" text="Bottom cover:" textAlign="left" fontSize="30px" padding="0px 15px 0px 0px" />
-    <Widget xsi:type="widgets.brease.Label" id="Label19" top="280" left="80" width="120" height="40" zIndex="44" text="Amount:" textAlign="left" fontSize="30px" padding="0px 15px 0px 0px" />
-    <Widget xsi:type="widgets.brease.Label" id="Label20" top="380" left="80" width="160" height="40" zIndex="45" text="Top cover:" textAlign="left" fontSize="30px" padding="0px 15px 0px 0px" />
-    <Widget xsi:type="widgets.brease.Label" id="Label21" top="500" left="80" height="40" zIndex="46" text="PCB:" textAlign="left" fontSize="30px" padding="0px 15px 0px 0px" />
-    <Widget xsi:type="widgets.brease.Label" id="Label22" top="560" left="80" width="100" height="40" zIndex="47" text="Fuses:" textAlign="left" fontSize="30px" padding="0px 15px 0px 0px" />
-    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput5" top="560" left="320" height="40" zIndex="48" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1,'maximumIntegerDigits':8},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="2" submitOnChange="false" value="2" borderWidth="2px 6px 2px 2px" activeBorderWidth="2px 6px 2px 2px" borderColor="rgba(0, 0, 0, 1)" fontSize="30px" unitFontSize="14px" />
-    <Widget xsi:type="widgets.brease.ProgressBar" id="ProgressBar1" top="700" left="80" width="500" zIndex="49" labelSize="40" maxValue="1" barColor="rgba(192, 192, 192, 1)" borderWidth="1px" fontSize="15px" visible="false" />
-    <Widget xsi:type="widgets.brease.CheckBox" id="CheckBox1" top="500" left="320" width="100" height="40" zIndex="50" boxSize="30" text="Yes" value="true" borderWidth="0px" cornerRadius="0px" borderColor="rgba(0, 0, 0, 1)" fontSize="30px" />
-    <Widget xsi:type="widgets.brease.DropDownBox" id="DropDownBox1" top="440" left="320" width="220" height="40" zIndex="51" dataProvider="[{'value':'0','text':'No Cover'},{'value':'1','text':'Black Cover'},{'value':'2','text':'White Cover'},{'value':'3','text':'Blue Cover'}]" listWidth="220" multiLine="true" selectedIndex="1" selectedValue="1" backColor="rgba(255, 255, 255, 1)" borderColor="rgba(0, 0, 0, 1)" mouseDownBorderColor="rgba(192, 192, 192, 1)" listPadding="0px 10px" activeBackColor="rgba(192, 192, 192, 1)" fontSize="30px" />
-    <Widget xsi:type="widgets.brease.DropDownBox" id="DropDownBox2" top="380" left="320" width="220" height="40" zIndex="52" dataProvider="[{'value':'0','text':'No Cover'},{'value':'1','text':'Black Cover'},{'value':'2','text':'White Cover'},{'value':'3','text':'Blue Cover'}]" listWidth="220" multiLine="true" selectedIndex="1" selectedValue="1" backColor="rgba(255, 255, 255, 1)" borderColor="rgba(0, 0, 0, 1)" mouseDownBorderColor="rgba(192, 192, 192, 1)" padding="0px 10px" listPadding="0px 10px" activeBackColor="rgba(192, 192, 192, 1)" fontSize="30px" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle20" top="205" left="820" width="130" height="130" zIndex="15" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle21" top="205" left="955" width="130" height="130" zIndex="16" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle22" top="210" left="825" width="60" height="60" zIndex="17" cornerRadius="100px" />
+    <Widget xsi:type="widgets.brease.Label" id="Label10" top="690" left="830" width="55" zIndex="18" text="W2" textAlign="center" fontSize="30px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label11" top="225" left="1160" width="55" zIndex="19" text="W4" textAlign="center" fontSize="30px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label12" top="225" left="828" width="55" zIndex="20" text="W3" textAlign="center" fontSize="30px" bold="true" />
+    <Widget xsi:type="widgets.brease.Line" id="Line1" zIndex="21" x1="60" x2="580" y1="260" y2="260" lineWidth="2px" />
+    <Widget xsi:type="widgets.brease.Line" id="Line2" zIndex="22" x1="60" x2="580" y1="620" y2="620" lineWidth="2px" />
+    <Widget xsi:type="widgets.brease.Label" id="Label18" top="440" left="80" width="200" height="40" zIndex="23" text="Bottom cover:" textAlign="left" fontSize="30px" padding="0px 15px 0px 0px" />
+    <Widget xsi:type="widgets.brease.Label" id="Label19" top="280" left="80" width="120" height="40" zIndex="24" text="Amount:" textAlign="left" fontSize="30px" padding="0px 15px 0px 0px" />
+    <Widget xsi:type="widgets.brease.Label" id="Label20" top="380" left="80" width="160" height="40" zIndex="25" text="Top cover:" textAlign="left" fontSize="30px" padding="0px 15px 0px 0px" />
+    <Widget xsi:type="widgets.brease.Label" id="Label21" top="500" left="80" height="40" zIndex="26" text="PCB:" textAlign="left" fontSize="30px" padding="0px 15px 0px 0px" />
+    <Widget xsi:type="widgets.brease.Label" id="Label22" top="560" left="80" width="100" height="40" zIndex="27" text="Fuses:" textAlign="left" fontSize="30px" padding="0px 15px 0px 0px" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput5" top="560" left="320" height="40" zIndex="28" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1,'maximumIntegerDigits':8},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="2" submitOnChange="false" value="2" borderWidth="2px 6px 2px 2px" activeBorderWidth="2px 6px 2px 2px" borderColor="rgba(0, 0, 0, 1)" fontSize="30px" unitFontSize="14px" />
+    <Widget xsi:type="widgets.brease.ProgressBar" id="ProgressBar1" top="700" left="80" width="500" zIndex="29" labelSize="40" maxValue="1" barColor="rgba(192, 192, 192, 1)" borderWidth="1px" fontSize="15px" visible="false" />
+    <Widget xsi:type="widgets.brease.CheckBox" id="CheckBox1" top="500" left="320" width="100" height="40" zIndex="30" boxSize="30" text="Yes" value="true" borderWidth="0px" cornerRadius="0px" borderColor="rgba(0, 0, 0, 1)" fontSize="30px" />
+    <Widget xsi:type="widgets.brease.DropDownBox" id="DropDownBox1" top="440" left="320" width="220" height="40" zIndex="31" dataProvider="[{'value':'0','text':'No Cover'},{'value':'1','text':'Black Cover'},{'value':'2','text':'White Cover'},{'value':'3','text':'Blue Cover'}]" listWidth="220" multiLine="true" selectedIndex="1" selectedValue="1" backColor="rgba(255, 255, 255, 1)" borderColor="rgba(0, 0, 0, 1)" mouseDownBorderColor="rgba(192, 192, 192, 1)" listPadding="0px 10px" activeBackColor="rgba(192, 192, 192, 1)" fontSize="30px" />
+    <Widget xsi:type="widgets.brease.DropDownBox" id="DropDownBox2" top="380" left="320" width="220" height="40" zIndex="32" dataProvider="[{'value':'0','text':'No Cover'},{'value':'1','text':'Black Cover'},{'value':'2','text':'White Cover'},{'value':'3','text':'Blue Cover'}]" listWidth="220" multiLine="true" selectedIndex="1" selectedValue="1" backColor="rgba(255, 255, 255, 1)" borderColor="rgba(0, 0, 0, 1)" mouseDownBorderColor="rgba(192, 192, 192, 1)" padding="0px 10px" listPadding="0px 10px" activeBackColor="rgba(192, 192, 192, 1)" fontSize="30px" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle25" top="340" left="955" width="130" height="130" zIndex="33" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle26" top="610" left="1090" width="130" height="130" zIndex="34" backColor="rgba(0, 0, 0, 1)" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle6" top="675" left="1153" width="60" height="60" zIndex="35" cornerRadius="100px" />
+    <Widget xsi:type="widgets.brease.Label" id="Label9" top="690" left="1155" width="55" zIndex="36" text="W1" textAlign="center" fontSize="30px" bold="true" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle1" top="345" left="960" width="60" height="60" zIndex="37" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle2" top="345" left="1020" width="60" height="60" zIndex="38" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle5" top="405" left="960" width="60" height="60" zIndex="39" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle16" top="405" left="1020" width="60" height="60" zIndex="40" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle17" top="480" left="960" width="60" height="60" zIndex="41" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle18" top="480" left="1020" width="60" height="60" zIndex="42" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle23" top="540" left="960" width="60" height="60" zIndex="43" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
+    <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle24" top="540" left="1020" width="60" height="60" zIndex="44" borderStyle="solid" cornerRadius="5px" backColor="rgba(192, 192, 255, 1)" opacity="0.8" />
+    <Widget xsi:type="widgets.brease.Label" id="Label1" top="555" left="1040" width="20" zIndex="45" text="1" textAlign="center" fontSize="30px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label2" top="495" left="1040" width="20" zIndex="46" text="2" textAlign="center" fontSize="30px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label3" top="420" left="1040" width="20" zIndex="47" text="3" textAlign="center" fontSize="30px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label4" top="360" left="1040" width="20" zIndex="48" text="4" textAlign="center" fontSize="30px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label5" top="555" left="980" width="20" zIndex="49" text="5" textAlign="center" fontSize="30px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label6" top="495" left="980" width="20" zIndex="50" text="6" textAlign="center" fontSize="30px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label7" top="420" left="980" width="20" zIndex="51" text="7" textAlign="center" fontSize="30px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label8" top="360" left="980" width="20" zIndex="52" text="8" textAlign="center" fontSize="30px" bold="true" />
   </Widgets>
 </Content>
