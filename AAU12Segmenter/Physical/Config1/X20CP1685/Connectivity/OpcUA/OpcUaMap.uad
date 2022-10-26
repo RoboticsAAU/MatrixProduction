@@ -85,36 +85,12 @@
           <Variable Name="returnSmallWeightMovement" />
           <Variable Name="startBigWeightMovement" />
         </Variable>
-        <Variable Name="ConveyorMovementWorkstation1Time" />
-        <Variable Name="ConveyorMovementWorkstation2Time" />
         <Variable Name="createShGroup" />
-        <Variable Name="danfossWorkStation1NUMRotations" />
-        <Variable Name="danfossWorkStation1Timer" />
-        <Variable Name="danfossWorkStation2NUMRotations" />
-        <Variable Name="danfossWorkStation2Timer" />
         <Variable Name="enableButtons" />
         <Variable Name="flaskProgramAcceleration" />
         <Variable Name="flaskProgramVelocity" />
-        <Variable Name="gameBrain">
-          <Variable Name="shuttlesIDs" />
-          <Variable Name="shuttlesLeft" />
-          <Variable Name="shuttlesDead" />
-          <Variable Name="shuttlePicked" />
-          <Variable Name="startGame" />
-          <Variable Name="choosenRandomShuttle" />
-          <Variable Name="showHMIButton" />
-          <Variable Name="showStartBtnHMI" />
-          <Variable Name="playerNumeric" />
-          <Variable Name="players" RecursiveEnable="1" />
-          <Variable Name="loosingShuttlesIDs" />
-          <Variable Name="winningShuttleID" />
-          <Variable Name="showWinningNumber" />
-        </Variable>
-        <Variable Name="modeSelectorString" />
         <Variable Name="shuttlePayload" />
         <Variable Name="weightProgramFlyingHight" />
-        <Variable Name="WorkStation1MovementTimer" />
-        <Variable Name="WorkStation2And3MovementTimer" />
         <Variable Name="steelSheetFlyingHeight" EngineeringUnitId="1" />
         <Variable Name="executeOrder" />
         <Variable Name="orderFinished" />

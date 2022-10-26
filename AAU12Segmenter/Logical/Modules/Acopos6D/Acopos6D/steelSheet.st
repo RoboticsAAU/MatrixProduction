@@ -9,18 +9,14 @@ ACTION steelSheetTask:
 	positionContainerSteelSheet[3].initXPos := 0.660;
 	positionContainerSteelSheet[3].initYPos := 0.060;
 	
-	positionContainerSteelSheet[4].initXPos := 0.780;
+	positionContainerSteelSheet[4].initXPos := 0.540;
 	positionContainerSteelSheet[4].initYPos := 0.900;
-	positionContainerSteelSheet[5].initXPos := 0.900;
+	positionContainerSteelSheet[5].initXPos := 0.660;
 	positionContainerSteelSheet[5].initYPos := 0.900;
-	positionContainerSteelSheet[6].initXPos := 0.780;
+	positionContainerSteelSheet[6].initXPos := 0.540;
 	positionContainerSteelSheet[6].initYPos := 0.780;
-	positionContainerSteelSheet[7].initXPos := 0.900;
+	positionContainerSteelSheet[7].initXPos := 0.660;
 	positionContainerSteelSheet[7].initYPos := 0.780;
-	positionContainerSteelSheet[8].initXPos := 0.780;
-	positionContainerSteelSheet[8].initYPos := 0.660;
-	positionContainerSteelSheet[9].initXPos := 0.900;
-	positionContainerSteelSheet[9].initYPos := 0.660;
 	
 	gWorkStations[0].par.xLocation										:= 0.300;
 	gWorkStations[0].par.yLocation										:= 0.060;

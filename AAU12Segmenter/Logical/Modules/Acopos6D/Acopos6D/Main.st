@@ -225,17 +225,11 @@ PROGRAM _CYCLIC
 			CASE em.substate OF
 				0:
 					CASE gAcp6DCtrl.Par.modeSelector OF
-						vision: em.substate := 1000;
 						weight: em.substate := 2000;
 						linkMovement: em.substate := 3000;
-						gameProgram: em.substate := 4000;
-						demoProgram: em.substate := 5000;
-						shuttleToConveyor: em.substate := 6000;
 						dialGauge: em.substate := 7000;
 						workstationMovement: em.substate := 8000;
 						conveyorStationMovement: em.substate := 9000;
-						danfossMode: em.substate := 10000;
-						sunMovement: em.substate := 11000;
 						flaskProgram: em.substate := 12000;
 						boxProgram: em.substate := 13000;
 						rotationProgram: em.substate := 14000;
@@ -244,21 +238,6 @@ PROGRAM _CYCLIC
 						smartLab: em.substate := 17000;
 						
 					END_CASE
-					
-				1000..1029:
-					em.description := 'Vision Movement';
-					VisionMovement;
-					
-				1030..1999:
-					em.description := 'Vision Movement';
-					VisionMovement;
-					FOR i := 0 TO NR_OF_WORKSTATIONS DO
-						pWorkStations ACCESS ADR (gWorkStations[i]); 
-						cm ACCESS ADR (gWorkStations[i].cm);
-						pWorkStations.cm.setup.parent.name := 'main';
-						//pShuttle.cm.setup.nameIdx := i;
-						workStationMovement;
-					END_FOR
 						
 				2000..2999:
 					enableButtons := FALSE;
@@ -292,14 +271,6 @@ PROGRAM _CYCLIC
 						END_IF
 								
 						linkMovementProgram;
-										
-				5000..5999:
-					em.description := 'Demo program';
-					IF controlLight.demoProgram THEN
-						lightValue := 5;
-					END_IF
-	
-					demoProgramTask;
 						
 				7000:
 					em.description := 'dialGauge Program';
@@ -359,17 +330,6 @@ PROGRAM _CYCLIC
 						//pShuttle.cm.setup.nameIdx := i;
 						conveyourStationMovement;
 					END_FOR
-					
-				10000..10999:
-						em.description := 'Danfoss mode';
-						danfossAction;
-						FOR i := 0 TO NR_OF_WORKSTATIONS DO
-							pWorkStations ACCESS ADR (gWorkStations[i]); 
-							cm ACCESS ADR (gWorkStations[i].cm);
-							pWorkStations.cm.setup.parent.name := 'main';
-							//pShuttle.cm.setup.nameIdx := i;
-							DanFossWork;
-						END_FOR
 					
 				12000..12019:
 					em.description := 'Flask Program';

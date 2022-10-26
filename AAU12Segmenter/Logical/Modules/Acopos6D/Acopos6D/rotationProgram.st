@@ -15,12 +15,8 @@ ACTION rotationTask:
 	positionContainerRotation[5].initYPos := 0.360;
 	positionContainerRotation[6].initXPos := 0.600;
 	positionContainerRotation[6].initYPos := 0.360;
-	positionContainerRotation[7].initXPos := 0.840;
-	positionContainerRotation[7].initYPos := 0.360;
-	positionContainerRotation[8].initXPos := 0.600;
-	positionContainerRotation[8].initYPos := 0.120;
-	positionContainerRotation[9].initXPos := 0.840;
-	positionContainerRotation[9].initYPos := 0.600;
+	positionContainerRotation[7].initXPos := 0.360;
+	positionContainerRotation[7].initYPos := 0.600;
 	
 
 	gWorkStations[0].par.xLocation										:= 0.180;
@@ -34,7 +30,7 @@ ACTION rotationTask:
 	gWorkStations[1].par.xLocation										:= 0.060;
 	gWorkStations[1].par.yLocation										:= 0.180;
 	gWorkStations[1].par.nextStationSelector							:= '0';
-	gWorkStations[1].par.processTime									:= WorkStation2And3MovementTimer;
+	gWorkStations[1].par.processTime									:= 2;
 	gWorkStations[1].par.pathRouting									:= 1;
 	gWorkStations[1].par.landBeforeProcess								:= TRUE;
 	gWorkStations[1].par.ArcMovement									:= FALSE;

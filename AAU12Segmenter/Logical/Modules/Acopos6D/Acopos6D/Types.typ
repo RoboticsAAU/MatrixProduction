@@ -32,21 +32,6 @@ TYPE
 		Shuttle4 : shuttlePos;
 		Shuttle1 : shuttlePos;
 	END_STRUCT;
-	gameMemory_typ : 	STRUCT 
-		shuttlesIDs : ARRAY[0..NUM_SHUTTLES]OF USINT;
-		shuttlesLeft : USINT;
-		shuttlesDead : ARRAY[0..NUM_SHUTTLES]OF BOOL;
-		shuttlePicked : ARRAY[0..NUM_SHUTTLES]OF BOOL;
-		startGame : BOOL;
-		choosenRandomShuttle : UDINT;
-		showHMIButton : BOOL;
-		showStartBtnHMI : BOOL;
-		playerNumeric : REAL;
-		players : ARRAY[0..NUM_SHUTTLES]OF BOOL;
-		loosingShuttlesIDs : ARRAY[0..NUM_SHUTTLES]OF USINT;
-		winningShuttleID : USINT;
-		showWinningNumber : BOOL;
-	END_STRUCT;
 	ABB_typ : 	STRUCT 
 		HomePositionReached : BOOL;
 		startSmallWeightMovement : BOOL;

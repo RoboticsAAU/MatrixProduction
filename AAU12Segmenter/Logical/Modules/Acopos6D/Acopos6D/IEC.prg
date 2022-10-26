@@ -6,17 +6,14 @@
     <File>Config.st</File>
     <File>ResetInput.st</File>
     <File>shuttleGroups.st</File>
-    <File>VisionMovement.st</File>
     <File>BasicMovement.st</File>
     <File>WeightProgram.st</File>
     <File>MovementRxRyRz.st</File>
-    <File>Danfoss.st</File>
     <File>linkMovement.st</File>
     <File>conveyourStationMovement.st</File>
     <File>workStationMovement.st</File>
     <File>flaskProgram.st</File>
     <File>boxProgram.st</File>
-    <File>DemoProgram.st</File>
     <File>rotationProgram.st</File>
     <File>steelSheet.st</File>
     <File>Test.st</File>

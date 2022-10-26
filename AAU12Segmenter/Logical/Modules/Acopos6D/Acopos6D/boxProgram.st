@@ -18,23 +18,19 @@ ACTION boxProgramTask:
 			positionContainerBoxProgram[0].initYPos := 0.180;
 			positionContainerBoxProgram[1].initXPos := 0.180;
 			positionContainerBoxProgram[1].initYPos := 0.060;
-			positionContainerBoxProgram[2].initXPos := 0.780;
+			positionContainerBoxProgram[2].initXPos := 0.540;
 			positionContainerBoxProgram[2].initYPos := 0.540;
-			positionContainerBoxProgram[3].initXPos := 0.900;
+			positionContainerBoxProgram[3].initXPos := 0.660;
 			positionContainerBoxProgram[3].initYPos := 0.540;
 			
-			positionContainerBoxProgram[4].initXPos := 0.780;
+			positionContainerBoxProgram[4].initXPos := 0.540;
 			positionContainerBoxProgram[4].initYPos := 0.900;
-			positionContainerBoxProgram[5].initXPos := 0.900;
+			positionContainerBoxProgram[5].initXPos := 0.660;
 			positionContainerBoxProgram[5].initYPos := 0.900;
-			positionContainerBoxProgram[6].initXPos := 0.780;
+			positionContainerBoxProgram[6].initXPos := 0.540;
 			positionContainerBoxProgram[6].initYPos := 0.780;
-			positionContainerBoxProgram[7].initXPos := 0.900;
+			positionContainerBoxProgram[7].initXPos := 0.660;
 			positionContainerBoxProgram[7].initYPos := 0.780;
-			positionContainerBoxProgram[8].initXPos := 0.780;
-			positionContainerBoxProgram[8].initYPos := 0.660;
-			positionContainerBoxProgram[9].initXPos := 0.900;
-			positionContainerBoxProgram[9].initYPos := 0.660;
 			
 			tempShuttleCounter := 0;
 			MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;

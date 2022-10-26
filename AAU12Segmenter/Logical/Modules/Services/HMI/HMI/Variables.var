@@ -1,6 +1,4 @@
 VAR
-	yCordinate : INT;
-	xCordinate : INT;
 	i : USINT;
 	this : local_typ;
 	nrOfShuttlesHMI : USINT := 4;
