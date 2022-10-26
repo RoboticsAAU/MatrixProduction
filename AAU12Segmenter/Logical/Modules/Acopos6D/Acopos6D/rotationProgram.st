@@ -15,8 +15,8 @@ ACTION rotationTask:
 	positionContainerRotation[5].initYPos := 0.360;
 	positionContainerRotation[6].initXPos := 0.600;
 	positionContainerRotation[6].initYPos := 0.360;
-	positionContainerRotation[7].initXPos := 0.600;
-	positionContainerRotation[7].initYPos := 0.360;
+	positionContainerRotation[7].initXPos := 0.360;
+	positionContainerRotation[7].initYPos := 0.600;
 	
 
 	gWorkStations[0].par.xLocation										:= 0.180;

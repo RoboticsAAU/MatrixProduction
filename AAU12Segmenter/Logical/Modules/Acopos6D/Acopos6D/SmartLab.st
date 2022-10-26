@@ -75,6 +75,8 @@ ACTION smartLabSetup:
 	
 	FOR i := 0 TO NUM_SHUTTLES DO
 		shuttleIndexAtPosition[i] := i;
+		gShuttles[i].cm.state := 0;
+		gWorkStations[i].cm.state := 0;
 	END_FOR
 	tempShuttleIndexAtPosition := shuttleIndexAtPosition;
 	
