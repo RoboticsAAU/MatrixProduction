@@ -367,12 +367,12 @@ CCfgEditObject1ErrorID7
 CTRparamtype0
 CPageFormat100NO556
 CExtend_IEC_Info00
-CFBDDiagramChart05
+CFBDDiagramChart02
 
 CFunctionChart41NO
 
 CCfgEditObject1-1
-CPageFormat100NO5565
+CPageFormat100NO5571
 CTRblocks6
 8
 CFBDNetworkBlockType1
@@ -492,7 +492,7 @@ CTRparams0
 0KRC_JogKRC_Jog
 CFirmwareBlock0KRC_Jog_0
 
-CBlock711818172NO
+CBlock711718172NO
 
 CCfgEditObject1KRC_Jog1KRC_Jog15
 CTRoutputs6
@@ -1283,7 +1283,7 @@ CTRinputs0
 CTRparams0
 8
 CFBDNetworkBlockType1
-CPageFormat100NO556
+CPageFormat100NO5512
 CFBDNetworkBlock1NO
 
 CFreeCompoundBlock1NO
@@ -1301,7 +1301,7 @@ CTRparams0
 CFunctionChart42NO
 
 CCfgEditObject1-1
-CPageFormat100NO556
+CPageFormat100NO5512
 CTRblocks2
 0ADRADR
 CFirmwareBlock0

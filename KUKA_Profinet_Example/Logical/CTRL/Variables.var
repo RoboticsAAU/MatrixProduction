@@ -72,7 +72,16 @@ VAR
 	position1 : E6AXIS;
 	cartesianPosition1 : E6POS;
 	KRC_MoveLinearAbsolute_0 : KRC_MoveLinearAbsolute;
-	baseFrame : COORDSYS;
+	reference_frame : COORDSYS;
 	KRC_SetCoordSys_0 : KRC_SetCoordSys;
-	KRC_ReadBaseData_0 : KRC_ReadBaseData;
+	writeToolData_0 : KRC_WriteToolData;
+	tcp : FRAME;
+	writeBaseData_0 : KRC_WriteBaseData;
+	base : FRAME;
+	velocity : INT;
+	KRC_ReadToolData_0 : KRC_ReadToolData;
+	KRC_ReadBaseDAta_0 : KRC_ReadBaseData;
+	Approxi : APO;
+	Approximate : APO;
+	KRC_diag_0 : KRC_Diag;
 END_VAR

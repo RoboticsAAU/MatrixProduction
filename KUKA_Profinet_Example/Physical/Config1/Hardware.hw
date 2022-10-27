@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.12.2.93 FileVersion="4.9"?>
 <Hardware xmlns="http://br-automation.co.at/AS/Hardware">
-  <Module Name="KRC4_ProfiNet_4_1" Type="FBD.Hilscher.PNIOGenDevDTM2.KRC4-ProfiNet_4.1" Version="4.1" OrderNumber="KRC4-ProfiNet_4.1" VendorAddress="krc4-1">
+  <Module Name="KRC4_ProfiNet_4_1" Type="FBD.Hilscher.PNIOGenDevDTM2.KRC4-ProfiNet_4.1" Version="4.1" OrderNumber="KRC4-ProfiNet_4.1" VendorAddress="krc4-kuka3">
     <Connection Connector="PN1" TargetModule="X20IF10E1_1" TargetConnector="IF1" />
     <Parameter ID="DtmId" Value="1cd627a1-f9fb-49bf-ac68-04ab4e25072f" />
   </Module>
