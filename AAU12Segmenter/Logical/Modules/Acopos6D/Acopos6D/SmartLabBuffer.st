@@ -8,9 +8,13 @@ ACTION writeOrder:
 	
 		
 	IF (writeIndex MOD bufferSize) = readIndex THEN
+		
 		bufferFull := TRUE; 
+		
 	ELSE
+		
 		bufferFull := FALSE;
+		
 	END_IF
 				
 END_ACTION

@@ -16,42 +16,77 @@ ACTION smartLabWorkstationSetup:
 	END_FOR
 	
 	
-	// Unloading workstation
 	gWorkStations[0].par.xLocation										:= quadrantIdxToPos(5);
 	gWorkStations[0].par.yLocation										:= quadrantIdxToPos(0);
-	gWorkStations[0].par.approachPosX									:= quadrantIdxToPos(5);
-	gWorkStations[0].par.approachPosY									:= quadrantIdxToPos(2);
-	gWorkStations[0].par.departPosX										:= quadrantIdxToPos(5);
-	gWorkStations[0].par.departPosY										:= 0.0;
+	gWorkStations[0].par.approachPosX									:= quadrantIdxToPos(4);
+	gWorkStations[0].par.approachPosY									:= quadrantIdxToPos(0);
+	gWorkStations[0].par.departPosX										:= quadrantIdxToPos(4);
+	gWorkStations[0].par.departPosY										:= quadrantIdxToPos(1);
 	gWorkStations[0].par.nextStationSelector							:= '1';
 	gWorkStations[0].par.processTime									:= 1.0;
-	gWorkStations[0].par.pathRouting									:= 1;
+	gWorkStations[0].par.pathRouting									:= 2; //Direct routing 
 	gWorkStations[0].par.ArcMovement									:= FALSE;
 	gWorkStations[0].par.landBeforeProcess								:= FALSE;
 	
-	gWorkStations[1].par.xLocation										:= 0.060;
-	gWorkStations[1].par.yLocation										:= 0.060;
+	gWorkStations[1].par.xLocation										:= quadrantIdxToPos(5);
+	gWorkStations[1].par.yLocation										:= quadrantIdxToPos(3);
+	gWorkStations[1].par.approachPosX									:= quadrantIdxToPos(4);
+	gWorkStations[1].par.approachPosY									:= quadrantIdxToPos(2);
+	gWorkStations[1].par.departPosX										:= quadrantIdxToPos(4);
+	gWorkStations[1].par.departPosY										:= quadrantIdxToPos(4);
 	gWorkStations[1].par.nextStationSelector							:= '2';
 	gWorkStations[1].par.processTime									:= 1.0;
 	gWorkStations[1].par.pathRouting									:= 2;
 	gWorkStations[1].par.ArcMovement									:= FALSE;
 	gWorkStations[1].par.landBeforeProcess								:= FALSE;
 	
-	gWorkStations[2].par.xLocation										:= 0.060;
-	gWorkStations[2].par.yLocation										:= 0.900;
+	gWorkStations[2].par.xLocation										:= quadrantIdxToPos(5);
+	gWorkStations[2].par.yLocation										:= quadrantIdxToPos(6);
+	gWorkStations[2].par.approachPosX									:= quadrantIdxToPos(4);
+	gWorkStations[2].par.approachPosY									:= quadrantIdxToPos(5);
+	gWorkStations[2].par.departPosX										:= quadrantIdxToPos(4);
+	gWorkStations[2].par.departPosY										:= quadrantIdxToPos(7);
 	gWorkStations[2].par.nextStationSelector							:= '3';
 	gWorkStations[2].par.processTime									:= 1.0;
 	gWorkStations[2].par.pathRouting									:= 1;
 	gWorkStations[2].par.ArcMovement									:= FALSE;
 	gWorkStations[2].par.landBeforeProcess								:= FALSE;
 	
-	gWorkStations[3].par.xLocation										:= 0.660;
-	gWorkStations[3].par.yLocation										:= 0.900;
-	gWorkStations[3].par.nextStationSelector							:= '-1';
+	gWorkStations[3].par.xLocation										:= quadrantIdxToPos(0);
+	gWorkStations[3].par.yLocation										:= quadrantIdxToPos(6);
+	gWorkStations[3].par.approachPosX									:= quadrantIdxToPos(1);
+	gWorkStations[3].par.approachPosY									:= quadrantIdxToPos(7);
+	gWorkStations[3].par.departPosX										:= quadrantIdxToPos(1);
+	gWorkStations[3].par.departPosY										:= quadrantIdxToPos(5);
+	gWorkStations[3].par.nextStationSelector							:= '4';
 	gWorkStations[3].par.processTime									:= 1.0;
 	gWorkStations[3].par.pathRouting									:= 2;
 	gWorkStations[3].par.ArcMovement									:= FALSE;
 	gWorkStations[3].par.landBeforeProcess								:= FALSE;
+	
+	gWorkStations[4].par.xLocation										:= quadrantIdxToPos(0);
+	gWorkStations[4].par.yLocation										:= quadrantIdxToPos(3);
+	gWorkStations[4].par.approachPosX									:= quadrantIdxToPos(1);
+	gWorkStations[4].par.approachPosY									:= quadrantIdxToPos(4);
+	gWorkStations[4].par.departPosX										:= quadrantIdxToPos(1);
+	gWorkStations[4].par.departPosY										:= quadrantIdxToPos(2);
+	gWorkStations[4].par.nextStationSelector							:= '5';
+	gWorkStations[4].par.processTime									:= 1.0;
+	gWorkStations[4].par.pathRouting									:= 2;
+	gWorkStations[4].par.ArcMovement									:= FALSE;
+	gWorkStations[4].par.landBeforeProcess								:= FALSE;
+	
+	gWorkStations[5].par.xLocation										:= quadrantIdxToPos(0);
+	gWorkStations[5].par.yLocation										:= quadrantIdxToPos(0);
+	gWorkStations[5].par.approachPosX									:= quadrantIdxToPos(1);
+	gWorkStations[5].par.approachPosY									:= quadrantIdxToPos(1);
+	gWorkStations[5].par.departPosX										:= quadrantIdxToPos(1);
+	gWorkStations[5].par.departPosY										:= quadrantIdxToPos(0);
+	gWorkStations[5].par.nextStationSelector							:= '-1';
+	gWorkStations[5].par.processTime									:= 1.0;
+	gWorkStations[5].par.pathRouting									:= 1;
+	gWorkStations[5].par.ArcMovement									:= FALSE;
+	gWorkStations[5].par.landBeforeProcess								:= FALSE;
 	
 END_ACTION
 	
@@ -60,23 +95,23 @@ ACTION smartLabSetup:
 	positionContainerSmartLabProgram[0].initXPos := 0.420;
 	positionContainerSmartLabProgram[0].initYPos := 0.300;
 	
-	positionContainerSmartLabProgram[1].initXPos := 0.420;
-	positionContainerSmartLabProgram[1].initYPos := 0.420;
-	
 	positionContainerSmartLabProgram[2].initXPos := 0.420;
-	positionContainerSmartLabProgram[2].initYPos := 0.540;
+	positionContainerSmartLabProgram[2].initYPos := 0.420;
 	
-	positionContainerSmartLabProgram[3].initXPos := 0.420;
-	positionContainerSmartLabProgram[3].initYPos := 0.660;
+	positionContainerSmartLabProgram[4].initXPos := 0.420;
+	positionContainerSmartLabProgram[4].initYPos := 0.540;
 	
-	positionContainerSmartLabProgram[4].initXPos := 0.300;
-	positionContainerSmartLabProgram[4].initYPos := 0.300;
+	positionContainerSmartLabProgram[6].initXPos := 0.420;
+	positionContainerSmartLabProgram[6].initYPos := 0.660;
+	
+	positionContainerSmartLabProgram[1].initXPos := 0.300;
+	positionContainerSmartLabProgram[1].initYPos := 0.300;
+	
+	positionContainerSmartLabProgram[3].initXPos := 0.300;
+	positionContainerSmartLabProgram[3].initYPos := 0.420;
 	
 	positionContainerSmartLabProgram[5].initXPos := 0.300;
-	positionContainerSmartLabProgram[5].initYPos := 0.420;
-	
-	positionContainerSmartLabProgram[6].initXPos := 0.300;
-	positionContainerSmartLabProgram[6].initYPos := 0.540;
+	positionContainerSmartLabProgram[5].initYPos := 0.540;
 	
 	positionContainerSmartLabProgram[7].initXPos := 0.300;
 	positionContainerSmartLabProgram[7].initYPos := 0.660;
@@ -89,6 +124,7 @@ ACTION smartLabSetup:
 		gWorkStations[i].cm.state := 0;
 	END_FOR
 	tempShuttleIndexAtPosition := shuttleIndexAtPosition;
+	TON_0.IN := FALSE;
 	
 	bufferSize := SIZEOF(orderBuffer)/SIZEOF(orderBuffer[0]);
 	
@@ -114,20 +150,20 @@ END_ACTION
 ACTION smartLabInitialMovement:		
 	
 	cm.description := 'Initiate movement to first workstation';
-	IF moveToStartWorkstation[i] THEN
+	IF moveToStartWorkstation[shuttleIndexAtPosition[i]] THEN
 		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
 		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
 		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[0].par.xLocation;
 		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[0].par.yLocation;
-		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; //Y then X
+		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 2;
 		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0;
 		
 		pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 		IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
 			
-			moveToStartWorkstation[i] := FALSE;
+			moveToStartWorkstation[shuttleIndexAtPosition[i]] := FALSE;
 			//cm.state := 10;
 		END_IF
 	END_IF
@@ -203,12 +239,20 @@ ACTION smartLabWorkstationMovement:
 			pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0; //Absolute
 			pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := pWorkStations.par.pathRouting; //0 Diagonal, 1 First X then Y, 2 First Y then X
 			
-			pWorkStations.par.tempShuttlePlan := shuttlePlans[pWorkStations.par.tempShuttleID];
+			pTempShuttlePlan ACCESS ADR(shuttlePlans[pWorkStations.par.tempShuttleID]);
+			pWorkStations.par.nextStationSelector := pTempShuttlePlan.routingSheet[pTempShuttlePlan.progressIndex];
 			
-			pWorkStations.par.nextStationSelector := pWorkStations.par.tempShuttlePlan.routingSheet[pWorkStations.par.tempShuttlePlan.progressIndex];
-			pWorkStations.par.tempShuttlePlan.progressIndex := pWorkStations.par.tempShuttlePlan.progressIndex + 1;
-			
-			IF pWorkStations.par.nextStationSelector = '-1' THEN
+			IF pWorkStations.par.nextStationSelector <> '-1' THEN
+				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[STRING_TO_UDINT(pWorkStations.par.nextStationSelector)].par.xLocation;
+				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[STRING_TO_UDINT(pWorkStations.par.nextStationSelector)].par.yLocation;
+				
+				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
+				IF pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
+					pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
+					pTempShuttlePlan.progressIndex := pTempShuttlePlan.progressIndex + 1;
+					cm.state := 0;
+				END_IF
+			ELSE
 				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := positionContainerSmartLabProgram[parkingSpotIndex].initXPos;
 				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := positionContainerSmartLabProgram[parkingSpotIndex].initYPos;
 				
@@ -226,15 +270,7 @@ ACTION smartLabWorkstationMovement:
 					END_IF
 					
 				END_IF
-			ELSE
-				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[STRING_TO_UDINT(pWorkStations.par.nextStationSelector)].par.xLocation;
-				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[STRING_TO_UDINT(pWorkStations.par.nextStationSelector)].par.yLocation;
 				
-				pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
-				IF pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
-					pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
-					cm.state := 0;
-				END_IF
 			END_IF
 			
 		50:

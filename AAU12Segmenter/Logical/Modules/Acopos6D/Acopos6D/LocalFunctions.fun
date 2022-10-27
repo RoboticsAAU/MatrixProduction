@@ -4,7 +4,7 @@
 		inputProductOrder : product_order;
 	END_VAR
 	VAR_OUTPUT
-		outputRouteSheet : ARRAY[0..3] OF STRING[10];
+		outputRouteSheet : ARRAY[0..5] OF STRING[10];
 	END_VAR
 	VAR
 		tempIndex : USINT;

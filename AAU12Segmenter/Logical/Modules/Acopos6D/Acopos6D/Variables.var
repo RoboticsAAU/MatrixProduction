@@ -12,10 +12,10 @@ VAR
 	tempShuttleIndexAtPosition : ARRAY[0..7] OF USINT;
 	tempShuttleCounter : USINT;
 	tempShuttleCnt : USINT;
-	tempProductOrder : product_order := (amount:=1,topCover:=blackCover,bottomCover:=blackCover,PCB:=TRUE,Fuses:=2);
+	tempProductOrder : product_order := (amount:=1,bottomCover:=blackCover,topCover:=blackCover,PCB:=TRUE,Fuses:=2,Holes:=4);
 	tempCounter : USINT;
 	steelSheetFlyingHeight : REAL := 0.002;
-	smartLabNumWorkstations : USINT := 4;
+	smartLabNumWorkstations : USINT := 6;
 	shuttleToTakePictureOf : USINT;
 	shuttlePlans : ARRAY[0..7] OF shuttle_plan;
 	shuttlePayload : REAL;
@@ -98,4 +98,5 @@ VAR
 	bufferEmpty : BOOL := TRUE;
 	amountProductsFinished : USINT := 0;
 	ABBRobot : ABB_typ;
+	pTempShuttlePlan : REFERENCE TO shuttle_plan;
 END_VAR
