@@ -3,7 +3,7 @@ TYPE
 	shuttle_plan : 	STRUCT 
 		shuttleIdx : USINT;
 		productOrder : product_order;
-		routingSheet : ARRAY[0..5]OF STRING[10];
+		routingSheet : ARRAY[0..6]OF STRING[10];
 		progressIndex : USINT := 0;
 	END_STRUCT;
 	shuttle_status_typ : 	STRUCT 

@@ -125,7 +125,6 @@ ACTION smartLabSetup:
 	END_FOR
 	tempShuttleIndexAtPosition := shuttleIndexAtPosition;
 	TON_0.IN := FALSE;
-	
 	bufferSize := SIZEOF(orderBuffer)/SIZEOF(orderBuffer[0]);
 	
 	CASE em.substate OF

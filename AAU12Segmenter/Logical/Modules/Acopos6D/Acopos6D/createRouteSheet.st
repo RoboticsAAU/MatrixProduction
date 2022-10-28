@@ -7,11 +7,10 @@ FUNCTION_BLOCK createRouteSheet
 	FOR i := 0 TO routeSize DO
 		
 		outputRouteSheet[i] := '-1';
+		
 	END_FOR
 	
-	tempIndex := 0;
-		
-	
+	tempIndex := 0;	
 	
 	// Check if visitation to bottom cover station is required
 	IF inputProductOrder.bottomCover <> noCover THEN
