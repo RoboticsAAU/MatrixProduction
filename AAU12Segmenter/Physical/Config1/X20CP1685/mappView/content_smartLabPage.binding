@@ -68,8 +68,9 @@
 <Source xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Image1" attribute="visible" />
 <Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="DropDownBox2" attribute="enable" />
 </Binding>
+
 <Binding mode="oneWay">
-<Source xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="CheckBox1" attribute="enable" />
+<Source xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Image3" attribute="visible" />
 <Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericInput5" attribute="enable" />
 </Binding>
 </Bindings>

@@ -75,7 +75,7 @@
           <Method xsi:type="widgets.brease.CheckBox.Action.GetValueBool" />
         </ReadTarget>
       </Operand>
-      <Operand datatype="ANY_REAL" name="numFuses">
+      <Operand datatype="ANY_INT" name="numFuses">
         <ReadTarget xsi:type="widgets.brease.NumericInput.ReadAction" contentRefId="content_smartLabPage" widgetRefId="NumericInput5">
           <Method xsi:type="widgets.brease.NumericInput.Action.GetValue" />
         </ReadTarget>
@@ -146,12 +146,12 @@
     </EventBinding>
     <EventBinding id="EventBinding_4">
       <Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="content_smartLabPage" widgetRefId="CheckBox1" event="ValueChanged" />
-      <Operand datatype="BOOL" name="pcbChosen">
+      <Operand datatype="ANY_INT" name="pcbChosen">
         <ReadTarget xsi:type="widgets.brease.CheckBox.ReadAction" contentRefId="content_smartLabPage" widgetRefId="CheckBox1">
-          <Method xsi:type="widgets.brease.CheckBox.Action.GetValueBool" />
+          <Method xsi:type="widgets.brease.CheckBox.Action.GetValueInteger" />
         </ReadTarget>
       </Operand>
-      <Operand datatype="ANY_REAL" name="numFuses">
+      <Operand datatype="ANY_INT" name="numFuses">
         <ReadTarget xsi:type="widgets.brease.NumericInput.ReadAction" contentRefId="content_smartLabPage" widgetRefId="NumericInput5">
           <Method xsi:type="widgets.brease.NumericInput.Action.GetValue" />
         </ReadTarget>
@@ -161,14 +161,21 @@
           <Step order="0">
             <Action>
               <Target xsi:type="widgets.brease.Image.Action" contentRefId="content_smartLabPage" widgetRefId="Image3">
-                <Method xsi:type="widgets.brease.Image.Action.SetVisible" value="=pcbChosen" />
+                <Method xsi:type="widgets.brease.Image.Action.SetVisible" value="=pcbChosen&gt;0" />
               </Target>
             </Action>
           </Step>
           <Step order="1">
             <Action>
               <Target xsi:type="widgets.brease.Image.Action" contentRefId="content_smartLabPage" widgetRefId="Image4">
-                <Method xsi:type="widgets.brease.Image.Action.SetVisible" value="=(numFuses&gt;0) AND pcbChosen" />
+                <Method xsi:type="widgets.brease.Image.Action.SetVisible" value="=(numFuses*pcbChosen&gt;0)" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="content_smartLabPage" widgetRefId="NumericInput5">
+                <Method xsi:type="widgets.brease.NumericInput.Action.SetValue" value="=pcbChosen*numFuses" />
               </Target>
             </Action>
           </Step>
