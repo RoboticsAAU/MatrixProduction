@@ -109,7 +109,7 @@ ACTION mxA_Start:
 
 	KRC_SetOverride_0.AxisGroupIdx 				:= 1;
 	KRC_SetOverride_0.KRC_AxisGroupRefArr 		:= ADR(AxisRef); 
-	KRC_SetOverride_0.Override 					:=HMI_R1_Override;
+	KRC_SetOverride_0.Override 					:= HMI_R1_Override;
 
 	KRC_SetOverride_0();
 	

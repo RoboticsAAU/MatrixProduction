@@ -399,7 +399,7 @@ CTRblocks1
 0mxa_ValuesToCOORDSYSmxa_ValuesToCOORDSYS
 CFirmwareBlock0mxa_ValuesToCOORDSYS_0
 
-CBlock71125931NO
+CBlock711251131NO
 
 CCfgEditObject1mxa_ValuesToCOORDSYS1mxa_ValuesToCOORDSYS10
 CTRoutputs1
@@ -492,7 +492,7 @@ CTRparams0
 0KRC_JogKRC_Jog
 CFirmwareBlock0KRC_Jog_0
 
-CBlock711818172NO
+CBlock7118111172NO
 
 CCfgEditObject1KRC_Jog1KRC_Jog15
 CTRoutputs6
@@ -817,7 +817,7 @@ CTRparams0
 0KRC_ReadActualAxisPositionKRC_ReadActualAxisPosition
 CFirmwareBlock0KRC_ReadActualAxisPosition_0
 
-CBlock711011082NO
+CBlock711011382NO
 
 CCfgEditObject1KRC_ReadActualAxisPosition1KRC_ReadActualAxisPosition15
 CTRoutputs14
@@ -995,7 +995,7 @@ CTRparams0
 0KRC_ReadActualPositionKRC_ReadActualPosition
 CFirmwareBlock0KRC_ReadActualPosition_0
 
-CBlock71110982NO
+CBlock711101182NO
 
 CCfgEditObject1KRC_ReadActualPosition1KRC_ReadActualPosition15
 CTRoutputs13
@@ -1166,7 +1166,7 @@ CTRparams0
 0KRC_MoveAxisAbsoluteKRC_MoveAxisAbsolute
 CFirmwareBlock0KRC_MoveAxisAbsolute_0
 
-CBlock71121852NO
+CBlock711211152NO
 
 CCfgEditObject1KRC_MoveAxisAbsolute1KRC_MoveAxisAbsolute15
 CTRoutputs6
@@ -1306,7 +1306,7 @@ CTRblocks2
 0ADRADR
 CFirmwareBlock0
 
-CBlock7181421NO
+CBlock7142421NO
 
 CCfgEditObject1ADR1ADR10
 CTRoutputs1
@@ -1330,7 +1330,7 @@ CTRparams0
 0KRC_AbortKRC_Abort
 CFirmwareBlock0KRC_Abort_0
 
-CBlock71141832NO
+CBlock711411032NO
 
 CCfgEditObject1KRC_Abort1KRC_Abort15
 CTRoutputs4

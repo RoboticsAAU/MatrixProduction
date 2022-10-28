@@ -8,6 +8,7 @@
     <File>mxA_Start.st</File>
     <File>mxA_Motion.fbd</File>
     <File>mxA_ErrorMessage.st</File>
-    <File>mxA_BottomCover.st</File>
+    <File>mxA_JointMovement.st</File>
+    <File>mxA_LinearMovement.st</File>
   </Files>
 </Program>

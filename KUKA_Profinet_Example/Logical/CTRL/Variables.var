@@ -17,6 +17,7 @@ VAR
 	KRC_Initialize_0 : KRC_Initialize; (*Function Block to Initialize the Robot*)
 	KRC_Initialize_1 : KRC_Initialize; (*Function Block to Initialize the Robot*)
 	KRC_Jog_0 : KRC_Jog; (*Function Block which can JOG*)
+	KRC_MoveAxisAbsolute_1 : KRC_MoveAxisAbsolute;
 	KRC_MoveAxisAbsolute_0 : KRC_MoveAxisAbsolute; (*Function Block which can JOG*)
 	KRC_ReadActualAxisPosition_0 : KRC_ReadActualAxisPosition; (*Function Block returns actual Axis Position (A1-A6)*)
 	KRC_ReadActualPosition_0 : KRC_ReadActualPosition; (*Function Block returns actual Axis Position (X-C)*)
@@ -38,6 +39,7 @@ VAR
 	step_UDPConnect : INT; (*State-Variable for Errorhandling*)
 	TextArray : ARRAY[0..15] OF STRING[255]; (*TextArray contains Messages from KRC*)
 	timeDelay : USINT; (*Variable to Delay the QuickStart*)
+	pState : INT := 0;
 	UdpOpen_0 : UdpOpen; (*FunctionBlock to Open Port*)
 	UdpOpen_1 : UdpOpen; (*FunctionBlock to Open Port*)
 	UdpRecv_0 : UdpRecv; (*FunctionBlock to Receive Message*)
@@ -69,10 +71,18 @@ VAR
 	Status_S : INT; (*Variable used to show correct color in Visualization for the S-Shape*)
 	KRC_ReadMXAError_0 : KRC_ReadMXAError;
 	KRC_Diag_2 : KRC_Diag;
+	position2 : E6AXIS;
 	position1 : E6AXIS;
 	cartesianPosition1 : E6POS;
 	KRC_MoveLinearAbsolute_0 : KRC_MoveLinearAbsolute;
 	baseFrame : COORDSYS;
 	KRC_SetCoordSys_0 : KRC_SetCoordSys;
 	KRC_ReadBaseData_0 : KRC_ReadBaseData;
+	MC_MoveAxisAbsolute_0 : MC_MoveAxisAbsolute;
+	MC_MoveLinearAbsolute_0 : MC_MoveLinearAbsolute;
+	coordSys : COORDSYS;
+	KRC_WriteToolData_0 : KRC_WriteToolData;
+	toolCover : FRAME;
+	endPOS : E6POS;
+	approx : APO;
 END_VAR

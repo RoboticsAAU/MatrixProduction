@@ -38,11 +38,26 @@ PROGRAM _CYCLIC
 	/////////////////////////////////////////////////////
 
 	mxA_Start;
-	mxA_Motion;
-	mxA_BottomCover;
+	//mxA_Motion;
+	//mxA_JointMovement;
+	mxA_LinearMovement;
 	mxA_ErrorMessage;
 
 	
+	// Function calls from Motion.fbd 
+	KRC_ReadActualAxisPosition_0.AxisGroupIdx 			:= HMI_AxisGroup; 
+	KRC_ReadActualAxisPosition_0.KRC_AxisGroupRefArr 	:= ADR(AxisRef); 
+	
+	KRC_ReadActualPosition_0.AxisGroupIdx 				:= HMI_AxisGroup; 
+	KRC_ReadActualPosition_0.KRC_AxisGroupRefArr 		:= ADR(AxisRef);
+	
+	KRC_Abort_0.AxisGroupIdx 							:= HMI_AxisGroup;
+	KRC_Abort_0.KRC_AxisGroupRefArr						:= ADR(AxisRef);
+	KRC_Abort_0.ExecuteCmd								:= HMI_ExeAbort; 
+	
+	KRC_ReadActualAxisPosition_0();
+	KRC_ReadActualPosition_0();
+	KRC_Abort_0();
 	
 	
 	
