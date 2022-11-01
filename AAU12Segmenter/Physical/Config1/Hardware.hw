@@ -10,6 +10,30 @@
     </Connection>
     <Parameter ID="Supervision" Value="off" />
   </Module>
+  <Module Name="KUKA1_KRC5_ProfiNet_6_0" Type="FBD.Hilscher.PNIOGenDevDTM2.KUKA.PROFINET 6.0" Version="6.0" OrderNumber="KUKA.PROFINET 6.0" VendorAddress="krc5-kuka1">
+    <Connection Connector="PN1" TargetModule="X20IF10E1_1" TargetConnector="IF1" />
+    <Parameter ID="DtmId" Value="ed41ecf2-1ee6-4f16-8b0b-5a01acdc12f0" />
+  </Module>
+  <Module Name="KUKA2_KRC4_ProfiNet_5_0" Type="FBD.Hilscher.PNIOGenDevDTM2.KRC4-ProfiNet_5.0" Version="5.0" OrderNumber="KRC4-ProfiNet_5.0" VendorAddress="krc4-kuka2">
+    <Connection Connector="PN1" TargetModule="KUKA1_KRC5_ProfiNet_6_0" TargetConnector="PN2" />
+    <Parameter ID="DtmId" Value="37a7288f-95e5-4596-a95a-4f98395b86d6" />
+  </Module>
+  <Module Name="KUKA3_KRC4_ProfiNet_5_0" Type="FBD.Hilscher.PNIOGenDevDTM2.KRC4-ProfiNet_5.0" Version="5.0" OrderNumber="KRC4-ProfiNet_5.0" VendorAddress="krc4-kuka3">
+    <Connection Connector="PN1" TargetModule="KUKA2_KRC4_ProfiNet_5_0" TargetConnector="PN2" />
+    <Parameter ID="DtmId" Value="4619762a-1bda-4186-a1d7-16f7a0121dc3" />
+  </Module>
+  <Module Name="KUKA4_KRC4_ProfiNet_5_0" Type="FBD.Hilscher.PNIOGenDevDTM2.KRC4-ProfiNet_5.0" Version="5.0" OrderNumber="KRC4-ProfiNet_5.0" VendorAddress="krc4-kuka4">
+    <Connection Connector="PN1" TargetModule="KUKA3_KRC4_ProfiNet_5_0" TargetConnector="PN2" />
+    <Parameter ID="DtmId" Value="587b3b89-59c9-4dff-ae3f-6513934acbe2" />
+  </Module>
+  <Module Name="KUKA5_KRC4_ProfiNet_5_0" Type="FBD.Hilscher.PNIOGenDevDTM2.KRC4-ProfiNet_5.0" Version="5.0" OrderNumber="KRC4-ProfiNet_5.0" VendorAddress="krc4-kuka5">
+    <Connection Connector="PN1" TargetModule="KUKA4_KRC4_ProfiNet_5_0" TargetConnector="PN2" />
+    <Parameter ID="DtmId" Value="53f0387d-dc6f-4ff4-995c-9012f8d162e6" />
+  </Module>
+  <Module Name="KUKA6_KRC5_ProfiNet_6_0" Type="FBD.Hilscher.PNIOGenDevDTM2.KUKA.PROFINET 6.0" Version="6.0" OrderNumber="KUKA.PROFINET 6.0" VendorAddress="krc5-kuka6">
+    <Connection Connector="PN1" TargetModule="KUKA5_KRC4_ProfiNet_5_0" TargetConnector="PN2" />
+    <Parameter ID="DtmId" Value="2ed1eaca-6452-4986-be94-ac49d0fbd28d" />
+  </Module>
   <Module Name="VSS122Q25.061P-000" Type="VSS122Q25.061P-000" Version="1.6.0.546">
     <Connection Connector="PLK1" TargetModule="8YFLM01.0000.00I-1" TargetConnector="PLK2" NodeNumber="8">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
@@ -51,6 +75,7 @@
       <Parameter ID="SubnetMask" Value="255.255.255.0" />
     </Connector>
     <Parameter ID="ConfigurationID" Value="Mapp6DDemoKit_Config1" />
+    <Parameter ID="Simulation" Value="1" />
     <Parameter ID="PermanentPvSize" Value="6000" />
     <Parameter ID="RemanentGlobalPvSize" Value="40960" />
     <Parameter ID="VolatileGlobalPvSize" Value="200000" />

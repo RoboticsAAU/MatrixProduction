@@ -1,4 +1,5 @@
 VAR
 	FBin : Mc6DControllerFBIOType;
 	FBout : Mc6DControllerFBIOType;
+	GripperBlackPin : BOOL;
 END_VAR

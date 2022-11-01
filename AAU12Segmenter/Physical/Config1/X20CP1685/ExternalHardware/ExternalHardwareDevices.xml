@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ExternalHardware>
+  <Modules>
+    <Module ModuleID="FBD.Hilscher.PNIOGenDevDTM2.KRC4-ProfiNet_5.0" Version="5.0" OrderNumber="KRC4-ProfiNet_5.0">
+      <SourceFile OriginalFile="GSDML-V2.33-KUKA-KRC4-ProfiNet_5.0-20181102.xml" TranslationFile="74K6EKUL.ext" />
+    </Module>
+    <Module ModuleID="FBD.Hilscher.PNIOGenDevDTM2.KUKA.PROFINET 6.0" Version="6.0" OrderNumber="KUKA.PROFINET 6.0">
+      <SourceFile OriginalFile="GSDML-V2.4-KUKA-KR C5-20201026.xml" TranslationFile="Z7IE0W64.ext" />
+    </Module>
+  </Modules>
+</ExternalHardware>

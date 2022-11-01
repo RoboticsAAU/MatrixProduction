@@ -1,0 +1,68 @@
+(*AxisStructure*)
+VAR
+	AxisRef : AXIS_GROUP_REF_ARR; (*Axis Reference of the Robot*)
+END_VAR
+(*Variables for the Task*)
+(*Instance of mxA-FB*)
+VAR
+	KRC_Abort_0 : KRC_Abort; (*Function Block to abort actual movement*)
+	KRC_AutomaticExternal_0 : KRC_AutomaticExternal; (*Function Block to Enable the Movement from the PLC*)
+	KRC_AutomaticExternal_1 : KRC_AutomaticExternal; (*Function Block to Enable the Movement from the PLC*)
+	KRC_AutoStart_0 : KRC_AutoStart; (*Function Block for Autostarting the Starting Chain of a Robot*)
+	KRC_AutoStart_1 : KRC_AutoStart; (*Function Block for Autostarting the Starting Chain of a Robot*)
+	KRC_Diag_0 : KRC_Diag; (*Function Block for getting Diagnostic information*)
+	KRC_Diag_1 : KRC_Diag; (*Function Block for getting Diagnostic information*)
+	KRC_Error_0 : KRC_Error; (*Function Block gives back Error Status*)
+	KRC_Error_1 : KRC_Error; (*Function Block gives back Error Status*)
+	KRC_Initialize_0 : KRC_Initialize; (*Function Block to Initialize the Robot*)
+	KRC_Initialize_1 : KRC_Initialize; (*Function Block to Initialize the Robot*)
+	KRC_ReadActualAxisPosition_0 : KRC_ReadActualAxisPosition; (*Function Block returns actual Axis Position (A1-A6)*)
+	KRC_ReadActualPosition_0 : KRC_ReadActualPosition; (*Function Block returns actual Axis Position (X-C)*)
+	KRC_ReadAxisGroup_0 : KRC_ReadAxisGroup; (*Function Block to Read the AxisInformation*)
+	KRC_SetOverride_0 : KRC_SetOverride; (*Function Block to Set the Override*)
+	KRC_SetOverride_1 : KRC_SetOverride; (*Function Block to Set the Override*)
+	KRC_WriteAxisGroup_0 : KRC_WriteAxisGroup; (*Function Block to Write on the OutputVariable for controlling the Robot*)
+	mxa_ValuesToCOORDSYS_0 : mxa_ValuesToCOORDSYS; (*Function Block to set int values to the Coordsys*)
+END_VAR
+(*Variables for UDP-communication*)
+VAR
+	i : USINT; (*IndexVariable for ErrorMessages*)
+	InputUDPString : STRING[255]; (*Variable with Message from KRC*)
+	counterMsg : INT;
+	WorkAroundCounter : INT;
+	step_UDPConnect : INT; (*State-Variable for Errorhandling*)
+	TextArray : ARRAY[0..15] OF STRING[255]; (*TextArray contains Messages from KRC*)
+	pState : INT := 0;
+	UdpOpen_0 : UdpOpen; (*FunctionBlock to Open Port*)
+	UdpOpen_1 : UdpOpen; (*FunctionBlock to Open Port*)
+	UdpRecv_0 : UdpRecv; (*FunctionBlock to Receive Message*)
+	UdpSend_0 : UdpSend; (*FunctionBlock to Send Message*)
+	MsgToKrc : STRING[17]; (*Contains the Message which is send to KRC for getting all Messages*)
+	ReloadMsg : BOOL; (*Variable triggers the Sequence to get Messages*)
+END_VAR
+VAR CONSTANT
+	STATE_DISPLAY : INT := 5; (*STATE to display the Message*)
+	STATE_RECEIVE : INT := 3; (*STATE to receive a new Message*)
+	STATE_OPEN : INT := 0; (*STATE for opening the Ports*)
+	STATE_SEND : INT := 2; (*STATE for sending a request to KRC*)
+	STATE_WAIT : INT := 1; (*STATE for Waiting to trigger a new Request*)
+END_VAR
+VAR
+	TON_0 : TON;
+END_VAR
+(*HMI Status KRC*)
+VAR
+	Status_EXT : INT; (*Variable used to show correct color in Visualization for the EXT-Shape*)
+	Status_I : INT; (*Variable used to show correct color in Visualization for the I-Shape*)
+	Status_P : INT; (*Variable used to show correct color in Visualization for the P-Shape*)
+	Status_R : INT; (*Variable used to show correct color in Visualization for the R-Shape*)
+	Status_S : INT; (*Variable used to show correct color in Visualization for the S-Shape*)
+END_VAR
+(*Misc*)
+VAR
+	KRC_MoveLinearAbsolute_0 : KRC_MoveLinearAbsolute;
+	coordSys : COORDSYS;
+	toolCover : FRAME;
+	endPOS : E6POS;
+	KRC_WriteToolData_0 : KRC_WriteToolData;
+END_VAR

@@ -4,5 +4,11 @@
   <Objects>
     <Object Type="File">X20IF10E1_1.dtm</Object>
     <Object Type="Package">X20IF10E1_1_IF1</Object>
+    <Object Type="Package">KUKA2_KRC4_ProfiNet_5_0</Object>
+    <Object Type="Package">KUKA6_KRC5_ProfiNet_6_0</Object>
+    <Object Type="Package">KUKA1_KRC5_ProfiNet_6_0</Object>
+    <Object Type="Package">KUKA3_KRC4_ProfiNet_5_0</Object>
+    <Object Type="Package">KUKA4_KRC4_ProfiNet_5_0</Object>
+    <Object Type="Package">KUKA5_KRC4_ProfiNet_5_0</Object>
   </Objects>
 </Package>
