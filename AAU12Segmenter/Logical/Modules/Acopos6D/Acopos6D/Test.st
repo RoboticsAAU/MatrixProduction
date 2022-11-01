@@ -84,8 +84,6 @@ ACTION testMovements:
 		16:
 			cm.description := 'Setting all targetReached to false';
 			testObj.targetReached[pShuttle.par.shuttleID] := FALSE; 
-			OpenGripper := TRUE;
-			GripperMovement;
 			cm.state := 20;
 			
 		20: 
@@ -124,8 +122,6 @@ ACTION testMovements:
 		36:
 			cm.description := 'Setting all targetReached to false';
 			testObj.targetReached[pShuttle.par.shuttleID] := FALSE;
-			OpenGripper := FALSE;
-			GripperMovement;
 			cm.state := 0;
 			
 	END_CASE
@@ -133,16 +129,4 @@ ACTION testMovements:
 	cm();
 	pShuttle.function.MC_BR_MoveInPlane_Acp6D_0();
 	
-END_ACTION
-
-
-ACTION GripperMovement:  
-	IF OpenGripper THEN
-		GripperWhitePin := TRUE;
-		GripperBlackPin := FALSE;
-	ELSE
-		GripperWhitePin := FALSE;
-		GripperBlackPin := TRUE;
-	END_IF
-		
 END_ACTION

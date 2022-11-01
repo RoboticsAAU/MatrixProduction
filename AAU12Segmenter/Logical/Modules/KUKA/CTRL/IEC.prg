@@ -9,5 +9,7 @@
     <File>mxA_ErrorMessage.st</File>
     <File>mxA_JointMovement.st</File>
     <File>mxA_LinearMovement.st</File>
+    <File Private="true">LocalFunctions.fun</File>
+    <File>GripperAction.st</File>
   </Files>
 </Program>

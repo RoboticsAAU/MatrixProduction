@@ -38,7 +38,6 @@ PROGRAM _CYCLIC
 	/////////////////////////////////////////////////////
 
 	mxA_Start;
-	//mxA_Motion;
 	//mxA_JointMovement;
 	mxA_LinearMovement;
 	//mxA_ErrorMessage;

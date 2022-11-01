@@ -1,3 +1,6 @@
+VAR
+	KUKAs : ARRAY[0..5] OF KUKA;
+END_VAR
 (*AxisStructure*)
 VAR
 	AxisRef : AXIS_GROUP_REF_ARR; (*Axis Reference of the Robot*)
@@ -41,11 +44,11 @@ VAR
 	ReloadMsg : BOOL; (*Variable triggers the Sequence to get Messages*)
 END_VAR
 VAR CONSTANT
-	STATE_DISPLAY : INT := 5; (*STATE to display the Message*)
-	STATE_RECEIVE : INT := 3; (*STATE to receive a new Message*)
 	STATE_OPEN : INT := 0; (*STATE for opening the Ports*)
-	STATE_SEND : INT := 2; (*STATE for sending a request to KRC*)
 	STATE_WAIT : INT := 1; (*STATE for Waiting to trigger a new Request*)
+	STATE_SEND : INT := 2; (*STATE for sending a request to KRC*)
+	STATE_RECEIVE : INT := 3; (*STATE to receive a new Message*)
+	STATE_DISPLAY : INT := 5; (*STATE to display the Message*)
 END_VAR
 VAR
 	TON_0 : TON;
