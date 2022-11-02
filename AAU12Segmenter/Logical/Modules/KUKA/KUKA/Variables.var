@@ -16,7 +16,6 @@ VAR
 	WorkAroundCounter : INT;
 	step_UDPConnect : INT; (*State-Variable for Errorhandling*)
 	TextArray : ARRAY[0..15] OF STRING[255]; (*TextArray contains Messages from KRC*)
-	pState : INT := 0;
 	UdpOpen_0 : UdpOpen; (*FunctionBlock to Open Port*)
 	UdpOpen_1 : UdpOpen; (*FunctionBlock to Open Port*)
 	UdpRecv_0 : UdpRecv; (*FunctionBlock to Receive Message*)
@@ -34,21 +33,15 @@ END_VAR
 VAR
 	TON_0 : TON;
 END_VAR
-(*HMI Status KRC*)
-VAR
-	Status_EXT : INT; (*Variable used to show correct color in Visualization for the EXT-Shape*)
-	Status_I : INT; (*Variable used to show correct color in Visualization for the I-Shape*)
-	Status_P : INT; (*Variable used to show correct color in Visualization for the P-Shape*)
-	Status_R : INT; (*Variable used to show correct color in Visualization for the R-Shape*)
-	Status_S : INT; (*Variable used to show correct color in Visualization for the S-Shape*)
-END_VAR
 (*Misc*)
 VAR
-	KRC_MoveLinearAbsolute_0 : KRC_MoveLinearAbsolute;
 	coordSys : COORDSYS;
 	toolCover : FRAME;
 	endPOS : E6POS;
 	error : DINT;
 	position1 : E6AXIS;
 	position2 : E6AXIS;
+	KRC_Write_Tool_Data : KRC_WriteToolData;
+	cm : REFERENCE TO brdkCM;
+	pKuka : REFERENCE TO KUKA;
 END_VAR

@@ -9,6 +9,12 @@
     <File>mxA_ErrorMessage.st</File>
     <File>mxA_JointMovement.st</File>
     <File>mxA_LinearMovement.st</File>
+    <File>mxA_KUKA1.st</File>
+    <File>mxA_KUKA2.st</File>
+    <File>mxA_KUKA3.st</File>
+    <File>mxA_KUKA4.st</File>
+    <File>mxA_KUKA5.st</File>
+    <File>mxA_KUKA6.st</File>
     <File Private="true">LocalFunctions.fun</File>
     <File>GripperAction.st</File>
   </Files>

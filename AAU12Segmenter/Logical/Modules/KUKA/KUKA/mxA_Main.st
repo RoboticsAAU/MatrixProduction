@@ -7,6 +7,7 @@ PROGRAM _INIT
 		KUKAs[i].gripperAction.action := OPEN;
 		KUKAs[i].gripperAction();
 		KUKAs[i].cm.state := 0;
+		KUKAs[i].startState := 0;
 	END_FOR
 	
 	KUKAs[0].eeType := COVER_EE;
@@ -22,8 +23,14 @@ END_PROGRAM
 PROGRAM _CYCLIC
 
 	// Loop through each robot for configurations
-	FOR i:=2 TO 2 DO
+	FOR i := 0 TO 5 DO
 		
+		////////// Temporary skip until problem with library for Kuka KR4 is solved///////////
+		IF i = 0 OR i = 5 THEN
+			
+			RETURN;
+			
+		END_IF
 		
 		/////////////////////////////////////////////////////
 		// Logic to transform USINT (Input) to BYTE (FUBS) //
@@ -50,19 +57,38 @@ PROGRAM _CYCLIC
 		// Call User functions                             //
 		/////////////////////////////////////////////////////
 		
+		pKuka ACCESS ADR(KUKAs[i]);
+		cm ACCESS ADR(KUKAs[i].cm);
+		
+		// mxA_Start contains FB calls associated with initialization of the robots and diagnosis
 		mxA_Start;
+		
+		//mxA_JointMovement;
 		//mxA_LinearMovement;
-		IF i = 2 THEN
-			mxA_JointMovement;
-		END_IF
 		//mxA_ErrorMessage;
 		
-		
-		// Function calls from Motion.fbd 			
-		KUKAs[i].start.KRC_Abort.AxisGroupIdx 				:= KUKAs[i].AxisGroupIdx;
-		KUKAs[i].start.KRC_Abort.KRC_AxisGroupRefArr		:= ADR(AxisRef);
-		KUKAs[i].start.KRC_Abort.ExecuteCmd					:= FALSE;  /// Used to be set by HMI - Remember to incorporate it later
-		KUKAs[i].start.KRC_Abort();	
+		CASE i OF
+			1:
+				mxA_KUKA1;
+				
+			2:
+				mxA_KUKA2;
+				
+			3:
+				mxA_KUKA3;
+				
+			4:
+				mxA_KUKA4;
+				
+			5:
+				mxA_KUKA5;
+				
+			6:
+				mxA_KUKA6;
+			
+		END_CASE
+	
+		//mxA_KUKA6; 
 			
 		
 		/////////////////////////////////////////////////////

@@ -12,7 +12,7 @@ TYPE
 		status : status;
 		AxisGroupIdx : USINT;
 		gripperAction : GripperAction;
-		initState : USINT := 0;
+		startState : USINT;
 	END_STRUCT;
 	start_function : 	STRUCT 
 		KRC_Initialize : KRC_Initialize;

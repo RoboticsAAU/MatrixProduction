@@ -7,5 +7,7 @@
     <Object Type="Package">KUKA</Object>
     <Object Type="Package">Services</Object>
     <Object Type="File">imgHandler.js</Object>
+    <Object Type="File" Private="true">Variables.var</Object>
+    <Object Type="File" Private="true">Types.typ</Object>
   </Objects>
 </Package>

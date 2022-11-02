@@ -2,10 +2,10 @@
 <?AutomationStudio FileVersion="4.9"?>
 <BR.AS.HardwareTopology>
   <TimeStamps>
-    <TimeStamp LogicalPath="Config1.Hardware.hw" LastWriteTime="11/01/2022 20:28:49" />
+    <TimeStamp LogicalPath="Config1.Hardware.hw" LastWriteTime="11/02/2022 11:54:39" />
   </TimeStamps>
   <Modules>
-    <Module Name="8YFLM01.0000.00I-1" Type="8YFLM01.0000.00I-1" X="299" Y="199" />
+    <Module Name="8YFLM01.0000.00I-1" Type="8YFLM01.0000.00I-1" X="311" Y="222" />
     <Module Name="X20CP1685" Type="X20CP1685" X="100" Y="100" />
     <Module Name="X20IF10E1_1" Type="X20IF10E1-1" X="212" Y="100" />
     <Module Name="X20BM11" Type="X20BM11" X="250" Y="100" />
@@ -37,21 +37,21 @@
   </Modules>
   <Links>
     <Link From="8YFLM01.0000.00I-1" To="X20CP1685" FromPort="PLK1" ToPort="IF3" IsRoutedByUser="False">
-      <Point X="332" Y="243" />
-      <Point X="332" Y="243" />
-      <Point X="332" Y="250" />
-      <Point X="332" Y="255" />
-      <Point X="156" Y="255" />
+      <Point X="344" Y="266" />
+      <Point X="344" Y="266" />
+      <Point X="344" Y="273" />
+      <Point X="344" Y="285" />
+      <Point X="156" Y="285" />
       <Point X="156" Y="200" />
       <Point X="156" Y="187" />
       <Point X="156" Y="187" />
     </Link>
     <Link From="8YFLM01.0000.00I-1" To="VSS122Q25.061P-000" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
-      <Point X="357" Y="243" />
-      <Point X="357" Y="243" />
-      <Point X="357" Y="250" />
-      <Point X="357" Y="255" />
-      <Point X="471" Y="255" />
+      <Point X="369" Y="266" />
+      <Point X="369" Y="266" />
+      <Point X="369" Y="273" />
+      <Point X="369" Y="285" />
+      <Point X="471" Y="285" />
       <Point X="471" Y="223" />
       <Point X="471" Y="218" />
       <Point X="471" Y="218" />

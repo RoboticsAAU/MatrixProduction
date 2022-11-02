@@ -1,12 +1,12 @@
 
 ACTION mxA_LinearMovement:
 
-	CASE pState OF
+	CASE KUKAs[i].cm.state OF
 	
 		0:
 			// Waiting for robot 1 to be ready to move
-			IF 	Status_P > 0 AND Status_S > 0 AND Status_I > 0 AND Status_R > 0 AND Status_EXT > 0 THEN			
-				pState := 20;
+			IF 	KUKAs[i].status.P_ AND KUKAs[i].status.S_ AND KUKAs[i].status.I_ AND KUKAs[i].status.R_ AND KUKAs[i].status.EXT_ THEN			
+				KUKAs[i].cm.state := 10;
 			END_IF
 			
 		10: 
@@ -19,17 +19,18 @@ ACTION mxA_LinearMovement:
 				
 				
 				
-			KRC_WriteToolData_0.AxisGroupIdx 		:= HMI_AxisGroup;
-			KRC_WriteToolData_0.KRC_AxisGroupRefArr := ADR(AxisRef);
-			KRC_WriteToolData_0.ToolNo 				:= 1; 
-			KRC_WriteToolData_0.ToolData 			:= toolCover;
-			KRC_WriteToolData_0.BufferMode 			:= 2;
-			KRC_WriteToolData_0.ExecuteCmd			:= TRUE;
+			KRC_Write_Tool_Data.AxisGroupIdx 		:= KUKAs[i].AxisGroupIdx;
+			KRC_Write_Tool_Data.KRC_AxisGroupRefArr := ADR(AxisRef);
+			KRC_Write_Tool_Data.ToolNo 				:= 1; 
+			KRC_Write_Tool_Data.ToolData 			:= toolCover; 
+			KRC_Write_Tool_Data.BufferMode 			:= 2; 
+			KRC_Write_Tool_Data.ExecuteCmd			:= TRUE;
 			
 			
-			IF KRC_WriteToolData_0.Done THEN
-				KRC_WriteToolData_0.ExecuteCmd		:= FALSE;
-				pState := 20;
+			
+			IF KRC_Write_Tool_Data.Done THEN
+				KRC_Write_Tool_Data.ExecuteCmd		:= FALSE;
+				KUKAs[i].cm.state := 20;
 			END_IF
 				
 		20: 
@@ -39,21 +40,21 @@ ACTION mxA_LinearMovement:
 			mxa_ValuesToCOORDSYS_0.Base 	:= 1; 
 			mxa_ValuesToCOORDSYS_0.IPO_Mode := 0;
 		
-			pState := 30; 
+			KUKAs[i].cm.state := 30; 
 			
 		30: 
 				
 			coordSys := mxa_ValuesToCOORDSYS_0.COORDSYS;
 			
-			KRC_MoveLinearAbsolute_0.AxisGroupIdx 			:= HMI_AxisGroup;
-			KRC_MoveLinearAbsolute_0.KRC_AxisGroupRefArr	:= ADR(AxisRef);
-			KRC_MoveLinearAbsolute_0.Velocity				:= 10; 
-			KRC_MoveLinearAbsolute_0.Acceleration  			:= 20; 
-			KRC_MoveLinearAbsolute_0.CoordinateSystem		:= coordSys;
-			KRC_MoveLinearAbsolute_0.OriType 				:= 0;
-			KRC_MoveLinearAbsolute_0.BufferMode				:= 2;
+			KUKAs[i].motion.KRC_MoveLinearAbsolute.AxisGroupIdx 		:= KUKAs[i].AxisGroupIdx;
+			KUKAs[i].motion.KRC_MoveLinearAbsolute.KRC_AxisGroupRefArr	:= ADR(AxisRef);
+			KUKAs[i].motion.KRC_MoveLinearAbsolute.Velocity				:= 10; 
+			KUKAs[i].motion.KRC_MoveLinearAbsolute.Acceleration  		:= 20; 
+			KUKAs[i].motion.KRC_MoveLinearAbsolute.CoordinateSystem		:= coordSys;
+			KUKAs[i].motion.KRC_MoveLinearAbsolute.OriType 				:= 0;
+			KUKAs[i].motion.KRC_MoveLinearAbsolute.BufferMode			:= 2;
 			
-			pState := 40;
+			KUKAs[i].cm.state := 40;
 			
 		40:
 			endPOS.X := 302; 
@@ -65,12 +66,12 @@ ACTION mxA_LinearMovement:
 			endPOS.Status := 2; //010
 			endPOS.Turn := 2; //000010
 			
-			KRC_MoveLinearAbsolute_0.Position			:= endPOS;
+			KUKAs[i].motion.KRC_MoveLinearAbsolute.Position			:= endPOS;
 
-			KRC_MoveLinearAbsolute_0.ExecuteCmd 		:= TRUE;
-			IF KRC_MoveLinearAbsolute_0.Done THEN 
-				KRC_MoveLinearAbsolute_0.ExecuteCmd 	:= FALSE;
-				pState 									:= 50; 
+			KUKAs[i].motion.KRC_MoveLinearAbsolute.ExecuteCmd 		:= TRUE;
+			IF KUKAs[i].motion.KRC_MoveLinearAbsolute.Done THEN 
+				KUKAs[i].motion.KRC_MoveLinearAbsolute.ExecuteCmd 	:= FALSE;
+				KUKAs[i].cm.state := 50; 
 			END_IF
 		
 		50:
@@ -83,18 +84,18 @@ ACTION mxA_LinearMovement:
 			endPOS.Status := 2; //010
 			endPOS.Turn := 2; //000010
 			
-			KRC_MoveLinearAbsolute_0.Position			:= endPOS;
+			KUKAs[i].motion.KRC_MoveLinearAbsolute.Position			:= endPOS;
 			
-			KRC_MoveLinearAbsolute_0.ExecuteCmd 		:= TRUE;
-			IF KRC_MoveLinearAbsolute_0.Done THEN 
-				KRC_MoveLinearAbsolute_0.ExecuteCmd 	:= FALSE;
-				pState 									:= 40; 
+			KUKAs[i].motion.KRC_MoveLinearAbsolute.ExecuteCmd 		:= TRUE;
+			IF KUKAs[i].motion.KRC_MoveLinearAbsolute.Done THEN 
+				KUKAs[i].motion.KRC_MoveLinearAbsolute.ExecuteCmd 	:= FALSE;
+				KUKAs[i].cm.state 	:= 40; 
 			END_IF
 	
 	END_CASE
 	
-	KRC_WriteToolData_0();
+	KRC_Write_Tool_Data();
 	mxa_ValuesToCOORDSYS_0();
-	KRC_MoveLinearAbsolute_0();
+	KUKAs[i].motion.KRC_MoveLinearAbsolute();
 
 END_ACTION

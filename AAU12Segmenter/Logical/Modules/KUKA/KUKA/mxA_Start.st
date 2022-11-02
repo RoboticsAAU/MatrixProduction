@@ -1,125 +1,149 @@
 
 ACTION mxA_Start: 
 	
+	CASE pKuka.startState OF
+			
+		0: // Configuring KUKA FBs once
+			
+			// Logic to call the KRC_Initialize	
+			pKuka.start.KRC_Initialize.AxisGroupIdx 				:= pKuka.AxisGroupIdx; 
+			pKuka.start.KRC_Initialize.KRC_AxisGroupRefArr 			:= ADR(AxisRef);
+			
+			// Logic to call the KRC_Error 
+			pKuka.start.KRC_Error.AxisGroupIdx 						:= pKuka.AxisGroupIdx;
+			pKuka.start.KRC_Error.MessageReset 						:= FALSE; // REMEMBER TO CHANGE LATER
+			pKuka.start.KRC_Error.KRC_AxisGroupRefArr				:= ADR(AxisRef);
+			
+			// Logic to call KRC_AutomaticExternal
+			pKuka.start.KRC_AutomaticExternal.AxisGroupIdx 			:= pKuka.AxisGroupIdx;
+			pKuka.start.KRC_AutomaticExternal.MOVE_ENABLE 			:= TRUE;
+			pKuka.start.KRC_AutomaticExternal.DRIVES_OFF 			:= TRUE;
+			pKuka.start.KRC_AutomaticExternal.KRC_AxisGroupRefArr	:= ADR(AxisRef);
+			pKuka.start.KRC_AutomaticExternal.EXT_START 			:= FALSE; // Binded to Continue Prog in original program
+			pKuka.start.KRC_AutomaticExternal.ENABLE_T1 			:= TRUE;  
+			pKuka.start.KRC_AutomaticExternal.ENABLE_EXT 			:= TRUE;
+			
+			// Logic for startup of robot
+			pKuka.start.KRC_AutoStart.AxisGroupIdx 					:= pKuka.AxisGroupIdx; 
+			pKuka.start.KRC_AutoStart.KRC_AxisGroupRefArr 			:= ADR(AxisRef);
+			pKuka.start.KRC_AutoStart.ExecuteReset 					:= FALSE; // REMEMBER TO CHANGE LATER
+			
+			// Logic to set override for robot velocity
+			pKuka.start.KRC_SetOverride.AxisGroupIdx 				:= pKuka.AxisGroupIdx;
+			pKuka.start.KRC_SetOverride.KRC_AxisGroupRefArr 		:= ADR(AxisRef); 
+			pKuka.start.KRC_SetOverride.Override 					:= 10; // REMEMBER TO CHANGE LATER
+			
+			// Logic to set 
+			pKuka.start.KRC_Abort.AxisGroupIdx 						:= pKuka.AxisGroupIdx;
+			pKuka.start.KRC_Abort.KRC_AxisGroupRefArr				:= ADR(AxisRef);
+			pKuka.start.KRC_Abort.ExecuteCmd						:= FALSE;  /// Used to be set by HMI - Remember to incorporate it later
+			
+			// Logic to set KRC_Diag
+			pKuka.start.KRC_Diag.AxisGroupIdx 						:= pKuka.AxisGroupIdx;
+			pKuka.start.KRC_Diag.KRC_AxisGroupRefArr 				:= ADR(AxisRef); 
+			pKuka.start.KRC_Diag.ShowTrace 							:= FALSE;
+			
+			pKuka.startState  := 1;
 
-	/////////////////////////////////////////////////////
-	// Logic to call the KRC_Initialize				   //
-	// KRC_Initialize gives back the Status of the	   //
-	// like, online, Initialized,.......			   //
-	/////////////////////////////////////////////////////
-
-	KUKAs[i].start.KRC_Initialize.AxisGroupIdx 			:= KUKAs[i].AxisGroupIdx; 
-	KUKAs[i].start.KRC_Initialize.KRC_AxisGroupRefArr 	:= ADR(AxisRef);
-
-	KUKAs[i].start.KRC_Initialize();
+			
+		1: // Wait for P, S and EXT
+			IF pKuka.status.P_ AND pKuka.status.S_ AND pKuka.status.EXT_ THEN
 	
+				pKuka.startState  := 2;
 	
-	/////////////////////////////////////////////////////
-	// Logic to call the KRC_Error     			       //
-	// KRC_Error gives back the Status of the Robot    //
-	// like, online, Initialized,.......			   //
-	/////////////////////////////////////////////////////
-	
-	KUKAs[i].start.KRC_Error.AxisGroupIdx 				:= KUKAs[i].AxisGroupIdx;
-	KUKAs[i].start.KRC_Error.MessageReset 				:= FALSE; // REMEMBER TO CHANGE LATER
-	KUKAs[i].start.KRC_Error.KRC_AxisGroupRefArr		:= ADR(AxisRef);
-	
-	KUKAs[i].start.KRC_Error();
-	
-	//////////////////////////////////////////////////////
-	// KRC_AutomaticExternal allows to control the 		//
-	// Robot with the PLC								//
-	//////////////////////////////////////////////////////
-	
-	
-	KUKAs[i].start.KRC_AutomaticExternal.AxisGroupIdx 			:= KUKAs[i].AxisGroupIdx;
-	KUKAs[i].start.KRC_AutomaticExternal.MOVE_ENABLE 			:= TRUE;
-	KUKAs[i].start.KRC_AutomaticExternal.DRIVES_OFF 			:= TRUE;
-	KUKAs[i].start.KRC_AutomaticExternal.KRC_AxisGroupRefArr	:= ADR(AxisRef);
-	KUKAs[i].start.KRC_AutomaticExternal.EXT_START 				:= FALSE; // Binded to Continue Prog in original program
-	KUKAs[i].start.KRC_AutomaticExternal.ENABLE_T1 				:= TRUE;  
-	KUKAs[i].start.KRC_AutomaticExternal.ENABLE_EXT 			:= TRUE;
-
-	KUKAs[i].start.KRC_AutomaticExternal();
-	
-	
-	//////////////////////////////////////////////////////
-	//Function Block for StartUp of Robot				//
-	//////////////////////////////////////////////////////
-
-	KUKAs[i].start.KRC_AutoStart.AxisGroupIdx 				:= KUKAs[i].AxisGroupIdx; 
-	KUKAs[i].start.KRC_AutoStart.KRC_AxisGroupRefArr 		:= ADR(AxisRef);
-	KUKAs[i].start.KRC_AutoStart.ExecuteReset 				:= FALSE; // REMEMBER TO CHANGE LATER
-
-	KUKAs[i].start.KRC_AutoStart();
+			END_IF
 		
+		2: // Reset KRC errors and autostart
+			pKuka.start.KRC_Error.MessageReset := TRUE;
+			pKuka.start.KRC_AutoStart.ExecuteReset := TRUE;
+				
+			IF pKuka.status.R_ AND pKuka.status.I_ THEN
+					
+				pKuka.start.KRC_Error.MessageReset := FALSE;
+				pKuka.start.KRC_AutoStart.ExecuteReset := FALSE;
+				pKuka.startState  := 3;
+					
+			END_IF
 		
-	//////////////////////////////////////////////////////
-	// KRC_SetOverride used to set the Override 		//
-	// for the Robot Velocity							//
-	//////////////////////////////////////////////////////
+		3: // Check if any error occurred  
+			IF 	NOT pKuka.status.P_ OR 
+				NOT pKuka.status.S_ OR 
+				NOT pKuka.status.EXT_ OR
+				NOT pKuka.status.R_ OR
+				NOT pKuka.status.I_ THEN
+				
+				pKuka.startState  := 1;
+			
+			END_IF
+		
+			
+	END_CASE
+	
+	
+	// Logic to call the KRC_Initialize
+	// KRC_Initialize gives back the Status OF the like, online, Initialized,.......
+	pKuka.start.KRC_Initialize();
+	
+	
+	// Logic to call the KRC_Error. 
+	// KRC_Error gives back the Status OF the Robot like, online, Initialized,.......
+	pKuka.start.KRC_Error();
+	
+	
+	// KRC_AutomaticExternal allows to control the Robot with the PLC
+	pKuka.start.KRC_AutomaticExternal();
 
 	
-	KUKAs[i].start.KRC_SetOverride.AxisGroupIdx 				:= KUKAs[i].AxisGroupIdx;
-	KUKAs[i].start.KRC_SetOverride.KRC_AxisGroupRefArr 			:= ADR(AxisRef); 
-	KUKAs[i].start.KRC_SetOverride.Override 					:= 5; // REMEMBER TO CHANGE LATER
+	//Function Block for StartUp of Robot
+	pKuka.start.KRC_AutoStart();
+	
+	
+	// KRC_SetOverride used to set the Override for the Robot Velocity
+	pKuka.start.KRC_SetOverride();
+	
+	// KRC_Abort cancels all active and buffered statements and motions
+	pKuka.start.KRC_Abort();	
+	
 
-	KUKAs[i].start.KRC_SetOverride();
+	// KRC_Diag gives back some information about the axis and robot
+	pKuka.start.KRC_Diag();
 	
-	
-	//////////////////////////////////////////////////////
-	//KRC_Diag gives back some information about the 	//
-	//axis and robot									//
-	//////////////////////////////////////////////////////
 
-	KUKAs[i].start.KRC_Diag.AxisGroupIdx 						:= KUKAs[i].AxisGroupIdx;
-	KUKAs[i].start.KRC_Diag.KRC_AxisGroupRefArr 				:= ADR(AxisRef); 
-	KUKAs[i].start.KRC_Diag.ShowTrace 							:= FALSE;
-	
-	KUKAs[i].start.KRC_Diag();
-	
-	
-	//////////////////////////////////////////////////////
-	//Checking status of KRC and PLC for creating the   //
-	//signals for the HMI 								//
-	//										 			//
-	//////////////////////////////////////////////////////
-
-	IF KUKAs[i].start.KRC_Diag.ProconosCyc_Act = -1 OR KUKAs[i].start.KRC_Error.NoHeartbeatPCOS THEN	
-		KUKAs[i].status.P_ := FALSE;	
+	//Checking status of KRC and PLC for creating the signals for the HMI 
+	IF pKuka.start.KRC_Diag.ProconosCyc_Act = -1 OR pKuka.start.KRC_Error.NoHeartbeatPCOS THEN	
+		pKuka.status.P_ := FALSE;	
 	ELSE
-		KUKAs[i].status.P_ := TRUE;
+		pKuka.status.P_ := TRUE;
 	END_IF
 
 
 
-	IF KUKAs[i].start.KRC_Diag.SubmitCyc_Act = -1 OR KUKAs[i].start.KRC_Error.NoHeartbeatKRC THEN
-		KUKAs[i].status.S_ := FALSE;	
+	IF pKuka.start.KRC_Diag.SubmitCyc_Act = -1 OR pKuka.start.KRC_Error.NoHeartbeatKRC THEN
+		pKuka.status.S_ := FALSE;	
 	ELSE
-		KUKAs[i].status.S_ := TRUE;
+		pKuka.status.S_ := TRUE;
 	END_IF
 								
 
-	IF KUKAs[i].start.KRC_AutomaticExternal.EXT THEN
-		KUKAs[i].status.EXT_ := TRUE;
+	IF pKuka.start.KRC_AutomaticExternal.EXT THEN
+		pKuka.status.EXT_ := TRUE;
 	ELSE
-		KUKAs[i].status.EXT_ := FALSE;
+		pKuka.status.EXT_ := FALSE;
 	END_IF
 
 	
-	IF NOT KUKAs[i].start.KRC_Error.DrivesNotReady AND KUKAs[i].start.KRC_AutomaticExternal.RC_RDY1 THEN
-		KUKAs[i].status.I_ := TRUE;
+	IF NOT pKuka.start.KRC_Error.DrivesNotReady AND pKuka.start.KRC_AutomaticExternal.RC_RDY1 THEN
+		pKuka.status.I_ := TRUE;
 	ELSE
-		KUKAs[i].status.I_ := FALSE;
+		pKuka.status.I_ := FALSE;
 	END_IF
 
 	
-	IF KUKAs[i].start.KRC_AutoStart.DispActive THEN
-		KUKAs[i].status.R_	:= TRUE;
+	IF pKuka.start.KRC_AutoStart.DispActive THEN
+		pKuka.status.R_	:= TRUE;
 	ELSE	
-		KUKAs[i].status.R_	:= FALSE;
+		pKuka.status.R_	:= FALSE;
 	END_IF	
 
 	
-
 END_ACTION

@@ -6,14 +6,14 @@ ACTION mxA_JointMovement:
 		
 		0: 	
 			// Waiting for robot 1 to be ready to move
-			IF 	KUKAs[i].status.P_ AND KUKAs[i].status.S_ AND KUKAs[i].status.I_ AND KUKAs[i].status.I_ AND KUKAs[i].status.EXT_ THEN			
+			IF 	KUKAs[i].status.P_ AND KUKAs[i].status.S_ AND KUKAs[i].status.R_ AND KUKAs[i].status.I_ AND KUKAs[i].status.EXT_ THEN			
 				KUKAs[i].cm.state := 10;		
 			END_IF
 			
 		10: 
 			// Set initial parameters for movement
 			KUKAs[i].motion.KRC_MoveAxisAbsolute.ExecuteCmd 			:= FALSE; 
-			KUKAs[i].motion.KRC_MoveAxisAbsolute.AxisGroupIdx 			:= HMI_AxisGroup;
+			KUKAs[i].motion.KRC_MoveAxisAbsolute.AxisGroupIdx 			:= KUKAs[i].AxisGroupIdx;
 			KUKAs[i].motion.KRC_MoveAxisAbsolute.KRC_AxisGroupRefArr	:= ADR(AxisRef);
 			KUKAs[i].motion.KRC_MoveAxisAbsolute.Velocity 				:= 10;
 			KUKAs[i].motion.KRC_MoveAxisAbsolute.Acceleration 			:= 20;
