@@ -14,10 +14,14 @@ END_VAR
 VAR
 	JogPosAxis : E6AXIS := (A2:=-90,A3:=90);
 	JoggingCoordSys : COORDSYS; (*Variable for the CoordSystem when Jogging*)
-	Coordsys_1 : COORDSYS;
 END_VAR
 VAR RETAIN
 	gParameter : USINT;
+END_VAR
+(*Gripper*)
+VAR
+	gripperWhitePins : ARRAY[0..5] OF BOOL;
+	gripperBlackPins : ARRAY[0..5] OF BOOL;
 END_VAR
 (*HMI Variablen*)
 VAR
