@@ -440,7 +440,8 @@ VAR_CONFIG
 	::Vision:codeReaderVariable1.codeType AT %QB."VSS122Q25.061P-000".SymbolType;
 	::Vision:codeReaderVariable1.NumberSearch AT %QB."VSS122Q25.061P-000".NumSearchMax;
 	::NettimeCurrent_us AT %ID."X20CP1685".SystemTime;
-	::gripperWhitePins[0] AT %QX."X20DO9322".DigitalOutput01;
+	::gripperWhitePins[2] AT %QX."X20DO9322".DigitalOutput01;
+	::gripperBlackPins[2] AT %QX."X20DO9322".DigitalOutput02; (*________________________________________*) (*_____________KUKA1 Mappings_____________*) (*________________________________________*)
 	::InputVariables[0,0] AT %IB."KUKA1_KRC5_ProfiNet_6_0".Module001_8_digital_inputs_I_00;
 	::InputVariables[0,1] AT %IB."KUKA1_KRC5_ProfiNet_6_0".Module001_8_digital_inputs_I_01;
 	::InputVariables[0,2] AT %IB."KUKA1_KRC5_ProfiNet_6_0".Module001_8_digital_inputs_I_02;
@@ -3489,5 +3490,12 @@ VAR_CONFIG
 	::OutputVariables[5,251] AT %QB."KUKA6_KRC5_ProfiNet_6_0".Module001_8_digital_outputs_O_251;
 	::OutputVariables[5,252] AT %QB."KUKA6_KRC5_ProfiNet_6_0".Module001_8_digital_outputs_O_252;
 	::OutputVariables[5,253] AT %QB."KUKA6_KRC5_ProfiNet_6_0".Module001_8_digital_outputs_O_253;
-	::gripperBlackPins[0] AT %QX."X20DO9322".DigitalOutput02;
+	::gripperWhitePins[0] AT %QX."X20DO9322".DigitalOutput03;
+	::gripperBlackPins[0] AT %QX."X20DO9322".DigitalOutput04; (*________________________________________*) (*_____________KUKA1 Mappings_____________*) (*________________________________________*)
+	::gripperWhitePins[3] AT %QX."X20DO9322".DigitalOutput05;
+	::gripperBlackPins[3] AT %QX."X20DO9322".DigitalOutput06; (*________________________________________*) (*_____________KUKA1 Mappings_____________*) (*________________________________________*)
+	::gripperWhitePins[4] AT %QX."X20DO9322".DigitalOutput07;
+	::gripperBlackPins[4] AT %QX."X20DO9322".DigitalOutput08; (*________________________________________*) (*_____________KUKA1 Mappings_____________*) (*________________________________________*)
+	::gripperWhitePins[5] AT %QX."X20DO9322".DigitalOutput09;
+	::gripperBlackPins[5] AT %QX."X20DO9322".DigitalOutput10; (*________________________________________*) (*_____________KUKA1 Mappings_____________*) (*________________________________________*)
 END_VAR

@@ -8,13 +8,10 @@ ACTION mxA_Start:
 	// like, online, Initialized,.......			   //
 	/////////////////////////////////////////////////////
 
-	KUKAs[i].init.KRC_Initialize.AxisGroupIdx 			:= KUKAs[i].AxisGroupIdx; 
-	KUKAs[i].init.KRC_Initialize.KRC_AxisGroupRefArr 	:= ADR(AxisRef);
-	HMI_R1_Init_Done 									:= KUKAs[i].init.KRC_Initialize.Done;
-	HMI_R1_Init_Error 									:= KUKAs[i].init.KRC_Initialize.Error;
-	HMI_R1_Init_Error_ID 								:= KUKAs[i].init.KRC_Initialize.ErrorID;
+	KUKAs[i].start.KRC_Initialize.AxisGroupIdx 			:= KUKAs[i].AxisGroupIdx; 
+	KUKAs[i].start.KRC_Initialize.KRC_AxisGroupRefArr 	:= ADR(AxisRef);
 
-	KUKAs[i].init.KRC_Initialize();
+	KUKAs[i].start.KRC_Initialize();
 	
 	
 	/////////////////////////////////////////////////////
@@ -23,15 +20,11 @@ ACTION mxA_Start:
 	// like, online, Initialized,.......			   //
 	/////////////////////////////////////////////////////
 	
-	KUKAs[i].init.KRC_Error.AxisGroupIdx 				:= KUKAs[i].AxisGroupIdx;
-	KUKAs[i].init.KRC_Error.MessageReset 				:= HMI_R1_MessageReset; // REMEMBER TO CHANGE LATER
-	KUKAs[i].init.KRC_Error.KRC_AxisGroupRefArr			:= ADR(AxisRef);
-	HMI_R1_Error_General								:= KRC_Error_0.Error;
-	HMI_R1_Error_General_ID								:= KRC_Error_0.ErrorID;
-	HMI_R1_Error_Activ									:= KRC_Error_0.KrcErrorActive;
-	HMI_R1_Error_DrivesNotReady							:= KRC_Error_0.DrivesNotReady;
+	KUKAs[i].start.KRC_Error.AxisGroupIdx 				:= KUKAs[i].AxisGroupIdx;
+	KUKAs[i].start.KRC_Error.MessageReset 				:= FALSE; // REMEMBER TO CHANGE LATER
+	KUKAs[i].start.KRC_Error.KRC_AxisGroupRefArr		:= ADR(AxisRef);
 	
-	KUKAs[i].init.KRC_Error();
+	KUKAs[i].start.KRC_Error();
 	
 	//////////////////////////////////////////////////////
 	// KRC_AutomaticExternal allows to control the 		//
@@ -39,26 +32,26 @@ ACTION mxA_Start:
 	//////////////////////////////////////////////////////
 	
 	
-	KUKAs[i].init.KRC_AutomaticExternal.AxisGroupIdx 		:= KUKAs[i].AxisGroupIdx;
-	KUKAs[i].init.KRC_AutomaticExternal.MOVE_ENABLE 		:= TRUE;
-	KUKAs[i].init.KRC_AutomaticExternal.DRIVES_OFF 			:= TRUE;
-	KUKAs[i].init.KRC_AutomaticExternal.KRC_AxisGroupRefArr	:= ADR(AxisRef);
-	KUKAs[i].init.KRC_AutomaticExternal.EXT_START 			:= HMI_R1_EXT_START; // REMEMBER TO CHANGE LATER
-	KUKAs[i].init.KRC_AutomaticExternal.ENABLE_T1 			:= TRUE;  
-	KUKAs[i].init.KRC_AutomaticExternal.ENABLE_EXT 			:= TRUE;
+	KUKAs[i].start.KRC_AutomaticExternal.AxisGroupIdx 			:= KUKAs[i].AxisGroupIdx;
+	KUKAs[i].start.KRC_AutomaticExternal.MOVE_ENABLE 			:= TRUE;
+	KUKAs[i].start.KRC_AutomaticExternal.DRIVES_OFF 			:= TRUE;
+	KUKAs[i].start.KRC_AutomaticExternal.KRC_AxisGroupRefArr	:= ADR(AxisRef);
+	KUKAs[i].start.KRC_AutomaticExternal.EXT_START 				:= FALSE; // Binded to Continue Prog in original program
+	KUKAs[i].start.KRC_AutomaticExternal.ENABLE_T1 				:= TRUE;  
+	KUKAs[i].start.KRC_AutomaticExternal.ENABLE_EXT 			:= TRUE;
 
-	KUKAs[i].init.KRC_AutomaticExternal();
+	KUKAs[i].start.KRC_AutomaticExternal();
 	
 	
 	//////////////////////////////////////////////////////
 	//Function Block for StartUp of Robot				//
 	//////////////////////////////////////////////////////
 
-	KUKAs[i].init.KRC_AutoStart.AxisGroupIdx 				:= KUKAs[i].AxisGroupIdx; 
-	KUKAs[i].init.KRC_AutoStart.KRC_AxisGroupRefArr 		:= ADR(AxisRef);
-	KUKAs[i].init.KRC_AutoStart.ExecuteReset 				:= HMI_R1_AutoStart; // REMEMBER TO CHANGE LATER
+	KUKAs[i].start.KRC_AutoStart.AxisGroupIdx 				:= KUKAs[i].AxisGroupIdx; 
+	KUKAs[i].start.KRC_AutoStart.KRC_AxisGroupRefArr 		:= ADR(AxisRef);
+	KUKAs[i].start.KRC_AutoStart.ExecuteReset 				:= FALSE; // REMEMBER TO CHANGE LATER
 
-	KUKAs[i].init.KRC_AutoStart();
+	KUKAs[i].start.KRC_AutoStart();
 		
 		
 	//////////////////////////////////////////////////////
@@ -67,11 +60,11 @@ ACTION mxA_Start:
 	//////////////////////////////////////////////////////
 
 	
-	KUKAs[i].init.KRC_SetOverride.AxisGroupIdx 				:= KUKAs[i].AxisGroupIdx;
-	KUKAs[i].init.KRC_SetOverride.KRC_AxisGroupRefArr 		:= ADR(AxisRef); 
-	KUKAs[i].init.KRC_SetOverride.Override 					:= HMI_R1_Override; // REMEMBER TO CHANGE LATER
+	KUKAs[i].start.KRC_SetOverride.AxisGroupIdx 				:= KUKAs[i].AxisGroupIdx;
+	KUKAs[i].start.KRC_SetOverride.KRC_AxisGroupRefArr 			:= ADR(AxisRef); 
+	KUKAs[i].start.KRC_SetOverride.Override 					:= 5; // REMEMBER TO CHANGE LATER
 
-	KUKAs[i].init.KRC_SetOverride();
+	KUKAs[i].start.KRC_SetOverride();
 	
 	
 	//////////////////////////////////////////////////////
@@ -79,11 +72,11 @@ ACTION mxA_Start:
 	//axis and robot									//
 	//////////////////////////////////////////////////////
 
-	KUKAs[i].init.KRC_Diag.AxisGroupIdx 					:= KUKAs[i].AxisGroupIdx;
-	KUKAs[i].init.KRC_Diag.KRC_AxisGroupRefArr 				:= ADR(AxisRef); 
-	KUKAs[i].init.KRC_Diag.ShowTrace 						:= FALSE;
+	KUKAs[i].start.KRC_Diag.AxisGroupIdx 						:= KUKAs[i].AxisGroupIdx;
+	KUKAs[i].start.KRC_Diag.KRC_AxisGroupRefArr 				:= ADR(AxisRef); 
+	KUKAs[i].start.KRC_Diag.ShowTrace 							:= FALSE;
 	
-	KUKAs[i].init.KRC_Diag();
+	KUKAs[i].start.KRC_Diag();
 	
 	
 	//////////////////////////////////////////////////////
@@ -92,7 +85,7 @@ ACTION mxA_Start:
 	//										 			//
 	//////////////////////////////////////////////////////
 
-	IF KUKAs[i].init.KRC_Diag.ProconosCyc_Act = -1 OR KUKAs[i].init.KRC_Error.NoHeartbeatPCOS THEN	
+	IF KUKAs[i].start.KRC_Diag.ProconosCyc_Act = -1 OR KUKAs[i].start.KRC_Error.NoHeartbeatPCOS THEN	
 		KUKAs[i].status.P_ := FALSE;	
 	ELSE
 		KUKAs[i].status.P_ := TRUE;
@@ -100,28 +93,28 @@ ACTION mxA_Start:
 
 
 
-	IF KUKAs[i].init.KRC_Diag.SubmitCyc_Act = -1 OR KUKAs[i].init.KRC_Error.NoHeartbeatKRC THEN
+	IF KUKAs[i].start.KRC_Diag.SubmitCyc_Act = -1 OR KUKAs[i].start.KRC_Error.NoHeartbeatKRC THEN
 		KUKAs[i].status.S_ := FALSE;	
 	ELSE
 		KUKAs[i].status.S_ := TRUE;
 	END_IF
 								
 
-	IF KUKAs[i].init.KRC_AutomaticExternal.EXT THEN
+	IF KUKAs[i].start.KRC_AutomaticExternal.EXT THEN
 		KUKAs[i].status.EXT_ := TRUE;
 	ELSE
 		KUKAs[i].status.EXT_ := FALSE;
 	END_IF
 
 	
-	IF NOT KUKAs[i].init.KRC_Error.DrivesNotReady AND KUKAs[i].init.KRC_AutomaticExternal.RC_RDY1 THEN
+	IF NOT KUKAs[i].start.KRC_Error.DrivesNotReady AND KUKAs[i].start.KRC_AutomaticExternal.RC_RDY1 THEN
 		KUKAs[i].status.I_ := TRUE;
 	ELSE
 		KUKAs[i].status.I_ := FALSE;
 	END_IF
 
 	
-	IF KUKAs[i].init.KRC_AutoStart.DispActive THEN
+	IF KUKAs[i].start.KRC_AutoStart.DispActive THEN
 		KUKAs[i].status.R_	:= TRUE;
 	ELSE	
 		KUKAs[i].status.R_	:= FALSE;

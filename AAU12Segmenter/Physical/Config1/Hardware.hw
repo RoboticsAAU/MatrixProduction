@@ -82,8 +82,8 @@
     <Parameter ID="TimerDevice" Value="X20CP1685.IF3" />
     <Parameter ID="Cyclic1Duration" Value="1000" />
     <Parameter ID="Cyclic1Tolerance" Value="0" />
-    <Parameter ID="Cyclic2Duration" Value="8000" />
-    <Parameter ID="Cyclic2Tolerance" Value="16000" />
+    <Parameter ID="Cyclic2Duration" Value="10000" />
+    <Parameter ID="Cyclic2Tolerance" Value="10000" />
     <Group ID="FileDevice1" />
     <Parameter ID="FileDeviceName1" Value="6DData" />
     <Parameter ID="FileDevicePath1" Value="C:\" />
