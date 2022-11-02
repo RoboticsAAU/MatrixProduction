@@ -38,7 +38,7 @@ ACTION mxA_LinearMovement:
 			mxa_ValuesToCOORDSYS_0.Tool 	:= 1; // Change to 1 when it works 
 			mxa_ValuesToCOORDSYS_0.Base 	:= 1; 
 			mxa_ValuesToCOORDSYS_0.IPO_Mode := 0;
-				
+		
 			pState := 30; 
 			
 		30: 

@@ -6,7 +6,7 @@
     <Task Name="Acopos6D" Source="Modules.Acopos6D.Acopos6D.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Vision" Source="Modules.Services.HMI.Vision.Vision.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Vi_main" Source="Modules.Services.HMI.Vision.Vi_main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="CTRL" Source="Modules.KUKA.CTRL.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="KUKA" Source="Modules.KUKA.KUKA.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
@@ -79,6 +79,8 @@
     <LibraryObject Name="MpBase" Source="Libraries.MpBase.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="KUKAmxA3_1" Source="Libraries.KUKAmxA3_1.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="AsIecCon" Source="Libraries.AsIecCon.lby" Memory="UserROM" Language="binary" Debugging="true" />
+    <LibraryObject Name="AsUDP" Source="Libraries.AsUDP.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="asstring" Source="Libraries.asstring.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="MpSfDomMgr" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="SfDomDrv" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="SfDomVis" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
@@ -87,7 +89,5 @@
     <LibraryObject Name="asusb" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="arssl" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="astcp" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
-    <LibraryObject Name="AsUDP" Source="Libraries.AsUDP.lby" Memory="UserROM" Language="Binary" Debugging="true" />
-    <LibraryObject Name="asstring" Source="Libraries.asstring.lby" Memory="UserROM" Language="Binary" Debugging="true" />
   </Libraries>
 </SwConfiguration>

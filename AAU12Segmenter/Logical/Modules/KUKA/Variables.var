@@ -1,25 +1,11 @@
-(*********************************************************************************
- * Copyright: Bernecker + Rainer
- * Author:    reschl
- * Created:   July 02, 2015/4:23 PM 
- *********************************************************************************
- * Global variables of project
- *********************************************************************************)
+(**)
 (*KRC <----> PLC communication*)
 VAR
-	KRC_Input : ARRAY[0..5,0..253] OF BYTE;
-	KRC_Output : ARRAY[0..5,0..253] OF BYTE;
+	KRC_Input : ARRAY[0..253] OF BYTE;
+	KRC_Output : ARRAY[0..253] OF BYTE;
 	InputVariables : ARRAY[0..5,0..253] OF USINT;
 	OutputVariables : ARRAY[0..5,0..253] OF USINT;
 	KUKAs : ARRAY[0..5] OF KUKA;
-	KRC4_Input_1 : ARRAY[0..254] OF BYTE; (*Variable with the BYTE information from KRC*)
-	KRC4_Input : ARRAY[0..254] OF BYTE; (*Variable with the BYTE information from KRC*)
-	KRC4_Output_1 : ARRAY[0..254] OF BYTE; (*Variable with the BYTE information to KRC*)
-	KRC4_Output : ARRAY[0..254] OF BYTE; (*Variable with the BYTE infromation to KRC*)
-	InputVariablePL_1 : ARRAY[0..255] OF USINT;
-	InputVariablePL : ARRAY[0..255] OF USINT;
-	OutputVariablePL_1 : ARRAY[0..255] OF USINT;
-	OutputVariablePL : ARRAY[0..255] OF USINT;
 END_VAR
 (*PositonArray, Coordsys etc*)
 VAR RETAIN

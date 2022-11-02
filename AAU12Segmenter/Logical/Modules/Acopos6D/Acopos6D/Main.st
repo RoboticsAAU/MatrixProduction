@@ -425,7 +425,7 @@ PROGRAM _CYCLIC
 					
 					IF executeOrder THEN
 						
-						TON_0.PT := REAL_TO_TIME(1000);
+						TON_0.PT := REAL_TO_TIME(150);
 						TON_0.IN := TRUE;
 						IF TON_0.Q THEN
 							TON_0.IN := FALSE;

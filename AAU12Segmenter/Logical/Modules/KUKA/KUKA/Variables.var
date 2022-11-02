@@ -18,10 +18,10 @@ VAR
 	KRC_Initialize_1 : KRC_Initialize; (*Function Block to Initialize the Robot*)
 	KRC_ReadActualAxisPosition_0 : KRC_ReadActualAxisPosition; (*Function Block returns actual Axis Position (A1-A6)*)
 	KRC_ReadActualPosition_0 : KRC_ReadActualPosition; (*Function Block returns actual Axis Position (X-C)*)
-	KRC_ReadAxisGroup_0 : KRC_ReadAxisGroup; (*Function Block to Read the AxisInformation*)
+	KRC_Read_Axis_Group : KRC_ReadAxisGroup; (*Function Block to Read the AxisInformation*)
 	KRC_SetOverride_0 : KRC_SetOverride; (*Function Block to Set the Override*)
 	KRC_SetOverride_1 : KRC_SetOverride; (*Function Block to Set the Override*)
-	KRC_WriteAxisGroup_0 : KRC_WriteAxisGroup; (*Function Block to Write on the OutputVariable for controlling the Robot*)
+	KRC_Write_Axis_Group : KRC_WriteAxisGroup; (*Function Block to Write on the OutputVariable for controlling the Robot*)
 	mxa_ValuesToCOORDSYS_0 : mxa_ValuesToCOORDSYS; (*Function Block to set int values to the Coordsys*)
 END_VAR
 (*Variables for UDP-communication*)

@@ -2,8 +2,8 @@
 <?AutomationStudio FileVersion="4.9"?>
 <Package xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
-    <Object Type="Program" Language="IEC">CTRL</Object>
-    <Object Type="File" Description="Global variables">Variables.var</Object>
-    <Object Type="File" Description="Global data types" Private="true">Types.typ</Object>
+    <Object Type="Program" Language="IEC">KUKA</Object>
+    <Object Type="File">Variables.var</Object>
+    <Object Type="File">Types.typ</Object>
   </Objects>
 </Package>
