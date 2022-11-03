@@ -39,22 +39,6 @@ TYPE
 		returnSmallWeightMovement : BOOL;
 		startBigWeightMovement : BOOL;
 	END_STRUCT;
-	product_order : 	STRUCT 
-		amount : USINT;
-		bottomCover : cover_types;
-		topCover : cover_types;
-		PCB : BOOL;
-		Fuses : USINT;
-		Holes : UINT;
-		ID : UINT;
-	END_STRUCT;
-	cover_types : 
-		(
-		noCover := 0,
-		blackCover := 1,
-		whiteCover := 2,
-		blueCover := 3
-		);
 	shuttle_typ : 	STRUCT 
 		cm : brdkCM;
 		status : shuttle_status_typ;
@@ -99,4 +83,20 @@ TYPE
 		MC_BR_MoveArc_Acp6D_0 : MC_BR_MoveArc_Acp6D;
 		MC_BR_Move6D_Acp6D_0 : MC_BR_Move6D_Acp6D;
 	END_STRUCT;
+	product_order : 	STRUCT 
+		amount : USINT;
+		bottomCover : cover_types;
+		topCover : cover_types;
+		PCB : BOOL;
+		Fuses : USINT;
+		Holes : UINT;
+		ID : UINT;
+	END_STRUCT;
+	cover_types : 
+		(
+		noCover := 0,
+		blackCover := 1,
+		whiteCover := 2,
+		blueCover := 3
+		);
 END_TYPE

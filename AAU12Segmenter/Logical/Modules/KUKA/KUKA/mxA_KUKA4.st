@@ -1,4 +1,0 @@
-
-ACTION mxA_KUKA4: 
-
-END_ACTION

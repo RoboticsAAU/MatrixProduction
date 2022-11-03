@@ -1,5 +1,5 @@
 
-ACTION mxA_ErrorMessage: 
+ACTION ErrorMessage: 
 
 	
 	CASE step_UDPConnect OF

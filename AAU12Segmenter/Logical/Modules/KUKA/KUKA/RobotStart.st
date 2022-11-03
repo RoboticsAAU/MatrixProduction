@@ -1,5 +1,5 @@
 
-ACTION mxA_Start: 
+ACTION RobotStart: 
 	
 	CASE pKuka.startState OF
 			

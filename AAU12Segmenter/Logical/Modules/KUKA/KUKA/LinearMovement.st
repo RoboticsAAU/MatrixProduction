@@ -1,5 +1,5 @@
 
-ACTION mxA_LinearMovement:
+ACTION LinearMovement:
 
 	CASE KUKAs[i].cm.state OF
 	

@@ -1,4 +1,0 @@
-
-ACTION mxA_KUKA6: 
-
-END_ACTION
