@@ -42,6 +42,8 @@ VAR
 	position1 : E6AXIS;
 	position2 : E6AXIS;
 	KRC_Write_Tool_Data : KRC_WriteToolData;
-	cm : REFERENCE TO brdkCM;
 	pKuka : REFERENCE TO KUKA;
+	cm : REFERENCE TO brdkCM;
+	robotOperating : ARRAY[0..5] OF BOOL;
+	orderSpecification : ARRAY[0..5] OF USINT;
 END_VAR

@@ -1,0 +1,4 @@
+VAR_CONFIG
+	::Acopos6D:robotOperating AT %Q.::KUKA:robotOperating; (*Insert your comment here...*)
+	::KUKA:robotOperating AT %Q.::Acopos6D:robotOperating; (*Insert your comment here...*)
+END_VAR

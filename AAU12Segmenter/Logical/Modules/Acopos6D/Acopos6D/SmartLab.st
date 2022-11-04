@@ -184,6 +184,7 @@ ACTION smartLabWorkstationMovement:
 					(gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[k]].Position.Y > pWorkStations.par.yLocation - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[k]].Position.Y < pWorkStations.par.yLocation + MARGIN) THEN
 					IF gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[k]].State = mcACP6D_SH_STATE_IDLING THEN
 						pWorkStations.par.tempShuttleID := shuttleIndexAtPosition[k];
+						robotOperating[i] := TRUE; // Begin robot operation
 						IF pWorkStations.par.landBeforeProcess THEN
 							cm.state := 10;
 						ELSE
@@ -207,11 +208,19 @@ ACTION smartLabWorkstationMovement:
 			END_IF
 			
 		20:
-			cm.description := 'Wait for process to finish';
-			pWorkStations.TON_0.PT := REAL_TO_TIME(pWorkStations.par.processTime*1000);
-			pWorkStations.TON_0.IN := TRUE;
-			IF pWorkStations.TON_0.Q THEN
-				pWorkStations.TON_0.IN := FALSE;
+//			cm.description := 'Wait for process to finish';
+//			pWorkStations.TON_0.PT := REAL_TO_TIME(pWorkStations.par.processTime*1000);
+//			pWorkStations.TON_0.IN := TRUE;
+//			IF pWorkStations.TON_0.Q THEN
+//				pWorkStations.TON_0.IN := FALSE;
+//				IF pWorkStations.par.landBeforeProcess THEN
+//					cm.state := 30;
+//				ELSE
+//					cm.state := 40;
+//				END_IF
+//			END_IF
+			
+			IF NOT robotOperating[i] THEN
 				IF pWorkStations.par.landBeforeProcess THEN
 					cm.state := 30;
 				ELSE

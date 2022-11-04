@@ -69,12 +69,16 @@ VAR
 	pShuttle : REFERENCE TO shuttle_typ;
 	pTempShuttlePlan : REFERENCE TO shuttle_plan;
 	pWorkStations : REFERENCE TO workStation_typ;
-	readIndex : USINT := 0;
 	shGroupShuttle1_2 : UDINT;
 	shGroupShuttle1_4 : UDINT;
 	shGroupShuttle2_3 : UDINT;
 	shGroupShuttle3_4 : UDINT;
 	shGroupShuttle5_6_7_8 : UDINT;
+END_VAR
+VAR RETAIN
+	weightProgramFlyingHight : REAL := 1.3;
+END_VAR
+VAR
 	shuttleIndexAtPosition : ARRAY[0..7] OF USINT;
 	shuttlePayload : REAL;
 	shuttlePlans : ARRAY[0..7] OF shuttle_plan;
@@ -90,10 +94,7 @@ VAR
 	TON_0 : TON;
 	TON_watchdog : TON;
 	weightCalibration : REAL;
-END_VAR
-VAR RETAIN
-	weightProgramFlyingHight : REAL := 1.3;
-END_VAR
-VAR
+	readIndex : USINT := 0;
 	writeIndex : USINT := 0;
+	robotOperating : ARRAY[0..5] OF BOOL;
 END_VAR

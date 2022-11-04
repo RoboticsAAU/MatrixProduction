@@ -29,40 +29,40 @@ ACTION RobotProgram:
 		
 	// RobotStart contains FB calls associated with initialization of the robots and diagnosis
 	RobotStart;
-		
+	
 	IF 	pKuka.status.P_ AND pKuka.status.S_ AND pKuka.status.R_ AND pKuka.status.I_ AND pKuka.status.EXT_ THEN		
-		
 		
 		//JointMovement;
 		//LinearMovement;
 		//ErrorMessage;
-			
-		CASE pKuka.AxisGroupIdx OF
-			1:
-				KUKABottomCover;
-					
-			2:
-				//KUKADrilling;
-				LinearMovement;
-					
-			3:
-				//KUKAPcb;
-				LinearMovement;
-					
-			4:
-				KUKAFuse;
-					
-			5:
-				KUKATopCover;
-					
-			6:
-				KUKAUnloading;
-				
-		END_CASE
 		
+		IF robotOperating[i] THEN
+			CASE pKuka.AxisGroupIdx OF
+				1:
+					KUKABottomCover;
+						
+				2:
+					//KUKADrilling;
+					LinearMovement;
+						
+				3:
+					//KUKAPcb;
+					LinearMovement;
+						
+				4:
+					KUKAFuse;
+						
+				5:
+					KUKATopCover;
+						
+				6:
+					KUKAUnloading;
+					
+			END_CASE
+		END_IF
 	END_IF
-			
-		
+	
+	
 	/////////////////////////////////////////////////////
 	// FunctionBlock to write the Output on the Struct //
 	/////////////////////////////////////////////////////

@@ -35,7 +35,7 @@ PROGRAM _CYCLIC
 				IF i <> 0 AND i <> 5 THEN
 					pKuka ACCESS ADR(KUKAs[i]);
 					cm ACCESS ADR(KUKAs[i].cm);	
-				
+					
 					RobotProgram;
 				END_IF
 

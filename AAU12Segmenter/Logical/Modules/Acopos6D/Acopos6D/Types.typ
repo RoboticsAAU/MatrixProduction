@@ -86,10 +86,10 @@ TYPE
 	product_order : 	STRUCT 
 		amount : USINT;
 		bottomCover : cover_types;
-		topCover : cover_types;
+		Holes : USINT;
 		PCB : BOOL;
 		Fuses : USINT;
-		Holes : UINT;
+		topCover : cover_types;
 		ID : UINT;
 	END_STRUCT;
 	cover_types : 
