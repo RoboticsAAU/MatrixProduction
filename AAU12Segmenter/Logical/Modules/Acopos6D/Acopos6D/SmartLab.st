@@ -74,7 +74,7 @@ ACTION smartLabWorkstationSetup:
 	gWorkStations[4].par.processTime									:= 1.0;
 	gWorkStations[4].par.pathRouting									:= 2;
 	gWorkStations[4].par.ArcMovement									:= FALSE;
-	gWorkStations[4].par.landBeforeProcess								:= FALSE;
+	gWorkStations[4].par.landBeforeProcess								:= TRUE;
 	
 	gWorkStations[5].par.xLocation										:= quadrantIdxToPos(0);
 	gWorkStations[5].par.yLocation										:= quadrantIdxToPos(0);
@@ -184,16 +184,41 @@ ACTION smartLabWorkstationMovement:
 					(gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[k]].Position.Y > pWorkStations.par.yLocation - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[k]].Position.Y < pWorkStations.par.yLocation + MARGIN) THEN
 					IF gAcp6DCtrl.Status.ShuttleInfo[shuttleIndexAtPosition[k]].State = mcACP6D_SH_STATE_IDLING THEN
 						pWorkStations.par.tempShuttleID := shuttleIndexAtPosition[k];
-						robotOperating[i] := TRUE; // Begin robot operation
-						IF pWorkStations.par.landBeforeProcess THEN
-							cm.state := 10;
-						ELSE
-							cm.state := 20;
-						END_IF
+						
+						cm.state := 5;
+					
 					END_IF
 				END_IF
 			END_FOR
 		
+		5:
+			cm.description := 'Send data to robot through mapping';
+			CASE i OF
+				0:
+					orderSpec[0] := COVER_TYPE_TO_USINT(shuttlePlans[pWorkStations.par.tempShuttleID].productOrder.bottomCover);
+				
+				1: 
+					orderSpec[1] := shuttlePlans[pWorkStations.par.tempShuttleID].productOrder.Holes;
+					
+				2: 
+					orderSpec[2] := BOOL_TO_USINT(shuttlePlans[pWorkStations.par.tempShuttleID].productOrder.PCB);
+				
+				3: 
+					orderSpec[3] := shuttlePlans[pWorkStations.par.tempShuttleID].productOrder.Fuses;
+					
+				4: 
+					orderSpec[4] := COVER_TYPE_TO_USINT(shuttlePlans[pWorkStations.par.tempShuttleID].productOrder.topCover);
+				
+			END_CASE
+			
+			robotOperating[i] := TRUE; // Begin robot operation
+			
+			IF pWorkStations.par.landBeforeProcess THEN
+				cm.state := 10;
+			ELSE
+				cm.state := 20;
+			END_IF
+			
 		10:
 			cm.description := 'Land shuttle if required';
 			IF gAcp6DCtrl.Status.ShuttleInfo[pWorkStations.par.tempShuttleID].State = mcACP6D_SH_STATE_IDLING THEN
@@ -218,7 +243,7 @@ ACTION smartLabWorkstationMovement:
 //				ELSE
 //					cm.state := 40;
 //				END_IF
-//			END_IF
+			//			END_IF
 			
 			IF NOT robotOperating[i] THEN
 				IF pWorkStations.par.landBeforeProcess THEN

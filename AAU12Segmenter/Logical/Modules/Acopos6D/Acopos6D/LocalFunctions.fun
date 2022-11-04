@@ -18,3 +18,9 @@ FUNCTION quadrantIdxToPos : REAL
 		quadrantIdx : USINT;
 	END_VAR
 END_FUNCTION
+
+{REDUND_ERROR} FUNCTION COVER_TYPE_TO_USINT : USINT (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_INPUT
+		coverType : cover_types;
+	END_VAR
+END_FUNCTION

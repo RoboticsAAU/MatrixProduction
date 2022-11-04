@@ -18,21 +18,6 @@ ACTION LinearMovement:
 			toolCover.C := 0;
 				
 				
-				
-			KRC_Write_Tool_Data.AxisGroupIdx 		:= KUKAs[i].AxisGroupIdx;
-			KRC_Write_Tool_Data.KRC_AxisGroupRefArr := ADR(AxisRef);
-			KRC_Write_Tool_Data.ToolNo 				:= 1; 
-			KRC_Write_Tool_Data.ToolData 			:= toolCover; 
-			KRC_Write_Tool_Data.BufferMode 			:= 2; 
-			KRC_Write_Tool_Data.ExecuteCmd			:= TRUE;
-			
-			
-			
-			IF KRC_Write_Tool_Data.Done THEN
-				KRC_Write_Tool_Data.ExecuteCmd		:= FALSE;
-				KUKAs[i].cm.state := 20;
-			END_IF
-				
 		20: 
 				
 			//Set frames as coordsys
@@ -94,7 +79,6 @@ ACTION LinearMovement:
 	
 	END_CASE
 	
-	KRC_Write_Tool_Data();
 	mxa_ValuesToCOORDSYS_0();
 	KUKAs[i].motion.KRC_MoveLinearAbsolute();
 

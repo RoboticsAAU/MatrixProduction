@@ -7,12 +7,12 @@ TYPE
 		read : read_pos_function;
 		operationType : operation_type;
 		eeType : end_effector_type;
-		operationDone : BOOL := FALSE; (*Maybe don't need. Depends how we send finish flag to ACOPOS*)
 		status : status;
 		AxisGroupIdx : USINT;
 		gripperAction : GripperAction;
 		TON : TON;
 		startState : USINT;
+		toolFrame : FRAME;
 	END_STRUCT;
 	start_function : 	STRUCT 
 		KRC_Initialize : KRC_Initialize;

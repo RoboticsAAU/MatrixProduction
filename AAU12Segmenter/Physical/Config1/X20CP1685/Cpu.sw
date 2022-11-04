@@ -4,15 +4,15 @@
   <TaskClass Name="Cyclic#1">
     <Task Name="Main" Source="Modules.Main.Main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Acopos6D" Source="Modules.Acopos6D.Acopos6D.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="Vision" Source="Modules.KUKA.Services.HMI.Vision.Vision.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="Vi_main" Source="Modules.KUKA.Services.HMI.Vision.Vi_main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="Vision" Source="Modules.Services.HMI.Vision.Vision.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="Vi_main" Source="Modules.Services.HMI.Vision.Vi_main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#2">
     <Task Name="KUKA" Source="Modules.KUKA.KUKA.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#3" />
   <TaskClass Name="Cyclic#4">
-    <Task Name="HMI" Source="Modules.KUKA.Services.HMI.HMI.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="HMI" Source="Modules.Services.HMI.HMI.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />
@@ -90,5 +90,6 @@
     <LibraryObject Name="asusb" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="arssl" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="astcp" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="KUKAmxA3_2" Source="Libraries.KUKAmxA3_2.lby" Memory="UserROM" Language="Binary" Debugging="true" />
   </Libraries>
 </SwConfiguration>

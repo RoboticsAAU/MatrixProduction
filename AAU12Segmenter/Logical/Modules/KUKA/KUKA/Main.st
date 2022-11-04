@@ -15,6 +15,7 @@ PROGRAM _CYCLIC
 				KUKAs[i].startState := 0;
 			END_FOR
 			
+			// Setting end-effector type
 			KUKAs[0].eeType := COVER_EE;
 			KUKAs[1].eeType := DRILL_EE;
 			KUKAs[2].eeType := PCB_EE;
@@ -22,11 +23,27 @@ PROGRAM _CYCLIC
 			KUKAs[4].eeType := COVER_EE;
 			KUKAs[5].eeType := COVER_EE;
 			
-			mainState := 1000;
+			tempToolCounter := 0;
+			tempBaseCounter := 0;
+			writeToolDataDone := FALSE;
+			writeBaseDataDone := FALSE; 
 			
-		101..999: // INITIALIZING PARAMETERS
+			mainState := 101;
 			
-		
+			
+		100..999: // INITIALIZING PARAMETERS
+			
+			WriteToolData;
+			//WriteBaseData;
+			
+			IF writeToolDataDone THEN
+				mainState := 1000;
+			END_IF
+			
+//			IF writeToolDataDone AND writeBaseDataDone THEN
+//				mainState := 1000;
+//			END_IF
+			
 		1000..1999:
 			// Loop through each robot for configurations
 			FOR i := 0 TO 5 DO

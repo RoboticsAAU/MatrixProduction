@@ -5,6 +5,5 @@
     <Object Type="Program" Language="IEC">KUKA</Object>
     <Object Type="File">Variables.var</Object>
     <Object Type="File">Types.typ</Object>
-    <Object Type="Package">Services</Object>
   </Objects>
 </Package>

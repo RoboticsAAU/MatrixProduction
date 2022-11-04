@@ -8,6 +8,8 @@
     <File>RobotStart.st</File>
     <File>RobotProgram.st</File>
     <File>ErrorMessage.st</File>
+    <File>WriteToolData.st</File>
+    <File>WriteBaseData.st</File>
     <File>JointMovement.st</File>
     <File>LinearMovement.st</File>
     <File>KUKABottomCover.st</File>
@@ -18,5 +20,6 @@
     <File>KUKAUnloading.st</File>
     <File Private="true">LocalFunctions.fun</File>
     <File>GripperAction.st</File>
+    <File>EETypeToFrame.st</File>
   </Files>
 </Program>

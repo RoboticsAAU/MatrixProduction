@@ -96,5 +96,6 @@ VAR
 	weightCalibration : REAL;
 	readIndex : USINT := 0;
 	writeIndex : USINT := 0;
+	orderSpec : ARRAY[0..5] OF USINT;
 	robotOperating : ARRAY[0..5] OF BOOL;
 END_VAR

@@ -24,5 +24,6 @@
     <File Private="true">LocalFunctions.fun</File>
     <File>createRouteSheet.st</File>
     <File>quadrantIdxToPos.st</File>
+    <File>COVER_TYPE_TO_USINT.st</File>
   </Files>
 </Program>

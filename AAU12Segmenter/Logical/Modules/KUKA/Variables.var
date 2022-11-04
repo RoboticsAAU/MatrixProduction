@@ -23,8 +23,3 @@ VAR
 	gripperWhitePins : ARRAY[0..5] OF BOOL;
 	gripperBlackPins : ARRAY[0..5] OF BOOL;
 END_VAR
-(*Mapping*)
-VAR
-	ProductOrder : USINT;
-	KukaRun : ARRAY[0..5] OF BOOL;
-END_VAR
