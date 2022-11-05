@@ -6,7 +6,7 @@ PROGRAM _CYCLIC
 		0: // RESETTING
 			
 			FOR i:=0 TO 5 DO
-				KUKAs[i].AxisGroupIdx := i + 1;
+				KUKAs[i].axisGroupIdx := i + 1;
 				KUKAs[i].gripperAction.whitePin := ADR(gripperWhitePins[i]);
 				KUKAs[i].gripperAction.blackPin := ADR(gripperBlackPins[i]);
 				KUKAs[i].gripperAction.action := OPEN;
@@ -32,23 +32,18 @@ PROGRAM _CYCLIC
 			
 			
 		100..999: // INITIALIZING PARAMETERS
-			
 			WriteToolData;
-			//WriteBaseData;
+			WriteBaseData;
 			
-			IF writeToolDataDone THEN
+			IF writeToolDataDone AND writeBaseDataDone THEN
 				mainState := 1000;
 			END_IF
 			
-//			IF writeToolDataDone AND writeBaseDataDone THEN
-//				mainState := 1000;
-//			END_IF
-			
-		1000..1999:
+		1000..1999: // RUNNING MANIPULATOR PROGRAMS
 			// Loop through each robot for configurations
 			FOR i := 0 TO 5 DO
 		
-				////////// Temporary skip until problem with library for Kuka KR4 is solved///////////
+				////////// Temporary skip until problem with library for Kuka KR4 is solved ///////////
 				IF i <> 0 AND i <> 5 THEN
 					pKuka ACCESS ADR(KUKAs[i]);
 					cm ACCESS ADR(KUKAs[i].cm);	

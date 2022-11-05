@@ -7,7 +7,7 @@ ACTION JointMovement:
 		0: 
 			// Set initial parameters for movement
 			pKuka.motion.KRC_MoveAxisAbsolute.ExecuteCmd 			:= FALSE; 
-			pKuka.motion.KRC_MoveAxisAbsolute.AxisGroupIdx 			:= pKuka.AxisGroupIdx;
+			pKuka.motion.KRC_MoveAxisAbsolute.AxisGroupIdx 			:= pKuka.axisGroupIdx;
 			pKuka.motion.KRC_MoveAxisAbsolute.KRC_AxisGroupRefArr	:= ADR(AxisRef);
 			pKuka.motion.KRC_MoveAxisAbsolute.Velocity 				:= 10;
 			pKuka.motion.KRC_MoveAxisAbsolute.Acceleration 			:= 20;

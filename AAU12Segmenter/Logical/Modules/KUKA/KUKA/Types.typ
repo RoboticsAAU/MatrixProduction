@@ -8,7 +8,7 @@ TYPE
 		operationType : operation_type;
 		eeType : end_effector_type;
 		status : status;
-		AxisGroupIdx : USINT;
+		axisGroupIdx : USINT;
 		gripperAction : GripperAction;
 		TON : TON;
 		startState : USINT;

@@ -5,17 +5,17 @@ ACTION WriteToolData:
 		
 		CASE mainState OF
 			101: // ToolNo = 1
-				EETypeToFrame_0.eeType := KUKAs[i].eeType;
+				EETypeToFrame_0.eeType := KUKAs[tempBaseCounter].eeType;
 				EETypeToFrame_0();
 				
-				KRC_WriteToolData_0.AxisGroupIdx 		:= KUKAs[i].AxisGroupIdx;
+				KRC_WriteToolData_0.AxisGroupIdx 		:= KUKAs[tempBaseCounter].axisGroupIdx;
 				KRC_WriteToolData_0.KRC_AxisGroupRefArr := ADR(AxisRef);
-				KRC_WriteToolData_0.ToolNo 				:= 1; 
-				KRC_WriteToolData_0.ToolData 			:= EETypeToFrame_0.frame; 
+				KRC_WriteToolData_0.ToolNo 				:= 1;
+				KRC_WriteToolData_0.ToolData 			:= EETypeToFrame_0.frame;
 				KRC_WriteToolData_0.BufferMode 			:= 2;
 				KRC_WriteToolData_0.ExecuteCmd			:= TRUE;
-						
-				IF KRC_WriteToolData_0.Done  THEN
+				
+				IF KRC_WriteToolData_0.Done THEN
 					KRC_WriteToolData_0.ExecuteCmd		:= FALSE;
 					tempToolCounter := tempToolCounter + 1;
 					

@@ -5,6 +5,7 @@ END_VAR
 (*Instance of mxA-FB*)
 VAR
 	EETypeToFrame_0 : EETypeToFrame;
+	KRC_WriteBaseData_0 : KRC_WriteBaseData;
 	KRC_WriteToolData_0 : KRC_WriteToolData;
 	mxa_ValuesToCOORDSYS_0 : mxa_ValuesToCOORDSYS; (*Function Block to set int values to the Coordsys*)
 END_VAR
@@ -40,10 +41,14 @@ VAR
 	tempBaseCounter : USINT;
 	writeBaseDataDone : BOOL;
 	writeToolDataDone : BOOL;
+	acoposBase : FRAME;
+	bottomCoverMagazineBase : FRAME;
+	pcbMagazineBase : FRAME;
+	fuseMagazineBase : FRAME;
+	topCoverMagazineBase : FRAME;
+	unloadingBase : FRAME;
 	coordSys : COORDSYS;
-	toolCover : FRAME;
 	endPOS : E6POS;
-	error : DINT;
 	position1 : E6AXIS;
 	position2 : E6AXIS;
 	pKuka : REFERENCE TO KUKA;

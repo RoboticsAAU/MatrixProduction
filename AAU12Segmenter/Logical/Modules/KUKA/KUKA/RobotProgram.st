@@ -5,7 +5,7 @@ ACTION RobotProgram:
 	// Logic to transform USINT (Input) to BYTE (FUBS) //
 	/////////////////////////////////////////////////////
 	
-	brsmemcpy(ADR(KRC_Input[0]),ADR(InputVariables[i,0]), 254);
+	brsmemcpy(ADR(KRC_Input[0]), ADR(InputVariables[i,0]), 254);
 		
 	
 	/////////////////////////////////////////////////////
@@ -16,7 +16,7 @@ ACTION RobotProgram:
 		
 		
 	pKuka.start.KRC_ReadAxisGroup.KRC4_Input 			:= ADR(KRC_Input); 
-	pKuka.start.KRC_ReadAxisGroup.AxisGroupIdx 			:= pKuka.AxisGroupIdx;
+	pKuka.start.KRC_ReadAxisGroup.AxisGroupIdx 			:= pKuka.axisGroupIdx;
 	pKuka.start.KRC_ReadAxisGroup.KRC_AxisGroupRefArr 	:= ADR(AxisRef);
 		
 	pKuka.start.KRC_ReadAxisGroup();
@@ -37,10 +37,10 @@ ACTION RobotProgram:
 		//ErrorMessage;
 		
 		IF robotOperating[i] THEN
-			CASE pKuka.AxisGroupIdx OF
+			CASE pKuka.axisGroupIdx OF
 				1:
 					KUKABottomCover;
-						
+					
 				2:
 					//KUKADrilling;
 					LinearMovement;
@@ -67,7 +67,7 @@ ACTION RobotProgram:
 	// FunctionBlock to write the Output on the Struct //
 	/////////////////////////////////////////////////////
 		
-	pKuka.start.KRC_WriteAxisGroup.AxisGroupIdx			:= pKuka.AxisGroupIdx;
+	pKuka.start.KRC_WriteAxisGroup.AxisGroupIdx			:= pKuka.axisGroupIdx;
 	pKuka.start.KRC_WriteAxisGroup.KRC_AxisGroupRefArr 	:= ADR(AxisRef); 
 	pKuka.start.KRC_WriteAxisGroup.KRC4_Output 			:= ADR(KRC_Output);
 		
@@ -76,6 +76,6 @@ ACTION RobotProgram:
 	/////////////////////////////////////////////////////
 	// Logic to transform BYTE (FUBS) to USINT (Input) //
 	/////////////////////////////////////////////////////
-	brsmemcpy(ADR(OutputVariables[i,0]),ADR(KRC_Output[0]), 254);
+	brsmemcpy(ADR(OutputVariables[i,0]), ADR(KRC_Output[0]), 254);
 	
 END_ACTION
