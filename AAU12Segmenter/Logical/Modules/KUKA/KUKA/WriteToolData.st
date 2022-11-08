@@ -6,15 +6,15 @@ ACTION WriteToolData:
 			EETypeToFrame_0.eeType := pKuka.eeType;
 			EETypeToFrame_0();
 			
-			KRC_WriteToolData_0.AxisGroupIdx 		:= pKuka.axisGroupIdx;
-			KRC_WriteToolData_0.KRC_AxisGroupRefArr := ADR(AxisRef);
-			KRC_WriteToolData_0.ToolNo 				:= 1;
-			KRC_WriteToolData_0.ToolData 			:= EETypeToFrame_0.frame;
-			KRC_WriteToolData_0.BufferMode 			:= 2;
-			KRC_WriteToolData_0.ExecuteCmd			:= TRUE;
+			pKuka.write.KRC_WriteToolData.AxisGroupIdx 			:= pKuka.axisGroupIdx;
+			pKuka.write.KRC_WriteToolData.KRC_AxisGroupRefArr 	:= ADR(AxisRef);
+			pKuka.write.KRC_WriteToolData.ToolNo 				:= 1;
+			pKuka.write.KRC_WriteToolData.ToolData 				:= EETypeToFrame_0.frame;
+			pKuka.write.KRC_WriteToolData.BufferMode 			:= 2;
+			pKuka.write.KRC_WriteToolData.ExecuteCmd			:= TRUE;
 			
-			IF KRC_WriteToolData_0.Done THEN
-				KRC_WriteToolData_0.ExecuteCmd		:= FALSE;
+			IF pKuka.write.KRC_WriteToolData.Done THEN
+				pKuka.write.KRC_WriteToolData.ExecuteCmd		:= FALSE;
 				pKuka.cm.state := 201;
 			END_IF
 		

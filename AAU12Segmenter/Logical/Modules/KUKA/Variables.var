@@ -5,7 +5,6 @@ VAR
 	KRC_Output : ARRAY[0..254] OF BYTE;
 	InputVariables : ARRAY[0..5,0..254] OF USINT;
 	OutputVariables : ARRAY[0..5,0..254] OF USINT;
-	mainState : UINT := 0;
 END_VAR
 (*PositonArray, Coordsys etc*)
 VAR RETAIN

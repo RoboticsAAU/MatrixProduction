@@ -69,7 +69,7 @@ ACTION KUKABottomCover:
 			pKuka.motion.KRC_MoveDirectAbsolute.ExecuteCmd := TRUE;
 			IF pKuka.motion.KRC_MoveDirectAbsolute.Done THEN 
 				pKuka.motion.KRC_MoveDirectAbsolute.ExecuteCmd := FALSE;
-				pKuka.cm.state := 1030; 
+				cm.state := 1030; 
 			END_IF
 			
 			
@@ -91,7 +91,7 @@ ACTION KUKABottomCover:
 			pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := TRUE;
 			IF pKuka.motion.KRC_MoveLinearRelative.Done THEN
 				pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := FALSE;
-				pKuka.cm.state := 1040;
+				cm.state := 1040;
 			END_IF
 			
 			
@@ -120,7 +120,7 @@ ACTION KUKABottomCover:
 			pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := TRUE;
 			IF pKuka.motion.KRC_MoveLinearRelative.Done THEN
 				pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := FALSE;
-				pKuka.cm.state := 1060;
+				cm.state := 1060;
 			END_IF
 			
 			
@@ -142,7 +142,7 @@ ACTION KUKABottomCover:
 			pKuka.motion.KRC_MoveLinearAbsolute.ExecuteCmd := TRUE;
 			IF pKuka.motion.KRC_MoveLinearAbsolute.Done THEN 
 				pKuka.motion.KRC_MoveLinearAbsolute.ExecuteCmd := FALSE;
-				pKuka.cm.state := 1070;
+				cm.state := 1070;
 			END_IF
 			
 			
@@ -164,7 +164,7 @@ ACTION KUKABottomCover:
 			pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := TRUE;
 			IF pKuka.motion.KRC_MoveLinearRelative.Done THEN
 				pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := FALSE;
-				pKuka.cm.state := 1080;
+				cm.state := 1080;
 			END_IF
 			
 			
@@ -193,7 +193,7 @@ ACTION KUKABottomCover:
 			IF pKuka.motion.KRC_MoveLinearRelative.Done THEN
 				pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := FALSE;
 				robotOperating[i] := FALSE; // Set to false to allow shuttle to move away
-				pKuka.cm.state := 1100;
+				cm.state := 1100;
 			END_IF
 			
 		1100:
@@ -214,7 +214,7 @@ ACTION KUKABottomCover:
 			pKuka.motion.KRC_MoveDirectAbsolute.ExecuteCmd := TRUE;
 			IF pKuka.motion.KRC_MoveDirectAbsolute.Done THEN 
 				pKuka.motion.KRC_MoveDirectAbsolute.ExecuteCmd := FALSE;
-				pKuka.cm.state := 1010;
+				cm.state := 1010;
 			END_IF
 			
 	END_CASE

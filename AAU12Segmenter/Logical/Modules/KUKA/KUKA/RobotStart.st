@@ -54,7 +54,7 @@ ACTION RobotStart:
 		2: // Reset KRC errors and autostart
 			pKuka.start.KRC_Error.MessageReset := TRUE;
 			pKuka.start.KRC_AutoStart.ExecuteReset := TRUE;
-				
+			
 			IF pKuka.status.R_ AND pKuka.status.I_ THEN
 				pKuka.start.KRC_Error.MessageReset := FALSE;
 				pKuka.start.KRC_AutoStart.ExecuteReset := FALSE;
@@ -106,28 +106,28 @@ ACTION RobotStart:
 	ELSE
 		pKuka.status.P_ := TRUE;
 	END_IF
-
-
+	
+	
 	IF pKuka.start.KRC_Diag.SubmitCyc_Act = -1 OR pKuka.start.KRC_Error.NoHeartbeatKRC THEN
 		pKuka.status.S_ := FALSE;	
 	ELSE
 		pKuka.status.S_ := TRUE;
 	END_IF
-								
-
+	
+	
 	IF pKuka.start.KRC_AutomaticExternal.EXT THEN
 		pKuka.status.EXT_ := TRUE;
 	ELSE
 		pKuka.status.EXT_ := FALSE;
 	END_IF
-
+	
 	
 	IF NOT pKuka.start.KRC_Error.DrivesNotReady AND pKuka.start.KRC_AutomaticExternal.RC_RDY1 THEN
 		pKuka.status.I_ := TRUE;
 	ELSE
 		pKuka.status.I_ := FALSE;
 	END_IF
-
+	
 	
 	IF pKuka.start.KRC_AutoStart.DispActive THEN
 		pKuka.status.R_	:= TRUE;

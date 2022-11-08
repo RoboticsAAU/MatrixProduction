@@ -19,11 +19,6 @@ PROGRAM _INIT
 	KUKAs[4].eeType := COVER_EE;
 	KUKAs[5].eeType := COVER_EE;
 	
-	tempToolCounter := 0;
-	tempBaseCounter := 0;
-	writeToolDataDone := FALSE;
-	writeBaseDataDone := FALSE;
-	
 END_PROGRAM
 
 PROGRAM _CYCLIC
@@ -48,24 +43,36 @@ PROGRAM _CYCLIC
 		
 		pKuka.read.KRC_ReadAxisGroup();
 		
+		// RobotStart contains FB calls associated with initialization of the robots and diagnosis
+		RobotStart;
+		
+		// If the robot is ready, begin actual program
 		IF 	pKuka.status.P_ AND pKuka.status.S_ AND pKuka.status.R_ AND pKuka.status.I_ AND pKuka.status.EXT_ THEN
 			CASE cm.state OF
 				0: // RESETTING
 					cm.state := 101;
 					
 				100..999: // SETTING TOOL AND BASE DATA
-					
 					WriteToolData; // 101..200
 					WriteBaseData; // 201..300
 				
 				1000..1999: // RUNNING MANIPULATOR PROGRAMS
-					RobotProgram;
+					CASE pKuka.axisGroupIdx OF
+						1: KUKABottomCover;
+						
+						2: LinearMovement //KUKADrilling;
+						
+						3: KUKAPcb;
+						
+						4: KUKAFuse;
+						
+						5: KUKATopCover;
+						
+						6: KUKAUnloading;
+					END_CASE
 				
 			END_CASE
 		END_IF
-		
-		// RobotStart contains FB calls associated with initialization of the robots and diagnosis
-		RobotStart;
 		
 		/////////////////////////////////////////////////////
 		// FunctionBlock to write the Output on the Struct //
