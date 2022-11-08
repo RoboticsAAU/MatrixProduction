@@ -13,20 +13,19 @@ ACTION RobotProgram:
 	// of the Cyclic Task to get all the Information   //
 	// From the KRC from all KUKAs					   //
 	/////////////////////////////////////////////////////
-		
-		
+	
 	pKuka.start.KRC_ReadAxisGroup.KRC4_Input 			:= ADR(KRC_Input); 
 	pKuka.start.KRC_ReadAxisGroup.AxisGroupIdx 			:= pKuka.axisGroupIdx;
 	pKuka.start.KRC_ReadAxisGroup.KRC_AxisGroupRefArr 	:= ADR(AxisRef);
-		
+	
 	pKuka.start.KRC_ReadAxisGroup();
 		
 		
 	/////////////////////////////////////////////////////
 	// Call User functions                             //
 	/////////////////////////////////////////////////////
-		
-		
+	
+	
 	// RobotStart contains FB calls associated with initialization of the robots and diagnosis
 	RobotStart;
 	

@@ -1,3 +1,6 @@
+VAR
+	KUKAs : ARRAY[0..5] OF KUKA;
+END_VAR
 (*AxisStructure*)
 VAR
 	AxisRef : AXIS_GROUP_REF_ARR; (*Axis Reference of the Robot*)
@@ -14,7 +17,6 @@ VAR
 	i : USINT; (*IndexVariable for ErrorMessages*)
 	InputUDPString : STRING[255]; (*Variable with Message from KRC*)
 	counterMsg : INT;
-	KUKAs : ARRAY[0..5] OF KUKA := [6((toolFrame:=(X:=0,Y:=0,Z:=0,A:=0,B:=0,C:=0)))];
 	WorkAroundCounter : INT;
 	step_UDPConnect : INT; (*State-Variable for Errorhandling*)
 	TextArray : ARRAY[0..15] OF STRING[255]; (*TextArray contains Messages from KRC*)

@@ -21,5 +21,6 @@
     <File Private="true">LocalFunctions.fun</File>
     <File>GripperAction.st</File>
     <File>EETypeToFrame.st</File>
+    <File>ValuesToPosition.st</File>
   </Files>
 </Program>

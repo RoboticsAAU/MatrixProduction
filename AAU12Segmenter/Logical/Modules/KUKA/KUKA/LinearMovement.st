@@ -5,10 +5,10 @@ ACTION LinearMovement:
 	
 		0:
 			//Set frames as coordsys
-			mxa_ValuesToCOORDSYS_0.Tool 	:= 1; // Change to 1 when it works 
+			mxa_ValuesToCOORDSYS_0.Tool 	:= 1;
 			mxa_ValuesToCOORDSYS_0.Base 	:= 1; 
 			mxa_ValuesToCOORDSYS_0.IPO_Mode := 0;
-		
+			
 			pKuka.cm.state := 10; 
 			
 		10: 
