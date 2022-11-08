@@ -43,14 +43,12 @@ ACTION RobotStart:
 			pKuka.start.KRC_Diag.KRC_AxisGroupRefArr 				:= ADR(AxisRef); 
 			pKuka.start.KRC_Diag.ShowTrace 							:= FALSE;
 			
-			pKuka.startState  := 1;
+			pKuka.startState := 1;
 
 			
 		1: // Wait for P, S and EXT
 			IF pKuka.status.P_ AND pKuka.status.S_ AND pKuka.status.EXT_ THEN
-	
-				pKuka.startState  := 2;
-	
+				pKuka.startState := 2;
 			END_IF
 		
 		2: // Reset KRC errors and autostart
@@ -58,11 +56,9 @@ ACTION RobotStart:
 			pKuka.start.KRC_AutoStart.ExecuteReset := TRUE;
 				
 			IF pKuka.status.R_ AND pKuka.status.I_ THEN
-					
 				pKuka.start.KRC_Error.MessageReset := FALSE;
 				pKuka.start.KRC_AutoStart.ExecuteReset := FALSE;
-				pKuka.startState  := 3;
-					
+				pKuka.startState := 3;
 			END_IF
 		
 		3: // Check if any error occurred  
@@ -72,7 +68,7 @@ ACTION RobotStart:
 				NOT pKuka.status.R_ OR
 				NOT pKuka.status.I_ THEN
 				
-				pKuka.startState  := 1;
+				pKuka.startState := 1;
 			
 			END_IF
 		
@@ -110,7 +106,6 @@ ACTION RobotStart:
 	ELSE
 		pKuka.status.P_ := TRUE;
 	END_IF
-
 
 
 	IF pKuka.start.KRC_Diag.SubmitCyc_Act = -1 OR pKuka.start.KRC_Error.NoHeartbeatKRC THEN

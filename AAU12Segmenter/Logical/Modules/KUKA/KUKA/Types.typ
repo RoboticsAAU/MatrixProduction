@@ -7,10 +7,11 @@ TYPE
 		start : start_function;
 		motion : motion_function;
 		convert : convert_function;
-		read : read_pos_function;
+		read : read_function;
+		write : write_function;
+		status : status;
 		operationType : operation_type; (*Maybe remove*)
 		eeType : end_effector_type;
-		status : status;
 		gripperAction : GripperAction;
 		tempPosition : E6POS;
 		TON : TON;
@@ -22,9 +23,7 @@ TYPE
 		KRC_AutoStart : KRC_AutoStart;
 		KRC_SetOverride : KRC_SetOverride;
 		KRC_Diag : KRC_Diag;
-		KRC_WriteAxisGroup : KRC_WriteAxisGroup;
 		KRC_Abort : KRC_Abort;
-		KRC_ReadAxisGroup : KRC_ReadAxisGroup;
 	END_STRUCT;
 	motion_function : 	STRUCT 
 		KRC_MoveDirectAbsolute : KRC_MoveDirectAbsolute;
@@ -37,9 +36,15 @@ TYPE
 		ValuesToCOORDSYS : mxa_ValuesToCOORDSYS;
 		ValuesToPosition : ValuesToPosition;
 	END_STRUCT;
-	read_pos_function : 	STRUCT 
+	read_function : 	STRUCT 
+		KRC_ReadAxisGroup : KRC_ReadAxisGroup;
 		KRC_ReadActualPosition : KRC_ReadActualPosition;
 		KRC_ReadActualAxisPosition : KRC_ReadActualAxisPosition;
+	END_STRUCT;
+	write_function : 	STRUCT 
+		KRC_WriteAxisGroup : KRC_WriteAxisGroup;
+		KRC_WriteToolData : KRC_WriteToolData;
+		KRC_WriteBaseData : KRC_WriteBaseData;
 	END_STRUCT;
 	status : 	STRUCT 
 		S_ : BOOL;

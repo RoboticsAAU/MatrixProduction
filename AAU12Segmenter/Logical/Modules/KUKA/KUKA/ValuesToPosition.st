@@ -19,7 +19,15 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Status := 6; // 110
 					outputPos.Turn := 2; // 000010
 					
-				APPROACH_MAGAZINE:
+				APPROACH_MAGAZINE: // NOT CORRECT
+					outputPos.X := 120;
+					outputPos.Y := 120;
+					outputPos.Z := 150;
+					outputPos.A := -180;
+					outputPos.B := 0;
+					outputPos.C := 180;
+					outputPos.Status := 6; // 110
+					outputPos.Turn := 2; // 000010
 				
 				APPROACH_WORKSTATION:
 					outputPos.X := 660;
@@ -36,7 +44,7 @@ FUNCTION_BLOCK ValuesToPosition
 			// From world to base (only temporary)
 			outputPos.X := 1080 - outputPos.X;
 			outputPos.Y := 120 - outputPos.Y;
-			outputPos.Z := outputPos.Z - 10;
+			outputPos.Z := outputPos.Z - 15;
 			outputPos.A := outputPos.A - 180;
 		///////////////////////////////////////////
 		
@@ -69,10 +77,10 @@ FUNCTION_BLOCK ValuesToPosition
 			END_CASE
 			
 			// From world to base (only temporary)
-			outputPos.X := 1080 - outputPos.X;
-			outputPos.Y := 840 - outputPos.Y;
-			outputPos.Z := outputPos.Z - 10;
-			outputPos.A := outputPos.A - 180;
+//			outputPos.X := 1080 - outputPos.X;
+//			outputPos.Y := 840 - outputPos.Y;
+//			outputPos.Z := outputPos.Z - 15;
+//			outputPos.A := outputPos.A - 180;
 		///////////////////////////////////////////
 		
 		
@@ -89,7 +97,15 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Status := 6; // 110
 					outputPos.Turn := 2; // 000010
 				
-				APPROACH_MAGAZINE:
+				APPROACH_MAGAZINE: // NOT CORRECT
+					outputPos.X := 120;
+					outputPos.Y := 120;
+					outputPos.Z := 150;
+					outputPos.A := -180;
+					outputPos.B := 0;
+					outputPos.C := 180;
+					outputPos.Status := 6; // 110
+					outputPos.Turn := 2; // 000010
 				
 				APPROACH_WORKSTATION:
 					outputPos.X := 660;
@@ -104,10 +120,10 @@ FUNCTION_BLOCK ValuesToPosition
 			END_CASE
 			
 			// From world to base (only temporary)
-			outputPos.X := 1080 - outputPos.X;
-			outputPos.Y := 1320 - outputPos.Y;
-			outputPos.Z := outputPos.Z - 10;
-			outputPos.A := outputPos.A - 180;
+//			outputPos.X := 1080 - outputPos.X;
+//			outputPos.Y := 1320 - outputPos.Y;
+//			outputPos.Z := outputPos.Z - 15;
+//			outputPos.A := outputPos.A - 180;
 		///////////////////////////////////////////
 		
 		
@@ -124,7 +140,15 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Status := 6; // 110
 					outputPos.Turn := 2; // 000010
 				
-				APPROACH_MAGAZINE:
+				APPROACH_MAGAZINE: // NOT CORRECT
+					outputPos.X := 120;
+					outputPos.Y := 120;
+					outputPos.Z := 150;
+					outputPos.A := 0;
+					outputPos.B := 0;
+					outputPos.C := 180;
+					outputPos.Status := 6; // 110
+					outputPos.Turn := 2; // 000010
 				
 				APPROACH_WORKSTATION:
 					outputPos.X := 60;
@@ -141,7 +165,7 @@ FUNCTION_BLOCK ValuesToPosition
 			// From world to base (only temporary)
 			outputPos.X := outputPos.X - 120;
 			outputPos.Y := outputPos.Y - 1320;
-			outputPos.Z := outputPos.Z - 10;
+			outputPos.Z := outputPos.Z - 15;
 		///////////////////////////////////////////
 		
 		
@@ -158,7 +182,15 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Status := 6; // 110
 					outputPos.Turn := 2; // 000010
 				
-				APPROACH_MAGAZINE:
+				APPROACH_MAGAZINE: // NOT CORRECT
+					outputPos.X := 120;
+					outputPos.Y := 120;
+					outputPos.Z := 150;
+					outputPos.A := -180;
+					outputPos.B := 0;
+					outputPos.C := 180;
+					outputPos.Status := 6; // 110
+					outputPos.Turn := 2; // 000010
 				
 				APPROACH_WORKSTATION:
 					outputPos.X := 60;
@@ -175,7 +207,7 @@ FUNCTION_BLOCK ValuesToPosition
 			// From world to base (only temporary)
 			outputPos.X := outputPos.X - 120;
 			outputPos.Y := outputPos.Y - 840;
-			outputPos.Z := outputPos.Z - 10;
+			outputPos.Z := outputPos.Z - 15;
 		///////////////////////////////////////////
 		
 		
@@ -192,7 +224,15 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Status := 6; // 110
 					outputPos.Turn := 2; // 000010
 				
-				APPROACH_MAGAZINE:
+				APPROACH_MAGAZINE: // NOT CORRECT
+					outputPos.X := 120;
+					outputPos.Y := 120;
+					outputPos.Z := 150;
+					outputPos.A := -180;
+					outputPos.B := 0;
+					outputPos.C := 180;
+					outputPos.Status := 6; // 110
+					outputPos.Turn := 2; // 000010
 				
 				APPROACH_WORKSTATION:
 					outputPos.X := 60;
@@ -209,7 +249,7 @@ FUNCTION_BLOCK ValuesToPosition
 			// From world to base (only temporary)
 			outputPos.X := outputPos.X - 120;
 			outputPos.Y := outputPos.Y - 120;
-			outputPos.Z := outputPos.Z - 10;
+			outputPos.Z := outputPos.Z - 15;
 		///////////////////////////////////////////
 		
 		
