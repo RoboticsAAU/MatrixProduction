@@ -6,7 +6,7 @@ ACTION KUKABottomCover:
 		1000:
 			cm.description := 'Initialising parameters';
 			
-			pKuka.convert.ValuesToCOORDSYS.Tool := pKuka.axisGroupIdx;
+			pKuka.convert.ValuesToCOORDSYS.Tool := 1;
 			pKuka.convert.ValuesToCOORDSYS();
 			
 			pKuka.convert.ValuesToPosition.axisGroupIdx := pKuka.axisGroupIdx;
@@ -41,7 +41,7 @@ ACTION KUKABottomCover:
 		1020:
 			cm.description := 'Move to approach point of magazine with absolute joint movement';
 			
-			pKuka.convert.ValuesToCOORDSYS.Base := 2; // Bottom cover magazine frame
+			pKuka.convert.ValuesToCOORDSYS.Base := 2; // Magazine frame
 			pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 0; // #BASE
 			pKuka.convert.ValuesToCOORDSYS();
 			

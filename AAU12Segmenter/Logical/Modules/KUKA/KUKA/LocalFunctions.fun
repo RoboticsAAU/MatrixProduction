@@ -7,6 +7,15 @@
 	END_VAR
 END_FUNCTION_BLOCK
 
+{REDUND_ERROR} FUNCTION_BLOCK ValuesToMagazineFrame (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_INPUT
+		axisGroupIdx : USINT;
+	END_VAR
+	VAR_OUTPUT
+		outputFrame : FRAME;
+	END_VAR
+END_FUNCTION_BLOCK
+
 {REDUND_ERROR} FUNCTION_BLOCK ValuesToPosition (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
 	VAR_INPUT
 		axisGroupIdx : {REDUND_UNREPLICABLE} USINT;

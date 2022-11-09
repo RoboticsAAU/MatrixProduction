@@ -46,6 +46,8 @@ PROGRAM _CYCLIC
 		// RobotStart contains FB calls associated with initialization of the robots and diagnosis
 		RobotStart;
 		
+		robotOperating[0] := robotOperating[1] := robotOperating[3] := robotOperating[4] := robotOperating[5] := FALSE;
+		
 		// If the robot is ready, begin actual program
 		IF 	pKuka.status.P_ AND pKuka.status.S_ AND pKuka.status.R_ AND pKuka.status.I_ AND pKuka.status.EXT_ THEN
 			CASE cm.state OF
@@ -58,20 +60,28 @@ PROGRAM _CYCLIC
 				
 				1000..1999: // RUNNING MANIPULATOR PROGRAMS
 					CASE pKuka.axisGroupIdx OF
-						1: KUKABottomCover;
+						1:
+							KUKABottomCover;
 						
-						2: LinearMovement //KUKADrilling;
+						2:
+							KUKADrilling;
 						
-						3: KUKAPcb;
+						3:
+							KUKAPcb;
 						
-						4: KUKAFuse;
+						4:
+							KUKAFuse;
 						
-						5: KUKATopCover;
+						5:
+							KUKATopCover;
 						
-						6: KUKAUnloading;
+						6:
+							KUKAUnloading;
+						
 					END_CASE
 				
 			END_CASE
+			
 		END_IF
 		
 		/////////////////////////////////////////////////////

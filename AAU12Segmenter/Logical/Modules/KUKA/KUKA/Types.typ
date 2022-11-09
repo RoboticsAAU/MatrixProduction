@@ -26,15 +26,16 @@ TYPE
 		KRC_Abort : KRC_Abort;
 	END_STRUCT;
 	motion_function : 	STRUCT 
-		KRC_MoveDirectAbsolute : KRC_MoveDirectAbsolute;
-		KRC_MoveDirectRelative : KRC_MoveDirectRelative;
-		KRC_MoveLinearAbsolute : KRC_MoveLinearAbsolute;
-		KRC_MoveLinearRelative : KRC_MoveLinearRelative;
-		KRC_MoveAxisAbsolute : KRC_MoveAxisAbsolute;
+		KRC_MoveDirectAbsolute : KRC_MoveDirectAbsolute; (*PTP absolute motion*)
+		KRC_MoveDirectRelative : KRC_MoveDirectRelative; (*PTP relative motion*)
+		KRC_MoveLinearAbsolute : KRC_MoveLinearAbsolute; (*LIN absolute motion*)
+		KRC_MoveLinearRelative : KRC_MoveLinearRelative; (*LIN relative motion*)
+		KRC_MoveAxisAbsolute : KRC_MoveAxisAbsolute; (*JOINT absolute motion*)
 	END_STRUCT;
 	convert_function : 	STRUCT 
 		ValuesToCOORDSYS : mxa_ValuesToCOORDSYS;
 		ValuesToPosition : ValuesToPosition;
+		ValuesToMagazineFrame : ValuesToMagazineFrame;
 	END_STRUCT;
 	read_function : 	STRUCT 
 		KRC_ReadAxisGroup : KRC_ReadAxisGroup;

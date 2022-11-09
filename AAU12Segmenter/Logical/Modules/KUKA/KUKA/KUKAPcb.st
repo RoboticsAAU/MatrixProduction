@@ -6,7 +6,7 @@ ACTION KUKAPcb:
 		1000:
 			cm.description := 'Initialising parameters';
 			
-			pKuka.convert.ValuesToCOORDSYS.Tool := pKuka.axisGroupIdx;
+			pKuka.convert.ValuesToCOORDSYS.Tool := 1;
 			pKuka.convert.ValuesToCOORDSYS();
 			
 			pKuka.convert.ValuesToPosition.axisGroupIdx := pKuka.axisGroupIdx;
@@ -17,7 +17,7 @@ ACTION KUKAPcb:
 			pKuka.motion.KRC_MoveDirectAbsolute.KRC_AxisGroupRefArr := pKuka.motion.KRC_MoveLinearAbsolute.KRC_AxisGroupRefArr := pKuka.motion.KRC_MoveLinearRelative.KRC_AxisGroupRefArr
 				:= ADR(AxisRef);
 			pKuka.motion.KRC_MoveDirectAbsolute.Velocity := pKuka.motion.KRC_MoveLinearAbsolute.Velocity := pKuka.motion.KRC_MoveLinearRelative.Velocity
-				:= 5; // Velocity in percent
+				:= 10; // Velocity in percent
 			pKuka.motion.KRC_MoveDirectAbsolute.Acceleration := pKuka.motion.KRC_MoveLinearAbsolute.Acceleration := pKuka.motion.KRC_MoveLinearRelative.Acceleration
 				:= 20; // Acceleration in percent
 			pKuka.motion.KRC_MoveDirectAbsolute.BufferMode := pKuka.motion.KRC_MoveLinearAbsolute.BufferMode := pKuka.motion.KRC_MoveLinearRelative.BufferMode
@@ -41,7 +41,7 @@ ACTION KUKAPcb:
 		1020:
 			cm.description := 'Move to approach point of magazine with absolute joint movement';
 			
-			pKuka.convert.ValuesToCOORDSYS.Base := 2; // Bottom cover magazine frame
+			pKuka.convert.ValuesToCOORDSYS.Base := 2; // Magazine frame
 			pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 0; // #BASE
 			pKuka.convert.ValuesToCOORDSYS();
 			

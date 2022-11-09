@@ -22,7 +22,7 @@ FUNCTION_BLOCK ValuesToPosition
 				APPROACH_MAGAZINE: // NOT CORRECT
 					outputPos.X := 120;
 					outputPos.Y := 120;
-					outputPos.Z := 150;
+					outputPos.Z := 200;
 					outputPos.A := -180;
 					outputPos.B := 0;
 					outputPos.C := 180;
@@ -32,7 +32,7 @@ FUNCTION_BLOCK ValuesToPosition
 				APPROACH_WORKSTATION:
 					outputPos.X := 660;
 					outputPos.Y := 60;
-					outputPos.Z := 116.5; // Remember to change
+					outputPos.Z := 126.5; // Remember to change
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
@@ -67,7 +67,7 @@ FUNCTION_BLOCK ValuesToPosition
 				APPROACH_WORKSTATION:
 					outputPos.X := 660;
 					outputPos.Y := 420;
-					outputPos.Z := 116.5; // Remember to change
+					outputPos.Z := 126.5; // Remember to change
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
@@ -94,27 +94,27 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 6; // 110
+					outputPos.Status := 2; // 110
 					outputPos.Turn := 2; // 000010
 				
 				APPROACH_MAGAZINE: // NOT CORRECT
 					outputPos.X := 120;
 					outputPos.Y := 120;
-					outputPos.Z := 150;
+					outputPos.Z := 200;
 					outputPos.A := -180;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 6; // 110
+					outputPos.Status := 2; // 110
 					outputPos.Turn := 2; // 000010
 				
 				APPROACH_WORKSTATION:
 					outputPos.X := 660;
 					outputPos.Y := 780;
-					outputPos.Z := 116.5; // Remember to change
+					outputPos.Z := 126.5; // Remember to change
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 6; // 110
+					outputPos.Status := 2; // 110
 					outputPos.Turn := 35; // 100011
 				
 			END_CASE
@@ -143,7 +143,7 @@ FUNCTION_BLOCK ValuesToPosition
 				APPROACH_MAGAZINE: // NOT CORRECT
 					outputPos.X := 120;
 					outputPos.Y := 120;
-					outputPos.Z := 150;
+					outputPos.Z := 200;
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
@@ -153,7 +153,7 @@ FUNCTION_BLOCK ValuesToPosition
 				APPROACH_WORKSTATION:
 					outputPos.X := 60;
 					outputPos.Y := 780;
-					outputPos.Z := 116.5; // Remember to change
+					outputPos.Z := 126.5; // Remember to change
 					outputPos.A := -180;
 					outputPos.B := 0;
 					outputPos.C := 180;
@@ -185,7 +185,7 @@ FUNCTION_BLOCK ValuesToPosition
 				APPROACH_MAGAZINE: // NOT CORRECT
 					outputPos.X := 120;
 					outputPos.Y := 120;
-					outputPos.Z := 150;
+					outputPos.Z := 200;
 					outputPos.A := -180;
 					outputPos.B := 0;
 					outputPos.C := 180;
@@ -195,7 +195,7 @@ FUNCTION_BLOCK ValuesToPosition
 				APPROACH_WORKSTATION:
 					outputPos.X := 60;
 					outputPos.Y := 420;
-					outputPos.Z := 116.5; // Remember to change
+					outputPos.Z := 126.5; // Remember to change
 					outputPos.A := -180;
 					outputPos.B := 0;
 					outputPos.C := 180;
@@ -227,7 +227,7 @@ FUNCTION_BLOCK ValuesToPosition
 				APPROACH_MAGAZINE: // NOT CORRECT
 					outputPos.X := 120;
 					outputPos.Y := 120;
-					outputPos.Z := 150;
+					outputPos.Z := 200;
 					outputPos.A := -180;
 					outputPos.B := 0;
 					outputPos.C := 180;
@@ -237,7 +237,7 @@ FUNCTION_BLOCK ValuesToPosition
 				APPROACH_WORKSTATION:
 					outputPos.X := 60;
 					outputPos.Y := 60;
-					outputPos.Z := 116.5; // Remember to change
+					outputPos.Z := 126.5; // Remember to change
 					outputPos.A := -180;
 					outputPos.B := 0;
 					outputPos.C := 180;

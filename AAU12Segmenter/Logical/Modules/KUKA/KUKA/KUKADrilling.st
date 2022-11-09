@@ -6,7 +6,7 @@ ACTION KUKADrilling:
 		1000:
 			cm.description := 'Initialising parameters';
 			
-			pKuka.convert.ValuesToCOORDSYS.Tool := pKuka.axisGroupIdx;
+			pKuka.convert.ValuesToCOORDSYS.Tool := 1;
 			pKuka.convert.ValuesToCOORDSYS();
 			
 			pKuka.convert.ValuesToPosition.axisGroupIdx := pKuka.axisGroupIdx;

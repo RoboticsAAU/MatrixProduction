@@ -287,10 +287,10 @@ PROGRAM _CYCLIC
 						
 						//Chosen action pr shuttle
 						CASE i OF 
-							6:BasicMoveDialGauge;
-							1:MovementZ;
-							2:MovementRx;
-							3:MovementRy;
+							6: BasicMoveDialGauge;
+							1: MovementZ;
+							2: MovementRx;
+							3: MovementRy;
 						END_CASE
 					END_FOR
 					em.cmd.sc := TRUE;

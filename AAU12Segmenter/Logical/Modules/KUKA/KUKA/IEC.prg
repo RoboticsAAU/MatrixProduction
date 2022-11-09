@@ -22,5 +22,6 @@
     <File>GripperAction.st</File>
     <File>EETypeToFrame.st</File>
     <File>ValuesToPosition.st</File>
+    <File>ValuesToMagazineFrame.st</File>
   </Files>
 </Program>
