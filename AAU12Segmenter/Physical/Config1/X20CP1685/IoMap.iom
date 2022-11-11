@@ -3496,6 +3496,6 @@ VAR_CONFIG
 	::gripperBlackPins[3] AT %QX."X20DO9322".DigitalOutput08; (*________________________________________*) (*_____________KUKA1 Mappings_____________*) (*________________________________________*)
 	::gripperWhitePins[4] AT %QX."X20DO9322".DigitalOutput09;
 	::gripperBlackPins[4] AT %QX."X20DO9322".DigitalOutput10; (*________________________________________*) (*_____________KUKA1 Mappings_____________*) (*________________________________________*)
-	::gripperBlackPins[5]  AT %QX."X20DO9322".DigitalOutput12;
-	::gripperWhitePins[5]  AT %QX."X20DO9322".DigitalOutput11;
+	::gripperWhitePins[5]  AT %QX."X20DO9322".DigitalOutput03;
+	::gripperBlackPins[5]  AT %QX."X20DO9322".DigitalOutput04;
 END_VAR
