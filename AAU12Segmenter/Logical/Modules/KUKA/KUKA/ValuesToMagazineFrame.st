@@ -23,7 +23,7 @@ FUNCTION_BLOCK ValuesToMagazineFrame
 		3: // PCB magazine frame
 			outputFrame.X := 840;
 			outputFrame.Y := 1440;
-			outputFrame.Z := 0;
+			outputFrame.Z := 6.3;
 			outputFrame.A := 180;
 			outputFrame.B := 0;
 			outputFrame.C := 0;

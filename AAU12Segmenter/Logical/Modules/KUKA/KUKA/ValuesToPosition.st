@@ -97,20 +97,20 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Status := 2; // 110
 					outputPos.Turn := 2; // 000010
 				
-				APPROACH_MAGAZINE: // NOT CORRECT
-					outputPos.X := 120;
-					outputPos.Y := 120;
-					outputPos.Z := 200;
-					outputPos.A := -180;
-					outputPos.B := 0;
-					outputPos.C := 180;
-					outputPos.Status := 2; // 110
-					outputPos.Turn := 2; // 000010
+				APPROACH_MAGAZINE: // TEMP POS
+					outputPos.X := 152.240;
+					outputPos.Y := 231.705;
+					outputPos.Z := 158.655; // 6.3 is a temporary offset
+					outputPos.A := -90.000;
+					outputPos.B := -45.000;
+					outputPos.C := 180.000;
+					outputPos.Status := 2; // 010
+					outputPos.Turn := 3; // 000011
 				
 				APPROACH_WORKSTATION:
 					outputPos.X := 660;
-					outputPos.Y := 780;
-					outputPos.Z := 126.5; // Remember to change
+					outputPos.Y := 780 + 32.69; // 32.69 represents shift of fuses
+					outputPos.Z := (1 + 9.85 + 5 + 6.7 + 1.5 + 2) + 100; // Remember to change
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;

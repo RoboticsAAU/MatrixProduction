@@ -4,7 +4,7 @@ FUNCTION_BLOCK EETypeToFrame
 	
 	frame.X := 0;
 	frame.Y := 0;
-	frame.Z := SchunkLength;
+	frame.Z := SchunkLength; //79.1 (with base plate)
 	frame.A := 0;
 	frame.B := 0;
 	frame.C := 0;
@@ -20,7 +20,8 @@ FUNCTION_BLOCK EETypeToFrame
 			frame.Z := frame.Z; // Change when we know
 			
 		PCB_EE:
-			frame.Z := frame.Z + 16.91;
+			frame.Z := frame.Z + 25.11;
+			//frame.C := 180;
 			
 		FUSE_EE:
 			frame.Z := frame.Z; // Change when we know
