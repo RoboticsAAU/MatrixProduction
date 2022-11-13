@@ -1,12 +1,12 @@
 
 (* TODO: Add your comment here *)
-FUNCTION ShuttleIsAtPosition
+FUNCTION_BLOCK ShuttleAtPosition
 	
 	IF (shuttlePos.X > checkPosX - MARGIN AND shuttlePos.X < checkPosX + MARGIN) AND
 		(shuttlePos.Y > checkPosY - MARGIN AND shuttlePos.Y < checkPosY + MARGIN) THEN
-		ShuttleIsAtPosition := TRUE;
+		isAtCheckPos := TRUE;
 	ELSE
-		ShuttleIsAtPosition := FALSE;
+		isAtCheckPos := FALSE;
 	END_IF
 	
-END_FUNCTION
+END_FUNCTION_BLOCK

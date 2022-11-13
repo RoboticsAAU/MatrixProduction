@@ -46,7 +46,7 @@ PROGRAM _CYCLIC
 		// RobotStart contains FB calls associated with initialization of the robots and diagnosis
 		RobotStart;
 		
-		robotOperating[0] := robotOperating[1] := robotOperating[3] := robotOperating[4] := robotOperating[5] := FALSE;
+		robotOperating[0] := robotOperating[1] := robotOperating[2] := robotOperating[3] := robotOperating[4] := robotOperating[5] := FALSE;
 		
 		// If the robot is ready, begin actual program
 		IF 	pKuka.status.P_ AND pKuka.status.S_ AND pKuka.status.R_ AND pKuka.status.I_ AND pKuka.status.EXT_ THEN

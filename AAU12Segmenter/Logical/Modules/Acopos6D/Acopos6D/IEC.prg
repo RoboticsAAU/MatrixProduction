@@ -25,6 +25,6 @@
     <File>CreateRouteSheet.st</File>
     <File>QuadrantIdxToPos.st</File>
     <File>COVER_TYPE_TO_USINT.st</File>
-    <File>ShuttleIsAtPosition.st</File>
+    <File>ShuttleAtPosition.st</File>
   </Files>
 </Program>
