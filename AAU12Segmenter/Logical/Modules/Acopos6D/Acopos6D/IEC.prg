@@ -22,8 +22,9 @@
     <File Description="Local data types" Private="true">Types.typ</File>
     <File Description="Local variables" Private="true">Variables.var</File>
     <File Private="true">LocalFunctions.fun</File>
-    <File>createRouteSheet.st</File>
-    <File>quadrantIdxToPos.st</File>
+    <File>CreateRouteSheet.st</File>
+    <File>QuadrantIdxToPos.st</File>
     <File>COVER_TYPE_TO_USINT.st</File>
+    <File>ShuttleIsAtPosition.st</File>
   </Files>
 </Program>

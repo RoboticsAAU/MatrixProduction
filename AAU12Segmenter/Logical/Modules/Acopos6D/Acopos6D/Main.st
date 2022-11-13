@@ -419,10 +419,9 @@ PROGRAM _CYCLIC
 					
 				17010..17014:
 					
-					em.description := 'Smart Lab Program - Check if new order has been placed';
+					em.description := 'Smart Lab Program - Write order if it has been placed';
 					
 					// The user has requested an order which is added to the buffer
-					
 					IF executeOrder THEN
 						
 						TON_0.PT := REAL_TO_TIME(150);
@@ -430,10 +429,12 @@ PROGRAM _CYCLIC
 						IF TON_0.Q THEN
 							TON_0.IN := FALSE;
 							executeOrder := FALSE;
-						
+							
+							// If the buffer is empty, write an order into the buffer and go to read order
 							IF bufferEmpty THEN
 								writeOrder;
 								em.substate := 17015;
+							// If the buffer is full, write an order (as long as the buffer isn't full) and go back to execute the current order
 							ELSE
 								IF NOT bufferFull THEN
 									writeOrder;
@@ -445,27 +446,35 @@ PROGRAM _CYCLIC
 						
 				
 				17015..17019:
-					em.description := 'Read order';
-					IF orderFinished THEN
+					em.description := 'Smart Lab Program - Read order';
+					IF orderFinished THEN // For now only one order at a time is possible
 						
 						orderFinished := FALSE;
 						readOrder;
 						
-						FOR i := 0 TO (productOrder.amount - 1) DO
+						// Begin the order if there are enough shuttles left to make the order
+						IF (activeShuttles + productOrder.amount <= smartLabNumShuttles) THEN
 							
-							moveToStartWorkstation[shuttleIndexAtPosition[i]] := TRUE;
+							// Begin the order for the next shuttles in line
+							FOR i := activeShuttles TO (activeShuttles + productOrder.amount - 1) DO
+								
+								moveToStartWorkstation[shuttleIndexAtPosition[i]] := TRUE;
+								
+								CreateRouteSheet_0.inputProductOrder := shuttlePlans[shuttleIndexAtPosition[i]].productOrder := productOrder;
+								
+								shuttlePlans[shuttleIndexAtPosition[i]].routingSheet := CreateRouteSheet_0.outputRouteSheet;
+								shuttlePlans[shuttleIndexAtPosition[i]].progressIndex := 0;
+								shuttlePlans[shuttleIndexAtPosition[i]].shuttleIdx := shuttleIndexAtPosition[i];
+								
+							END_FOR
 							
-							shuttlePlans[shuttleIndexAtPosition[i]].productOrder := productOrder;
-							createRouteSheet_0(inputProductOrder := productOrder);							
-							shuttlePlans[shuttleIndexAtPosition[i]].routingSheet := createRouteSheet_0.outputRouteSheet;
-							shuttlePlans[shuttleIndexAtPosition[i]].progressIndex := 0;
-							shuttlePlans[shuttleIndexAtPosition[i]].shuttleIdx := shuttleIndexAtPosition[i];
+							activeShuttles := activeShuttles + productOrder.amount;
 							
-						END_FOR
-					
-						amountProductsFinished := 0;
-						
-						parkingSpotIndex := productOrder.amount - 1;
+							amountProductsFinished := 0;
+							
+							parkingSpotIndex := productOrder.amount - 1;
+							
+						END_IF
 						
 					END_IF
 					
@@ -487,6 +496,7 @@ PROGRAM _CYCLIC
 						pWorkStations ACCESS ADR (gWorkStations[i]); 
 						cm ACCESS ADR (gWorkStations[i].cm);
 						pWorkStations.cm.setup.parent.name := 'main';
+						pWorkStations.par.workstationID := i;
 						
 						smartLabWorkstationMovement;
 					END_FOR

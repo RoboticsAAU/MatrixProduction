@@ -1,6 +1,6 @@
 
 (* TODO: Add your comment here *)
-FUNCTION_BLOCK createRouteSheet
+FUNCTION_BLOCK CreateRouteSheet
 	
 	routeSize := SIZEOF(outputRouteSheet)/SIZEOF(outputRouteSheet[0]);
 	

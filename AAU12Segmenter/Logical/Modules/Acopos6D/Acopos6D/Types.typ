@@ -63,6 +63,7 @@ TYPE
 		approachPosY : REAL;
 		departPosX : REAL;
 		departPosY : REAL;
+		workstationID : USINT;
 	END_STRUCT;
 	workStation_status_typ : 	STRUCT 
 		componentName : STRING[80];

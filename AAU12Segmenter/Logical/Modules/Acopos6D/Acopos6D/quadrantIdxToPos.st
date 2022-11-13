@@ -1,7 +1,7 @@
 
 (* TODO: Add your comment here *)
-FUNCTION quadrantIdxToPos
+FUNCTION QuadrantIdxToPos
 
-	quadrantIdxToPos := quadrantIdx*0.120 + 0.060;
+	QuadrantIdxToPos := quadrantIdx*0.120 + 0.060;
 	
 END_FUNCTION
