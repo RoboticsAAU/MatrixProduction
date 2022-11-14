@@ -415,7 +415,7 @@ PROGRAM _CYCLIC
 					
 				17000..17009:
 					em.description := 'Smart Lab program - Setup';
-					smartLabSetup;					
+					smartLabSetup;
 					
 				17010..17014:
 					
@@ -448,7 +448,7 @@ PROGRAM _CYCLIC
 					
 				
 				17015..17019:
-					em.description := 'Smart Lab Program - Read order';
+					em.description := 'Smart Lab Program - Read order if the shuttles are ready to';
 						
 					// Read a new order if the entire other order has been initiated and the buffer is not empty
 					IF remainingOrderAmount = 0 AND NOT bufferEmpty THEN

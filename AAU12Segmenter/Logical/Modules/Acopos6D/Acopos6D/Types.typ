@@ -12,7 +12,7 @@ TYPE
 	shuttle_par_typ : 	STRUCT 
 		shuttleID : USINT;
 		tempWorkstationID : STRING[10];
-		tempHighwayColumn : USINT;
+		tempHighwayColumn : SINT;
 	END_STRUCT;
 	shuttle_function_typ : 	STRUCT 
 		MC_BR_Move6D_Acp6D_0 : MC_BR_Move6D_Acp6D;
@@ -60,8 +60,6 @@ TYPE
 		processTime : REAL;
 		pathRouting : USINT := 0; (*0 Diagonal, 1 First X then Y, 2 First Y then X*)
 		ArcMovement : BOOL;
-		internalCounter : USINT;
-		tempCounter : USINT;
 		approachPosX : REAL;
 		approachPosY : REAL;
 		departPosX : REAL;

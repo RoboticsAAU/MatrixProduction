@@ -35,8 +35,6 @@ ACTION ResetInput:
 		gWorkStations[i].par.tempShuttleID := FALSE;
 		gWorkStations[i].par.xLocation := FALSE;
 		gWorkStations[i].par.yLocation := FALSE;
-		gWorkStations[i].par.internalCounter := 0;
-		gWorkStations[i].par.tempCounter := 0;
 		gWorkStations[i].TON_0.IN := FALSE;
 		gWorkStations[i].par.xLocation										:= 0.0;
 		gWorkStations[i].par.yLocation										:= 0.0;

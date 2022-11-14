@@ -105,4 +105,5 @@ END_VAR
 VAR
 	orderSpec : ARRAY[0..5] OF USINT;
 	robotOperating : ARRAY[0..5] OF BOOL;
+	tempShuttleIndex : USINT;
 END_VAR

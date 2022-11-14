@@ -82,7 +82,7 @@ ACTION smartLabWorkstationSetup:
 	gWorkStations[5].par.approachPosY									:= QuadrantIdxToPos(1);
 	gWorkStations[5].par.departPosX										:= QuadrantIdxToPos(1);
 	gWorkStations[5].par.departPosY										:= QuadrantIdxToPos(0);
-	gWorkStations[5].par.nextStationSelector							:= '-1';
+	gWorkStations[5].par.nextStationSelector							:= '0';
 	gWorkStations[5].par.processTime									:= 1.0;
 	gWorkStations[5].par.pathRouting									:= 1;
 	gWorkStations[5].par.ArcMovement									:= FALSE;
@@ -125,6 +125,7 @@ ACTION smartLabSetup:
 				gShuttles[i].cm.state := 0;
 				gWorkStations[i].cm.state := 0;
 				
+				gWorkStations[i].par.tempShuttleID := -1;
 				gShuttles[i].par.tempHighwayColumn := -1;
 				shuttlePlans[i].isActive := FALSE;
 			END_FOR
@@ -132,10 +133,11 @@ ACTION smartLabSetup:
 			FOR i := 0 TO 3 DO
 				availableColumn[i] := TRUE;
 			END_FOR
-
+			
 			TON_0.IN := FALSE;
 			bufferSize := SIZEOF(orderBuffer)/SIZEOF(orderBuffer[0]);
 			activeShuttles := 0;
+			tempShuttleIndex := 1;
 			em.substate := 17005;
 			
 		
@@ -151,20 +153,41 @@ ACTION smartLabSetup:
 			MC_BR_MoveInPlaneAsync_Acp6D_0.Execute := TRUE;
 			IF MC_BR_MoveInPlaneAsync_Acp6D_0.Done THEN
 				MC_BR_MoveInPlaneAsync_Acp6D_0.Execute := FALSE;
-				em.substate := 17010;
+				em.substate := 17008;
 			END_IF
 		
+		17008:
+			em.description := 'Move shuttle 2 and 3 towards workstation 0';
+			gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[tempShuttleIndex].shuttleRef);
+			gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
+			gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
+			gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0; // Absolute
+			gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; // X THEN Y
+			
+			gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[0].par.xLocation;
+			gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[0].par.yLocation;
+			gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
+			IF gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
+				gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
+				
+				IF tempShuttleIndex = 2 THEN
+					em.substate := 17010;
+				END_IF
+				
+				tempShuttleIndex := tempShuttleIndex + 1;
+			END_IF
+			
+			gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0();
+		
 	END_CASE
+	
 END_ACTION
 
 
 ACTION smartLabWorkstationOperation:
 	CASE cm.state OF
 		0:
-			cm.description := 'Setting parameters for the workstations';
-			pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
-			pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
-			pWorkStations.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0; //Absolute
+			cm.description := 'Setting parameters for the workstations'; // None right now
 			cm.state := 10;
 		
 		10:
@@ -179,7 +202,8 @@ ACTION smartLabWorkstationOperation:
 				ShuttleAtPosition_0();
 				
 				// Check if a shuttle is on the workstation and it is idle (meaning not in motion)
-				IF ShuttleAtPosition_0.isAtCheckPos AND gAcp6DCtrl.Status.ShuttleInfo[k].State = mcACP6D_SH_STATE_IDLING THEN
+				IF ShuttleAtPosition_0.isAtCheckPos AND gAcp6DCtrl.Status.ShuttleInfo[k].State = mcACP6D_SH_STATE_IDLING AND
+					k <> pWorkStations.par.tempShuttleID THEN // Temporary fix
 					pWorkStations.par.tempShuttleID := k;
 					gShuttles[k].par.tempWorkstationID := pWorkStations.par.workstationID;
 					
@@ -206,7 +230,7 @@ ACTION smartLabWorkstationOperation:
 					
 					remainingOrderAmount := remainingOrderAmount - 1;
 					cm.state := 20;
-				ELSE
+				ELSIF NOT bufferEmpty THEN
 					// Go back to read new order in read state
 					em.substate := 17015;
 				END_IF
@@ -220,7 +244,7 @@ ACTION smartLabWorkstationOperation:
 				// For workstation 0, the shuttle should only move on if there are more than two shuttles in queue
 				IF pWorkStations.par.workstationID = '0' THEN
 					// Position where at least 3 shuttles is in queue
-					ShuttleAtPosition_0.checkPosX := pWorkStations.par.approachPosX - 0.120;
+					ShuttleAtPosition_0.checkPosX := pWorkStations.par.approachPosX - 0.240;
 					ShuttleAtPosition_0.checkPosY := pWorkStations.par.approachPosY;
 				ELSE
 					// Workstation approach position
@@ -232,14 +256,17 @@ ACTION smartLabWorkstationOperation:
 				// If there is a shuttle at the checked position and it is either in IDLE or OBSTACLE state
 				IF ShuttleAtPosition_0.isAtCheckPos AND (gAcp6DCtrl.Status.ShuttleInfo[k].State = mcACP6D_SH_STATE_IDLING OR gAcp6DCtrl.Status.ShuttleInfo[k].State = mcACP6D_SH_STATE_OBSTACLE) THEN
 					// Set shuttle state to move to next workstation
+					cm.state := 10;
 					gShuttles[pWorkStations.par.tempShuttleID].cm.state := 10;
+					EXIT;
 				END_IF
-			END_FOR
 				
-		
+			END_FOR
+			
+			
 		20:
 			cm.description := 'Send data to robot through mapping and begin robot operation';
-			CASE i OF
+			CASE STRING_TO_UINT(pWorkStations.par.workstationID) OF
 				0: orderSpec[0] := COVER_TYPE_TO_USINT(shuttlePlans[pWorkStations.par.tempShuttleID].productOrder.bottomCover);
 				
 				1: orderSpec[1] := shuttlePlans[pWorkStations.par.tempShuttleID].productOrder.Holes;
@@ -261,7 +288,7 @@ ACTION smartLabWorkstationOperation:
 			ELSE
 				cm.state := 40;
 			END_IF
-
+			
 			
 		30:
 			cm.description := 'Land shuttle if required';
@@ -279,7 +306,7 @@ ACTION smartLabWorkstationOperation:
 			
 		40:
 			cm.description := 'Wait for robot to finish operation';
-			pWorkStations.TON_0.PT := REAL_TO_TIME(200); // Timer is needed for robot to start motion before shuttles moves away
+			pWorkStations.TON_0.PT := REAL_TO_TIME(1000); // Timer is needed for robot to start motion before shuttles moves away
 			pWorkStations.TON_0.IN := TRUE;
 			IF pWorkStations.TON_0.Q THEN
 				pWorkStations.TON_0.IN := FALSE;
@@ -322,41 +349,38 @@ ACTION smartLabShuttleMovement:
 	
 	CASE cm.state OF
 		0:
-			cm.description := 'Wait for workstation to set new state';
-			
+			cm.description := 'Set parameters for the shuttles and wait for workstation to set new state';
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0; //Absolute
 			
 		10:
 			cm.description := 'Move from workstation to depart point (or next free column)';	
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 2; // Y THEN X
 			
-			// If the next workstation is 0 set the shuttle plan to be inactive
-			IF pShuttlePlan.routingSheet[pShuttlePlan.progressIndex] = '0' THEN
-				pShuttlePlan.isActive := FALSE;
-				activeShuttles := activeShuttles - 1;
-			END_IF
-			
-			// Select the closest column that is available
-			FOR k := 0 TO 3 DO
-				IF STRING_TO_USINT(pShuttle.par.tempWorkstationID) <= 2 THEN // First three workstations (all on the same side)
-					IF availableColumn[3-k] THEN
-						pShuttle.par.tempHighwayColumn := 3-k;
-						availableColumn[pShuttle.par.tempHighwayColumn] := FALSE;
-						EXIT;
+			// If a column has not been selected yet
+			IF pShuttle.par.tempHighwayColumn = -1 THEN
+				// Select the closest column that is available
+				FOR k := 0 TO 3 DO
+					IF STRING_TO_USINT(pShuttle.par.tempWorkstationID) <= 2 THEN // First three workstations (all on the same side)
+						IF availableColumn[3-k] THEN
+							pShuttle.par.tempHighwayColumn := 3-k;
+							availableColumn[pShuttle.par.tempHighwayColumn] := FALSE;
+							EXIT;
+						END_IF
+					ELSE
+						IF availableColumn[k] THEN
+							pShuttle.par.tempHighwayColumn := k;
+							availableColumn[pShuttle.par.tempHighwayColumn] := FALSE;
+							EXIT;
+						END_IF
 					END_IF
-				ELSE
-					IF availableColumn[k] THEN
-						pShuttle.par.tempHighwayColumn := k;
-						availableColumn[pShuttle.par.tempHighwayColumn] := FALSE;
-						EXIT;
-					END_IF
-				END_IF
-			END_FOR
-			
+				END_FOR
 			// Move to the specified column if any is available (-1 if no column is available)
-			IF pShuttle.par.tempHighwayColumn <> -1 THEN
+			ELSE
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := QuadrantIdxToPos(quadrantIdx := (1 + pShuttle.par.tempHighwayColumn)); // Add 1 because the first column is not a highway
-				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[STRING_TO_INT(pShuttle.par.tempWorkstationID)].par.departPosY;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[STRING_TO_USINT(pShuttle.par.tempWorkstationID)].par.departPosY;
 				
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 				IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Done THEN
@@ -373,8 +397,13 @@ ACTION smartLabShuttleMovement:
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 2; // Y THEN X
 			
 			// Move to approach point of next workstation specified in the routing sheet
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[STRING_TO_USINT(pShuttlePlan.routingSheet[pShuttlePlan.progressIndex])].par.approachPosX;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[STRING_TO_USINT(pShuttlePlan.routingSheet[pShuttlePlan.progressIndex])].par.approachPosY;
+			IF pShuttlePlan.isActive THEN
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[STRING_TO_USINT(pShuttlePlan.routingSheet[pShuttlePlan.progressIndex])].par.approachPosX;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[STRING_TO_USINT(pShuttlePlan.routingSheet[pShuttlePlan.progressIndex])].par.approachPosY;
+			ELSE
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[(STRING_TO_USINT(pShuttle.par.tempWorkstationID) + 1) MOD smartLabNumWorkstations].par.approachPosX;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[(STRING_TO_USINT(pShuttle.par.tempWorkstationID) + 1) MOD smartLabNumWorkstations].par.approachPosY;
+			END_IF
 			
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Done THEN
@@ -385,7 +414,7 @@ ACTION smartLabShuttleMovement:
 				pShuttle.par.tempHighwayColumn := -1;
 				
 				// If the product is finished set parameters
-				IF pShuttlePlan.routingSheet[pShuttlePlan.progressIndex] = '0' THEN 
+				IF pShuttlePlan.isActive AND pShuttlePlan.routingSheet[pShuttlePlan.progressIndex] = '0' THEN 
 					pShuttlePlan.progressIndex := 0;
 					pShuttlePlan.isActive := FALSE;
 					//amountProductsFinished := amountProductsFinished + 1;
@@ -402,13 +431,25 @@ ACTION smartLabShuttleMovement:
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; // X THEN Y
 			
 			// Move to next workstation
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[STRING_TO_USINT(pShuttlePlan.routingSheet[pShuttlePlan.progressIndex])].par.xLocation;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[STRING_TO_USINT(pShuttlePlan.routingSheet[pShuttlePlan.progressIndex])].par.yLocation;
+			IF pShuttlePlan.isActive THEN
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[STRING_TO_USINT(pShuttlePlan.routingSheet[pShuttlePlan.progressIndex])].par.xLocation;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[STRING_TO_USINT(pShuttlePlan.routingSheet[pShuttlePlan.progressIndex])].par.yLocation;
+			ELSE
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkStations[(STRING_TO_USINT(pShuttle.par.tempWorkstationID) + 1) MOD smartLabNumWorkstations].par.xLocation;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkStations[(STRING_TO_UINT(pShuttle.par.tempWorkstationID) + 1) MOD smartLabNumWorkstations].par.yLocation;
+			END_IF
 			
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
 				
+				// If the next workstation is 0 set the shuttle plan to be inactive
+				IF pShuttlePlan.routingSheet[pShuttlePlan.progressIndex] = '0' THEN
+					pShuttlePlan.isActive := FALSE;
+					activeShuttles := activeShuttles - 1;
+				END_IF
+				
+				// If the shuttle is active increase the progress index to look at the next workstation from the route sheet
 				IF pShuttlePlan.isActive THEN
 					pShuttlePlan.progressIndex := pShuttlePlan.progressIndex + 1;
 				END_IF
