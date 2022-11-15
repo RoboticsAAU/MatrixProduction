@@ -14,10 +14,11 @@ ACTION RobotProcess:
 					// Index i corresponds to robot, and thus also the correct entry in orderSpec   
 					// The following order-specific adjustments are possible since we at this point know that the robot has returned to home position (main approach point) in cm.state = 500
 					IF orderSpec[i] <> 0 THEN
-						pKuka.tempPosition.X := pKuka.tempPosition.X + (-1)*(numDoneHoles MOD 2)*27*2;
+						pKuka.tempPosition.X := pKuka.tempPosition.X + (numDoneHoles MOD 2)*-27*2;
 						pKuka.tempPosition.Y := pKuka.tempPosition.Y + BOOL_TO_INT(numDoneHoles >= 2)*53*2;
 					ELSE
 						//Do nothing
+						robotOperating[i] := FALSE;
 						cm.state := 1030;
 					END_IF
 
