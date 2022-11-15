@@ -212,16 +212,23 @@ ACTION smartLabWorkstationMovement:
 			
 			robotOperating[i] := TRUE; // Begin robot operation
 			
-			pWorkStations.TON_0.PT := REAL_TO_TIME(500); // Timer is needed for robot to start motion before shuttles moves away
-			pWorkStations.TON_0.IN := TRUE;
-			IF pWorkStations.TON_0.Q THEN
-				pWorkStations.TON_0.IN := FALSE;
-				IF pWorkStations.par.landBeforeProcess THEN
+//			pWorkStations.TON_0.PT := REAL_TO_TIME(500); // Timer is needed for robot to start motion before shuttles moves away
+//			pWorkStations.TON_0.IN := TRUE;
+//			IF pWorkStations.TON_0.Q THEN
+//				pWorkStations.TON_0.IN := FALSE;
+//				IF pWorkStations.par.landBeforeProcess THEN
+//				cm.state := 10;
+//				ELSE
+//					cm.state := 20;
+//				END_IF
+			//			END_IF
+
+			IF pWorkStations.par.landBeforeProcess THEN
 				cm.state := 10;
-				ELSE
-					cm.state := 20;
-				END_IF
+			ELSE
+				cm.state := 20;
 			END_IF
+
 			
 		10:
 			cm.description := 'Land shuttle if required';
@@ -237,19 +244,6 @@ ACTION smartLabWorkstationMovement:
 			END_IF
 			
 		20:
-//			cm.description := 'Wait for process to finish';
-//			pWorkStations.TON_0.PT := REAL_TO_TIME(pWorkStations.par.processTime*1000);
-//			pWorkStations.TON_0.IN := TRUE;
-//			IF pWorkStations.TON_0.Q THEN
-//				pWorkStations.TON_0.IN := FALSE;
-//				IF pWorkStations.par.landBeforeProcess THEN
-//					cm.state := 30;
-//				ELSE
-//					cm.state := 40;
-//				END_IF
-			//			END_IF
-			
-			
 			IF NOT robotOperating[i] THEN
 				IF pWorkStations.par.landBeforeProcess THEN
 					cm.state := 30;

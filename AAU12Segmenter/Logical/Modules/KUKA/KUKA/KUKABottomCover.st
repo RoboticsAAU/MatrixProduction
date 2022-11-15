@@ -83,7 +83,7 @@ ACTION KUKABottomCover:
 			
 			pKuka.tempPosition.X := pKuka.tempPosition.Y := pKuka.tempPosition.Z := pKuka.tempPosition.A := pKuka.tempPosition.B := pKuka.tempPosition.C
 				:= 0;
-			pKuka.tempPosition.Z := 100; // Move 100 mm forwards to pickup position
+			pKuka.tempPosition.Z := 45; // Move 100 mm forwards to pickup position
 			// Status and turn is already set from moving to approach point
 			
 			pKuka.motion.KRC_MoveLinearRelative.Position := pKuka.tempPosition;
@@ -112,7 +112,7 @@ ACTION KUKABottomCover:
 			cm.description := 'Move to approach point of magazine with relative linear movement';
 			
 			// Almost everythings is already set from previous relative linear movement
-			pKuka.tempPosition.Z := -100; // Move 100 mm backwards to magazine approach position
+			pKuka.tempPosition.Z := -45; // Move 100 mm backwards to magazine approach position
 			// Status and turn is already set from moving to approach point
 			
 			pKuka.motion.KRC_MoveLinearRelative.Position := pKuka.tempPosition;
@@ -156,7 +156,7 @@ ACTION KUKABottomCover:
 			
 			pKuka.tempPosition.X := pKuka.tempPosition.Y := pKuka.tempPosition.Z := pKuka.tempPosition.A := pKuka.tempPosition.B := pKuka.tempPosition.C
 				:= 0;
-			pKuka.tempPosition.Z := 100; // Move 100 mm forwards to placement position
+			pKuka.tempPosition.Z := 45; // Move 100 mm forwards to placement position
 			// Status and turn is already set from moving to approach point
 			
 			pKuka.motion.KRC_MoveLinearRelative.Position := pKuka.tempPosition;
@@ -184,7 +184,7 @@ ACTION KUKABottomCover:
 			cm.description := 'Move to approach point of workkstation with relative linear movement';
 			
 			// Almost everythings is already set from previous relative linear movement
-			pKuka.tempPosition.Z := -100; // Move 100 mm backwards to magazine approach position
+			pKuka.tempPosition.Z := -45; // Move 100 mm backwards to magazine approach position
 			// Status and turn is already set from moving to approach point
 			
 			pKuka.motion.KRC_MoveLinearRelative.Position := pKuka.tempPosition;

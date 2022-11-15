@@ -41,11 +41,7 @@ FUNCTION_BLOCK ValuesToPosition
 				
 			END_CASE
 			
-			// From world to base (only temporary)
-			outputPos.X := 1080 - outputPos.X;
-			outputPos.Y := 120 - outputPos.Y;
-			outputPos.Z := outputPos.Z - 15;
-			outputPos.A := outputPos.A - 180;
+
 		///////////////////////////////////////////
 		
 		
@@ -62,12 +58,10 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Status := 6; // 110
 					outputPos.Turn := 2; // 000010
 				
-				//APPROACH_MAGAZINE:
-				
 				APPROACH_WORKSTATION:
-					outputPos.X := 660;
-					outputPos.Y := 420;
-					outputPos.Z := 126.5; // Remember to change
+					outputPos.X := 660 + 27; //Last term is x offset of bottom right hole
+					outputPos.Y := 420 - 53; //Last term is y offset of bottom right hole
+					outputPos.Z := (1 + 9.85 + 5 + 13) + relativeDistance;
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
@@ -76,11 +70,7 @@ FUNCTION_BLOCK ValuesToPosition
 				
 			END_CASE
 			
-			// From world to base (only temporary)
-//			outputPos.X := 1080 - outputPos.X;
-//			outputPos.Y := 840 - outputPos.Y;
-//			outputPos.Z := outputPos.Z - 15;
-//			outputPos.A := outputPos.A - 180;
+
 		///////////////////////////////////////////
 		
 		
@@ -96,36 +86,37 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.C := 180;
 					outputPos.Status := 2; // 110
 					outputPos.Turn := 2; // 000010
+					
+					baseNo := 0;
 				
 				APPROACH_MAGAZINE: // TEMP POS
-					outputPos.X := 152.240;
-					outputPos.Y := 231.705;
-					outputPos.Z := 158.655; // 6.3 is a temporary offset
+					outputPos.X := 152.740;
+					outputPos.Y := 219.477;
+					outputPos.Z := 148.927; // 6.3 is a temporary offset
 					outputPos.A := -90.000;
 					outputPos.B := -45.000;
-					outputPos.C := 180.000;
+					outputPos.C := -180.000;
 					outputPos.Status := 2; // 010
 					outputPos.Turn := 3; // 000011
+					
+					baseNo := 2;
 				
 				APPROACH_WORKSTATION:
-					outputPos.X := 660;
-					outputPos.Y := 780 + 32.69; // 32.69 represents shift of fuses
-					outputPos.Z := (1 + 9.85 + 5 + 6.7 + 1.5 + 2) + 100; // Remember to change
+					outputPos.X := 660; // last term is correction
+					outputPos.Y := 780 + 32.79; // 32.79 represents shift of fuses
+					outputPos.Z := (1 + 9.85 + 5 + 6.7 + 1.5 + 2) + relativeDistance + 2; 
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
 					outputPos.Status := 2; // 110
 					outputPos.Turn := 35; // 100011
 				
+					baseNo := 1;
+					
 			END_CASE
-			
-			// From world to base (only temporary)
-//			outputPos.X := 1080 - outputPos.X;
-//			outputPos.Y := 1320 - outputPos.Y;
-//			outputPos.Z := outputPos.Z - 15;
-//			outputPos.A := outputPos.A - 180;
+						
 		///////////////////////////////////////////
-		
+			
 		
 		///////////////// ROBOT 4 /////////////////
 		4:
@@ -161,11 +152,7 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Turn := 2; // 000010
 				
 			END_CASE
-			
-			// From world to base (only temporary)
-			outputPos.X := outputPos.X - 120;
-			outputPos.Y := outputPos.Y - 1320;
-			outputPos.Z := outputPos.Z - 15;
+		
 		///////////////////////////////////////////
 		
 		
@@ -203,11 +190,7 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Turn := 2; // 000010
 				
 			END_CASE
-			
-			// From world to base (only temporary)
-			outputPos.X := outputPos.X - 120;
-			outputPos.Y := outputPos.Y - 840;
-			outputPos.Z := outputPos.Z - 15;
+
 		///////////////////////////////////////////
 		
 		
@@ -245,14 +228,18 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Turn := 35; // 100011
 				
 			END_CASE
-			
-			// From world to base (only temporary)
-			outputPos.X := outputPos.X - 120;
-			outputPos.Y := outputPos.Y - 120;
-			outputPos.Z := outputPos.Z - 15;
-		///////////////////////////////////////////
-		
 		
 	END_CASE
+	
+	ValuesToCorrection_0.baseNo := baseNo;
+	ValuesToCorrection_0.robotIdx := axisGroupIdx;
+	ValuesToCorrection_0();
+	
+	outputPos.X := outputPos.X + ValuesToCorrection_0.posCorrections.X;
+	outputPos.Y := outputPos.Y + ValuesToCorrection_0.posCorrections.Y;
+	outputPos.Z := outputPos.Z + ValuesToCorrection_0.posCorrections.Z;
+	outputPos.A := outputPos.A + ValuesToCorrection_0.posCorrections.A;
+	outputPos.B := outputPos.B + ValuesToCorrection_0.posCorrections.B;
+	outputPos.C := outputPos.C + ValuesToCorrection_0.posCorrections.C;
 	
 END_FUNCTION_BLOCK

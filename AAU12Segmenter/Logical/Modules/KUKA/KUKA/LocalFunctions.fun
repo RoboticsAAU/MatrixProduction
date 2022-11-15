@@ -23,6 +23,10 @@ END_FUNCTION_BLOCK
 	END_VAR
 	VAR_OUTPUT
 		outputPos : E6POS;
+		baseNo : USINT;
+	END_VAR
+	VAR
+		ValuesToCorrection_0 : ValuesToCorrection;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -35,5 +39,15 @@ END_FUNCTION_BLOCK
 	END_VAR
 	VAR CONSTANT
 		SchunkLength : REAL := 72.7+2*3.25;
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_ERROR} FUNCTION_BLOCK ValuesToCorrection (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_INPUT
+		robotIdx : USINT;
+		baseNo : USINT;
+	END_VAR
+	VAR_OUTPUT
+		posCorrections : E6POS;
 	END_VAR
 END_FUNCTION_BLOCK

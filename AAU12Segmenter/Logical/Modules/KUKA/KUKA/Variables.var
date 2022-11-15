@@ -5,7 +5,7 @@ END_VAR
 VAR
 	AxisRef : AXIS_GROUP_REF_ARR; (*Axis Reference of the Robot*)
 END_VAR
-(*Instance of mxA-FB*)
+(*Instance of FB*)
 VAR
 	mxa_ValuesToCOORDSYS_0 : mxa_ValuesToCOORDSYS;
 	EETypeToFrame_0 : EETypeToFrame;
@@ -58,4 +58,10 @@ END_VAR
 VAR
 	robotOperating : ARRAY[0..5] OF BOOL;
 	orderSpec : ARRAY[0..5] OF USINT;
+END_VAR
+VAR CONSTANT
+	relativeDistance : INT := 80;
+END_VAR
+VAR
+	numDoneHoles : USINT := 0;
 END_VAR

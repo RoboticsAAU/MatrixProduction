@@ -46,43 +46,65 @@ PROGRAM _CYCLIC
 		// RobotStart contains FB calls associated with initialization of the robots and diagnosis
 		RobotStart;
 		
-		robotOperating[0] := robotOperating[1] := robotOperating[3] := robotOperating[4] := robotOperating[5] := FALSE;
+		robotOperating[0] := robotOperating[3] := robotOperating[4] := robotOperating[5] := FALSE;
 		
 		// If the robot is ready, begin actual program
 		IF 	pKuka.status.P_ AND pKuka.status.S_ AND pKuka.status.R_ AND pKuka.status.I_ AND pKuka.status.EXT_ THEN
 			CASE cm.state OF
-				0: // RESETTING
+				0: // INITIALIZING			
+					pKuka.convert.ValuesToCOORDSYS.Tool := 1;
+					pKuka.convert.ValuesToCOORDSYS();
+			
+					pKuka.convert.ValuesToPosition.axisGroupIdx := pKuka.axisGroupIdx;
+					pKuka.convert.ValuesToPosition();
+			
+					pKuka.motion.KRC_MoveDirectAbsolute.AxisGroupIdx := pKuka.motion.KRC_MoveLinearAbsolute.AxisGroupIdx := pKuka.motion.KRC_MoveLinearRelative.AxisGroupIdx
+						:=  pKuka.axisGroupIdx;
+					pKuka.motion.KRC_MoveDirectAbsolute.KRC_AxisGroupRefArr := pKuka.motion.KRC_MoveLinearAbsolute.KRC_AxisGroupRefArr := pKuka.motion.KRC_MoveLinearRelative.KRC_AxisGroupRefArr
+					:= ADR(AxisRef);
+					
+					pKuka.motion.KRC_MoveDirectAbsolute.Velocity := pKuka.motion.KRC_MoveLinearAbsolute.Velocity := pKuka.motion.KRC_MoveLinearRelative.Velocity
+					:= 10; // Velocity in percent
+					pKuka.motion.KRC_MoveLinearAbsolute.Velocity := 40; // OVERWRITE FOR TESTING
+					
+					pKuka.motion.KRC_MoveDirectAbsolute.Acceleration := pKuka.motion.KRC_MoveLinearAbsolute.Acceleration := pKuka.motion.KRC_MoveLinearRelative.Acceleration
+						:= 20; // Acceleration in percent
+					pKuka.motion.KRC_MoveDirectAbsolute.BufferMode := pKuka.motion.KRC_MoveLinearAbsolute.BufferMode := pKuka.motion.KRC_MoveLinearRelative.BufferMode
+						:= 2; // BUFFERED
+					pKuka.motion.KRC_MoveLinearAbsolute.OriType := pKuka.motion.KRC_MoveLinearRelative.OriType
+						:= 0; // 0: VAR | 1: CONSTANT | 2: JOINT
+					pKuka.motion.KRC_MoveDirectAbsolute.ExecuteCmd := pKuka.motion.KRC_MoveLinearAbsolute.ExecuteCmd := pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd
+						:= FALSE;
+					
 					cm.state := 101;
 					
-				100..999: // SETTING TOOL AND BASE DATA
+				100..499: // SETTING TOOL AND BASE DATA
 					WriteToolData; // 101..200
 					WriteBaseData; // 201..300
+					
+				500..999: // Move robot to home position (position depends on operation type)
+					RobotHoming;
 				
 				1000..1999: // RUNNING MANIPULATOR PROGRAMS
-					CASE pKuka.axisGroupIdx OF
-						1:
-							KUKABottomCover;
-						
-						2:
-							KUKADrilling;
-						
-						3:
-							KUKAPcb;
-						
-						4:
-							KUKAFuse;
-						
-						5:
-							KUKATopCover;
-						
-						6:
-							KUKAUnloading;
-						
-					END_CASE
+												
+					IF robotOperating[i] THEN
+						IF pKuka.operationType = ASSEMBLY THEN
+							RobotAssembly;
+						ELSE // For now, we know it can only be PROCESS, unless additional entries are added to the enum in the future
+							RobotProcess;
+						END_IF
+					END_IF
 				
 			END_CASE
 			
 		END_IF
+		
+		//Calling function blocks to update content
+		pKuka.motion.KRC_MoveLinearAbsolute();
+		pKuka.motion.KRC_MoveLinearRelative();
+		pKuka.motion.KRC_MoveDirectAbsolute();
+		pKuka.gripperAction();
+		pKuka.TON();
 		
 		/////////////////////////////////////////////////////
 		// FunctionBlock to write the Output on the Struct //

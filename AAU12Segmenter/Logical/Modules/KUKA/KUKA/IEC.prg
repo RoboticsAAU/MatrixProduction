@@ -6,7 +6,6 @@
     <File Description="Local variables" Private="true">Variables.var</File>
     <File Description="Cyclic code">Main.st</File>
     <File>RobotStart.st</File>
-    <File>RobotProgram.st</File>
     <File>ErrorMessage.st</File>
     <File>WriteToolData.st</File>
     <File>WriteBaseData.st</File>
@@ -23,5 +22,9 @@
     <File>EETypeToFrame.st</File>
     <File>ValuesToPosition.st</File>
     <File>ValuesToMagazineFrame.st</File>
+    <File>ValuesToCorrection.st</File>
+    <File>RobotProcess.st</File>
+    <File>RobotAssembly.st</File>
+    <File>RobotHoming.st</File>
   </Files>
 </Program>

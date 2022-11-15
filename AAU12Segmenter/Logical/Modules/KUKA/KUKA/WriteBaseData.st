@@ -23,7 +23,7 @@ ACTION WriteBaseData: // Relative to world (can only be used when each robots wo
 				IF pKuka.operationType = ASSEMBLY THEN
 					cm.state := 202;
 				ELSIF pKuka.operationType = PROCESS THEN
-					cm.state := 1000;
+					cm.state := 500;
 				END_IF
 			END_IF
 		
@@ -40,7 +40,7 @@ ACTION WriteBaseData: // Relative to world (can only be used when each robots wo
 					
 			IF pKuka.write.KRC_WriteBaseData.Done THEN
 				pKuka.write.KRC_WriteBaseData.ExecuteCmd		:= FALSE;
-				cm.state := 1000;
+				cm.state := 500;
 			END_IF
 			
 	END_CASE
