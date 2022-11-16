@@ -8,19 +8,23 @@ ACTION RobotAssembly:
 			
 			IF robotOperating[i] THEN
 				cm.state := 1010;
+				pKuka.convert.ValuesToPosition.posType := APPROACH_MAGAZINE;
+				pKuka.convert.ValuesToPosition();
+						
+				pKuka.tempPosition := pKuka.convert.ValuesToPosition.outputPos;
 				
 				// The following order-specific adjustments are possible since we at this point know that the robot has returned to home position (main approach point) in cm.state = 500
 				CASE pKuka.axisGroupIdx OF
 					1:
 						CASE orderSpec[i] OF
 							0: // Black cover
-								pKuka.tempPosition.X := pKuka.tempPosition.X + 0; // Change when ready
+								pKuka.tempPosition.X := pKuka.tempPosition.X; // Change when ready
 						
 							1: // White cover
-								pKuka.tempPosition.X := pKuka.tempPosition.X + 80; // Change when ready
+								pKuka.tempPosition.X := pKuka.tempPosition.X - 80; // Change when ready
 						
 							2: // Blue cover
-								pKuka.tempPosition.X := pKuka.tempPosition.X + 160; // Change when ready
+								pKuka.tempPosition.X := pKuka.tempPosition.X - 160; // Change when ready
 						END_CASE
 					3:
 						// Do Nothing
@@ -28,17 +32,18 @@ ACTION RobotAssembly:
 						
 					4:
 						CASE orderSpec[i] OF
-							2: // 1 fuse
-								pKuka.tempPosition.X := pKuka.tempPosition.X + 13; // Change when ready
-						
-							4: // 2 fuses
+							1: // 1 fuse
+								pKuka.tempPosition.X := pKuka.tempPosition.X + fusePickOffset;
+								fusePickOffset := fusePickOffset * (-1); // Change pick side
+							
+							2: // 2 fuses
 								pKuka.tempPosition.X := pKuka.tempPosition.X; // Change when ready
 						END_CASE
 				
 					5:
 						CASE orderSpec[i] OF
 							0: // Black cover
-								pKuka.tempPosition.X := pKuka.tempPosition.X + 0; // Change when ready
+								pKuka.tempPosition.X := pKuka.tempPosition.X; // Change when ready
 						
 							1: // White cover
 								pKuka.tempPosition.X := pKuka.tempPosition.X + 80; // Change when ready

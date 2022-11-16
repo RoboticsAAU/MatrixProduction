@@ -11,10 +11,10 @@ FUNCTION_BLOCK ValuesToMagazineFrame
 	
 	CASE axisGroupIdx OF
 		1: // Bottom cover magazine frame
-			outputFrame.X := 1200;
-			outputFrame.Y := 360;
-			outputFrame.Z := 0;
-			outputFrame.A := 90;
+			outputFrame.X := 600;
+			outputFrame.Y := 0;
+			outputFrame.Z := 6.3;
+			outputFrame.A := 0;
 			outputFrame.B := 0;
 			outputFrame.C := 0;
 		

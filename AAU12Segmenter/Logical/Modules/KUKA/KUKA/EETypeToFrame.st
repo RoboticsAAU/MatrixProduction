@@ -14,7 +14,7 @@ FUNCTION_BLOCK EETypeToFrame
 		
 		COVER_EE:
 			
-			frame.Z := frame.Z; // Change when we know
+			frame.Z := frame.Z + 29.40; // Change when we know
 			
 		DRILL_EE:
 			frame.Z := frame.Z; // Change when we know
@@ -24,7 +24,7 @@ FUNCTION_BLOCK EETypeToFrame
 			//frame.C := 180;
 			
 		FUSE_EE:
-			frame.Z := frame.Z; // Change when we know
+			frame.Z := frame.Z + 20; // Change when we know
 			
 	END_CASE
 	

@@ -47,7 +47,17 @@ VAR
 	endPOS : E6POS;
 	position1 : E6AXIS;
 	position2 : E6AXIS;
+END_VAR
+(*For robot operations*)
+VAR
 	holeCounter : USINT;
+END_VAR
+VAR CONSTANT
+	relativeDistance : INT := 80;
+END_VAR
+VAR
+	numDoneHoles : USINT := 0;
+	fusePickOffset : REAL := 6.45;
 END_VAR
 (*References*)
 VAR
@@ -58,11 +68,4 @@ END_VAR
 VAR
 	robotOperating : ARRAY[0..5] OF BOOL;
 	orderSpec : ARRAY[0..5] OF USINT;
-END_VAR
-VAR CONSTANT
-	relativeDistance : INT := 80;
-END_VAR
-VAR
-	numDoneHoles : USINT := 0;
-	testerr : REAL;
 END_VAR

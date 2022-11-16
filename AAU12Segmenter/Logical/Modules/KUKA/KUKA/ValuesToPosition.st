@@ -16,28 +16,34 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 6; // 110
+					outputPos.Status := 2; // 010
 					outputPos.Turn := 2; // 000010
 					
-				APPROACH_MAGAZINE: // NOT CORRECT
-					outputPos.X := 120;
-					outputPos.Y := 120;
-					outputPos.Z := 200;
-					outputPos.A := -180;
+					baseNo := 0;
+					
+				APPROACH_MAGAZINE: 
+					outputPos.X := 200.000;
+					outputPos.Y := 203.066;
+					outputPos.Z := 157.556;
+					outputPos.A := 0;
 					outputPos.B := 0;
-					outputPos.C := 180;
-					outputPos.Status := 6; // 110
-					outputPos.Turn := 2; // 000010
+					outputPos.C := 135;
+					outputPos.Status := 2; // 010 Third bit is different from manual
+					outputPos.Turn := 10; // 001010
 				
+					baseNo := 2;
+					
 				APPROACH_WORKSTATION:
 					outputPos.X := 660;
 					outputPos.Y := 60;
-					outputPos.Z := 126.5; // Remember to change
+					outputPos.Z := (1 + 9.85 + 5) + relativeDistance + 2; 
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 6; // 110
+					outputPos.Status := 2; // 010
 					outputPos.Turn := 2; // 000010
+				
+					baseNo := 1;
 				
 			END_CASE
 			
@@ -55,7 +61,7 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 2; // 110
+					outputPos.Status := 2; // 010
 					outputPos.Turn := 2; // 000010
 					
 					baseNo := 0;
@@ -63,7 +69,7 @@ FUNCTION_BLOCK ValuesToPosition
 				APPROACH_WORKSTATION:
 					outputPos.X := 660 + 27; //Last term is x offset of bottom right hole
 					outputPos.Y := 420 - 53; //Last term is y offset of bottom right hole
-					outputPos.Z := (1 + 9.85 + 5 + 13) + relativeDistance + 100;
+					outputPos.Z := (1 + 9.85 + 5 + 13) + relativeDistance + 100; // Remember to change 
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
@@ -88,15 +94,15 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 2; // 110
+					outputPos.Status := 2; // 010
 					outputPos.Turn := 2; // 000010
 					
 					baseNo := 0;
 				
-				APPROACH_MAGAZINE: // TEMP POS
+				APPROACH_MAGAZINE: 
 					outputPos.X := 152.740;
 					outputPos.Y := 219.477;
-					outputPos.Z := 148.927; // 6.3 is a temporary offset
+					outputPos.Z := 148.927; 
 					outputPos.A := -90.000;
 					outputPos.B := -45.000;
 					outputPos.C := -180.000;
@@ -106,13 +112,13 @@ FUNCTION_BLOCK ValuesToPosition
 					baseNo := 2;
 				
 				APPROACH_WORKSTATION:
-					outputPos.X := 660; // last term is correction
+					outputPos.X := 660; 
 					outputPos.Y := 780 + 32.79; // 32.79 represents shift of fuses
 					outputPos.Z := (1 + 9.85 + 5 + 6.7 + 1.5 + 2) + relativeDistance + 2; 
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 2; // 110
+					outputPos.Status := 2; // 010
 					outputPos.Turn := 35; // 100011
 				
 					baseNo := 1;
@@ -132,28 +138,34 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.A := -180;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 6; // 110
+					outputPos.Status := 2; // 010
 					outputPos.Turn := 2; // 000010
+					
+					baseNo := 0;
 				
-				APPROACH_MAGAZINE: // NOT CORRECT
+				APPROACH_MAGAZINE:
 					outputPos.X := 120;
-					outputPos.Y := 120;
-					outputPos.Z := 200;
+					outputPos.Y := 250.263;
+					outputPos.Z := 196.383;
 					outputPos.A := 0;
 					outputPos.B := 0;
-					outputPos.C := 180;
-					outputPos.Status := 6; // 110
-					outputPos.Turn := 2; // 000010
+					outputPos.C := 135;
+					outputPos.Status := 2; // 010
+					outputPos.Turn := 10; // 001010
+					
+					baseNo := 2;
 				
 				APPROACH_WORKSTATION:
 					outputPos.X := 60;
 					outputPos.Y := 780;
-					outputPos.Z := 126.5; // Remember to change
+					outputPos.Z := (1 + 9.85 + 5 + 6.7 + 1.5 + 2 + 0.5) + relativeDistance + 2;
 					outputPos.A := -180;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 6; // 110
+					outputPos.Status := 2; // 010
 					outputPos.Turn := 2; // 000010
+				
+					baseNo := 1;
 				
 			END_CASE
 		
@@ -170,28 +182,34 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.A := -180;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 6; // 110
+					outputPos.Status := 2; // 010
 					outputPos.Turn := 2; // 000010
+					
+					baseNo := 0;
 				
-				APPROACH_MAGAZINE: // NOT CORRECT
-					outputPos.X := 120;
-					outputPos.Y := 120;
-					outputPos.Z := 200;
-					outputPos.A := -180;
+				APPROACH_MAGAZINE: 
+					outputPos.X := 40;
+					outputPos.Y := 203.067;
+					outputPos.Z := 157.557;
+					outputPos.A := 0;
 					outputPos.B := 0;
-					outputPos.C := 180;
-					outputPos.Status := 6; // 110
+					outputPos.C := 135;
+					outputPos.Status := 2; // 010
 					outputPos.Turn := 2; // 000010
+					
+					baseNo := 2;
 				
 				APPROACH_WORKSTATION:
 					outputPos.X := 60;
 					outputPos.Y := 420;
-					outputPos.Z := 126.5; // Remember to change
+					outputPos.Z := (1 + 9.85 + 5 + 13) + relativeDistance;
 					outputPos.A := -180;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 6; // 110
+					outputPos.Status := 2; // 010
 					outputPos.Turn := 2; // 000010
+				
+					baseNo := 1;
 				
 			END_CASE
 
@@ -208,8 +226,10 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.A := -180;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 6; // 110
+					outputPos.Status := 2; // 010
 					outputPos.Turn := 2; // 000010
+					
+					baseNo := 0;
 				
 				APPROACH_MAGAZINE: // NOT CORRECT
 					outputPos.X := 120;
@@ -218,18 +238,22 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.A := -180;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 6; // 110
+					outputPos.Status := 2; // 010
 					outputPos.Turn := 2; // 000010
+					
+					baseNo := 2;
 				
 				APPROACH_WORKSTATION:
 					outputPos.X := 60;
 					outputPos.Y := 60;
-					outputPos.Z := 126.5; // Remember to change
+					outputPos.Z := (1 + 9.85 + 5) + relativeDistance + 2; 
 					outputPos.A := -180;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 6; // 110
+					outputPos.Status := 2; // 010
 					outputPos.Turn := 35; // 100011
+				
+					baseNo := 1;
 				
 			END_CASE
 		

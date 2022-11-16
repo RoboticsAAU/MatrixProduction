@@ -7,14 +7,17 @@ ACTION RobotProcess:
 			cm.description := 'Define order-specific approach point at magazine';
 			
 			IF robotOperating[i] THEN
+				
+				pKuka.convert.ValuesToPosition.posType := APPROACH_WORKSTATION;
+				pKuka.convert.ValuesToPosition();
+						
+				pKuka.tempPosition := pKuka.convert.ValuesToPosition.outputPos;
+				
 				CASE pKuka.axisGroupIdx OF
 					2: //Drilling robot
 		
 						// Index i corresponds to robot, and thus also the correct entry in orderSpec   
-						pKuka.convert.ValuesToPosition.posType := APPROACH_WORKSTATION;
-						pKuka.convert.ValuesToPosition();
 						
-						pKuka.tempPosition := pKuka.convert.ValuesToPosition.outputPos;
 						pKuka.tempPosition.X := pKuka.tempPosition.X - (numDoneHoles MOD 2)*27*2;
 						pKuka.tempPosition.Y := pKuka.tempPosition.Y + brmfloor(numDoneHoles/2)*53*2;
 		
