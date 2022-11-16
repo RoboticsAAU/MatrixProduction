@@ -57,7 +57,7 @@ VAR CONSTANT
 END_VAR
 VAR
 	numDoneHoles : USINT := 0;
-	fusePickOffset : REAL := 6.45;
+	fusePickOffset : REAL := 13; (*Distance between fuses*)
 END_VAR
 (*References*)
 VAR
