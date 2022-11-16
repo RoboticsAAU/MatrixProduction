@@ -1,4 +1,46 @@
 
+FUNCTION_BLOCK KRC_ConvDelWPS
+	VAR_INPUT
+		AxisGroupIdx : INT;
+		ExecuteCmd : BOOL;
+		ConveyorNumber : INT;
+		PieceNumber : INT;
+		BufferMode : INT;
+		KRC_AxisGroupRefArr : REFERENCE TO AXIS_GROUP_REF_ARR;
+	END_VAR
+	VAR_OUTPUT
+		Busy : BOOL;
+		Active : BOOL;
+		Done : BOOL;
+		Aborted : BOOL;
+		Error : BOOL;
+		ErrorID : DINT;
+	END_VAR
+	VAR
+		mxA_ExecuteCommand_1 : mxA_ExecuteCommand;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK KRC_ActivatePosConversion
+	VAR_INPUT
+		AxisGroupIdx : INT;
+		ExecuteCmd : BOOL;
+		ActivateConversion : BOOL;
+		CoordSysToDisplay : COORDSYS;
+		KRC_AxisGroupRefArr : REFERENCE TO AXIS_GROUP_REF_ARR;
+	END_VAR
+	VAR_OUTPUT
+		Busy : BOOL;
+		Done : BOOL;
+		Aborted : BOOL;
+		Error : BOOL;
+		ErrorID : DINT;
+	END_VAR
+	VAR
+		mxA_ExecuteCommand_1 : mxA_ExecuteCommand;
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION_BLOCK KRC_Abort
 	VAR_INPUT
 		AxisGroupIdx : INT;
@@ -7,12 +49,33 @@ FUNCTION_BLOCK KRC_Abort
 	END_VAR
 	VAR_OUTPUT
 		Busy : BOOL;
+		Active : BOOL;
 		Done : BOOL;
 		Error : BOOL;
 		ErrorID : DINT;
 	END_VAR
 	VAR
 		mxA_ExecuteCommand_1 : mxA_ExecuteCommand;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK KRC_AbortAdvanced
+	VAR_INPUT
+		AxisGroupIdx : INT;
+		KRC_AxisGroupRefArr : REFERENCE TO AXIS_GROUP_REF_ARR;
+		ExecuteCmd : BOOL;
+		BrakeReaction : INT;
+	END_VAR
+	VAR_OUTPUT
+		Busy : BOOL;
+		Active : BOOL;
+		Done : BOOL;
+		Error : BOOL;
+		ErrorID : DINT;
+	END_VAR
+	VAR
+		mxA_ExecuteCommand_1 : mxA_ExecuteCommand;
+		nState : INT;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -429,6 +492,33 @@ FUNCTION_BLOCK KRC_Forward
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK KRC_ForwardAdvanced
+	VAR_INPUT
+		AxisGroupIdx : INT;
+		KRC_AxisGroupRefArr : REFERENCE TO AXIS_GROUP_REF_ARR;
+		ExecuteCmd : BOOL;
+		Axis_Values : E6AXIS;
+		CheckSoftEnd : BOOL;
+		CoordinateSystem : COORDSYS;
+	END_VAR
+	VAR_OUTPUT
+		Busy : BOOL;
+		Done : BOOL;
+		Position : E6POS;
+		Aborted : BOOL;
+		Error : BOOL;
+		ErrorID : DINT;
+	END_VAR
+	VAR
+		nState : INT;
+		mxA_ExecuteCommand_0 : mxA_ExecuteCommand;
+		nOrderID : DINT;
+		ERR_STATUS : REAL;
+		m_Position : E6POS;
+		nErr : INT;
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION_BLOCK KRC_GetAdvance
 	VAR_INPUT
 		AxisGroupIdx : INT;
@@ -448,7 +538,7 @@ FUNCTION_BLOCK KRC_GetAdvance
 	END_VAR
 END_FUNCTION_BLOCK
 
-FUNCTION_BLOCK KRC_Initialize (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+FUNCTION_BLOCK KRC_Initialize
 	VAR_INPUT
 		AxisGroupIdx : INT;
 		KRC_AxisGroupRefArr : REFERENCE TO AXIS_GROUP_REF_ARR;
@@ -461,6 +551,7 @@ FUNCTION_BLOCK KRC_Initialize (*TODO: Add your comment here*) (*$GROUP=User,$CAT
 		KRC_Major : DINT;
 		KRC_Minor : DINT;
 		KRC_Revision : DINT;
+		KRC_AbsAccur : DINT;
 		PLC_Major : DINT;
 		PLC_Minor : DINT;
 		PLC_Revision : DINT;
@@ -517,6 +608,37 @@ FUNCTION_BLOCK KRC_Inverse
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK KRC_InverseAdvanced
+	VAR_INPUT
+		AxisGroupIdx : INT;
+		KRC_AxisGroupRefArr : REFERENCE TO AXIS_GROUP_REF_ARR;
+		ExecuteCmd : BOOL;
+		Position : E6POS;
+		PosValidS : BOOL;
+		PosValidT : BOOL;
+		Start_Axis : E6AXIS;
+		CheckSoftEnd : BOOL;
+		CoordinateSystem : COORDSYS;
+	END_VAR
+	VAR_OUTPUT
+		Busy : BOOL;
+		Done : BOOL;
+		AxisPosition : E6AXIS;
+		Aborted : BOOL;
+		Error : BOOL;
+		ErrorID : DINT;
+	END_VAR
+	VAR
+		nState : INT;
+		mxA_ExecuteCommand_0 : mxA_ExecuteCommand;
+		nOrderID : DINT;
+		ERR_STATUS : REAL;
+		m_Position : E6AXIS;
+		nErr : INT;
+		ActualPosition : INT;
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION_BLOCK KRC_Jog
 	VAR_INPUT
 		AxisGroupIdx : INT;
@@ -554,8 +676,6 @@ FUNCTION_BLOCK KRC_Jog
 	VAR_OUTPUT
 		Busy : BOOL;
 		Active : BOOL;
-		Done : BOOL;
-		Aborted : BOOL;
 		Error : BOOL;
 		ErrorID : DINT;
 	END_VAR
@@ -598,6 +718,205 @@ FUNCTION_BLOCK KRC_Jog
 		E6_P_Last : BOOL;
 		E6_M_Last : BOOL;
 		m_ExecuteCmd_Finished : BOOL;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK KRC_LDDWriteLoad
+	VAR_INPUT
+		AxisGroupIdx : INT;
+		ExecuteCmd : BOOL;
+		BufferMode : INT;
+		Tool : INT;
+		KRC_AxisGroupRefArr : REFERENCE TO AXIS_GROUP_REF_ARR;
+	END_VAR
+	VAR_OUTPUT
+		Busy : BOOL;
+		Done : BOOL;
+		Error : BOOL;
+		ErrorID : DINT;
+	END_VAR
+	VAR
+		nOrderID : DINT;
+		nState : DINT;
+		Copy_Of_nState : DINT;
+		nErr : INT;
+		Err_Status : REAL;
+		mxA_ExecuteCommand_2 : mxA_ExecuteCommand;
+		mxA_ExecuteCommand_1 : mxA_ExecuteCommand;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK KRC_LDDTestRun
+	VAR_INPUT
+		AxisGroupIdx : INT;
+		ExecuteCmd : BOOL;
+		BufferMode : INT;
+		KRC_AxisGroupRefArr : REFERENCE TO AXIS_GROUP_REF_ARR;
+	END_VAR
+	VAR_OUTPUT
+		Busy : BOOL;
+		Done : BOOL;
+		Error : BOOL;
+		ErrorID : DINT;
+	END_VAR
+	VAR
+		nOrderID : DINT;
+		nState : DINT;
+		mxA_ExecuteCommand_2 : mxA_ExecuteCommand;
+		mxA_ExecuteCommand_1 : mxA_ExecuteCommand;
+		nErr : INT;
+		Err_Status : REAL;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK KRC_LDDStart
+	VAR_INPUT
+		AxisGroupIdx : INT;
+		ExecuteCmd : BOOL;
+		Tool : INT;
+		KRC_AxisGroupRefArr : REFERENCE TO AXIS_GROUP_REF_ARR;
+	END_VAR
+	VAR_OUTPUT
+		Busy : BOOL;
+		Done : BOOL;
+		Error : BOOL;
+		ErrorID : DINT;
+	END_VAR
+	VAR
+		nOrderID : DINT;
+		nState : DINT;
+		nErr : INT;
+		Err_Status : REAL;
+		mxA_ExecuteCommand_2 : mxA_ExecuteCommand;
+		mxA_ExecuteCommand_1 : mxA_ExecuteCommand;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK KRC_LDDcheckPos (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_INPUT
+		AxisGroupIdx : INT;
+		ExecuteCmd : BOOL;
+		KRC_AxisGroupRefArr : AXIS_GROUP_REF_ARR;
+	END_VAR
+	VAR_OUTPUT
+		Busy : BOOL;
+		Done : BOOL;
+		Error : BOOL;
+		ErrorID : DINT;
+	END_VAR
+	VAR
+		ERR_STATUS : REAL;
+		nERR : INT;
+		nState : INT;
+		mxA_ExecuteCommand_1 : mxA_ExecuteCommand;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK KRC_LDDConfig
+	VAR_INPUT
+		AxisGroupIdx : INT;
+		ExecuteCmd : BOOL;
+		LoadA3Settings : INT;
+		WarmUp : BOOL;
+		M_A3 : REAL;
+		X_A3 : REAL;
+		Y_A3 : REAL;
+		Z_A3 : REAL;
+		A_A3 : REAL;
+		B_A3 : REAL;
+		C_A3 : REAL;
+		JX_A3 : REAL;
+		JY_A3 : REAL;
+		JZ_A3 : REAL;
+		Mass : REAL;
+		KRC_AxisGroupRefArr : REFERENCE TO AXIS_GROUP_REF_ARR;
+	END_VAR
+	VAR_OUTPUT
+		Busy : BOOL;
+		Done : BOOL;
+		Error : BOOL;
+		ErrorID : DINT;
+	END_VAR
+	VAR
+		Err_Status : REAL;
+		nErr : INT;
+		nState : DINT;
+		nOrderID : DINT;
+		mxA_ExecuteCommand_1 : mxA_ExecuteCommand;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK KRC_JogAdvanced
+	VAR_INPUT
+		AxisGroupIdx : INT;
+		KRC_AxisGroupRefArr : REFERENCE TO AXIS_GROUP_REF_ARR;
+		MoveType : INT;
+		Velocity : INT;
+		Acceleration : INT;
+		CoordinateSystem : COORDSYS;
+		JogAdvanced : BOOL;
+		B_A1_JA_P : BOOL;
+		B_A1_JA_M : BOOL;
+		B_A2_JA_P : BOOL;
+		B_A2_JA_M : BOOL;
+		B_A3_JA_P : BOOL;
+		B_A3_JA_M : BOOL;
+		B_A4_JA_P : BOOL;
+		B_A4_JA_M : BOOL;
+		B_A5_JA_P : BOOL;
+		B_A5_JA_M : BOOL;
+		B_A6_JA_P : BOOL;
+		B_A6_JA_M : BOOL;
+		B_E1_JA_P : BOOL;
+		B_E1_JA_M : BOOL;
+		B_E2_JA_P : BOOL;
+		B_E2_JA_M : BOOL;
+		B_E3_JA_P : BOOL;
+		B_E3_JA_M : BOOL;
+		B_E4_JA_P : BOOL;
+		B_E4_JA_M : BOOL;
+		B_E5_JA_P : BOOL;
+		B_E5_JA_M : BOOL;
+		B_E6_JA_P : BOOL;
+		B_E6_JA_M : BOOL;
+		B_X_JA_P : BOOL;
+		B_X_JA_M : BOOL;
+		B_Y_JA_P : BOOL;
+		B_Y_JA_M : BOOL;
+		B_Z_JA_P : BOOL;
+		B_Z_JA_M : BOOL;
+		B_A_JA_P : BOOL;
+		B_A_JA_M : BOOL;
+		B_B_JA_P : BOOL;
+		B_B_JA_M : BOOL;
+		B_C_JA_P : BOOL;
+		B_C_JA_M : BOOL;
+	END_VAR
+	VAR_OUTPUT
+		Busy : BOOL;
+		Active : BOOL;
+		Error : BOOL;
+		ErrorID : DINT;
+	END_VAR
+	VAR
+		JA_State_Val : INT;
+		KRC_Move_1 : KRC_Move;
+		KRC_Abort_1 : KRC_Abort;
+		m_Position : E6POS;
+		m_AxisPosition : E6AXIS;
+		m_MoveType : INT;
+		m_ExecuteAbort : BOOL;
+		JA_ButtonActive : BOOL;
+		JA_ButtonChanged : BOOL;
+		JA_ButtonLast : BOOL;
+		JA_MoveTypeActive : INT;
+		JA_MoveTypeLast : INT;
+		JA_MoveTypeChanged : BOOL;
+		JA_BaseChanged : BOOL;
+		JA_CoordSysActive : COORDSYS;
+		JA_CoordSysLast : COORDSYS;
+		JA_ToolChanged : BOOL;
+		JA_IpoChanged : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -750,6 +1069,7 @@ FUNCTION_BLOCK KRC_MoveAxisAbsolute
 		Acceleration : INT;
 		Approximate : APO;
 		BufferMode : INT;
+		SplineMode : BOOL;
 	END_VAR
 	VAR_OUTPUT
 		Busy : BOOL;
@@ -760,6 +1080,7 @@ FUNCTION_BLOCK KRC_MoveAxisAbsolute
 		ErrorID : DINT;
 	END_VAR
 	VAR
+		SwitchMoveType : INT;
 		KRC_Move : KRC_Move;
 		m_CircHP : E6POS;
 		m_Position : E6POS;
@@ -783,6 +1104,7 @@ FUNCTION_BLOCK KRC_MoveCircAbsolute
 		CircType : INT;
 		Approximate : APO;
 		BufferMode : INT;
+		SplineMode : BOOL;
 	END_VAR
 	VAR_OUTPUT
 		Busy : BOOL;
@@ -793,6 +1115,7 @@ FUNCTION_BLOCK KRC_MoveCircAbsolute
 		ErrorID : DINT;
 	END_VAR
 	VAR
+		SwitchMoveType : INT;
 		KRC_Move : KRC_Move;
 		m_CoordinateSystem : COORDSYS;
 		m_AxisPosition : E6AXIS;
@@ -814,6 +1137,7 @@ FUNCTION_BLOCK KRC_MoveCircRelative
 		CircType : INT;
 		Approximate : APO;
 		BufferMode : INT;
+		SplineMode : BOOL;
 	END_VAR
 	VAR_OUTPUT
 		Busy : BOOL;
@@ -827,6 +1151,7 @@ FUNCTION_BLOCK KRC_MoveCircRelative
 		KRC_Move : KRC_Move;
 		m_CoordinateSystem : COORDSYS;
 		m_AxisPosition : E6AXIS;
+		SwitchMoveType : INT;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -841,6 +1166,7 @@ FUNCTION_BLOCK KRC_MoveDirectAbsolute
 		CoordinateSystem : COORDSYS;
 		Approximate : APO;
 		BufferMode : INT;
+		SplineMode : BOOL;
 	END_VAR
 	VAR_OUTPUT
 		Busy : BOOL;
@@ -851,6 +1177,7 @@ FUNCTION_BLOCK KRC_MoveDirectAbsolute
 		ErrorID : DINT;
 	END_VAR
 	VAR
+		SwitchMoveType : INT;
 		KRC_Move : KRC_Move;
 		m_CircHP : E6POS;
 		m_AxisPosition : E6AXIS;
@@ -869,6 +1196,7 @@ FUNCTION_BLOCK KRC_MoveDirectRelative
 		CoordinateSystem : COORDSYS;
 		Approximate : APO;
 		BufferMode : INT;
+		SplineMode : BOOL;
 	END_VAR
 	VAR_OUTPUT
 		Busy : BOOL;
@@ -879,6 +1207,7 @@ FUNCTION_BLOCK KRC_MoveDirectRelative
 		ErrorID : DINT;
 	END_VAR
 	VAR
+		SwitchMoveType : INT;
 		KRC_Move : KRC_Move;
 		m_CircHP : E6POS;
 		m_AxisPosition : E6AXIS;
@@ -898,6 +1227,7 @@ FUNCTION_BLOCK KRC_MoveLinearAbsolute
 		OriType : INT;
 		Approximate : APO;
 		BufferMode : INT;
+		SplineMode : BOOL;
 	END_VAR
 	VAR_OUTPUT
 		Busy : BOOL;
@@ -908,6 +1238,7 @@ FUNCTION_BLOCK KRC_MoveLinearAbsolute
 		ErrorID : DINT;
 	END_VAR
 	VAR
+		SwitchMoveType : INT;
 		KRC_Move : KRC_Move;
 		m_CircHP : E6POS;
 		m_AxisPosition : E6AXIS;
@@ -926,6 +1257,7 @@ FUNCTION_BLOCK KRC_MoveLinearRelative
 		OriType : INT;
 		Approximate : APO;
 		BufferMode : INT;
+		SplineMode : BOOL;
 	END_VAR
 	VAR_OUTPUT
 		Busy : BOOL;
@@ -936,6 +1268,7 @@ FUNCTION_BLOCK KRC_MoveLinearRelative
 		ErrorID : DINT;
 	END_VAR
 	VAR
+		SwitchMoveType : INT;
 		KRC_Move : KRC_Move;
 		m_CircHP : E6POS;
 		m_AxisPosition : E6AXIS;
@@ -1122,7 +1455,7 @@ FUNCTION_BLOCK KRC_ReadAxisGroup
 		m_BRAKETEST_WORK : BOOL;
 		m_BRAKES_OK : BOOL;
 		m_BRAKETEST_WARN : BOOL;
-		m_Reserve2075 : BOOL;
+		m_AbortActive : BOOL;
 		m_BRAKEACTIVE : BOOL;
 		m_KCP_CONNECT : BOOL;
 		m_TouchUp : BOOL;
@@ -1787,6 +2120,33 @@ FUNCTION_BLOCK KRC_TechFunction
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK KRC_TechFunctionAdvanced
+	VAR_INPUT
+		AxisGroupIdx : INT;
+		KRC_AxisGroupRefArr : REFERENCE TO AXIS_GROUP_REF_ARR;
+		ExecuteCmd : BOOL;
+		TechFunctionID : INT;
+		BOOL_DATA : BOOL_ARRAY_40;
+		INT_DATA : INT32_ARRAY_40;
+		REAL_DATA : REAL_ARRAY_40;
+		ParameterCount : INT;
+	END_VAR
+	VAR_OUTPUT
+		ErrorID : DINT;
+		Error : BOOL;
+		Busy : BOOL;
+		Active : BOOL;
+		Done : BOOL;
+		Aborted : BOOL;
+		ReturnValue : REAL_ARRAY_12;
+	END_VAR
+	VAR
+		i : INT;
+		nState : INT;
+		mxA_ExecuteCommand_1 : mxA_ExecuteCommand;
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION_BLOCK KRC_Test_TechFunction
 	VAR_INPUT
 		AxisGroupIdx : INT;
@@ -2043,6 +2403,9 @@ FUNCTION_BLOCK KRC_WriteAxisGroup
 		CmdID_Val : INT;
 		BufferMode_Val : INT;
 		BoolValues1 : WORD;
+		Jog_Advanced_Val : BOOL;
+		ZW_Jog_Ad_State_Val : INT;
+		Jog_Ad_State : BYTE;
 	END_VAR
 END_FUNCTION_BLOCK
 

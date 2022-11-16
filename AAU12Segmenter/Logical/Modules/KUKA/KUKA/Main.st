@@ -31,11 +31,8 @@ END_PROGRAM
 
 PROGRAM _CYCLIC
 
-	FOR i := 1 TO 4 DO // CHANGE TO 0 TO 5 WHEN ALL ROBOTS WORK
-		IF i = 2 THEN
-			EXIT;
-		END_IF
-			
+	FOR i := 0 TO 5 DO // CHANGE TO 0 TO 5 WHEN ALL ROBOTS WORK
+		
 		// Accessing the specific KUKA for easier naming
 		pKuka ACCESS ADR(KUKAs[i]);
 		cm ACCESS ADR(KUKAs[i].cm);	

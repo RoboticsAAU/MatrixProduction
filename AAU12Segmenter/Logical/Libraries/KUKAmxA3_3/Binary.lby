@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
-<Library Version="3.01.1" SubType="Binary" xmlns="http://br-automation.co.at/AS/Library">
+<Library Version="3.03.1" SubType="Binary" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
     <File Description="Exported constants">Constants.var</File>
-    <File>KUKAmxA3_1.fun</File>
-    <File Description="Exported data types">Types.typ</File>
+    <File>KUKAmxA3_3.fun</File>
     <File>APO.typ</File>
     <File>COORDSYS.typ</File>
     <File>E6AXIS.typ</File>
@@ -21,6 +20,7 @@
     <File>POSITION.typ</File>
     <File>AXBOX.typ</File>
     <File>BOX.typ</File>
+    <File Description="Exported data types">Types.typ</File>
   </Files>
   <Dependencies>
     <Dependency ObjectName="asieccon" FromVersion="0.00.0" />

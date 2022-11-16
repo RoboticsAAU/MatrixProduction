@@ -1,15 +1,15 @@
-/* Automation Studio generated header file */
-/* Do not edit ! */
-/* KUKAmxA3_1 3.01.1 */
+/* Durch Automation Studio generierte Headerdatei*/
+/* Nicht bearbeiten! */
+/* KUKAmxA3_3 3.03.1 */
 
-#ifndef _KUKAMXA3_1_
-#define _KUKAMXA3_1_
+#ifndef _KUKAMXA3_3_
+#define _KUKAMXA3_3_
 #ifdef __cplusplus
 extern "C" 
 {
 #endif
-#ifndef _KUKAmxA3_1_VERSION
-#define _KUKAmxA3_1_VERSION 3.01.1
+#ifndef _KUKAmxA3_3_VERSION
+#define _KUKAmxA3_3_VERSION 3.03.1
 #endif
 
 #include <bur/plctypes.h>
@@ -17,61 +17,62 @@ extern "C"
 #ifndef _BUR_PUBLIC
 #define _BUR_PUBLIC
 #endif
-/* Datatypes and datatypes of function blocks */
-#ifdef _BUR_USE_DECLARATION_IN_IEC
-typedef float MXA_CMD_PAR_REAL[100];
-#else
-/* Data type MXA_CMD_PAR_REAL not declared. Derived data types with an array data type as base type whose starting index is not equal to zero cannot be used in ANSI C programs / libraries.*/
-#endif
+/* Datentypen und Datentypen von Funktionsblöcken */
+typedef struct APO
+{	signed short PTP_MODE;
+	signed short CP_MODE;
+	signed short CPTP;
+	float CDIS;
+	float CORI;
+	signed short CVEL;
+} APO;
 
-#ifdef _BUR_USE_DECLARATION_IN_IEC
-typedef signed long MXA_CMD_PAR_INT[50];
-#else
-/* Data type MXA_CMD_PAR_INT not declared. Derived data types with an array data type as base type whose starting index is not equal to zero cannot be used in ANSI C programs / libraries.*/
-#endif
+typedef struct COORDSYS
+{	signed short TOOL;
+	signed short BASE;
+	signed short IPO_Mode;
+} COORDSYS;
 
-#ifdef _BUR_USE_DECLARATION_IN_IEC
-typedef plcbit MXA_CMD_PAR_BOOL[50];
-#else
-/* Data type MXA_CMD_PAR_BOOL not declared. Derived data types with an array data type as base type whose starting index is not equal to zero cannot be used in ANSI C programs / libraries.*/
-#endif
+typedef struct E6AXIS
+{	float A1;
+	float A2;
+	float A3;
+	float A4;
+	float A5;
+	float A6;
+	float E1;
+	float E2;
+	float E3;
+	float E4;
+	float E5;
+	float E6;
+} E6AXIS;
 
-typedef struct MXA_COMMAND
-{	signed long CommandID;
-	signed long OrderID;
-	signed long BufferMode;
-	signed short CommandSize;
-	MXA_CMD_PAR_REAL CmdParReal;
-	MXA_CMD_PAR_INT CmdParInt;
-	MXA_CMD_PAR_BOOL CmdParBool;
-} MXA_COMMAND;
+typedef struct E6POS
+{	float X;
+	float Y;
+	float Z;
+	float A;
+	float B;
+	float C;
+	signed short Status;
+	signed short Turn;
+	float E1;
+	float E2;
+	float E3;
+	float E4;
+	float E5;
+	float E6;
+} E6POS;
 
-typedef struct MXA_CMD_STATE_RET
-{	signed long SR_OrderID;
-	signed short SR_State;
-} MXA_CMD_STATE_RET;
-
-#ifdef _BUR_USE_DECLARATION_IN_IEC
-typedef MXA_CMD_STATE_RET MXA_CMD_SR_ARR[10];
-#else
-/* Data type MXA_CMD_SR_ARR not declared. Derived data types with an array data type as base type whose starting index is not equal to zero cannot be used in ANSI C programs / libraries.*/
-#endif
-
-#ifdef _BUR_USE_DECLARATION_IN_IEC
-typedef float MXA_CMD_DATA_RET[12];
-#else
-/* Data type MXA_CMD_DATA_RET not declared. Derived data types with an array data type as base type whose starting index is not equal to zero cannot be used in ANSI C programs / libraries.*/
-#endif
-
-typedef struct MXA_COMMAND_STATUS
-{	signed long CmdIDRet;
-	signed long OrderIDRet;
-	signed short TransmissionNoRet;
-	MXA_CMD_SR_ARR StateReturn;
-	MXA_CMD_DATA_RET CmdDataReturn;
-	signed long CmdDataRetCSKRC;
-	signed long CmdDataRetCSPLC;
-} MXA_COMMAND_STATUS;
+typedef struct FRAME
+{	float X;
+	float Y;
+	float Z;
+	float A;
+	float B;
+	float C;
+} FRAME;
 
 typedef struct MXA_AUTEXT_CONTROL
 {	plcbyte PGNO;
@@ -119,42 +120,84 @@ typedef struct MXA_AUTEXT_STATE
 	plcbit MASTERINGTESTSWITCH_OK;
 } MXA_AUTEXT_STATE;
 
-typedef struct E6POS
-{	float X;
-	float Y;
-	float Z;
-	float A;
-	float B;
-	float C;
-	signed short Status;
-	signed short Turn;
-	float E1;
-	float E2;
-	float E3;
-	float E4;
-	float E5;
-	float E6;
-} E6POS;
+typedef struct MXA_CMD_STATE_RET
+{	signed long SR_OrderID;
+	signed short SR_State;
+} MXA_CMD_STATE_RET;
 
-typedef struct E6AXIS
-{	float A1;
-	float A2;
-	float A3;
-	float A4;
-	float A5;
-	float A6;
-	float E1;
-	float E2;
-	float E3;
-	float E4;
-	float E5;
-	float E6;
-} E6AXIS;
+#ifdef _BUR_USE_DECLARATION_IN_IEC
+typedef float MXA_CMD_PAR_REAL[100];
+#else
+/* DatentypMXA_CMD_PAR_REAL ist nicht deklariert. Abgeleitete Datentypen mit einen Feld-Datentyp als Basistyp, dessen Startindex ungleich Null ist, kann in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
+#endif
+
+#ifdef _BUR_USE_DECLARATION_IN_IEC
+typedef signed long MXA_CMD_PAR_INT[50];
+#else
+/* DatentypMXA_CMD_PAR_INT ist nicht deklariert. Abgeleitete Datentypen mit einen Feld-Datentyp als Basistyp, dessen Startindex ungleich Null ist, kann in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
+#endif
+
+#ifdef _BUR_USE_DECLARATION_IN_IEC
+typedef plcbit MXA_CMD_PAR_BOOL[50];
+#else
+/* DatentypMXA_CMD_PAR_BOOL ist nicht deklariert. Abgeleitete Datentypen mit einen Feld-Datentyp als Basistyp, dessen Startindex ungleich Null ist, kann in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
+#endif
+
+typedef struct MXA_COMMAND
+{	signed long CommandID;
+	signed long OrderID;
+	signed long BufferMode;
+	signed short CommandSize;
+	MXA_CMD_PAR_REAL CmdParReal;
+	MXA_CMD_PAR_INT CmdParInt;
+	MXA_CMD_PAR_BOOL CmdParBool;
+} MXA_COMMAND;
+
+#ifdef _BUR_USE_DECLARATION_IN_IEC
+typedef MXA_CMD_STATE_RET MXA_CMD_SR_ARR[10];
+#else
+/* DatentypMXA_CMD_SR_ARR ist nicht deklariert. Abgeleitete Datentypen mit einen Feld-Datentyp als Basistyp, dessen Startindex ungleich Null ist, kann in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
+#endif
+
+#ifdef _BUR_USE_DECLARATION_IN_IEC
+typedef float MXA_CMD_DATA_RET[12];
+#else
+/* DatentypMXA_CMD_DATA_RET ist nicht deklariert. Abgeleitete Datentypen mit einen Feld-Datentyp als Basistyp, dessen Startindex ungleich Null ist, kann in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
+#endif
+
+typedef struct MXA_COMMAND_STATUS
+{	signed long CmdIDRet;
+	signed long OrderIDRet;
+	signed short TransmissionNoRet;
+	MXA_CMD_SR_ARR StateReturn;
+	MXA_CMD_DATA_RET CmdDataReturn;
+	signed long CmdDataRetCSKRC;
+	signed long CmdDataRetCSPLC;
+} MXA_COMMAND_STATUS;
+
+typedef struct MXA_KRC_CONTROL
+{	plcbit RESET;
+	signed short Override;
+	plcbit Brake;
+	plcbit BrakeF;
+	plcbit ReleaseBrake;
+	plcbit ShowTrace;
+	plcbit MessageReset;
+	plcbit OUT_VAL_1;
+	plcbit OUT_VAL_2;
+	plcbit OUT_VAL_3;
+	plcbit OUT_VAL_4;
+	plcbit OUT_VAL_5;
+	plcbit OUT_VAL_6;
+	plcbit OUT_VAL_7;
+	plcbit OUT_VAL_8;
+	plcbit WRITE_OUT_1TO8;
+} MXA_KRC_CONTROL;
 
 #ifdef _BUR_USE_DECLARATION_IN_IEC
 typedef signed short MXA_IR_STATE[8];
 #else
-/* Data type MXA_IR_STATE not declared. Derived data types with an array data type as base type whose starting index is not equal to zero cannot be used in ANSI C programs / libraries.*/
+/* DatentypMXA_IR_STATE ist nicht deklariert. Abgeleitete Datentypen mit einen Feld-Datentyp als Basistyp, dessen Startindex ungleich Null ist, kann in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
 #endif
 
 typedef struct MXA_KRC_STATE
@@ -183,71 +226,8 @@ typedef struct MXA_KRC_STATE
 	plcbit TouchUP;
 	signed short TouchUP_Index;
 	signed short IN_VAL_1TO8;
+	plcbit AbortActive;
 } MXA_KRC_STATE;
-
-typedef struct MXA_KRC_CONTROL
-{	plcbit RESET;
-	signed short Override;
-	plcbit Brake;
-	plcbit BrakeF;
-	plcbit ReleaseBrake;
-	plcbit ShowTrace;
-	plcbit MessageReset;
-	plcbit OUT_VAL_1;
-	plcbit OUT_VAL_2;
-	plcbit OUT_VAL_3;
-	plcbit OUT_VAL_4;
-	plcbit OUT_VAL_5;
-	plcbit OUT_VAL_6;
-	plcbit OUT_VAL_7;
-	plcbit OUT_VAL_8;
-	plcbit WRITE_OUT_1TO8;
-} MXA_KRC_CONTROL;
-
-typedef struct AXIS_GROUP_REF
-{	plcbit Initialized;
-	plcbit Online;
-	signed long LastOrderID;
-	plcbit ReadAxisGroupInit;
-	plcbit ReadDone;
-	signed long IntErrorID;
-	signed long IntFBErrorID;
-	signed long HeartBeatTO;
-	signed long PLC_Major;
-	signed long PLC_Minor;
-	float DEF_VEL_CP;
-	float DEF_ACC_CP;
-	struct MXA_COMMAND Command;
-	struct MXA_COMMAND_STATUS CmdState;
-	struct MXA_AUTEXT_CONTROL AutExtControl;
-	struct MXA_AUTEXT_STATE AutExtState;
-	struct MXA_KRC_STATE KRCState;
-	struct MXA_KRC_CONTROL KRCControl;
-} AXIS_GROUP_REF;
-
-typedef struct APO
-{	signed short PTP_MODE;
-	signed short CP_MODE;
-	signed short CPTP;
-	float CDIS;
-	float CORI;
-	signed short CVEL;
-} APO;
-
-typedef struct COORDSYS
-{	signed short TOOL;
-	signed short BASE;
-	signed short IPO_Mode;
-} COORDSYS;
-
-typedef struct FRAME
-{	float X;
-	float Y;
-	float Z;
-	float A;
-	float B;
-	float C;
-} FRAME;
 
 #ifdef _BUR_USE_DECLARATION_IN_IEC
 typedef struct PNetWriteData
@@ -282,7 +262,7 @@ typedef struct PNetWriteData
 	float CmdParBoolReal[100];
 } PNetWriteData;
 #else
-/* Data type PNetWriteData not declared. Data types with array elements whose starting indexes are not equal to zero cannot be used in ANSI C programs / libraries.*/
+/* Datentyp PNetWriteData nicht deklariert. Datentypen mit Feldelementen, deren Startindizes ungleich Null sind, können in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
 #endif
 
 typedef struct POSITION
@@ -333,10 +313,37 @@ typedef struct BOX
 	float Z2;
 } BOX;
 
+typedef struct MXA_JogAdvanced
+{	plcbit Jog_Ad_Active;
+	signed short Jog_Ad_State_Val;
+} MXA_JogAdvanced;
+
+typedef struct AXIS_GROUP_REF
+{	plcbit Initialized;
+	plcbit Online;
+	signed long LastOrderID;
+	plcbit ReadAxisGroupInit;
+	plcbit ReadDone;
+	signed long IntErrorID;
+	signed long IntFBErrorID;
+	signed long HeartBeatTO;
+	signed long PLC_Major;
+	signed long PLC_Minor;
+	float DEF_VEL_CP;
+	float DEF_ACC_CP;
+	struct MXA_COMMAND Command;
+	struct MXA_COMMAND_STATUS CmdState;
+	struct MXA_AUTEXT_CONTROL AutExtControl;
+	struct MXA_AUTEXT_STATE AutExtState;
+	struct MXA_KRC_STATE KRCState;
+	struct MXA_KRC_CONTROL KRCControl;
+	struct MXA_JogAdvanced Jog_Advanced;
+} AXIS_GROUP_REF;
+
 #ifdef _BUR_USE_DECLARATION_IN_IEC
 typedef AXIS_GROUP_REF AXIS_GROUP_REF_ARR[5];
 #else
-/* Data type AXIS_GROUP_REF_ARR not declared. Derived data types with an array data type as base type whose starting index is not equal to zero cannot be used in ANSI C programs / libraries.*/
+/* DatentypAXIS_GROUP_REF_ARR ist nicht deklariert. Abgeleitete Datentypen mit einen Feld-Datentyp als Basistyp, dessen Startindex ungleich Null ist, kann in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
 #endif
 
 #ifdef _BUR_USE_DECLARATION_IN_IEC
@@ -350,7 +357,7 @@ typedef struct mxA_ResetCommand
 	unsigned char Robots;
 } mxA_ResetCommand_typ;
 #else
-/* Data type mxA_ResetCommand not declared. Data types with array elements whose starting indexes are not equal to zero cannot be used in ANSI C programs / libraries.*/
+/* Datentyp mxA_ResetCommand nicht deklariert. Datentypen mit Feldelementen, deren Startindizes ungleich Null sind, können in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
 #endif
 
 typedef struct mxA_GetOrderState
@@ -401,6 +408,48 @@ typedef struct mxA_ExecuteCommand
 	plcbit m_RE_Execute;
 } mxA_ExecuteCommand_typ;
 
+typedef struct KRC_ConvDelWPS
+{
+	/* VAR_INPUT (analog) */
+	signed short AxisGroupIdx;
+	signed short ConveyorNumber;
+	signed short PieceNumber;
+	signed short BufferMode;
+	AXIS_GROUP_REF_ARR* KRC_AxisGroupRefArr;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct mxA_ExecuteCommand mxA_ExecuteCommand_1;
+	/* VAR_INPUT (digital) */
+	plcbit ExecuteCmd;
+	/* VAR_OUTPUT (digital) */
+	plcbit Busy;
+	plcbit Active;
+	plcbit Done;
+	plcbit Aborted;
+	plcbit Error;
+} KRC_ConvDelWPS_typ;
+
+typedef struct KRC_ActivatePosConversion
+{
+	/* VAR_INPUT (analog) */
+	signed short AxisGroupIdx;
+	struct COORDSYS CoordSysToDisplay;
+	AXIS_GROUP_REF_ARR* KRC_AxisGroupRefArr;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct mxA_ExecuteCommand mxA_ExecuteCommand_1;
+	/* VAR_INPUT (digital) */
+	plcbit ExecuteCmd;
+	plcbit ActivateConversion;
+	/* VAR_OUTPUT (digital) */
+	plcbit Busy;
+	plcbit Done;
+	plcbit Aborted;
+	plcbit Error;
+} KRC_ActivatePosConversion_typ;
+
 typedef struct KRC_Abort
 {
 	/* VAR_INPUT (analog) */
@@ -414,9 +463,30 @@ typedef struct KRC_Abort
 	plcbit ExecuteCmd;
 	/* VAR_OUTPUT (digital) */
 	plcbit Busy;
+	plcbit Active;
 	plcbit Done;
 	plcbit Error;
 } KRC_Abort_typ;
+
+typedef struct KRC_AbortAdvanced
+{
+	/* VAR_INPUT (analog) */
+	signed short AxisGroupIdx;
+	AXIS_GROUP_REF_ARR* KRC_AxisGroupRefArr;
+	signed short BrakeReaction;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	struct mxA_ExecuteCommand mxA_ExecuteCommand_1;
+	signed short nState;
+	/* VAR_INPUT (digital) */
+	plcbit ExecuteCmd;
+	/* VAR_OUTPUT (digital) */
+	plcbit Busy;
+	plcbit Active;
+	plcbit Done;
+	plcbit Error;
+} KRC_AbortAdvanced_typ;
 
 typedef struct KRC_ActivateConvInterrupt
 {
@@ -911,6 +981,33 @@ typedef struct KRC_Forward
 	plcbit Error;
 } KRC_Forward_typ;
 
+typedef struct KRC_ForwardAdvanced
+{
+	/* VAR_INPUT (analog) */
+	signed short AxisGroupIdx;
+	AXIS_GROUP_REF_ARR* KRC_AxisGroupRefArr;
+	struct E6AXIS Axis_Values;
+	struct COORDSYS CoordinateSystem;
+	/* VAR_OUTPUT (analog) */
+	struct E6POS Position;
+	signed long ErrorID;
+	/* VAR (analog) */
+	signed short nState;
+	struct mxA_ExecuteCommand mxA_ExecuteCommand_0;
+	signed long nOrderID;
+	float ERR_STATUS;
+	struct E6POS m_Position;
+	signed short nErr;
+	/* VAR_INPUT (digital) */
+	plcbit ExecuteCmd;
+	plcbit CheckSoftEnd;
+	/* VAR_OUTPUT (digital) */
+	plcbit Busy;
+	plcbit Done;
+	plcbit Aborted;
+	plcbit Error;
+} KRC_ForwardAdvanced_typ;
+
 typedef struct KRC_GetAdvance
 {
 	/* VAR_INPUT (analog) */
@@ -941,6 +1038,7 @@ typedef struct KRC_Initialize
 	signed long KRC_Major;
 	signed long KRC_Minor;
 	signed long KRC_Revision;
+	signed long KRC_AbsAccur;
 	signed long PLC_Major;
 	signed long PLC_Minor;
 	signed long PLC_Revision;
@@ -999,6 +1097,37 @@ typedef struct KRC_Inverse
 	plcbit Error;
 } KRC_Inverse_typ;
 
+typedef struct KRC_InverseAdvanced
+{
+	/* VAR_INPUT (analog) */
+	signed short AxisGroupIdx;
+	AXIS_GROUP_REF_ARR* KRC_AxisGroupRefArr;
+	struct E6POS Position;
+	struct E6AXIS Start_Axis;
+	struct COORDSYS CoordinateSystem;
+	/* VAR_OUTPUT (analog) */
+	struct E6AXIS AxisPosition;
+	signed long ErrorID;
+	/* VAR (analog) */
+	signed short nState;
+	struct mxA_ExecuteCommand mxA_ExecuteCommand_0;
+	signed long nOrderID;
+	float ERR_STATUS;
+	struct E6AXIS m_Position;
+	signed short nErr;
+	signed short ActualPosition;
+	/* VAR_INPUT (digital) */
+	plcbit ExecuteCmd;
+	plcbit PosValidS;
+	plcbit PosValidT;
+	plcbit CheckSoftEnd;
+	/* VAR_OUTPUT (digital) */
+	plcbit Busy;
+	plcbit Done;
+	plcbit Aborted;
+	plcbit Error;
+} KRC_InverseAdvanced_typ;
+
 typedef struct KRC_Jog
 {
 	/* VAR_INPUT (analog) */
@@ -1046,8 +1175,6 @@ typedef struct KRC_Jog
 	/* VAR_OUTPUT (digital) */
 	plcbit Busy;
 	plcbit Active;
-	plcbit Done;
-	plcbit Aborted;
 	plcbit Error;
 	/* VAR (digital) */
 	plcbit m_ExecuteCmd;
@@ -1083,6 +1210,206 @@ typedef struct KRC_Jog
 	plcbit E6_M_Last;
 	plcbit m_ExecuteCmd_Finished;
 } KRC_Jog_typ;
+
+typedef struct KRC_LDDWriteLoad
+{
+	/* VAR_INPUT (analog) */
+	signed short AxisGroupIdx;
+	signed short BufferMode;
+	signed short Tool;
+	AXIS_GROUP_REF_ARR* KRC_AxisGroupRefArr;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	signed long nOrderID;
+	signed long nState;
+	signed long Copy_Of_nState;
+	signed short nErr;
+	float Err_Status;
+	struct mxA_ExecuteCommand mxA_ExecuteCommand_2;
+	struct mxA_ExecuteCommand mxA_ExecuteCommand_1;
+	/* VAR_INPUT (digital) */
+	plcbit ExecuteCmd;
+	/* VAR_OUTPUT (digital) */
+	plcbit Busy;
+	plcbit Done;
+	plcbit Error;
+} KRC_LDDWriteLoad_typ;
+
+typedef struct KRC_LDDTestRun
+{
+	/* VAR_INPUT (analog) */
+	signed short AxisGroupIdx;
+	signed short BufferMode;
+	AXIS_GROUP_REF_ARR* KRC_AxisGroupRefArr;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	signed long nOrderID;
+	signed long nState;
+	struct mxA_ExecuteCommand mxA_ExecuteCommand_2;
+	struct mxA_ExecuteCommand mxA_ExecuteCommand_1;
+	signed short nErr;
+	float Err_Status;
+	/* VAR_INPUT (digital) */
+	plcbit ExecuteCmd;
+	/* VAR_OUTPUT (digital) */
+	plcbit Busy;
+	plcbit Done;
+	plcbit Error;
+} KRC_LDDTestRun_typ;
+
+typedef struct KRC_LDDStart
+{
+	/* VAR_INPUT (analog) */
+	signed short AxisGroupIdx;
+	signed short Tool;
+	AXIS_GROUP_REF_ARR* KRC_AxisGroupRefArr;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	signed long nOrderID;
+	signed long nState;
+	signed short nErr;
+	float Err_Status;
+	struct mxA_ExecuteCommand mxA_ExecuteCommand_2;
+	struct mxA_ExecuteCommand mxA_ExecuteCommand_1;
+	/* VAR_INPUT (digital) */
+	plcbit ExecuteCmd;
+	/* VAR_OUTPUT (digital) */
+	plcbit Busy;
+	plcbit Done;
+	plcbit Error;
+} KRC_LDDStart_typ;
+
+typedef struct KRC_LDDcheckPos
+{
+	/* VAR_INPUT (analog) */
+	signed short AxisGroupIdx;
+	AXIS_GROUP_REF_ARR KRC_AxisGroupRefArr;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	float ERR_STATUS;
+	signed short nERR;
+	signed short nState;
+	struct mxA_ExecuteCommand mxA_ExecuteCommand_1;
+	/* VAR_INPUT (digital) */
+	plcbit ExecuteCmd;
+	/* VAR_OUTPUT (digital) */
+	plcbit Busy;
+	plcbit Done;
+	plcbit Error;
+} KRC_LDDcheckPos_typ;
+
+typedef struct KRC_LDDConfig
+{
+	/* VAR_INPUT (analog) */
+	signed short AxisGroupIdx;
+	signed short LoadA3Settings;
+	float M_A3;
+	float X_A3;
+	float Y_A3;
+	float Z_A3;
+	float A_A3;
+	float B_A3;
+	float C_A3;
+	float JX_A3;
+	float JY_A3;
+	float JZ_A3;
+	float Mass;
+	AXIS_GROUP_REF_ARR* KRC_AxisGroupRefArr;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	float Err_Status;
+	signed short nErr;
+	signed long nState;
+	signed long nOrderID;
+	struct mxA_ExecuteCommand mxA_ExecuteCommand_1;
+	/* VAR_INPUT (digital) */
+	plcbit ExecuteCmd;
+	plcbit WarmUp;
+	/* VAR_OUTPUT (digital) */
+	plcbit Busy;
+	plcbit Done;
+	plcbit Error;
+} KRC_LDDConfig_typ;
+
+typedef struct KRC_JogAdvanced
+{
+	/* VAR_INPUT (analog) */
+	signed short AxisGroupIdx;
+	AXIS_GROUP_REF_ARR* KRC_AxisGroupRefArr;
+	signed short MoveType;
+	signed short Velocity;
+	signed short Acceleration;
+	struct COORDSYS CoordinateSystem;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	/* VAR (analog) */
+	signed short JA_State_Val;
+	struct KRC_Move KRC_Move_1;
+	struct KRC_Abort KRC_Abort_1;
+	struct E6POS m_Position;
+	struct E6AXIS m_AxisPosition;
+	signed short m_MoveType;
+	signed short JA_MoveTypeActive;
+	signed short JA_MoveTypeLast;
+	struct COORDSYS JA_CoordSysActive;
+	struct COORDSYS JA_CoordSysLast;
+	/* VAR_INPUT (digital) */
+	plcbit JogAdvanced;
+	plcbit B_A1_JA_P;
+	plcbit B_A1_JA_M;
+	plcbit B_A2_JA_P;
+	plcbit B_A2_JA_M;
+	plcbit B_A3_JA_P;
+	plcbit B_A3_JA_M;
+	plcbit B_A4_JA_P;
+	plcbit B_A4_JA_M;
+	plcbit B_A5_JA_P;
+	plcbit B_A5_JA_M;
+	plcbit B_A6_JA_P;
+	plcbit B_A6_JA_M;
+	plcbit B_E1_JA_P;
+	plcbit B_E1_JA_M;
+	plcbit B_E2_JA_P;
+	plcbit B_E2_JA_M;
+	plcbit B_E3_JA_P;
+	plcbit B_E3_JA_M;
+	plcbit B_E4_JA_P;
+	plcbit B_E4_JA_M;
+	plcbit B_E5_JA_P;
+	plcbit B_E5_JA_M;
+	plcbit B_E6_JA_P;
+	plcbit B_E6_JA_M;
+	plcbit B_X_JA_P;
+	plcbit B_X_JA_M;
+	plcbit B_Y_JA_P;
+	plcbit B_Y_JA_M;
+	plcbit B_Z_JA_P;
+	plcbit B_Z_JA_M;
+	plcbit B_A_JA_P;
+	plcbit B_A_JA_M;
+	plcbit B_B_JA_P;
+	plcbit B_B_JA_M;
+	plcbit B_C_JA_P;
+	plcbit B_C_JA_M;
+	/* VAR_OUTPUT (digital) */
+	plcbit Busy;
+	plcbit Active;
+	plcbit Error;
+	/* VAR (digital) */
+	plcbit m_ExecuteAbort;
+	plcbit JA_ButtonActive;
+	plcbit JA_ButtonChanged;
+	plcbit JA_ButtonLast;
+	plcbit JA_MoveTypeChanged;
+	plcbit JA_BaseChanged;
+	plcbit JA_ToolChanged;
+	plcbit JA_IpoChanged;
+} KRC_JogAdvanced_typ;
 
 typedef struct KRC_JogLinearRelative
 {
@@ -1170,6 +1497,7 @@ typedef struct KRC_MoveAxisAbsolute
 	/* VAR_OUTPUT (analog) */
 	signed long ErrorID;
 	/* VAR (analog) */
+	signed short SwitchMoveType;
 	struct KRC_Move KRC_Move;
 	struct E6POS m_CircHP;
 	struct E6POS m_Position;
@@ -1177,6 +1505,7 @@ typedef struct KRC_MoveAxisAbsolute
 	struct COORDSYS m_CoordinateSystem;
 	/* VAR_INPUT (digital) */
 	plcbit ExecuteCmd;
+	plcbit SplineMode;
 	/* VAR_OUTPUT (digital) */
 	plcbit Busy;
 	plcbit Active;
@@ -1203,11 +1532,13 @@ typedef struct KRC_MoveCircAbsolute
 	/* VAR_OUTPUT (analog) */
 	signed long ErrorID;
 	/* VAR (analog) */
+	signed short SwitchMoveType;
 	struct KRC_Move KRC_Move;
 	struct COORDSYS m_CoordinateSystem;
 	struct E6AXIS m_AxisPosition;
 	/* VAR_INPUT (digital) */
 	plcbit ExecuteCmd;
+	plcbit SplineMode;
 	/* VAR_OUTPUT (digital) */
 	plcbit Busy;
 	plcbit Active;
@@ -1237,8 +1568,10 @@ typedef struct KRC_MoveCircRelative
 	struct KRC_Move KRC_Move;
 	struct COORDSYS m_CoordinateSystem;
 	struct E6AXIS m_AxisPosition;
+	signed short SwitchMoveType;
 	/* VAR_INPUT (digital) */
 	plcbit ExecuteCmd;
+	plcbit SplineMode;
 	/* VAR_OUTPUT (digital) */
 	plcbit Busy;
 	plcbit Active;
@@ -1261,12 +1594,14 @@ typedef struct KRC_MoveDirectAbsolute
 	/* VAR_OUTPUT (analog) */
 	signed long ErrorID;
 	/* VAR (analog) */
+	signed short SwitchMoveType;
 	struct KRC_Move KRC_Move;
 	struct E6POS m_CircHP;
 	struct E6AXIS m_AxisPosition;
 	signed short m_OriType;
 	/* VAR_INPUT (digital) */
 	plcbit ExecuteCmd;
+	plcbit SplineMode;
 	/* VAR_OUTPUT (digital) */
 	plcbit Busy;
 	plcbit Active;
@@ -1289,12 +1624,14 @@ typedef struct KRC_MoveDirectRelative
 	/* VAR_OUTPUT (analog) */
 	signed long ErrorID;
 	/* VAR (analog) */
+	signed short SwitchMoveType;
 	struct KRC_Move KRC_Move;
 	struct E6POS m_CircHP;
 	struct E6AXIS m_AxisPosition;
 	signed short m_OriType;
 	/* VAR_INPUT (digital) */
 	plcbit ExecuteCmd;
+	plcbit SplineMode;
 	/* VAR_OUTPUT (digital) */
 	plcbit Busy;
 	plcbit Active;
@@ -1318,11 +1655,13 @@ typedef struct KRC_MoveLinearAbsolute
 	/* VAR_OUTPUT (analog) */
 	signed long ErrorID;
 	/* VAR (analog) */
+	signed short SwitchMoveType;
 	struct KRC_Move KRC_Move;
 	struct E6POS m_CircHP;
 	struct E6AXIS m_AxisPosition;
 	/* VAR_INPUT (digital) */
 	plcbit ExecuteCmd;
+	plcbit SplineMode;
 	/* VAR_OUTPUT (digital) */
 	plcbit Busy;
 	plcbit Active;
@@ -1346,11 +1685,13 @@ typedef struct KRC_MoveLinearRelative
 	/* VAR_OUTPUT (analog) */
 	signed long ErrorID;
 	/* VAR (analog) */
+	signed short SwitchMoveType;
 	struct KRC_Move KRC_Move;
 	struct E6POS m_CircHP;
 	struct E6AXIS m_AxisPosition;
 	/* VAR_INPUT (digital) */
 	plcbit ExecuteCmd;
+	plcbit SplineMode;
 	/* VAR_OUTPUT (digital) */
 	plcbit Busy;
 	plcbit Active;
@@ -1651,7 +1992,7 @@ typedef struct KRC_ReadAxisGroup
 	plcbit m_BRAKETEST_WORK;
 	plcbit m_BRAKES_OK;
 	plcbit m_BRAKETEST_WARN;
-	plcbit m_Reserve2075;
+	plcbit m_AbortActive;
 	plcbit m_BRAKEACTIVE;
 	plcbit m_KCP_CONNECT;
 	plcbit m_TouchUp;
@@ -1777,7 +2118,7 @@ typedef struct KRC_ReadDigitalInputArray
 	plcbit Error;
 } KRC_ReadDigitalInputArray_typ;
 #else
-/* Data type KRC_ReadDigitalInputArray not declared. Data types with array elements whose starting indexes are not equal to zero cannot be used in ANSI C programs / libraries.*/
+/* Datentyp KRC_ReadDigitalInputArray nicht deklariert. Datentypen mit Feldelementen, deren Startindizes ungleich Null sind, können in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
 #endif
 
 typedef struct KRC_ReadDigitalOutput
@@ -2175,19 +2516,19 @@ typedef struct KRC_SetPathTrigger
 #ifdef _BUR_USE_DECLARATION_IN_IEC
 typedef plcbit BOOL_ARRAY_40[40];
 #else
-/* Data type BOOL_ARRAY_40 not declared. Derived data types with an array data type as base type whose starting index is not equal to zero cannot be used in ANSI C programs / libraries.*/
+/* DatentypBOOL_ARRAY_40 ist nicht deklariert. Abgeleitete Datentypen mit einen Feld-Datentyp als Basistyp, dessen Startindex ungleich Null ist, kann in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
 #endif
 
 #ifdef _BUR_USE_DECLARATION_IN_IEC
 typedef signed long INT32_ARRAY_40[40];
 #else
-/* Data type INT32_ARRAY_40 not declared. Derived data types with an array data type as base type whose starting index is not equal to zero cannot be used in ANSI C programs / libraries.*/
+/* DatentypINT32_ARRAY_40 ist nicht deklariert. Abgeleitete Datentypen mit einen Feld-Datentyp als Basistyp, dessen Startindex ungleich Null ist, kann in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
 #endif
 
 #ifdef _BUR_USE_DECLARATION_IN_IEC
 typedef float REAL_ARRAY_40[40];
 #else
-/* Data type REAL_ARRAY_40 not declared. Derived data types with an array data type as base type whose starting index is not equal to zero cannot be used in ANSI C programs / libraries.*/
+/* DatentypREAL_ARRAY_40 ist nicht deklariert. Abgeleitete Datentypen mit einen Feld-Datentyp als Basistyp, dessen Startindex ungleich Null ist, kann in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
 #endif
 
 typedef struct KRC_TechFunction
@@ -2216,6 +2557,39 @@ typedef struct KRC_TechFunction
 	plcbit Aborted;
 } KRC_TechFunction_typ;
 
+#ifdef _BUR_USE_DECLARATION_IN_IEC
+typedef float REAL_ARRAY_12[12];
+#else
+/* DatentypREAL_ARRAY_12 ist nicht deklariert. Abgeleitete Datentypen mit einen Feld-Datentyp als Basistyp, dessen Startindex ungleich Null ist, kann in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
+#endif
+
+typedef struct KRC_TechFunctionAdvanced
+{
+	/* VAR_INPUT (analog) */
+	signed short AxisGroupIdx;
+	AXIS_GROUP_REF_ARR* KRC_AxisGroupRefArr;
+	signed short TechFunctionID;
+	INT32_ARRAY_40 INT_DATA;
+	REAL_ARRAY_40 REAL_DATA;
+	signed short ParameterCount;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	REAL_ARRAY_12 ReturnValue;
+	/* VAR (analog) */
+	signed short i;
+	signed short nState;
+	struct mxA_ExecuteCommand mxA_ExecuteCommand_1;
+	/* VAR_INPUT (digital) */
+	plcbit ExecuteCmd;
+	BOOL_ARRAY_40 BOOL_DATA;
+	/* VAR_OUTPUT (digital) */
+	plcbit Error;
+	plcbit Busy;
+	plcbit Active;
+	plcbit Done;
+	plcbit Aborted;
+} KRC_TechFunctionAdvanced_typ;
+
 typedef struct KRC_Test_TechFunction
 {
 	/* VAR_INPUT (analog) */
@@ -2243,7 +2617,7 @@ typedef struct KRC_Test_TechFunction
 #ifdef _BUR_USE_DECLARATION_IN_IEC
 typedef POSITION POSITION_ARRAY[100];
 #else
-/* Data type POSITION_ARRAY not declared. Derived data types with an array data type as base type whose starting index is not equal to zero cannot be used in ANSI C programs / libraries.*/
+/* DatentypPOSITION_ARRAY ist nicht deklariert. Abgeleitete Datentypen mit einen Feld-Datentyp als Basistyp, dessen Startindex ungleich Null ist, kann in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
 #endif
 
 typedef struct KRC_TouchUP
@@ -2442,6 +2816,8 @@ typedef struct KRC_WriteAxisGroup
 	signed short CmdID_Val;
 	signed short BufferMode_Val;
 	plcword BoolValues1;
+	signed short ZW_Jog_Ad_State_Val;
+	plcbyte Jog_Ad_State;
 	/* VAR_OUTPUT (digital) */
 	plcbit Error;
 	/* VAR (digital) */
@@ -2480,6 +2856,7 @@ typedef struct KRC_WriteAxisGroup
 	plcbit OUT_VAL_7_Val;
 	plcbit OUT_VAL_8_Val;
 	plcbit WRITE_OUT_1TO8_Val;
+	plcbit Jog_Advanced_Val;
 } KRC_WriteAxisGroup_typ;
 
 typedef struct KRC_WriteAxWorkspace
@@ -3122,19 +3499,22 @@ typedef struct mxA_ValuesToFRAME
 #ifdef _BUR_USE_DECLARATION_IN_IEC
 typedef signed short AXIS_VEL[12];
 #else
-/* Data type AXIS_VEL not declared. Derived data types with an array data type as base type whose starting index is not equal to zero cannot be used in ANSI C programs / libraries.*/
+/* DatentypAXIS_VEL ist nicht deklariert. Abgeleitete Datentypen mit einen Feld-Datentyp als Basistyp, dessen Startindex ungleich Null ist, kann in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
 #endif
 
 #ifdef _BUR_USE_DECLARATION_IN_IEC
 typedef plcbit MXA_SYNC_IO[2032];
 #else
-/* Data type MXA_SYNC_IO not declared. Derived data types with an array data type as base type whose starting index is not equal to zero cannot be used in ANSI C programs / libraries.*/
+/* DatentypMXA_SYNC_IO ist nicht deklariert. Abgeleitete Datentypen mit einen Feld-Datentyp als Basistyp, dessen Startindex ungleich Null ist, kann in ANSI C Programmen / Bibliotheken nicht verwendet werden.*/
 #endif
 
 
 
 /* Prototyping of functions and function blocks */
+_BUR_PUBLIC void KRC_ConvDelWPS(struct KRC_ConvDelWPS* inst);
+_BUR_PUBLIC void KRC_ActivatePosConversion(struct KRC_ActivatePosConversion* inst);
 _BUR_PUBLIC void KRC_Abort(struct KRC_Abort* inst);
+_BUR_PUBLIC void KRC_AbortAdvanced(struct KRC_AbortAdvanced* inst);
 _BUR_PUBLIC void KRC_ActivateConvInterrupt(struct KRC_ActivateConvInterrupt* inst);
 _BUR_PUBLIC void KRC_ActivateInterrupt(struct KRC_ActivateInterrupt* inst);
 _BUR_PUBLIC void KRC_AutomaticExternal(struct KRC_AutomaticExternal* inst);
@@ -3151,11 +3531,19 @@ _BUR_PUBLIC void KRC_DeclareInterrupt(struct KRC_DeclareInterrupt* inst);
 _BUR_PUBLIC void KRC_Diag(struct KRC_Diag* inst);
 _BUR_PUBLIC void KRC_Error(struct KRC_Error* inst);
 _BUR_PUBLIC void KRC_Forward(struct KRC_Forward* inst);
+_BUR_PUBLIC void KRC_ForwardAdvanced(struct KRC_ForwardAdvanced* inst);
 _BUR_PUBLIC void KRC_GetAdvance(struct KRC_GetAdvance* inst);
 _BUR_PUBLIC void KRC_Initialize(struct KRC_Initialize* inst);
 _BUR_PUBLIC void KRC_Interrupt(struct KRC_Interrupt* inst);
 _BUR_PUBLIC void KRC_Inverse(struct KRC_Inverse* inst);
+_BUR_PUBLIC void KRC_InverseAdvanced(struct KRC_InverseAdvanced* inst);
 _BUR_PUBLIC void KRC_Jog(struct KRC_Jog* inst);
+_BUR_PUBLIC void KRC_LDDWriteLoad(struct KRC_LDDWriteLoad* inst);
+_BUR_PUBLIC void KRC_LDDTestRun(struct KRC_LDDTestRun* inst);
+_BUR_PUBLIC void KRC_LDDStart(struct KRC_LDDStart* inst);
+_BUR_PUBLIC void KRC_LDDcheckPos(struct KRC_LDDcheckPos* inst);
+_BUR_PUBLIC void KRC_LDDConfig(struct KRC_LDDConfig* inst);
+_BUR_PUBLIC void KRC_JogAdvanced(struct KRC_JogAdvanced* inst);
 _BUR_PUBLIC void KRC_JogLinearRelative(struct KRC_JogLinearRelative* inst);
 _BUR_PUBLIC void KRC_JogToolRelative(struct KRC_JogToolRelative* inst);
 _BUR_PUBLIC void KRC_MasRef(struct KRC_MasRef* inst);
@@ -3201,6 +3589,7 @@ _BUR_PUBLIC void KRC_SetDistanceTrigger(struct KRC_SetDistanceTrigger* inst);
 _BUR_PUBLIC void KRC_SetOverride(struct KRC_SetOverride* inst);
 _BUR_PUBLIC void KRC_SetPathTrigger(struct KRC_SetPathTrigger* inst);
 _BUR_PUBLIC void KRC_TechFunction(struct KRC_TechFunction* inst);
+_BUR_PUBLIC void KRC_TechFunctionAdvanced(struct KRC_TechFunctionAdvanced* inst);
 _BUR_PUBLIC void KRC_Test_TechFunction(struct KRC_Test_TechFunction* inst);
 _BUR_PUBLIC void KRC_TouchUP(struct KRC_TouchUP* inst);
 _BUR_PUBLIC void KRC_VectorMoveOff(struct KRC_VectorMoveOff* inst);
@@ -3251,5 +3640,5 @@ _BUR_PUBLIC plcbit mxA_WriteIO_WORD(signed short BytePos, plcword Val, plcbyte K
 #ifdef __cplusplus
 };
 #endif
-#endif /* _KUKAMXA3_1_ */
+#endif /* _KUKAMXA3_3_ */
 
