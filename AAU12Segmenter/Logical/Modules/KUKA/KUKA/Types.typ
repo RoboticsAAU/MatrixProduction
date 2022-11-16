@@ -10,7 +10,7 @@ TYPE
 		read : read_function;
 		write : write_function;
 		status : status;
-		operationType : operation_type; (*Maybe remove*)
+		operationType : operation_type;
 		eeType : end_effector_type;
 		gripperAction : GripperAction;
 		tempPosition : E6POS;

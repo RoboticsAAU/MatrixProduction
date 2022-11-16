@@ -64,4 +64,5 @@ VAR CONSTANT
 END_VAR
 VAR
 	numDoneHoles : USINT := 0;
+	testerr : REAL;
 END_VAR

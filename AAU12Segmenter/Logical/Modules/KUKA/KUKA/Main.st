@@ -19,11 +19,23 @@ PROGRAM _INIT
 	KUKAs[4].eeType := COVER_EE;
 	KUKAs[5].eeType := COVER_EE;
 	
+	// Setting the operation type
+	KUKAs[0].operationType := ASSEMBLY;
+	KUKAs[1].operationType := PROCESS;
+	KUKAs[2].operationType := ASSEMBLY;
+	KUKAs[3].operationType := ASSEMBLY;
+	KUKAs[4].operationType := ASSEMBLY;
+	KUKAs[5].operationType := ASSEMBLY;
+	
 END_PROGRAM
 
 PROGRAM _CYCLIC
 
 	FOR i := 1 TO 4 DO // CHANGE TO 0 TO 5 WHEN ALL ROBOTS WORK
+		IF i = 2 THEN
+			EXIT;
+		END_IF
+			
 		// Accessing the specific KUKA for easier naming
 		pKuka ACCESS ADR(KUKAs[i]);
 		cm ACCESS ADR(KUKAs[i].cm);	
@@ -46,17 +58,14 @@ PROGRAM _CYCLIC
 		// RobotStart contains FB calls associated with initialization of the robots and diagnosis
 		RobotStart;
 		
-		robotOperating[0] := robotOperating[3] := robotOperating[4] := robotOperating[5] := FALSE;
+		robotOperating[0] := robotOperating[2] := robotOperating[3] := robotOperating[4] := robotOperating[5] := FALSE;
 		
 		// If the robot is ready, begin actual program
 		IF 	pKuka.status.P_ AND pKuka.status.S_ AND pKuka.status.R_ AND pKuka.status.I_ AND pKuka.status.EXT_ THEN
 			CASE cm.state OF
 				0: // INITIALIZING			
 					pKuka.convert.ValuesToCOORDSYS.Tool := 1;
-					pKuka.convert.ValuesToCOORDSYS();
-			
 					pKuka.convert.ValuesToPosition.axisGroupIdx := pKuka.axisGroupIdx;
-					pKuka.convert.ValuesToPosition();
 			
 					pKuka.motion.KRC_MoveDirectAbsolute.AxisGroupIdx := pKuka.motion.KRC_MoveLinearAbsolute.AxisGroupIdx := pKuka.motion.KRC_MoveLinearRelative.AxisGroupIdx
 						:=  pKuka.axisGroupIdx;
@@ -87,12 +96,10 @@ PROGRAM _CYCLIC
 				
 				1000..1999: // RUNNING MANIPULATOR PROGRAMS
 												
-					IF robotOperating[i] THEN
-						IF pKuka.operationType = ASSEMBLY THEN
-							RobotAssembly;
-						ELSE // For now, we know it can only be PROCESS, unless additional entries are added to the enum in the future
-							RobotProcess;
-						END_IF
+					IF pKuka.operationType = ASSEMBLY THEN
+						RobotAssembly;
+					ELSE // For now, we know it can only be PROCESS, unless additional entries are added to the enum in the future
+						RobotProcess;
 					END_IF
 				
 			END_CASE

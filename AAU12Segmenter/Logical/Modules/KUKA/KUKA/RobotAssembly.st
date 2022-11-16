@@ -5,58 +5,59 @@ ACTION RobotAssembly:
 	
 		1000:
 			cm.description := 'Define order-specific approach point at magazine';
+			
+			IF robotOperating[i] THEN
+				cm.state := 1010;
 				
-			cm.state := 1010;
-			
-			// The following order-specific adjustments are possible since we at this point know that the robot has returned to home position (main approach point) in cm.state = 500
-			CASE pKuka.axisGroupIdx OF
-				1:
-					CASE orderSpec[i] OF
-						0: // Black cover
-							pKuka.tempPosition.X := pKuka.tempPosition.X + 0; // Change when ready
-					
-						1: // White cover
-							pKuka.tempPosition.X := pKuka.tempPosition.X + 80; // Change when ready
-					
-						2: // Blue cover
-							pKuka.tempPosition.X := pKuka.tempPosition.X + 160; // Change when ready
-					END_CASE
-				3:
-					// Do Nothing
-					cm.state := 1020;
-					
-				4:
-					CASE orderSpec[i] OF
-						2: // 1 fuse
-							pKuka.tempPosition.X := pKuka.tempPosition.X + 13; // Change when ready
-					
-						4: // 2 fuses
-							pKuka.tempPosition.X := pKuka.tempPosition.X; // Change when ready
-					END_CASE
-			
-				5:
-					CASE orderSpec[i] OF
-						0: // Black cover
-							pKuka.tempPosition.X := pKuka.tempPosition.X + 0; // Change when ready
-					
-						1: // White cover
-							pKuka.tempPosition.X := pKuka.tempPosition.X + 80; // Change when ready
-					
-						2: // Blue cover
-							pKuka.tempPosition.X := pKuka.tempPosition.X + 160; // Change when ready
-					END_CASE
-				6:
-					// Do Nothing
-					cm.state := 1020;
+				// The following order-specific adjustments are possible since we at this point know that the robot has returned to home position (main approach point) in cm.state = 500
+				CASE pKuka.axisGroupIdx OF
+					1:
+						CASE orderSpec[i] OF
+							0: // Black cover
+								pKuka.tempPosition.X := pKuka.tempPosition.X + 0; // Change when ready
+						
+							1: // White cover
+								pKuka.tempPosition.X := pKuka.tempPosition.X + 80; // Change when ready
+						
+							2: // Blue cover
+								pKuka.tempPosition.X := pKuka.tempPosition.X + 160; // Change when ready
+						END_CASE
+					3:
+						// Do Nothing
+						cm.state := 1020;
+						
+					4:
+						CASE orderSpec[i] OF
+							2: // 1 fuse
+								pKuka.tempPosition.X := pKuka.tempPosition.X + 13; // Change when ready
+						
+							4: // 2 fuses
+								pKuka.tempPosition.X := pKuka.tempPosition.X; // Change when ready
+						END_CASE
 				
-			END_CASE
-			
+					5:
+						CASE orderSpec[i] OF
+							0: // Black cover
+								pKuka.tempPosition.X := pKuka.tempPosition.X + 0; // Change when ready
+						
+							1: // White cover
+								pKuka.tempPosition.X := pKuka.tempPosition.X + 80; // Change when ready
+						
+							2: // Blue cover
+								pKuka.tempPosition.X := pKuka.tempPosition.X + 160; // Change when ready
+						END_CASE
+					6:
+						// Do Nothing
+						cm.state := 1020;
+					
+				END_CASE
+			END_IF
 		
 		1010:
 			cm.description := 'Move to order-specific approach point at magazine';
 			pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 0; // #BASE
 			pKuka.convert.ValuesToCOORDSYS();
-				
+			
 			pKuka.motion.KRC_MoveDirectAbsolute.CoordinateSystem := pKuka.convert.ValuesToCOORDSYS.COORDSYS;
 				
 			pKuka.motion.KRC_MoveDirectAbsolute.Position := pKuka.tempPosition;
@@ -196,6 +197,7 @@ ACTION RobotAssembly:
 			END_IF
 			
 		1090:
+			cm.description := 'Move back to home position';
 			RobotHoming;
 		
 	END_CASE

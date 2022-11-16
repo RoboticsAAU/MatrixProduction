@@ -55,18 +55,22 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 6; // 110
+					outputPos.Status := 2; // 110
 					outputPos.Turn := 2; // 000010
+					
+					baseNo := 0;
 				
 				APPROACH_WORKSTATION:
 					outputPos.X := 660 + 27; //Last term is x offset of bottom right hole
 					outputPos.Y := 420 - 53; //Last term is y offset of bottom right hole
-					outputPos.Z := (1 + 9.85 + 5 + 13) + relativeDistance;
+					outputPos.Z := (1 + 9.85 + 5 + 13) + relativeDistance + 100;
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 6; // 110
+					outputPos.Status := 2; // 010
 					outputPos.Turn := 35; // 100011
+					
+					baseNo := 1;	
 				
 			END_CASE
 			
