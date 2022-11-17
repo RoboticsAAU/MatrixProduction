@@ -306,11 +306,11 @@ PROGRAM _CYCLIC
 						lightValue := 4;
 					END_IF
 						FOR i := 0 TO NR_OF_WORKSTATIONS DO
-							pWorkStations ACCESS ADR (gWorkStations[i]); 
-						cm ACCESS ADR (gWorkStations[i].cm);
-						pWorkStations.cm.setup.parent.name := 'main';
-						//pShuttle.cm.setup.nameIdx := i;
-						workStationMovement;
+							pWorkstation ACCESS ADR (gWorkstations[i]); 
+							cm ACCESS ADR (gWorkstations[i].cm);
+							pWorkstation.cm.setup.parent.name := 'main';
+							//pShuttle.cm.setup.nameIdx := i;
+							workStationMovement;
 						END_FOR
 						
 				9000..9005:
@@ -324,9 +324,9 @@ PROGRAM _CYCLIC
 					
 					conveyorStationSetup;
 					FOR i := 0 TO NR_OF_WORKSTATIONS DO
-						pWorkStations ACCESS ADR (gWorkStations[i]); 
-						cm ACCESS ADR (gWorkStations[i].cm);
-						pWorkStations.cm.setup.parent.name := 'main';
+						pWorkstation ACCESS ADR (gWorkstations[i]); 
+						cm ACCESS ADR (gWorkstations[i].cm);
+						pWorkstation.cm.setup.parent.name := 'main';
 						//pShuttle.cm.setup.nameIdx := i;
 						conveyourStationMovement;
 					END_FOR
@@ -371,9 +371,9 @@ PROGRAM _CYCLIC
 					em.description := 'Rotation program';
 					em.cmd.sc := FALSE;
 					FOR i := 0 TO NR_OF_WORKSTATIONS DO
-						pWorkStations ACCESS ADR (gWorkStations[i]); 
-						cm ACCESS ADR (gWorkStations[i].cm);
-						pWorkStations.cm.setup.parent.name := 'main';
+						pWorkstation ACCESS ADR (gWorkstations[i]); 
+						cm ACCESS ADR (gWorkstations[i].cm);
+						pWorkstation.cm.setup.parent.name := 'main';
 						rotationStation;
 					END_FOR
 					rotationTask; // Controls em.cmd.sc so the program can be stopped at the correct time.
@@ -386,9 +386,9 @@ PROGRAM _CYCLIC
 				15010..15999:
 					em.description := 'Steelsheet program';
 					FOR i := 0 TO NR_OF_WORKSTATIONS DO
-						pWorkStations ACCESS ADR (gWorkStations[i]); 
-						cm ACCESS ADR (gWorkStations[i].cm);
-						pWorkStations.cm.setup.parent.name := 'main';
+						pWorkstation ACCESS ADR (gWorkstations[i]); 
+						cm ACCESS ADR (gWorkstations[i].cm);
+						pWorkstation.cm.setup.parent.name := 'main';
 						steelSheetStation;
 					END_FOR
 					
@@ -470,10 +470,10 @@ PROGRAM _CYCLIC
 					em.description := 'Smart Lab program - Workstation movement';
 					// Go through the workstations and run program for these
 					FOR i := 0 TO (smartLabNumWorkstations - 1) DO
-						pWorkStations ACCESS ADR (gWorkStations[i]); 
-						cm ACCESS ADR (gWorkStations[i].cm);
-						pWorkStations.cm.setup.parent.name := 'main';
-						pWorkStations.par.workstationID := USINT_TO_STRING(i);
+						pWorkstation ACCESS ADR (gWorkstations[i]); 
+						cm ACCESS ADR (gWorkstations[i].cm);
+						pWorkstation.cm.setup.parent.name := 'main';
+						pWorkstation.par.workstationID := i;
 						
 						smartLabWorkstationOperation;
 					END_FOR
@@ -491,7 +491,7 @@ PROGRAM _CYCLIC
 					END_FOR
 					
 					// Go to write order if a new order is made or there are no active orders
-					IF executeOrder OR activeShuttles = 0 THEN
+					IF executeOrder THEN
 						em.substate := 17010;
 					END_IF
 				

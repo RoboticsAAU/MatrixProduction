@@ -21,28 +21,28 @@ ACTION ResetInput:
 	MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 0;
 	
 	FOR i := 0 TO NR_OF_WORKSTATIONS DO
-		gWorkStations[i].cm.state := 0;
-		gWorkStations[i].MC_BR_ShLevitation_Acp6D_0.Execute := FALSE;
-		gWorkStations[i].MC_BR_MoveArc_Acp6D_0.Execute := FALSE;
-		gWorkStations[i].MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
-		gWorkStations[i].MC_BR_RotaryMotion_Acp6D_0.Execute := FALSE;
-		gWorkStations[i].MC_BR_RotaryMotionSpin_Acp6D_0.Execute := FALSE;
-		gWorkStations[i].MC_BR_Move6D_Acp6D_0.Execute := FALSE;
-		gWorkStations[i].par.ArcMovement := FALSE;
-		gWorkStations[i].par.landBeforeProcess := FALSE;
-		gWorkStations[i].par.pathRouting := FALSE;
-		gWorkStations[i].par.processTime := FALSE;
-		gWorkStations[i].par.tempShuttleID := FALSE;
-		gWorkStations[i].par.xLocation := FALSE;
-		gWorkStations[i].par.yLocation := FALSE;
-		gWorkStations[i].TON_0.IN := FALSE;
-		gWorkStations[i].par.xLocation										:= 0.0;
-		gWorkStations[i].par.yLocation										:= 0.0;
-		gWorkStations[i].par.nextStationSelector							:= '0';
-		gWorkStations[i].par.processTime									:= 0;
-		gWorkStations[i].par.pathRouting									:= 0;
-		gWorkStations[i].par.ArcMovement									:= FALSE;
-		gWorkStations[i].par.landBeforeProcess								:= FALSE;
+		gWorkstations[i].cm.state := 0;
+		gWorkstations[i].MC_BR_ShLevitation_Acp6D_0.Execute := FALSE;
+		gWorkstations[i].MC_BR_MoveArc_Acp6D_0.Execute := FALSE;
+		gWorkstations[i].MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
+		gWorkstations[i].MC_BR_RotaryMotion_Acp6D_0.Execute := FALSE;
+		gWorkstations[i].MC_BR_RotaryMotionSpin_Acp6D_0.Execute := FALSE;
+		gWorkstations[i].MC_BR_Move6D_Acp6D_0.Execute := FALSE;
+		gWorkstations[i].par.ArcMovement := FALSE;
+		gWorkstations[i].par.landBeforeProcess := FALSE;
+		gWorkstations[i].par.pathRouting := FALSE;
+		gWorkstations[i].par.processTime := FALSE;
+		gWorkstations[i].par.tempShuttleID := FALSE;
+		gWorkstations[i].par.xLocation := FALSE;
+		gWorkstations[i].par.yLocation := FALSE;
+		gWorkstations[i].TON_0.IN := FALSE;
+		gWorkstations[i].par.xLocation										:= 0.0;
+		gWorkstations[i].par.yLocation										:= 0.0;
+		gWorkstations[i].par.nextStationSelector							:= '0';
+		gWorkstations[i].par.processTime									:= 0;
+		gWorkstations[i].par.pathRouting									:= 0;
+		gWorkstations[i].par.ArcMovement									:= FALSE;
+		gWorkstations[i].par.landBeforeProcess								:= FALSE;
 	END_FOR
 	
 

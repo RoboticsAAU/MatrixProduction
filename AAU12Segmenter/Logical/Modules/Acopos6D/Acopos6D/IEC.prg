@@ -17,14 +17,16 @@
     <File>rotationProgram.st</File>
     <File>steelSheet.st</File>
     <File>Test.st</File>
+    <File>SmartLabSetup.st</File>
     <File>SmartLabBuffer.st</File>
-    <File>SmartLab.st</File>
+    <File>SmartLabRun.st</File>
     <File Description="Local data types" Private="true">Types.typ</File>
     <File Description="Local variables" Private="true">Variables.var</File>
     <File Private="true">LocalFunctions.fun</File>
     <File>CreateRouteSheet.st</File>
     <File>QuadrantIdxToPos.st</File>
     <File>COVER_TYPE_TO_USINT.st</File>
-    <File>ShuttleAtPosition.st</File>
+    <File>ShuttlesAt.st</File>
+    <File>AreWorkstations.st</File>
   </Files>
 </Program>

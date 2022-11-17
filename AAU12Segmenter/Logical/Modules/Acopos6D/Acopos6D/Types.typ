@@ -2,7 +2,7 @@
 TYPE
 	shuttle_plan : 	STRUCT 
 		productOrder : product_order;
-		routingSheet : ARRAY[0..5]OF STRING[10];
+		routingSheet : ARRAY[0..5]OF USINT;
 		progressIndex : USINT := 0;
 		isActive : BOOL;
 	END_STRUCT;
@@ -11,7 +11,8 @@ TYPE
 	END_STRUCT;
 	shuttle_par_typ : 	STRUCT 
 		shuttleID : USINT;
-		tempWorkstationID : STRING[10];
+		tempWorkstationID : USINT;
+		tempNextWorkstationID : USINT;
 		tempHighwayColumn : SINT;
 	END_STRUCT;
 	shuttle_function_typ : 	STRUCT 
@@ -55,7 +56,7 @@ TYPE
 		yLocation : REAL;
 		xLocation : REAL;
 		tempShuttleID : USINT;
-		workstationID : STRING[10];
+		workstationID : USINT;
 		nextStationSelector : STRING[10];
 		processTime : REAL;
 		pathRouting : USINT := 0; (*0 Diagonal, 1 First X then Y, 2 First Y then X*)
@@ -91,7 +92,7 @@ TYPE
 		PCB : BOOL;
 		Fuses : USINT;
 		topCover : cover_types;
-		ID : UINT;
+		ID : USINT;
 	END_STRUCT;
 	cover_types : 
 		(
