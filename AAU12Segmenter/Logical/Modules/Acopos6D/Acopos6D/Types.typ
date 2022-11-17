@@ -1,16 +1,19 @@
 
 TYPE
 	shuttle_plan : 	STRUCT 
-		shuttleIdx : USINT;
 		productOrder : product_order;
-		routingSheet : ARRAY[0..6]OF STRING[10];
+		routingSheet : ARRAY[0..5]OF USINT;
 		progressIndex : USINT := 0;
+		isActive : BOOL;
 	END_STRUCT;
 	shuttle_status_typ : 	STRUCT 
 		dummy : USINT;
 	END_STRUCT;
 	shuttle_par_typ : 	STRUCT 
 		shuttleID : USINT;
+		tempWorkstationID : USINT;
+		tempNextWorkstationID : USINT;
+		tempHighwayColumn : SINT;
 	END_STRUCT;
 	shuttle_function_typ : 	STRUCT 
 		MC_BR_Move6D_Acp6D_0 : MC_BR_Move6D_Acp6D;
@@ -53,12 +56,11 @@ TYPE
 		yLocation : REAL;
 		xLocation : REAL;
 		tempShuttleID : USINT;
+		workstationID : USINT;
+		nextStationSelector : STRING[10];
 		processTime : REAL;
 		pathRouting : USINT := 0; (*0 Diagonal, 1 First X then Y, 2 First Y then X*)
-		nextStationSelector : STRING[80];
 		ArcMovement : BOOL;
-		internalCounter : USINT;
-		tempCounter : USINT;
 		approachPosX : REAL;
 		approachPosY : REAL;
 		departPosX : REAL;
@@ -90,7 +92,7 @@ TYPE
 		PCB : BOOL;
 		Fuses : USINT;
 		topCover : cover_types;
-		ID : UINT;
+		ID : USINT;
 	END_STRUCT;
 	cover_types : 
 		(

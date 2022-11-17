@@ -64,7 +64,7 @@ VAR
 	pKuka : REFERENCE TO KUKA;
 	cm : REFERENCE TO brdkCM;
 END_VAR
-(*Mapping*)
+(*Variable mapping*)
 VAR
 	robotOperating : ARRAY[0..5] OF BOOL;
 	orderSpec : ARRAY[0..5] OF USINT;

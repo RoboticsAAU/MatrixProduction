@@ -18,37 +18,37 @@ ACTION steelSheetTask:
 	positionContainerSteelSheet[7].initXPos := 0.660;
 	positionContainerSteelSheet[7].initYPos := 0.780;
 	
-	gWorkStations[0].par.xLocation										:= 0.300;
-	gWorkStations[0].par.yLocation										:= 0.060;
-	gWorkStations[0].par.nextStationSelector							:= '0';
-	gWorkStations[0].par.processTime									:= 0;
-	gWorkStations[0].par.pathRouting									:= 0;
-	gWorkStations[0].par.landBeforeProcess								:= FALSE;
-	gWorkStations[0].par.ArcMovement									:= FALSE;
+	gWorkstations[0].par.xLocation										:= 0.300;
+	gWorkstations[0].par.yLocation										:= 0.060;
+	gWorkstations[0].par.nextStationSelector							:= '0';
+	gWorkstations[0].par.processTime									:= 0;
+	gWorkstations[0].par.pathRouting									:= 0;
+	gWorkstations[0].par.landBeforeProcess								:= FALSE;
+	gWorkstations[0].par.ArcMovement									:= FALSE;
 	
-	gWorkStations[1].par.xLocation										:= 0.420;
-	gWorkStations[1].par.yLocation										:= 0.060;
-	gWorkStations[1].par.nextStationSelector							:= '1';
-	gWorkStations[1].par.processTime									:= 0;
-	gWorkStations[1].par.pathRouting									:= 0;
-	gWorkStations[1].par.landBeforeProcess								:= FALSE;
-	gWorkStations[1].par.ArcMovement									:= FALSE;
+	gWorkstations[1].par.xLocation										:= 0.420;
+	gWorkstations[1].par.yLocation										:= 0.060;
+	gWorkstations[1].par.nextStationSelector							:= '1';
+	gWorkstations[1].par.processTime									:= 0;
+	gWorkstations[1].par.pathRouting									:= 0;
+	gWorkstations[1].par.landBeforeProcess								:= FALSE;
+	gWorkstations[1].par.ArcMovement									:= FALSE;
 	
-	gWorkStations[2].par.xLocation										:= 0.540;
-	gWorkStations[2].par.yLocation										:= 0.060;
-	gWorkStations[2].par.nextStationSelector							:= '2';
-	gWorkStations[2].par.processTime									:= 0;
-	gWorkStations[2].par.pathRouting									:= 0;
-	gWorkStations[2].par.landBeforeProcess								:= FALSE;
-	gWorkStations[2].par.ArcMovement									:= FALSE;
+	gWorkstations[2].par.xLocation										:= 0.540;
+	gWorkstations[2].par.yLocation										:= 0.060;
+	gWorkstations[2].par.nextStationSelector							:= '2';
+	gWorkstations[2].par.processTime									:= 0;
+	gWorkstations[2].par.pathRouting									:= 0;
+	gWorkstations[2].par.landBeforeProcess								:= FALSE;
+	gWorkstations[2].par.ArcMovement									:= FALSE;
 	
-	gWorkStations[3].par.xLocation										:= 0.660;
-	gWorkStations[3].par.yLocation										:= 0.060;
-	gWorkStations[3].par.nextStationSelector							:= '3';
-	gWorkStations[3].par.processTime									:= 0;
-	gWorkStations[3].par.pathRouting									:= 0;
-	gWorkStations[3].par.landBeforeProcess								:= FALSE;
-	gWorkStations[3].par.ArcMovement									:= FALSE;
+	gWorkstations[3].par.xLocation										:= 0.660;
+	gWorkstations[3].par.yLocation										:= 0.060;
+	gWorkstations[3].par.nextStationSelector							:= '3';
+	gWorkstations[3].par.processTime									:= 0;
+	gWorkstations[3].par.pathRouting									:= 0;
+	gWorkstations[3].par.landBeforeProcess								:= FALSE;
+	gWorkstations[3].par.ArcMovement									:= FALSE;
 	
 	CASE em.substate OF 
 		15000:
@@ -79,57 +79,57 @@ ACTION steelSheetStation:
 		0:
 			//Check what shuttle is on top of workstation
 			FOR k := 0 TO NUM_SHUTTLES DO
-				IF((gAcp6DCtrl.Status.ShuttleInfo[k].Position.X > pWorkStations.par.xLocation - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[k].Position.X < pWorkStations.par.xLocation + MARGIN) AND
-					gAcp6DCtrl.Status.ShuttleInfo[k].Position.Y > pWorkStations.par.yLocation - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[k].Position.Y < pWorkStations.par.yLocation + MARGIN) THEN
+				IF((gAcp6DCtrl.Status.ShuttleInfo[k].Position.X > pWorkstation.par.xLocation - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[k].Position.X < pWorkstation.par.xLocation + MARGIN) AND
+					gAcp6DCtrl.Status.ShuttleInfo[k].Position.Y > pWorkstation.par.yLocation - MARGIN AND gAcp6DCtrl.Status.ShuttleInfo[k].Position.Y < pWorkstation.par.yLocation + MARGIN) THEN
 					IF gAcp6DCtrl.Status.ShuttleInfo[k].State = mcACP6D_SH_STATE_IDLING THEN
-						pWorkStations.par.tempShuttleID := k;
+						pWorkstation.par.tempShuttleID := k;
 						cm.state := 10;
 					END_IF
 				END_IF
 			END_FOR
 			
 		10:
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pWorkStations.par.tempShuttleID].shuttleRef);
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Velocity := 0.1;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Acceleration := 0.1;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Position.X := pWorkStations.par.xLocation;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Position.Y := 0.180;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Z := steelSheetFlyingHeight;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Rx := 0;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Ry := 0;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Rz := 0;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Execute := TRUE;
-			IF pWorkStations.MC_BR_Move6D_Acp6D_0.Done THEN
-				pWorkStations.MC_BR_Move6D_Acp6D_0.Execute := FALSE;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].shuttleRef);
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Velocity := 0.1;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Acceleration := 0.1;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Position.X := pWorkstation.par.xLocation;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Position.Y := 0.180;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Z := steelSheetFlyingHeight;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Rx := 0;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Ry := 0;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Rz := 0;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Execute := TRUE;
+			IF pWorkstation.MC_BR_Move6D_Acp6D_0.Done THEN
+				pWorkstation.MC_BR_Move6D_Acp6D_0.Execute := FALSE;
 				cm.state := 30;
 			END_IF
 			
 		30:
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pWorkStations.par.tempShuttleID].shuttleRef);
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Velocity := 0.1;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Acceleration := 0.1;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Position.X := pWorkStations.par.xLocation;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Position.Y := 0.060;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Rx := 0;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Ry := 0;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Rz := 0;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Z := steelSheetFlyingHeight;
-			pWorkStations.MC_BR_Move6D_Acp6D_0.Execute := TRUE;
-			IF pWorkStations.MC_BR_Move6D_Acp6D_0.Done THEN
-				pWorkStations.MC_BR_Move6D_Acp6D_0.Execute := FALSE;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].shuttleRef);
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Velocity := 0.1;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Acceleration := 0.1;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Position.X := pWorkstation.par.xLocation;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.InPlane.Position.Y := 0.060;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Rx := 0;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Ry := 0;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Rz := 0;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Parameters.ShortAxis.Position.Z := steelSheetFlyingHeight;
+			pWorkstation.MC_BR_Move6D_Acp6D_0.Execute := TRUE;
+			IF pWorkstation.MC_BR_Move6D_Acp6D_0.Done THEN
+				pWorkstation.MC_BR_Move6D_Acp6D_0.Execute := FALSE;
 				cm.state := 0;
 			END_IF
 			
 	END_CASE
 
 	//Calls
-	pWorkStations.MC_BR_MoveInPlane_Acp6D_0();
-	pWorkStations.MC_BR_MoveArc_Acp6D_0();
-	pWorkStations.MC_BR_Move6D_Acp6D_0();
-	pWorkStations.MC_BR_ShLevitation_Acp6D_0();
-	pWorkStations.MC_BR_RotaryMotion_Acp6D_0();
-	pWorkStations.MC_BR_RotaryMotionSpin_Acp6D_0();
-	pWorkStations.TON_0();
+	pWorkstation.MC_BR_MoveInPlane_Acp6D_0();
+	pWorkstation.MC_BR_MoveArc_Acp6D_0();
+	pWorkstation.MC_BR_Move6D_Acp6D_0();
+	pWorkstation.MC_BR_ShLevitation_Acp6D_0();
+	pWorkstation.MC_BR_RotaryMotion_Acp6D_0();
+	pWorkstation.MC_BR_RotaryMotionSpin_Acp6D_0();
+	pWorkstation.TON_0();
 	cm();
 	
 END_ACTION

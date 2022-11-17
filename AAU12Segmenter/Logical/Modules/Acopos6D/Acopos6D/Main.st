@@ -306,11 +306,11 @@ PROGRAM _CYCLIC
 						lightValue := 4;
 					END_IF
 						FOR i := 0 TO NR_OF_WORKSTATIONS DO
-							pWorkStations ACCESS ADR (gWorkStations[i]); 
-						cm ACCESS ADR (gWorkStations[i].cm);
-						pWorkStations.cm.setup.parent.name := 'main';
-						//pShuttle.cm.setup.nameIdx := i;
-						workStationMovement;
+							pWorkstation ACCESS ADR (gWorkstations[i]); 
+							cm ACCESS ADR (gWorkstations[i].cm);
+							pWorkstation.cm.setup.parent.name := 'main';
+							//pShuttle.cm.setup.nameIdx := i;
+							workStationMovement;
 						END_FOR
 						
 				9000..9005:
@@ -324,9 +324,9 @@ PROGRAM _CYCLIC
 					
 					conveyorStationSetup;
 					FOR i := 0 TO NR_OF_WORKSTATIONS DO
-						pWorkStations ACCESS ADR (gWorkStations[i]); 
-						cm ACCESS ADR (gWorkStations[i].cm);
-						pWorkStations.cm.setup.parent.name := 'main';
+						pWorkstation ACCESS ADR (gWorkstations[i]); 
+						cm ACCESS ADR (gWorkstations[i].cm);
+						pWorkstation.cm.setup.parent.name := 'main';
 						//pShuttle.cm.setup.nameIdx := i;
 						conveyourStationMovement;
 					END_FOR
@@ -371,9 +371,9 @@ PROGRAM _CYCLIC
 					em.description := 'Rotation program';
 					em.cmd.sc := FALSE;
 					FOR i := 0 TO NR_OF_WORKSTATIONS DO
-						pWorkStations ACCESS ADR (gWorkStations[i]); 
-						cm ACCESS ADR (gWorkStations[i].cm);
-						pWorkStations.cm.setup.parent.name := 'main';
+						pWorkstation ACCESS ADR (gWorkstations[i]); 
+						cm ACCESS ADR (gWorkstations[i].cm);
+						pWorkstation.cm.setup.parent.name := 'main';
 						rotationStation;
 					END_FOR
 					rotationTask; // Controls em.cmd.sc so the program can be stopped at the correct time.
@@ -386,9 +386,9 @@ PROGRAM _CYCLIC
 				15010..15999:
 					em.description := 'Steelsheet program';
 					FOR i := 0 TO NR_OF_WORKSTATIONS DO
-						pWorkStations ACCESS ADR (gWorkStations[i]); 
-						cm ACCESS ADR (gWorkStations[i].cm);
-						pWorkStations.cm.setup.parent.name := 'main';
+						pWorkstation ACCESS ADR (gWorkstations[i]); 
+						cm ACCESS ADR (gWorkstations[i].cm);
+						pWorkstation.cm.setup.parent.name := 'main';
 						steelSheetStation;
 					END_FOR
 					
@@ -415,82 +415,82 @@ PROGRAM _CYCLIC
 					
 				17000..17009:
 					em.description := 'Smart Lab program - Setup';
-					smartLabSetup;					
+					smartLabSetup;
 					
 				17010..17014:
 					
-					em.description := 'Smart Lab Program - Check if new order has been placed';
+					em.description := 'Smart Lab Program - Write order if it has been placed';
 					
 					// The user has requested an order which is added to the buffer
-					
 					IF executeOrder THEN
 						
-						TON_0.PT := REAL_TO_TIME(150);
+						TON_0.PT := REAL_TO_TIME(200);
 						TON_0.IN := TRUE;
 						IF TON_0.Q THEN
 							TON_0.IN := FALSE;
 							executeOrder := FALSE;
-						
-							IF bufferEmpty THEN
+							
+							// If the buffer is empty go to read state, else just continue executing the order
+//							IF bufferEmpty THEN
+//								em.substate := 17015;
+//							ELSE
+//								em.substate := 17020;
+//							END_IF
+							
+							// Write the order if the buffer is not full
+							IF NOT bufferFull THEN
 								writeOrder;
-								em.substate := 17015;
-							ELSE
-								IF NOT bufferFull THEN
-									writeOrder;
-								END_IF
-								em.substate := 17020;
 							END_IF
+							
+							em.substate := 17015;
 						END_IF
 					END_IF
-						
+					
 				
 				17015..17019:
-					em.description := 'Read order';
-					IF orderFinished THEN
+					em.description := 'Smart Lab Program - Read order if the shuttles are ready to';
 						
-						orderFinished := FALSE;
+					// Read a new order if the entire other order has been initiated and the buffer is not empty
+					IF remainingOrderAmount = 0 AND NOT bufferEmpty THEN
+						// Read the order
 						readOrder;
 						
-						FOR i := 0 TO (productOrder.amount - 1) DO
-							
-							moveToStartWorkstation[shuttleIndexAtPosition[i]] := TRUE;
-							
-							shuttlePlans[shuttleIndexAtPosition[i]].productOrder := productOrder;
-							createRouteSheet_0(inputProductOrder := productOrder);							
-							shuttlePlans[shuttleIndexAtPosition[i]].routingSheet := createRouteSheet_0.outputRouteSheet;
-							shuttlePlans[shuttleIndexAtPosition[i]].progressIndex := 0;
-							shuttlePlans[shuttleIndexAtPosition[i]].shuttleIdx := shuttleIndexAtPosition[i];
-							
-						END_FOR
-					
+						// Create the route sheet
+						CreateRouteSheet_0.inputProductOrder := productOrder;
+						CreateRouteSheet_0();
+						
+						remainingOrderAmount := productOrder.amount;
+						activeShuttles := activeShuttles + productOrder.amount;
 						amountProductsFinished := 0;
-						
-						parkingSpotIndex := productOrder.amount - 1;
-						
 					END_IF
 					
 					em.substate := 17020;
 					
-				17020..17999:
-													
+				17020..17999:							
 					em.description := 'Smart Lab program - Workstation movement';
-					FOR i := 0 TO (productOrder.amount - 1) DO
-						pShuttle ACCESS ADR(gShuttles[shuttleIndexAtPosition[i]]);
-						cm ACCESS ADR (gShuttles[shuttleIndexAtPosition[i]].cm);
-						pShuttle.cm.setup.parent.name := 'main';
-						pShuttle.par.shuttleID := shuttleIndexAtPosition[i]; // For the correct order of shuttles
-						
-						smartLabInitialMovement;
-					END_FOR
-					
+					// Go through the workstations and run program for these
 					FOR i := 0 TO (smartLabNumWorkstations - 1) DO
-						pWorkStations ACCESS ADR (gWorkStations[i]); 
-						cm ACCESS ADR (gWorkStations[i].cm);
-						pWorkStations.cm.setup.parent.name := 'main';
+						pWorkstation ACCESS ADR (gWorkstations[i]); 
+						cm ACCESS ADR (gWorkstations[i].cm);
+						pWorkstation.cm.setup.parent.name := 'main';
+						pWorkstation.par.workstationID := i;
 						
-						smartLabWorkstationMovement;
+						smartLabWorkstationOperation;
 					END_FOR
 					
+					// Go through the shuttles and run program for these
+					FOR i := 0 TO (smartLabNumShuttles - 1) DO
+						pShuttle ACCESS ADR(gShuttles[i]);
+						cm ACCESS ADR (gShuttles[i].cm);
+						pShuttle.cm.setup.parent.name := 'main';
+						pShuttle.par.shuttleID := i; // For the correct order of shuttles
+						
+						pShuttlePlan ACCESS ADR(shuttlePlans[pShuttle.par.shuttleID]);
+						
+						smartLabShuttleMovement;
+					END_FOR
+					
+					// Go to write order if a new order is made or there are no active orders
 					IF executeOrder THEN
 						em.substate := 17010;
 					END_IF

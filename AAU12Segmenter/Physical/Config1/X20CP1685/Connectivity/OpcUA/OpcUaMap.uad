@@ -93,11 +93,9 @@
         <Variable Name="weightProgramFlyingHight" />
         <Variable Name="steelSheetFlyingHeight" EngineeringUnitId="1" />
         <Variable Name="executeOrder" />
-        <Variable Name="orderFinished" />
         <Variable Name="amountProductsFinished" />
         <Variable Name="tempProductOrder" RecursiveEnable="2" />
         <Variable Name="bufferFull" />
-        <Variable Name="productOrder" RecursiveEnable="2" />
       </Task>
       <Task Name="Vision">
         <Variable Name="codeReaderVariable">

@@ -1,20 +1,14 @@
 VAR
 	ABBRobot : ABB_typ;
-	amountProductsFinished : USINT := 0;
-	bufferEmpty : BOOL := TRUE;
-	bufferFull : BOOL := FALSE;
-	bufferSize : {REDUND_UNREPLICABLE} USINT;
 	cm : REFERENCE TO brdkCM;
-	createRouteSheet_0 : createRouteSheet;
 	createShGroup : USINT;
 	em : brdkEM;
 	enableButtons : BOOL;
-	executeOrder : BOOL := FALSE;
 	fbPayload : REAL;
 	flaskProgramAcceleration : REAL := 0.2;
 	flaskProgramVelocity : REAL := 2;
 	gShuttles : ARRAY[0..NUM_SHUTTLES] OF shuttle_typ;
-	gWorkStations : {REDUND_UNREPLICABLE} ARRAY[0..NR_OF_WORKSTATIONS] OF workStation_typ;
+	gWorkstations : {REDUND_UNREPLICABLE} ARRAY[0..NR_OF_WORKSTATIONS] OF workStation_typ;
 	i : USINT;
 	j : USINT;
 	k : USINT;
@@ -52,50 +46,71 @@ VAR
 	MC_BR_ShGroupGetInfo_Acp6D_0 : MC_BR_ShGroupGetInfo_Acp6D;
 	MC_BR_ShLevitation_Acp6D_0 : MC_BR_ShLevitation_Acp6D;
 	MC_BR_ShReadInfo_Acp6D_0 : ARRAY[0..NUM_SHUTTLES] OF MC_BR_ShReadInfo_Acp6D;
-	moveToStartWorkstation : ARRAY[0..7] OF BOOL := [8(FALSE)];
-	orderBuffer : ARRAY[0..9] OF product_order := [10((amount:=0,bottomCover:=noCover,topCover:=noCover,PCB:=FALSE,Fuses:=0,ID:=0))];
-	orderFinished : BOOL := TRUE;
-	parkingSpotIndex : SINT;
 	positionContainerBoxProgram : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerFlaskProgram : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerLinkMovement : ARRAY[0..7] OF thisShuttleSetup;
 	positionContainerLinkMovementNew : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerRotation : ARRAY[0..9] OF shuttleStartup_typ;
-	positionContainerSmartLabProgram : ARRAY[0..7] OF shuttleStartup_typ;
 	positionContainerSteelSheet : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerTestProgram : ARRAY[0..7] OF shuttleStartup_typ;
 	positionContainerWorkstationMov : ARRAY[0..9] OF shuttleStartup_typ;
-	productOrder : product_order := (amount:=1,topCover:=blackCover,bottomCover:=blackCover,PCB:=TRUE,Fuses:=2);
-	pShuttle : REFERENCE TO shuttle_typ;
-	pTempShuttlePlan : REFERENCE TO shuttle_plan;
-	pWorkStations : REFERENCE TO workStation_typ;
 	shGroupShuttle1_2 : UDINT;
 	shGroupShuttle1_4 : UDINT;
 	shGroupShuttle2_3 : UDINT;
 	shGroupShuttle3_4 : UDINT;
 	shGroupShuttle5_6_7_8 : UDINT;
+	shuttlePayload : REAL;
+	shuttleToTakePictureOf : USINT;
+	steelSheetFlyingHeight : REAL := 0.002;
+	tempCounter : USINT;
+	tempShuttleCnt : USINT;
+	tempShuttleCounter : USINT;
+	testObj : test_typ;
+	TON_watchdog : TON;
+	weightCalibration : REAL;
 END_VAR
 VAR RETAIN
 	weightProgramFlyingHight : REAL := 1.3;
 END_VAR
+(*-----------------------------------*)
+(*////////// SMART LAB \\\\\\\\\\*)
+(*-----------------------------------*)
 VAR
-	shuttleIndexAtPosition : ARRAY[0..7] OF USINT;
-	shuttlePayload : REAL;
+	activeShuttles : USINT;
+	amountProductsFinished : USINT;
+	availableColumn : ARRAY[0..3] OF BOOL;
+	bufferEmpty : BOOL := TRUE;
+	bufferFull : BOOL := FALSE;
+	bufferSize : {REDUND_UNREPLICABLE} USINT;
+	CreateRouteSheet_0 : CreateRouteSheet;
+	ShuttlesAtPositions_0 : ShuttlesAtPositions;
+	ShuttlesInRange_0 : ShuttlesInRange;
+	ShuttlesInWorkstationBuffer_0 : ShuttlesInWorkstationBuffer;
+	executeOrder : BOOL := FALSE;
+	orderBuffer : ARRAY[0..9] OF product_order := [10((amount:=0,bottomCover:=noCover,topCover:=noCover,PCB:=FALSE,Fuses:=0,ID:=0))];
+	positionContainerSmartLabProgram : ARRAY[0..7] OF shuttleStartup_typ;
+	productOrder : product_order := (amount:=1,topCover:=blackCover,bottomCover:=blackCover,PCB:=TRUE,Fuses:=2);
+	pShuttle : REFERENCE TO shuttle_typ;
+	pShuttlePlan : REFERENCE TO shuttle_plan;
+	pWorkstation : REFERENCE TO workStation_typ;
+	remainingOrderAmount : USINT;
 	shuttlePlans : ARRAY[0..7] OF shuttle_plan;
-	shuttleToTakePictureOf : USINT;
+END_VAR
+VAR CONSTANT
+	smartLabNumShuttles : USINT := 8;
 	smartLabNumWorkstations : USINT := 6;
-	steelSheetFlyingHeight : REAL := 0.002;
-	tempCounter : USINT;
+END_VAR
+VAR
 	tempProductOrder : product_order := (amount:=1,bottomCover:=blackCover,topCover:=blackCover,PCB:=TRUE,Fuses:=2,Holes:=4);
-	tempShuttleCnt : USINT;
-	tempShuttleCounter : USINT;
-	tempShuttleIndexAtPosition : ARRAY[0..7] OF USINT;
-	testObj : test_typ;
+	tempShuttleIndex : USINT;
 	TON_0 : TON;
-	TON_watchdog : TON;
-	weightCalibration : REAL;
 	readIndex : USINT := 0;
 	writeIndex : USINT := 0;
+END_VAR
+(*Variable mapping*)
+VAR
 	orderSpec : ARRAY[0..5] OF USINT;
 	robotOperating : ARRAY[0..5] OF BOOL;
+	tester : BOOL;
+	tester2 : INT;
 END_VAR

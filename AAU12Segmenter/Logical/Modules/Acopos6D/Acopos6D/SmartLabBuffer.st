@@ -2,7 +2,7 @@
 ACTION writeOrder: 
 
 	orderBuffer[writeIndex] := tempProductOrder;
-	orderBuffer[writeIndex].ID := orderBuffer[writeIndex].ID + 1;
+	//orderBuffer[writeIndex].ID := orderBuffer[writeIndex].ID + 1; // Seems wrong - shouldn't it be orderBuffer[writeIndex].ID := orderBuffer[writeIndex-1].ID + 1?
 	bufferEmpty := FALSE;
 	writeIndex := (writeIndex + 1) MOD bufferSize;
 	
