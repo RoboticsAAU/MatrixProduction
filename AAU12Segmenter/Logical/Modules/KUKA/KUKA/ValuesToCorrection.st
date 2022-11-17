@@ -12,7 +12,16 @@ FUNCTION_BLOCK ValuesToCorrection
 	CASE robotIdx OF
 	
 		1:	
-			
+			CASE baseNo OF
+				0: // w.r.t world frame
+					
+				1: // w.r.t acopos frame
+					
+				2: // w.r.t magazine frame
+					posCorrections.X := -2;
+					posCorrections.Y := 1.4142;
+					posCorrections.Z := 1.4142;
+			END_CASE
 		2:
 		
 		3:

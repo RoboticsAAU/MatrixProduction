@@ -11,12 +11,6 @@
     <File>WriteBaseData.st</File>
     <File>JointMovement.st</File>
     <File>LinearMovement.st</File>
-    <File>KUKABottomCover.st</File>
-    <File>KUKADrilling.st</File>
-    <File>KUKAPcb.st</File>
-    <File>KUKAFuse.st</File>
-    <File>KUKATopCover.st</File>
-    <File>KUKAUnloading.st</File>
     <File Private="true">LocalFunctions.fun</File>
     <File>GripperAction.st</File>
     <File>EETypeToFrame.st</File>

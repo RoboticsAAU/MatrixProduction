@@ -92,7 +92,7 @@ PROGRAM _CYCLIC
 					RobotHoming;
 				
 				1000..1999: // RUNNING MANIPULATOR PROGRAMS
-												
+					
 					IF pKuka.operationType = ASSEMBLY THEN
 						RobotAssembly;
 					ELSE // For now, we know it can only be PROCESS, unless additional entries are added to the enum in the future

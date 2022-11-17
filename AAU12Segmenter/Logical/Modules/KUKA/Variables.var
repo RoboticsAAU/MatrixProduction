@@ -6,17 +6,6 @@ VAR
 	InputVariables : ARRAY[0..5,0..254] OF USINT;
 	OutputVariables : ARRAY[0..5,0..254] OF USINT;
 END_VAR
-(*PositonArray, Coordsys etc*)
-VAR RETAIN
-	TeachPosition : POSITION_ARRAY; (*TeachingPositions -> retain to be save when restarting*)
-END_VAR
-VAR
-	JogPosAxis : E6AXIS := (A2:=-90,A3:=90);
-	JoggingCoordSys : COORDSYS; (*Variable for the CoordSystem when Jogging*)
-END_VAR
-VAR RETAIN
-	gParameter : USINT;
-END_VAR
 (*Gripper*)
 VAR
 	gripperWhitePins : ARRAY[0..5] OF BOOL;

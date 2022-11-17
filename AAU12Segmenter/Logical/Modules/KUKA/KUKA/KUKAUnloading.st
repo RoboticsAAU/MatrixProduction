@@ -1,4 +1,0 @@
-
-ACTION KUKAUnloading: 
-
-END_ACTION

@@ -17,13 +17,13 @@ ACTION RobotAssembly:
 				CASE pKuka.axisGroupIdx OF
 					1:
 						CASE orderSpec[i] OF
-							0: // Black cover
+							1: // Black cover
 								pKuka.tempPosition.X := pKuka.tempPosition.X; // Change when ready
 						
-							1: // White cover
+							2: // White cover
 								pKuka.tempPosition.X := pKuka.tempPosition.X - 80; // Change when ready
 						
-							2: // Blue cover
+							3: // Blue cover
 								pKuka.tempPosition.X := pKuka.tempPosition.X - 160; // Change when ready
 						END_CASE
 					3:
@@ -42,13 +42,13 @@ ACTION RobotAssembly:
 				
 					5:
 						CASE orderSpec[i] OF
-							0: // Black cover
+							1: // Black cover
 								pKuka.tempPosition.X := pKuka.tempPosition.X; // Change when ready
 						
-							1: // White cover
+							2: // White cover
 								pKuka.tempPosition.X := pKuka.tempPosition.X + 80; // Change when ready
 						
-							2: // Blue cover
+							3: // Blue cover
 								pKuka.tempPosition.X := pKuka.tempPosition.X + 160; // Change when ready
 						END_CASE
 					6:

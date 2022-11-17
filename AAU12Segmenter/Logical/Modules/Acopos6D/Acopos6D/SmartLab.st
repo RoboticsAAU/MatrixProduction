@@ -212,7 +212,7 @@ ACTION smartLabWorkstationMovement:
 			
 			robotOperating[i] := TRUE; // Begin robot operation
 			
-			pWorkStations.TON_0.PT := REAL_TO_TIME(250); // Timer is needed for robot to start motion before shuttles moves away
+			pWorkStations.TON_0.PT := REAL_TO_TIME(500); // Timer is needed for robot to start motion before shuttles moves away
 			pWorkStations.TON_0.IN := TRUE;
 			
 			IF pWorkStations.TON_0.Q THEN
