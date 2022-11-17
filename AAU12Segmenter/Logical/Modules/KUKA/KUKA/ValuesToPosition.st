@@ -113,7 +113,7 @@ FUNCTION_BLOCK ValuesToPosition
 				
 				APPROACH_WORKSTATION:
 					outputPos.X := 660; 
-					outputPos.Y := 780 + 32.79; // 32.79 represents shift of fuses
+					outputPos.Y := 780 + 32.79; // 32.79 represents shift from center of PCB to fuse bracket 
 					outputPos.Z := (1 + 9.85 + 5 + 6.7 + 1.5 + 2) + relativeDistance + 2; 
 					outputPos.A := 0;
 					outputPos.B := 0;

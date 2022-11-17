@@ -143,7 +143,7 @@ ACTION KUKAPcb:
 			
 			pKuka.tempPosition.X := pKuka.tempPosition.Y := pKuka.tempPosition.Z := pKuka.tempPosition.A := pKuka.tempPosition.B := pKuka.tempPosition.C
 				:= 0;
-			pKuka.tempPosition.Z := -relativeDistance; // Move 100 mm forwards to placement position
+			pKuka.tempPosition.Z := -relativeDistance; // Move 80 mm forwards to placement position
 			// Status and turn is already set from moving to approach point
 			
 			pKuka.motion.KRC_MoveLinearRelative.Position := pKuka.tempPosition;
