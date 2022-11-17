@@ -9,6 +9,9 @@
     <File>ErrorMessage.st</File>
     <File>WriteToolData.st</File>
     <File>WriteBaseData.st</File>
+    <File>RobotHoming.st</File>
+    <File>RobotAssembly.st</File>
+    <File>RobotProcess.st</File>
     <File>JointMovement.st</File>
     <File>LinearMovement.st</File>
     <File Private="true">LocalFunctions.fun</File>
@@ -17,8 +20,5 @@
     <File>ValuesToPosition.st</File>
     <File>ValuesToMagazineFrame.st</File>
     <File>ValuesToCorrection.st</File>
-    <File>RobotProcess.st</File>
-    <File>RobotAssembly.st</File>
-    <File>RobotHoming.st</File>
   </Files>
 </Program>
