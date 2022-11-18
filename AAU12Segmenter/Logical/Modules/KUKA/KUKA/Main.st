@@ -25,7 +25,7 @@ PROGRAM _INIT
 	KUKAs[2].operationType := ASSEMBLY;
 	KUKAs[3].operationType := ASSEMBLY;
 	KUKAs[4].operationType := ASSEMBLY;
-	KUKAs[5].operationType := ASSEMBLY;
+	KUKAs[5].operationType := HANDLING;
 	
 END_PROGRAM
 
