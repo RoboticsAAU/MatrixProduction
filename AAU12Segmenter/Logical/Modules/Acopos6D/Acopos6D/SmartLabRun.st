@@ -106,7 +106,10 @@ ACTION smartLabWorkstationOperation:
 				4: orderSpec[4] := COVER_TYPE_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.topCover);
 				
 				// Send ID of order
-				5: orderSpec[5] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.ID;
+				5: 
+					orderSpec[5] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.ID;
+					orderAmount := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.amount;
+				
 			END_CASE
 			
 			// Begin robot operation

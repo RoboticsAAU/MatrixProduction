@@ -57,7 +57,8 @@ TYPE
 	operation_type : 
 		(
 		ASSEMBLY := 0,
-		PROCESS := 1
+		PROCESS := 1,
+		HANDLING := 2
 		);
 	end_effector_type : 
 		(

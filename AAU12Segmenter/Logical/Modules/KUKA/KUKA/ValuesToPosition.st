@@ -231,15 +231,15 @@ FUNCTION_BLOCK ValuesToPosition
 					
 					baseNo := 0;
 				
-				APPROACH_MAGAZINE: // NOT CORRECT
-					outputPos.X := 120;
-					outputPos.Y := 120;
-					outputPos.Z := 200;
+				APPROACH_MAGAZINE:
+					outputPos.X := -60;
+					outputPos.Y := 160;
+					outputPos.Z := 290;
 					outputPos.A := -180;
 					outputPos.B := 0;
 					outputPos.C := 180;
 					outputPos.Status := 2; // 010
-					outputPos.Turn := 2; // 000010
+					outputPos.Turn := 35; // 100011
 					
 					baseNo := 2;
 				

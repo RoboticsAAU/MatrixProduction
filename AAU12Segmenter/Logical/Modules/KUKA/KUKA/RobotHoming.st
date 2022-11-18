@@ -3,11 +3,11 @@ ACTION RobotHoming:
 	
 	// Check if current iteration is drilling manipulator
 	CASE pKuka.operationType OF
-		PROCESS:
-			pKuka.convert.ValuesToPosition.posType := APPROACH_WORKSTATION;
-					
 		ASSEMBLY: 
 			pKuka.convert.ValuesToPosition.posType := APPROACH_MAGAZINE;
+		
+		PROCESS, HANDLING:
+			pKuka.convert.ValuesToPosition.posType := APPROACH_WORKSTATION;
 		
 	END_CASE
 	

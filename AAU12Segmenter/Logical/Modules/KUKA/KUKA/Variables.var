@@ -58,6 +58,21 @@ END_VAR
 VAR
 	numDoneHoles : USINT := 0;
 	fusePickOffset : REAL := 13; (*Distance between fuses*)
+	k : INT;
+END_VAR
+VAR CONSTANT
+	unloadSizeX : INT := 2;
+	unloadSizeY : INT := 2;
+	unloadSizeZ : INT := 4;
+END_VAR
+VAR
+	stackCounter : ARRAY[0..1,0..1] OF INT := [4(0)];
+	idAtStack : ARRAY[0..1,0..1] OF INT := [4(-1)];
+	xIdx : INT;
+	yIdx : INT;
+	xIdxTemp : INT := -1;
+	orderCounter : ARRAY[0..1,0..1] OF INT := [4(0)];
+	yIdxTemp : INT := -1;
 END_VAR
 (*References*)
 VAR
@@ -67,5 +82,6 @@ END_VAR
 (*Variable mapping*)
 VAR
 	robotOperating : ARRAY[0..5] OF BOOL;
+	orderAmount : USINT;
 	orderSpec : ARRAY[0..5] OF USINT;
 END_VAR
