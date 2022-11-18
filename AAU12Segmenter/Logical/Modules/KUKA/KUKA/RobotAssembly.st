@@ -26,6 +26,7 @@ ACTION RobotAssembly:
 							3: // Blue cover
 								pKuka.tempPosition.X := pKuka.tempPosition.X - 160; // Change when ready
 						END_CASE
+					
 					3:
 						// Do Nothing
 						cm.state := 1020;
@@ -51,9 +52,6 @@ ACTION RobotAssembly:
 							3: // Blue cover
 								pKuka.tempPosition.X := pKuka.tempPosition.X + 160; // Change when ready
 						END_CASE
-					6:
-						// Do Nothing
-						cm.state := 1020;
 					
 				END_CASE
 			END_IF
@@ -126,13 +124,13 @@ ACTION RobotAssembly:
 				
 		1050:	
 			cm.description := 'Move to approach point of workstation with absolute linear movement';
-				
-			pKuka.convert.ValuesToCOORDSYS.Base := 1; // ACOPOS6D frame
-			pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 0; // #BASE
-			pKuka.convert.ValuesToCOORDSYS();
-				
+			
 			pKuka.convert.ValuesToPosition.posType := APPROACH_WORKSTATION;
 			pKuka.convert.ValuesToPosition();
+			
+			pKuka.convert.ValuesToCOORDSYS.Base := pKuka.convert.ValuesToPosition.baseNo; // ACOPOS6D frame
+			pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 0; // #BASE
+			pKuka.convert.ValuesToCOORDSYS();
 				
 			pKuka.tempPosition := pKuka.convert.ValuesToPosition.outputPos;
 				
