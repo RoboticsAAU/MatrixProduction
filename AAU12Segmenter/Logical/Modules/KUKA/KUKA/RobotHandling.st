@@ -75,15 +75,14 @@ ACTION RobotHandling:
 			END_IF
 			
 		1040:
-			cm.description := 'Determine position of magazine stack';
+			cm.description := 'Define order-specific approach point at magazine';
 			
-			// The following order-specific adjustments are possible since we at this point know that the robot has returned to home position (main approach point) in cm.state = 500
-			CASE pKuka.axisGroupIdx OF			
+			CASE pKuka.axisGroupIdx OF
 				6:
 					// Check if any stacks are allocated
 					FOR k := 0 TO (unloadSizeX*unloadSizeY) - 1 DO
-						xIdxTemp := (k MOD unloadSizeX);
-						yIdxTemp := brmfloor(k/unloadSizeY);
+						xIdxTemp := k MOD unloadSizeX;
+						yIdxTemp := REAL_TO_INT(brmfloor(k/unloadSizeY));
 							
 						IF idAtStack[xIdxTemp, yIdxTemp] = orderSpec[i] THEN
 							IF xIdx <> -1 THEN
@@ -100,7 +99,7 @@ ACTION RobotHandling:
 							idAtStack[xIdx, yIdx] := orderSpec[i];
 						END_IF
 						
-					END_FOR					
+					END_FOR
 					
 					pKuka.convert.ValuesToPosition.posType := APPROACH_MAGAZINE;
 					pKuka.convert.ValuesToPosition();
@@ -191,11 +190,11 @@ ACTION RobotHandling:
 			
 		1090:
 			cm.description := 'Move back to home position';
-			orderCounter[xIdx,yIdx]:= orderCounter[xIdx,yIdx]+1;
-			stakCounter[xIdx,yIdx]:= stackCounter[xIdx,yIdx]+1;
+			orderCounter[xIdx, yIdx] := orderCounter[xIdx,yIdx] + 1;
+			stackCounter[xIdx, yIdx] := stackCounter[xIdx,yIdx] + 1;
 			IF orderCounter = orderAmount THEN 
 				idAtStack[xIdx, yIdx] := -1;
-				orderCounter[xidx,yidx] := 0;
+				orderCounter[xIdx, yIdx] := 0;
 			END_IF
 			
 			RobotHoming;
