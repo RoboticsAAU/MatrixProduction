@@ -4,20 +4,22 @@ ACTION smartLabWorkstationOperation:
 		0:
 			cm.description := 'Setting parameters for the workstations'; // None right now
 			
-			// Shuttle information
+			// Function block reference information
 			ShuttlesAtPositions_0.shuttleInfo := ADR(gAcp6DCtrl.Status.ShuttleInfo); // Maybe need to run FB?
 			ShuttlesInRange_0.shuttleInfo := ADR(gAcp6DCtrl.Status.ShuttleInfo);
-			ShuttlesInWorkstationBuffer_0.shuttleInfo := ADR(gAcp6DCtrl.Status.ShuttleInfo); 
+			ShuttlesInWorkstationBuffer_0.shuttleInfo := ADR(gAcp6DCtrl.Status.ShuttleInfo);
+			MovementColumnSelection_0.availablePosition := ADR(availablePosition);
 			
 			cm.state := 10;
-		
+			
+			
 		10:
 			cm.description := 'Check what shuttle is on top of workstation';
 			
 			// Workstation position
 			ShuttlesAtPositions_0.checkPosX[0] := pWorkstation.par.xLocation;
 			ShuttlesAtPositions_0.checkPosY[0] := pWorkstation.par.yLocation;
-			ShuttlesAtPositions_0.checkShuttleState[0] := mcACP6D_SH_STATE_IDLING;
+			ShuttlesAtPositions_0.opt_checkShuttleState[0] := mcACP6D_SH_STATE_IDLING;
 			ShuttlesAtPositions_0.numCheckedPos := 1;
 			ShuttlesAtPositions_0();
 			
@@ -62,7 +64,7 @@ ACTION smartLabWorkstationOperation:
 					// Position where at least 3 shuttles are in queue
 					ShuttlesAtPositions_0.checkPosX[0] := pWorkstation.par.approachPosX - 0.240;
 					ShuttlesAtPositions_0.checkPosY[0] := pWorkstation.par.approachPosY;
-					ShuttlesAtPositions_0.checkShuttleState[0] := mcACP6D_SH_STATE_OBSTACLE;
+					ShuttlesAtPositions_0.opt_checkShuttleState[0] := mcACP6D_SH_STATE_OBSTACLE;
 					ShuttlesAtPositions_0.numCheckedPos := 1;
 					ShuttlesAtPositions_0();
 					
@@ -133,7 +135,7 @@ ACTION smartLabWorkstationOperation:
 			
 		40:
 			cm.description := 'Wait for robot to finish operation';
-			pWorkstation.TON_0.PT := REAL_TO_TIME(1000); // Timer is needed for robot to start motion before shuttles moves away
+			pWorkstation.TON_0.PT := REAL_TO_TIME(1000); // Timer is needed for robot to start motion before shuttle moves away
 			pWorkstation.TON_0.IN := TRUE;
 			IF pWorkstation.TON_0.Q THEN
 				pWorkstation.TON_0.IN := FALSE;
@@ -235,27 +237,19 @@ ACTION smartLabShuttleMovement:
 			
 			// If a column has not been selected yet
 			IF pShuttle.par.tempHighwayColumn = -1 THEN
-				// Select the closest column that is available
-				FOR k := 0 TO 3 DO
-					IF pShuttle.par.tempWorkstationID <= 2 THEN // First three workstations (all on the same side)
-						IF availableColumn[3-k] THEN
-							pShuttle.par.tempHighwayColumn := 3-k;
-							availableColumn[pShuttle.par.tempHighwayColumn] := FALSE;
-							EXIT;
-						END_IF
-					ELSE
-						IF availableColumn[k] THEN
-							pShuttle.par.tempHighwayColumn := k;
-							availableColumn[pShuttle.par.tempHighwayColumn] := FALSE;
-							EXIT;
-						END_IF
-					END_IF
-				END_FOR
+				// Select the closest column that is available (no other shuttles using column or movement direction is opposite)
+				MovementColumnSelection_0.startWorkstation := gWorkstations[pShuttle.par.tempWorkstationID];
+				MovementColumnSelection_0.endWorkstation := gWorkstations[pShuttle.par.tempNextWorkstationID];
+				MovementColumnSelection_0();
+				
+				pShuttle.par.tempHighwayColumn := MovementColumnSelection_0.selectedColumn;
+				
 			// Move to the specified column if any is available (-1 if no column is available)
 			ELSE
+				// Position of the selected column
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := QuadrantIdxToPos(quadrantIdx := (1 + pShuttle.par.tempHighwayColumn)); // Add 1 because the first column is not a highway
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkstations[pShuttle.par.tempWorkstationID].par.departPosY;
-					
+				
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 				IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Done THEN
 					pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
@@ -278,9 +272,14 @@ ACTION smartLabShuttleMovement:
 			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Done THEN
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
 				
-				// Make the column available for use again if one was occupied by the movement
+				// Make the positions available for use again if any were occupied by the movement
 				IF NOT AreWorkstationsOpposite(workstationID1 := pShuttle.par.tempWorkstationID, workstationID2 := pShuttle.par.tempNextWorkstationID) THEN
-					availableColumn[pShuttle.par.tempHighwayColumn] := TRUE;
+					MovementColumnSelection_0.startWorkstation := gWorkstations[pShuttle.par.tempWorkstationID];
+					MovementColumnSelection_0.endWorkstation := gWorkstations[pShuttle.par.tempNextWorkstationID];
+					MovementColumnSelection_0.opt_movementDone := TRUE;
+					MovementColumnSelection_0.opt_resetColumn := pShuttle.par.tempHighwayColumn;
+					MovementColumnSelection_0();
+					
 					pShuttle.par.tempHighwayColumn := -1;
 				END_IF
 				

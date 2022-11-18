@@ -12,7 +12,7 @@ FUNCTION_BLOCK ShuttlesAtPositions
 		FOR i := 0 TO (numShuttles - 1) DO
 			IF ((shuttleInfo[i].Position.X > checkPosX[k] - MARGIN AND shuttleInfo[i].Position.X < checkPosX[k] + MARGIN) AND
 				(shuttleInfo[i].Position.Y > checkPosY[k] - MARGIN AND shuttleInfo[i].Position.Y < checkPosY[k] + MARGIN)) AND
-				(checkShuttleState[k] = 0 OR shuttleInfo[i].State = checkShuttleState[k]) THEN // Shuttle state 0 corresponds to any state being accepted
+				(opt_checkShuttleState[k] = 0 OR shuttleInfo[i].State = opt_checkShuttleState[k]) THEN // Shuttle state 0 corresponds to any state being accepted
 				isAtCheckPos := TRUE;
 				shuttleID := i;
 				EXIT;
@@ -25,9 +25,9 @@ FUNCTION_BLOCK ShuttlesAtPositions
 		END_IF
 	END_FOR
 	
-	// checkShuttleState for next time FB is called
+	// Reset checkShuttleState for next time FB is called
 	FOR k := 0 TO (numCheckedPos - 1) DO
-		checkShuttleState[k] := 0;
+		opt_checkShuttleState[k] := 0;
 	END_FOR
 	
 END_FUNCTION_BLOCK
@@ -84,7 +84,7 @@ FUNCTION_BLOCK ShuttlesInWorkstationBuffer
 	// Check idle shuttle at approach point
 	ShuttlesAtPositions_0.checkPosX[0] := workstation.par.approachPosX;
 	ShuttlesAtPositions_0.checkPosY[0] := workstation.par.approachPosY;
-	ShuttlesAtPositions_0.checkShuttleState[0] := mcACP6D_SH_STATE_IDLING;
+	ShuttlesAtPositions_0.opt_checkShuttleState[0] := mcACP6D_SH_STATE_IDLING;
 	ShuttlesAtPositions_0.numCheckedPos := 1;
 	ShuttlesAtPositions_0();
 	

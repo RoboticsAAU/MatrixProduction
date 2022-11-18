@@ -8,7 +8,7 @@ VAR
 	flaskProgramAcceleration : REAL := 0.2;
 	flaskProgramVelocity : REAL := 2;
 	gShuttles : ARRAY[0..NUM_SHUTTLES] OF shuttle_typ;
-	gWorkstations : {REDUND_UNREPLICABLE} ARRAY[0..NR_OF_WORKSTATIONS] OF workStation_typ;
+	gWorkstations : ARRAY[0..NR_OF_WORKSTATIONS] OF workStation_typ;
 	i : USINT;
 	j : USINT;
 	k : USINT;
@@ -78,14 +78,12 @@ END_VAR
 VAR
 	activeShuttles : USINT;
 	amountProductsFinished : USINT;
-	availableColumn : ARRAY[0..3] OF BOOL;
+	availablePosition : {REDUND_UNREPLICABLE} ARRAY[0..3,0..7] OF BOOL; (*4 highway columns and 8 highway rows*)
 	bufferEmpty : BOOL := TRUE;
 	bufferFull : BOOL := FALSE;
 	bufferSize : {REDUND_UNREPLICABLE} USINT;
-	CreateRouteSheet_0 : CreateRouteSheet;
-	ShuttlesAtPositions_0 : ShuttlesAtPositions;
-	ShuttlesInRange_0 : ShuttlesInRange;
-	ShuttlesInWorkstationBuffer_0 : ShuttlesInWorkstationBuffer;
+	MovementColumnSelection_0 : MovementColumnSelection;
+	CreateRouteSheet_0 : {REDUND_UNREPLICABLE} CreateRouteSheet;
 	executeOrder : BOOL := FALSE;
 	orderBuffer : ARRAY[0..9] OF product_order := [10((amount:=0,bottomCover:=noCover,topCover:=noCover,PCB:=FALSE,Fuses:=0,ID:=0))];
 	positionContainerSmartLabProgram : ARRAY[0..7] OF shuttleStartup_typ;
@@ -94,6 +92,9 @@ VAR
 	pShuttlePlan : REFERENCE TO shuttle_plan;
 	pWorkstation : REFERENCE TO workStation_typ;
 	remainingOrderAmount : USINT;
+	ShuttlesAtPositions_0 : ShuttlesAtPositions;
+	ShuttlesInRange_0 : ShuttlesInRange;
+	ShuttlesInWorkstationBuffer_0 : ShuttlesInWorkstationBuffer;
 	shuttlePlans : ARRAY[0..7] OF shuttle_plan;
 END_VAR
 VAR CONSTANT
@@ -111,6 +112,4 @@ END_VAR
 VAR
 	orderSpec : ARRAY[0..5] OF USINT;
 	robotOperating : ARRAY[0..5] OF BOOL;
-	tester : BOOL;
-	tester2 : INT;
 END_VAR
