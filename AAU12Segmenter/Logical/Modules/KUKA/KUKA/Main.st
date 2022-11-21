@@ -27,6 +27,8 @@ PROGRAM _INIT
 	KUKAs[4].operationType := ASSEMBLY;
 	KUKAs[5].operationType := HANDLING;
 	
+	gripperWaitTime := 250; // in ms
+	
 END_PROGRAM
 
 PROGRAM _CYCLIC
@@ -56,7 +58,7 @@ PROGRAM _CYCLIC
 		RobotStart;
 		
 		//robotDone[0] := robotDone[1] := robotDone[2] := robotDone[3] := robotDone[4] := robotDone[5] := TRUE; // ALSO CHANGE IN ROBOTEXECUTE IN ACOPOS!!!
-		robotDone[1] := robotDone[5] := TRUE;
+		robotDone[5] := TRUE;
 		
 		// If the robot is ready, begin actual program
 		IF 	pKuka.status.P_ AND pKuka.status.S_ AND pKuka.status.R_ AND pKuka.status.I_ AND pKuka.status.EXT_ THEN
@@ -71,11 +73,10 @@ PROGRAM _CYCLIC
 					:= ADR(AxisRef);
 					
 					pKuka.motion.KRC_MoveDirectAbsolute.Velocity := pKuka.motion.KRC_MoveLinearAbsolute.Velocity := pKuka.motion.KRC_MoveLinearRelative.Velocity
-					:= 10; // Velocity in percent
-					pKuka.motion.KRC_MoveLinearAbsolute.Velocity := 40; // OVERWRITE FOR TESTING
+						:= 50; // Velocity in percent
 					
 					pKuka.motion.KRC_MoveDirectAbsolute.Acceleration := pKuka.motion.KRC_MoveLinearAbsolute.Acceleration := pKuka.motion.KRC_MoveLinearRelative.Acceleration
-						:= 20; // Acceleration in percent
+						:= 50; // Acceleration in percent
 					pKuka.motion.KRC_MoveDirectAbsolute.BufferMode := pKuka.motion.KRC_MoveLinearAbsolute.BufferMode := pKuka.motion.KRC_MoveLinearRelative.BufferMode
 						:= 2; // BUFFERED
 					pKuka.motion.KRC_MoveLinearAbsolute.OriType := pKuka.motion.KRC_MoveLinearRelative.OriType

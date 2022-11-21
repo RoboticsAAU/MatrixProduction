@@ -49,6 +49,9 @@ VAR
 	position2 : E6AXIS;
 END_VAR
 (*For robot operations*)
+VAR
+	gripperWaitTime : INT;
+END_VAR
 VAR CONSTANT
 	relativeDistance : INT := 80;
 END_VAR
@@ -82,4 +85,5 @@ VAR
 	orderSpec : ARRAY[0..5] OF SINT;
 	robotExecute : ARRAY[0..5] OF BOOL;
 	robotDone : ARRAY[0..5] OF BOOL;
+	robotBusy : ARRAY[0..5] OF BOOL;
 END_VAR

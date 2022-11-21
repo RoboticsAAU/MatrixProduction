@@ -114,4 +114,5 @@ VAR
 	orderAmount : SINT;
 	robotExecute : ARRAY[0..5] OF BOOL;
 	robotDone : ARRAY[0..5] OF BOOL;
+	robotBusy : ARRAY[0..5] OF BOOL;
 END_VAR

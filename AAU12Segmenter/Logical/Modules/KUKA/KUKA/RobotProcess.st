@@ -7,7 +7,7 @@ ACTION RobotProcess:
 			cm.description := 'Define order-specific approach point at magazine';
 			
 			IF robotExecute[i] THEN
-				
+				robotBusy[i] := TRUE;
 				pKuka.convert.ValuesToPosition.posType := APPROACH_WORKSTATION;
 				pKuka.convert.ValuesToPosition();
 						
@@ -56,7 +56,7 @@ ACTION RobotProcess:
 				
 			pKuka.tempPosition.X := pKuka.tempPosition.Y := pKuka.tempPosition.Z := pKuka.tempPosition.A := pKuka.tempPosition.B := pKuka.tempPosition.C
 			:= 0;
-			pKuka.tempPosition.Z := -relativeDistance; 
+			pKuka.tempPosition.Z := -20; // temporary
 			// Status and turn is already set from moving to approach point
 				
 			pKuka.motion.KRC_MoveLinearRelative.Position := pKuka.tempPosition;
@@ -79,7 +79,7 @@ ACTION RobotProcess:
 				
 			pKuka.tempPosition.X := pKuka.tempPosition.Y := pKuka.tempPosition.Z := pKuka.tempPosition.A := pKuka.tempPosition.B := pKuka.tempPosition.C
 			:= 0;
-			pKuka.tempPosition.Z := relativeDistance; 
+			pKuka.tempPosition.Z := 20; // temporary;
 			// Status and turn is already set from moving to approach point
 				
 			pKuka.motion.KRC_MoveLinearRelative.Position := pKuka.tempPosition;

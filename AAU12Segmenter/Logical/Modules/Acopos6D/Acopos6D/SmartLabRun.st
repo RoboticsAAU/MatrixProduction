@@ -24,7 +24,7 @@ ACTION smartLabWorkstationOperation:
 			ShuttlesAtPositions_0();
 			
 			// Check if a shuttle is on the workstation and it is idle (meaning not in motion)
-			IF ShuttlesAtPositions_0.isAtCheckPos THEN
+			IF ShuttlesAtPositions_0.isAtCheckPos  THEN
 				pWorkstation.par.tempShuttleID := ShuttlesAtPositions_0.shuttleID;
 				gShuttles[pWorkstation.par.tempShuttleID].par.tempWorkstationID := pWorkstation.par.workstationID;
 				
@@ -89,39 +89,41 @@ ACTION smartLabWorkstationOperation:
 			
 		20:
 			cm.description := 'Send data to robot through mapping and begin robot operation';
-			CASE pWorkstation.par.workstationID OF
-				// Send type of bottom cover (converted to int)
-				0: orderSpec[0] := COVER_TYPE_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.bottomCover);
-				
-				// Send amount of holes
-				1: orderSpec[1] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.Holes;
-				
-				// Send whether a PCB is specified or not (converted to int)
-				2: orderSpec[2] := BOOL_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.PCB);
-				
-				// Send amount of fuses
-				3: orderSpec[3] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.Fuses;
+			
+			IF NOT robotBusy[i] THEN
+				CASE pWorkstation.par.workstationID OF
+					// Send type of bottom cover (converted to int)
+					0: orderSpec[0] := COVER_TYPE_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.bottomCover);
 					
-				// Send type of top cover (converted to int)
-				4: orderSpec[4] := COVER_TYPE_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.topCover);
+					// Send amount of holes
+					1: orderSpec[1] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.Holes;
+					
+					// Send whether a PCB is specified or not (converted to int)
+					2: orderSpec[2] := BOOL_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.PCB);
+					
+					// Send amount of fuses
+					3: orderSpec[3] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.Fuses;
+						
+					// Send type of top cover (converted to int)
+					4: orderSpec[4] := COVER_TYPE_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.topCover);
+					
+					// Send ID of order
+					5: 
+						orderSpec[5] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.ID;
+						orderAmount := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.amount;
+					
+				END_CASE
 				
-				// Send ID of order
-				5: 
-					orderSpec[5] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.ID;
-					orderAmount := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.amount;
+				// Begin robot operation
+				robotExecute[i] := TRUE;
+				robotExecute[5] := FALSE; // To avoid robot 1 and 5 moving
 				
-			END_CASE
-			
-			// Begin robot operation
-			robotExecute[i] := TRUE;
-			robotExecute[1] := robotExecute[5] := FALSE; // To avoid robot 1 and 5 moving
-			
-			IF pWorkstation.par.landBeforeProcess THEN
-				cm.state := 30;
-			ELSE
-				cm.state := 40;
+				IF pWorkstation.par.landBeforeProcess THEN
+					cm.state := 30;
+				ELSE
+					cm.state := 40;
+				END_IF
 			END_IF
-			
 			
 		30:
 			cm.description := 'Land shuttle if required';
@@ -139,19 +141,14 @@ ACTION smartLabWorkstationOperation:
 			
 		40:
 			cm.description := 'Wait for robot to finish operation';
-			pWorkstation.TON_0.PT := REAL_TO_TIME(1000); // Timer is needed for robot to start motion before shuttle moves away
-			pWorkstation.TON_0.IN := TRUE;
-			IF pWorkstation.TON_0.Q THEN
-				pWorkstation.TON_0.IN := FALSE;
-				IF robotDone[i] THEN
-					robotExecute[i] := FALSE; 
-					IF pWorkstation.par.landBeforeProcess THEN
-						cm.state := 50;
-					ELSE
-						// Make current shuttle move to the next workstation and make workstation go back to wait for new shuttle
-						gShuttles[pWorkstation.par.tempShuttleID].cm.state := 10;
-						cm.state := 60;
-					END_IF
+			IF robotDone[i] THEN
+				robotExecute[i] := FALSE;
+				IF pWorkstation.par.landBeforeProcess THEN
+					cm.state := 50;
+				ELSE
+					// Make current shuttle move to the next workstation and make workstation go back to wait for new shuttle
+					gShuttles[pWorkstation.par.tempShuttleID].cm.state := 10;
+					cm.state := 60;
 				END_IF
 			END_IF
 			

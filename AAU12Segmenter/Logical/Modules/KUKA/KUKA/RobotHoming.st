@@ -25,6 +25,7 @@ ACTION RobotHoming:
 	IF pKuka.motion.KRC_MoveDirectAbsolute.Done THEN 
 		pKuka.motion.KRC_MoveDirectAbsolute.ExecuteCmd := FALSE;
 		robotDone[i] := FALSE;
+		robotBusy[i] := FALSE;
 		cm.state := 1000; 
 	END_IF
 	

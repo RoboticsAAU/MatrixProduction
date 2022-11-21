@@ -26,7 +26,7 @@ ACTION RobotStart:
 			// Logic for startup of robot
 			pKuka.start.KRC_AutoStart.AxisGroupIdx 					:= pKuka.axisGroupIdx; 
 			pKuka.start.KRC_AutoStart.KRC_AxisGroupRefArr 			:= ADR(AxisRef);
-			pKuka.start.KRC_AutoStart.ExecuteReset 					:= FALSE; // REMEMBER TO CHANGE LATER
+			pKuka.start.KRC_AutoStart.ExecuteReset 					:= FALSE;
 			
 			// Logic to set override for robot velocity
 			pKuka.start.KRC_SetOverride.AxisGroupIdx 				:= pKuka.axisGroupIdx;
@@ -36,7 +36,7 @@ ACTION RobotStart:
 			// Logic to set 
 			pKuka.start.KRC_Abort.AxisGroupIdx 						:= pKuka.axisGroupIdx;
 			pKuka.start.KRC_Abort.KRC_AxisGroupRefArr				:= ADR(AxisRef);
-			pKuka.start.KRC_Abort.ExecuteCmd						:= FALSE;  /// Used to be set by HMI - Remember to incorporate it later
+			pKuka.start.KRC_Abort.ExecuteCmd						:= FALSE; // Used to be set by HMI - Remember to incorporate it later
 			
 			// Logic to set KRC_Diag
 			pKuka.start.KRC_Diag.AxisGroupIdx 						:= pKuka.axisGroupIdx;

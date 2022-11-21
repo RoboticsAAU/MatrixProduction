@@ -8,6 +8,8 @@ ACTION RobotAssembly:
 			
 			IF robotExecute[i] THEN
 				cm.state := 1010;
+				
+				robotBusy[i] := TRUE;
 				pKuka.convert.ValuesToPosition.posType := APPROACH_MAGAZINE;
 				pKuka.convert.ValuesToPosition();
 						
@@ -99,7 +101,7 @@ ACTION RobotAssembly:
 				
 			pKuka.gripperAction.action := CLOSE;
 				
-			pKuka.TON.PT := REAL_TO_TIME(200); // in ms
+			pKuka.TON.PT := REAL_TO_TIME(gripperWaitTime); // in ms
 			pKuka.TON.IN := TRUE;
 			IF pKuka.TON.Q THEN
 				pKuka.TON.IN := FALSE;
@@ -170,7 +172,7 @@ ACTION RobotAssembly:
 			
 			pKuka.gripperAction.action := OPEN;
 			
-			pKuka.TON.PT := REAL_TO_TIME(200); // in ms
+			pKuka.TON.PT := REAL_TO_TIME(gripperWaitTime); // in ms
 			pKuka.TON.IN := TRUE;
 			IF pKuka.TON.Q THEN
 				pKuka.TON.IN := FALSE;

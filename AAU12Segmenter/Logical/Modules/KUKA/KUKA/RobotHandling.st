@@ -5,7 +5,7 @@ ACTION RobotHandling:
 		1000:	
 			IF robotExecute[i] THEN
 				cm.description := 'Move to pickup point with relative linear movement';
-					
+				robotBusy[i] := TRUE;
 				pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 1; // #TOOL
 				pKuka.convert.ValuesToCOORDSYS();
 					
@@ -30,7 +30,7 @@ ACTION RobotHandling:
 				
 			pKuka.gripperAction.action := CLOSE;
 				
-			pKuka.TON.PT := REAL_TO_TIME(200); // in ms
+			pKuka.TON.PT := REAL_TO_TIME(gripperWaitTime); // in ms
 			pKuka.TON.IN := TRUE;
 			IF pKuka.TON.Q THEN
 				pKuka.TON.IN := FALSE;
@@ -157,7 +157,7 @@ ACTION RobotHandling:
 			
 			pKuka.gripperAction.action := OPEN;
 			
-			pKuka.TON.PT := REAL_TO_TIME(200); // in ms
+			pKuka.TON.PT := REAL_TO_TIME(gripperWaitTime); // in ms
 			pKuka.TON.IN := TRUE;
 			IF pKuka.TON.Q THEN
 				pKuka.TON.IN := FALSE;
