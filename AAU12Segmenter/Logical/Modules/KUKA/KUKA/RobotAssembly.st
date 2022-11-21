@@ -57,7 +57,8 @@ ACTION RobotAssembly:
 					
 				END_CASE
 			END_IF
-		
+			
+			
 		1010:
 			cm.description := 'Move to order-specific approach point at magazine';
 			pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 0; // #BASE
@@ -107,7 +108,8 @@ ACTION RobotAssembly:
 				pKuka.TON.IN := FALSE;
 				cm.state := 1040;
 			END_IF	
-				
+			
+			
 		1040:
 			cm.description := 'Move to approach point with relative linear movement';
 				
@@ -123,7 +125,8 @@ ACTION RobotAssembly:
 				pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := FALSE;
 				cm.state := 1050;
 			END_IF
-				
+			
+			
 		1050:	
 			cm.description := 'Move to approach point of workstation with absolute linear movement';
 			
@@ -144,6 +147,7 @@ ACTION RobotAssembly:
 				pKuka.motion.KRC_MoveDirectAbsolute.ExecuteCmd := FALSE;
 				cm.state := 1060;
 			END_IF
+			
 			
 		1060:
 			cm.description := 'Move to placement point at workstation with relative linear movement';
@@ -179,6 +183,7 @@ ACTION RobotAssembly:
 				cm.state := 1080;
 			END_IF
 			
+			
 		1080:
 			cm.description := 'Move back to approach point at workstation with relative linear movement';
 			
@@ -200,6 +205,7 @@ ACTION RobotAssembly:
 				robotDone[i] := TRUE;
 				cm.state := 1090;
 			END_IF
+			
 			
 		1090:
 			cm.description := 'Move back to home position';

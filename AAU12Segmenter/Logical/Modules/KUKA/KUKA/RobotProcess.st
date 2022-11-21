@@ -44,7 +44,8 @@ ACTION RobotProcess:
 				pKuka.motion.KRC_MoveDirectAbsolute.ExecuteCmd := FALSE;
 				cm.state := 1020;
 			END_IF
-		
+			
+			
 		1020:
 			cm.description := 'Perform order-specific motion with relative linear movement';
 			
@@ -69,7 +70,6 @@ ACTION RobotProcess:
 			
 			
 		1030:
-			
 			cm.description := 'Move back to approach point with relative linear movement';
 			
 			pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 1; // #TOOL
@@ -79,7 +79,7 @@ ACTION RobotProcess:
 				
 			pKuka.tempPosition.X := pKuka.tempPosition.Y := pKuka.tempPosition.Z := pKuka.tempPosition.A := pKuka.tempPosition.B := pKuka.tempPosition.C
 			:= 0;
-			pKuka.tempPosition.Z := 20; // temporary;
+			pKuka.tempPosition.Z := 20; // temporary
 			// Status and turn is already set from moving to approach point
 				
 			pKuka.motion.KRC_MoveLinearRelative.Position := pKuka.tempPosition;
@@ -97,7 +97,7 @@ ACTION RobotProcess:
 							// Define next order-specific approach point
 							cm.state := 1000;
 						ELSE 
-							// Order is completed, we move back to mint approach point (APPROACH_WORKSTATION)
+							// Order is completed, we move back to approach point (APPROACH_WORKSTATION)
 							numDoneHoles := 0;
 							robotDone[i] := TRUE;
 							cm.state := 1040;

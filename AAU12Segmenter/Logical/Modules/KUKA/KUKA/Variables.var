@@ -35,7 +35,7 @@ END_VAR
 VAR
 	TON_0 : TON;
 END_VAR
-(*Misc*)
+(*Frames and positions*)
 VAR
 	acoposBase : FRAME;
 	bottomCoverMagazineBase : FRAME;
@@ -61,18 +61,18 @@ VAR
 	k : INT;
 END_VAR
 VAR CONSTANT
-	unloadSizeX : INT := 2;
+	unloadSizeX : INT := 3;
 	unloadSizeY : INT := 2;
 	unloadSizeZ : INT := 4;
 END_VAR
 VAR
-	stackCounter : ARRAY[0..1,0..1] OF INT := [4(0)];
-	idAtStack : ARRAY[0..1,0..1] OF INT := [4(-1)];
 	xIdx : INT;
 	yIdx : INT;
 	xIdxTemp : INT := -1;
 	yIdxTemp : INT := -1;
-	orderCounter : ARRAY[0..1,0..1] OF INT := [4(0)];
+	stackCounter : ARRAY[0..2,0..1] OF INT := [6(0)];
+	orderCounter : ARRAY[0..2,0..1] OF INT := [6(0)];
+	idAtStack : ARRAY[0..2,0..1] OF INT := [6(-1)];
 END_VAR
 (*References*)
 VAR

@@ -24,7 +24,8 @@ ACTION RobotHandling:
 					cm.state := 1010;
 				END_IF
 			END_IF
-				
+			
+			
 		1010:	
 			cm.description := 'Close gripper and wait a little before moving to ensure proper grip';
 				
@@ -36,7 +37,8 @@ ACTION RobotHandling:
 				pKuka.TON.IN := FALSE;
 				cm.state := 1020;
 			END_IF	
-				
+			
+			
 		1020:
 			cm.description := 'Move back to approach point with relative linear movement';
 				
@@ -52,7 +54,8 @@ ACTION RobotHandling:
 				pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := FALSE;
 				cm.state := 1030;
 			END_IF
-				
+			
+			
 		1030:	
 			cm.description := 'Move to approach point of magazine with absolute direct movement';
 			
@@ -74,18 +77,26 @@ ACTION RobotHandling:
 				cm.state := 1040;
 			END_IF
 			
+			
 		1040:
 			cm.description := 'Define order-specific approach point at magazine';
 			
+			pKuka.convert.ValuesToPosition.posType := APPROACH_MAGAZINE;
+			pKuka.convert.ValuesToPosition();
+			
+			pKuka.tempPosition := pKuka.convert.ValuesToPosition.outputPos;
+			
 			CASE pKuka.axisGroupIdx OF
 				6:
-					// Check if any stacks are allocated
-					FOR k := 0 TO (unloadSizeX*unloadSizeY) - 1 DO
+					// Determine the stack the manipulator should go to depending on the ID of the order
+					FOR k := 0 TO (unloadSizeX*unloadSizeY - 1) DO
 						xIdxTemp := k MOD unloadSizeX;
-						yIdxTemp := REAL_TO_INT(brmfloor(k/unloadSizeY));
-							
+						yIdxTemp := REAL_TO_INT(brmfloor(k / unloadSizeX));
+						
+						// If the ID already has a stack
 						IF idAtStack[xIdxTemp, yIdxTemp] = orderSpec[i] THEN
-							IF xIdx <> -1 THEN
+							// If an non-taken stack was selected, reset it
+							IF (xIdx <> -1 OR yIdx <> -1) THEN
 								idAtStack[xIdx, yIdx] := -1;
 							END_IF
 							xIdx := xIdxTemp;
@@ -93,7 +104,7 @@ ACTION RobotHandling:
 							EXIT;
 						END_IF
 						
-						IF xIdxTemp = -1 AND (idAtStack[xIdx, yIdx] = -1 AND stackCounter[xIdx, yIdx] + orderAmount <= unloadSizeZ) THEN
+						IF (xIdx = -1 OR yIdx = -1) AND (idAtStack[xIdxTemp, yIdxTemp] = -1 AND stackCounter[xIdxTemp, yIdxTemp] + orderAmount <= unloadSizeZ) THEN
 							xIdx := xIdxTemp;
 							yIdx := yIdxTemp;
 							idAtStack[xIdx, yIdx] := orderSpec[i];
@@ -101,13 +112,18 @@ ACTION RobotHandling:
 						
 					END_FOR
 					
-					pKuka.convert.ValuesToPosition.posType := APPROACH_MAGAZINE;
-					pKuka.convert.ValuesToPosition();
+					// Determine the position from x- and y-index	
+					pKuka.tempPosition.X := pKuka.tempPosition.X + xIdx * 120;
+					pKuka.tempPosition.Y := pKuka.tempPosition.Y - yIdx * 80;
 					
-					pKuka.tempPosition := pKuka.convert.ValuesToPosition.outputPos;
-					
-					pKuka.tempPosition.X := pKuka.tempPosition.X + xIdx*120;
-					pKuka.tempPosition.Y := pKuka.tempPosition.Y - yIdx*80;
+					// Reset parameters and increment counters
+					orderCounter[xIdx, yIdx] := orderCounter[xIdx, yIdx] + 1;
+					stackCounter[xIdx, yIdx] := stackCounter[xIdx, yIdx] + 1;
+					IF orderCounter[xIdx, yIdx] = orderAmount THEN
+						idAtStack[xIdx, yIdx] := -1;
+						orderCounter[xIdx, yIdx] := 0;
+					END_IF
+					xIdx := yIdx := -1;
 				
 			END_CASE
 			
@@ -164,6 +180,7 @@ ACTION RobotHandling:
 				cm.state := 1080;
 			END_IF
 			
+			
 		1080:
 			cm.description := 'Move to place point at magazine with relative movement';
 			
@@ -184,18 +201,11 @@ ACTION RobotHandling:
 				pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := FALSE;
 				robotDone[i] := TRUE;
 				cm.state := 1090;
-			END_IF	
-
+			END_IF
+			
 			
 		1090:
 			cm.description := 'Move back to home position';
-			orderCounter[xIdx, yIdx] := orderCounter[xIdx,yIdx] + 1;
-			stackCounter[xIdx, yIdx] := stackCounter[xIdx,yIdx] + 1;
-			IF orderCounter[xIdx, yIdx] = orderAmount THEN 
-				idAtStack[xIdx, yIdx] := -1;
-				orderCounter[xIdx, yIdx] := 0;
-			END_IF
-			
 			RobotHoming;
 		
 	END_CASE
