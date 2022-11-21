@@ -114,6 +114,7 @@ ACTION smartLabWorkstationOperation:
 			
 			// Begin robot operation
 			robotExecute[i] := TRUE;
+			robotExecute[1] := robotExecute[5] := FALSE; // To avoid robot 1 and 5 moving
 			
 			IF pWorkstation.par.landBeforeProcess THEN
 				cm.state := 30;

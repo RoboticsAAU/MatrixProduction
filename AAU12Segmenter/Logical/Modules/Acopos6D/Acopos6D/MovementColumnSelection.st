@@ -34,6 +34,7 @@ FUNCTION_BLOCK MovementColumnSelection
 				FOR k := startRowLevel TO endRowLevel DO
 					availablePosition[selectedColumn, k] := FALSE;
 				END_FOR
+				EXIT;
 			ELSE
 				selectedColumn := -1;
 			END_IF

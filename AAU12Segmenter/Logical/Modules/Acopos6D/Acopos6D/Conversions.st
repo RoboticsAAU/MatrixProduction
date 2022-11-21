@@ -8,7 +8,7 @@ END_FUNCTION
 
 FUNCTION PosToQuadrantIdx
 	
-	PosToQuadrantIdx := REAL_TO_USINT(brmfloor(pos) / 0.120);
+	PosToQuadrantIdx := REAL_TO_USINT(brmfloor(pos / 0.120));
 	
 END_FUNCTION
 

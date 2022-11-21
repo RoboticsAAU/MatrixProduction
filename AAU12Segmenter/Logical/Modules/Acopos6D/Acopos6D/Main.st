@@ -483,7 +483,7 @@ PROGRAM _CYCLIC
 						pShuttle ACCESS ADR(gShuttles[i]);
 						cm ACCESS ADR (gShuttles[i].cm);
 						pShuttle.cm.setup.parent.name := 'main';
-						pShuttle.par.shuttleID := i; // For the correct order of shuttles
+						pShuttle.par.shuttleID := i;
 						
 						pShuttlePlan ACCESS ADR(shuttlePlans[pShuttle.par.shuttleID]);
 						

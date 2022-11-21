@@ -55,7 +55,7 @@ PROGRAM _CYCLIC
 		// RobotStart contains FB calls associated with initialization of the robots and diagnosis
 		RobotStart;
 		
-		//robotOperating[0] := robotOperating[1] := robotOperating[2] := robotOperating[3] := robotOperating[4] := robotOperating[5] := FALSE;
+		//robotDone[0] := robotDone[1] := robotDone[2] := robotDone[3] := robotDone[4] := robotDone[5] := TRUE; // ALSO CHANGE IN ROBOTEXECUTE IN ACOPOS!!!
 		robotDone[1] := robotDone[5] := TRUE;
 		
 		// If the robot is ready, begin actual program
