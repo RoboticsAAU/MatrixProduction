@@ -6,7 +6,7 @@ ACTION RobotAssembly:
 		1000:
 			cm.description := 'Define order-specific approach point at magazine';
 			
-			IF robotOperating[i] THEN
+			IF robotExecute[i] THEN
 				cm.state := 1010;
 				pKuka.convert.ValuesToPosition.posType := APPROACH_MAGAZINE;
 				pKuka.convert.ValuesToPosition();
@@ -134,12 +134,12 @@ ACTION RobotAssembly:
 				
 			pKuka.tempPosition := pKuka.convert.ValuesToPosition.outputPos;
 				
-			pKuka.motion.KRC_MoveLinearAbsolute.CoordinateSystem := pKuka.convert.ValuesToCOORDSYS.COORDSYS;
-			pKuka.motion.KRC_MoveLinearAbsolute.Position := pKuka.tempPosition;
+			pKuka.motion.KRC_MoveDirectAbsolute.CoordinateSystem := pKuka.convert.ValuesToCOORDSYS.COORDSYS;
+			pKuka.motion.KRC_MoveDirectAbsolute.Position := pKuka.tempPosition;
 				
-			pKuka.motion.KRC_MoveLinearAbsolute.ExecuteCmd := TRUE;
-			IF pKuka.motion.KRC_MoveLinearAbsolute.Done THEN 
-				pKuka.motion.KRC_MoveLinearAbsolute.ExecuteCmd := FALSE;
+			pKuka.motion.KRC_MoveDirectAbsolute.ExecuteCmd := TRUE;
+			IF pKuka.motion.KRC_MoveDirectAbsolute.Done THEN 
+				pKuka.motion.KRC_MoveDirectAbsolute.ExecuteCmd := FALSE;
 				cm.state := 1060;
 			END_IF
 			
@@ -195,7 +195,7 @@ ACTION RobotAssembly:
 			pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := TRUE;
 			IF pKuka.motion.KRC_MoveLinearRelative.Done THEN
 				pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := FALSE;
-				robotOperating[i] := FALSE;
+				robotDone[i] := TRUE;
 				cm.state := 1090;
 			END_IF
 			

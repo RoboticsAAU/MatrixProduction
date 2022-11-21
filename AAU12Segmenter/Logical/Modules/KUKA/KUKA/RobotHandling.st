@@ -3,7 +3,7 @@ ACTION RobotHandling:
 	CASE cm.state OF	
 						
 		1000:	
-			IF robotOperating[i] THEN
+			IF robotExecute[i] THEN
 				cm.description := 'Move to pickup point with relative linear movement';
 					
 				pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 1; // #TOOL
@@ -140,7 +140,7 @@ ACTION RobotHandling:
 			
 			pKuka.tempPosition.X := pKuka.tempPosition.Y := pKuka.tempPosition.A := pKuka.tempPosition.B := pKuka.tempPosition.C
 			:= 0;
-			pKuka.tempPosition.Z := pKuka.tempPosition.Z - (unloadSizeZ-stackCounter[xIdx,yIdx])*21;
+			pKuka.tempPosition.Z := -(pKuka.tempPosition.Z - (unloadSizeZ - stackCounter[xIdx,yIdx])* 21);
 			// Status and turn is already set from moving to approach point
 			
 			pKuka.motion.KRC_MoveLinearRelative.Position := pKuka.tempPosition;
@@ -148,7 +148,6 @@ ACTION RobotHandling:
 			pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := TRUE;
 			IF pKuka.motion.KRC_MoveLinearRelative.Done THEN
 				pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := FALSE;
-				robotOperating[i] := FALSE;
 				cm.state := 1070;
 			END_IF	
 			
@@ -173,9 +172,9 @@ ACTION RobotHandling:
 			
 			pKuka.motion.KRC_MoveLinearRelative.CoordinateSystem := pKuka.convert.ValuesToCOORDSYS.COORDSYS;
 			
-			pKuka.tempPosition.X := pKuka.tempPosition.Y := pKuka.tempPosition.Z := pKuka.tempPosition.A := pKuka.tempPosition.B := pKuka.tempPosition.C
+			pKuka.tempPosition.X := pKuka.tempPosition.Y := pKuka.tempPosition.A := pKuka.tempPosition.B := pKuka.tempPosition.C
 			:= 0;
-			pKuka.tempPosition.Z := relativeDistance;
+			pKuka.tempPosition.Z := (pKuka.tempPosition.Z - (unloadSizeZ - stackCounter[xIdx,yIdx])* 21);
 			// Status and turn is already set from moving to approach point
 			
 			pKuka.motion.KRC_MoveLinearRelative.Position := pKuka.tempPosition;
@@ -183,7 +182,7 @@ ACTION RobotHandling:
 			pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := TRUE;
 			IF pKuka.motion.KRC_MoveLinearRelative.Done THEN
 				pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := FALSE;
-				robotOperating[i] := FALSE;
+				robotDone[i] := TRUE;
 				cm.state := 1090;
 			END_IF	
 
@@ -192,7 +191,7 @@ ACTION RobotHandling:
 			cm.description := 'Move back to home position';
 			orderCounter[xIdx, yIdx] := orderCounter[xIdx,yIdx] + 1;
 			stackCounter[xIdx, yIdx] := stackCounter[xIdx,yIdx] + 1;
-			IF orderCounter = orderAmount THEN 
+			IF orderCounter[xIdx, yIdx] = orderAmount THEN 
 				idAtStack[xIdx, yIdx] := -1;
 				orderCounter[xIdx, yIdx] := 0;
 			END_IF

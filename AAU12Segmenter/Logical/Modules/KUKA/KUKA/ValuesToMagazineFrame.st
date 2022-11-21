@@ -38,7 +38,7 @@ FUNCTION_BLOCK ValuesToMagazineFrame
 		
 		5: // Top cover magazine frame
 			outputFrame.X := 0;
-			outputFrame.Y := 600;
+			outputFrame.Y := 720;
 			outputFrame.Z := 0;
 			outputFrame.A := -90;
 			outputFrame.B := 0;

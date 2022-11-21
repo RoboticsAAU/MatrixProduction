@@ -110,7 +110,8 @@ VAR
 END_VAR
 (*Variable mapping*)
 VAR
-	orderSpec : ARRAY[0..5] OF USINT;
-	robotOperating : ARRAY[0..5] OF BOOL;
-	orderAmount : USINT;
+	orderSpec : ARRAY[0..5] OF SINT;
+	orderAmount : SINT;
+	robotExecute : ARRAY[0..5] OF BOOL;
+	robotDone : ARRAY[0..5] OF BOOL;
 END_VAR

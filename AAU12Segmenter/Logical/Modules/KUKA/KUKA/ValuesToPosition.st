@@ -157,13 +157,13 @@ FUNCTION_BLOCK ValuesToPosition
 				
 				APPROACH_WORKSTATION:
 					outputPos.X := 60;
-					outputPos.Y := 780;
-					outputPos.Z := (1 + 9.85 + 5 + 6.7 + 1.5 + 2 + 0.5) + relativeDistance + 2;
-					outputPos.A := -180;
+					outputPos.Y := 780 + 32.79; // 32.79 represents shift from center to fuse bracket
+					outputPos.Z := (1 + 9.85 + 5 + 6.7 + 1.5 + 2 + 0.5) + relativeDistance;
+					outputPos.A := 90;
 					outputPos.B := 0;
 					outputPos.C := 180;
 					outputPos.Status := 2; // 010
-					outputPos.Turn := 2; // 000010
+					outputPos.Turn := 34; // 100010
 				
 					baseNo := 1;
 				

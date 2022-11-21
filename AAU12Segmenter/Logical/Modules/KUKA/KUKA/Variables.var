@@ -49,9 +49,6 @@ VAR
 	position2 : E6AXIS;
 END_VAR
 (*For robot operations*)
-VAR
-	holeCounter : USINT;
-END_VAR
 VAR CONSTANT
 	relativeDistance : INT := 80;
 END_VAR
@@ -71,8 +68,8 @@ VAR
 	xIdx : INT;
 	yIdx : INT;
 	xIdxTemp : INT := -1;
-	orderCounter : ARRAY[0..1,0..1] OF INT := [4(0)];
 	yIdxTemp : INT := -1;
+	orderCounter : ARRAY[0..1,0..1] OF INT := [4(0)];
 END_VAR
 (*References*)
 VAR
@@ -81,7 +78,8 @@ VAR
 END_VAR
 (*Variable mapping*)
 VAR
-	robotOperating : ARRAY[0..5] OF BOOL;
-	orderAmount : USINT;
-	orderSpec : ARRAY[0..5] OF USINT;
+	orderAmount : SINT;
+	orderSpec : ARRAY[0..5] OF SINT;
+	robotExecute : ARRAY[0..5] OF BOOL;
+	robotDone : ARRAY[0..5] OF BOOL;
 END_VAR

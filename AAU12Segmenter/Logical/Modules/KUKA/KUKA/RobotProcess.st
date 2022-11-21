@@ -6,7 +6,7 @@ ACTION RobotProcess:
 		1000:
 			cm.description := 'Define order-specific approach point at magazine';
 			
-			IF robotOperating[i] THEN
+			IF robotExecute[i] THEN
 				
 				pKuka.convert.ValuesToPosition.posType := APPROACH_WORKSTATION;
 				pKuka.convert.ValuesToPosition();
@@ -99,7 +99,7 @@ ACTION RobotProcess:
 						ELSE 
 							// Order is completed, we move back to mint approach point (APPROACH_WORKSTATION)
 							numDoneHoles := 0;
-							robotOperating[i] := FALSE;
+							robotDone[i] := TRUE;
 							cm.state := 1040;
 						END_IF
 				END_CASE

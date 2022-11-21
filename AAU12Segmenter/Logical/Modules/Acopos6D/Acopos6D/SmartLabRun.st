@@ -113,7 +113,7 @@ ACTION smartLabWorkstationOperation:
 			END_CASE
 			
 			// Begin robot operation
-			robotOperating[i] := TRUE;
+			robotExecute[i] := TRUE;
 			
 			IF pWorkstation.par.landBeforeProcess THEN
 				cm.state := 30;
@@ -142,7 +142,8 @@ ACTION smartLabWorkstationOperation:
 			pWorkstation.TON_0.IN := TRUE;
 			IF pWorkstation.TON_0.Q THEN
 				pWorkstation.TON_0.IN := FALSE;
-				IF NOT robotOperating[i] THEN
+				IF robotDone[i] THEN
+					robotExecute[i] := FALSE; 
 					IF pWorkstation.par.landBeforeProcess THEN
 						cm.state := 50;
 					ELSE

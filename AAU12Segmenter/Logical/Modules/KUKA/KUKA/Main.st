@@ -55,8 +55,8 @@ PROGRAM _CYCLIC
 		// RobotStart contains FB calls associated with initialization of the robots and diagnosis
 		RobotStart;
 		
-		robotOperating[0] := robotOperating[1] := robotOperating[2] := robotOperating[3] := robotOperating[4] := FALSE;
-		
+		//robotOperating[0] := robotOperating[1] := robotOperating[2] := robotOperating[3] := robotOperating[4] := robotOperating[5] := FALSE;
+		robotDone[1] := robotDone[5] := TRUE;
 		
 		// If the robot is ready, begin actual program
 		IF 	pKuka.status.P_ AND pKuka.status.S_ AND pKuka.status.R_ AND pKuka.status.I_ AND pKuka.status.EXT_ THEN
@@ -94,12 +94,16 @@ PROGRAM _CYCLIC
 				
 				1000..1999: // RUNNING MANIPULATOR PROGRAMS
 					
-					IF pKuka.operationType = ASSEMBLY THEN
-						RobotAssembly;
-					ELSE // For now, we know it can only be PROCESS, unless additional entries are added to the enum in the future
-						RobotProcess;
-					END_IF
-				
+					CASE pKuka.operationType OF
+						ASSEMBLY:
+							RobotAssembly;
+							
+						PROCESS:
+							RobotProcess;
+							
+						HANDLING:
+							RobotHandling;
+					END_CASE
 			END_CASE
 			
 		END_IF
