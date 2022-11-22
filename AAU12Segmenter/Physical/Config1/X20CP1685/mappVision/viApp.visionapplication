@@ -30,11 +30,8 @@
       <Group ID="Input[8]">
         <Property ID="ChannelID" Value="OffsetROIRotCenterY" />
       </Group>
-    </Group>
-    <Group ID="ImgProcessingVariables">
-      <Group ID="Variable[0]">
+      <Group ID="Input[9]">
         <Property ID="ChannelID" Value="NumSearchMax" />
-        <Property ID="ChannelValue" Value="1" />
       </Group>
     </Group>
     <Group ID="ImageAcquisition">
@@ -49,13 +46,16 @@
         <Property ID="CompilerOption" Value="0" />
       </Group>
       <Group ID="VfInstance[1]">
-        <Property ID="VfName" Value="VfBlob_1" />
+        <Property ID="VfName" Value="VfBlob" />
         <Property ID="VfExecutionNr" Value="1" />
         <Selector ID="VfType" Value="vf-blob">
           <Group ID="VfDataSet">
             <Property ID="Models" Value="" />
             <Property ID="WidgetModels" Value="" />
             <Property ID="ROI" Value="" />
+          </Group>
+          <Group ID="VfConstants">
+            <Property ID="NumResultsMax" Value="1" />
           </Group>
           <Group ID="VfWirings">
             <Group ID="Image">
@@ -69,8 +69,8 @@
               </Selector>
             </Group>
             <Group ID="NumSearchMax">
-              <Selector ID="SourceType" Value="Variable">
-                <Property ID="VariableParameter" Value="NumSearchMax" />
+              <Selector ID="SourceType" Value="Input">
+                <Property ID="IoParameter" Value="NumSearchMax" />
               </Selector>
             </Group>
             <Group ID="RegionFeatures">
@@ -121,56 +121,56 @@
       <Group ID="Output[0]">
         <Property ID="ChannelID" Value="PositionX" />
         <Group ID="VpOutputWire">
-          <Property ID="SourceVfName" Value="VfBlob_1" />
+          <Property ID="SourceVfName" Value="VfBlob" />
           <Property ID="VfOutputParameter" Value="PositionX" />
         </Group>
       </Group>
       <Group ID="Output[1]">
         <Property ID="ChannelID" Value="PositionY" />
         <Group ID="VpOutputWire">
-          <Property ID="SourceVfName" Value="VfBlob_1" />
+          <Property ID="SourceVfName" Value="VfBlob" />
           <Property ID="VfOutputParameter" Value="PositionY" />
         </Group>
       </Group>
       <Group ID="Output[2]">
         <Property ID="ChannelID" Value="FunctionProcessingTime" />
         <Group ID="VpOutputWire">
-          <Property ID="SourceVfName" Value="VfBlob_1" />
+          <Property ID="SourceVfName" Value="VfBlob" />
           <Property ID="VfOutputParameter" Value="FunctionProcessingTime" />
         </Group>
       </Group>
       <Group ID="Output[3]">
         <Property ID="ChannelID" Value="Area" />
         <Group ID="VpOutputWire">
-          <Property ID="SourceVfName" Value="VfBlob_1" />
+          <Property ID="SourceVfName" Value="VfBlob" />
           <Property ID="VfOutputParameter" Value="Area" />
         </Group>
       </Group>
       <Group ID="Output[4]">
         <Property ID="ChannelID" Value="ModelNumber" />
         <Group ID="VpOutputWire">
-          <Property ID="SourceVfName" Value="VfBlob_1" />
+          <Property ID="SourceVfName" Value="VfBlob" />
           <Property ID="VfOutputParameter" Value="ModelNumber" />
         </Group>
       </Group>
       <Group ID="Output[5]">
         <Property ID="ChannelID" Value="MeanGrayValue" />
         <Group ID="VpOutputWire">
-          <Property ID="SourceVfName" Value="VfBlob_1" />
+          <Property ID="SourceVfName" Value="VfBlob" />
           <Property ID="VfOutputParameter" Value="MeanGrayValue" />
         </Group>
       </Group>
       <Group ID="Output[6]">
         <Property ID="ChannelID" Value="Rectangularity" />
         <Group ID="VpOutputWire">
-          <Property ID="SourceVfName" Value="VfBlob_1" />
+          <Property ID="SourceVfName" Value="VfBlob" />
           <Property ID="VfOutputParameter" Value="Rectangularity" />
         </Group>
       </Group>
       <Group ID="Output[7]">
         <Property ID="ChannelID" Value="NumResults" />
         <Group ID="VpOutputWire">
-          <Property ID="SourceVfName" Value="VfBlob_1" />
+          <Property ID="SourceVfName" Value="VfBlob" />
           <Property ID="VfOutputParameter" Value="NumResults" />
         </Group>
       </Group>
@@ -277,7 +277,17 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[11]">
-        <Property ID="ObjectID" Value="VfBlob_1" />
+        <Property ID="ObjectID" Value="NumSearchMax" />
+        <Property ID="ClassId" Value="Channel" />
+        <Group ID="Positioning">
+          <Group ID="Point[1]">
+            <Property ID="X" Value="-61" />
+            <Property ID="Y" Value="329" />
+          </Group>
+        </Group>
+      </Group>
+      <Group ID="ViewModelData[12]">
+        <Property ID="ObjectID" Value="VfBlob" />
         <Property ID="ClassId" Value="FUB" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -286,27 +296,27 @@
           </Group>
         </Group>
       </Group>
-      <Group ID="ViewModelData[12]">
+      <Group ID="ViewModelData[13]">
         <Property ID="ObjectID" Value="PositionX" />
         <Property ID="ClassId" Value="Channel" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
-            <Property ID="X" Value="562" />
-            <Property ID="Y" Value="570" />
-          </Group>
-        </Group>
-      </Group>
-      <Group ID="ViewModelData[13]">
-        <Property ID="ObjectID" Value="PositionY" />
-        <Property ID="ClassId" Value="Channel" />
-        <Group ID="Positioning">
-          <Group ID="Point[1]">
-            <Property ID="X" Value="568" />
-            <Property ID="Y" Value="615" />
+            <Property ID="X" Value="563" />
+            <Property ID="Y" Value="581" />
           </Group>
         </Group>
       </Group>
       <Group ID="ViewModelData[14]">
+        <Property ID="ObjectID" Value="PositionY" />
+        <Property ID="ClassId" Value="Channel" />
+        <Group ID="Positioning">
+          <Group ID="Point[1]">
+            <Property ID="X" Value="562" />
+            <Property ID="Y" Value="606" />
+          </Group>
+        </Group>
+      </Group>
+      <Group ID="ViewModelData[15]">
         <Property ID="ObjectID" Value="FunctionProcessingTime" />
         <Property ID="ClassId" Value="Channel" />
         <Group ID="Positioning">
@@ -316,7 +326,7 @@
           </Group>
         </Group>
       </Group>
-      <Group ID="ViewModelData[15]">
+      <Group ID="ViewModelData[16]">
         <Property ID="ObjectID" Value="Area" />
         <Property ID="ClassId" Value="Channel" />
         <Group ID="Positioning">
@@ -326,7 +336,7 @@
           </Group>
         </Group>
       </Group>
-      <Group ID="ViewModelData[16]">
+      <Group ID="ViewModelData[17]">
         <Property ID="ObjectID" Value="ModelNumber" />
         <Property ID="ClassId" Value="Channel" />
         <Group ID="Positioning">
@@ -336,7 +346,7 @@
           </Group>
         </Group>
       </Group>
-      <Group ID="ViewModelData[17]">
+      <Group ID="ViewModelData[18]">
         <Property ID="ObjectID" Value="MeanGrayValue" />
         <Property ID="ClassId" Value="Channel" />
         <Group ID="Positioning">
@@ -346,7 +356,7 @@
           </Group>
         </Group>
       </Group>
-      <Group ID="ViewModelData[18]">
+      <Group ID="ViewModelData[19]">
         <Property ID="ObjectID" Value="Rectangularity" />
         <Property ID="ClassId" Value="Channel" />
         <Group ID="Positioning">
@@ -356,7 +366,7 @@
           </Group>
         </Group>
       </Group>
-      <Group ID="ViewModelData[19]">
+      <Group ID="ViewModelData[20]">
         <Property ID="ObjectID" Value="NumResults" />
         <Property ID="ClassId" Value="Channel" />
         <Group ID="Positioning">
@@ -366,18 +376,8 @@
           </Group>
         </Group>
       </Group>
-      <Group ID="ViewModelData[20]">
-        <Property ID="ObjectID" Value="NumSearchMax" />
-        <Property ID="ClassId" Value="Channel" />
-        <Group ID="Positioning">
-          <Group ID="Point[1]">
-            <Property ID="X" Value="-61" />
-            <Property ID="Y" Value="326" />
-          </Group>
-        </Group>
-      </Group>
       <Group ID="ViewModelData[21]">
-        <Property ID="ObjectID" Value="VP.VP.Enable.VF.VfBlob_1.Enable" />
+        <Property ID="ObjectID" Value="VP.VP.Enable.VF.VfBlob.Enable" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -391,7 +391,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[22]">
-        <Property ID="ObjectID" Value="VP.VP.RegionFeatures.VF.VfBlob_1.RegionFeatures" />
+        <Property ID="ObjectID" Value="VP.VP.NumSearchMax.VF.VfBlob.NumSearchMax" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -405,7 +405,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[23]">
-        <Property ID="ObjectID" Value="VP.VP.EnhancedBlobInformation.VF.VfBlob_1.EnhancedBlobInformation" />
+        <Property ID="ObjectID" Value="VP.VP.RegionFeatures.VF.VfBlob.RegionFeatures" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -419,7 +419,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[24]">
-        <Property ID="ObjectID" Value="VP.VP.Alignment.VF.VfBlob_1.Alignment" />
+        <Property ID="ObjectID" Value="VP.VP.EnhancedBlobInformation.VF.VfBlob.EnhancedBlobInformation" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -433,7 +433,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[25]">
-        <Property ID="ObjectID" Value="VP.VP.OffsetROIX.VF.VfBlob_1.OffsetROIX" />
+        <Property ID="ObjectID" Value="VP.VP.Alignment.VF.VfBlob.Alignment" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -447,7 +447,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[26]">
-        <Property ID="ObjectID" Value="VP.VP.OffsetROIY.VF.VfBlob_1.OffsetROIY" />
+        <Property ID="ObjectID" Value="VP.VP.OffsetROIX.VF.VfBlob.OffsetROIX" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -461,7 +461,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[27]">
-        <Property ID="ObjectID" Value="VP.VP.OffsetROIOrientation.VF.VfBlob_1.OffsetROIOrientation" />
+        <Property ID="ObjectID" Value="VP.VP.OffsetROIY.VF.VfBlob.OffsetROIY" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -475,7 +475,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[28]">
-        <Property ID="ObjectID" Value="VP.VP.OffsetROIRotCenterX.VF.VfBlob_1.OffsetROIRotCenterX" />
+        <Property ID="ObjectID" Value="VP.VP.OffsetROIOrientation.VF.VfBlob.OffsetROIOrientation" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -489,7 +489,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[29]">
-        <Property ID="ObjectID" Value="VP.VP.OffsetROIRotCenterY.VF.VfBlob_1.OffsetROIRotCenterY" />
+        <Property ID="ObjectID" Value="VP.VP.OffsetROIRotCenterX.VF.VfBlob.OffsetROIRotCenterX" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -503,7 +503,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[30]">
-        <Property ID="ObjectID" Value="Variable.VP.NumSearchMax.VF.VfBlob_1.NumSearchMax" />
+        <Property ID="ObjectID" Value="VP.VP.OffsetROIRotCenterY.VF.VfBlob.OffsetROIRotCenterY" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -517,7 +517,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[31]">
-        <Property ID="ObjectID" Value="VF.VfBlob_1.PositionX.VP.VP.PositionX" />
+        <Property ID="ObjectID" Value="VF.VfBlob.PositionX.VP.VP.PositionX" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -531,7 +531,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[32]">
-        <Property ID="ObjectID" Value="VF.VfBlob_1.PositionY.VP.VP.PositionY" />
+        <Property ID="ObjectID" Value="VF.VfBlob.PositionY.VP.VP.PositionY" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -545,7 +545,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[33]">
-        <Property ID="ObjectID" Value="VF.VfBlob_1.FunctionProcessingTime.VP.VP.FunctionProcessingTime" />
+        <Property ID="ObjectID" Value="VF.VfBlob.FunctionProcessingTime.VP.VP.FunctionProcessingTime" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -559,7 +559,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[34]">
-        <Property ID="ObjectID" Value="VF.VfBlob_1.Area.VP.VP.Area" />
+        <Property ID="ObjectID" Value="VF.VfBlob.Area.VP.VP.Area" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -573,7 +573,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[35]">
-        <Property ID="ObjectID" Value="VF.VfBlob_1.ModelNumber.VP.VP.ModelNumber" />
+        <Property ID="ObjectID" Value="VF.VfBlob.ModelNumber.VP.VP.ModelNumber" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -587,7 +587,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[36]">
-        <Property ID="ObjectID" Value="VF.VfBlob_1.MeanGrayValue.VP.VP.MeanGrayValue" />
+        <Property ID="ObjectID" Value="VF.VfBlob.MeanGrayValue.VP.VP.MeanGrayValue" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -601,7 +601,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[37]">
-        <Property ID="ObjectID" Value="VF.VfBlob_1.Rectangularity.VP.VP.Rectangularity" />
+        <Property ID="ObjectID" Value="VF.VfBlob.Rectangularity.VP.VP.Rectangularity" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
@@ -615,7 +615,7 @@
         </Group>
       </Group>
       <Group ID="ViewModelData[38]">
-        <Property ID="ObjectID" Value="VF.VfBlob_1.NumResults.VP.VP.NumResults" />
+        <Property ID="ObjectID" Value="VF.VfBlob.NumResults.VP.VP.NumResults" />
         <Property ID="ClassId" Value="Wire" />
         <Group ID="Positioning">
           <Group ID="Point[1]">

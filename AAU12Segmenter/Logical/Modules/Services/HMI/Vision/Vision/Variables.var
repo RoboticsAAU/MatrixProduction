@@ -14,8 +14,9 @@ VAR
 	TON_Wait : TON;
 	visionResults : ARRAY[0..254] OF USINT;
 	visionResultString : STRING[255];
-	codeReaderVariable1 : CodeReader_typ;
 	codeReaderVariable : CodeReader_typ;
+	blobOutput : BlobOutput_typ;
+	blobInput : BlobInput_typ;
 	mappView : brdkViImg_mappView;
 	imageSvg : STRING[6000000];
 	oldImageNettime : DINT;

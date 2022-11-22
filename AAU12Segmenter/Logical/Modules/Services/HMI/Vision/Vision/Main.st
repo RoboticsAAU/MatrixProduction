@@ -13,7 +13,7 @@ PROGRAM _INIT
 	mappView.getImageArray := FALSE;
 	mappView.timeout 		:= 3000;
 	
-	mappView();		
+	mappView();
 	
 	//TON_Wait.PT := REAL_TO_TIME(154.92);
 	TON_Wait.PT := REAL_TO_TIME(3000);
@@ -21,9 +21,11 @@ PROGRAM _INIT
 END_PROGRAM
 
 PROGRAM _CYCLIC
+
+	
 	PowerlinkCycle_us			:= NettimeCurrent_us - NettimeLastCycle_us;
 	NettimeLastCycle_us			:= NettimeCurrent_us;
-	lightValue := 1;
+	
 	IF gVisionNettime.CMD.Activate THEN
 		//AxisPositionNow			:= ShuttleYPos_m + (-1* ShuttleYSpeed_ms) * PowerlinkCycle_us * gVisionNettime.CFG.AxisPositionDelay_Cycles / 1000000; // When the MpAxis gives us the read position, it is old. So calculate the "now" position
 		//TriggerPosDelta			:= gVisionNettime.CFG.AxisPositionTrigger - AxisPositionNow;
@@ -58,6 +60,7 @@ PROGRAM _CYCLIC
 	//mappView.simulateConfig.activate := DiagCpuIsSimulated(); // true if PLC is simulated
 	mappView();
 	TON_Wait();
+	
 END_PROGRAM
 
 PROGRAM _EXIT
