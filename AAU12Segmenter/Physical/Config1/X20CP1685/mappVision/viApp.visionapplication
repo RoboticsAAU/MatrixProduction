@@ -40,6 +40,9 @@
           <Property ID="TriggerDelay" Value="1" />
         </Selector>
       </Group>
+      <Group ID="BaseSettings">
+        <Property ID="FocusScale" Value="1" />
+      </Group>
     </Group>
     <Group ID="VisionFunctionSet">
       <Group ID="VisionProgramSettings">
