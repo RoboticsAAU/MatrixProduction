@@ -98,12 +98,6 @@
         <Variable Name="bufferFull" />
       </Task>
       <Task Name="Vision">
-        <Variable Name="codeReaderVariable">
-          <Variable Name="NumberSearch" />
-          <Variable Name="enableRobustness" />
-          <Variable Name="codeType" />
-          <Variable Name="enable" />
-        </Variable>
         <Variable Name="visionResults" />
         <Variable Name="visionResultString" />
         <Variable Name="imageSvg" />

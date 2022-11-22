@@ -17,19 +17,6 @@ PROGRAM _INIT
 	OCR ACCESS ADR(tmpOCR);
 
 	// -----------------------------------------------------------------------------------------------------------
-	// Preload code types
-	FOR i := 0 TO MAX_NUM_CODETYPES DO
-		IF CodeTypes[i] <> '' THEN
-			brsstrcat(ADR(visCodeTypePresentDropDownValues[i]), ADR('{"value":"'));
-			brsitoa(i, ADR(tmpStr1));
-			brsstrcat(ADR(visCodeTypePresentDropDownValues[i]), ADR(tmpStr1));
-			brsstrcat(ADR(visCodeTypePresentDropDownValues[i]), ADR('","text":"'));
-			brsstrcat(ADR(visCodeTypePresentDropDownValues[i]), ADR(CodeTypes[i]));
-			brsstrcat(ADR(visCodeTypePresentDropDownValues[i]), ADR('"}'));
-		END_IF
-	END_FOR
-
-	// -----------------------------------------------------------------------------------------------------------
 	visTableNo;
 	InitialSearchSensor := TRUE;
 END_PROGRAM
@@ -43,7 +30,7 @@ PROGRAM _CYCLIC
 // -----------------------------------------------------------------------------------------------------------
 	FOR idx := 1 TO MAX_NUM_CAMS DO
 		// -----------------------------------------------------------------------------------------------------------
-		// Display camera status in hex - documenation is also in hex
+		// Display camera status in hex - documentation is also in hex
 		// -----------------------------------------------------------------------------------------------------------
 		IF gVisionSensor[idx].DAT.Status = 0 THEN // Display only a single 0
 			gVisionSensor[idx].DAT.StatusText := '0';
@@ -189,21 +176,10 @@ PROGRAM _CYCLIC
 	visCameraStatus := VisionSensor.DAT.StatusText;
 		
 	// -----------------------------------------------------------------------------------------------------------
-	// Code Reader - selected/detected types
+	// Camera with blob function
 	// -----------------------------------------------------------------------------------------------------------
-	IF VisionSensor.CFG.VisionFunction = enumCoderReader THEN
-		IF(visSelectedCodeTypeToPLC <> '') THEN
-			CodeReader.CodeType := UDINT_TO_USINT(brsatoi(ADR(visSelectedCodeTypeToPLC)));
-			visSelectedCodeTypeToPLC := '';
-		END_IF
-		brsitoa(CodeReader.CodeType, ADR(visSelectedCodeTypeFromPLC));
-		FOR i := 1 TO MAX_NUM_RESULTS DO
-			IF CodeReader.BarcodeType[i] <> 0 THEN
-				brsstrcpy(ADR(visSelectedCodeTypeDetected[i]), ADR(CodeTypes[LIMIT(0, CodeReader.BarcodeType[i], MAX_NUM_CODETYPES)]));
-			ELSE
-				brsstrcpy(ADR(visSelectedCodeTypeDetected[i]), ADR(''));
-			END_IF
-		END_FOR
+	IF VisionSensor.CFG.VisionFunction = enumBlob THEN
+		//Do some processing 
 	END_IF
 
 	// -----------------------------------------------------------------------------------------------------------
