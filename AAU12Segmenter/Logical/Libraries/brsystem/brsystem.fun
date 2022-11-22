@@ -45,7 +45,7 @@ END_FUNCTION_BLOCK
 	END_VAR
 END_FUNCTION_BLOCK
 
-{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK RTInfo				(*returns runtime information about the software object*)
+{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK RTInfo				(*returns runtime information about the program*)
 	VAR_INPUT
 		enable	:BOOL;				(*enables execution*)
 	END_VAR
@@ -129,18 +129,18 @@ END_FUNCTION_BLOCK
 	END_VAR
 END_FUNCTION_BLOCK
 
-{REDUND_ERROR} FUNCTION_BLOCK EXCInfo				(*returns information about the software object that triggered the exception*)
+{REDUND_ERROR} FUNCTION_BLOCK EXCInfo				(*returns information about the program that triggered the exception*)
 	VAR_INPUT
 		enable	:BOOL;				(*enables execution*)
 	END_VAR
 	VAR_OUTPUT
 		status	:UINT;				(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, 0xXXXX = see help*)
 		task_class	:UDINT;			(*task class in which the exception was triggered*)
-		task_ident	:UDINT;			(*ID number of the software object that triggered the exception*)
+		task_ident	:UDINT;			(*ID number of the program that triggered the exception*)
 	END_VAR
 END_FUNCTION_BLOCK
 
-{REDUND_ERROR} FUNCTION_BLOCK ZYKVLenable			(*enables/disables the cycle time monitoring of software objects*)
+{REDUND_ERROR} FUNCTION_BLOCK ZYKVLenable			(*enables/disables the cycle time monitoring of programs*)
 	VAR_INPUT
 		enable	:BOOL;				(*enables execution*)
 		mode	:BOOL;				(*0/1 monitoring off/on*)
@@ -205,3 +205,12 @@ END_FUNCTION_BLOCK
 		MacAddr	:ARRAY[0..5] OF BYTE;	(*MAC-address of virtual windows IF*)
 	END_VAR
 END_FUNCTION_BLOCK
+
+{REDUND_OK} FUNCTION RTCyclic : BOOL (*returns true, if function is called in the cyclic part of the program, false otherwise*)
+END_FUNCTION
+
+{REDUND_OK} FUNCTION RTInit : BOOL (*returns true, if function is called in the init part of the program, false otherwise*)
+END_FUNCTION
+
+{REDUND_OK} FUNCTION RTExit : BOOL (*returns true, if function is called in the exit part of the program, false otherwise*)
+END_FUNCTION

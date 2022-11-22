@@ -14,6 +14,7 @@ extern "C" {
 #endif
 /* Constants */
 #ifdef _REPLACE_CONST
+#define viBASE_INF_APP_LIST_NOT_COMPLETE 1102315666
 #define viBASE_ERR_APP_NOT_EXIST (-1045167968)
 #define viBASE_ERR_CMD_INV_HMI_OPEN (-1045167984)
 #define viBASE_ERR_CMD_INV_LOAD_FAILED (-1045168000)
@@ -32,6 +33,7 @@ extern "C" {
 #define viBASE_ERR_INVALID_FILE_DEVICE (-1045168106)
 #define viBASE_ERR_FILE_WRITE (-1045168107)
 #else
+_GLOBAL_CONST signed long viBASE_INF_APP_LIST_NOT_COMPLETE;
 _GLOBAL_CONST signed long viBASE_ERR_APP_NOT_EXIST;
 _GLOBAL_CONST signed long viBASE_ERR_CMD_INV_HMI_OPEN;
 _GLOBAL_CONST signed long viBASE_ERR_CMD_INV_LOAD_FAILED;
@@ -52,6 +54,12 @@ _GLOBAL_CONST signed long viBASE_ERR_FILE_WRITE;
 #endif
 
 /* Datatypes and datatypes of function blocks */
+typedef enum ViBaseFormatEnum
+{
+	viBASE_FORMAT_PLAIN_TEXT = 0,
+	viBASE_FORMAT_ITEMCOLLECTION = 1
+} ViBaseFormatEnum;
+
 typedef struct ViBaseFubProcessingType
 {
 	signed long Mediator[2];
@@ -143,10 +151,35 @@ typedef struct ViBaseSaveApplication
 	plcbit Error;
 } ViBaseSaveApplication_typ;
 
+typedef struct ViBaseListApplication
+{
+	/* VAR_INPUT (analog) */
+	struct ViComponentType* MpLink;
+	enum ViBaseFormatEnum Format;
+	unsigned long List;
+	unsigned long ListLen;
+	/* VAR_OUTPUT (analog) */
+	signed long StatusID;
+	unsigned short NrEntries;
+	/* VAR (analog) */
+	struct ViBaseInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Execute;
+	/* VAR_OUTPUT (digital) */
+	plcbit Done;
+	plcbit Busy;
+	plcbit Error;
+} ViBaseListApplication_typ;
+
+typedef plcstring ViBaseFormatItemCollectionType[131];
+
+typedef plcstring ViBaseFormatPlainTextType[51];
+
 /* Prototyping of functions and function blocks */
 _BUR_PUBLIC void ViBaseSaveDiagData(struct ViBaseSaveDiagData* inst);
 _BUR_PUBLIC void ViBaseLoadApplication(struct ViBaseLoadApplication* inst);
 _BUR_PUBLIC void ViBaseSaveApplication(struct ViBaseSaveApplication* inst);
+_BUR_PUBLIC void ViBaseListApplication(struct ViBaseListApplication* inst);
 
 #ifdef __cplusplus
 } // End of C-Linkage

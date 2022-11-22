@@ -11,7 +11,6 @@ VAR CONSTANT
 END_VAR
 VAR
 	ShuttleYPosOld_m : ARRAY[0..LAST_IDX_SH_POS_OLD] OF LREAL;
-	Wait : BOOL;
 	TON_Wait : TON;
 	visionResults : ARRAY[0..254] OF USINT;
 	visionResultString : STRING[255];

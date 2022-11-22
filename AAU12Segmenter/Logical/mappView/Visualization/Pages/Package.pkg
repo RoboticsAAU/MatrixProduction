@@ -10,5 +10,6 @@
     <Object Type="Package">WorkstationPage</Object>
     <Object Type="Package">fixturePage</Object>
     <Object Type="Package">SmartLabPage</Object>
+    <Object Type="Package">VisionPage</Object>
   </Objects>
 </Package>

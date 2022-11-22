@@ -91,7 +91,10 @@ TYPE
 		mcERROR_STOP_CTRL_OFF_CMD,  (*Generates an error, ends any active movements and switches off the controller*)
 		mcERROR_V_STOP_CTRL_OFF_CMD,  (*Generates an error, ends any active movements with a speed-controlled ramp and switches off the controller*)
 		mcERROR_COAST_TO_STANDSTILL_CMD,  (*Generates an error, any active movements coast to a stop when controller switched off*)
-		mcERROR_INDUCTION_HALT_CMD  (*Generates an axis error on the drive, movements are stopped with an induction stop of the controller*)
+		mcERROR_INDUCTION_HALT_CMD,  (*Generates an axis error on the drive, movements are stopped with an induction stop of the controller*)
+		mcERROR_STOP_DEC_CMD,  (*Generates an error and ends an active movement with the deceleration specified on configuration, written by the axis group or written via the function block MC_BR_CyclicDriveErrorDecel*)
+		mcERROR_STOP_DEC_CTRL_OFF_CMD,  (*Generates an error, ends any active movement with the deceleration specified on configuration, written by the axis group or written via the function block MC_BR_CyclicDriveErrorDecel and switches off the controller*)
+		mcERROR_V_STOP_DEC_CTRL_OFF_CMD  (*Generates an error, ends any active movement with a speed-controlled ramp with the deceleration specified on configuration, written by the axis group or written via the function block MC_BR_CyclicDriveErrorDecel and switches off the controller*)
 	);
 
 	McEdgeEnum :
@@ -128,7 +131,8 @@ TYPE
 		mcSCS5 := 7,	 (*System coordinate system 5*)
 		mcTCS := 9,	 (*Tool coordinate system*)
 		mcGCS := 10,	 (*Global coordinate system*)
-		mcJACS := 100	 (*Joint axes coordinate system*)
+		mcJACS := 100,	 (*Joint axes coordinate system*)
+		mcMPCS := 101	 (*Manipulated product coordinate system*)
 	);
 
 	McValueSrcEnum :
@@ -304,7 +308,6 @@ TYPE
 
 	McTrackingPathType : 	STRUCT
 		controlif : REFERENCE TO McInternalTrackingPathIfType; (**)
-		mappLinkInternal : McInternalMappLinkType; (**)
 	END_STRUCT;
 
 	McGetCoordSystemIdentParType : STRUCT

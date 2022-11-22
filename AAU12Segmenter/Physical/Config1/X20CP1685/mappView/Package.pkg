@@ -16,5 +16,6 @@
     <Object Type="File">content_fixture.binding</Object>
     <Object Type="File">content_smartLabPage.binding</Object>
     <Object Type="File">content_smartLabPage.eventbinding</Object>
+    <Object Type="File">content_vision.binding</Object>
   </Objects>
 </Package>

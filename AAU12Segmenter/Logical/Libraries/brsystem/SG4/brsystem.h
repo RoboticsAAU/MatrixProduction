@@ -335,6 +335,9 @@ _BUR_PUBLIC void PMemPut(struct PMemPut* inst);
 _BUR_PUBLIC void PMemSize(struct PMemSize* inst);
 _BUR_PUBLIC void ARwinWindowsInfo(struct ARwinWindowsInfo* inst);
 _BUR_PUBLIC void ARwinEthWinInfo(struct ARwinEthWinInfo* inst);
+_BUR_PUBLIC plcbit RTCyclic(void);
+_BUR_PUBLIC plcbit RTInit(void);
+_BUR_PUBLIC plcbit RTExit(void);
 
 
 #ifdef __cplusplus

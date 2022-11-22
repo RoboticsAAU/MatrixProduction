@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McBase 5.16.2 */
+/* McBase 5.19.3 */
 
 #ifndef _MCBASE_
 #define _MCBASE_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McBase_VERSION
-#define _McBase_VERSION 5.16.2
+#define _McBase_VERSION 5.19.3
 #endif
 
 #include <bur/plctypes.h>
@@ -100,7 +100,10 @@ typedef enum McErrorCmdEnum
 	mcERROR_STOP_CTRL_OFF_CMD,
 	mcERROR_V_STOP_CTRL_OFF_CMD,
 	mcERROR_COAST_TO_STANDSTILL_CMD,
-	mcERROR_INDUCTION_HALT_CMD
+	mcERROR_INDUCTION_HALT_CMD,
+	mcERROR_STOP_DEC_CMD,
+	mcERROR_STOP_DEC_CTRL_OFF_CMD,
+	mcERROR_V_STOP_DEC_CTRL_OFF_CMD
 } McErrorCmdEnum;
 
 typedef enum McEdgeEnum
@@ -132,7 +135,8 @@ typedef enum McCoordinateSystemEnum
 	mcSCS5 = 7,
 	mcTCS = 9,
 	mcGCS = 10,
-	mcJACS = 100
+	mcJACS = 100,
+	mcMPCS = 101
 } McCoordinateSystemEnum;
 
 typedef enum McValueSrcEnum
@@ -203,16 +207,19 @@ typedef enum McCfgTypeEnum
 	mcCFG_LIMSET_LIN = 1411,
 	mcCFG_LIMSET_ROT = 1412,
 	mcCFG_PROC_PT_LST = 1600,
+	mcCFG_TRK_PATH = 1700,
 	mcCFG_AX = 10000,
 	mcCFG_AX_BASE_TYP = 10011,
 	mcCFG_AX_MOVE_LIM = 10012,
 	mcCFG_AX_FEAT_CAM_AUT_CMN = 10101,
 	mcCFG_AX_FEAT_PROF_GEN = 10102,
 	mcCFG_AX_FEAT_DIG_CAM_SW = 10103,
+	mcCFG_AX_FEAT_DIG_OUT = 10107,
 	mcCFG_AX_FEAT_CAM_LST = 11102,
 	mcCFG_AX_FEAT_ALT_VAL_SRC = 10104,
 	mcCFG_AX_FEAT_BRK = 10105,
 	mcCFG_AX_FEAT_MECH_DEV_COMP = 10106,
+	mcCFG_AX_FEAT_ACP_NETW_ERR_REAC = 10108,
 	mcCFG_MOT_SYN = 10500,
 	mcCFG_MOT_INDUCT = 10501,
 	mcCFG_IO_PL_IN_CARD = 10510,
@@ -253,10 +260,10 @@ typedef enum McCfgTypeEnum
 	mcCFG_PURE_V_AX_FEAT = 12014,
 	mcCFG_PURE_V_AX_MECH_ELM = 12015,
 	mcCFG_PURE_V_AX_ENC_LINK = 12016,
+	mcCFG_PURE_V_AX_DIG_IN = 12020,
 	mcCFG_PURE_V_AX_CTRL = 12017,
 	mcCFG_PURE_V_AX_STOP_REAC = 12018,
 	mcCFG_PURE_V_AX_MOVE_ERR_LIM = 12019,
-	mcCFG_PURE_V_AX_DIG_IN = 12020,
 	mcCFG_PURE_V_AX_STAT_IN = 12021,
 	mcCFG_PURE_V_AX_CTRL_OUT = 12022,
 	mcCFG_STP_AX = 13000,
@@ -315,6 +322,7 @@ typedef enum McCfgTypeEnum
 	mcCFG_AXGRP_FEAT_PATH_PREVIEW = 21122,
 	mcCFG_AXGRP_FEAT_TAN_TOOL = 21124,
 	mcCFG_AXGRP_FEAT_REV_MOVE = 21125,
+	mcCFG_AXGRP_FEAT_TRK = 21126,
 	mcCFG_ASM = 31000,
 	mcCFG_ASM_FEAT_CPLG = 31101,
 	mcCFG_ASM_FEAT_SIM_SH_DEF = 31102,
@@ -595,7 +603,6 @@ typedef struct McAxesGroupType
 
 typedef struct McTrackingPathType
 {	struct McInternalTrackingPathIfType* controlif;
-	struct McInternalMappLinkType mappLinkInternal;
 } McTrackingPathType;
 
 typedef struct McGetCoordSystemIdentParType

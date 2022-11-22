@@ -69,5 +69,6 @@
     <Widget xsi:type="widgets.brease.Image" id="Image1" top="590" left="1060" width="60" height="70" zIndex="62" image="Media/Status_Green.png" borderWidth="0px" opacity="1" />
     <Widget xsi:type="widgets.brease.Label" id="Label24" top="740" left="10" width="40" height="20" zIndex="66" text="ID:" textAlign="left" fontSize="20px" bold="true" padding="0px 15px 0px 0px" />
     <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput1" top="740" left="35" width="50" height="20" zIndex="67" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" unitTextAlign="left" backColor="rgba(255, 255, 255, 0)" borderStyle="none" textAlign="left" padding="0px 0px 0px 0px" />
+    <Widget xsi:type="widgets.brease.NavigationButton" id="NavigationButton1" top="705" left="1050" width="170" height="45" zIndex="68" pageId="page_vision" text="Vision Stream" borderStyle="solid" borderWidth="4px" cornerRadius="5px" fontSize="20px" bold="true" />
   </Widgets>
 </Content>

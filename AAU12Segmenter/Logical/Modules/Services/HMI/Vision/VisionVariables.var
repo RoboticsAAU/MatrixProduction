@@ -11,7 +11,7 @@ VAR
 	gVisionNettime : typVisionNettime; (*Data for nettime calculation*)
 	gVisionSensor : ARRAY[1..MAX_NUM_CAMS] OF typVisionMain; (*General vision functions that are independent from the inspection function*)
 	NettimeCurrent_us : DINT; (*Current Powerlink nettime*)
-	visSelectedSensor : UINT := 1; (*Selected camera node number*)
+	visSelectedSensor : UINT := 3; (*Selected camera node number*)
 	visSelectedLight : UINT := 1; (*Selected Light node number*)
 END_VAR
 VAR RETAIN
