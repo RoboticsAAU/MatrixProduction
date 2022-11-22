@@ -96,6 +96,7 @@
         <Variable Name="amountProductsFinished" />
         <Variable Name="tempProductOrder" RecursiveEnable="2" />
         <Variable Name="bufferFull" />
+        <Variable Name="occupiedPosition" RecursiveEnable="2" />
       </Task>
       <Task Name="Vision">
         <Variable Name="codeReaderVariable">

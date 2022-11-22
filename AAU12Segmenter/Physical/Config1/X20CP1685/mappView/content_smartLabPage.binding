@@ -77,5 +77,133 @@
 <Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.ID" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericOutput1" attribute="value" />
 </Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[0,0]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle00" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[1,0]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle10" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[0,1]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle01" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[0,2]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle02" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[0,3]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle03" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[0,4]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle04" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[0,5]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle05" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[0,6]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle06" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[0,7]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle07" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[1,1]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle11" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[1,2]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle12" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[1,3]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle13" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[1,4]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle14" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[1,5]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle15" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[1,6]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle16" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[1,7]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle17" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[2,0]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle20" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[2,2]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle22" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[2,1]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle21" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[2,3]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle23" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[2,4]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle24" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[2,5]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle25" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[2,6]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle26" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[2,7]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle27" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[3,0]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle30" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[3,1]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle31" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[3,2]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle32" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[3,3]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle33" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[3,4]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle34" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[3,5]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle35" attribute="visible" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[3,6]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle36" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[3,7]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle37" attribute="visible" />
+</Binding>
 </Bindings>
 </BindingsSet>

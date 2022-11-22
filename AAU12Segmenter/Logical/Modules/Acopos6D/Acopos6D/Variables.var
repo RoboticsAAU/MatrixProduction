@@ -78,7 +78,7 @@ END_VAR
 VAR
 	activeShuttles : USINT;
 	amountProductsFinished : USINT;
-	availablePosition : {REDUND_UNREPLICABLE} ARRAY[0..3,0..7] OF BOOL; (*4 highway columns and 8 highway rows*)
+	occupiedPosition : {REDUND_UNREPLICABLE} ARRAY[0..3,0..7] OF BOOL; (*4 highway columns and 8 highway rows*)
 	bufferEmpty : BOOL := TRUE;
 	bufferFull : BOOL := FALSE;
 	bufferSize : {REDUND_UNREPLICABLE} USINT;
