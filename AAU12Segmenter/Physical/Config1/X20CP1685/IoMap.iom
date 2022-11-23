@@ -434,7 +434,6 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[1].DAT.ProcessingTimeCamera AT %IW."VSS122Q25.061P-000".CameraProcessingTime;
 	Cyclic#1.::gVisionSensor[1].DAT.ImageProcessingError AT %IW."VSS122Q25.061P-000".ImageProcessingError;
 	Cyclic#1.::gVisionSensor[1].DAT.ImageNettime AT %ID."VSS122Q25.061P-000".ImageNettime;
-	::Vision:visionResults AT %IO."VSS122Q25.061P-000".CodeReaderOutput01;
 	::Vision:blobInput.enable AT %QX."VSS122Q25.061P-000".Enable;
 	::Vision:blobInput.numSearchMax AT %QB."VSS122Q25.061P-000".NumSearchMax;
 	::NettimeCurrent_us AT %ID."X20CP1685".SystemTime;

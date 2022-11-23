@@ -8,7 +8,7 @@ ACTION smartLabWorkstationOperation:
 			ShuttlesAtPositions_0.shuttleInfo := ADR(gAcp6DCtrl.Status.ShuttleInfo); // Maybe need to run FB?
 			ShuttlesInRange_0.shuttleInfo := ADR(gAcp6DCtrl.Status.ShuttleInfo);
 			ShuttlesInWorkstationBuffer_0.shuttleInfo := ADR(gAcp6DCtrl.Status.ShuttleInfo);
-			MovementColumnSelection_0.availablePosition := ADR(availablePosition);
+			MovementColumnSelection_0.occupiedPosition := ADR(occupiedPosition);
 			
 			cm.state := 10;
 			

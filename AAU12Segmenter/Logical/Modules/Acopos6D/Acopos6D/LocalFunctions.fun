@@ -15,7 +15,7 @@ END_FUNCTION_BLOCK
 
 {REDUND_ERROR} FUNCTION_BLOCK MovementColumnSelection
 	VAR_INPUT
-		availablePosition : REFERENCE TO ARRAY[0..3,0..7] OF BOOL; (*4 highway columns and 8 highway rows*)
+		occupiedPosition : REFERENCE TO ARRAY[0..3,0..7] OF BOOL; (*4 highway columns and 8 highway rows*)
 		startWorkstation : workStation_typ;
 		endWorkstation : workStation_typ;
 		opt_movementDone : BOOL; (*Reset the positions that were occupied by the movement*)

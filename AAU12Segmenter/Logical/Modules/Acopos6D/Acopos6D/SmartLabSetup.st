@@ -132,7 +132,7 @@ ACTION smartLabSetup:
 			
 			FOR i := 0 TO 3 DO // Highway columns
 				FOR k := 0 TO 7 DO // Highway rows
-					availablePosition[i, k] := TRUE;
+					occupiedPosition[i, k] := FALSE;
 				END_FOR
 			END_FOR
 			
