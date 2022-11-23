@@ -13,8 +13,6 @@ FUNCTION_BLOCK ValuesToCorrection
 	
 		1:	
 			CASE baseNo OF
-				0: // w.r.t world frame
-					
 				1: // w.r.t acopos frame
 					posCorrections.Y := 1.4;
 					
@@ -24,11 +22,15 @@ FUNCTION_BLOCK ValuesToCorrection
 					posCorrections.Z := 2;
 			END_CASE
 		2:
-		
-		3:
 			CASE baseNo OF
-				0: // w.r.t world frame
-					
+				1: // w.r.t acopos frame
+					posCorrections.X := -0.1;
+					posCorrections.Z := -3;
+				
+			END_CASE
+			
+		3:
+			CASE baseNo OF					
 				1: // w.r.t acopos frame
 					posCorrections.X := 2;
 					posCorrections.Y := -0.2;
@@ -41,8 +43,6 @@ FUNCTION_BLOCK ValuesToCorrection
 		
 		4:
 			CASE baseNo OF
-				0: // w.r.t world frame
-					
 				1: // w.r.t acopos frame
 					posCorrections.X := -1;
 					posCorrections.Y := -0.3;
@@ -55,8 +55,6 @@ FUNCTION_BLOCK ValuesToCorrection
 			END_CASE
 		5:
 			CASE baseNo OF
-				0: // w.r.t world frame
-					
 				1: // w.r.t acopos frame
 					posCorrections.X := -0.5;
 					posCorrections.Y := 3;

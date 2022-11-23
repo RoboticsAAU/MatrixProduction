@@ -17,7 +17,7 @@ FUNCTION_BLOCK EETypeToFrame
 			frame.Z := SchunkLength + 29.40;
 			
 		DRILL_EE:
-			frame.Z := 60.4;
+			frame.Z := 57.2;
 			
 		PCB_EE:
 			frame.Z := SchunkLength + 25.11;
