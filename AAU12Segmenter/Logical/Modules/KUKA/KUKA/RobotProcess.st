@@ -15,12 +15,29 @@ ACTION RobotProcess:
 				
 				CASE pKuka.axisGroupIdx OF
 					2: //Drilling robot
-		
-						// Index i corresponds to robot, and thus also the correct entry in orderSpec   
+						// Seen from ACOPOS 6D frame: Bottom right -> bottom left -> top left -> top right				
 						
-						pKuka.tempPosition.X := pKuka.tempPosition.X - (numDoneHoles MOD 2)*27*2;
-						pKuka.tempPosition.Y := pKuka.tempPosition.Y + brmfloor(numDoneHoles/2)*53*2;
-		
+						CASE numDoneHoles OF
+							0: // Simply default approach position
+								
+							1:
+								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
+								pKuka.tempPosition.Status := 2; // 010
+								pKuka.tempPosition.Turn := 35; // 100011
+							
+							2:	
+								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
+								pKuka.tempPosition.Y := pKuka.tempPosition.Y + drillYOffset;
+								pKuka.tempPosition.Status := 6; // 110
+								pKuka.tempPosition.Turn := 51; // 110011
+							
+							3:
+								pKuka.tempPosition.Y := pKuka.tempPosition.Y + drillYOffset;
+								pKuka.tempPosition.Status := 6; // 110
+								pKuka.tempPosition.Turn := 51; // 110011
+								
+						END_CASE
+						
 				END_CASE
 				
 				cm.state := 1010;
@@ -56,7 +73,9 @@ ACTION RobotProcess:
 				
 			pKuka.tempPosition.X := pKuka.tempPosition.Y := pKuka.tempPosition.Z := pKuka.tempPosition.A := pKuka.tempPosition.B := pKuka.tempPosition.C
 			:= 0;
-			pKuka.tempPosition.Z := -20; // temporary
+			CASE pKuka.axisGroupIdx OF
+				2: pKuka.tempPosition.Z := -(relativeDrillDistance + 6);
+			END_CASE
 			// Status and turn is already set from moving to approach point
 				
 			pKuka.motion.KRC_MoveLinearRelative.Position := pKuka.tempPosition;
@@ -77,9 +96,9 @@ ACTION RobotProcess:
 				
 			pKuka.motion.KRC_MoveLinearRelative.CoordinateSystem := pKuka.convert.ValuesToCOORDSYS.COORDSYS;
 				
-			pKuka.tempPosition.X := pKuka.tempPosition.Y := pKuka.tempPosition.Z := pKuka.tempPosition.A := pKuka.tempPosition.B := pKuka.tempPosition.C
+			pKuka.tempPosition.X := pKuka.tempPosition.Y := pKuka.tempPosition.A := pKuka.tempPosition.B := pKuka.tempPosition.C
 			:= 0;
-			pKuka.tempPosition.Z := 20; // temporary;
+			pKuka.tempPosition.Z := -1*pKuka.tempPosition.Z; // go back
 			// Status and turn is already set from moving to approach point
 				
 			pKuka.motion.KRC_MoveLinearRelative.Position := pKuka.tempPosition;

@@ -53,9 +53,12 @@ VAR
 	gripperWaitTime : INT;
 END_VAR
 VAR CONSTANT
-	relativeDistance : INT := 80;
+	relativeDistance : REAL := 80.0;
+	relativeDrillDistance : REAL := 10.0;
 END_VAR
 VAR
+	drillYOffset : REAL := 27*2;
+	drillXOffset : REAL := 53*2;
 	numDoneHoles : USINT := 0;
 	fusePickOffset : REAL := 13; (*Distance between fuses*)
 	k : INT;
