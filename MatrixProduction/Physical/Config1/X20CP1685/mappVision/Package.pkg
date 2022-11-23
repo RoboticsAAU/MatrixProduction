@@ -4,6 +4,7 @@
   <Objects>
     <Object Type="File">Settings.vicfg</Object>
     <Object Type="File">viApp.visionapplication</Object>
+    <Object Type="File">ViApp_Whit.visionapplication</Object>
     <Object Type="File">viComp.visioncomponent</Object>
   </Objects>
 </Package>

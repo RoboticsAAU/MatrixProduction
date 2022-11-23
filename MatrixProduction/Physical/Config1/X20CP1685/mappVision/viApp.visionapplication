@@ -58,7 +58,7 @@
             <Property ID="ROI" Value="" />
           </Group>
           <Group ID="VfConstants">
-            <Property ID="NumResultsMax" Value="1" />
+            <Property ID="NumResultsMax" Value="5" />
           </Group>
           <Group ID="VfWirings">
             <Group ID="Image">
@@ -294,7 +294,7 @@
         <Property ID="ClassId" Value="FUB" />
         <Group ID="Positioning">
           <Group ID="Point[1]">
-            <Property ID="X" Value="281" />
+            <Property ID="X" Value="280" />
             <Property ID="Y" Value="466" />
           </Group>
         </Group>

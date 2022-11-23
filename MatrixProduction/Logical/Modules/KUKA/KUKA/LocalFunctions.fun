@@ -30,15 +30,15 @@ END_FUNCTION_BLOCK
 	END_VAR
 END_FUNCTION_BLOCK
 
-{REDUND_ERROR} {REDUND_UNREPLICABLE} FUNCTION_BLOCK EETypeToFrame (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+{REDUND_ERROR} FUNCTION_BLOCK EETypeToFrame (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
 	VAR_INPUT
 		eeType : {REDUND_UNREPLICABLE} end_effector_type;
 	END_VAR
 	VAR_OUTPUT
 		frame : {REDUND_UNREPLICABLE} FRAME;
 	END_VAR
-	VAR CONSTANT
-		SchunkLength : REAL := 72.7+2*3.2;
+	VAR
+		SchunkLength : REAL;
 	END_VAR
 END_FUNCTION_BLOCK
 

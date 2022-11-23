@@ -16,7 +16,7 @@ FUNCTION_BLOCK ValuesToCorrection
 				0: // w.r.t world frame
 					
 				1: // w.r.t acopos frame
-					posCorrections.Y := 1.5;
+					posCorrections.Y := 1.4;
 					
 				2: // w.r.t magazine frame
 					posCorrections.X := -4;
@@ -64,8 +64,8 @@ FUNCTION_BLOCK ValuesToCorrection
 					
 				2: // w.r.t magazine frame
 					posCorrections.X := 2;
-					posCorrections.Y := -5;
-					posCorrections.Z := 9;
+					posCorrections.Y := -5.5;
+					posCorrections.Z := 8.5;
 			
 			END_CASE
 		6:

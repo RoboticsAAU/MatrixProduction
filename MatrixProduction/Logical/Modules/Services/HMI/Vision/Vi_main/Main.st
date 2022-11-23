@@ -179,7 +179,7 @@ PROGRAM _CYCLIC
 	// Camera with blob function
 	// -----------------------------------------------------------------------------------------------------------
 	IF VisionSensor.CFG.VisionFunction = enumBlob THEN
-		//Do some processing 
+		//To be added
 	END_IF
 
 	// -----------------------------------------------------------------------------------------------------------

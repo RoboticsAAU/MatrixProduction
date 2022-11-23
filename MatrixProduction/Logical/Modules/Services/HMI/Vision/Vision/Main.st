@@ -7,14 +7,14 @@ PROGRAM _INIT
 	//	gVisionNettime.CFG.AxisPositionDelay_Cycles	:= 1; 	// Number of PLK cycles which the axis position is old when it comes to this task (Time from encoder to now in this task)
 	//	gVisionNettime.CFG.VisionPreTrigger_Cycles	:= 8; 	// Number of powerlink cycles the trigger has to be send ahead, 4 is a good value.
 	
-	mappView.maxSvgImageLength := SIZEOF(imageSvg);
-	mappView.enable 		:= TRUE;
-	mappView.cameraIp 		:= '192.168.200.8';
-	mappView.getImageArray := FALSE;
-	mappView.timeout 		:= 3000;
+	mappView.maxSvgImageLength 	:= SIZEOF(imageSvg);
+	mappView.enable 			:= TRUE;
+	mappView.cameraIp 			:= '192.168.200.8';
+	mappView.getImageArray 		:= FALSE;
+	mappView.timeout 			:= 3000;
 	
 	mappView();
-	
+		
 	//TON_Wait.PT := REAL_TO_TIME(154.92);
 	TON_Wait.PT := REAL_TO_TIME(3000);
 	
@@ -22,8 +22,13 @@ END_PROGRAM
 
 PROGRAM _CYCLIC
 	
+	////// Vision Function Configuration //////
+	blobInput.enable := TRUE;
+	blobInput.numSearchMax := 1;
+	blobInput.offsetROIX := 0;
+	blobInput.offsetROIY := 0;
+	
 	////// Vision sensor configuration /////
-	// Must apparently be set in _CYCLIC
 	
 	gVisionImage.CFG.EthDevice								:= 'IF2';			// Ethernet interface for the PLC, this is the IF where you go online
 	
@@ -36,14 +41,17 @@ PROGRAM _CYCLIC
 	//gVisionSensor[visSelectedSensor].CFG.ResolutionHeight_Y	:= 1024;
 	
 	// Camera configuration
-	gVisionSensor[visSelectedSensor].FCT.ApplicationName	:= 'ViApplication';
+	gVisionSensor[visSelectedSensor].FCT.ApplicationName	:= 'ViApp_WhiteBottomCover';
 	gVisionSensor[visSelectedSensor].DAT.Exposure			:= 1000; 	// SUSCEPTIBLE TO CHANGE
 	gVisionSensor[visSelectedSensor].DAT.FlashColor			:= 4; 		// 4: LIME (See help function "Image acquisition parameters (cyclic write)" for other alternatives)
 	gVisionSensor[visSelectedSensor].DAT.FlashSegment		:= 15; 		// Binary 1111 (all segments are turned on)
-	gVisionSensor[visSelectedSensor].DAT.Focus				:= 600; 	// SUSCEPTIBLE TO CHANGE - Camera FocusScale is defined in mm
+	gVisionSensor[visSelectedSensor].DAT.Focus				:= 430; 	// SUSCEPTIBLE TO CHANGE - Camera FocusScale is defined in mm
 	gVisionSensor[visSelectedSensor].DAT.Gain				:= 1; 								// Gain factor 1
 	//gVisionSensor[visSelectedSensor].DAT.MaxItemCnt		:= RecipeData.Cam[i].MaxItemCnt; 	// Already has default value
 	//gVisionSensor[visSelectedSensor].DAT.Timeout			:= RecipeData.Cam[i].Timeout; 		// Already has default value
+	
+	// Switch vision application when recipe for blob was loaded
+	//gVisionSensor[visSelectedSensor].CMD.VaSwitchApplication := TRUE; //Do we need this???
 	
 	////////////////////////////////////////
 	
@@ -51,11 +59,13 @@ PROGRAM _CYCLIC
 	PowerlinkCycle_us			:= NettimeCurrent_us - NettimeLastCycle_us;
 	NettimeLastCycle_us			:= NettimeCurrent_us;
 	
-	IF gVisionNettime.CMD.Activate THEN
+	//IF gVisionNettime.CMD.Activate THEN
 		//AxisPositionNow			:= ShuttleYPos_m + (-1* ShuttleYSpeed_ms) * PowerlinkCycle_us * gVisionNettime.CFG.AxisPositionDelay_Cycles / 1000000; // When the MpAxis gives us the read position, it is old. So calculate the "now" position
 		//TriggerPosDelta			:= gVisionNettime.CFG.AxisPositionTrigger - AxisPositionNow;
 		//TriggerTimeDelta_us		:= LREAL_TO_DINT((TriggerPosDelta / ShuttleYSpeed_ms) * 1000000);
-		TON_Wait.IN := TRUE;
+	gVisionSensor[visSelectedSensor].CMD.ImageTrigger	:= FALSE;
+	TON_Wait.IN := TRUE;
+	
 		// Wait for the moment that axis is in the send trigger window depend on delay by topology and the actual powerlink cycle
 		IF TON_Wait.Q THEN
 			TON_Wait.IN := FALSE;
@@ -70,7 +80,7 @@ PROGRAM _CYCLIC
 				//gVisionNettime.DAT.Overflow := gVisionNettime.DAT.Overflow + 1;
 			END_IF
 		END_IF
-	END_IF
+	//END_IF
 	
 	IF gVisionSensor[visSelectedSensor].DAT.ImageNettime <> oldImageNettime THEN
 		oldImageNettime := gVisionSensor[visSelectedSensor].DAT.ImageNettime;
