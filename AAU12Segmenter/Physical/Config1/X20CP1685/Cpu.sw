@@ -5,7 +5,7 @@
     <Task Name="Main" Source="Modules.Main.Main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Acopos6D" Source="Modules.Acopos6D.Acopos6D.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Vision" Source="Modules.Services.HMI.Vision.Vision.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="Vi_main" Source="Modules.Services.HMI.Vision.Vi_main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="Vi_main" Source="Modules.Services.HMI.Vision.Vi_main.prg" Memory="UserROM" Language="IEC" Debugging="true" Disabled="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#2">
     <Task Name="KUKA" Source="Modules.KUKA.KUKA.prg" Memory="UserROM" Language="IEC" Debugging="true" />

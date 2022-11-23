@@ -435,8 +435,8 @@ VAR_CONFIG
 	Cyclic#1.::gVisionSensor[1].DAT.ImageProcessingError AT %IW."VSS122Q25.061P-000".ImageProcessingError;
 	Cyclic#1.::gVisionSensor[1].DAT.ImageNettime AT %ID."VSS122Q25.061P-000".ImageNettime;
 	::Vision:visionResults AT %IO."VSS122Q25.061P-000".CodeReaderOutput01;
-	::Vision:blobOutput.enable AT %QX."VSS122Q25.061P-000".Enable;
-	::Vision:blobOutput.numSearchMax AT %QB."VSS122Q25.061P-000".NumSearchMax;
+	::Vision:blobInput.enable AT %QX."VSS122Q25.061P-000".Enable;
+	::Vision:blobInput.numSearchMax AT %QB."VSS122Q25.061P-000".NumSearchMax;
 	::NettimeCurrent_us AT %ID."X20CP1685".SystemTime;
 	::gripperWhitePins[0] AT %QX."X20DO9322".DigitalOutput01;
 	::gripperBlackPins[0] AT %QX."X20DO9322".DigitalOutput02; (*________________________________________*) (*_____________KUKA1 Mappings_____________*) (*________________________________________*)
@@ -3496,14 +3496,14 @@ VAR_CONFIG
 	::gripperBlackPins[4] AT %QX."X20DO9322".DigitalOutput10; (*________________________________________*) (*_____________KUKA1 Mappings_____________*) (*________________________________________*)
 	::gripperWhitePins[5] AT %QX."X20DO9322".DigitalOutput03;
 	::gripperBlackPins[5] AT %QX."X20DO9322".DigitalOutput04;
-	::Vision:blobOutput.offsetROIX AT %QD."VSS122Q25.061P-000".OffsetROIX;
-	::Vision:blobOutput.offsetROIY AT %QD."VSS122Q25.061P-000".OffsetROIY;
-	::Vision:blobInput.numResults AT %IB."VSS122Q25.061P-000".NumResults;
-	::Vision:blobInput.functionProcessingTime AT %IW."VSS122Q25.061P-000".FunctionProcessingTime;
-	::Vision:blobInput.modelNumber AT %IB."VSS122Q25.061P-000".ModelNumber01;
-	::Vision:blobInput.meanGrayValue AT %IB."VSS122Q25.061P-000".MeanGrayValue01;
-	::Vision:blobInput.area AT %ID."VSS122Q25.061P-000".Area01;
-	::Vision:blobInput.rectangularity AT %IB."VSS122Q25.061P-000".Rectangularity01;
-	::Vision:blobInput.positionX AT %ID."VSS122Q25.061P-000".PositionX01;
-	::Vision:blobInput.positionY AT %ID."VSS122Q25.061P-000".PositionY01;
+	::Vision:blobInput.offsetROIX AT %QD."VSS122Q25.061P-000".OffsetROIX;
+	::Vision:blobInput.offsetROIY AT %QD."VSS122Q25.061P-000".OffsetROIY;
+	::Vision:blobOutput.numResults AT %IB."VSS122Q25.061P-000".NumResults;
+	::Vision:blobOutput.functionProcessingTime AT %IW."VSS122Q25.061P-000".FunctionProcessingTime;
+	::Vision:blobOutput.modelNumber AT %IB."VSS122Q25.061P-000".ModelNumber01;
+	::Vision:blobOutput.meanGrayValue AT %IB."VSS122Q25.061P-000".MeanGrayValue01;
+	::Vision:blobOutput.area AT %ID."VSS122Q25.061P-000".Area01;
+	::Vision:blobOutput.rectangularity AT %IB."VSS122Q25.061P-000".Rectangularity01;
+	::Vision:blobOutput.positionX AT %ID."VSS122Q25.061P-000".PositionX01;
+	::Vision:blobOutput.positionY AT %ID."VSS122Q25.061P-000".PositionY01;
 END_VAR
