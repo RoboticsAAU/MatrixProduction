@@ -5,6 +5,5 @@
     <Object Type="Program" Language="IEC">Vision</Object>
     <Object Type="File">VisionTypes.typ</Object>
     <Object Type="File">VisionVariables.var</Object>
-    <Object Type="Program" Language="IEC">Vi_main</Object>
   </Objects>
 </Package>

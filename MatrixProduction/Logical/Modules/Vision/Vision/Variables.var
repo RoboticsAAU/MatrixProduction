@@ -4,7 +4,7 @@ VAR
 	AxisPositionNow : LREAL; (*Calculated positon of the axis position, acopos and network delay times are compensated*)
 	TriggerTimeDelta_us : DINT; (*Delta time in microseconds to the next trigger*)
 	TriggerPosDelta : LREAL; (*Delta position in units to the next trigger*)
-	ShuttleYSpeed_ms : LREAL;
+	shuttleAcceleration : REAL;
 END_VAR
 VAR CONSTANT
 	LAST_IDX_SH_POS_OLD : USINT := 9;
@@ -13,10 +13,26 @@ VAR
 	ShuttleYPosOld_m : ARRAY[0..LAST_IDX_SH_POS_OLD] OF LREAL;
 	TON_Wait : TON;
 	visionResults : ARRAY[0..254] OF USINT;
+	visEnableSetup : BOOL; (*Enable/Disable vision setup when camera is not ready*)
+	visEnableCommand : BOOL; (*Enable/Disable vision trigger and enable when camera is not ready*)
 	visionResultString : STRING[255];
 	blobOutput : BlobOutput_typ;
 	blobInput : BlobInput_typ;
 	mappView : brdkViImg_mappView;
 	imageSvg : STRING[6000000];
+	TriggerTimeout : ARRAY[1..MAX_NUM_CAMS] OF TON; (*Disable web reload when timed out*)
 	oldImageNettime : DINT;
+	durationWs2ToDeparture : DINT;
+	imageRequested : BOOL := FALSE;
+	requestTimeStamp : DINT;
+	processingImage : BOOL := FALSE;
+END_VAR
+(*Image, crosshair data and constants*)
+VAR
+	tmpStr1 : STRING[1000];
+	i : UINT;
+	visCameraStatus : STRING[30];
+END_VAR
+VAR CONSTANT
+	HexTab : STRING[16] := '0123456789ABCDEF';
 END_VAR

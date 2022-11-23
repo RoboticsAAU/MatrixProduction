@@ -4,15 +4,14 @@
   <TaskClass Name="Cyclic#1">
     <Task Name="Main" Source="Modules.Main.Main.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Acopos6D" Source="Modules.Acopos6D.Acopos6D.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="Vision" Source="Modules.Services.HMI.Vision.Vision.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="Vi_main" Source="Modules.Services.HMI.Vision.Vi_main.prg" Memory="UserROM" Language="IEC" Debugging="true" Disabled="true" />
+    <Task Name="Vision" Source="Modules.Vision.Vision.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#2">
     <Task Name="KUKA" Source="Modules.KUKA.KUKA.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#3" />
   <TaskClass Name="Cyclic#4">
-    <Task Name="HMI" Source="Modules.Services.HMI.HMI.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="HMI" Source="Modules.Services.HMI.HMI.prg" Memory="UserROM" Language="IEC" Debugging="true" Disabled="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />
@@ -46,6 +45,7 @@
     <BinaryObject Name="Settings" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="asnxdb1" Source="" Memory="SystemROM" Language="Binary" />
     <BinaryObject Name="Settings_1" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="ViApp_Whit" Source="" Memory="UserROM" Language="Binary" />
   </Binaries>
   <Libraries>
     <LibraryObject Name="standard" Source="Libraries.standard.lby" Memory="UserROM" Language="binary" Debugging="true" />

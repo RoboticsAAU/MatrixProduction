@@ -5,6 +5,5 @@
     <Object Type="Program" Language="IEC">HMI</Object>
     <Object Type="File">Types.typ</Object>
     <Object Type="File">Variables.var</Object>
-    <Object Type="Package">Vision</Object>
   </Objects>
 </Package>
