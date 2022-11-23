@@ -73,7 +73,7 @@ PROGRAM _CYCLIC
 					:= ADR(AxisRef);
 					
 					pKuka.motion.KRC_MoveDirectAbsolute.Velocity := pKuka.motion.KRC_MoveLinearAbsolute.Velocity := pKuka.motion.KRC_MoveLinearRelative.Velocity
-						:= 50; // Velocity in percent
+						:= 100; // Velocity in percent
 					
 					pKuka.motion.KRC_MoveDirectAbsolute.Acceleration := pKuka.motion.KRC_MoveLinearAbsolute.Acceleration := pKuka.motion.KRC_MoveLinearRelative.Acceleration
 						:= 50; // Acceleration in percent
