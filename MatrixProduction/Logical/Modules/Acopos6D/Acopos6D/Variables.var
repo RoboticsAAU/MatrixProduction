@@ -119,6 +119,7 @@ VAR
 	robotExecute : ARRAY[0..5] OF BOOL;
 	robotDone : ARRAY[0..5] OF BOOL;
 	robotBusy : ARRAY[0..5] OF BOOL;
+	isOrderFlipped : ARRAY[0..5] OF BOOL;
 	durationToCamera : ARRAY[0..NR_OF_CAMERAS] OF DINT;
 	requestImage : ARRAY[0..NR_OF_CAMERAS] OF BOOL := [FALSE];
 END_VAR

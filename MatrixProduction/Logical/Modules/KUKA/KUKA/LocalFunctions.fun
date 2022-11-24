@@ -20,6 +20,7 @@ END_FUNCTION_BLOCK
 	VAR_INPUT
 		axisGroupIdx : {REDUND_UNREPLICABLE} USINT;
 		posType : robot_position_type;
+		opt_isFlipped : BOOL := FALSE;
 	END_VAR
 	VAR_OUTPUT
 		outputPos : E6POS;

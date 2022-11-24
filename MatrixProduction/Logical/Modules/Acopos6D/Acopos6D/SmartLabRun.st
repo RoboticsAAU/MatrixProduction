@@ -114,6 +114,9 @@ ACTION smartLabWorkstationOperation:
 					
 				END_CASE
 				
+				// Send if order is flipped or not
+				isOrderFlipped[i] := pShuttlePlan.isFlipped;
+				
 				// Begin robot operation
 				robotExecute[i] := TRUE;
 				robotExecute[5] := FALSE; // To avoid robot 1 and 5 moving
@@ -124,6 +127,7 @@ ACTION smartLabWorkstationOperation:
 					cm.state := 40;
 				END_IF
 			END_IF
+			
 			
 		30:
 			cm.description := 'Land shuttle if required';
@@ -349,7 +353,7 @@ ACTION cameraProcess:
 				ParabolicBlend_0.evalPos := pCameraStation.camPosY; 
 				ParabolicBlend_0();
 				
-				durationToCamera[i] := REAL_TO_DINT(ParabolicBlend_0.durationAtEvalDist);
+				durationToCamera[i] := REAL_TO_DINT(ParabolicBlend_0.durationAtEvalDist * 1000000); // Converted to microseconds
 				requestImage[i] := TRUE;
 			END_IF
 			

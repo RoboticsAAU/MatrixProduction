@@ -12,7 +12,7 @@ ACTION RobotAssembly:
 				robotBusy[i] := TRUE;
 				pKuka.convert.ValuesToPosition.posType := APPROACH_MAGAZINE;
 				pKuka.convert.ValuesToPosition();
-						
+				
 				pKuka.tempPosition := pKuka.convert.ValuesToPosition.outputPos;
 				
 				// The following order-specific adjustments are possible since we at this point know that the robot has returned to home position (main approach point) in cm.state = 500
@@ -57,7 +57,8 @@ ACTION RobotAssembly:
 					
 				END_CASE
 			END_IF
-		
+			
+			
 		1010:
 			cm.description := 'Move to order-specific approach point at magazine';
 			pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 0; // #BASE
@@ -107,7 +108,8 @@ ACTION RobotAssembly:
 				pKuka.TON.IN := FALSE;
 				cm.state := 1040;
 			END_IF	
-				
+			
+			
 		1040:
 			cm.description := 'Move to approach point with relative linear movement';
 				
@@ -123,11 +125,15 @@ ACTION RobotAssembly:
 				pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := FALSE;
 				cm.state := 1050;
 			END_IF
-				
+			
+			
 		1050:	
 			cm.description := 'Move to approach point of workstation with absolute linear movement';
 			
 			pKuka.convert.ValuesToPosition.posType := APPROACH_WORKSTATION;
+			IF isOrderFlipped[i] THEN
+				pKuka.convert.ValuesToPosition.opt_isFlipped := TRUE;
+			END_IF
 			pKuka.convert.ValuesToPosition();
 			
 			pKuka.convert.ValuesToCOORDSYS.Base := pKuka.convert.ValuesToPosition.baseNo; // ACOPOS6D frame
@@ -144,6 +150,7 @@ ACTION RobotAssembly:
 				pKuka.motion.KRC_MoveDirectAbsolute.ExecuteCmd := FALSE;
 				cm.state := 1060;
 			END_IF
+			
 			
 		1060:
 			cm.description := 'Move to placement point at workstation with relative linear movement';
@@ -179,6 +186,7 @@ ACTION RobotAssembly:
 				cm.state := 1080;
 			END_IF
 			
+			
 		1080:
 			cm.description := 'Move back to approach point at workstation with relative linear movement';
 			
@@ -201,8 +209,10 @@ ACTION RobotAssembly:
 				cm.state := 1090;
 			END_IF
 			
+			
 		1090:
 			cm.description := 'Move back to home position';
+			
 			RobotHoming;
 		
 	END_CASE

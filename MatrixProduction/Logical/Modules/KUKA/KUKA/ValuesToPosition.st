@@ -16,22 +16,10 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.A := 0;
 					outputPos.B := 0;
 					outputPos.C := 180;
-					outputPos.Status := 2; // 010
+					outputPos.Status := 2; // 010 - Third bit is different from position given on teach pendant
 					outputPos.Turn := 2; // 000010
 					
 					baseNo := 0;
-					
-				APPROACH_MAGAZINE: 
-					outputPos.X := 200.000;
-					outputPos.Y := 203.066;
-					outputPos.Z := 157.556;
-					outputPos.A := 0;
-					outputPos.B := 0;
-					outputPos.C := 135;
-					outputPos.Status := 2; // 010 Third bit is different from manual
-					outputPos.Turn := 10; // 001010
-				
-					baseNo := 2;
 					
 				APPROACH_WORKSTATION:
 					outputPos.X := 660;
@@ -44,6 +32,18 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Turn := 2; // 000010
 				
 					baseNo := 1;
+					
+				APPROACH_MAGAZINE: 
+					outputPos.X := 200.000;
+					outputPos.Y := 203.066;
+					outputPos.Z := 157.556;
+					outputPos.A := 0;
+					outputPos.B := 0;
+					outputPos.C := 135;
+					outputPos.Status := 2; // 010
+					outputPos.Turn := 10; // 001010
+				
+					baseNo := 2;
 				
 			END_CASE
 			
@@ -76,6 +76,12 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Status := 2; // 010
 					outputPos.Turn := 35; // 100011
 					
+					IF opt_isFlipped THEN
+						outputPos.Y := 420 + 53;
+						outputPos.Status := 6; // 110
+						outputPos.Turn := 51; // 110011
+					END_IF
+					
 					baseNo := 1;	
 				
 			END_CASE
@@ -99,6 +105,24 @@ FUNCTION_BLOCK ValuesToPosition
 					
 					baseNo := 0;
 				
+				APPROACH_WORKSTATION:
+					outputPos.X := 660; 
+					outputPos.Y := 780 + 32.79; // 32.79 represents shift from center to fuse bracket 
+					outputPos.Z := (1 + 9.85 + 5 + 6.7 + 1.5 + 2) + relativeDistance + 2; 
+					outputPos.A := 0;
+					outputPos.B := 0;
+					outputPos.C := 180;
+					outputPos.Status := 2; // 010
+					outputPos.Turn := 35; // 100011
+					
+					IF isFlipped THEN
+						outputPos.Y := 780 - 32.79;
+						outputPos.A := 180;
+						outputPos.Turn := 3; // 000011
+					END_IF
+					
+					baseNo := 1;
+				
 				APPROACH_MAGAZINE: 
 					outputPos.X := 152.740;
 					outputPos.Y := 219.477;
@@ -110,18 +134,6 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Turn := 3; // 000011
 					
 					baseNo := 2;
-				
-				APPROACH_WORKSTATION:
-					outputPos.X := 660; 
-					outputPos.Y := 780 + 32.79; // 32.79 represents shift from center to fuse bracket 
-					outputPos.Z := (1 + 9.85 + 5 + 6.7 + 1.5 + 2) + relativeDistance + 2; 
-					outputPos.A := 0;
-					outputPos.B := 0;
-					outputPos.C := 180;
-					outputPos.Status := 2; // 010
-					outputPos.Turn := 35; // 100011
-				
-					baseNo := 1;
 					
 			END_CASE
 						
@@ -143,6 +155,22 @@ FUNCTION_BLOCK ValuesToPosition
 					
 					baseNo := 0;
 				
+				APPROACH_WORKSTATION:
+					outputPos.X := 60;
+					outputPos.Y := 780 + 32.79; // 32.79 represents shift from center to fuse bracket
+					outputPos.Z := (1 + 9.85 + 5 + 6.7 + 1.5 + 2 + 0.5) + relativeDistance;
+					outputPos.A := 90;
+					outputPos.B := 0;
+					outputPos.C := 180;
+					outputPos.Status := 2; // 010
+					outputPos.Turn := 34; // 100010
+					
+					IF isFlipped THEN
+						outputPos.Y := 780 - 32.79;
+					END_IF
+					
+					baseNo := 1;
+				
 				APPROACH_MAGAZINE:
 					outputPos.X := 120;
 					outputPos.Y := 250.263;
@@ -154,18 +182,6 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Turn := 10; // 001010
 					
 					baseNo := 2;
-				
-				APPROACH_WORKSTATION:
-					outputPos.X := 60;
-					outputPos.Y := 780 + 32.79; // 32.79 represents shift from center to fuse bracket
-					outputPos.Z := (1 + 9.85 + 5 + 6.7 + 1.5 + 2 + 0.5) + relativeDistance;
-					outputPos.A := 90;
-					outputPos.B := 0;
-					outputPos.C := 180;
-					outputPos.Status := 2; // 010
-					outputPos.Turn := 34; // 100010
-				
-					baseNo := 1;
 				
 			END_CASE
 		
@@ -187,6 +203,23 @@ FUNCTION_BLOCK ValuesToPosition
 					
 					baseNo := 0;
 				
+				APPROACH_WORKSTATION:
+					outputPos.X := 60;
+					outputPos.Y := 420;
+					outputPos.Z := (1 + 9.85 + 5 + 13) + relativeDistance;
+					outputPos.A := -180;
+					outputPos.B := 0;
+					outputPos.C := 180;
+					outputPos.Status := 2; // 010
+					outputPos.Turn := 2; // 000010
+					
+					IF isFlipped THEN
+						outputPos.A := 0;
+						// outputPos.Turn := 34; // 100010 
+					END_IF
+					
+					baseNo := 1;
+				
 				APPROACH_MAGAZINE: 
 					outputPos.X := 40;
 					outputPos.Y := 203.067;
@@ -198,18 +231,6 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Turn := 2; // 000010
 					
 					baseNo := 2;
-				
-				APPROACH_WORKSTATION:
-					outputPos.X := 60;
-					outputPos.Y := 420;
-					outputPos.Z := (1 + 9.85 + 5 + 13) + relativeDistance;
-					outputPos.A := -180;
-					outputPos.B := 0;
-					outputPos.C := 180;
-					outputPos.Status := 2; // 010
-					outputPos.Turn := 2; // 000010
-				
-					baseNo := 1;
 				
 			END_CASE
 
@@ -231,18 +252,6 @@ FUNCTION_BLOCK ValuesToPosition
 					
 					baseNo := 0;
 				
-				APPROACH_MAGAZINE:
-					outputPos.X := -60;
-					outputPos.Y := 160;
-					outputPos.Z := 290;
-					outputPos.A := -180;
-					outputPos.B := 0;
-					outputPos.C := 180;
-					outputPos.Status := 2; // 010
-					outputPos.Turn := 35; // 100011
-					
-					baseNo := 2;
-				
 				APPROACH_WORKSTATION:
 					outputPos.X := 60;
 					outputPos.Y := 60;
@@ -255,9 +264,24 @@ FUNCTION_BLOCK ValuesToPosition
 				
 					baseNo := 1;
 				
+				APPROACH_MAGAZINE:
+					outputPos.X := -60;
+					outputPos.Y := 160;
+					outputPos.Z := 290;
+					outputPos.A := -180;
+					outputPos.B := 0;
+					outputPos.C := 180;
+					outputPos.Status := 2; // 010
+					outputPos.Turn := 35; // 100011
+					
+					baseNo := 2;
+				
 			END_CASE
 		
 	END_CASE
+	
+	// Reset input variable isFlipped
+	isFlipped := FALSE;
 	
 	ValuesToCorrection_0.baseNo := baseNo;
 	ValuesToCorrection_0.robotIdx := axisGroupIdx;

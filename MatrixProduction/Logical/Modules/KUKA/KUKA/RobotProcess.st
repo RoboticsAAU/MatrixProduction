@@ -9,32 +9,42 @@ ACTION RobotProcess:
 			IF robotExecute[i] THEN
 				robotBusy[i] := TRUE;
 				pKuka.convert.ValuesToPosition.posType := APPROACH_WORKSTATION;
+				IF isOrderFlipped[i] THEN
+					pKuka.convert.ValuesToPosition.opt_isFlipped := TRUE;
+				END_IF
 				pKuka.convert.ValuesToPosition();
-						
+				
 				pKuka.tempPosition := pKuka.convert.ValuesToPosition.outputPos;
 				
 				CASE pKuka.axisGroupIdx OF
 					2: //Drilling robot
-						// Seen from ACOPOS 6D frame: Bottom right -> bottom left -> top left -> top right				
+						// Make it go backwards if order is flipped
+						IF isOrderFlipped[i] THEN
+							drillYOffset := -drillYOffset;
+						END_IF
 						
+						// Seen from ACOPOS 6D frame: Bottom right -> bottom left -> top left -> top right
 						CASE numDoneHoles OF
 							0: // Simply default approach position
 								
 							1:
 								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
-								pKuka.tempPosition.Status := 2; // 010
-								pKuka.tempPosition.Turn := 35; // 100011
 							
 							2:	
 								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
 								pKuka.tempPosition.Y := pKuka.tempPosition.Y + drillYOffset;
-								pKuka.tempPosition.Status := 6; // 110
-								pKuka.tempPosition.Turn := 51; // 110011
+								
+								// Configuration changes here (after first two holes)
+								IF isOrderFlipped[i] THEN
+									pKuka.tempPosition.Status := 2; // 010
+									pKuka.tempPosition.Turn := 35; // 100011
+								ELSE
+									pKuka.tempPosition.Status := 6; // 110
+									pKuka.tempPosition.Turn := 51; // 110011
+								END_IF
 							
 							3:
 								pKuka.tempPosition.Y := pKuka.tempPosition.Y + drillYOffset;
-								pKuka.tempPosition.Status := 6; // 110
-								pKuka.tempPosition.Turn := 51; // 110011
 								
 						END_CASE
 						
@@ -61,7 +71,8 @@ ACTION RobotProcess:
 				pKuka.motion.KRC_MoveDirectAbsolute.ExecuteCmd := FALSE;
 				cm.state := 1020;
 			END_IF
-		
+			
+			
 		1020:
 			cm.description := 'Perform order-specific motion with relative linear movement';
 			
@@ -88,7 +99,6 @@ ACTION RobotProcess:
 			
 			
 		1030:
-			
 			cm.description := 'Move back to approach point with relative linear movement';
 			
 			pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 1; // #TOOL

@@ -8,10 +8,14 @@ ACTION RobotHoming:
 		
 		PROCESS, HANDLING:
 			pKuka.convert.ValuesToPosition.posType := APPROACH_WORKSTATION;
+			IF isOrderFlipped[i] THEN
+				pKuka.convert.ValuesToPosition.opt_isFlipped := TRUE;
+			END_IF
 		
 	END_CASE
 	
 	pKuka.convert.ValuesToPosition();
+	
 	pKuka.convert.ValuesToCOORDSYS.Base := pKuka.convert.ValuesToPosition.baseNo;
 	pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 0; // #BASE
 	pKuka.convert.ValuesToCOORDSYS();

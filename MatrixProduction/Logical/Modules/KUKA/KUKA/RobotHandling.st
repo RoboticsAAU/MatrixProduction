@@ -74,6 +74,7 @@ ACTION RobotHandling:
 				cm.state := 1040;
 			END_IF
 			
+			
 		1040:
 			cm.description := 'Define order-specific approach point at magazine';
 			
@@ -101,9 +102,7 @@ ACTION RobotHandling:
 						
 					END_FOR
 					
-					pKuka.convert.ValuesToPosition.posType := APPROACH_MAGAZINE;
 					pKuka.convert.ValuesToPosition();
-					
 					pKuka.tempPosition := pKuka.convert.ValuesToPosition.outputPos;
 					
 					pKuka.tempPosition.X := pKuka.tempPosition.X + xIdx*120;
@@ -140,7 +139,7 @@ ACTION RobotHandling:
 			
 			pKuka.tempPosition.X := pKuka.tempPosition.Y := pKuka.tempPosition.A := pKuka.tempPosition.B := pKuka.tempPosition.C
 			:= 0;
-			pKuka.tempPosition.Z := -(pKuka.tempPosition.Z - (unloadSizeZ - stackCounter[xIdx,yIdx])* 21);
+			pKuka.tempPosition.Z := -(pKuka.tempPosition.Z - (unloadSizeZ - stackCounter[xIdx, yIdx])* 21);
 			// Status and turn is already set from moving to approach point
 			
 			pKuka.motion.KRC_MoveLinearRelative.Position := pKuka.tempPosition;
@@ -149,7 +148,7 @@ ACTION RobotHandling:
 			IF pKuka.motion.KRC_MoveLinearRelative.Done THEN
 				pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := FALSE;
 				cm.state := 1070;
-			END_IF	
+			END_IF
 			
 			
 		1070:
@@ -163,6 +162,7 @@ ACTION RobotHandling:
 				pKuka.TON.IN := FALSE;
 				cm.state := 1080;
 			END_IF
+			
 			
 		1080:
 			cm.description := 'Move to place point at magazine with relative movement';
@@ -189,8 +189,9 @@ ACTION RobotHandling:
 			
 		1090:
 			cm.description := 'Move back to home position';
-			orderCounter[xIdx, yIdx] := orderCounter[xIdx,yIdx] + 1;
-			stackCounter[xIdx, yIdx] := stackCounter[xIdx,yIdx] + 1;
+			
+			orderCounter[xIdx, yIdx] := orderCounter[xIdx, yIdx] + 1;
+			stackCounter[xIdx, yIdx] := stackCounter[xIdx, yIdx] + 1;
 			IF orderCounter[xIdx, yIdx] = orderAmount THEN 
 				idAtStack[xIdx, yIdx] := -1;
 				orderCounter[xIdx, yIdx] := 0;

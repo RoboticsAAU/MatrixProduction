@@ -21,6 +21,7 @@ FUNCTION_BLOCK ValuesToCorrection
 					posCorrections.Y := 2;
 					posCorrections.Z := 2;
 			END_CASE
+		
 		2:
 			CASE baseNo OF
 				1: // w.r.t acopos frame
@@ -54,6 +55,7 @@ FUNCTION_BLOCK ValuesToCorrection
 					posCorrections.Z := 5;
 			
 			END_CASE
+		
 		5:
 			CASE baseNo OF
 				1: // w.r.t acopos frame
@@ -67,6 +69,7 @@ FUNCTION_BLOCK ValuesToCorrection
 					posCorrections.Z := 8.5;
 			
 			END_CASE
+		
 		6:
 		
 	END_CASE

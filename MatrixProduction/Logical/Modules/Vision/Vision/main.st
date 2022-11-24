@@ -63,7 +63,7 @@ PROGRAM _CYCLIC
 	IF gVisionNettime.CMD.Activate THEN
 		
 		CASE visState OF 
-					
+			
 			0: // Check if new image has been requested
 				IF EDGEPOS(imageRequested[0]) THEN
 					requestTimeStamp := NettimeCurrent_us;
