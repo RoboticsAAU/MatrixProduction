@@ -22,7 +22,7 @@ END_PROGRAM
 PROGRAM _CYCLIC
 	
 	//Determine duration from workstation 2 to departure point using equation of motion
-	durationWs2ToDeparture := REAL_TO_DINT(2*SQRT((2*0.060)/shuttleAcceleration)*1000000); // in microseconds
+	durationWs2ToDeparture := REAL_TO_DINT(2*SQRT((2*0.060)/gAcp6DCtrl.Par.Acceleration)*1000000); // in microseconds
 	
 	// -----------------------------------------------------------------------------------------------------------
 	// Vision Function Configuration 
@@ -68,7 +68,7 @@ PROGRAM _CYCLIC
 				IF EDGEPOS(imageRequested) THEN
 					requestTimeStamp := NettimeCurrent_us;
 					blobReady := FALSE;
-					visState := 10;	
+					visState := 10;
 				END_IF
 					
 			10: // Capture image at the right time window, which is determined by pretrigger cycles using current estimation of PowerlinkCycle_us
@@ -95,7 +95,11 @@ PROGRAM _CYCLIC
 			20: // Return data when image has been processed
 				// Check if image processing is completed, indicated by falling edge
 				IF EDGENEG(gVisionSensor[visSelectedSensor].DAT.ImageProcessingActive) THEN
-					blobReady := TRUE;
+					// Check if bottom cover must be flipped
+					IF DINT_TO_INT(blobOutput.positionX/100) > cameraWidth/2 THEN
+						
+					END_IF
+					imageRequested := FALSE;
 					visState := 30;
 				END_IF
 			

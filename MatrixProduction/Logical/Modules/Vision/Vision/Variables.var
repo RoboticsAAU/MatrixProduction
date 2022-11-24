@@ -28,6 +28,14 @@ VAR
 	blobReady : BOOL := FALSE;
 	visState : USINT := 0;
 END_VAR
+VAR CONSTANT
+	cameraWidth : INT := 1280;
+	cameraHeight : INT := 1024;
+END_VAR
+(*PV Mappings*)
+VAR
+	pShuttlePlan : USINT;
+END_VAR
 (*Image, crosshair data and constants*)
 VAR
 	tmpStr1 : STRING[1000];

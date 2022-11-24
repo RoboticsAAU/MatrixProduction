@@ -4,6 +4,7 @@ VAR
 END_VAR
 VAR CONSTANT
 	NR_OF_WORKSTATIONS : USINT := 9; (*10[0..9]*)
+	NR_OF_CAMERAS : USINT := 0; (*1[0..0]*)
 	NUM_SHUTTLES : USINT := 7; (*8[0..7]*)
 END_VAR
 (*Constants*)

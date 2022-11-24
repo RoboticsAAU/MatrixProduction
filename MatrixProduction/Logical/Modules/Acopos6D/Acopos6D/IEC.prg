@@ -28,5 +28,6 @@
     <File>ShuttlesAt.st</File>
     <File>AreWorkstations.st</File>
     <File>MovementColumnSelection.st</File>
+    <File>ParabolicBlend.st</File>
   </Files>
 </Program>

@@ -94,6 +94,24 @@ FUNCTION_BLOCK ShuttlesInWorkstationBuffer
 	END_VAR
 END_FUNCTION_BLOCK
 
+{REDUND_ERROR} FUNCTION_BLOCK ParabolicBlend (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_INPUT
+		evalPos : REAL;
+		velocity : {REDUND_UNREPLICABLE} REAL;
+		startPos : {REDUND_UNREPLICABLE} REAL;
+		endPos : REAL;
+		acceleration : {REDUND_UNREPLICABLE} REAL;
+	END_VAR
+	VAR_OUTPUT
+		durationAtEvalDist : {REDUND_UNREPLICABLE} REAL;
+	END_VAR
+	VAR
+		blendDistance : REAL;
+		polynomialSegment : INT;
+		blendTime : REAL;
+	END_VAR
+END_FUNCTION_BLOCK
+
 {REDUND_ERROR} FUNCTION AreWorkstationsOpposite : BOOL (* *) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
 	VAR_INPUT
 		workstationID1 : INT;

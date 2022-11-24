@@ -24,7 +24,7 @@ ACTION smartLabWorkstationOperation:
 			ShuttlesAtPositions_0();
 			
 			// Check if a shuttle is on the workstation and it is idle (meaning not in motion)
-			IF ShuttlesAtPositions_0.isAtCheckPos  THEN
+			IF ShuttlesAtPositions_0.isAtCheckPos THEN
 				pWorkstation.par.tempShuttleID := ShuttlesAtPositions_0.shuttleID;
 				gShuttles[pWorkstation.par.tempShuttleID].par.tempWorkstationID := pWorkstation.par.workstationID;
 				
@@ -170,7 +170,16 @@ ACTION smartLabWorkstationOperation:
 		60:
 			// Go back to wait for shuttle at workstation if the current shuttle has begun moving (avoids bugs)
 			IF gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].State = mcACP6D_SH_STATE_MOTION THEN
-				cm.state := 10;
+				
+				IF pWorkstation.par.cameraID <> -1 THEN
+					gCameraStations[pWorkstation.par.cameraID].shuttleStartPos.xPos := pWorkstation.par.xLocation;
+					gCameraStations[pWorkstation.par.cameraID].shuttleStartPos.yPos := pWorkstation.par.yLocation;
+					gCameraStations[pWorkstation.par.cameraID].shuttleEndPos.xPos := gShuttles[pWorkstation.par.tempShuttleID].par.tempDestinationPos.xPos;
+					gCameraStations[pWorkstation.par.cameraID].shuttleEndPos.yPos := gShuttles[pWorkstation.par.tempShuttleID].par.tempDestinationPos.yPos;
+					gCameraStations[pWorkstation.par.cameraID].tempShuttleID := pWorkstation.par.tempShuttleID;
+					gCameraStations[pWorkstation.par.cameraID].startImageAcquisition := TRUE;
+				END_IF
+						
 			END_IF
 		
 	END_CASE
@@ -249,8 +258,11 @@ ACTION smartLabShuttleMovement:
 			// Move to the specified column if any is available (-1 if no column is available)
 			ELSE
 				// Position of the selected column
-				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := QuadrantIdxToPos(quadrantIdx := (1 + pShuttle.par.tempHighwayColumn)); // Add 1 because the first column is not a highway
-				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkstations[pShuttle.par.tempWorkstationID].par.departPosY;
+				pShuttle.par.tempDestinationPos.xPos := QuadrantIdxToPos(quadrantIdx := (1 + pShuttle.par.tempHighwayColumn)); // Add 1 because the first column is not a highway
+				pShuttle.par.tempDestinationPos.yPos := gWorkstations[pShuttle.par.tempWorkstationID].par.departPosY;
+				
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := pShuttle.par.tempDestinationPos.xPos;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := pShuttle.par.tempDestinationPos.yPos;
 				
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 				IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Done THEN
@@ -267,8 +279,11 @@ ACTION smartLabShuttleMovement:
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 2; // Y THEN X
 			
 			// Move to approach point of next workstation specified in the routing sheet (or just the next workstation if the shuttle is inactive)
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkstations[pShuttle.par.tempNextWorkstationID].par.approachPosX;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkstations[pShuttle.par.tempNextWorkstationID].par.approachPosY;
+			pShuttle.par.tempDestinationPos.xPos := gWorkstations[pShuttle.par.tempNextWorkstationID].par.approachPosX;
+			pShuttle.par.tempDestinationPos.yPos := gWorkstations[pShuttle.par.tempNextWorkstationID].par.approachPosY;
+			
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := pShuttle.par.tempDestinationPos.xPos;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := pShuttle.par.tempDestinationPos.yPos;
 			
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Done THEN
@@ -295,8 +310,11 @@ ACTION smartLabShuttleMovement:
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; // X THEN Y
 			
 			// Move to next workstation
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := gWorkstations[pShuttle.par.tempNextWorkstationID].par.xLocation;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := gWorkstations[pShuttle.par.tempNextWorkstationID].par.yLocation;
+			pShuttle.par.tempDestinationPos.xPos := gWorkstations[pShuttle.par.tempNextWorkstationID].par.xLocation;
+			pShuttle.par.tempDestinationPos.yPos := gWorkstations[pShuttle.par.tempNextWorkstationID].par.yLocation;
+			
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := pShuttle.par.tempDestinationPos.xPos;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := pShuttle.par.tempDestinationPos.yPos;
 			
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
@@ -311,5 +329,34 @@ ACTION smartLabShuttleMovement:
 	// Function block calls
 	pShuttle.function.MC_BR_MoveInPlane_Acp6D_0();
 	cm();
+	
+END_ACTION
+
+
+ACTION cameraProcess: 
+	
+	CASE cm.state OF
+		0: // Check if image was requested for the particular camera
+			
+			IF pCameraStation.startImageAcquisition THEN
+				
+				ParabolicBlend_0.acceleration := gAcp6DCtrl.Par.Acceleration;
+				ParabolicBlend_0.velocity := gAcp6DCtrl.Par.Velocity;
+				ParabolicBlend_0.startPos := pCameraStation.shuttleStartPos.yPos;
+				ParabolicBlend_0.startPos := pCameraStation.shuttleEndPos.yPos;
+				ParabolicBlend_0.evalPos := pCameraStation.camPosY; 
+				ParabolicBlend_0();
+				
+				durationToCamera[i] := ParabolicBlend_0.durationAtEvalDist;
+				requestImage[i] := TRUE;
+			END_IF
+			
+		10:
+			
+		20:
+			
+		30:
+		
+	END_CASE
 	
 END_ACTION

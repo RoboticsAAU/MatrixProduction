@@ -5,6 +5,7 @@ TYPE
 		routingSheet : ARRAY[0..5]OF USINT;
 		progressIndex : USINT := 0;
 		isActive : BOOL;
+		isFlipped : BOOL;
 	END_STRUCT;
 	shuttle_status_typ : 	STRUCT 
 		dummy : USINT;
@@ -13,6 +14,7 @@ TYPE
 		shuttleID : USINT;
 		tempWorkstationID : USINT;
 		tempNextWorkstationID : USINT;
+		tempDestinationPos : shuttlePos;
 		tempHighwayColumn : SINT;
 	END_STRUCT;
 	shuttle_function_typ : 	STRUCT 
@@ -42,6 +44,15 @@ TYPE
 		returnSmallWeightMovement : BOOL;
 		startBigWeightMovement : BOOL;
 	END_STRUCT;
+	cameraStation_typ : 	STRUCT 
+		startImageAcquisition : BOOL;
+		cm : brdkCM;
+		shuttleStartPos : shuttlePos;
+		shuttleEndPos : shuttlePos;
+		tempShuttleID : USINT;
+		camPosX : REAL;
+		camPosY : REAL;
+	END_STRUCT;
 	shuttle_typ : 	STRUCT 
 		cm : brdkCM;
 		status : shuttle_status_typ;
@@ -52,6 +63,7 @@ TYPE
 		dummy : USINT;
 	END_STRUCT;
 	workStation_par_typ : 	STRUCT 
+		cameraID : SINT;
 		landBeforeProcess : BOOL; (*TRUE = yes*)
 		yLocation : REAL;
 		xLocation : REAL;

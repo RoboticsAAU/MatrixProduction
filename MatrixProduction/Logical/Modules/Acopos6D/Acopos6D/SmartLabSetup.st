@@ -13,8 +13,8 @@ ACTION smartLabWorkstationSetup:
 		gWorkstations[i].par.pathRouting			:= 0;
 		gWorkstations[i].par.ArcMovement			:= FALSE;
 		gWorkstations[i].par.landBeforeProcess		:= FALSE;
+		gWorkstations[i].par.cameraID			 	:= -1; // -1 represents no camera attached
 	END_FOR
-	
 	
 	gWorkstations[0].par.xLocation					:= QuadrantIdxToPos(5);
 	gWorkstations[0].par.yLocation					:= QuadrantIdxToPos(0);
@@ -22,11 +22,8 @@ ACTION smartLabWorkstationSetup:
 	gWorkstations[0].par.approachPosY				:= QuadrantIdxToPos(0);
 	gWorkstations[0].par.departPosX					:= QuadrantIdxToPos(4);
 	gWorkstations[0].par.departPosY					:= QuadrantIdxToPos(1);
-	gWorkstations[0].par.nextStationSelector		:= '1';
-	gWorkstations[0].par.processTime				:= 1.0;
-	gWorkstations[0].par.pathRouting				:= 2;
-	gWorkstations[0].par.ArcMovement				:= FALSE;
 	gWorkstations[0].par.landBeforeProcess			:= FALSE;
+	gWorkstations[0].par.cameraID					:= 0;
 	
 	gWorkstations[1].par.xLocation					:= QuadrantIdxToPos(5);
 	gWorkstations[1].par.yLocation					:= QuadrantIdxToPos(3);
@@ -34,10 +31,6 @@ ACTION smartLabWorkstationSetup:
 	gWorkstations[1].par.approachPosY				:= QuadrantIdxToPos(2);
 	gWorkstations[1].par.departPosX					:= QuadrantIdxToPos(4);
 	gWorkstations[1].par.departPosY					:= QuadrantIdxToPos(4);
-	gWorkstations[1].par.nextStationSelector		:= '2';
-	gWorkstations[1].par.processTime				:= 1.0;
-	gWorkstations[1].par.pathRouting				:= 2;
-	gWorkstations[1].par.ArcMovement				:= FALSE;
 	gWorkstations[1].par.landBeforeProcess			:= FALSE;
 	
 	gWorkstations[2].par.xLocation					:= QuadrantIdxToPos(5);
@@ -46,10 +39,6 @@ ACTION smartLabWorkstationSetup:
 	gWorkstations[2].par.approachPosY				:= QuadrantIdxToPos(5);
 	gWorkstations[2].par.departPosX					:= QuadrantIdxToPos(4);
 	gWorkstations[2].par.departPosY					:= QuadrantIdxToPos(7);
-	gWorkstations[2].par.nextStationSelector		:= '3';
-	gWorkstations[2].par.processTime				:= 1.0;
-	gWorkstations[2].par.pathRouting				:= 1;
-	gWorkstations[2].par.ArcMovement				:= FALSE;
 	gWorkstations[2].par.landBeforeProcess			:= FALSE;
 	
 	gWorkstations[3].par.xLocation					:= QuadrantIdxToPos(0);
@@ -58,10 +47,6 @@ ACTION smartLabWorkstationSetup:
 	gWorkstations[3].par.approachPosY				:= QuadrantIdxToPos(7);
 	gWorkstations[3].par.departPosX					:= QuadrantIdxToPos(1);
 	gWorkstations[3].par.departPosY					:= QuadrantIdxToPos(5);
-	gWorkstations[3].par.nextStationSelector		:= '4';
-	gWorkstations[3].par.processTime				:= 1.0;
-	gWorkstations[3].par.pathRouting				:= 2;
-	gWorkstations[3].par.ArcMovement				:= FALSE;
 	gWorkstations[3].par.landBeforeProcess			:= FALSE;
 	
 	gWorkstations[4].par.xLocation					:= QuadrantIdxToPos(0);
@@ -70,10 +55,6 @@ ACTION smartLabWorkstationSetup:
 	gWorkstations[4].par.approachPosY				:= QuadrantIdxToPos(4);
 	gWorkstations[4].par.departPosX					:= QuadrantIdxToPos(1);
 	gWorkstations[4].par.departPosY					:= QuadrantIdxToPos(2);
-	gWorkstations[4].par.nextStationSelector		:= '5';
-	gWorkstations[4].par.processTime				:= 1.0;
-	gWorkstations[4].par.pathRouting				:= 2;
-	gWorkstations[4].par.ArcMovement				:= FALSE;
 	gWorkstations[4].par.landBeforeProcess			:= FALSE;
 	
 	gWorkstations[5].par.xLocation					:= QuadrantIdxToPos(0);
@@ -82,15 +63,35 @@ ACTION smartLabWorkstationSetup:
 	gWorkstations[5].par.approachPosY				:= QuadrantIdxToPos(1);
 	gWorkstations[5].par.departPosX					:= QuadrantIdxToPos(1);
 	gWorkstations[5].par.departPosY					:= QuadrantIdxToPos(0);
-	gWorkstations[5].par.nextStationSelector		:= '0';
-	gWorkstations[5].par.processTime				:= 1.0;
-	gWorkstations[5].par.pathRouting				:= 1;
-	gWorkstations[5].par.ArcMovement				:= FALSE;
 	gWorkstations[5].par.landBeforeProcess			:= FALSE;
 	
 END_ACTION
 	
+ACTION smartLabCameraStationSetup:
+	
+	FOR i := 0 TO NR_OF_CAMERAS DO
+		gCameraStations[i].camPosX := 0;
+		gCameraStations[i].camPosY := 0;
+		gCameraStations[i].shuttleStartPos.xPos := 0;
+		gCameraStations[i].shuttleStartPos.yPos := 0;
+		gCameraStations[i].shuttleEndPos.xPos := 0;
+		gCameraStations[i].shuttleEndPos.yPos := 0;
+		gCameraStations[i].cm.state := 0;
+		gCameraStations[i].tempShuttleID := 0;
+		gCameraStations[i].startImageAcquisition := FALSE;
+	END_FOR
+	
+	gCameraStations[0].shuttleStartPos.xPos := QuadrantIdxToPos(5);
+	gCameraStations[0].shuttleStartPos.yPos := QuadrantIdxToPos(0);
+	gCameraStations[0].camPosX := QuadrantIdxToPos(5);
+	gCameraStations[0].camPosY := QuadrantIdxToPos(1);
+	
+END_ACTION
+
 ACTION smartLabSetup: 
+	
+	smartLabWorkstationSetup; // Setup workstations	
+	smartLabCameraStationSetup; // Setup cameras
 	
 	positionContainerSmartLabProgram[0].initXPos := gWorkstations[0].par.xLocation;
 	positionContainerSmartLabProgram[0].initYPos := gWorkstations[0].par.yLocation;
@@ -115,8 +116,8 @@ ACTION smartLabSetup:
 	
 	positionContainerSmartLabProgram[7].initXPos := gWorkstations[5].par.xLocation;
 	positionContainerSmartLabProgram[7].initYPos := gWorkstations[5].par.yLocation;
-
-	smartLabWorkstationSetup; // Setup workstations	
+	
+	
 	
 	CASE em.substate OF
 		17000:
