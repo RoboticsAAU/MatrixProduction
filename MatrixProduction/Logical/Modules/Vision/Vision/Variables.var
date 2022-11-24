@@ -23,7 +23,7 @@ VAR
 	TriggerTimeout : ARRAY[1..MAX_NUM_CAMS] OF TON; (*Disable web reload when timed out*)
 	oldImageNettime : DINT;
 	durationWs2ToDeparture : DINT;
-	imageRequested : BOOL := FALSE;
+	imageRequested : ARRAY[0..0] OF BOOL := [1(FALSE)];
 	requestTimeStamp : DINT := 0;
 	blobReady : BOOL := FALSE;
 	visState : USINT := 0;

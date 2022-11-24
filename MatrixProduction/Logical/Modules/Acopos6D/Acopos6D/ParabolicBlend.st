@@ -2,7 +2,7 @@
 (* TODO: Add your comment here *)
 FUNCTION_BLOCK ParabolicBlend
 	
-	blendDistance := velocity^2/(2*acceleration);
+	blendDistance := brmpow(velocity, 2)/(2*acceleration);
 	
 	// Determine at what segment of a polynomial motion profile the image must be taken  
 				
@@ -13,7 +13,7 @@ FUNCTION_BLOCK ParabolicBlend
 		// Segment 2
 	ELSIF blendDistance < evalPos AND evalPos <= endPos - blendDistance THEN
 		blendTime := 2*blendDistance/velocity;
-		durationAtEvalDist := blendTime + ((evalDist - blendDistance)/(acceleration*blendTime));
+		durationAtEvalDist := blendTime + ((evalPos - blendDistance)/(acceleration*blendTime));
 					
 		// Segment 3
 	ELSIF endPos - blendDistance < evalPos AND evalPos <= endPos THEN

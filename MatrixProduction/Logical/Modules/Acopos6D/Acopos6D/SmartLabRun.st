@@ -179,7 +179,9 @@ ACTION smartLabWorkstationOperation:
 					gCameraStations[pWorkstation.par.cameraID].tempShuttleID := pWorkstation.par.tempShuttleID;
 					gCameraStations[pWorkstation.par.cameraID].startImageAcquisition := TRUE;
 				END_IF
-						
+				
+				cm.state := 10;
+				
 			END_IF
 		
 	END_CASE
@@ -347,7 +349,7 @@ ACTION cameraProcess:
 				ParabolicBlend_0.evalPos := pCameraStation.camPosY; 
 				ParabolicBlend_0();
 				
-				durationToCamera[i] := ParabolicBlend_0.durationAtEvalDist;
+				durationToCamera[i] := REAL_TO_DINT(ParabolicBlend_0.durationAtEvalDist);
 				requestImage[i] := TRUE;
 			END_IF
 			

@@ -65,7 +65,7 @@ PROGRAM _CYCLIC
 		CASE visState OF 
 					
 			0: // Check if new image has been requested
-				IF EDGEPOS(imageRequested) THEN
+				IF EDGEPOS(imageRequested[0]) THEN
 					requestTimeStamp := NettimeCurrent_us;
 					blobReady := FALSE;
 					visState := 10;
@@ -99,7 +99,7 @@ PROGRAM _CYCLIC
 					IF DINT_TO_INT(blobOutput.positionX/100) > cameraWidth/2 THEN
 						
 					END_IF
-					imageRequested := FALSE;
+					imageRequested[0] := FALSE;
 					visState := 30;
 				END_IF
 			

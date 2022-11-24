@@ -46,7 +46,7 @@ FUNCTION_BLOCK ValuesToCorrection
 				1: // w.r.t acopos frame
 					posCorrections.X := -1;
 					posCorrections.Y := -0.3;
-					posCorrections.Z := 2;
+					posCorrections.Z := 1;
 					
 				2: // w.r.t magazine frame
 					posCorrections.X := 0.85;
