@@ -6,7 +6,6 @@
     <Object Type="Package">Acopos6D</Object>
     <Object Type="Package">KUKA</Object>
     <Object Type="Package">Vision</Object>
-    <Object Type="Package">Services</Object>
     <Object Type="File">imgHandler.js</Object>
   </Objects>
 </Package>

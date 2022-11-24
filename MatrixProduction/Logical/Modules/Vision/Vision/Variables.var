@@ -11,7 +11,7 @@ VAR CONSTANT
 END_VAR
 VAR
 	ShuttleYPosOld_m : ARRAY[0..LAST_IDX_SH_POS_OLD] OF LREAL;
-	TON_Wait : TON;
+	TON_Ready : TON;
 	visionResults : ARRAY[0..254] OF USINT;
 	visEnableSetup : BOOL; (*Enable/Disable vision setup when camera is not ready*)
 	visEnableCommand : BOOL; (*Enable/Disable vision trigger and enable when camera is not ready*)
@@ -24,8 +24,9 @@ VAR
 	oldImageNettime : DINT;
 	durationWs2ToDeparture : DINT;
 	imageRequested : BOOL := FALSE;
-	requestTimeStamp : DINT;
-	processingImage : BOOL := FALSE;
+	requestTimeStamp : DINT := 0;
+	blobReady : BOOL := FALSE;
+	visState : USINT := 0;
 END_VAR
 (*Image, crosshair data and constants*)
 VAR

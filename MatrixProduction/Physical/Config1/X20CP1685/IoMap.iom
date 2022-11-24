@@ -3505,4 +3505,5 @@ VAR_CONFIG
 	::Vision:blobOutput.rectangularity AT %IB."VSS122Q25.061P-000".Rectangularity01;
 	::Vision:blobOutput.positionX AT %ID."VSS122Q25.061P-000".PositionX01;
 	::Vision:blobOutput.positionY AT %ID."VSS122Q25.061P-000".PositionY01;
+	::Vision:blobInput.enhancedBlobInformation AT %QX."VSS122Q25.061P-000".EnhancedBlobInformation;
 END_VAR

@@ -1,6 +1,7 @@
 
 PROGRAM _INIT
-		
+	visState := 0;	
+	
 	gVisionNettime.CMD.Activate					:= TRUE;
 	gVisionNettime.CFG.AxisPeriod				:= 360; // Needs also to be set in the axis configuration
 	gVisionNettime.CFG.AxisPositionDelay_Cycles	:= 1; 	// Number of PLK cycles which the axis position is old when it comes to this task (Time from encoder to now in this task)
@@ -14,7 +15,7 @@ PROGRAM _INIT
 	
 	mappView();
 	
-	TON_Wait.PT := REAL_TO_TIME(1000);
+	TON_Ready.PT := REAL_TO_TIME(1000);
 	
 END_PROGRAM
 
@@ -59,38 +60,55 @@ PROGRAM _CYCLIC
 	PowerlinkCycle_us			:= NettimeCurrent_us - NettimeLastCycle_us;
 	NettimeLastCycle_us			:= NettimeCurrent_us;
 	
-	TON_Wait.IN := TRUE;
-	
-	IF gVisionNettime.CMD.Activate AND TON_Wait.Q THEN
+	IF gVisionNettime.CMD.Activate THEN
 		
-		IF EDGEPOS(imageRequested) AND NOT processingImage THEN
-			requestTimeStamp := NettimeCurrent_us;
-			processingImage := TRUE;
-		END_IF
-		
-		IF processingImage THEN
-			TriggerTimeDelta_us := durationWs2ToDeparture - (NettimeCurrent_us - requestTimeStamp);
-			
-			IF (TriggerTimeDelta_us >= (gVisionNettime.CFG.VisionPreTrigger_Cycles) * PowerlinkCycle_us)  AND
-				(TriggerTimeDelta_us <= (gVisionNettime.CFG.VisionPreTrigger_Cycles + 1) * PowerlinkCycle_us) THEN
-				
-				gVisionNettime.DAT.NettimeNext_us	:= NettimeCurrent_us + TriggerTimeDelta_us;
-				gVisionNettime.DAT.NettimeDelta_us	:= TriggerTimeDelta_us;
-				
-				// Transfer nettime to sensor and fire trigger
-				IF gVisionSensor[visSelectedSensor].HW.Ready AND NOT gVisionSensor[visSelectedSensor].DAT.ImageProcessingActive THEN
-					gVisionSensor[visSelectedSensor].CMD.ImageTrigger	:= TRUE;
-					gVisionSensor[visSelectedSensor].DAT.NettimeDelay	:= gVisionNettime.DAT.NettimeNext_us;
-				ELSE
-					gVisionNettime.DAT.Overflow := gVisionNettime.DAT.Overflow + 1;
+		CASE visState OF 
+					
+			0: // Check if new image has been requested
+				IF EDGEPOS(imageRequested) THEN
+					requestTimeStamp := NettimeCurrent_us;
+					blobReady := FALSE;
+					visState := 10;	
 				END_IF
+					
+			10: // Capture image at the right time window, which is determined by pretrigger cycles using current estimation of PowerlinkCycle_us
+				TriggerTimeDelta_us := durationWs2ToDeparture - (NettimeCurrent_us - requestTimeStamp);
+			
+				IF (TriggerTimeDelta_us >= (gVisionNettime.CFG.VisionPreTrigger_Cycles) * PowerlinkCycle_us)  AND
+					(TriggerTimeDelta_us <= (gVisionNettime.CFG.VisionPreTrigger_Cycles + 1) * PowerlinkCycle_us) THEN
 				
-				processingImage := FALSE;
-				TON_Wait.IN := FALSE;
+					gVisionNettime.DAT.NettimeNext_us	:= NettimeCurrent_us + TriggerTimeDelta_us;
+					gVisionNettime.DAT.NettimeDelta_us	:= TriggerTimeDelta_us;
 				
-			END_IF
-		END_IF
-	END_IF
+					// Transfer nettime to sensor and fire trigger
+					IF gVisionSensor[visSelectedSensor].HW.Ready AND NOT gVisionSensor[visSelectedSensor].DAT.ImageProcessingActive THEN
+						gVisionSensor[visSelectedSensor].CMD.ImageTrigger	:= TRUE;
+						gVisionSensor[visSelectedSensor].DAT.NettimeDelay	:= gVisionNettime.DAT.NettimeNext_us;
+					ELSE
+						gVisionNettime.DAT.Overflow := gVisionNettime.DAT.Overflow + 1;
+					END_IF
+					
+					visState := 20;
+				
+				END_IF	
+			
+			20: // Return data when image has been processed
+				// Check if image processing is completed, indicated by falling edge
+				IF EDGENEG(gVisionSensor[visSelectedSensor].DAT.ImageProcessingActive) THEN
+					blobReady := TRUE;
+					visState := 30;
+				END_IF
+			
+			30:	// Wait for timer to become true (delay between image acquisitions). 
+				// Timer duration must be less that the processing time at the workstation	
+				TON_Ready.IN := TRUE;
+				IF TON_Ready.Q THEN
+					visState := 0;
+					TON_Ready.IN := FALSE;
+				END_IF
+					
+		END_CASE		
+	END_IF	
 	
 	// ImageNettime is the total image processing and processing time of the captured image. 
 	// ImageNettime changes with each additional captured image, so we compare with oldImageNettime and update mappView if it is different from current
@@ -159,7 +177,7 @@ PROGRAM _CYCLIC
 	
 	TriggerTimeout[visSelectedSensor]();
 	mappView();
-	TON_Wait();
+	TON_Ready();
 	
 END_PROGRAM
 

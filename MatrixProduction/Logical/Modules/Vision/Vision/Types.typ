@@ -15,5 +15,6 @@ TYPE
 		numSearchMax : USINT := 1;
 		offsetROIX : DINT := 0;
 		offsetROIY : DINT := 0;
+		enhancedBlobInformation : BOOL := FALSE;
 	END_STRUCT;
 END_TYPE

@@ -243,9 +243,6 @@ PROGRAM _CYCLIC
 					enableButtons := FALSE;
 					em.cmd.sc := FALSE;
 					em.description := 'Weight Program';
-					IF controlLight.weightProgram THEN
-						lightValue := 12;
-					END_IF
 					
 					FOR i := 0 TO NUM_SHUTTLES DO
 						pShuttle ACCESS ADR(gShuttles[i]);
@@ -266,17 +263,11 @@ PROGRAM _CYCLIC
 				
 				3000..3999:
 						em.description := 'linkMovement Program';
-						IF controlLight.linkProgram THEN
-							lightValue := 1;
-						END_IF
 								
 						linkMovementProgram;
 						
 				7000:
 					em.description := 'dialGauge Program';
-					IF controlLight.shuttlePrecision THEN
-						lightValue := 3;
-					END_IF
 							
 					FOR i := 0 TO NUM_SHUTTLES DO
 						pShuttle ACCESS ADR(gShuttles[i]);
@@ -302,10 +293,7 @@ PROGRAM _CYCLIC
 				8006..8999:
 					workStationSetup;
 					em.description := 'intelligentMovement';
-					IF controlLight.intelligentMovementProgram THEN
-						lightValue := 4;
-					END_IF
-						FOR i := 0 TO NR_OF_WORKSTATIONS DO
+					FOR i := 0 TO NR_OF_WORKSTATIONS DO
 							pWorkstation ACCESS ADR (gWorkstations[i]); 
 							cm ACCESS ADR (gWorkstations[i].cm);
 							pWorkstation.cm.setup.parent.name := 'main';
@@ -314,9 +302,6 @@ PROGRAM _CYCLIC
 						END_FOR
 						
 				9000..9005:
-					IF controlLight.intelligentMovementProgram THEN
-						lightValue := 2;
-					END_IF
 					conveyorStationSetup;
 				
 				9006..9999:
@@ -333,7 +318,6 @@ PROGRAM _CYCLIC
 					
 				12000..12019:
 					em.description := 'Flask Program';
-					lightValue := 5;
 					flaskProgramTask;
 						
 					
@@ -357,13 +341,11 @@ PROGRAM _CYCLIC
 					
 				13000..13999:
 					em.description := 'Box Program';
-					lightValue := 7;
 					boxProgramTask;
 					
 					
 				14000..14049:
 					em.description := 'Rotation program';
-					lightValue := 9;
 					em.cmd.sc := FALSE;
 					rotationTask;
 					
@@ -380,7 +362,6 @@ PROGRAM _CYCLIC
 					
 				15000..15009:
 					em.description := 'Steelsheet program';
-					lightValue := 6;
 					steelSheetTask;
 					
 				15010..15999:

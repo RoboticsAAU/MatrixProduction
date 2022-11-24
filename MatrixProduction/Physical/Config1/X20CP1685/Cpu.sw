@@ -10,9 +10,7 @@
     <Task Name="KUKA" Source="Modules.KUKA.KUKA.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#3" />
-  <TaskClass Name="Cyclic#4">
-    <Task Name="HMI" Source="Modules.Services.HMI.HMI.prg" Memory="UserROM" Language="IEC" Debugging="true" Disabled="true" />
-  </TaskClass>
+  <TaskClass Name="Cyclic#4" />
   <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />
   <TaskClass Name="Cyclic#7" />

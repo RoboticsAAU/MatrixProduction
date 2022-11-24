@@ -35,17 +35,6 @@
           </Variable>
         </Variable>
         <Variable Name="modeSelector" />
-        <Variable Name="controlLight">
-          <Variable Name="visionProgram" />
-          <Variable Name="shuttlePrecision" />
-          <Variable Name="weightProgram" />
-          <Variable Name="gameProgram" />
-          <Variable Name="linkProgram" />
-          <Variable Name="coneveyorMovementProgram" />
-          <Variable Name="intelligentMovementProgram" />
-          <Variable Name="demoProgram" />
-        </Variable>
-        <Variable Name="lightValue" />
         <Variable Name="cmdBoxProgram">
           <Variable Name="smallBox" />
           <Variable Name="bigBox" />
@@ -72,10 +61,6 @@
       </GlobalVariables>
       <Task Name="Main">
         <Variable Name="modeSelectorOldValue" />
-      </Task>
-      <Task Name="HMI">
-        <Variable Name="showShuttles" />
-        <Variable Name="currentHMIPage" />
       </Task>
       <Task Name="Acopos6D">
         <Variable Name="ABBRobot">
