@@ -1,9 +1,11 @@
 VAR
+	hwBlob : brdkViBase_hw_blob_10_typ;
+	hwCam : brdkViBase_cam_hw_typ;
+	imgTrigger : brdkViBase_imgTrigger;
 	PowerlinkCycle_us : DINT; (*Powerlink cycletime in microseconds*)
 	NettimeLastCycle_us : DINT; (*Old nettime used to calculate Powerlink cycle time*)
 	AxisPositionNow : LREAL; (*Calculated positon of the axis position, acopos and network delay times are compensated*)
 	TriggerTimeDelta_us : ARRAY[0..NUM_CAMS] OF DINT; (*Delta time in microseconds to the next trigger*)
-	TON_Ready : ARRAY[0..NUM_CAMS] OF TON;
 	visionResults : ARRAY[0..254] OF USINT;
 	blobOutput : BlobOutput_typ;
 	blobInput : BlobInput_typ;
@@ -11,14 +13,18 @@ VAR
 	imageSvg : STRING[6000000];
 	TriggerTimeout : ARRAY[0..NUM_CAMS] OF TON; (*Disable web reload when timed out*)
 	oldImageNettime : ARRAY[0..NUM_CAMS] OF DINT;
-	durationToCamera : ARRAY[0..NUM_CAMS] OF DINT;
-	imageRequested : ARRAY[0..NUM_CAMS] OF BOOL;
 	requestTimeStamp : ARRAY[0..NUM_CAMS] OF DINT;
-	blobReady : ARRAY[0..NUM_CAMS] OF BOOL;
 END_VAR
 VAR CONSTANT
 	cameraWidth : INT := 0;
 	cameraHeight : INT := 0;
+END_VAR
+(*PV Mapping*)
+VAR
+	imageRequested : ARRAY[0..NUM_CAMS] OF BOOL;
+	resultReady : ARRAY[0..NUM_CAMS] OF BOOL;
+	flipOrder : BOOL;
+	durationToCamera : ARRAY[0..NUM_CAMS] OF DINT;
 END_VAR
 (*Image, crosshair data and constants*)
 VAR
@@ -31,5 +37,5 @@ VAR CONSTANT
 END_VAR
 VAR
 	visState : ARRAY[0..NUM_CAMS] OF USINT;
-	flipOrder : BOOL;
+	brdkViGeom : BOOL;
 END_VAR

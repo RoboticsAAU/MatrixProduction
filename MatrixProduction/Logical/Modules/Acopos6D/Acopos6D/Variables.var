@@ -110,7 +110,6 @@ VAR
 	readIndex : USINT := 0;
 	writeIndex : USINT := 0;
 	ParabolicBlend_0 : ParabolicBlend;
-	flipOrder : BOOL;
 END_VAR
 (*Variable mapping*)
 VAR
@@ -120,6 +119,8 @@ VAR
 	robotDone : ARRAY[0..5] OF BOOL;
 	robotBusy : ARRAY[0..5] OF BOOL;
 	isOrderFlipped : ARRAY[0..5] OF BOOL;
+	flipOrder : BOOL;
 	durationToCamera : ARRAY[0..NR_OF_CAMERAS] OF DINT;
+	visionResultReady : ARRAY[0..NR_OF_CAMERAS] OF BOOL;
 	requestImage : ARRAY[0..NR_OF_CAMERAS] OF BOOL := [FALSE];
 END_VAR

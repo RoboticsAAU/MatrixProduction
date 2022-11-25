@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* McBase 5.19.3 */
+/* McBase 5.20.0 */
 
 #ifndef _MCBASE_
 #define _MCBASE_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _McBase_VERSION
-#define _McBase_VERSION 5.19.3
+#define _McBase_VERSION 5.20.0
 #endif
 
 #include <bur/plctypes.h>
@@ -196,6 +196,12 @@ typedef enum McCommunicationStateEnum
 	mcCOMM_STATE_FAILED = 1000
 } McCommunicationStateEnum;
 
+typedef enum McLanguageEnum
+{	mcLANGUAGE_DEFAULT = 0,
+	mcLANGUAGE_ENGLISH,
+	mcLANGUAGE_GERMAN
+} McLanguageEnum;
+
 typedef enum McCfgTypeEnum
 {	mcCFG_NONE = 0,
 	mcCFG_MMCFG = 10,
@@ -351,6 +357,7 @@ typedef enum McCfgTypeEnum
 	mcCFG_MS_3AX_DELTA_A = 52131,
 	mcCFG_MS_3AX_DELTA_XZB = 52132,
 	mcCFG_MS_3AX_DELTA_B = 52133,
+	mcCFG_MS_3AX_DELTA_XZC = 52134,
 	mcCFG_MS_4AX_DELTA_A = 52141,
 	mcCFG_MS_4AX_DELTA_B = 52142,
 	mcCFG_MS_4AX_DELTA_C = 52143,
@@ -402,6 +409,35 @@ typedef enum McMMCLogSelUseSupSubcEEnum
 {	mcMMCLSUSSE_INACT = 0,
 	mcMMCLSUSSE_ACT = 1
 } McMMCLogSelUseSupSubcEEnum;
+
+typedef enum McCfgVarDatTypEnum
+{	mcCVDT_TYP_BOOL = 0,
+	mcCVDT_TYP_SINT = 1,
+	mcCVDT_TYP_USINT = 2,
+	mcCVDT_TYP_INT = 3,
+	mcCVDT_TYP_UINT = 4,
+	mcCVDT_TYP_DINT = 5,
+	mcCVDT_TYP_UDINT = 6,
+	mcCVDT_TYP_REAL = 7,
+	mcCVDT_TYP_LREAL = 8,
+	mcCVDT_TYP_STRING = 9,
+	mcCVDT_TYP_DER = 10
+} McCfgVarDatTypEnum;
+
+typedef enum McCfgFunDatTypEnum
+{	mcCFDT_TYP_BOOL = 0,
+	mcCFDT_TYP_SINT = 1,
+	mcCFDT_TYP_USINT = 2,
+	mcCFDT_TYP_INT = 3,
+	mcCFDT_TYP_UINT = 4,
+	mcCFDT_TYP_DINT = 5,
+	mcCFDT_TYP_UDINT = 6,
+	mcCFDT_TYP_REAL = 7,
+	mcCFDT_TYP_LREAL = 8,
+	mcCFDT_TYP_STRING = 9,
+	mcCFDT_TYP_DER = 10,
+	mcCFDT_TYP_NONE = 11
+} McCfgFunDatTypEnum;
 
 typedef enum McWSHalfSpcPlEnum
 {	mcWSHSP_PL_XY = 0,
@@ -489,20 +525,6 @@ typedef enum McPTCEnum
 {	mcPTC_CYC_1 = 1,
 	mcPTC_USE_MP_MOT_SET = 255
 } McPTCEnum;
-
-typedef enum McCfgVarDatTypEnum
-{	mcCVDT_TYP_BOOL = 0,
-	mcCVDT_TYP_SINT = 1,
-	mcCVDT_TYP_USINT = 2,
-	mcCVDT_TYP_INT = 3,
-	mcCVDT_TYP_UINT = 4,
-	mcCVDT_TYP_DINT = 5,
-	mcCVDT_TYP_UDINT = 6,
-	mcCVDT_TYP_REAL = 7,
-	mcCVDT_TYP_LREAL = 8,
-	mcCVDT_TYP_STRING = 9,
-	mcCVDT_TYP_DER = 10
-} McCfgVarDatTypEnum;
 
 typedef struct McAdvMoveCycParType
 {	float Velocity;
@@ -613,6 +635,27 @@ typedef struct McProcessParamAdvParType
 {	plcstring Name[251];
 } McProcessParamAdvParType;
 
+typedef struct McAdvReadErrTxtParType
+{	enum McLanguageEnum Language;
+	enum McSwitchEnum ShowInfoSeverity;
+} McAdvReadErrTxtParType;
+
+typedef struct McErrorRecordTimeStampType
+{	unsigned long Seconds;
+	unsigned long Nanoseconds;
+} McErrorRecordTimeStampType;
+
+typedef struct McErrorRecordType
+{	plcstring Text[256];
+	unsigned long RecordID;
+	signed long EventID;
+	struct McErrorRecordTimeStampType TimeStamp;
+} McErrorRecordType;
+
+typedef struct McErrorRecordsType
+{	struct McErrorRecordType Record[10];
+} McErrorRecordsType;
+
 typedef struct McCfgUnboundedArrayType
 {	unsigned long NumberOfElements;
 	unsigned long DataAddress;
@@ -694,6 +737,34 @@ typedef struct McCfgOrientType
 	double Angle2;
 	double Angle3;
 } McCfgOrientType;
+
+typedef struct McCfgVarDatTypTypSTRINGType
+{	unsigned long Length;
+} McCfgVarDatTypTypSTRINGType;
+
+typedef struct McCfgVarDatTypTypDerType
+{	plcstring Name[251];
+} McCfgVarDatTypTypDerType;
+
+typedef struct McCfgVarDatTypType
+{	enum McCfgVarDatTypEnum Type;
+	struct McCfgVarDatTypTypSTRINGType TypeSTRING;
+	struct McCfgVarDatTypTypDerType TypeDerived;
+} McCfgVarDatTypType;
+
+typedef struct McCfgFunDatTypTypSTRINGType
+{	unsigned long Length;
+} McCfgFunDatTypTypSTRINGType;
+
+typedef struct McCfgFunDatTypTypDerType
+{	plcstring Name[251];
+} McCfgFunDatTypTypDerType;
+
+typedef struct McCfgFunDatTypType
+{	enum McCfgFunDatTypEnum Type;
+	struct McCfgFunDatTypTypSTRINGType TypeSTRING;
+	struct McCfgFunDatTypTypDerType TypeDerived;
+} McCfgFunDatTypType;
 
 typedef struct McWSCubeDimType
 {	double X;
@@ -931,20 +1002,6 @@ typedef struct McCfgRotToLinTrfType
 {	double ReferenceDistance;
 } McCfgRotToLinTrfType;
 
-typedef struct McCfgVarDatTypTypSTRINGType
-{	unsigned long Length;
-} McCfgVarDatTypTypSTRINGType;
-
-typedef struct McCfgVarDatTypTypDerType
-{	plcstring Name[251];
-} McCfgVarDatTypTypDerType;
-
-typedef struct McCfgVarDatTypType
-{	enum McCfgVarDatTypEnum Type;
-	struct McCfgVarDatTypTypSTRINGType TypeSTRING;
-	struct McCfgVarDatTypTypDerType TypeDerived;
-} McCfgVarDatTypType;
-
 typedef struct McCfgLimJerkBaseType
 {	float Jerk;
 } McCfgLimJerkBaseType;
@@ -1027,6 +1084,27 @@ typedef struct MC_BR_GetCoordSystemIdent
 	plcbit Error;
 } MC_BR_GetCoordSystemIdent_typ;
 
+typedef struct MC_BR_ReadErrorText
+{
+	/* VAR_INPUT (analog) */
+	McComponentType Component;
+	struct McAdvReadErrTxtParType AdvancedParameters;
+	/* VAR_OUTPUT (analog) */
+	signed long ErrorID;
+	unsigned short NumberOfRecords;
+	struct McErrorRecordsType ErrorRecords;
+	/* VAR (analog) */
+	struct McInternalType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Enable;
+	plcbit ReadNext;
+	/* VAR_OUTPUT (digital) */
+	plcbit Valid;
+	plcbit Busy;
+	plcbit Error;
+	plcbit ReadDone;
+} MC_BR_ReadErrorText_typ;
+
 typedef McAxisType McPsmAxisType;
 
 typedef McAxisType McApsmAxisType;
@@ -1041,6 +1119,7 @@ typedef plcstring McCfgString250Type[251];
 _BUR_PUBLIC void MC_BR_ProcessConfig(struct MC_BR_ProcessConfig* inst);
 _BUR_PUBLIC void MC_BR_ProcessParam(struct MC_BR_ProcessParam* inst);
 _BUR_PUBLIC void MC_BR_GetCoordSystemIdent(struct MC_BR_GetCoordSystemIdent* inst);
+_BUR_PUBLIC void MC_BR_ReadErrorText(struct MC_BR_ReadErrorText* inst);
 
 
 #ifdef __cplusplus

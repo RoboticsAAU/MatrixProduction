@@ -45,6 +45,11 @@ TYPE
 													mapp View connection: Selector Widgets
 													ItemCollection-Array (dataProvider)*)
 		);
+	ViBaseImageTypeEnum :
+		( (*	Enumeration of image types*)
+		viBASE_IMAGE_TYPE_BMP := 0, (*The image data is uncompressed in the Bitmap format*)
+		viBASE_IMAGE_TYPE_JPG := 1 (*The image data is lossy compressed in the JPG format*)
+		);
 	ViBaseFormatItemCollectionType :STRING[130]; (*This type is intended for vision application list entry in ItemCollection format.
 													An array of this type can be used in mapp View for ItemCollection bindings on selector widgets*)
 	ViBaseFormatPlainTextType :STRING[50]; (*This type is intended for vision application list entry in plain text.

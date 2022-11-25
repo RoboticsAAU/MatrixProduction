@@ -2,6 +2,6 @@
 <?AutomationStudio FileVersion="4.9"?>
 <Configuration>
   <Element ID="gCamera" Type="visioncomponent">
-    <Property ID="VisionApplicationReference" Value="ViApp_WhiteBottomCover" />
+    <Property ID="VisionApplicationReference" Value="ViApplication" />
   </Element>
 </Configuration>

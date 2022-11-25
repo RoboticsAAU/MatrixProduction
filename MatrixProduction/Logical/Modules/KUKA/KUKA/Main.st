@@ -76,7 +76,7 @@ PROGRAM _CYCLIC
 						:= 100; // Velocity in percent
 					
 					pKuka.motion.KRC_MoveDirectAbsolute.Acceleration := pKuka.motion.KRC_MoveLinearAbsolute.Acceleration := pKuka.motion.KRC_MoveLinearRelative.Acceleration
-						:= 50; // Acceleration in percent
+						:= 100; // Acceleration in percent
 					pKuka.motion.KRC_MoveDirectAbsolute.BufferMode := pKuka.motion.KRC_MoveLinearAbsolute.BufferMode := pKuka.motion.KRC_MoveLinearRelative.BufferMode
 						:= 2; // BUFFERED
 					pKuka.motion.KRC_MoveLinearAbsolute.OriType := pKuka.motion.KRC_MoveLinearRelative.OriType

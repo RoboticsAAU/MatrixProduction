@@ -538,5 +538,23 @@ FUNCTION_BLOCK SfDomainSetSafeNodeAvailability (*Set the value of a SafeOPTION o
 	END_VAR
 END_FUNCTION_BLOCK
 
-
-
+FUNCTION_BLOCK SfDomainGetFileIdent (*Gets idents for the specified file*)
+	VAR_INPUT
+		SfDomain : REFERENCE TO SfDomType; (*Incoming SafeDOMAIN handle*) (* *) (*#PAR#;*)
+		Execute : BOOL; (*Executes the function block*) (* *) (*#PAR#;*)
+		SafeFilePath : STRING[260]; (*Path to file*) (* *) (*#PAR#;*)
+	END_VAR
+	VAR_OUTPUT
+		Done : BOOL; (*Has finished and was successful.*) (* *) (*#PAR#;*)
+		Busy : BOOL; (*Function block is busy processing a command.*) (* *) (*#PAR#;*)
+		Error : BOOL; (*Indicates an error.*) (* *) (*#CMD#OPT#;*)
+		StatusID : DINT; (*Error/Status information*) (* *) (*#CMD#*)
+		Name : STRING[260]; (*Name (depends on file type)*) (* *) (*#PAR#;*)
+		UserName : STRING[260]; (*Name of the user who last changed it*) (* *) (*#PAR#;*)
+		TimeStamp : UDINT; (*UTC timestamp as unix time*) (* *) (*#PAR#;*)
+		CRC : UDINT; (*CRC*) (* *) (*#PAR#;*)
+	END_VAR
+	VAR
+		Internal : {REDUND_UNREPLICABLE} SfDomainInternalDataType; (*Internal data*)
+	END_VAR
+END_FUNCTION_BLOCK

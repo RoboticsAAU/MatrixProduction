@@ -17,7 +17,7 @@ TYPE
 		mcCFG_AX_BASE_TYP := 10011, (*Associated with data type McCfgAxBaseTypType*)
 		mcCFG_AX_MOVE_LIM := 10012, (*Associated with data type McCfgAxMoveLimType*)
 		mcCFG_AX_FEAT_CAM_AUT_CMN := 10101, (*AxisFeatureCamAutCommon -*)
-		mcCFG_AX_FEAT_PROF_GEN := 10102, (*AxisFeatureProfGen -*)
+		mcCFG_AX_FEAT_PROF_GEN := 10102, (**)
 		mcCFG_AX_FEAT_DIG_CAM_SW := 10103, (*Associated with data type McCfgAxFeatDigCamSwType*)
 		mcCFG_AX_FEAT_DIG_OUT := 10107, (*Associated with data type McCfgAxFeatDigOutType*)
 		mcCFG_AX_FEAT_CAM_LST := 11102, (*AxisFeatureCamList -*)
@@ -156,6 +156,7 @@ TYPE
 		mcCFG_MS_3AX_DELTA_A := 52131, (*Associated with data type McCfgMS3AxDeltaAType*)
 		mcCFG_MS_3AX_DELTA_XZB := 52132, (*Associated with data type McCfgMS3AxDeltaXZBType*)
 		mcCFG_MS_3AX_DELTA_B := 52133, (*Associated with data type McCfgMS3AxDeltaBType*)
+		mcCFG_MS_3AX_DELTA_XZC := 52134, (*Associated with data type McCfgMS3AxDeltaXZCType*)
 		mcCFG_MS_4AX_DELTA_A := 52141, (*Associated with data type McCfgMS4AxDeltaAType*)
 		mcCFG_MS_4AX_DELTA_B := 52142, (*Associated with data type McCfgMS4AxDeltaBType*)
 		mcCFG_MS_4AX_DELTA_C := 52143, (*Associated with data type McCfgMS4AxDeltaCType*)
@@ -273,6 +274,57 @@ TYPE
 		Angle1 : LREAL; (*Rotation around the first coordinate axis of the rotation order [measurement units]*)
 		Angle2 : LREAL; (*Rotation around the second coordinate axis of the rotation order [measurement units]*)
 		Angle3 : LREAL; (*Rotation around the third coordinate axis of the rotation order [measurement units]*)
+	END_STRUCT;
+	McCfgVarDatTypEnum :
+		( (*Data type selector setting*)
+		mcCVDT_TYP_BOOL := 0, (*Type BOOL -*)
+		mcCVDT_TYP_SINT := 1, (*Type SINT -*)
+		mcCVDT_TYP_USINT := 2, (*Type USINT -*)
+		mcCVDT_TYP_INT := 3, (*Type INT -*)
+		mcCVDT_TYP_UINT := 4, (*Type UINT -*)
+		mcCVDT_TYP_DINT := 5, (*Type DINT -*)
+		mcCVDT_TYP_UDINT := 6, (*Type UDINT -*)
+		mcCVDT_TYP_REAL := 7, (*Type REAL -*)
+		mcCVDT_TYP_LREAL := 8, (*Type LREAL -*)
+		mcCVDT_TYP_STRING := 9, (*Type STRING -*)
+		mcCVDT_TYP_DER := 10 (*Type Derived - Derived data type*)
+		);
+	McCfgVarDatTypTypSTRINGType : STRUCT (*Type mcCVDT_TYP_STRING settings*)
+		Length : UDINT;
+	END_STRUCT;
+	McCfgVarDatTypTypDerType : STRUCT (*Type mcCVDT_TYP_DER settings*)
+		Name : STRING[250]; (*Name*)
+	END_STRUCT;
+	McCfgVarDatTypType : STRUCT (*Data type*)
+		Type : McCfgVarDatTypEnum; (*Data type selector setting*)
+		TypeSTRING : McCfgVarDatTypTypSTRINGType; (*Type mcCVDT_TYP_STRING settings*)
+		TypeDerived : McCfgVarDatTypTypDerType; (*Type mcCVDT_TYP_DER settings*)
+	END_STRUCT;
+	McCfgFunDatTypEnum :
+		( (*Function return type selector setting*)
+		mcCFDT_TYP_BOOL := 0, (*Type BOOL -*)
+		mcCFDT_TYP_SINT := 1, (*Type SINT -*)
+		mcCFDT_TYP_USINT := 2, (*Type USINT -*)
+		mcCFDT_TYP_INT := 3, (*Type INT -*)
+		mcCFDT_TYP_UINT := 4, (*Type UINT -*)
+		mcCFDT_TYP_DINT := 5, (*Type DINT -*)
+		mcCFDT_TYP_UDINT := 6, (*Type UDINT -*)
+		mcCFDT_TYP_REAL := 7, (*Type REAL -*)
+		mcCFDT_TYP_LREAL := 8, (*Type LREAL -*)
+		mcCFDT_TYP_STRING := 9, (*Type STRING -*)
+		mcCFDT_TYP_DER := 10, (*Type Derived - Derived data type*)
+		mcCFDT_TYP_NONE := 11 (*Type NONE - Function does not return a value*)
+		);
+	McCfgFunDatTypTypSTRINGType : STRUCT (*Type mcCFDT_TYP_STRING settings*)
+		Length : UDINT;
+	END_STRUCT;
+	McCfgFunDatTypTypDerType : STRUCT (*Type mcCFDT_TYP_DER settings*)
+		Name : STRING[250]; (*Name*)
+	END_STRUCT;
+	McCfgFunDatTypType : STRUCT (*Return data type of function*)
+		Type : McCfgFunDatTypEnum; (*Function return type selector setting*)
+		TypeSTRING : McCfgFunDatTypTypSTRINGType; (*Type mcCFDT_TYP_STRING settings*)
+		TypeDerived : McCfgFunDatTypTypDerType; (*Type mcCFDT_TYP_DER settings*)
 	END_STRUCT;
 	McWSCubeDimType : STRUCT (*Dimension parameters*)
 		X : LREAL; (*Dimension of the cuboid in the x-direction (endpoint) [measurement units]*)
@@ -555,31 +607,6 @@ TYPE
 		mcPTC_CYC_1 := 1, (*Cyclic #1 - Task class 1*)
 		mcPTC_USE_MP_MOT_SET := 255 (*Use mapp Motion setting - Use the defined setting from the mapp Motion configuration or Task class 1 if no mapp Motion Configuration exists*)
 		);
-	McCfgVarDatTypEnum :
-		( (*Data type selector setting*)
-		mcCVDT_TYP_BOOL := 0, (*Type BOOL -*)
-		mcCVDT_TYP_SINT := 1, (*Type SINT -*)
-		mcCVDT_TYP_USINT := 2, (*Type USINT -*)
-		mcCVDT_TYP_INT := 3, (*Type INT -*)
-		mcCVDT_TYP_UINT := 4, (*Type UINT -*)
-		mcCVDT_TYP_DINT := 5, (*Type DINT -*)
-		mcCVDT_TYP_UDINT := 6, (*Type UDINT -*)
-		mcCVDT_TYP_REAL := 7, (*Type REAL -*)
-		mcCVDT_TYP_LREAL := 8, (*Type LREAL -*)
-		mcCVDT_TYP_STRING := 9, (*Type STRING -*)
-		mcCVDT_TYP_DER := 10 (*Type Derived - Derived data type*)
-		);
-	McCfgVarDatTypTypSTRINGType : STRUCT (*Type mcCVDT_TYP_STRING settings*)
-		Length : UDINT;
-	END_STRUCT;
-	McCfgVarDatTypTypDerType : STRUCT (*Type mcCVDT_TYP_DER settings*)
-		Name : STRING[250]; (*Name*)
-	END_STRUCT;
-	McCfgVarDatTypType : STRUCT (*Data type*)
-		Type : McCfgVarDatTypEnum; (*Data type selector setting*)
-		TypeSTRING : McCfgVarDatTypTypSTRINGType; (*Type mcCVDT_TYP_STRING settings*)
-		TypeDerived : McCfgVarDatTypTypDerType; (*Type mcCVDT_TYP_DER settings*)
-	END_STRUCT;
 	McCfgLimJerkBaseType : STRUCT (*Type mcAGFPDPLIJ_BASIC settings*)
 		Jerk : REAL; (*Jerk limit in any movement direction [Measurement units/s³]*)
 	END_STRUCT;

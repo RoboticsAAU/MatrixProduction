@@ -26,7 +26,6 @@
     <BinaryObject Name="udbdef" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="mvLoader" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="visionUnit" Source="" Memory="UserROM" Language="Binary" />
-    <BinaryObject Name="arcoal" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="mCoWebSc" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="User" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="iomap" Source="" Memory="UserROM" Language="Binary" />
@@ -43,6 +42,7 @@
     <BinaryObject Name="Settings" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="asnxdb1" Source="" Memory="SystemROM" Language="Binary" />
     <BinaryObject Name="Settings_1" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="arcoal" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="ViApp_Whit" Source="" Memory="UserROM" Language="Binary" />
   </Binaries>
   <Libraries>
@@ -64,12 +64,6 @@
     <LibraryObject Name="ViBase" Source="Libraries.ViBase.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="IecCheck" Source="Libraries.IecCheck.lby" Memory="UserROM" Language="IEC" Debugging="true" />
     <LibraryObject Name="CoTrace" Source="Libraries.CoTrace.lby" Memory="UserROM" Language="binary" Debugging="true" />
-    <LibraryObject Name="brdkViBase" Source="Libraries.brdkViBase.lby" Memory="UserROM" Language="Binary" Debugging="true" />
-    <LibraryObject Name="brdkViCal" Source="Libraries.brdkViCal.lby" Memory="UserROM" Language="Binary" Debugging="true" />
-    <LibraryObject Name="brdkViGeom" Source="Libraries.brdkViGeom.lby" Memory="UserROM" Language="Binary" Debugging="true" />
-    <LibraryObject Name="brdkViImg" Source="Libraries.brdkViImg.lby" Memory="UserROM" Language="Binary" Debugging="true" />
-    <LibraryObject Name="brdkViMapp" Source="Libraries.brdkViMapp.lby" Memory="UserROM" Language="Binary" Debugging="true" />
-    <LibraryObject Name="brdkViVF" Source="Libraries.brdkViVF.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="BRSE_RTK" Source="Libraries.BRSE_RTK.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="AsHttp" Source="Libraries.AsHttp.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="powerlnk" Source="Libraries.powerlnk.lby" Memory="UserROM" Language="binary" Debugging="true" />
@@ -82,6 +76,7 @@
     <LibraryObject Name="asstring" Source="Libraries.asstring.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="AsBrMath" Source="Libraries.AsBrMath.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="KUKAmxA3_3" Source="Libraries.KUKAmxA3_3.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="AsTCP" Source="Libraries.AsTCP.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="MpSfDomMgr" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="SfDomDrv" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="SfDomVis" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
@@ -89,6 +84,13 @@
     <LibraryObject Name="aruser" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="asusb" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="arssl" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
-    <LibraryObject Name="astcp" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="asioacc" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="brdkViMapp" Source="Libraries.brdkViLibs.brdkViMapp.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="brdkViBase" Source="Libraries.brdkViLibs.brdkViBase.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="brdkViVF" Source="Libraries.brdkViLibs.brdkViVF.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="brdkViCal" Source="Libraries.brdkViLibs.brdkViCal.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="brdkViImg" Source="Libraries.brdkViLibs.brdkViImg.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="brdkViGeom" Source="Libraries.brdkViLibs.brdkViGeom.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="brdkWS" Source="Libraries.brdkViLibs.brdkWS.lby" Memory="UserROM" Language="Binary" Debugging="true" />
   </Libraries>
 </SwConfiguration>

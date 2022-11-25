@@ -399,11 +399,6 @@ VAR_CONFIG
 	Cyclic#1.::FBout.Array[197] AT %QW."8YFLM01.0000.00I-1".EPL_FB_OUT_197_I2008_SC6Out;
 	Cyclic#1.::FBout.Array[198] AT %QW."8YFLM01.0000.00I-1".EPL_FB_OUT_198_I2008_SC7Out;
 	Cyclic#1.::FBout.Array[199] AT %QW."8YFLM01.0000.00I-1".EPL_FB_OUT_199_I2008_SC8Out;
-	Cyclic#1.::gVisionSensor[0].HW.Connected AT %IX."VSS122Q25.061P-000".ModuleOk;
-	Cyclic#1.::gVisionSensor[0].HW.SerialNumber AT %ID."VSS122Q25.061P-000".SerialNumber;
-	Cyclic#1.::gVisionSensor[0].HW.ID AT %ID."VSS122Q25.061P-000".ModuleID;
-	Cyclic#1.::gVisionSensor[0].HW.Variant AT %ID."VSS122Q25.061P-000".HardwareVariant;
-	Cyclic#1.::gVisionSensor[0].HW.Firmware AT %ID."VSS122Q25.061P-000".FirmwareVersion;
 	Cyclic#1.::gVisionSensor[0].DAT.Exposure AT %QD."VSS122Q25.061P-000".ExposureTime01;
 	Cyclic#1.::gVisionSensor[0].DAT.FlashSegment AT %QB."VSS122Q25.061P-000".FlashSegment01;
 	Cyclic#1.::gVisionSensor[0].DAT.AutoSetupExposure AT %ID."VSS122Q25.061P-000".ReadExposureTime;
@@ -3506,4 +3501,10 @@ VAR_CONFIG
 	::Vision:blobOutput.positionX AT %ID."VSS122Q25.061P-000".PositionX01;
 	::Vision:blobOutput.positionY AT %ID."VSS122Q25.061P-000".PositionY01;
 	::Vision:blobInput.enhancedBlobInformation AT %QX."VSS122Q25.061P-000".EnhancedBlobInformation;
+	Cyclic#1.::Vision:hwCam.in.common.moduleOk AT %IX."VSS122Q25.061P-000".ModuleOk;
+	Cyclic#1.::gVisionSensor[0].HW.SerialNumber AT %ID."VSS122Q25.061P-000".SerialNumber;
+	Cyclic#1.::gVisionSensor[0].HW.ID AT %ID."VSS122Q25.061P-000".ModuleID;
+	Cyclic#1.::gVisionSensor[0].HW.Variant AT %ID."VSS122Q25.061P-000".HardwareVariant;
+	Cyclic#1.::gVisionSensor[0].HW.Firmware AT %ID."VSS122Q25.061P-000".FirmwareVersion;
+	::Vision:hwBlob.in.results[0].area AT %ID."VSS122Q25.061P-000".Area03;
 END_VAR

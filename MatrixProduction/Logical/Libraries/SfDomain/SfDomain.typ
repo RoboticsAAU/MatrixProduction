@@ -10,6 +10,7 @@ TYPE
 		NumberOfFWExchanged : UINT; (*Number of exchanged Firmwares*)
 		SNExchanged : BOOL; (*Indicates whether a SafeNode exchange was carried out*)
 		NumberOfSNExchanged : UINT; (*Number of exchanged SafeNodes*)
+		NumberOfSafeNODEs : UINT; (*Number of configured SafeNodes*)
 		SKExchanged : BOOL; (*Indicates whether a SafeKey exchange was carried out*)
 		SetupModeActive : BOOL; (*Indicates whether the setup mode is active*)
 	END_STRUCT;

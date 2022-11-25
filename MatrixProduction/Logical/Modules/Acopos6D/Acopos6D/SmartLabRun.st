@@ -175,13 +175,15 @@ ACTION smartLabWorkstationOperation:
 			// Go back to wait for shuttle at workstation if the current shuttle has begun moving (avoids bugs)
 			IF gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].State = mcACP6D_SH_STATE_MOTION THEN
 				
-				IF pWorkstation.par.cameraID <> -1 AND NOT gCameraStations[pWorkstation.par.cameraID].startImageAcquisition THEN
-					gCameraStations[pWorkstation.par.cameraID].shuttleStartPos.xPos := pWorkstation.par.xLocation;
-					gCameraStations[pWorkstation.par.cameraID].shuttleStartPos.yPos := pWorkstation.par.yLocation;
-					gCameraStations[pWorkstation.par.cameraID].shuttleEndPos.xPos := gShuttles[pWorkstation.par.tempShuttleID].par.tempDestinationPos.xPos;
-					gCameraStations[pWorkstation.par.cameraID].shuttleEndPos.yPos := gShuttles[pWorkstation.par.tempShuttleID].par.tempDestinationPos.yPos;
-					gCameraStations[pWorkstation.par.cameraID].tempShuttleID := pWorkstation.par.tempShuttleID;
-					gCameraStations[pWorkstation.par.cameraID].startImageAcquisition := TRUE;
+				IF shuttlePlans[pWorkstation.par.tempShuttleID].isActive THEN
+					IF pWorkstation.par.cameraID <> -1 THEN
+						gCameraStations[pWorkstation.par.cameraID].shuttleStartPos.xPos := pWorkstation.par.xLocation;
+						gCameraStations[pWorkstation.par.cameraID].shuttleStartPos.yPos := pWorkstation.par.yLocation;
+						gCameraStations[pWorkstation.par.cameraID].shuttleEndPos.xPos := gShuttles[pWorkstation.par.tempShuttleID].par.tempDestinationPos.xPos;
+						gCameraStations[pWorkstation.par.cameraID].shuttleEndPos.yPos := gShuttles[pWorkstation.par.tempShuttleID].par.tempDestinationPos.yPos;
+						gCameraStations[pWorkstation.par.cameraID].tempShuttleID := pWorkstation.par.tempShuttleID;
+						gCameraStations[pWorkstation.par.cameraID].startImageAcquisition := TRUE;
+					END_IF
 				END_IF
 				
 				cm.state := 10;
@@ -349,7 +351,7 @@ ACTION cameraProcess:
 				ParabolicBlend_0.acceleration := gAcp6DCtrl.Par.Acceleration;
 				ParabolicBlend_0.velocity := gAcp6DCtrl.Par.Velocity;
 				ParabolicBlend_0.startPos := pCameraStation.shuttleStartPos.yPos;
-				ParabolicBlend_0.startPos := pCameraStation.shuttleEndPos.yPos;
+				ParabolicBlend_0.endPos := pCameraStation.shuttleEndPos.yPos;
 				ParabolicBlend_0.evalPos := pCameraStation.camPosY; 
 				ParabolicBlend_0();
 				
@@ -365,9 +367,10 @@ ACTION cameraProcess:
 			END_IF
 			
 		10: // Wait for vision to return data
-			IF EDGENEG(requestImage[i]) THEN
+			IF EDGEPOS(visionResultReady[i]) THEN
 				shuttlePlans[pCameraStation.tempShuttleID].isFlipped := flipOrder;
 				pCameraStation.startImageAcquisition := FALSE;
+				requestImage[i] := FALSE;
 				cm.state := 0;
 			END_IF
 		

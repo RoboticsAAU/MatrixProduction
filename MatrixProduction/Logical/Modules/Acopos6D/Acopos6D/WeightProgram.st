@@ -34,33 +34,40 @@ ACTION weightProgram:
 					END_IF
 				END_IF
 			END_FOR
+		
 			
 		20:
 			cm.description := 'Calibrate weight';
-			pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Execute := TRUE;
-			IF pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Done THEN
-				weightCalibration := pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Payload * 1000;
-				pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Execute := FALSE;
-				cm.state := 50;
+			pShuttle.function.TON_0.PT := REAL_TO_TIME(3000);
+			pShuttle.function.TON_0.IN := TRUE;
+			IF pShuttle.function.TON_0.Q THEN
+				pShuttle.function.TON_0.IN := FALSE;
+				pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Execute := TRUE;
+				IF pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Done THEN
+					weightCalibration := pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Payload * 1000;
+					pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Execute := FALSE;
+					
+					cm.state := 30;
+				END_IF
 			END_IF
 			
-		50:
+		30:
 			cm.description := 'Measure weight';
 			pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Execute := TRUE;
 			IF pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Done THEN
 				fbPayload := pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Payload * 1000;
 				shuttlePayload := fbPayload - weightCalibration;
 				pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Execute := FALSE;
-				cm.state := 60;
+				cm.state := 40;
 			END_IF
 			
-		60:
+		40:
 			cm.description := 'Wait time';
 			pShuttle.function.TON_0.PT := t#0.2s;
 			pShuttle.function.TON_0.IN := TRUE;
 			IF pShuttle.function.TON_0.Q THEN
 				pShuttle.function.TON_0.IN := FALSE;
-				cm.state := 50;
+				cm.state := 30;
 			END_IF
 		
 	END_CASE

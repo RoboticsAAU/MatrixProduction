@@ -8,12 +8,12 @@
   <Project StoreRuntimeInProject="false" />
   <Variables DefaultInitValue="0" DefaultRetain="false" DefaultVolatile="true" />
   <TechnologyPackages>
-    <mapp Version="5.19.0" />
+    <mapp Version="5.20.0" />
     <mapp6D Version="1.2.47924" />
-    <mappCockpit Version="5.19.0" />
-    <mappMotion McDriveLog="5.19.3" Version="5.19.3" />
-    <mappSafety Version="5.19.0" />
-    <mappView Version="5.19.0" />
-    <mappVision Version="5.19.1" />
+    <mappCockpit Version="5.20.0" />
+    <mappMotion McDriveLog="5.20.0" Version="5.20.0" />
+    <mappSafety Version="5.20.0" />
+    <mappView Version="5.20.0" />
+    <mappVision Version="5.20.0" />
   </TechnologyPackages>
 </Project>

@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* SfDomain 5.19.0 */
+/* SfDomain 5.20.0 */
 
 #ifndef _SFDOMAIN_
 #define _SFDOMAIN_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _SfDomain_VERSION
-#define _SfDomain_VERSION 5.19.0
+#define _SfDomain_VERSION 5.20.0
 #endif
 
 #include <bur/plctypes.h>
@@ -172,6 +172,14 @@ typedef enum SfDomainErrorEnum
 	sfDOM_ERR_SO_RANGE_INVALID = -1073552061,
 	sfDOM_ERR_SO_STEP_INVALID = -1073552060,
 	sfDOM_ERR_FILE_W_FAILED = -1073552059,
+	sfDOM_ERR_INPUT_EMPTY = -1073552058,
+	sfDOM_ERR_FILE_NOT_FOUND = -1073552057,
+	sfDOM_ERR_BAD_FILE_FORMAT = -1073552056,
+	sfDOM_ERR_BAD_FILE_TYPE = -1073552055,
+	sfDOM_ERR_INTERNAL = -1073552054,
+	sfDOM_ERR_NO_FILE_EXT = -1073552053,
+	sfDOM_ERR_UDID_DIFF = -1073552052,
+	sfDOM_ERR_APPL_DATA_DIFF = -1073552051,
 	sfDOM_INF_UDID_MISMATCH = 1073931671,
 	sfDOM_INF_CONN_DISCONN = 1073931672,
 	sfDOM_INF_CONN_CONNECT = 1073931673,
@@ -223,6 +231,7 @@ typedef struct SfDomainInfoStatusType
 	unsigned short NumberOfFWExchanged;
 	plcbit SNExchanged;
 	unsigned short NumberOfSNExchanged;
+	unsigned short NumberOfSafeNODEs;
 	plcbit SKExchanged;
 	plcbit SetupModeActive;
 } SfDomainInfoStatusType;
@@ -817,6 +826,27 @@ typedef struct SfDomainSetSafeNodeAvailability
 	plcbit Error;
 } SfDomainSetSafeNodeAvailability_typ;
 
+typedef struct SfDomainGetFileIdent
+{
+	/* VAR_INPUT (analog) */
+	struct SfDomType* SfDomain;
+	plcstring SafeFilePath[261];
+	/* VAR_OUTPUT (analog) */
+	signed long StatusID;
+	plcstring Name[261];
+	plcstring UserName[261];
+	unsigned long TimeStamp;
+	unsigned long CRC;
+	/* VAR (analog) */
+	struct SfDomainInternalDataType Internal;
+	/* VAR_INPUT (digital) */
+	plcbit Execute;
+	/* VAR_OUTPUT (digital) */
+	plcbit Done;
+	plcbit Busy;
+	plcbit Error;
+} SfDomainGetFileIdent_typ;
+
 
 
 /* Prototyping of functions and function blocks */
@@ -847,6 +877,7 @@ _BUR_PUBLIC void SfDomainGetSafeOptionString(struct SfDomainGetSafeOptionString*
 _BUR_PUBLIC void SfDomainSetSafeOptionString(struct SfDomainSetSafeOptionString* inst);
 _BUR_PUBLIC void SfDomainGetSafeNodeAvailability(struct SfDomainGetSafeNodeAvailability* inst);
 _BUR_PUBLIC void SfDomainSetSafeNodeAvailability(struct SfDomainSetSafeNodeAvailability* inst);
+_BUR_PUBLIC void SfDomainGetFileIdent(struct SfDomainGetFileIdent* inst);
 
 
 #ifdef __cplusplus
