@@ -175,7 +175,7 @@ ACTION smartLabWorkstationOperation:
 			// Go back to wait for shuttle at workstation if the current shuttle has begun moving (avoids bugs)
 			IF gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].State = mcACP6D_SH_STATE_MOTION THEN
 				
-				IF pWorkstation.par.cameraID <> -1 THEN
+				IF pWorkstation.par.cameraID <> -1 AND NOT gCameraStations[pWorkstation.par.cameraID].startImageAcquisition THEN
 					gCameraStations[pWorkstation.par.cameraID].shuttleStartPos.xPos := pWorkstation.par.xLocation;
 					gCameraStations[pWorkstation.par.cameraID].shuttleStartPos.yPos := pWorkstation.par.yLocation;
 					gCameraStations[pWorkstation.par.cameraID].shuttleEndPos.xPos := gShuttles[pWorkstation.par.tempShuttleID].par.tempDestinationPos.xPos;
@@ -355,13 +355,15 @@ ACTION cameraProcess:
 				
 				durationToCamera[i] := REAL_TO_DINT(ParabolicBlend_0.durationAtEvalDist * 1000000); // Converted to microseconds
 				requestImage[i] := TRUE;
+				cm.state := 10;
 			END_IF
 			
-		10:
-			
-		20:
-			
-		30:
+		10: // Wait for vision to return data
+			IF EDGENEG(requestImage[i]) THEN
+				shuttlePlans[pCameraStation.tempShuttleID].isFlipped := flipOrder;
+				pCameraStation.startImageAcquisition := FALSE;
+				cm.state := 0;
+			END_IF
 		
 	END_CASE
 	

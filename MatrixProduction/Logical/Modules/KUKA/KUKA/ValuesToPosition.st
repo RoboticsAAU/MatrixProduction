@@ -115,7 +115,7 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Status := 2; // 010
 					outputPos.Turn := 35; // 100011
 					
-					IF isFlipped THEN
+					IF opt_isFlipped THEN
 						outputPos.Y := 780 - 32.79;
 						outputPos.A := 180;
 						outputPos.Turn := 3; // 000011
@@ -165,7 +165,7 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Status := 2; // 010
 					outputPos.Turn := 34; // 100010
 					
-					IF isFlipped THEN
+					IF opt_isFlipped THEN
 						outputPos.Y := 780 - 32.79;
 					END_IF
 					
@@ -213,7 +213,7 @@ FUNCTION_BLOCK ValuesToPosition
 					outputPos.Status := 2; // 010
 					outputPos.Turn := 2; // 000010
 					
-					IF isFlipped THEN
+					IF opt_isFlipped THEN
 						outputPos.A := 0;
 						// outputPos.Turn := 34; // 100010 
 					END_IF
@@ -280,8 +280,8 @@ FUNCTION_BLOCK ValuesToPosition
 		
 	END_CASE
 	
-	// Reset input variable isFlipped
-	isFlipped := FALSE;
+	// Reset input variable opt_isFlipped
+	opt_isFlipped := FALSE;
 	
 	ValuesToCorrection_0.baseNo := baseNo;
 	ValuesToCorrection_0.robotIdx := axisGroupIdx;

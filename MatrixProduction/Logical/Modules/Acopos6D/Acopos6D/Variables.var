@@ -1,5 +1,4 @@
 VAR
-	ABBRobot : ABB_typ;
 	cm : REFERENCE TO brdkCM;
 	createShGroup : USINT;
 	em : brdkEM;
@@ -111,6 +110,7 @@ VAR
 	readIndex : USINT := 0;
 	writeIndex : USINT := 0;
 	ParabolicBlend_0 : ParabolicBlend;
+	flipOrder : BOOL;
 END_VAR
 (*Variable mapping*)
 VAR

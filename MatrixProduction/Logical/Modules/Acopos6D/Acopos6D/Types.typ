@@ -37,13 +37,6 @@ TYPE
 		Shuttle4 : shuttlePos;
 		Shuttle1 : shuttlePos;
 	END_STRUCT;
-	ABB_typ : 	STRUCT 
-		HomePositionReached : BOOL;
-		startSmallWeightMovement : BOOL;
-		returnBigWeightMovement : BOOL;
-		returnSmallWeightMovement : BOOL;
-		startBigWeightMovement : BOOL;
-	END_STRUCT;
 	cameraStation_typ : 	STRUCT 
 		startImageAcquisition : BOOL;
 		cm : brdkCM;

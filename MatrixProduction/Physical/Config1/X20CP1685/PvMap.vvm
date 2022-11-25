@@ -3,8 +3,10 @@ VAR_CONFIG
 	::Acopos6D:orderSpec AT %Q.::KUKA:orderSpec; (*Insert your comment here...*)
 	::Acopos6D:orderAmount AT %Q.::KUKA:orderAmount; (*Insert your comment here...*)
 	::Acopos6D:isOrderFlipped AT %Q.::KUKA:isOrderFlipped; (*Insert your comment here...*)
+	Cyclic#1.::Acopos6D:durationToCamera AT %Q.Cyclic#1.::Vision:durationToCamera; (*Insert your comment here...*)
 	Cyclic#1.::Acopos6D:requestImage AT %Q.Cyclic#1.::Vision:imageRequested; (*Insert your comment here...*)
 	::KUKA:robotBusy AT %Q.::Acopos6D:robotBusy; (*Insert your comment here...*)
 	::KUKA:robotDone AT %Q.::Acopos6D:robotDone; (*Insert your comment here...*)
+	Cyclic#1.::Vision:flipOrder AT %Q.Cyclic#1.::Acopos6D:flipOrder; (*Insert your comment here...*)
 	Cyclic#1.::Vision:imageRequested AT %Q.Cyclic#1.::Acopos6D:requestImage; (*Insert your comment here...*)
 END_VAR

@@ -11,11 +11,6 @@ ACTION ResetInput:
 	gAcp6DCtrl.Cmd.StartProcess				:= FALSE;
 	gAcp6DCtrl.Cmd.StopProcess				:= FALSE;
 	
-	ABBRobot.returnBigWeightMovement 		:= FALSE;
-	ABBRobot.returnSmallWeightMovement		:= FALSE;
-	ABBRobot.startBigWeightMovement			:= FALSE;
-	ABBRobot.startSmallWeightMovement		:= FALSE;
-	
 	MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
 	MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0;
 	MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 0;

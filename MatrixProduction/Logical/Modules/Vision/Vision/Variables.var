@@ -2,46 +2,34 @@ VAR
 	PowerlinkCycle_us : DINT; (*Powerlink cycletime in microseconds*)
 	NettimeLastCycle_us : DINT; (*Old nettime used to calculate Powerlink cycle time*)
 	AxisPositionNow : LREAL; (*Calculated positon of the axis position, acopos and network delay times are compensated*)
-	TriggerTimeDelta_us : DINT; (*Delta time in microseconds to the next trigger*)
-	TriggerPosDelta : LREAL; (*Delta position in units to the next trigger*)
-	shuttleAcceleration : REAL;
-END_VAR
-VAR CONSTANT
-	LAST_IDX_SH_POS_OLD : USINT := 9;
-END_VAR
-VAR
-	ShuttleYPosOld_m : ARRAY[0..LAST_IDX_SH_POS_OLD] OF LREAL;
-	TON_Ready : TON;
+	TriggerTimeDelta_us : ARRAY[0..NUM_CAMS] OF DINT; (*Delta time in microseconds to the next trigger*)
+	TON_Ready : ARRAY[0..NUM_CAMS] OF TON;
 	visionResults : ARRAY[0..254] OF USINT;
-	visEnableSetup : BOOL; (*Enable/Disable vision setup when camera is not ready*)
-	visEnableCommand : BOOL; (*Enable/Disable vision trigger and enable when camera is not ready*)
-	visionResultString : STRING[255];
 	blobOutput : BlobOutput_typ;
 	blobInput : BlobInput_typ;
 	mappView : brdkViImg_mappView;
 	imageSvg : STRING[6000000];
-	TriggerTimeout : ARRAY[1..MAX_NUM_CAMS] OF TON; (*Disable web reload when timed out*)
-	oldImageNettime : DINT;
-	durationWs2ToDeparture : DINT;
-	imageRequested : ARRAY[0..0] OF BOOL := [1(FALSE)];
-	requestTimeStamp : DINT := 0;
-	blobReady : BOOL := FALSE;
-	visState : USINT := 0;
+	TriggerTimeout : ARRAY[0..NUM_CAMS] OF TON; (*Disable web reload when timed out*)
+	oldImageNettime : ARRAY[0..NUM_CAMS] OF DINT;
+	durationToCamera : ARRAY[0..NUM_CAMS] OF DINT;
+	imageRequested : ARRAY[0..NUM_CAMS] OF BOOL;
+	requestTimeStamp : ARRAY[0..NUM_CAMS] OF DINT;
+	blobReady : ARRAY[0..NUM_CAMS] OF BOOL;
 END_VAR
 VAR CONSTANT
-	cameraWidth : INT := 1280;
-	cameraHeight : INT := 1024;
-END_VAR
-(*PV Mappings*)
-VAR
-	pShuttlePlan : USINT;
+	cameraWidth : INT := 0;
+	cameraHeight : INT := 0;
 END_VAR
 (*Image, crosshair data and constants*)
 VAR
 	tmpStr1 : STRING[1000];
 	i : UINT;
-	visCameraStatus : STRING[30];
+	camIdx : UINT;
 END_VAR
 VAR CONSTANT
 	HexTab : STRING[16] := '0123456789ABCDEF';
+END_VAR
+VAR
+	visState : ARRAY[0..NUM_CAMS] OF USINT;
+	flipOrder : BOOL;
 END_VAR

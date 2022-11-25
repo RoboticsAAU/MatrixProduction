@@ -4,8 +4,8 @@
     <Widget xsi:type="widgets.brease.Label" id="Label14" top="30" left="100" width="1045" height="90" zIndex="0" text="Vision" textAlign="center" fontSize="90px" />
     <Widget xsi:type="widgets.brease.Label" id="Label1" top="10" left="1040" width="191" height="60" zIndex="1" text="Exposure" fontSize="40px" />
     <Widget xsi:type="widgets.brease.Label" id="Label2" top="45" left="1170" width="191" height="60" zIndex="2" text="µs" fontSize="40px" />
-    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput1" top="50" left="1060" width="138" height="60" zIndex="3" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="999" backColor="rgba(255, 255, 255, 0)" borderColor="rgba(85, 85, 85, 0)" activeBorderColor="rgba(255, 136, 0, 0)" activeBackColor="rgba(241, 241, 241, 0)" fontSize="40px" />
-    <Widget xsi:type="widgets.brdk.VisionImage" id="VisionImage1" top="140" left="225" width="820" height="609" zIndex="4" />
-    <Widget xsi:type="widgets.brease.NavigationButton" id="NavigationButton1" top="700" left="1060" width="170" height="45" zIndex="5" pageId="page_smartLabPage" text="Order Config" borderStyle="solid" borderWidth="4px" cornerRadius="5px" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brdk.VisionImage" id="VisionImage1" top="140" left="225" width="820" height="609" zIndex="3" />
+    <Widget xsi:type="widgets.brease.NavigationButton" id="NavigationButton1" top="700" left="1060" width="170" height="45" zIndex="4" pageId="page_smartLabPage" text="Order Config" borderStyle="solid" borderWidth="4px" cornerRadius="5px" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput1" top="65" left="910" width="270" zIndex="5" borderStyle="none" fontSize="35px" padding="0px 0px 0px 0px" />
   </Widgets>
 </Content>

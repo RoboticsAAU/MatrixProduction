@@ -38,11 +38,6 @@ END_VAR
 (*Misc*)
 VAR
 	acoposBase : FRAME;
-	bottomCoverMagazineBase : FRAME;
-	pcbMagazineBase : FRAME;
-	fuseMagazineBase : FRAME;
-	topCoverMagazineBase : FRAME;
-	unloadingBase : FRAME;
 	coordSys : COORDSYS;
 	endPOS : E6POS;
 	position1 : E6AXIS;
@@ -55,10 +50,10 @@ END_VAR
 VAR CONSTANT
 	relativeDistance : REAL := 80.0;
 	relativeDrillDistance : REAL := 10.0;
-	drillXOffset : REAL := 27*2;
-	drillYOffset : REAL := 53*2;
 END_VAR
 VAR
+	drillXOffset : REAL := 27*2;
+	drillYOffset : REAL := 53*2;
 	numDoneHoles : USINT := 0;
 	fusePickOffset : REAL := 13; (*Distance between fuses*)
 	k : INT;

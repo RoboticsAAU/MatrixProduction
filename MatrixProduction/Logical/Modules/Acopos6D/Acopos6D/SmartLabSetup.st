@@ -23,7 +23,7 @@ ACTION smartLabWorkstationSetup:
 	gWorkstations[0].par.departPosX					:= QuadrantIdxToPos(4);
 	gWorkstations[0].par.departPosY					:= QuadrantIdxToPos(1);
 	gWorkstations[0].par.landBeforeProcess			:= FALSE;
-	gWorkstations[0].par.cameraID					:= 0;
+	gWorkstations[0].par.cameraID					:= 1;
 	
 	gWorkstations[1].par.xLocation					:= QuadrantIdxToPos(5);
 	gWorkstations[1].par.yLocation					:= QuadrantIdxToPos(3);

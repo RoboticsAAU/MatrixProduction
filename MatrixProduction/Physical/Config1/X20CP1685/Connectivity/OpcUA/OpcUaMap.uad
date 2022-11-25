@@ -63,13 +63,6 @@
         <Variable Name="modeSelectorOldValue" />
       </Task>
       <Task Name="Acopos6D">
-        <Variable Name="ABBRobot">
-          <Variable Name="HomePositionReached" />
-          <Variable Name="startSmallWeightMovement" />
-          <Variable Name="returnBigWeightMovement" />
-          <Variable Name="returnSmallWeightMovement" />
-          <Variable Name="startBigWeightMovement" />
-        </Variable>
         <Variable Name="createShGroup" />
         <Variable Name="enableButtons" />
         <Variable Name="flaskProgramAcceleration" />
@@ -85,7 +78,6 @@
       </Task>
       <Task Name="Vision">
         <Variable Name="visionResults" />
-        <Variable Name="visionResultString" />
         <Variable Name="imageSvg" />
       </Task>
     </Module>

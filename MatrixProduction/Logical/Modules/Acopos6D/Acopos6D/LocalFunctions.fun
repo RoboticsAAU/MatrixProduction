@@ -107,7 +107,6 @@ END_FUNCTION_BLOCK
 	END_VAR
 	VAR
 		blendDistance : REAL;
-		polynomialSegment : INT;
 		blendTime : REAL;
 		fullDuration : REAL;
 	END_VAR
