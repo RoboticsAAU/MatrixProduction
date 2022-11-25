@@ -77,7 +77,7 @@ PROGRAM _CYCLIC
 					END_IF
 						
 				10: // Capture image at the right time window, which is determined by pretrigger cycles using current estimation of PowerlinkCycle_us
-					TriggerTimeDelta_us[camIdx] := durationToCamera[camIdx] - (NettimeCurrent_us - requestTimeStamp[camIdx]);
+					TriggerTimeDelta_us[camIdx] := (durationToCamera[camIdx]) - (NettimeCurrent_us - requestTimeStamp[camIdx]);
 				
 					IF (TriggerTimeDelta_us[camIdx] >= (gVisionNettime.CFG.VisionPreTrigger_Cycles) * PowerlinkCycle_us)  AND
 						(TriggerTimeDelta_us[camIdx] <= (gVisionNettime.CFG.VisionPreTrigger_Cycles + 1) * PowerlinkCycle_us) THEN

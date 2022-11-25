@@ -21,7 +21,7 @@ FUNCTION_BLOCK ParabolicBlend
 	
 	// Segment 2 (linear segment)
 	ELSIF (startPos + blendDistance < evalPos) AND (evalPos <= endPos - blendDistance) THEN
-		durationAtEvalDist := blendTime + ((evalPos - (startPos + blendDistance))/velocity;
+		durationAtEvalDist := blendTime + (evalPos - (startPos + blendDistance))/velocity;
 	
 	// Segment 3 (ending blend segment)
 	ELSIF (endPos - blendDistance < evalPos) AND (evalPos <= endPos) THEN

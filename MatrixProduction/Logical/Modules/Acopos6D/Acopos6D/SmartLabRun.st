@@ -353,9 +353,15 @@ ACTION cameraProcess:
 				ParabolicBlend_0.evalPos := pCameraStation.camPosY; 
 				ParabolicBlend_0();
 				
-				durationToCamera[i] := REAL_TO_DINT(ParabolicBlend_0.durationAtEvalDist * 1000000); // Converted to microseconds
-				requestImage[i] := TRUE;
-				cm.state := 10;
+				// Error handling
+				IF ParabolicBlend_0.durationAtEvalDist <> -1 THEN				
+					durationToCamera[i] := REAL_TO_DINT(ParabolicBlend_0.durationAtEvalDist * 1000000); // Converted to microseconds
+					requestImage[i] := TRUE;
+					cm.state := 10;
+				ELSE
+					pCameraStation.startImageAcquisition := FALSE;
+				END_IF
+				
 			END_IF
 			
 		10: // Wait for vision to return data
