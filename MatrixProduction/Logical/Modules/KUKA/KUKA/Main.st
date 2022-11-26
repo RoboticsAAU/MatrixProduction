@@ -29,10 +29,14 @@ PROGRAM _INIT
 	
 	gripperWaitTime := 250; // in ms
 	
+	robotVelocity := 100;
+	robotAcceleration := 50;
+	robotVelocityOverride := 10;
+	
 END_PROGRAM
 
 PROGRAM _CYCLIC
-
+	
 	FOR i := 0 TO 5 DO // CHANGE TO 0 TO 5 WHEN ALL ROBOTS WORK
 		
 		// Accessing the specific KUKA for easier naming
@@ -57,13 +61,22 @@ PROGRAM _CYCLIC
 		// RobotStart contains FB calls associated with initialization of the robots and diagnosis
 		RobotStart;
 		
-		//robotDone[0] := robotDone[1] := robotDone[2] := robotDone[3] := robotDone[4] := robotDone[5] := TRUE; // ALSO CHANGE IN ROBOTEXECUTE IN ACOPOS!!!
-		robotDone[5] := TRUE;
+		// If the robot is not enabled, tell Acopos that the robot is already done
+		IF NOT robotEnabled[i] THEN
+			robotDone[i] := TRUE;
+		END_IF
 		
 		// If the robot is ready, begin actual program
 		IF 	pKuka.status.P_ AND pKuka.status.S_ AND pKuka.status.R_ AND pKuka.status.I_ AND pKuka.status.EXT_ THEN
+			// Changeable parameters in the HMI
+			pKuka.motion.KRC_MoveDirectAbsolute.Velocity := pKuka.motion.KRC_MoveLinearAbsolute.Velocity := pKuka.motion.KRC_MoveLinearRelative.Velocity
+				:= robotVelocity; // Velocity in percent		
+			pKuka.motion.KRC_MoveDirectAbsolute.Acceleration := pKuka.motion.KRC_MoveLinearAbsolute.Acceleration := pKuka.motion.KRC_MoveLinearRelative.Acceleration
+				:= robotAcceleration; // Acceleration in percent
+			pKuka.start.KRC_SetOverride.Override := robotVelocityOverride;
+			
 			CASE cm.state OF
-				0: // INITIALIZING			
+				0: // INITIALIZING
 					pKuka.convert.ValuesToCOORDSYS.Tool := 1;
 					pKuka.convert.ValuesToPosition.axisGroupIdx := pKuka.axisGroupIdx;
 			
@@ -72,11 +85,6 @@ PROGRAM _CYCLIC
 					pKuka.motion.KRC_MoveDirectAbsolute.KRC_AxisGroupRefArr := pKuka.motion.KRC_MoveLinearAbsolute.KRC_AxisGroupRefArr := pKuka.motion.KRC_MoveLinearRelative.KRC_AxisGroupRefArr
 					:= ADR(AxisRef);
 					
-					pKuka.motion.KRC_MoveDirectAbsolute.Velocity := pKuka.motion.KRC_MoveLinearAbsolute.Velocity := pKuka.motion.KRC_MoveLinearRelative.Velocity
-						:= 100; // Velocity in percent
-					
-					pKuka.motion.KRC_MoveDirectAbsolute.Acceleration := pKuka.motion.KRC_MoveLinearAbsolute.Acceleration := pKuka.motion.KRC_MoveLinearRelative.Acceleration
-						:= 100; // Acceleration in percent
 					pKuka.motion.KRC_MoveDirectAbsolute.BufferMode := pKuka.motion.KRC_MoveLinearAbsolute.BufferMode := pKuka.motion.KRC_MoveLinearRelative.BufferMode
 						:= 2; // BUFFERED
 					pKuka.motion.KRC_MoveLinearAbsolute.OriType := pKuka.motion.KRC_MoveLinearRelative.OriType

@@ -132,7 +132,7 @@ ACTION RobotProcess:
 						numDoneHoles := numDoneHoles + 1;
 						
 						// Check if more holes are needed for the specific order
-						IF numDoneHoles < orderSpec[i] THEN
+						IF numDoneHoles < SINT_TO_USINT(orderSpec[i]) THEN
 							// Define next order-specific approach point
 							cm.state := 1000;
 						ELSE 

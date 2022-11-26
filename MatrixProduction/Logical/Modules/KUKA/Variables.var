@@ -11,3 +11,7 @@ VAR
 	gripperWhitePins : ARRAY[0..5] OF BOOL;
 	gripperBlackPins : ARRAY[0..5] OF BOOL;
 END_VAR
+(*OPC UA*)
+VAR
+	robotEnabled : ARRAY[0..5] OF BOOL := [5(TRUE),FALSE];
+END_VAR

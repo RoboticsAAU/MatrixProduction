@@ -263,7 +263,7 @@ PROGRAM _CYCLIC
 				
 				3000..3999:
 						em.description := 'linkMovement Program';
-								
+						
 						linkMovementProgram;
 						
 				7000:
@@ -411,13 +411,6 @@ PROGRAM _CYCLIC
 							TON_0.IN := FALSE;
 							executeOrder := FALSE;
 							
-							// If the buffer is empty go to read state, else just continue executing the order
-//							IF bufferEmpty THEN
-//								em.substate := 17015;
-//							ELSE
-//								em.substate := 17020;
-//							END_IF
-							
 							// Write the order if the buffer is not full
 							IF NOT bufferFull THEN
 								writeOrder;
@@ -442,12 +435,11 @@ PROGRAM _CYCLIC
 						
 						remainingOrderAmount := productOrder.amount;
 						activeShuttles := activeShuttles + productOrder.amount;
-						amountProductsFinished := 0;
 					END_IF
 					
 					em.substate := 17020;
 					
-				17020..17999:							
+				17020..17999:
 					em.description := 'Smart Lab program - Workstation movement';
 					// Go through the workstations and run program for these
 					FOR i := 0 TO (smartLabNumWorkstations - 1) DO

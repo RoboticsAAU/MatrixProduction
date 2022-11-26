@@ -58,6 +58,7 @@
           </Variable>
         </Variable>
         <Variable Name="gVisionSensor" RecursiveEnable="1" />
+        <Variable Name="robotEnabled" RecursiveEnable="2" />
       </GlobalVariables>
       <Task Name="Main">
         <Variable Name="modeSelectorOldValue" />
@@ -75,10 +76,16 @@
         <Variable Name="tempProductOrder" RecursiveEnable="2" />
         <Variable Name="bufferFull" />
         <Variable Name="occupiedPosition" RecursiveEnable="2" />
+        <Variable Name="activeShuttles" />
       </Task>
       <Task Name="Vision">
         <Variable Name="visionResults" />
         <Variable Name="imageSvg" />
+      </Task>
+      <Task Name="KUKA">
+        <Variable Name="robotVelocity" />
+        <Variable Name="robotVelocityOverride" />
+        <Variable Name="robotAcceleration" />
       </Task>
     </Module>
   </DefaultView>

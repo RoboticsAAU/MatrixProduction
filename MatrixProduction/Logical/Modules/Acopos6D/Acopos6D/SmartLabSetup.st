@@ -140,6 +140,7 @@ ACTION smartLabSetup:
 			TON_0.IN := FALSE;
 			bufferSize := SIZEOF(orderBuffer)/SIZEOF(orderBuffer[0]);
 			activeShuttles := 0;
+			amountProductsFinished := 0;
 			tempShuttleIndex := 1;
 			em.substate := 17005;
 			

@@ -17,5 +17,7 @@
     <Object Type="File">content_smartLabPage.binding</Object>
     <Object Type="File">content_smartLabPage.eventbinding</Object>
     <Object Type="File">content_vision.binding</Object>
+    <Object Type="File">content_KukaPage.binding</Object>
+    <Object Type="File">content_KukaPage.eventbinding</Object>
   </Objects>
 </Package>

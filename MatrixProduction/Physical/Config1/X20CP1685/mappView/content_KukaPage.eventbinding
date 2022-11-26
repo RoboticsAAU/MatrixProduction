@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EventBindingSet id="content_KukaPage_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Bindings>
+    <EventBinding id="EventBinding_8">
+      <Source xsi:type="widgets.brease.ToggleButton.Event" contentRefId="content_KukaPage" widgetRefId="ToggleButton1" event="ValueChanged" />
+      <EventHandler>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_KukaPage" widgetRefId="CheckBox1">
+                <Method xsi:type="widgets.brease.CheckBox.Action.SetValueBool" value="=newValueBool" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_KukaPage" widgetRefId="CheckBox2">
+                <Method xsi:type="widgets.brease.CheckBox.Action.SetValueBool" value="=newValueBool" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_KukaPage" widgetRefId="CheckBox3">
+                <Method xsi:type="widgets.brease.CheckBox.Action.SetValueBool" value="=newValueBool" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_KukaPage" widgetRefId="CheckBox4">
+                <Method xsi:type="widgets.brease.CheckBox.Action.SetValueBool" value="=newValueBool" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="4">
+            <Action>
+              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_KukaPage" widgetRefId="CheckBox5">
+                <Method xsi:type="widgets.brease.CheckBox.Action.SetValueBool" value="=newValueBool" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="5">
+            <Action>
+              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_KukaPage" widgetRefId="CheckBox6">
+                <Method xsi:type="widgets.brease.CheckBox.Action.SetValueBool" value="=newValueBool" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_9">
+      <Source xsi:type="opcUa.Event" refId="::Acopos6D:activeShuttles" event="ValueChanged" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="widgets.brease.ToggleButton.Action" contentRefId="content_KukaPage" widgetRefId="ToggleButton1">
+            <Method xsi:type="widgets.brease.ToggleButton.Action.SetEnable" value="=(newValue=0)" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+  </Bindings>
+</EventBindingSet>

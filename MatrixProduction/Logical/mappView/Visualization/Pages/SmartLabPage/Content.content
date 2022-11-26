@@ -3,7 +3,7 @@
   <Widgets>
     <Widget xsi:type="widgets.brease.Label" id="Label14" top="0" left="25" width="500" height="120" zIndex="2" text="Smart Lab V2.0" textAlign="center" fontSize="65px" bold="true" padding="0px 0px 0px 15px" />
     <Widget xsi:type="widgets.brease.Label" id="Label15" top="125" left="60" width="450" height="60" zIndex="3" text="Order Configuration" textAlign="left" fontSize="50px" padding="0px 15px 0px 0px" />
-    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput1" top="220" left="300" width="115" height="40" zIndex="4" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1,'maximumIntegerDigits':8},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="8" minValue="1" value="1" borderWidth="2px 6px 2px 2px" activeBorderWidth="2px 6px 2px 2px" cornerRadius="5px" borderColor="rgba(0, 0, 0, 1)" fontSize="30px" unitFontSize="14px" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput1" top="220" left="300" width="115" height="40" zIndex="4" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1,'maximumIntegerDigits':8},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" maxValue="10" minValue="1" value="1" borderWidth="2px 6px 2px 2px" activeBorderWidth="2px 6px 2px 2px" cornerRadius="5px" borderColor="rgba(0, 0, 0, 1)" fontSize="30px" unitFontSize="14px" />
     <Widget xsi:type="widgets.brease.PushButton" id="PushButton1" top="635" left="165" width="290" height="50" zIndex="5" text="Place Order" borderWidth="5px" cornerRadius="10px" backColor="rgba(255, 255, 255, 1)" disabledBackColor="rgba(220, 220, 220, 1)" borderColor="rgba(0, 0, 0, 1)" fontSize="30px" bold="true" italic="false" />
     <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle120" top="525" left="725" width="130" height="130" zIndex="7" backColor="rgba(0, 0, 0, 1)" />
     <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle121" top="525" left="860" width="130" height="130" zIndex="8" backColor="rgba(0, 0, 0, 1)" />
@@ -86,5 +86,6 @@
     <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle36" top="187" left="998" width="60" height="60" zIndex="82" borderStyle="solid" cornerRadius="5px" backColor="rgba(245, 245, 245, 1)" opacity="0.8" visible="false" />
     <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle06" top="187" left="792" width="60" height="60" zIndex="83" borderStyle="solid" cornerRadius="5px" backColor="rgba(245, 245, 245, 1)" opacity="0.8" visible="false" />
     <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle16" top="187" left="863" width="60" height="60" zIndex="84" borderStyle="solid" cornerRadius="5px" backColor="rgba(245, 245, 245, 1)" opacity="0.8" visible="false" />
+    <Widget xsi:type="widgets.brease.NavigationButton" id="NavigationButton2" top="705" left="860" width="170" height="45" zIndex="85" pageId="page_Kuka" text="KUKA Settings" borderStyle="solid" borderWidth="4px" cornerRadius="5px" fontSize="20px" bold="true" />
   </Widgets>
 </Content>

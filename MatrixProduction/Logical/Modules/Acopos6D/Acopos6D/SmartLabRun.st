@@ -117,9 +117,12 @@ ACTION smartLabWorkstationOperation:
 				// Send if order is flipped or not
 				isOrderFlipped[i] := pShuttlePlan.isFlipped;
 				
-				// Begin robot operation
-				robotExecute[i] := TRUE;
-				robotExecute[5] := FALSE; // To avoid robot 1 and 5 moving
+				// If robot is enabled, begin robot operation
+				IF robotEnabled[i] THEN
+					robotExecute[i] := TRUE;
+				ELSE
+					robotExecute[i] := FALSE;
+				END_IF
 				
 				IF pWorkstation.par.landBeforeProcess THEN
 					cm.state := 30;
@@ -222,6 +225,7 @@ ACTION smartLabShuttleMovement:
 					pShuttlePlan.progressIndex := 0;
 					pShuttlePlan.isActive := FALSE;
 					activeShuttles := activeShuttles - 1;
+					amountProductsFinished := amountProductsFinished + 1;
 				ELSE
 					pShuttlePlan.progressIndex := pShuttlePlan.progressIndex + 1;
 				END_IF

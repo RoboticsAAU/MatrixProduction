@@ -30,8 +30,7 @@ ACTION RobotStart:
 			
 			// Logic to set override for robot velocity
 			pKuka.start.KRC_SetOverride.AxisGroupIdx 				:= pKuka.axisGroupIdx;
-			pKuka.start.KRC_SetOverride.KRC_AxisGroupRefArr 		:= ADR(AxisRef); 
-			pKuka.start.KRC_SetOverride.Override 					:= 60; // REMEMBER TO CHANGE LATER
+			pKuka.start.KRC_SetOverride.KRC_AxisGroupRefArr 		:= ADR(AxisRef);
 			
 			// Logic to set 
 			pKuka.start.KRC_Abort.AxisGroupIdx 						:= pKuka.axisGroupIdx;
