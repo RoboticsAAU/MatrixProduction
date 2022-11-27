@@ -391,8 +391,10 @@ ACTION smartLabCameraProcess:
 							
 						ELSE // The shuttle has an offset from start position and the new current position must be accounted for
 							
-							// Calculate how far in time the shuttle has moved from the starting point. The other parameters are already set
-							ParabolicBlend_0.evalPos := gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y;
+							// Calculate how far in time the shuttle has moved from the starting point. Start and end must be set again since ParabolicBlend can manipulate these inputs
+							ParabolicBlend_0.startPos 	:= pShuttle.par.tempStartPos.yPos;
+							ParabolicBlend_0.endPos 	:= pShuttle.par.tempDestinationPos.yPos;
+							ParabolicBlend_0.evalPos 	:= gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y;
 							ParabolicBlend_0();
 							
 							durationStartToCurrent := REAL_TO_DINT(ParabolicBlend_0.durationAtEvalDist * 1000000); // Converted to microseconds
@@ -417,9 +419,9 @@ ACTION smartLabCameraProcess:
 			// Currently implemented as if all cameras follow the same visionResultReady implementation. However, camera-specific approach is possible with multiple cameras are used	
 			10: // Wait for request from vision program, indicated by rising edge
 				IF EDGEPOS(visionResultReady[pShuttle.par.tempCameraStationID]) AND pCameraStation.tempShuttleID = USINT_TO_INT(pShuttle.par.shuttleID) THEN
-					shuttlePlans[pShuttle.par.shuttleID].isFlipped := flipOrder;
-					pShuttle.par.acquireImage := FALSE;
 					requestImage[pShuttle.par.tempCameraStationID] := FALSE;
+					pShuttle.par.acquireImage := FALSE;
+					shuttlePlans[pShuttle.par.shuttleID].isFlipped := flipOrder;
 					pCameraStation.cm.state := 0;
 				END_IF
 			

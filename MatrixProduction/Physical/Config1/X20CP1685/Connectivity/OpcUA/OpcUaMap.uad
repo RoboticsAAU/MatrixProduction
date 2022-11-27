@@ -81,6 +81,12 @@
       <Task Name="Vision">
         <Variable Name="visionResults" />
         <Variable Name="imageSvg" />
+        <Variable Name="overlay" />
+        <Variable Name="mappView">
+          <Variable Name="wsPort" />
+        </Variable>
+        <Variable Name="hwCam" RecursiveEnable="2" />
+        <Variable Name="hwBlob" RecursiveEnable="2" />
       </Task>
       <Task Name="KUKA">
         <Variable Name="robotVelocity" />
