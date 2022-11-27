@@ -12,8 +12,11 @@ TYPE
 	END_STRUCT;
 	shuttle_par_typ : 	STRUCT 
 		shuttleID : USINT;
+		acquireImage : BOOL;
+		tempCameraStationID : SINT; (*Represents ID of camera attached between current and destination position. It is set to -1 If no camera present*)
 		tempWorkstationID : USINT;
 		tempNextWorkstationID : USINT;
+		tempStartPos : shuttlePos;
 		tempDestinationPos : shuttlePos;
 		tempHighwayColumn : SINT;
 	END_STRUCT;
@@ -38,11 +41,8 @@ TYPE
 		Shuttle1 : shuttlePos;
 	END_STRUCT;
 	cameraStation_typ : 	STRUCT 
-		startImageAcquisition : BOOL;
+		tempShuttleID : SINT;
 		cm : brdkCM;
-		shuttleStartPos : shuttlePos;
-		shuttleEndPos : shuttlePos;
-		tempShuttleID : USINT;
 		camPosX : REAL;
 		camPosY : REAL;
 		TON : TON;
@@ -57,7 +57,7 @@ TYPE
 		dummy : USINT;
 	END_STRUCT;
 	workStation_par_typ : 	STRUCT 
-		cameraID : SINT;
+		cameraID : SINT; (*Represents ID of camera attached AFTER the workstation. If no camera present after, SmartLabRun Init sets it to -1*)
 		landBeforeProcess : BOOL; (*TRUE = yes*)
 		yLocation : REAL;
 		xLocation : REAL;

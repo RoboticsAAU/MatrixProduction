@@ -178,15 +178,13 @@ ACTION smartLabWorkstationOperation:
 			// Go back to wait for shuttle at workstation if the current shuttle has begun moving (avoids bugs)
 			IF gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].State = mcACP6D_SH_STATE_MOTION THEN
 				
-				IF shuttlePlans[pWorkstation.par.tempShuttleID].isActive THEN
-					IF pWorkstation.par.cameraID <> -1 THEN
-						gCameraStations[pWorkstation.par.cameraID].shuttleStartPos.xPos := pWorkstation.par.xLocation;
-						gCameraStations[pWorkstation.par.cameraID].shuttleStartPos.yPos := pWorkstation.par.yLocation;
-						gCameraStations[pWorkstation.par.cameraID].shuttleEndPos.xPos := gShuttles[pWorkstation.par.tempShuttleID].par.tempDestinationPos.xPos;
-						gCameraStations[pWorkstation.par.cameraID].shuttleEndPos.yPos := gShuttles[pWorkstation.par.tempShuttleID].par.tempDestinationPos.yPos;
-						gCameraStations[pWorkstation.par.cameraID].tempShuttleID := pWorkstation.par.tempShuttleID;
-						gCameraStations[pWorkstation.par.cameraID].startImageAcquisition := TRUE;
-					END_IF
+				gShuttles[pWorkstation.par.tempShuttleID].par.tempCameraStationID := pWorkstation.par.cameraID;
+				
+				// We set flag to acquire image if upcoming path has a camera station and if the shuttle is active (has been assigned an order)
+				IF shuttlePlans[pWorkstation.par.tempShuttleID].isActive AND pWorkstation.par.cameraID <> -1 THEN
+					
+					gShuttles[pWorkstation.par.tempShuttleID].par.acquireImage := TRUE;
+					
 				END_IF
 				
 				cm.state := 10;
@@ -269,6 +267,10 @@ ACTION smartLabShuttleMovement:
 				
 			// Move to the specified column if any is available (-1 if no column is available)
 			ELSE
+				
+				// Previous destination is now current position
+				pShuttle.par.tempStartPos := pShuttle.par.tempDestinationPos;
+				
 				// Position of the selected column
 				pShuttle.par.tempDestinationPos.xPos := QuadrantIdxToPos(quadrantIdx := (1 + pShuttle.par.tempHighwayColumn)); // Add 1 because the first column is not a highway
 				pShuttle.par.tempDestinationPos.yPos := gWorkstations[pShuttle.par.tempWorkstationID].par.departPosY;
@@ -289,6 +291,9 @@ ACTION smartLabShuttleMovement:
 			cm.description := 'Move from depart point (or free row) of current workstation to approach point of next workstation';
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 2; // Y THEN X
+			
+			// Previous destination is now current position
+			pShuttle.par.tempStartPos := pShuttle.par.tempDestinationPos;
 			
 			// Move to approach point of next workstation specified in the routing sheet (or just the next workstation if the shuttle is inactive)
 			pShuttle.par.tempDestinationPos.xPos := gWorkstations[pShuttle.par.tempNextWorkstationID].par.approachPosX;
@@ -321,6 +326,9 @@ ACTION smartLabShuttleMovement:
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; // X THEN Y
 			
+			// Previous destination is now current position
+			pShuttle.par.tempStartPos := pShuttle.par.tempDestinationPos;
+			
 			// Move to next workstation
 			pShuttle.par.tempDestinationPos.xPos := gWorkstations[pShuttle.par.tempNextWorkstationID].par.xLocation;
 			pShuttle.par.tempDestinationPos.yPos := gWorkstations[pShuttle.par.tempNextWorkstationID].par.yLocation;
@@ -345,39 +353,77 @@ ACTION smartLabShuttleMovement:
 END_ACTION
 
 
-ACTION cameraProcess: 
+ACTION smartLabCameraProcess: 
 	
-	CASE cm.state OF
-		0: // Check if image was requested for the particular camera
+	// The following approach assumes that the shuttle is not obstructed throughout its path, and allows more than one shuttle to be "queued" based on FIFO. 
+	
+	IF pShuttle.par.acquireImage THEN 
+	   
+		pCameraStation ACCESS ADR(gCameraStations[pShuttle.par.tempCameraStationID]);
+		cm ACCESS ADR (gCameraStations[pShuttle.par.tempCameraStationID].cm);
+		pCameraStation.cm.setup.parent.name := 'SmartLabRun';
 			
-			IF pCameraStation.startImageAcquisition THEN
+		CASE pCameraStation.cm.state OF
 				
-				ParabolicBlend_0.acceleration := gAcp6DCtrl.Par.Acceleration;
-				ParabolicBlend_0.velocity := gAcp6DCtrl.Par.Velocity;
-				ParabolicBlend_0.startPos := pCameraStation.shuttleStartPos.yPos;
-				ParabolicBlend_0.endPos := pCameraStation.shuttleEndPos.yPos;
-				ParabolicBlend_0.evalPos := pCameraStation.camPosY; 
-				ParabolicBlend_0();
+			0: // Calculate and send the time it takes for the shuttle to go from current to camera position. This is used by vision program to account for network delay
 				
-				// Error handling
-				IF ParabolicBlend_0.durationAtEvalDist <> -1 THEN				
-					durationToCamera[i] := REAL_TO_DINT(ParabolicBlend_0.durationAtEvalDist * 1000000); // Converted to microseconds
-					requestImage[i] := TRUE;
-					cm.state := 10;
+				pCameraStation.tempShuttleID := USINT_TO_SINT(pShuttle.par.shuttleID);
+				
+				CASE pShuttle.par.tempCameraStationID OF
+					
+					0: // Camera after workstation 0, so the distances are specified in y-direction
+						
+						// The assumption behind these calculations is that the camera is located on the path until the first direction change in the Manhattan path
+						ParabolicBlend_0.absAcceleration 	:= gAcp6DCtrl.Par.Acceleration;
+						ParabolicBlend_0.absVelocity 		:= gAcp6DCtrl.Par.Velocity;
+						ParabolicBlend_0.startPos 			:= pShuttle.par.tempStartPos.yPos;
+						ParabolicBlend_0.endPos 			:= pShuttle.par.tempDestinationPos.yPos;
+						ParabolicBlend_0.evalPos 			:= pCameraStation.camPosY; 
+						ParabolicBlend_0();
+						
+						durationStartToCamera := REAL_TO_DINT(ParabolicBlend_0.durationAtEvalDist * 1000000); // Converted to microseconds
+						
+						// Check if the shuttle is at start position to avoid errors due to position inaccuracies
+						IF ABS(pShuttle.par.tempStartPos.yPos - gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y) < 0.001 AND 
+						   ABS(pShuttle.par.tempStartPos.xPos - gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.X) < 0.001 THEN
+							
+							durationToCamera[pShuttle.par.tempCameraStationID] := durationStartToCamera;
+							
+						ELSE // The shuttle has an offset from start position and the new current position must be accounted for
+							
+							// Calculate how far in time the shuttle has moved from the starting point. The other parameters are already set
+							ParabolicBlend_0.evalPos := gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y;
+							ParabolicBlend_0();
+							
+							durationStartToCurrent := REAL_TO_DINT(ParabolicBlend_0.durationAtEvalDist * 1000000); // Converted to microseconds
+							
+							durationToCamera[pShuttle.par.tempCameraStationID] := durationStartToCamera - durationStartToCurrent; // Converted to microseconds
+						
+						END_IF
+						
+				END_CASE
+				
+				// Send request if no error occurred in parabolic blend calculation. (Implement error handling in the future)
+				IF ParabolicBlend_0.durationAtEvalDist <> -1 THEN
+					requestImage[pShuttle.par.tempCameraStationID] := TRUE;
+					pCameraStation.cm.state := 10;
+					
 				ELSE
-					pCameraStation.startImageAcquisition := FALSE;
-				END_IF
+					
+					pShuttle.par.acquireImage := FALSE;	
+					
+				END_IF	
 				
-			END_IF
+			// Currently implemented as if all cameras follow the same visionResultReady implementation. However, camera-specific approach is possible with multiple cameras are used	
+			10: // Wait for request from vision program, indicated by rising edge
+				IF EDGEPOS(visionResultReady[pShuttle.par.tempCameraStationID]) AND pCameraStation.tempShuttleID = USINT_TO_INT(pShuttle.par.shuttleID) THEN
+					shuttlePlans[pShuttle.par.shuttleID].isFlipped := flipOrder;
+					pShuttle.par.acquireImage := FALSE;
+					requestImage[pShuttle.par.tempCameraStationID] := FALSE;
+					pCameraStation.cm.state := 0;
+				END_IF
 			
-		10: // Wait for vision to return data
-			IF EDGEPOS(visionResultReady[i]) THEN
-				shuttlePlans[pCameraStation.tempShuttleID].isFlipped := flipOrder;
-				pCameraStation.startImageAcquisition := FALSE;
-				requestImage[i] := FALSE;
-				cm.state := 0;
-			END_IF
-		
-	END_CASE
+		END_CASE
+	END_IF
 	
 END_ACTION

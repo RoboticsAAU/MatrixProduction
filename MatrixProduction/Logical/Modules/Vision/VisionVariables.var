@@ -18,8 +18,8 @@ END_VAR
 (*-----------------------------------------------------------------------------------------------------------------------------------------*)
 (*Global constants*)
 VAR CONSTANT
-	NUM_CAMS : UINT := 0; (*Number of camera's 1[0..0]*)
-	NUM_LIGHTS : UINT := 0; (*Number of light's 1[0..0]*)
+	NUM_CAMS : USINT := 0; (*Number of cameras 1[0..0]*)
+	NUM_LIGHTS : UINT := 0; (*Number of lights 1[0..0]*)
 	NUM_RESULTS : UINT := 9; (*Number of results 10[0..9]*)
 	NUM_IDX_VA_LIST : UINT := 18; (*Number of entrys in the Vision Application list 19[0..18]*)
 	DEVICE_NAME : STRING[40] := 'VisionFileDevice'; (*File device where the images and recipes are stored*)

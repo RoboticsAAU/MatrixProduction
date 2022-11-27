@@ -1,19 +1,18 @@
 VAR
 	hwBlob : brdkViBase_hw_blob_10_typ;
-	hwCam : brdkViBase_cam_hw_typ;
-	imgTrigger : brdkViBase_imgTrigger;
+	hwCam : ARRAY[0..NUM_CAMS] OF brdkViBase_cam_hw_typ;
+	imgTrigger : ARRAY[0..NUM_CAMS] OF brdkViBase_imgTrigger;
+	mappView : brdkViImg_mappView;
 	PowerlinkCycle_us : DINT; (*Powerlink cycletime in microseconds*)
 	NettimeLastCycle_us : DINT; (*Old nettime used to calculate Powerlink cycle time*)
 	AxisPositionNow : LREAL; (*Calculated positon of the axis position, acopos and network delay times are compensated*)
 	TriggerTimeDelta_us : ARRAY[0..NUM_CAMS] OF DINT; (*Delta time in microseconds to the next trigger*)
 	visionResults : ARRAY[0..254] OF USINT;
-	blobOutput : BlobOutput_typ;
-	blobInput : BlobInput_typ;
-	mappView : brdkViImg_mappView;
 	imageSvg : STRING[6000000];
-	TriggerTimeout : ARRAY[0..NUM_CAMS] OF TON; (*Disable web reload when timed out*)
 	oldImageNettime : ARRAY[0..NUM_CAMS] OF DINT;
 	requestTimeStamp : ARRAY[0..NUM_CAMS] OF DINT;
+	visState : ARRAY[0..NUM_CAMS] OF USINT;
+	brdkViGeom : BOOL;
 END_VAR
 VAR CONSTANT
 	cameraWidth : INT := 0;
@@ -34,8 +33,4 @@ VAR
 END_VAR
 VAR CONSTANT
 	HexTab : STRING[16] := '0123456789ABCDEF';
-END_VAR
-VAR
-	visState : ARRAY[0..NUM_CAMS] OF USINT;
-	brdkViGeom : BOOL;
 END_VAR

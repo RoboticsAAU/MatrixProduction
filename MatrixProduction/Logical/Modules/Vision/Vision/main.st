@@ -1,5 +1,6 @@
 
 PROGRAM _INIT
+
 	// Reset variables
 	FOR camIdx := 0 TO NUM_CAMS DO
 		imageRequested[camIdx] := FALSE;
@@ -8,14 +9,18 @@ PROGRAM _INIT
 		resultReady[camIdx] := FALSE;
 		visState[camIdx] := 0;
 	END_FOR
-		
+	
+	
+	// gVisionNettime Configuration 
 	gVisionNettime.CMD.Activate					:= TRUE;
 	gVisionNettime.CFG.AxisPeriod				:= 360; // Needs also to be set in the axis configuration
 	gVisionNettime.CFG.AxisPositionDelay_Cycles	:= 1; 	// Number of PLK cycles which the axis position is old when it comes to this task (Time from encoder to now in this task)
 	gVisionNettime.CFG.VisionPreTrigger_Cycles	:= 8; 	// Number of powerlink cycles the trigger has to be send ahead, 4 is a good value.
 	
+	
+	// mappView Configuration 
 	mappView.enable 			:= TRUE;
-
+	
 	mappView.getImageArray 		:= FALSE;
 	mappView.imageFormat 		:= BRDKVIIMG_IMG_TYPE_JPEG;
 	mappView.jpegQuality 		:= 50;
@@ -23,21 +28,18 @@ PROGRAM _INIT
 	mappView.wsPort 			:= 18000;
 	mappView();	
 	
+	
+	// Blob Function Configuration 
+	hwBlob.out.common.enable := TRUE;
+	hwBlob.out.common.numSearchMax := 1;
+	hwBlob.out.common.offsetROI.x := 0;
+	hwBlob.out.common.offsetROI.y := 0;
+	hwBlob.out.enhancedBlobInformation := 0;
+	hwBlob.out.regionFeatures := TRUE;
+	
 END_PROGRAM
 
 PROGRAM _CYCLIC
-	
-	// -----------------------------------------------------------------------------------------------------------
-	// Vision Function Configuration 
-	// -----------------------------------------------------------------------------------------------------------
-	blobInput.enable := TRUE;
-	blobInput.numSearchMax := 1;
-	blobInput.offsetROIX := 0;
-	blobInput.offsetROIY := 0;
-	
-	// -----------------------------------------------------------------------------------------------------------
-	// Vision Sensor Configuration.
-	// -----------------------------------------------------------------------------------------------------------
 	
 	gVisionImage.CFG.EthDevice				:= 'IF2';			// Ethernet interface for the PLC, this is the IF where you go online
 	
@@ -47,29 +49,29 @@ PROGRAM _CYCLIC
 	gVisionSensor[0].CFG.DataStructure		:= ADR(gBlob);		// Global structures that holds all data related to this function
 	gVisionSensor[0].CFG.ComponentLink		:= gCamera;			// Vision component name defined under mappVision in the configuration view
 	
-	// Camera data
-	hwCam.out.par.exposureTime			:= 1000; 	// SUSCEPTIBLE TO CHANGE
-	hwCam.out.par.flashColor			:= 4; 		// 4: LIME (See help function "Image acquisition parameters (cyclic write)" for other alternatives)
-	hwCam.out.par.flashSegment		:= 15; 		// Binary 1111 (all segments are turned on)
-	hwCam.out.par.focus				:= 460; 	// SUSCEPTIBLE TO CHANGE - Camera FocusScale is defined in mm
-	hwCam.out.par.gainLevel				:= 1; 	
-	hwCam.out.par.statusLED :=  BRDKVIBASE_CAM_STATUS_RED; // Gain factor 1
-	//gVisionSensor[0].DAT.MaxItemCnt		:= RecipeData.Cam[i].MaxItemCnt; 	// Already has default value
-	//gVisionSensor[0].DAT.Timeout			:= RecipeData.Cam[i].Timeout; 		// Already has default value
+	// Camera data (output from PLC)
+	hwCam[0].out.par.exposureTime			:= 1000; 	// SUSCEPTIBLE TO CHANGE
+	hwCam[0].out.par.flashColor				:= 4; 		// 4: LIME (See help function "Image acquisition parameters (cyclic write)" for other alternatives)
+	hwCam[0].out.par.flashSegment			:= 15; 		// Binary 1111 (all segments are turned on)
+	hwCam[0].out.par.focus					:= 460; 	// Camera FocusScale is defined in mm
+	hwCam[0].out.par.gainLevel				:= 1; 		// Gain factor
+	hwCam[0].out.par.statusLED			    := BRDKVIBASE_CAM_STATUS_GREEN; 
+	
+	imgTrigger[0].pCameraHw := ADR(hwCam[0]);
 	
 	// -----------------------------------------------------------------------------------------------------------
 	// Capturing image if requested and compensating for network delay
 	// -----------------------------------------------------------------------------------------------------------
-	PowerlinkCycle_us			:= NettimeCurrent_us - NettimeLastCycle_us;
-	NettimeLastCycle_us			:= NettimeCurrent_us;
+	PowerlinkCycle_us 		:= NettimeCurrent_us - NettimeLastCycle_us;
+	NettimeLastCycle_us		:= NettimeCurrent_us;
 	
 	IF gVisionNettime.CMD.Activate THEN
 		
 		FOR camIdx := 0 TO NUM_CAMS DO
-		
+			
 			CASE visState[camIdx] OF 
-						
-				0: // Check if new image has been requested
+							
+				0: // Check if new image has been requested, indicated by rising edge
 					IF EDGEPOS(imageRequested[camIdx]) THEN
 						requestTimeStamp[camIdx] := NettimeCurrent_us;
 						resultReady[camIdx] := FALSE;
@@ -87,39 +89,41 @@ PROGRAM _CYCLIC
 					
 						// Transfer nettime to sensor and fire trigger
 						IF gVisionSensor[camIdx].HW.Ready AND NOT gVisionSensor[camIdx].DAT.ImageProcessingActive THEN
-							imgTrigger.trigger	:= TRUE;
-							imgTrigger.delayNettime	:= gVisionNettime.DAT.NettimeNext_us;
+							
+							imgTrigger[camIdx].trigger := TRUE;
+							imgTrigger[camIdx].delayNettime	:= gVisionNettime.DAT.NettimeNext_us;
+						
 						ELSE
+							
 							gVisionNettime.DAT.Overflow := gVisionNettime.DAT.Overflow + 1;
+						
 						END_IF
 						
-						visState[camIdx] := 0;
+						visState[camIdx] := 30;
 					
-					END_IF	
+					END_IF
 				
-						
-			END_CASE
-			
-			IF imgTrigger.newImage THEN
-				// NEW RESULTS READY'
-				mappView.updateImage := TRUE;
-				CASE camIdx OF
-					0: 
-						// Check if bottom cover must be flipped
-							IF DINT_TO_INT(blobOutput.positionX/100) > cameraWidth/2 THEN
-								flipOrder := TRUE;
-							END_IF
-					END_CASE
-						
-					resultReady[camIdx] := TRUE;
-					visState[camIdx] := 0;				
-			END_IF
-			
-			// ImageNettime is the total image processing and processing time of the captured image. 
-			// ImageNettime changes with each additional captured image, so we compare with oldImageNettime and update mappView if it is different from current
-		
+				30: // Return data when image has been processed and update image
+					
+					// imgTrigger.newImage is true for one cycle if new results are ready
+					IF imgTrigger[camIdx].newImage THEN
+				
+						CASE camIdx OF
 							
-	
+							0: 
+								// Assign bool depending on placement of BLOB
+								flipOrder := (DINT_TO_INT(hwBlob.in.results[0].positionX/100) > cameraWidth/2);
+								
+								mappView.updateImage := TRUE;
+					
+						END_CASE
+						
+						resultReady[camIdx] := TRUE;
+						visState[camIdx] := 0;
+						
+					END_IF
+					
+				END_CASE
 
 			// -----------------------------------------------------------------------------------------------------------
 			// Display camera status in hex - documentation is also in hex
@@ -157,24 +161,8 @@ PROGRAM _CYCLIC
 			// -----------------------------------------------------------------------------------------------------------
 			//gVisionSensor[camIdx].DAT.CockpitIsActive := (gVisionSensor[camIdx].DAT.Status AND 16#8000_0000) > 0;
 			
-			// -----------------------------------------------------------------------------------------------------------
-			// Reset trigger when timed out
-			// -----------------------------------------------------------------------------------------------------------
-//			IF gVisionSensor[camIdx].CMD.ImageTrigger THEN
-//				TriggerTimeout[camIdx].IN := TRUE;
-//				TriggerTimeout[camIdx].PT := REAL_TO_TIME(gVisionSensor[camIdx].DAT.Timeout * 1.25);
-//				IF TriggerTimeout[camIdx].Q THEN
-//					gVisionSensor[camIdx].CMD.ImageTrigger			:= FALSE;
-//					gVisionSensor[camIdx].CMD.ImageTriggerReset		:= TRUE;
-//					gVisionSensor[camIdx].DAT.Active				:= FALSE;
-//				END_IF
-//			ELSE
-//				TriggerTimeout[camIdx].IN := FALSE;
-//				gVisionSensor[camIdx].CMD.ImageTriggerReset := FALSE;
-//			END_IF
-			imgTrigger();
-			TriggerTimeout[camIdx]();
-			mappView.pMappLink 			:= ADR(gCamera);
+			imgTrigger[camIdx]();
+			mappView.pMappLink := ADR(gCamera);
 			mappView();
 			
 			//overlay='';

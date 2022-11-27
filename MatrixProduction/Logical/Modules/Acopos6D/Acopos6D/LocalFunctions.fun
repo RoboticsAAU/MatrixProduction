@@ -96,11 +96,11 @@ END_FUNCTION_BLOCK
 
 {REDUND_ERROR} FUNCTION_BLOCK ParabolicBlend (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
 	VAR_INPUT
+		absVelocity : {REDUND_UNREPLICABLE} REAL;
+		absAcceleration : {REDUND_UNREPLICABLE} REAL;
 		evalPos : REAL;
-		velocity : {REDUND_UNREPLICABLE} REAL;
 		startPos : {REDUND_UNREPLICABLE} REAL;
 		endPos : REAL;
-		acceleration : {REDUND_UNREPLICABLE} REAL;
 	END_VAR
 	VAR_OUTPUT
 		durationAtEvalDist : {REDUND_UNREPLICABLE} REAL;
@@ -108,6 +108,7 @@ END_FUNCTION_BLOCK
 	VAR
 		blendDistance : REAL;
 		blendTime : REAL;
+		tempPos : REAL;
 		fullDuration : REAL;
 	END_VAR
 END_FUNCTION_BLOCK

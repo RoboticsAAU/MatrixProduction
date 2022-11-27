@@ -460,18 +460,9 @@ PROGRAM _CYCLIC
 						
 						pShuttlePlan ACCESS ADR(shuttlePlans[pShuttle.par.shuttleID]);
 						
-						smartLabShuttleMovement;
-					END_FOR
-					
-					// Go through each camera station and run program for these
-					FOR i := 0 TO NR_OF_CAMERAS DO
-						pCameraStation ACCESS ADR(gCameraStations[i]);
-						cm ACCESS ADR (gCameraStations[i].cm);
-						pCameraStation.cm.setup.parent.name := 'main';
-						
-						cameraProcess;
-					END_FOR
-				
+						smartLabShuttleMovement;						
+						smartLabCameraProcess;
+					END_FOR				
 					
 					// Go to write order if a new order is made or there are no active orders
 					IF executeOrder THEN

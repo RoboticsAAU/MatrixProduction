@@ -7,7 +7,7 @@ VAR
 	flaskProgramAcceleration : REAL := 0.2;
 	flaskProgramVelocity : REAL := 2;
 	gShuttles : ARRAY[0..NUM_SHUTTLES] OF shuttle_typ;
-	gCameraStations : ARRAY[0..NR_OF_CAMERAS] OF cameraStation_typ;
+	gCameraStations : ARRAY[0..NUM_CAMS] OF cameraStation_typ;
 	gWorkstations : ARRAY[0..NR_OF_WORKSTATIONS] OF workStation_typ;
 	i : USINT;
 	j : USINT;
@@ -120,7 +120,9 @@ VAR
 	robotBusy : ARRAY[0..5] OF BOOL;
 	isOrderFlipped : ARRAY[0..5] OF BOOL;
 	flipOrder : BOOL;
-	durationToCamera : ARRAY[0..NR_OF_CAMERAS] OF DINT;
-	visionResultReady : ARRAY[0..NR_OF_CAMERAS] OF BOOL;
-	requestImage : ARRAY[0..NR_OF_CAMERAS] OF BOOL := [FALSE];
+	durationToCamera : ARRAY[0..NUM_CAMS] OF DINT;
+	visionResultReady : ARRAY[0..NUM_CAMS] OF BOOL;
+	requestImage : ARRAY[0..NUM_CAMS] OF BOOL := [FALSE];
+	durationStartToCamera : DINT;
+	durationStartToCurrent : DINT;
 END_VAR
