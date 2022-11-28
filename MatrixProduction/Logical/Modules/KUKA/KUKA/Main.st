@@ -105,7 +105,6 @@ PROGRAM _CYCLIC
 					RobotHoming;
 				
 				1000..1999: // RUNNING MANIPULATOR PROGRAMS
-					
 					CASE pKuka.operationType OF
 						ASSEMBLY:
 							RobotAssembly;
@@ -116,6 +115,7 @@ PROGRAM _CYCLIC
 						HANDLING:
 							RobotHandling;
 					END_CASE
+				
 			END_CASE
 			
 		END_IF

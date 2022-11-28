@@ -83,13 +83,13 @@ VAR
 	bufferEmpty : BOOL := TRUE;
 	bufferFull : BOOL := FALSE;
 	bufferSize : {REDUND_UNREPLICABLE} USINT;
+	cameraOperationPosition : ARRAY[0..NUM_CAMS] OF shuttlePos;
 	CreateRouteSheet_0 : {REDUND_UNREPLICABLE} CreateRouteSheet;
 	executeOrder : BOOL := FALSE;
 	HMIorderID : USINT;
 	HMIproductID : USINT;
 	HMIorderHistory : order_history;
 	HMIproductHistory : product_history;
-	juj : DATE_AND_TIME;
 	MovementColumnSelection_0 : MovementColumnSelection;
 	moveShuttle : ARRAY[0..NUM_SHUTTLES] OF BOOL;
 	occupiedPosition : {REDUND_UNREPLICABLE} ARRAY[0..3,0..7] OF BOOL; (*4 highway columns and 8 highway rows*)
@@ -106,6 +106,7 @@ VAR
 	ShuttlesAtPositions_0 : ShuttlesAtPositions;
 	ShuttlesInRange_0 : ShuttlesInRange;
 	ShuttlesInWorkstationBuffer_0 : ShuttlesInWorkstationBuffer;
+	ShuttleTouchQuadrantPos_0 : ShuttleTouchQuadrantPos;
 	shuttlePlans : ARRAY[0..7] OF shuttle_plan;
 END_VAR
 VAR CONSTANT

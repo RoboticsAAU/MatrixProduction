@@ -29,5 +29,6 @@
     <File>AreWorkstations.st</File>
     <File>MovementColumnSelection.st</File>
     <File>ParabolicBlend.st</File>
+    <File>ShuttleTouch.st</File>
   </Files>
 </Program>

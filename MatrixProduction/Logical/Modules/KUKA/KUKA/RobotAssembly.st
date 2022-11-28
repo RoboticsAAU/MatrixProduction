@@ -131,9 +131,7 @@ ACTION RobotAssembly:
 			cm.description := 'Move to approach point of workstation with absolute linear movement';
 			
 			pKuka.convert.ValuesToPosition.posType := APPROACH_WORKSTATION;
-			IF isProductFlipped[i] THEN
-				pKuka.convert.ValuesToPosition.opt_isFlipped := TRUE;
-			END_IF
+			pKuka.convert.ValuesToPosition.opt_isFlipped := isProductFlipped[i]; // Determine if product is flipped
 			pKuka.convert.ValuesToPosition();
 			
 			pKuka.convert.ValuesToCOORDSYS.Base := pKuka.convert.ValuesToPosition.baseNo; // ACOPOS6D frame

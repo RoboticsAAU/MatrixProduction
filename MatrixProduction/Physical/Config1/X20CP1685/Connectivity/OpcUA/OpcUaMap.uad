@@ -82,6 +82,7 @@
         <Variable Name="HMIorderID" />
         <Variable Name="HMIorderHistory" RecursiveEnable="2">
           <Variable Name="routingSheet" RecursiveEnable="2" />
+          <Variable Name="avgCycleTime" RecursiveEnable="2" />
         </Variable>
         <Variable Name="HMIproductHistory" RecursiveEnable="2" />
         <Variable Name="HMIproductID" />

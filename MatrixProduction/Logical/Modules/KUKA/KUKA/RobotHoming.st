@@ -8,9 +8,7 @@ ACTION RobotHoming:
 		
 		PROCESS, HANDLING:
 			pKuka.convert.ValuesToPosition.posType := APPROACH_WORKSTATION;
-			IF isProductFlipped[i] THEN
-				pKuka.convert.ValuesToPosition.opt_isFlipped := TRUE;
-			END_IF
+			pKuka.convert.ValuesToPosition.opt_isFlipped := isProductFlipped[i]; // Determine if product is flipped
 		
 	END_CASE
 	

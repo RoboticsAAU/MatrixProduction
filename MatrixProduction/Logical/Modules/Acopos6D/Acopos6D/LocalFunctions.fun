@@ -1,5 +1,5 @@
 
-{REDUND_OK} FUNCTION_BLOCK CreateRouteSheet (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+{REDUND_ERROR} FUNCTION_BLOCK CreateRouteSheet (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
 	VAR_INPUT
 		inputProductOrder : product_order;
 	END_VAR
@@ -91,6 +91,27 @@ FUNCTION_BLOCK ShuttlesInWorkstationBuffer
 	END_VAR
 	VAR CONSTANT
 		MARGIN : REAL := 0.005;
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_ERROR} FUNCTION_BLOCK ShuttleTouchQuadrantPos
+	VAR_INPUT
+		shuttlePos : shuttlePos;
+	END_VAR
+	VAR_OUTPUT
+		quadrantPosX : ARRAY[0..3] OF USINT;
+		quadrantPosY : ARRAY[0..3] OF USINT;
+		numTouches : USINT;
+	END_VAR
+	VAR
+		shuttleLength : REAL;
+		minX : REAL;
+		maxX : REAL;
+		minY : REAL;
+		maxY : REAL;
+		xQuadrantsTouched : ARRAY[0..1] OF USINT;
+		yQuadrantsTouched : ARRAY[0..1] OF USINT;
+		tempIndex : USINT;
 	END_VAR
 END_FUNCTION_BLOCK
 
