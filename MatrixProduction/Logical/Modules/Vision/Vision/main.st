@@ -120,7 +120,7 @@ PROGRAM _CYCLIC
 								// Check if blobs were found
 								IF hwBlob.in.common.numResults <> 0 THEN
 									// Assign bool depending on placement of BLOB
-									flipOrder := (DINT_TO_INT(hwBlob.in.results[0].positionX/100) > cameraWidth/2);
+									flipProduct := (DINT_TO_INT(hwBlob.in.results[0].positionX/100) > cameraWidth/2);
 									
 									cornerA.x := DINT_TO_LREAL(hwBlob.in.results[0].xMin);
 									cornerA.y := DINT_TO_LREAL(hwBlob.in.results[0].yMin);
