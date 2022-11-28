@@ -90,5 +90,5 @@ VAR
 	robotExecute : ARRAY[0..5] OF BOOL;
 	robotDone : ARRAY[0..5] OF BOOL;
 	robotBusy : ARRAY[0..5] OF BOOL;
-	isOrderFlipped : ARRAY[0..5] OF BOOL;
+	isProductFlipped : ARRAY[0..5] OF BOOL;
 END_VAR

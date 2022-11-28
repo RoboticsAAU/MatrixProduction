@@ -398,10 +398,9 @@ PROGRAM _CYCLIC
 					em.description := 'Smart Lab program - Setup';
 					smartLabSetup;
 					
+					
 				17010..17014:
-					
 					em.description := 'Smart Lab Program - Write order if it has been placed';
-					
 					// The user has requested an order which is added to the buffer
 					IF executeOrder THEN
 						
@@ -423,21 +422,16 @@ PROGRAM _CYCLIC
 				
 				17015..17019:
 					em.description := 'Smart Lab Program - Read order if the shuttles are ready to';
-						
 					// Read a new order if the entire other order has been initiated and the buffer is not empty
 					IF remainingOrderAmount = 0 AND NOT bufferEmpty THEN
-						// Read the order
 						readOrder;
-						
-						// Create the route sheet
-						CreateRouteSheet_0.inputProductOrder := productOrder;
-						CreateRouteSheet_0();
 						
 						remainingOrderAmount := productOrder.amount;
 						activeShuttles := activeShuttles + productOrder.amount;
 					END_IF
 					
 					em.substate := 17020;
+					
 					
 				17020..17999:
 					em.description := 'Smart Lab program - Workstation movement';
@@ -460,6 +454,10 @@ PROGRAM _CYCLIC
 						
 						pShuttlePlan ACCESS ADR(shuttlePlans[pShuttle.par.shuttleID]);
 						
+						IF pShuttlePlan.isActive THEN
+							orderHistory[pShuttlePlan.productOrder.ID].orderDuration := DT_TO_DINT(DTGetTime_0.DT1) - DT_TO_DINT(orderHistory[pShuttlePlan.productOrder.ID].orderStartingTime);
+						END_IF
+						
 						smartLabShuttleMovement;
 					END_FOR
 					
@@ -469,9 +467,14 @@ PROGRAM _CYCLIC
 						cm ACCESS ADR (gCameraStations[i].cm);
 						pCameraStation.cm.setup.parent.name := 'main';
 						
+						pShuttlePlan ACCESS ADR(shuttlePlans[pCameraStation.tempShuttleID]);
+						
 						cameraProcess;
 					END_FOR
-				
+					
+					// Set the order and product history for the HMI
+					HMIorderHistory := orderHistory[HMIorderID];
+					HMIproductHistory := HMIorderHistory.product[HMIproductID];
 					
 					// Go to write order if a new order is made or there are no active orders
 					IF executeOrder THEN
@@ -601,6 +604,7 @@ PROGRAM _CYCLIC
 	MC_BR_ShGroupAddShuttle_Acp6D_0();
 	MC_BR_ShGroupCoupleCtrl_Acp6D_0();
 	MC_BR_ShGroupGetInfo_Acp6D_0();
+	MC_BR_ShGetPayload_Acp6D_0();
 	MC_BR_ReadCyclicPosition_Acp6D_0();
 	MC_BR_ReadCyclicPosition_Acp6D_1();
 	MC_BR_ReadCyclicPosition_Acp6D_2();
@@ -614,6 +618,7 @@ PROGRAM _CYCLIC
 	MC_BR_RotaryMotion_Acp6D_0();
 	TON_watchdog();
 	TON_0();
+	DTGetTime_0();
 	
 END_PROGRAM
 

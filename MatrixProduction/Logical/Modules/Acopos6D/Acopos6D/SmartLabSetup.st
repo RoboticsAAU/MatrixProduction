@@ -129,6 +129,7 @@ ACTION smartLabSetup:
 				gWorkstations[i].par.tempShuttleID := -1;
 				gShuttles[i].par.tempHighwayColumn := -1;
 				shuttlePlans[i].isActive := FALSE;
+				moveShuttle[i] := FALSE;
 			END_FOR
 			
 			FOR i := 0 TO 3 DO // Highway columns
@@ -141,7 +142,8 @@ ACTION smartLabSetup:
 			bufferSize := SIZEOF(orderBuffer)/SIZEOF(orderBuffer[0]);
 			activeShuttles := 0;
 			amountProductsFinished := 0;
-			tempShuttleIndex := 1;
+			amountOrdersFinished := 0;
+			tempProductOrder.ID := 0;
 			em.substate := 17005;
 			
 		
@@ -149,7 +151,7 @@ ACTION smartLabSetup:
 			em.description := 'Move shuttles to pre pos';
 			MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
 			MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
-			FOR i := 0 TO UINT_TO_USINT(localCurrentNumShuttles-1) DO
+			FOR i := 0 TO NUM_SHUTTLES DO
 				MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.AsyncPar[i].Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[i].shuttleRef);
 				MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.AsyncPar[i].X := positionContainerSmartLabProgram[i].initXPos;
 				MC_BR_MoveInPlaneAsync_Acp6D_0.Parameters.AsyncPar[i].Y := positionContainerSmartLabProgram[i].initYPos;
@@ -157,10 +159,40 @@ ACTION smartLabSetup:
 			MC_BR_MoveInPlaneAsync_Acp6D_0.Execute := TRUE;
 			IF MC_BR_MoveInPlaneAsync_Acp6D_0.Done THEN
 				MC_BR_MoveInPlaneAsync_Acp6D_0.Execute := FALSE;
-				em.substate := 17008;
+				em.substate := 17006;
 			END_IF
-		
-		17008:
+			
+			
+		17006:
+			em.description := 'Wait for shuttles to settle before getting their initial weight';
+			TON_0.PT := T#2S;
+			TON_0.IN := TRUE;
+			IF TON_0.Q THEN
+				TON_0.IN := FALSE;
+				
+				tempShuttleIndex := 0; // Set for next state
+				em.substate := 17007;
+			END_IF
+			
+			
+		17007:
+			em.description := 'Calibrate weight of all shuttles';
+			MC_BR_ShGetPayload_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[tempShuttleIndex].shuttleRef);
+			MC_BR_ShGetPayload_Acp6D_0.Execute := TRUE;
+			IF MC_BR_ShGetPayload_Acp6D_0.Done THEN
+				MC_BR_ShGetPayload_Acp6D_0.Execute := FALSE;
+				gShuttles[tempShuttleIndex].par.initialWeight := MC_BR_ShGetPayload_Acp6D_0.Payload * 1000; // in g
+				
+				tempShuttleIndex := tempShuttleIndex + 1;
+				
+				IF tempShuttleIndex = 8 THEN
+					tempShuttleIndex := 1; // Set for next state
+					em.substate := 17009;
+				END_IF
+			END_IF
+			
+			
+		17009:
 			em.description := 'Move shuttle 2 and 3 towards workstation 0';
 			gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[tempShuttleIndex].shuttleRef);
 			gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
@@ -174,11 +206,12 @@ ACTION smartLabSetup:
 			IF gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
 				gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
 				
-				IF tempShuttleIndex = 2 THEN
+				tempShuttleIndex := tempShuttleIndex + 1;
+				
+				IF tempShuttleIndex = 3 THEN
 					em.substate := 17010;
 				END_IF
 				
-				tempShuttleIndex := tempShuttleIndex + 1;
 			END_IF
 			
 			gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0();

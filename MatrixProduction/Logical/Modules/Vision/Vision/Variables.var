@@ -23,7 +23,7 @@ END_VAR
 VAR
 	imageRequested : ARRAY[0..NUM_CAMS] OF BOOL;
 	resultReady : ARRAY[0..NUM_CAMS] OF BOOL;
-	flipOrder : BOOL;
+	flipProduct : BOOL;
 	durationToCamera : ARRAY[0..NUM_CAMS] OF DINT;
 END_VAR
 (*Image, crosshair data and constants*)

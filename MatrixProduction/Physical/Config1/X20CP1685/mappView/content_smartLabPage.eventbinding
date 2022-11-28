@@ -4,22 +4,11 @@
     <EventBinding id="content_smartLabPage.PushButton1.Click">
       <Source xsi:type="widgets.brease.PushButton.Event" contentRefId="content_smartLabPage" widgetRefId="PushButton1" event="Click" />
       <EventHandler>
-        <Sequence>
-          <Step order="0">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Acopos6D:executeOrder">
-                <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
-              </Target>
-            </Action>
-          </Step>
-          <Step order="1">
-            <Action>
-              <Target xsi:type="opcUa.NodeAction" refId="::Acopos6D:tempProductOrder.ID">
-                <Method xsi:type="opcUa.NodeAction.AddValue" value="1" />
-              </Target>
-            </Action>
-          </Step>
-        </Sequence>
+        <Action>
+          <Target xsi:type="opcUa.NodeAction" refId="::Acopos6D:executeOrder">
+            <Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+          </Target>
+        </Action>
       </EventHandler>
     </EventBinding>
     <EventBinding id="EventBinding_1">
@@ -33,21 +22,6 @@
         <Action>
           <Target xsi:type="widgets.brease.PushButton.Action" contentRefId="content_smartLabPage" widgetRefId="PushButton1">
             <Method xsi:type="widgets.brease.PushButton.Action.SetEnable" value="=NOT val" />
-          </Target>
-        </Action>
-      </EventHandler>
-    </EventBinding>
-    <EventBinding id="EventBinding_2">
-      <Source xsi:type="opcUa.Event" refId="::Acopos6D:orderFinished" event="ValueChanged" />
-      <Operand datatype="BOOL" name="val">
-        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Acopos6D:orderFinished">
-          <Method xsi:type="opcUa.NodeAction.GetValue" />
-        </ReadTarget>
-      </Operand>
-      <EventHandler>
-        <Action>
-          <Target xsi:type="widgets.brease.ProgressBar.Action" contentRefId="content_smartLabPage" widgetRefId="ProgressBar1">
-            <Method xsi:type="widgets.brease.ProgressBar.Action.SetVisible" value="= NOT val" />
           </Target>
         </Action>
       </EventHandler>

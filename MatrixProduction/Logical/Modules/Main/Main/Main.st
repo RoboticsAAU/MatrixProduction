@@ -3,6 +3,9 @@ PROGRAM _INIT
 	em.setup.name := 'main';
 	em();
 	
+	DTGetTime_0.enable := TRUE;
+	DTGetTime_0();
+	
 	MC_BR_AsmReboot_Acp6D_0.Assembly 		:= ADR(gAssembly6D_1); 
 	MC_BR_AsmHalt_Acp6D_0.Assembly			:= ADR(gAssembly6D_1);
 	

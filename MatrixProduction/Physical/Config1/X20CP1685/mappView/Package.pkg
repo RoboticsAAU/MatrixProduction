@@ -16,8 +16,9 @@
     <Object Type="File">content_fixture.binding</Object>
     <Object Type="File">content_smartLabPage.binding</Object>
     <Object Type="File">content_smartLabPage.eventbinding</Object>
-    <Object Type="File">content_vision.binding</Object>
-    <Object Type="File">content_KukaPage.binding</Object>
-    <Object Type="File">content_KukaPage.eventbinding</Object>
+    <Object Type="File">content_visionPage.binding</Object>
+    <Object Type="File">content_kukaPage.binding</Object>
+    <Object Type="File">content_kukaPage.eventbinding</Object>
+    <Object Type="File">content_historyPage.binding</Object>
   </Objects>
 </Package>

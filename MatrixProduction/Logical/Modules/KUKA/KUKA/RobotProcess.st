@@ -9,7 +9,7 @@ ACTION RobotProcess:
 			IF robotExecute[i] THEN
 				robotBusy[i] := TRUE;
 				pKuka.convert.ValuesToPosition.posType := APPROACH_WORKSTATION;
-				IF isOrderFlipped[i] THEN
+				IF isProductFlipped[i] THEN
 					pKuka.convert.ValuesToPosition.opt_isFlipped := TRUE;
 				END_IF
 				pKuka.convert.ValuesToPosition();
@@ -19,14 +19,14 @@ ACTION RobotProcess:
 				CASE pKuka.axisGroupIdx OF
 					2: //Drilling robot
 						// Make it go backwards if order is flipped
-						IF isOrderFlipped[i] THEN
+						IF isProductFlipped[i] THEN
 							drillYOffset := -drillYOffset;
 						END_IF
 						
 						// Seen from ACOPOS 6D frame: Bottom right -> bottom left -> top left -> top right
 						CASE numDoneHoles OF
 							0: // Simply default approach position
-								IF isOrderFlipped[i] THEN
+								IF isProductFlipped[i] THEN
 									pKuka.tempPosition.Status := 2; // 010
 									pKuka.tempPosition.Turn := 35; // 10011
 								END_IF
@@ -34,7 +34,7 @@ ACTION RobotProcess:
 							1:
 								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
 								
-								IF isOrderFlipped[i] THEN
+								IF isProductFlipped[i] THEN
 									pKuka.tempPosition.Status := 2; // 010
 									pKuka.tempPosition.Turn := 35; // 10011
 								END_IF
@@ -44,14 +44,14 @@ ACTION RobotProcess:
 								pKuka.tempPosition.Y := pKuka.tempPosition.Y + drillYOffset;
 								
 								// Configuration changes here (after first two holes)
-								IF NOT isOrderFlipped[i] THEN
+								IF NOT isProductFlipped[i] THEN
 									pKuka.tempPosition.Status := 6; // 110
 									pKuka.tempPosition.Turn := 51; // 110011
 								END_IF
 							
 							3:
 								pKuka.tempPosition.Y := pKuka.tempPosition.Y + drillYOffset;
-								IF NOT isOrderFlipped[i] THEN
+								IF NOT isProductFlipped[i] THEN
 									pKuka.tempPosition.Status := 6; // 110
 									pKuka.tempPosition.Turn := 51; // 110011
 								END_IF

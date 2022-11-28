@@ -9,8 +9,9 @@
 		<Page refId="page_workStation"/>
 		<Page refId="page_fixture"/>
 		<Page refId="page_smartLabPage"/>
-		<Page refId="page_vision"/>
-		<Page refId="page_Kuka"/>
+		<Page refId="page_kukaPage"/>
+		<Page refId="page_visionPage"/>
+		<Page refId="page_historyPage"/>
 		
 	</Pages>
   <Navigations>
@@ -20,27 +21,29 @@
 		<BindingsSet refId="content_Navigation_binding" />
 		<BindingsSet refId="content_MainPage_binding" />
 		<BindingsSet refId="content_configPage_binding" />
-		<BindingsSet refId="content_vision_binding" />
 		<BindingsSet refId="content_weightPage_binding" />
 		<BindingsSet refId="content_conveyorPage_binding" />
 		<BindingsSet refId="content_workStation_binding" />
 		<BindingsSet refId="content_fixture_binding" />
 		<BindingsSet refId="content_smartLabPage_binding" />
-		<BindingsSet refId="content_KukaPage_binding" />
+		<BindingsSet refId="content_kukaPage_binding" />
+		<BindingsSet refId="content_visionPage_binding" />
+		<BindingsSet refId="content_historyPage_binding" />
 	</BindingsSets>
   <EventBindingsSets>
 		<EventBindingsSet refId="content_Navigation_eventbinding" />
 		<EventBindingsSet refId="content_MainPage_eventbinding" />
 		<EventBindingsSet refId="content_configPage_eventbinding" />
 		<EventBindingsSet refId="content_smartLabPage_eventbinding" />
-		<EventBindingsSet refId="content_KukaPage_eventbinding" />
+		<EventBindingsSet refId="content_kukaPage_eventbinding" />
 	</EventBindingsSets>
   <Dialogs>
 	</Dialogs>
   <Contents>
     <!--<Content refId="" />-->
   </Contents>
-  <SnippetsSets>
+	<SnippetsSets>
+		<SnippetsSet refId="snippet_historyPage" />
     <!--<SnippetsSet refId=""/>-->
   </SnippetsSets>
   <ExpressionsSets>

@@ -75,7 +75,6 @@
       <Parameter ID="SubnetMask" Value="255.255.255.0" />
     </Connector>
     <Parameter ID="ConfigurationID" Value="Mapp6DDemoKit_Config1" />
-    <Parameter ID="Simulation" Value="1" />
     <Parameter ID="PermanentPvSize" Value="6000" />
     <Parameter ID="RemanentGlobalPvSize" Value="40960" />
     <Parameter ID="VolatileGlobalPvSize" Value="200000" />

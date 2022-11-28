@@ -12,5 +12,6 @@
     <Object Type="Package">SmartLabPage</Object>
     <Object Type="Package">VisionPage</Object>
     <Object Type="Package">KukaPage</Object>
+    <Object Type="Package">HistoryPage</Object>
   </Objects>
 </Package>

@@ -8,5 +8,6 @@
     <Object Type="Package" Description="Layouts">Layouts</Object>
     <Object Type="Package" Description="Dialogs">Dialogs</Object>
     <Object Type="Package" Description="Resources">Resources</Object>
+    <Object Type="File">Project.language</Object>
   </Objects>
 </Package>

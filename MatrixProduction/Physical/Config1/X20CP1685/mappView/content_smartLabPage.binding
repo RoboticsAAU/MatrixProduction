@@ -18,10 +18,7 @@
 <Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.Fuses" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericInput5" attribute="value" />
 </Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.amount" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericInput1" attribute="value" />
-</Binding>
+
 
 
 
@@ -61,29 +58,14 @@
 <Source xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Image3" attribute="visible" />
 <Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericInput5" attribute="enable" />
 </Binding>
+
 <Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:amountProductsFinished" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="ProgressBar1" attribute="value" />
+	<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[0,0]" attribute="value" />
+	<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle00" attribute="visible" />
 </Binding>
 <Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:executeOrder" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="ProgressBar1" attribute="visible" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:productOrder.amount" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="ProgressBar1" attribute="maxValue" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.ID" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericOutput1" attribute="value" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[0,0]" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle00" attribute="visible" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[1,0]" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle10" attribute="visible" />
+	<Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[1,0]" attribute="value" />
+	<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle10" attribute="visible" />
 </Binding>
 <Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[0,1]" attribute="value" />
@@ -204,6 +186,14 @@
 <Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:occupiedPosition[3,7]" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle37" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.amount" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericInput1" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.ID" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericOutput1" attribute="value" />
 </Binding>
 </Bindings>
 </BindingsSet>

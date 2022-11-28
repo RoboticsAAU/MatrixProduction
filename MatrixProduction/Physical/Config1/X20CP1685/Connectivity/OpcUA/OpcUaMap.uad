@@ -77,6 +77,14 @@
         <Variable Name="bufferFull" />
         <Variable Name="occupiedPosition" RecursiveEnable="2" />
         <Variable Name="activeShuttles" />
+        <Variable Name="amountOrdersFinished" />
+        <Variable Name="orderHistory" RecursiveEnable="2" />
+        <Variable Name="HMIorderID" />
+        <Variable Name="HMIorderHistory" RecursiveEnable="2">
+          <Variable Name="routingSheet" RecursiveEnable="2" />
+        </Variable>
+        <Variable Name="HMIproductHistory" RecursiveEnable="2" />
+        <Variable Name="HMIproductID" />
       </Task>
       <Task Name="Vision">
         <Variable Name="visionResults" />

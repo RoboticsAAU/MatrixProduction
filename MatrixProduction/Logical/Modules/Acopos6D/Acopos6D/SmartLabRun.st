@@ -49,6 +49,7 @@ ACTION smartLabWorkstationOperation:
 					shuttlePlans[pWorkstation.par.tempShuttleID].progressIndex := 0;
 					shuttlePlans[pWorkstation.par.tempShuttleID].routingSheet := CreateRouteSheet_0.outputRouteSheet;
 					shuttlePlans[pWorkstation.par.tempShuttleID].productOrder := productOrder;
+					shuttlePlans[pWorkstation.par.tempShuttleID].productID := productOrder.amount - remainingOrderAmount;
 					
 					remainingOrderAmount := remainingOrderAmount - 1;
 					cm.state := 20;
@@ -80,10 +81,9 @@ ACTION smartLabWorkstationOperation:
 					
 					IF ShuttlesInWorkstationBuffer_0.isInBuffer THEN
 						// Set shuttle state to move to next workstation and go back to wait for new shuttle at workstation
-						gShuttles[pWorkstation.par.tempShuttleID].cm.state := 10;
+						moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
 						cm.state := 60;
 					END_IF
-					
 			END_CASE
 			
 			
@@ -115,7 +115,7 @@ ACTION smartLabWorkstationOperation:
 				END_CASE
 				
 				// Send if order is flipped or not
-				isOrderFlipped[i] := pShuttlePlan.isFlipped;
+				isProductFlipped[i] := pShuttlePlan.isFlipped;
 				
 				// If robot is enabled, begin robot operation
 				IF robotEnabled[i] THEN
@@ -124,57 +124,55 @@ ACTION smartLabWorkstationOperation:
 					robotExecute[i] := FALSE;
 				END_IF
 				
-				IF pWorkstation.par.landBeforeProcess THEN
-					cm.state := 30;
-				ELSE
-					cm.state := 40;
-				END_IF
-			END_IF
-			
-			
-		30:
-			cm.description := 'Land shuttle if required';
-			IF gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].State = mcACP6D_SH_STATE_IDLING THEN
-				pWorkstation.MC_BR_ShLevitation_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].shuttleRef);
-				pWorkstation.MC_BR_ShLevitation_Acp6D_0.Parameters.Level := 0; //Land
-				pWorkstation.MC_BR_ShLevitation_Acp6D_0.Parameters.Speed := 0;
-				pWorkstation.MC_BR_ShLevitation_Acp6D_0.Execute := TRUE;
-			END_IF
-			IF pWorkstation.MC_BR_ShLevitation_Acp6D_0.Done THEN
-				pWorkstation.MC_BR_ShLevitation_Acp6D_0.Execute := FALSE;
 				cm.state := 40;
 			END_IF
 			
 			
+//		30:
+//			cm.description := 'Land shuttle if required';
+//			
+//			IF gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].State = mcACP6D_SH_STATE_IDLING THEN
+//				pWorkstation.MC_BR_ShLevitation_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].shuttleRef);
+//				pWorkstation.MC_BR_ShLevitation_Acp6D_0.Parameters.Level := 0; //Land
+//				pWorkstation.MC_BR_ShLevitation_Acp6D_0.Parameters.Speed := 0;
+//				pWorkstation.MC_BR_ShLevitation_Acp6D_0.Execute := TRUE;
+//			END_IF
+//			IF pWorkstation.MC_BR_ShLevitation_Acp6D_0.Done THEN
+//				pWorkstation.MC_BR_ShLevitation_Acp6D_0.Execute := FALSE;
+//				cm.state := 40;
+//			END_IF
+			
+			
 		40:
 			cm.description := 'Wait for robot to finish operation';
+			
 			IF robotDone[i] THEN
 				robotExecute[i] := FALSE;
-				IF pWorkstation.par.landBeforeProcess THEN
-					cm.state := 50;
-				ELSE
-					// Make current shuttle move to the next workstation and make workstation go back to wait for new shuttle
-					gShuttles[pWorkstation.par.tempShuttleID].cm.state := 10;
-					cm.state := 60;
-				END_IF
-			END_IF
-			
-			
-		50:
-			cm.description := 'Leviate shuttle if landed before process';
-			pWorkstation.MC_BR_ShLevitation_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].shuttleRef);
-			pWorkstation.MC_BR_ShLevitation_Acp6D_0.Parameters.Level := 1; //Leviate
-			pWorkstation.MC_BR_ShLevitation_Acp6D_0.Parameters.Speed := 0;
-			pWorkstation.MC_BR_ShLevitation_Acp6D_0.Execute := TRUE;
-			IF pWorkstation.MC_BR_ShLevitation_Acp6D_0.Done THEN
-				pWorkstation.MC_BR_ShLevitation_Acp6D_0.Execute := FALSE;
 				
-				gShuttles[pWorkstation.par.tempShuttleID].cm.state := 10;
+				// Make current shuttle move to the next workstation and make workstation go back to wait for new shuttle
+				moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
 				cm.state := 60;
 			END_IF
 			
 			
+//		50:
+//			cm.description := 'Leviate shuttle if landed before process';
+//			
+//			pWorkstation.MC_BR_ShLevitation_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].shuttleRef);
+//			pWorkstation.MC_BR_ShLevitation_Acp6D_0.Parameters.Level := 1; //Leviate
+//			pWorkstation.MC_BR_ShLevitation_Acp6D_0.Parameters.Speed := 0;
+//			pWorkstation.MC_BR_ShLevitation_Acp6D_0.Execute := TRUE;
+//			IF pWorkstation.MC_BR_ShLevitation_Acp6D_0.Done THEN
+//				pWorkstation.MC_BR_ShLevitation_Acp6D_0.Execute := FALSE;
+//				
+//				moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
+//				cm.state := 60;
+//			END_IF
+			
+			
 		60:
+			cm.description := 'Wait for shuttle to start moving before going back to wait for new shuttle';
+			
 			// Go back to wait for shuttle at workstation if the current shuttle has begun moving (avoids bugs)
 			IF gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].State = mcACP6D_SH_STATE_MOTION THEN
 				
@@ -212,27 +210,65 @@ ACTION smartLabShuttleMovement:
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0; //Absolute
 			
+			// If the shuttlePlan is active, get the shuttle payload
+			IF pShuttlePlan.isActive THEN
+				pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
+				pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Execute := TRUE;
+				IF pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Done THEN
+					pShuttlePlan.currentProductWeight := (pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Payload * 1000) - pShuttle.par.initialWeight;
+					
+					IF moveShuttle[pShuttle.par.shuttleID] THEN
+						moveShuttle[pShuttle.par.shuttleID] := FALSE;
+						cm.state := 10;
+					END_IF
+				END_IF
+			ELSE
+				IF moveShuttle[pShuttle.par.shuttleID] THEN
+					moveShuttle[pShuttle.par.shuttleID] := FALSE;
+					cm.state := 10;
+				END_IF
+			END_IF
+		
 			
 		10:
-			cm.description := 'Determine where to move next';	
+			cm.description := 'Determine the next workstation and set parameters based on this';	
 			
 			// Set the next workstation ID (either from routing sheet for active shuttles and next in row for inactive shuttles)
 			IF pShuttlePlan.isActive THEN
 				pShuttle.par.tempNextWorkstationID := pShuttlePlan.routingSheet[pShuttlePlan.progressIndex];
+				pShuttlePlan.progressIndex := pShuttlePlan.progressIndex + 1;
 				
-				// If the next workstation is 0 reset the progress index and set the shuttleplan to be inactive, otherwise increment progress index by 1
-				IF pShuttlePlan.routingSheet[pShuttlePlan.progressIndex] = 0 THEN
-					pShuttlePlan.progressIndex := 0;
-					pShuttlePlan.isActive := FALSE;
-					activeShuttles := activeShuttles - 1;
-					amountProductsFinished := amountProductsFinished + 1;
-				ELSE
-					pShuttlePlan.progressIndex := pShuttlePlan.progressIndex + 1;
-				END_IF
+				CASE pShuttle.par.tempNextWorkstationID OF
+					// If the next workstation is 0 (first workstation), reset the progress index and set the shuttleplan to be inactive
+					0:
+						pShuttlePlan.progressIndex := 0;
+						pShuttlePlan.isActive := FALSE;
+						orderHistory[pShuttlePlan.productOrder.ID].finishedProductCount := orderHistory[pShuttlePlan.productOrder.ID].finishedProductCount + 1;
+						activeShuttles := activeShuttles - 1;
+						amountProductsFinished := amountProductsFinished + 1;
+						
+						// Set the product time and determine if order is finished
+						orderHistory[pShuttlePlan.productOrder.ID].product[pShuttlePlan.productID].finishTime := DT_TO_DINT(DTGetTime_0.DT1) - DT_TO_DINT(orderHistory[pShuttlePlan.productOrder.ID].orderStartingTime);;
+						
+						IF orderHistory[pShuttlePlan.productOrder.ID].finishedProductCount = orderHistory[pShuttlePlan.productOrder.ID].productOrder.amount THEN
+							orderHistory[pShuttlePlan.productOrder.ID].orderFinishTime := DTGetTime_0.DT1;
+							orderHistory[pShuttlePlan.productOrder.ID].status := FINISHED;
+						END_IF
+					
+					// If the next workstation is 5 (last workstation), set the final weight of the product
+					5:
+						orderHistory[pShuttlePlan.productOrder.ID].product[pShuttlePlan.productID].weight := pShuttlePlan.currentProductWeight;
+					
+				END_CASE
 			ELSE
 				pShuttle.par.tempNextWorkstationID := (pShuttle.par.tempWorkstationID + 1) MOD smartLabNumWorkstations;
 			END_IF
 			
+			cm.state := 15;
+			
+			
+		15:
+			cm.description := 'Determine the next state, depending on where the next workstation is';
 			// If the workstations are opposite each other, go directly to the approach point of next workstation (no need to occupy column when it only moves in row)
 			IF AreWorkstationsOpposite(workstationID1 := pShuttle.par.tempWorkstationID, workstationID2 := pShuttle.par.tempNextWorkstationID) THEN
 				cm.state := 30;
@@ -340,6 +376,7 @@ ACTION smartLabShuttleMovement:
 	
 	// Function block calls
 	pShuttle.function.MC_BR_MoveInPlane_Acp6D_0();
+	pShuttle.function.MC_BR_ShGetPayload_Acp6D_0();
 	cm();
 	
 END_ACTION
@@ -372,7 +409,8 @@ ACTION cameraProcess:
 			
 		10: // Wait for vision to return data
 			IF EDGEPOS(visionResultReady[i]) THEN
-				shuttlePlans[pCameraStation.tempShuttleID].isFlipped := flipOrder;
+				pShuttlePlan.isFlipped := flipProduct;
+				orderHistory[pShuttlePlan.productOrder.ID].product[pShuttlePlan.productID].flipped := pShuttlePlan.isFlipped;
 				pCameraStation.startImageAcquisition := FALSE;
 				requestImage[i] := FALSE;
 				cm.state := 0;

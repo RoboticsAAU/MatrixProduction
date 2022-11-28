@@ -1,11 +1,28 @@
 
 TYPE
+	order_history : 	STRUCT 
+		productOrder : product_order;
+		routingSheet : ARRAY[0..5]OF USINT;
+		status : order_status;
+		finishedProductCount : USINT;
+		product : ARRAY[0..9]OF product_history; (*Assuming 10 is max order size*)
+		orderStartingTime : DATE_AND_TIME;
+		orderFinishTime : DATE_AND_TIME;
+		orderDuration : REAL; (*in s*)
+	END_STRUCT;
+	product_history : 	STRUCT 
+		flipped : BOOL;
+		weight : REAL; (*in g*)
+		finishTime : REAL; (*in s*)
+	END_STRUCT;
 	shuttle_plan : 	STRUCT 
 		productOrder : product_order;
 		routingSheet : ARRAY[0..5]OF USINT;
 		progressIndex : USINT := 0;
+		productID : USINT;
 		isActive : BOOL;
 		isFlipped : BOOL;
+		currentProductWeight : REAL;
 	END_STRUCT;
 	shuttle_status_typ : 	STRUCT 
 		dummy : USINT;
@@ -14,8 +31,9 @@ TYPE
 		shuttleID : USINT;
 		tempWorkstationID : USINT;
 		tempNextWorkstationID : USINT;
-		tempDestinationPos : shuttlePos;
 		tempHighwayColumn : SINT;
+		tempDestinationPos : shuttlePos;
+		initialWeight : REAL;
 	END_STRUCT;
 	shuttle_function_typ : 	STRUCT 
 		MC_BR_Move6D_Acp6D_0 : MC_BR_Move6D_Acp6D;
@@ -100,6 +118,12 @@ TYPE
 		topCover : cover_types;
 		ID : USINT;
 	END_STRUCT;
+	order_status : 
+		(
+		AWAITING := 0,
+		ACTIVE := 1,
+		FINISHED := 2
+		);
 	cover_types : 
 		(
 		noCover := 0,
