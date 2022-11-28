@@ -459,17 +459,7 @@ PROGRAM _CYCLIC
 						END_IF
 						
 						smartLabShuttleMovement;
-					END_FOR
-					
-					// Go through each camera station and run program for these
-					FOR i := 0 TO NR_OF_CAMERAS DO
-						pCameraStation ACCESS ADR(gCameraStations[i]);
-						cm ACCESS ADR (gCameraStations[i].cm);
-						pCameraStation.cm.setup.parent.name := 'main';
-						
-						pShuttlePlan ACCESS ADR(shuttlePlans[pCameraStation.tempShuttleID]);
-						
-						cameraProcess;
+						smartLabCameraProcess;
 					END_FOR
 					
 					// Set the order and product history for the HMI

@@ -23,7 +23,7 @@ ACTION smartLabWorkstationSetup:
 	gWorkstations[0].par.departPosX					:= QuadrantIdxToPos(4);
 	gWorkstations[0].par.departPosY					:= QuadrantIdxToPos(1);
 	gWorkstations[0].par.landBeforeProcess			:= FALSE;
-	gWorkstations[0].par.cameraID					:= 1;
+	gWorkstations[0].par.cameraID					:= 0;
 	
 	gWorkstations[1].par.xLocation					:= QuadrantIdxToPos(5);
 	gWorkstations[1].par.yLocation					:= QuadrantIdxToPos(3);
@@ -69,20 +69,14 @@ END_ACTION
 	
 ACTION smartLabCameraStationSetup:
 	
-	FOR i := 0 TO NR_OF_CAMERAS DO
+	FOR i := 0 TO NUM_CAMS DO
 		gCameraStations[i].camPosX := 0;
 		gCameraStations[i].camPosY := 0;
-		gCameraStations[i].shuttleStartPos.xPos := 0;
-		gCameraStations[i].shuttleStartPos.yPos := 0;
-		gCameraStations[i].shuttleEndPos.xPos := 0;
-		gCameraStations[i].shuttleEndPos.yPos := 0;
+		gCameraStations[i].tempShuttleID := -1;
 		gCameraStations[i].cm.state := 0;
-		gCameraStations[i].tempShuttleID := 0;
-		gCameraStations[i].startImageAcquisition := FALSE;
+		gCameraStations[i].TON.IN := FALSE;
 	END_FOR
 	
-	gCameraStations[0].shuttleStartPos.xPos := QuadrantIdxToPos(5);
-	gCameraStations[0].shuttleStartPos.yPos := QuadrantIdxToPos(0);
 	gCameraStations[0].camPosX := QuadrantIdxToPos(5);
 	gCameraStations[0].camPosY := QuadrantIdxToPos(1);
 	
@@ -128,6 +122,9 @@ ACTION smartLabSetup:
 				
 				gWorkstations[i].par.tempShuttleID := -1;
 				gShuttles[i].par.tempHighwayColumn := -1;
+				gShuttles[i].par.tempWorkstationID := 0;
+				gShuttles[i].par.tempCameraStationID := -1;
+				gShuttles[i].par.acquireImage := FALSE;
 				shuttlePlans[i].isActive := FALSE;
 				moveShuttle[i] := FALSE;
 			END_FOR

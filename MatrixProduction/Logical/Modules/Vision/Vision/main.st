@@ -1,21 +1,27 @@
 
 PROGRAM _INIT
-	// Reset variables
+
+	//// Reset variables ////
 	FOR camIdx := 0 TO NUM_CAMS DO
 		imageRequested[camIdx] := FALSE;
 		requestTimeStamp[camIdx] := 0;
 		durationToCamera[camIdx] := 0;
 		resultReady[camIdx] := FALSE;
+		TOF_Light[camIdx].IN := FALSE;
+		TOF_Light[camIdx].PT := REAL_TO_TIME(500);
 		visState[camIdx] := 0;
 	END_FOR
-		
+	
+	
+	//// gVisionNettime Configuration ////
 	gVisionNettime.CMD.Activate					:= TRUE;
 	gVisionNettime.CFG.AxisPeriod				:= 360; // Needs also to be set in the axis configuration
 	gVisionNettime.CFG.AxisPositionDelay_Cycles	:= 1; 	// Number of PLK cycles which the axis position is old when it comes to this task (Time from encoder to now in this task)
 	gVisionNettime.CFG.VisionPreTrigger_Cycles	:= 8; 	// Number of powerlink cycles the trigger has to be send ahead, 4 is a good value.
 	
+	
+	//// mappView Configuration ////
 	mappView.enable 			:= TRUE;
-
 	mappView.getImageArray 		:= FALSE;
 	mappView.imageFormat 		:= BRDKVIIMG_IMG_TYPE_JPEG;
 	mappView.jpegQuality 		:= 50;
@@ -27,49 +33,47 @@ END_PROGRAM
 
 PROGRAM _CYCLIC
 	
-	// -----------------------------------------------------------------------------------------------------------
-	// Vision Function Configuration 
-	// -----------------------------------------------------------------------------------------------------------
-	blobInput.enable := TRUE;
-	blobInput.numSearchMax := 1;
-	blobInput.offsetROIX := 0;
-	blobInput.offsetROIY := 0;
+	//// Vision function configuration ////
+	hwBlob.out.common.enable := TRUE;
+	hwBlob.out.common.numSearchMax := 1;
+	hwBlob.out.common.offsetROI.x := 0;
+	hwBlob.out.common.offsetROI.y := 0;
+	hwBlob.out.enhancedBlobInformation := 0;
+	hwBlob.out.regionFeatures := TRUE;
 	
-	// -----------------------------------------------------------------------------------------------------------
-	// Vision Sensor Configuration.
-	// -----------------------------------------------------------------------------------------------------------
 	
+	
+	//// Camera configuration ////
 	gVisionImage.CFG.EthDevice				:= 'IF2';			// Ethernet interface for the PLC, this is the IF where you go online
 	
-	// Camera configuration
 	gVisionSensor[0].CFG.VisionFunction		:= enumBlob;		// Used to run specific code for this vision function
 	gVisionSensor[0].CFG.PowerlinkNode		:= 8;				// Powerlink node number
 	gVisionSensor[0].CFG.DataStructure		:= ADR(gBlob);		// Global structures that holds all data related to this function
 	gVisionSensor[0].CFG.ComponentLink		:= gCamera;			// Vision component name defined under mappVision in the configuration view
 	
-	// Camera data
-	hwCam.out.par.exposureTime			:= 1000; 	// SUSCEPTIBLE TO CHANGE
-	hwCam.out.par.flashColor			:= 4; 		// 4: LIME (See help function "Image acquisition parameters (cyclic write)" for other alternatives)
-	hwCam.out.par.flashSegment		:= 15; 		// Binary 1111 (all segments are turned on)
-	hwCam.out.par.focus				:= 460; 	// SUSCEPTIBLE TO CHANGE - Camera FocusScale is defined in mm
-	hwCam.out.par.gainLevel				:= 1; 	
-	hwCam.out.par.statusLED :=  BRDKVIBASE_CAM_STATUS_RED; // Gain factor 1
-	//gVisionSensor[0].DAT.MaxItemCnt		:= RecipeData.Cam[i].MaxItemCnt; 	// Already has default value
-	//gVisionSensor[0].DAT.Timeout			:= RecipeData.Cam[i].Timeout; 		// Already has default value
 	
-	// -----------------------------------------------------------------------------------------------------------
-	// Capturing image if requested and compensating for network delay
-	// -----------------------------------------------------------------------------------------------------------
-	PowerlinkCycle_us			:= NettimeCurrent_us - NettimeLastCycle_us;
-	NettimeLastCycle_us			:= NettimeCurrent_us;
+	//// Camera data (output from PLC) ////
+	hwCam[0].out.par.exposureTime			:= 1000; 	// SUSCEPTIBLE TO CHANGE
+	hwCam[0].out.par.flashColor				:= 4; 		// 4: LIME (See help function "Image acquisition parameters (cyclic write)" for other alternatives)
+	hwCam[0].out.par.flashSegment			:= 15; 		// Binary 1111 (all segments are turned on)
+	hwCam[0].out.par.focus					:= 460; 	// Camera FocusScale is defined in mm
+	hwCam[0].out.par.gainLevel				:= 1; 		// Gain factor	
+	hwCam[0].out.cmd.imageAcquisition		:= TRUE;
+	
+	//// Capturing image if requested and compensating for network delay ////
+	PowerlinkCycle_us 		:= NettimeCurrent_us - NettimeLastCycle_us;
+	NettimeLastCycle_us		:= NettimeCurrent_us;
+	
 	
 	IF gVisionNettime.CMD.Activate THEN
 		
 		FOR camIdx := 0 TO NUM_CAMS DO
-		
+			
+			imgTrigger[camIdx].pCameraHw := ADR(hwCam[camIdx]);
+			
 			CASE visState[camIdx] OF 
-						
-				0: // Check if new image has been requested
+							
+				0: // Check if new image has been requested, indicated by rising edge
 					IF EDGEPOS(imageRequested[camIdx]) THEN
 						requestTimeStamp[camIdx] := NettimeCurrent_us;
 						resultReady[camIdx] := FALSE;
@@ -86,99 +90,121 @@ PROGRAM _CYCLIC
 						gVisionNettime.DAT.NettimeDelta_us	:= TriggerTimeDelta_us[camIdx];
 					
 						// Transfer nettime to sensor and fire trigger
-						IF gVisionSensor[camIdx].HW.Ready AND NOT gVisionSensor[camIdx].DAT.ImageProcessingActive THEN
-							imgTrigger.trigger	:= TRUE;
-							imgTrigger.delayNettime	:= gVisionNettime.DAT.NettimeNext_us;
+						IF hwCam[camIdx].in.status.imageAcquisitionReady AND NOT hwCam[camIdx].in.status.imageProcessingActive THEN
+							
+							imgTrigger[camIdx].trigger := TRUE;
+							imgTrigger[camIdx].delayNettime	:= gVisionNettime.DAT.NettimeNext_us;
+							TOF_Light[camIdx].IN := TRUE;
+						
 						ELSE
+							
 							gVisionNettime.DAT.Overflow := gVisionNettime.DAT.Overflow + 1;
+						
 						END_IF
 						
-						visState[camIdx] := 0;
+						visState[camIdx] := 30;
 					
-					END_IF	
+					END_IF
 				
-						
-			END_CASE
-			
-			IF imgTrigger.newImage THEN
-				// NEW RESULTS READY'
-				mappView.updateImage := TRUE;
-				CASE camIdx OF
-					0: 
-						// Check if bottom cover must be flipped
-							IF DINT_TO_INT(blobOutput.positionX/100) > cameraWidth/2 THEN
-								flipOrder := TRUE;
-							END_IF
-					END_CASE
-						
-					resultReady[camIdx] := TRUE;
-					visState[camIdx] := 0;				
-			END_IF
-			
-			// ImageNettime is the total image processing and processing time of the captured image. 
-			// ImageNettime changes with each additional captured image, so we compare with oldImageNettime and update mappView if it is different from current
-		
+				30: // Return data when image has been processed and update image
+									
+					// Check if image processing is completed, indicated by falling edge
+					IF EDGENEG(hwCam[camIdx].in.status.imageProcessingActive) THEN
+				
+						CASE camIdx OF
 							
-	
-
+							0: 
+								// Assign bool depending on placement of BLOB
+								flipOrder := (DINT_TO_INT(hwBlob.in.results[0].positionX/100) > cameraWidth/2);
+							
+								// Create svg contour of the found blob, which is used as overlay in the HMI page
+								overlay := '';
+								additionArguments := '';
+								
+								cornerA.x := DINT_TO_LREAL(hwBlob.in.results[0].xMin);
+								cornerA.y := DINT_TO_LREAL(hwBlob.in.results[0].yMin);
+								
+								cornerB.x := DINT_TO_LREAL(hwBlob.in.results[0].xMax);
+								cornerB.y := DINT_TO_LREAL(hwBlob.in.results[0].yMin);
+								
+								cornerC.x := DINT_TO_LREAL(hwBlob.in.results[0].xMax);
+								cornerC.y := DINT_TO_LREAL(hwBlob.in.results[0].yMax);
+								
+								cornerD.x := DINT_TO_LREAL(hwBlob.in.results[0].xMin);
+								cornerD.y := DINT_TO_LREAL(hwBlob.in.results[0].yMax);
+								
+								brdkViGeom_drawSvgRect(cornerA, cornerB, cornerC, cornerD, ADR(overlay), ADR(additionArguments));
+					
+						END_CASE
+						
+						resultReady[camIdx] := TRUE;
+						visState[camIdx] := 0;
+						
+					END_IF
+					
+				END_CASE
+			
 			// -----------------------------------------------------------------------------------------------------------
 			// Display camera status in hex - documentation is also in hex
 			// -----------------------------------------------------------------------------------------------------------
-			IF gVisionSensor[camIdx].DAT.Status = 0 THEN // Display only a single 0
-				gVisionSensor[camIdx].DAT.StatusText := '0';
+			IF hwCam[camIdx].in.status.cameraStatus = 0 THEN // Display only a single 0
+				statusText := '0';
 			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00000001 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Image acquisition';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00000002 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Waiting trigger';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00000010 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Searching settings';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00000080 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Setting focus';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00000090 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Searching settings';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00000800 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Cam CPU not ready';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00001000 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Cam sensor not ready';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#02000000 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'OS check/update';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#80000000 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Vision cockpit active';
+				statusText := 'Image acquisition';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000002 THEN
+				statusText := 'Waiting trigger';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000010 THEN
+				statusText := 'Searching settings';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000080 THEN
+				statusText := 'Setting focus';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000090 THEN
+				statusText := 'Searching settings';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000800 THEN
+				statusText := 'Cam CPU not ready';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00001000 THEN
+				statusText := 'Cam sensor not ready';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#02000000 THEN
+				statusText := 'OS check/update';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#80000000 THEN
+				statusText := 'Vision cockpit active';
 			ELSE // Display the status in hex format 0x02000800
-				gVisionSensor[camIdx].DAT.StatusText := '';
+				statusText := '';
 				FOR i := 0 TO 28 BY 4 DO
-					gVisionSensor[camIdx].DAT.StatusText := CONCAT(MID(HexTab, 1, LIMIT(1, UDINT_TO_INT((SHR(gVisionSensor[camIdx].DAT.Status, i) AND 16#0000000F) + 1), 16)), gVisionSensor[camIdx].DAT.StatusText);
+					statusText := CONCAT(MID(HexTab, 1, LIMIT(1, UDINT_TO_INT((SHR(hwCam[camIdx].in.status.cameraStatus, i) AND 16#0000000F) + 1), 16)), statusText);
 				END_FOR
-				gVisionSensor[camIdx].DAT.StatusText := CONCAT('0x', gVisionSensor[camIdx].DAT.StatusText);
+				statusText := CONCAT('0x', statusText);
 			END_IF
 
-			// -----------------------------------------------------------------------------------------------------------
-			// Check if vision cockpit is open
-			// -----------------------------------------------------------------------------------------------------------
-			//gVisionSensor[camIdx].DAT.CockpitIsActive := (gVisionSensor[camIdx].DAT.Status AND 16#8000_0000) > 0;
+			// imgTrigger.newImage is true for one cycle if new results are ready. Currently we only display image for first (and currently only) camera
+			IF imgTrigger[0].newImage THEN
+				
+				mappView.updateImage := TRUE;
+				
+			END_IF
 			
-			// -----------------------------------------------------------------------------------------------------------
-			// Reset trigger when timed out
-			// -----------------------------------------------------------------------------------------------------------
-//			IF gVisionSensor[camIdx].CMD.ImageTrigger THEN
-//				TriggerTimeout[camIdx].IN := TRUE;
-//				TriggerTimeout[camIdx].PT := REAL_TO_TIME(gVisionSensor[camIdx].DAT.Timeout * 1.25);
-//				IF TriggerTimeout[camIdx].Q THEN
-//					gVisionSensor[camIdx].CMD.ImageTrigger			:= FALSE;
-//					gVisionSensor[camIdx].CMD.ImageTriggerReset		:= TRUE;
-//					gVisionSensor[camIdx].DAT.Active				:= FALSE;
-//				END_IF
-//			ELSE
-//				TriggerTimeout[camIdx].IN := FALSE;
-//				gVisionSensor[camIdx].CMD.ImageTriggerReset := FALSE;
-//			END_IF
-			imgTrigger();
-			TriggerTimeout[camIdx]();
-			mappView.pMappLink 			:= ADR(gCamera);
+			
+			TOF_Light[camIdx].IN := FALSE;
+			
+			IF TOF_Light[camIdx].Q THEN
+				
+				hwCam[camIdx].out.par.statusLED	:= 4; // BRDKVIBASE_CAM_STATUS_BLUE does not match datasheet
+				
+			ELSIF hwCam[camIdx].in.status.imageAcquisitionReady AND hwCam[camIdx].in.common.moduleOk THEN
+				
+				hwCam[camIdx].out.par.statusLED	:= BRDKVIBASE_CAM_STATUS_GREEN;
+				
+			ELSE
+				
+				hwCam[camIdx].out.par.statusLED	:= 3; // BRDKVIBASE_CAM_STATUS_RED does not match datasheet
+				
+			END_IF
+			
+			TOF_Light[camIdx]();
+			
+			imgTrigger[camIdx]();
+			
+			mappView.pMappLink := ADR(gCamera);
 			mappView();
-			
-			//overlay='';
-			//brdkViGeom_drawSvgRect(
 
 		END_FOR
 	
