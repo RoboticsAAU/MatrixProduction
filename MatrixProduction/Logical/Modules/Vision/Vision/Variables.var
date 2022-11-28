@@ -44,4 +44,5 @@ VAR CONSTANT
 END_VAR
 VAR
 	additionArguments : STRING[80];
+	statusText : STRING[80];
 END_VAR

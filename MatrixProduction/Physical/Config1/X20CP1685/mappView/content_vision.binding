@@ -15,10 +15,7 @@
 <Target xsi:type="brease" contentRefId="content_vision" widgetRefId="NumericOutput2" attribute="value" />
 </Binding>
 
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Vision:hwCam[0].in.status.gainLevel" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_vision" widgetRefId="NumericOutput3" attribute="value" />
-</Binding>
+
 <Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Vision:hwCam[0].in.status.focus" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_vision" widgetRefId="NumericOutput4" attribute="value" />
@@ -39,6 +36,10 @@
 <Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Vision:hwBlob.in.common.numResults" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_vision" widgetRefId="NumericOutput7" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vision:hwCam[0].out.par.gainLevel" attribute="node" />
+<Target xsi:type="brease" contentRefId="content_vision" widgetRefId="NumericOutput3" attribute="node" />
 </Binding>
 </Bindings>
 </BindingsSet>

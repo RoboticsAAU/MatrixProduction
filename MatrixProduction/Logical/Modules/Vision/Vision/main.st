@@ -42,13 +42,14 @@ PROGRAM _CYCLIC
 	hwBlob.out.regionFeatures := TRUE;
 	
 	
+	
 	//// Camera configuration ////
+	gVisionImage.CFG.EthDevice				:= 'IF2';			// Ethernet interface for the PLC, this is the IF where you go online
+	
 	gVisionSensor[0].CFG.VisionFunction		:= enumBlob;		// Used to run specific code for this vision function
 	gVisionSensor[0].CFG.PowerlinkNode		:= 8;				// Powerlink node number
 	gVisionSensor[0].CFG.DataStructure		:= ADR(gBlob);		// Global structures that holds all data related to this function
 	gVisionSensor[0].CFG.ComponentLink		:= gCamera;			// Vision component name defined under mappVision in the configuration view
-	
-	gVisionImage.CFG.EthDevice				:= 'IF2';			// Ethernet interface for the PLC, this is the IF where you go online
 	
 	
 	//// Camera data (output from PLC) ////
@@ -57,7 +58,7 @@ PROGRAM _CYCLIC
 	hwCam[0].out.par.flashSegment			:= 15; 		// Binary 1111 (all segments are turned on)
 	hwCam[0].out.par.focus					:= 460; 	// Camera FocusScale is defined in mm
 	hwCam[0].out.par.gainLevel				:= 1; 		// Gain factor	
-	
+	hwCam[0].out.cmd.imageAcquisition		:= TRUE;
 	
 	//// Capturing image if requested and compensating for network delay ////
 	PowerlinkCycle_us 		:= NettimeCurrent_us - NettimeLastCycle_us;
@@ -146,32 +147,32 @@ PROGRAM _CYCLIC
 			// -----------------------------------------------------------------------------------------------------------
 			// Display camera status in hex - documentation is also in hex
 			// -----------------------------------------------------------------------------------------------------------
-			IF gVisionSensor[camIdx].DAT.Status = 0 THEN // Display only a single 0
-				gVisionSensor[camIdx].DAT.StatusText := '0';
+			IF hwCam[camIdx].in.status.cameraStatus = 0 THEN // Display only a single 0
+				statusText := '0';
 			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00000001 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Image acquisition';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00000002 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Waiting trigger';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00000010 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Searching settings';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00000080 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Setting focus';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00000090 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Searching settings';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00000800 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Cam CPU not ready';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00001000 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Cam sensor not ready';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#02000000 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'OS check/update';
-			ELSIF gVisionSensor[camIdx].DAT.Status = 16#80000000 THEN
-				gVisionSensor[camIdx].DAT.StatusText := 'Vision cockpit active';
+				statusText := 'Image acquisition';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000002 THEN
+				statusText := 'Waiting trigger';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000010 THEN
+				statusText := 'Searching settings';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000080 THEN
+				statusText := 'Setting focus';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000090 THEN
+				statusText := 'Searching settings';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000800 THEN
+				statusText := 'Cam CPU not ready';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00001000 THEN
+				statusText := 'Cam sensor not ready';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#02000000 THEN
+				statusText := 'OS check/update';
+			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#80000000 THEN
+				statusText := 'Vision cockpit active';
 			ELSE // Display the status in hex format 0x02000800
-				gVisionSensor[camIdx].DAT.StatusText := '';
+				statusText := '';
 				FOR i := 0 TO 28 BY 4 DO
-					gVisionSensor[camIdx].DAT.StatusText := CONCAT(MID(HexTab, 1, LIMIT(1, UDINT_TO_INT((SHR(gVisionSensor[camIdx].DAT.Status, i) AND 16#0000000F) + 1), 16)), gVisionSensor[camIdx].DAT.StatusText);
+					statusText := CONCAT(MID(HexTab, 1, LIMIT(1, UDINT_TO_INT((SHR(hwCam[camIdx].in.status.cameraStatus, i) AND 16#0000000F) + 1), 16)), statusText);
 				END_FOR
-				gVisionSensor[camIdx].DAT.StatusText := CONCAT('0x', gVisionSensor[camIdx].DAT.StatusText);
+				statusText := CONCAT('0x', statusText);
 			END_IF
 
 			// imgTrigger.newImage is true for one cycle if new results are ready. Currently we only display image for first (and currently only) camera
@@ -186,11 +187,15 @@ PROGRAM _CYCLIC
 			
 			IF TOF_Light[camIdx].Q THEN
 				
-				hwCam[camIdx].out.par.statusLED	:= BRDKVIBASE_CAM_STATUS_BLUE;  
+				hwCam[camIdx].out.par.statusLED	:= 4; // BRDKVIBASE_CAM_STATUS_BLUE does not match datasheet
+				
+			ELSIF hwCam[camIdx].in.status.imageAcquisitionReady AND hwCam[camIdx].in.common.moduleOk THEN
+				
+				hwCam[camIdx].out.par.statusLED	:= BRDKVIBASE_CAM_STATUS_GREEN;
 				
 			ELSE
 				
-				hwCam[camIdx].out.par.statusLED	:= BRDKVIBASE_CAM_STATUS_GREEN;
+				hwCam[camIdx].out.par.statusLED	:= 3; // BRDKVIBASE_CAM_STATUS_RED does not match datasheet
 				
 			END_IF
 			

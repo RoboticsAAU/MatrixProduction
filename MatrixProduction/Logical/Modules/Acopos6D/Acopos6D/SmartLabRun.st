@@ -268,8 +268,9 @@ ACTION smartLabShuttleMovement:
 			// Move to the specified column if any is available (-1 if no column is available)
 			ELSE
 				
-				// Previous destination is now current position
-				pShuttle.par.tempStartPos := pShuttle.par.tempDestinationPos;
+				// Start position is set to current position
+				pShuttle.par.tempStartPos.xPos := gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.X;
+				pShuttle.par.tempStartPos.yPos := gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y;
 				
 				// Position of the selected column
 				pShuttle.par.tempDestinationPos.xPos := QuadrantIdxToPos(quadrantIdx := (1 + pShuttle.par.tempHighwayColumn)); // Add 1 because the first column is not a highway
@@ -292,8 +293,9 @@ ACTION smartLabShuttleMovement:
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 2; // Y THEN X
 			
-			// Previous destination is now current position
-			pShuttle.par.tempStartPos := pShuttle.par.tempDestinationPos;
+			// Start position is set to current position
+			pShuttle.par.tempStartPos.xPos := gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.X;
+			pShuttle.par.tempStartPos.yPos := gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y;
 			
 			// Move to approach point of next workstation specified in the routing sheet (or just the next workstation if the shuttle is inactive)
 			pShuttle.par.tempDestinationPos.xPos := gWorkstations[pShuttle.par.tempNextWorkstationID].par.approachPosX;
@@ -326,8 +328,9 @@ ACTION smartLabShuttleMovement:
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; // X THEN Y
 			
-			// Previous destination is now current position
-			pShuttle.par.tempStartPos := pShuttle.par.tempDestinationPos;
+			// Start position is set to current position
+			pShuttle.par.tempStartPos.xPos := gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.X;
+			pShuttle.par.tempStartPos.yPos := gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y;
 			
 			// Move to next workstation
 			pShuttle.par.tempDestinationPos.xPos := gWorkstations[pShuttle.par.tempNextWorkstationID].par.xLocation;
@@ -361,9 +364,9 @@ ACTION smartLabCameraProcess:
 	   
 		pCameraStation ACCESS ADR(gCameraStations[pShuttle.par.tempCameraStationID]);
 		cm ACCESS ADR (gCameraStations[pShuttle.par.tempCameraStationID].cm);
-		pCameraStation.cm.setup.parent.name := 'SmartLabRun';
+		cm.setup.parent.name := 'SmartLabRun';
 			
-		CASE pCameraStation.cm.state OF
+		CASE cm.state OF
 				
 			0: // Calculate and send the time it takes for the shuttle to go from current to camera position. This is used by vision program to account for network delay
 				
@@ -418,7 +421,7 @@ ACTION smartLabCameraProcess:
 				
 			// Currently implemented as if all cameras follow the same visionResultReady implementation. However, camera-specific approach is possible with multiple cameras are used	
 			10: // Wait for request from vision program, indicated by rising edge
-				IF EDGEPOS(visionResultReady[pShuttle.par.tempCameraStationID]) AND pCameraStation.tempShuttleID = USINT_TO_INT(pShuttle.par.shuttleID) THEN
+				IF EDGEPOS(visionResultReady[pShuttle.par.tempCameraStationID]) AND pCameraStation.tempShuttleID = USINT_TO_SINT(pShuttle.par.shuttleID) THEN
 					requestImage[pShuttle.par.tempCameraStationID] := FALSE;
 					pShuttle.par.acquireImage := FALSE;
 					shuttlePlans[pShuttle.par.shuttleID].isFlipped := flipOrder;
@@ -427,5 +430,7 @@ ACTION smartLabCameraProcess:
 			
 		END_CASE
 	END_IF
+	
+	cm();
 	
 END_ACTION
