@@ -148,31 +148,31 @@ PROGRAM _CYCLIC
 			// Display camera status in hex - documentation is also in hex
 			// -----------------------------------------------------------------------------------------------------------
 			IF hwCam[camIdx].in.status.cameraStatus = 0 THEN // Display only a single 0
-				statusText := '0';
+				statusText[camIdx] := '0';
 			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00000001 THEN
-				statusText := 'Image acquisition';
+				statusText[camIdx] := 'Image acquisition';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000002 THEN
-				statusText := 'Waiting trigger';
+				statusText[camIdx] := 'Waiting trigger';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000010 THEN
-				statusText := 'Searching settings';
+				statusText[camIdx] := 'Searching settings';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000080 THEN
-				statusText := 'Setting focus';
+				statusText[camIdx] := 'Setting focus';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000090 THEN
-				statusText := 'Searching settings';
+				statusText[camIdx] := 'Searching settings';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000800 THEN
-				statusText := 'Cam CPU not ready';
+				statusText[camIdx] := 'Cam CPU not ready';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00001000 THEN
-				statusText := 'Cam sensor not ready';
+				statusText[camIdx] := 'Cam sensor not ready';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#02000000 THEN
-				statusText := 'OS check/update';
+				statusText[camIdx] := 'OS check/update';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#80000000 THEN
-				statusText := 'Vision cockpit active';
+				statusText[camIdx] := 'Vision cockpit active';
 			ELSE // Display the status in hex format 0x02000800
-				statusText := '';
+				statusText[camIdx] := '';
 				FOR i := 0 TO 28 BY 4 DO
-					statusText := CONCAT(MID(HexTab, 1, LIMIT(1, UDINT_TO_INT((SHR(hwCam[camIdx].in.status.cameraStatus, i) AND 16#0000000F) + 1), 16)), statusText);
+					statusText[camIdx] := CONCAT(MID(HexTab, 1, LIMIT(1, UDINT_TO_INT((SHR(hwCam[camIdx].in.status.cameraStatus, i) AND 16#0000000F) + 1), 16)), statusText[camIdx]);
 				END_FOR
-				statusText := CONCAT('0x', statusText);
+				statusText[camIdx] := CONCAT('0x', statusText[camIdx]);
 			END_IF
 
 			// imgTrigger.newImage is true for one cycle if new results are ready. Currently we only display image for first (and currently only) camera
@@ -183,10 +183,9 @@ PROGRAM _CYCLIC
 			END_IF
 			
 			
-			TOF_Light[camIdx].IN := FALSE;
-			
 			IF TOF_Light[camIdx].Q THEN
 				
+				TOF_Light[camIdx].IN := FALSE;
 				hwCam[camIdx].out.par.statusLED	:= 4; // BRDKVIBASE_CAM_STATUS_BLUE does not match datasheet
 				
 			ELSIF hwCam[camIdx].in.status.imageAcquisitionReady AND hwCam[camIdx].in.common.moduleOk THEN
