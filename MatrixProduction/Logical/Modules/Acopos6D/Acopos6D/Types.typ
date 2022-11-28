@@ -1,9 +1,10 @@
 
 TYPE
 	order_history : 	STRUCT 
+		status : order_status;
 		productOrder : product_order;
 		routingSheet : ARRAY[0..5]OF USINT;
-		status : order_status;
+		avgCycleTime : ARRAY[0..5]OF REAL;
 		finishedProductCount : USINT;
 		product : ARRAY[0..9]OF product_history; (*Assuming 10 is max order size*)
 		orderStartingTime : DATE_AND_TIME;
@@ -23,6 +24,8 @@ TYPE
 		isActive : BOOL;
 		isFlipped : BOOL;
 		currentProductWeight : REAL;
+		startTimeAtWorkstation : ARRAY[0..5]OF REAL; (*seconds after product started operation*)
+		workstationCycleTime : ARRAY[0..5]OF REAL;
 	END_STRUCT;
 	shuttle_status_typ : 	STRUCT 
 		dummy : USINT;

@@ -453,9 +453,10 @@ PROGRAM _CYCLIC
 						pShuttle.par.shuttleID := i;
 						
 						pShuttlePlan ACCESS ADR(shuttlePlans[pShuttle.par.shuttleID]);
+						pOrderHistory ACCESS ADR(orderHistory[pShuttlePlan.productOrder.ID]);
 						
 						IF pShuttlePlan.isActive THEN
-							orderHistory[pShuttlePlan.productOrder.ID].orderDuration := DT_TO_DINT(DTGetTime_0.DT1) - DT_TO_DINT(orderHistory[pShuttlePlan.productOrder.ID].orderStartingTime);
+							pOrderHistory.orderDuration := DT_TO_DINT(DTGetTime_0.DT1) - DT_TO_DINT(pOrderHistory.orderStartingTime);
 						END_IF
 						
 						smartLabShuttleMovement;

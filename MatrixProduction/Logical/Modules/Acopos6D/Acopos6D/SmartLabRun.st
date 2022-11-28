@@ -120,6 +120,7 @@ ACTION smartLabWorkstationOperation:
 				// If robot is enabled, begin robot operation
 				IF robotEnabled[i] THEN
 					robotExecute[i] := TRUE;
+					shuttlePlans[pWorkstation.par.tempShuttleID].startTimeAtWorkstation[pWorkstation.par.workstationID] := TIME_TO_REAL(clock_ms()) / 1000;
 				ELSE
 					robotExecute[i] := FALSE;
 				END_IF
@@ -148,6 +149,9 @@ ACTION smartLabWorkstationOperation:
 			
 			IF robotDone[i] THEN
 				robotExecute[i] := FALSE;
+				
+				// Calculate the workstation cycle time
+				shuttlePlans[pWorkstation.par.tempShuttleID].workstationCycleTime[pWorkstation.par.workstationID] := (TIME_TO_REAL(clock_ms()) / 1000) - shuttlePlans[pWorkstation.par.tempShuttleID].startTimeAtWorkstation[pWorkstation.par.workstationID];
 				
 				// Make current shuttle move to the next workstation and make workstation go back to wait for new shuttle
 				moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
@@ -241,16 +245,22 @@ ACTION smartLabShuttleMovement:
 					0:
 						pShuttlePlan.progressIndex := 0;
 						pShuttlePlan.isActive := FALSE;
-						orderHistory[pShuttlePlan.productOrder.ID].finishedProductCount := orderHistory[pShuttlePlan.productOrder.ID].finishedProductCount + 1;
 						activeShuttles := activeShuttles - 1;
 						amountProductsFinished := amountProductsFinished + 1;
+						pOrderHistory.finishedProductCount := pOrderHistory.finishedProductCount + 1;
+						
+						// Update the average workstation cycle times of the order (and reset for the shuttlePlan)
+						FOR j := 0 TO (smartLabNumWorkstations - 1) DO
+							pOrderHistory.avgCycleTime[j] := (pOrderHistory.avgCycleTime[j] * USINT_TO_REAL(pOrderHistory.finishedProductCount - 1) + pShuttlePlan.workstationCycleTime[j]) / USINT_TO_REAL(pOrderHistory.finishedProductCount);
+							pShuttlePlan.workstationCycleTime[j] := pShuttlePlan.startTimeAtWorkstation[j] := 0.0;
+						END_FOR
 						
 						// Set the product time and determine if order is finished
-						orderHistory[pShuttlePlan.productOrder.ID].product[pShuttlePlan.productID].finishTime := DT_TO_DINT(DTGetTime_0.DT1) - DT_TO_DINT(orderHistory[pShuttlePlan.productOrder.ID].orderStartingTime);;
+						pOrderHistory.product[pShuttlePlan.productID].finishTime := DT_TO_DINT(DTGetTime_0.DT1) - DT_TO_DINT(orderHistory[pShuttlePlan.productOrder.ID].orderStartingTime);;
 						
-						IF orderHistory[pShuttlePlan.productOrder.ID].finishedProductCount = orderHistory[pShuttlePlan.productOrder.ID].productOrder.amount THEN
-							orderHistory[pShuttlePlan.productOrder.ID].orderFinishTime := DTGetTime_0.DT1;
-							orderHistory[pShuttlePlan.productOrder.ID].status := FINISHED;
+						IF pOrderHistory.finishedProductCount = pOrderHistory.productOrder.amount THEN
+							pOrderHistory.orderFinishTime := DTGetTime_0.DT1;
+							pOrderHistory.status := FINISHED;
 						END_IF
 					
 					// If the next workstation is 5 (last workstation), set the final weight of the product
@@ -463,8 +473,8 @@ ACTION smartLabCameraProcess:
 					pShuttle.par.acquireImage := FALSE;
 					
 					pShuttlePlan.isFlipped := flipProduct;
-					orderHistory[pShuttlePlan.productOrder.ID].product[pShuttlePlan.productID].flipped := pShuttlePlan.isFlipped;
-
+					pOrderHistory.product[pShuttlePlan.productID].flipped := pShuttlePlan.isFlipped;
+					
 					cm.state := 0;
 				END_IF
 			
