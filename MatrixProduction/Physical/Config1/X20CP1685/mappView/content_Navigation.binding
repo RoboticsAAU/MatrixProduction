@@ -9,42 +9,15 @@
 <Source xsi:type="opcUa" refId="::AsGlobalPV:cmdBoxProgram.bottle" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_fixture" widgetRefId="PushButton4" attribute="value" />
 </Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vision:overlay" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="VisionImage1" attribute="svgOverlay" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vision:mappView.wsPort" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="VisionImage1" attribute="PLCWebsocketPort" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vision:hwCam[0].in.status.exposureTime" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput2" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vision:hwCam[0].out.par.gainLevel" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput3" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vision:hwCam[0].in.status.focus" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput4" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vision:hwCam[0].in.common.moduleOk" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput5" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vision:hwBlob.in.common.numResults" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput7" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vision:hwBlob.in.results[0].modelNumber" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput6" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Vision:hwBlob.in.common.functionProcessingTime" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput8" attribute="value" />
-</Binding>
+
+
+
+
+
+
+
+
+
 <Binding mode="twoWay">
 <Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput23" attribute="visible" />

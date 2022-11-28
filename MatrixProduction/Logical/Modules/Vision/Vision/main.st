@@ -38,7 +38,7 @@ PROGRAM _CYCLIC
 	hwBlob.out.common.numSearchMax := 1;
 	hwBlob.out.common.offsetROI.x := 0;
 	hwBlob.out.common.offsetROI.y := 0;
-	hwBlob.out.enhancedBlobInformation := TRUE;
+	hwBlob.out.enhancedBlobInformation := FALSE;
 	hwBlob.out.regionFeatures := TRUE;
 	
 	
@@ -122,19 +122,13 @@ PROGRAM _CYCLIC
 									// Assign bool depending on placement of BLOB
 									flipProduct := (DINT_TO_INT(hwBlob.in.results[0].positionX/100) > cameraWidth/2);
 									
-									cornerA.x := DINT_TO_LREAL(hwBlob.in.results[0].xMin);
-									cornerA.y := DINT_TO_LREAL(hwBlob.in.results[0].yMin);
+									blobCenterPoint.x := DINT_TO_LREAL(hwBlob.in.results[0].positionX);
+									blobCenterPoint.y := DINT_TO_LREAL(hwBlob.in.results[0].positionY);
 								
-									cornerB.x := DINT_TO_LREAL(hwBlob.in.results[0].xMax);
-									cornerB.y := DINT_TO_LREAL(hwBlob.in.results[0].yMin);
-								
-									cornerC.x := DINT_TO_LREAL(hwBlob.in.results[0].xMax);
-									cornerC.y := DINT_TO_LREAL(hwBlob.in.results[0].yMax);
-								
-									cornerD.x := DINT_TO_LREAL(hwBlob.in.results[0].xMin);
-									cornerD.y := DINT_TO_LREAL(hwBlob.in.results[0].yMax);
-								
-									brdkViGeom_drawSvgRect(cornerA, cornerB, cornerC, cornerD, ADR(overlay), ADR(additionArguments));
+									brdkViGeom_drawSvgCircle(blobCenterPoint, 50, ADR(overlay), ADR(additionArguments));
+									
+									// Display image for camera 0 via mappView server, since we know that image has been acquired and processing completed
+									mappView.updateImage := TRUE;
 									
 								END_IF
 									
@@ -176,15 +170,7 @@ PROGRAM _CYCLIC
 					statusText[camIdx] := CONCAT(MID(HexTab, 1, LIMIT(1, UDINT_TO_INT((SHR(hwCam[camIdx].in.status.cameraStatus, i) AND 16#0000000F) + 1), 16)), statusText[camIdx]);
 				END_FOR
 				statusText[camIdx] := CONCAT('0x', statusText[camIdx]);
-			END_IF
-
-			// imgTrigger.newImage is true for one cycle if new results are ready. Currently we only display image for first (and currently only) camera
-			IF imgTrigger[0].newImage THEN
-				
-				mappView.updateImage := TRUE;
-				
-			END_IF
-			
+			END_IF			
 			
 			IF TOF_Light[camIdx].Q THEN
 				
