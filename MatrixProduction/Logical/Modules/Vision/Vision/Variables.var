@@ -21,10 +21,7 @@ VAR CONSTANT
 END_VAR
 VAR
 	camIdx : UINT;
-	cornerA : brdkViBase_2d_typ;
-	cornerB : brdkViBase_2d_typ;
-	cornerC : brdkViBase_2d_typ;
-	cornerD : brdkViBase_2d_typ;
+	blobCenterPoint : brdkViBase_2d_typ;
 	overlay : STRING[6000000];
 END_VAR
 (*PV Mapping*)
