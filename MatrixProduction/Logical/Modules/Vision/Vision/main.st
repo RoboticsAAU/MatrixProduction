@@ -38,7 +38,7 @@ PROGRAM _CYCLIC
 	hwBlob.out.common.numSearchMax := 1;
 	hwBlob.out.common.offsetROI.x := 0;
 	hwBlob.out.common.offsetROI.y := 0;
-	hwBlob.out.enhancedBlobInformation := 0;
+	hwBlob.out.enhancedBlobInformation := TRUE;
 	hwBlob.out.regionFeatures := TRUE;
 	
 	
@@ -58,7 +58,6 @@ PROGRAM _CYCLIC
 	hwCam[0].out.par.flashSegment			:= 15; 		// Binary 1111 (all segments are turned on)
 	hwCam[0].out.par.focus					:= 460; 	// Camera FocusScale is defined in mm
 	hwCam[0].out.par.gainLevel				:= 1; 		// Gain factor	
-	hwCam[0].out.cmd.imageAcquisition		:= TRUE;
 	
 	//// Capturing image if requested and compensating for network delay ////
 	PowerlinkCycle_us 		:= NettimeCurrent_us - NettimeLastCycle_us;
@@ -114,27 +113,31 @@ PROGRAM _CYCLIC
 						CASE camIdx OF
 							
 							0: 
-								// Assign bool depending on placement of BLOB
-								flipOrder := (DINT_TO_INT(hwBlob.in.results[0].positionX/100) > cameraWidth/2);
-							
-								// Create svg contour of the found blob, which is used as overlay in the HMI page
+								// Create empty svg contour of the found blob, which is used as overlay in the HMI page
 								overlay := '';
 								additionArguments := '';
 								
-								cornerA.x := DINT_TO_LREAL(hwBlob.in.results[0].xMin);
-								cornerA.y := DINT_TO_LREAL(hwBlob.in.results[0].yMin);
+								// Check if blobs were found
+								IF hwBlob.in.common.numResults <> 0 THEN
+									// Assign bool depending on placement of BLOB
+									flipOrder := (DINT_TO_INT(hwBlob.in.results[0].positionX/100) > cameraWidth/2);
+									
+									cornerA.x := DINT_TO_LREAL(hwBlob.in.results[0].xMin);
+									cornerA.y := DINT_TO_LREAL(hwBlob.in.results[0].yMin);
 								
-								cornerB.x := DINT_TO_LREAL(hwBlob.in.results[0].xMax);
-								cornerB.y := DINT_TO_LREAL(hwBlob.in.results[0].yMin);
+									cornerB.x := DINT_TO_LREAL(hwBlob.in.results[0].xMax);
+									cornerB.y := DINT_TO_LREAL(hwBlob.in.results[0].yMin);
 								
-								cornerC.x := DINT_TO_LREAL(hwBlob.in.results[0].xMax);
-								cornerC.y := DINT_TO_LREAL(hwBlob.in.results[0].yMax);
+									cornerC.x := DINT_TO_LREAL(hwBlob.in.results[0].xMax);
+									cornerC.y := DINT_TO_LREAL(hwBlob.in.results[0].yMax);
 								
-								cornerD.x := DINT_TO_LREAL(hwBlob.in.results[0].xMin);
-								cornerD.y := DINT_TO_LREAL(hwBlob.in.results[0].yMax);
+									cornerD.x := DINT_TO_LREAL(hwBlob.in.results[0].xMin);
+									cornerD.y := DINT_TO_LREAL(hwBlob.in.results[0].yMax);
 								
-								brdkViGeom_drawSvgRect(cornerA, cornerB, cornerC, cornerD, ADR(overlay), ADR(additionArguments));
-					
+									brdkViGeom_drawSvgRect(cornerA, cornerB, cornerC, cornerD, ADR(overlay), ADR(additionArguments));
+									
+								END_IF
+									
 						END_CASE
 						
 						resultReady[camIdx] := TRUE;
@@ -142,7 +145,7 @@ PROGRAM _CYCLIC
 						
 					END_IF
 					
-				END_CASE
+			END_CASE
 			
 			// -----------------------------------------------------------------------------------------------------------
 			// Display camera status in hex - documentation is also in hex
