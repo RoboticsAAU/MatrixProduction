@@ -3,9 +3,5 @@
   <Bindings>
 
 
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gVisionSensor[0].DAT.Exposure" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput1" attribute="value" />
-</Binding>
-</Bindings>
+	</Bindings>
 </BindingsSet>

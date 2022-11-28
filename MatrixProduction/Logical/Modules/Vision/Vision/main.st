@@ -115,7 +115,7 @@ PROGRAM _CYCLIC
 							
 							0: 
 								// Assign bool depending on placement of BLOB
-								flipOrder := (DINT_TO_INT(hwBlob.in.results[0].positionX/100) > cameraWidth/2);
+								flipProduct := (DINT_TO_INT(hwBlob.in.results[0].positionX/100) > cameraWidth/2);
 							
 								// Create svg contour of the found blob, which is used as overlay in the HMI page
 								overlay := '';

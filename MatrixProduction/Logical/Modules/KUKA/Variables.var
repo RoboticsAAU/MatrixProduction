@@ -14,4 +14,5 @@ END_VAR
 (*OPC UA*)
 VAR
 	robotEnabled : ARRAY[0..5] OF BOOL := [5(TRUE),FALSE];
+	robotEnabledPrev : ARRAY[0..5] OF BOOL;
 END_VAR

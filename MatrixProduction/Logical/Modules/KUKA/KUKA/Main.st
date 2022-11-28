@@ -64,7 +64,10 @@ PROGRAM _CYCLIC
 		// If the robot is not enabled, tell Acopos that the robot is already done
 		IF NOT robotEnabled[i] THEN
 			robotDone[i] := TRUE;
+		ELSIF robotEnabled[i] <> robotEnabledPrev[i] THEN
+			robotDone[i] := FALSE;
 		END_IF
+		robotEnabledPrev[i] := robotEnabled[i];
 		
 		// If the robot is ready, begin actual program
 		IF 	pKuka.status.P_ AND pKuka.status.S_ AND pKuka.status.R_ AND pKuka.status.I_ AND pKuka.status.EXT_ THEN

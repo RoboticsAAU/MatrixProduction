@@ -162,7 +162,7 @@ ACTION smartLabSetup:
 			
 		17006:
 			em.description := 'Wait for shuttles to settle before getting their initial weight';
-			TON_0.PT := T#2S;
+			TON_0.PT := T#3S;
 			TON_0.IN := TRUE;
 			IF TON_0.Q THEN
 				TON_0.IN := FALSE;

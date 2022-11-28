@@ -36,6 +36,7 @@
 		<EventBindingsSet refId="content_configPage_eventbinding" />
 		<EventBindingsSet refId="content_smartLabPage_eventbinding" />
 		<EventBindingsSet refId="content_kukaPage_eventbinding" />
+		<EventBindingsSet refId="content_historyPage_eventbinding" />
 	</EventBindingsSets>
   <Dialogs>
 	</Dialogs>

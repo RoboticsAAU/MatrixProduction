@@ -6,24 +6,30 @@
   </header>
   <body>
     <tu tuid="Status.0">
+      <note>Order has not yet been made</note>
+      <tuv xml:lang="en">
+        <seg>N/A</seg>
+      </tuv>
+    </tu>
+    <tu tuid="Status.1">
       <note>Order is waiting to start</note>
+      <tuv xml:lang="fr">
+        <seg>Bonjour tout le monde!</seg>
+      </tuv>
       <tuv xml:lang="de">
         <seg>Servus Welt!</seg>
       </tuv>
       <tuv xml:lang="en">
         <seg>AWAITING</seg>
       </tuv>
-      <tuv xml:lang="fr">
-        <seg>Bonjour tout le monde!</seg>
-      </tuv>
     </tu>
-    <tu tuid="Status.1">
+    <tu tuid="Status.2">
       <note>Order is in progress</note>
       <tuv xml:lang="en">
         <seg>ACTIVE</seg>
       </tuv>
     </tu>
-    <tu tuid="Status.2">
+    <tu tuid="Status.3">
       <note>Order is finished</note>
       <tuv xml:lang="en">
         <seg>FINISHED</seg>

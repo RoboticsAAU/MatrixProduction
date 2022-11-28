@@ -20,5 +20,6 @@
     <Object Type="File">content_kukaPage.binding</Object>
     <Object Type="File">content_kukaPage.eventbinding</Object>
     <Object Type="File">content_historyPage.binding</Object>
+    <Object Type="File">content_historyPage.eventbinding</Object>
   </Objects>
 </Package>

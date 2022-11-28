@@ -120,9 +120,10 @@ TYPE
 	END_STRUCT;
 	order_status : 
 		(
-		AWAITING := 0,
-		ACTIVE := 1,
-		FINISHED := 2
+		NOTAPPLICABLE := 0,
+		AWAITING := 1,
+		ACTIVE := 2,
+		FINISHED := 3
 		);
 	cover_types : 
 		(
