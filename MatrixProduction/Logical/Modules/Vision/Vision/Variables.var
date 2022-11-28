@@ -44,5 +44,5 @@ VAR CONSTANT
 END_VAR
 VAR
 	additionArguments : STRING[80];
-	statusText : STRING[80];
+	statusText : ARRAY[0..NUM_CAMS] OF STRING[80];
 END_VAR

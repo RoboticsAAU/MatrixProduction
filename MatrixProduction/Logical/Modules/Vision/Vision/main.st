@@ -38,7 +38,7 @@ PROGRAM _CYCLIC
 	hwBlob.out.common.numSearchMax := 1;
 	hwBlob.out.common.offsetROI.x := 0;
 	hwBlob.out.common.offsetROI.y := 0;
-	hwBlob.out.enhancedBlobInformation := 0;
+	hwBlob.out.enhancedBlobInformation := TRUE;
 	hwBlob.out.regionFeatures := TRUE;
 	
 	
@@ -58,7 +58,6 @@ PROGRAM _CYCLIC
 	hwCam[0].out.par.flashSegment			:= 15; 		// Binary 1111 (all segments are turned on)
 	hwCam[0].out.par.focus					:= 460; 	// Camera FocusScale is defined in mm
 	hwCam[0].out.par.gainLevel				:= 1; 		// Gain factor	
-	hwCam[0].out.cmd.imageAcquisition		:= TRUE;
 	
 	//// Capturing image if requested and compensating for network delay ////
 	PowerlinkCycle_us 		:= NettimeCurrent_us - NettimeLastCycle_us;
@@ -114,27 +113,31 @@ PROGRAM _CYCLIC
 						CASE camIdx OF
 							
 							0: 
-								// Assign bool depending on placement of BLOB
-								flipProduct := (DINT_TO_INT(hwBlob.in.results[0].positionX/100) > cameraWidth/2);
-							
-								// Create svg contour of the found blob, which is used as overlay in the HMI page
+								// Create empty svg contour of the found blob, which is used as overlay in the HMI page
 								overlay := '';
 								additionArguments := '';
 								
-								cornerA.x := DINT_TO_LREAL(hwBlob.in.results[0].xMin);
-								cornerA.y := DINT_TO_LREAL(hwBlob.in.results[0].yMin);
+								// Check if blobs were found
+								IF hwBlob.in.common.numResults <> 0 THEN
+									// Assign bool depending on placement of BLOB
+									flipOrder := (DINT_TO_INT(hwBlob.in.results[0].positionX/100) > cameraWidth/2);
+									
+									cornerA.x := DINT_TO_LREAL(hwBlob.in.results[0].xMin);
+									cornerA.y := DINT_TO_LREAL(hwBlob.in.results[0].yMin);
 								
-								cornerB.x := DINT_TO_LREAL(hwBlob.in.results[0].xMax);
-								cornerB.y := DINT_TO_LREAL(hwBlob.in.results[0].yMin);
+									cornerB.x := DINT_TO_LREAL(hwBlob.in.results[0].xMax);
+									cornerB.y := DINT_TO_LREAL(hwBlob.in.results[0].yMin);
 								
-								cornerC.x := DINT_TO_LREAL(hwBlob.in.results[0].xMax);
-								cornerC.y := DINT_TO_LREAL(hwBlob.in.results[0].yMax);
+									cornerC.x := DINT_TO_LREAL(hwBlob.in.results[0].xMax);
+									cornerC.y := DINT_TO_LREAL(hwBlob.in.results[0].yMax);
 								
-								cornerD.x := DINT_TO_LREAL(hwBlob.in.results[0].xMin);
-								cornerD.y := DINT_TO_LREAL(hwBlob.in.results[0].yMax);
+									cornerD.x := DINT_TO_LREAL(hwBlob.in.results[0].xMin);
+									cornerD.y := DINT_TO_LREAL(hwBlob.in.results[0].yMax);
 								
-								brdkViGeom_drawSvgRect(cornerA, cornerB, cornerC, cornerD, ADR(overlay), ADR(additionArguments));
-					
+									brdkViGeom_drawSvgRect(cornerA, cornerB, cornerC, cornerD, ADR(overlay), ADR(additionArguments));
+									
+								END_IF
+									
 						END_CASE
 						
 						resultReady[camIdx] := TRUE;
@@ -142,37 +145,37 @@ PROGRAM _CYCLIC
 						
 					END_IF
 					
-				END_CASE
+			END_CASE
 			
 			// -----------------------------------------------------------------------------------------------------------
 			// Display camera status in hex - documentation is also in hex
 			// -----------------------------------------------------------------------------------------------------------
 			IF hwCam[camIdx].in.status.cameraStatus = 0 THEN // Display only a single 0
-				statusText := '0';
+				statusText[camIdx] := '0';
 			ELSIF gVisionSensor[camIdx].DAT.Status = 16#00000001 THEN
-				statusText := 'Image acquisition';
+				statusText[camIdx] := 'Image acquisition';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000002 THEN
-				statusText := 'Waiting trigger';
+				statusText[camIdx] := 'Waiting trigger';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000010 THEN
-				statusText := 'Searching settings';
+				statusText[camIdx] := 'Searching settings';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000080 THEN
-				statusText := 'Setting focus';
+				statusText[camIdx] := 'Setting focus';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000090 THEN
-				statusText := 'Searching settings';
+				statusText[camIdx] := 'Searching settings';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00000800 THEN
-				statusText := 'Cam CPU not ready';
+				statusText[camIdx] := 'Cam CPU not ready';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#00001000 THEN
-				statusText := 'Cam sensor not ready';
+				statusText[camIdx] := 'Cam sensor not ready';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#02000000 THEN
-				statusText := 'OS check/update';
+				statusText[camIdx] := 'OS check/update';
 			ELSIF hwCam[camIdx].in.status.cameraStatus = 16#80000000 THEN
-				statusText := 'Vision cockpit active';
+				statusText[camIdx] := 'Vision cockpit active';
 			ELSE // Display the status in hex format 0x02000800
-				statusText := '';
+				statusText[camIdx] := '';
 				FOR i := 0 TO 28 BY 4 DO
-					statusText := CONCAT(MID(HexTab, 1, LIMIT(1, UDINT_TO_INT((SHR(hwCam[camIdx].in.status.cameraStatus, i) AND 16#0000000F) + 1), 16)), statusText);
+					statusText[camIdx] := CONCAT(MID(HexTab, 1, LIMIT(1, UDINT_TO_INT((SHR(hwCam[camIdx].in.status.cameraStatus, i) AND 16#0000000F) + 1), 16)), statusText[camIdx]);
 				END_FOR
-				statusText := CONCAT('0x', statusText);
+				statusText[camIdx] := CONCAT('0x', statusText[camIdx]);
 			END_IF
 
 			// imgTrigger.newImage is true for one cycle if new results are ready. Currently we only display image for first (and currently only) camera
@@ -183,10 +186,9 @@ PROGRAM _CYCLIC
 			END_IF
 			
 			
-			TOF_Light[camIdx].IN := FALSE;
-			
 			IF TOF_Light[camIdx].Q THEN
 				
+				TOF_Light[camIdx].IN := FALSE;
 				hwCam[camIdx].out.par.statusLED	:= 4; // BRDKVIBASE_CAM_STATUS_BLUE does not match datasheet
 				
 			ELSIF hwCam[camIdx].in.status.imageAcquisitionReady AND hwCam[camIdx].in.common.moduleOk THEN
