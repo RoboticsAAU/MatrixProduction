@@ -127,16 +127,12 @@ PROGRAM _CYCLIC
 								
 									brdkViGeom_drawSvgCircle(blobCenterPoint, 50, ADR(overlay), ADR(additionArguments));
 									
+									// Display image for camera 0 via mappView server, since we know that image has been acquired and processing completed
+									mappView.updateImage := TRUE;
+									
 								END_IF
 									
 						END_CASE
-						
-						// Display image for camera 0 via mappView server, since we know that image has been acquired and processing completed
-						IF camIdx = 0 THEN
-				
-							mappView.updateImage := TRUE;
-				
-						END_IF
 						
 						resultReady[camIdx] := TRUE;
 						visState[camIdx] := 0;
