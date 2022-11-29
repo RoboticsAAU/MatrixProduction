@@ -1,5 +1,5 @@
 VAR
-	hwMatching : brdkViBase_hw_match_10_typ;
+	hwMatch : brdkViBase_hw_match_10_typ;
 	hwCam : ARRAY[0..NUM_CAMS] OF brdkViBase_cam_hw_typ;
 	imgTrigger : ARRAY[0..NUM_CAMS] OF brdkViBase_imgTrigger;
 	mappView : brdkViImg_mappView;

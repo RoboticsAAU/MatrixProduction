@@ -34,21 +34,21 @@ END_PROGRAM
 PROGRAM _CYCLIC
 	
 	//// Vision function configuration ////
-	hwBlob.out.common.enable := TRUE;
-	hwBlob.out.common.numSearchMax := 1;
-	hwBlob.out.common.offsetROI.x := 0;
-	hwBlob.out.common.offsetROI.y := 0;
-	hwBlob.out.enhancedBlobInformation := FALSE;
-	hwBlob.out.regionFeatures := TRUE;
-	
-	
+	hwMatch.out.common.enable := TRUE;
+	hwMatch.out.common.numSearchMax := 1;
+	hwMatch.out.common.alignment := 0; // Alignment is not supported with smart sensor
+	hwMatch.out.common.offsetROI.x := 0;
+	hwMatch.out.common.offsetROI.y := 0;
+	hwMatch.out.minScore := 80; // In percent
+	hwMatch.out.maxOverlap := 0; // In percent
+	hwMatch.out.timeout := 30; // Limit in milliseconds for match search 
 	
 	//// Camera configuration ////
 	gVisionImage.CFG.EthDevice				:= 'IF2';			// Ethernet interface for the PLC, this is the IF where you go online
 	
-	gVisionSensor[0].CFG.VisionFunction		:= enumBlob;		// Used to run specific code for this vision function
+	gVisionSensor[0].CFG.VisionFunction		:= enumMatch;		// Used to run specific code for this vision function
 	gVisionSensor[0].CFG.PowerlinkNode		:= 8;				// Powerlink node number
-	gVisionSensor[0].CFG.DataStructure		:= ADR(gBlob);		// Global structures that holds all data related to this function
+	gVisionSensor[0].CFG.DataStructure		:= ADR(gMatch);		// Global structures that holds all data related to this function
 	gVisionSensor[0].CFG.ComponentLink		:= gCamera;			// Vision component name defined under mappVision in the configuration view
 	
 	
@@ -118,14 +118,14 @@ PROGRAM _CYCLIC
 								additionArguments := '';
 								
 								// Check if blobs were found
-								IF hwBlob.in.common.numResults <> 0 THEN
+								IF hwMatch.in.common.numResults <> 0 THEN
 									// Assign bool depending on placement of BLOB
-									flipProduct := (DINT_TO_INT(hwBlob.in.results[0].positionX/100) > cameraWidth/2);
+									flipProduct := (DINT_TO_INT(hwMatch.in.results[0].positionX/100) > cameraWidth/2);
 									
-									blobCenterPoint.x := DINT_TO_LREAL(hwBlob.in.results[0].positionX);
-									blobCenterPoint.y := DINT_TO_LREAL(hwBlob.in.results[0].positionY);
+									shapeCenterPoint.x := DINT_TO_LREAL(hwMatch.in.results[0].positionX);
+									shapeCenterPoint.y := DINT_TO_LREAL(hwMatch.in.results[0].positionY);
 								
-									brdkViGeom_drawSvgCircle(blobCenterPoint, 50, ADR(overlay), ADR(additionArguments));
+									brdkViGeom_drawSvgCircle(shapeCenterPoint, 50, ADR(overlay), ADR(additionArguments));
 									
 								END_IF
 							
