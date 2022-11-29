@@ -43,6 +43,9 @@
       <Group ID="BaseSettings">
         <Property ID="FocusScale" Value="1" />
       </Group>
+      <Group ID="ImageSettings">
+        <Property ID="PixelConfiguration" Value="20" />
+      </Group>
     </Group>
     <Group ID="VisionFunctionSet">
       <Group ID="VisionProgramSettings">

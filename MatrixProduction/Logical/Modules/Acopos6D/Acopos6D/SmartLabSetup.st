@@ -74,6 +74,7 @@ ACTION smartLabCameraStationSetup:
 		gCameraStations[i].camPosY := 0;
 		gCameraStations[i].tempShuttleID := -1;
 		gCameraStations[i].cm.state := 0;
+		gCameraStations[i].reserved := FALSE;
 		gCameraStations[i].TON.IN := FALSE;
 	END_FOR
 	

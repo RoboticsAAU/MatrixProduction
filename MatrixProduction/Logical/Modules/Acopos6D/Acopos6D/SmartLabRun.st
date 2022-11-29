@@ -90,6 +90,8 @@ ACTION smartLabWorkstationOperation:
 		20:
 			cm.description := 'Send data to robot through mapping and begin robot operation';
 			
+			gShuttles[pWorkstation.par.tempShuttleID].par.tempCameraStationID := pWorkstation.par.cameraID;
+			
 			IF NOT robotBusy[i] THEN
 				CASE pWorkstation.par.workstationID OF
 					// Send type of bottom cover (converted to int)
@@ -153,11 +155,21 @@ ACTION smartLabWorkstationOperation:
 				// Calculate the workstation cycle time
 				shuttlePlans[pWorkstation.par.tempShuttleID].workstationCycleTime[pWorkstation.par.workstationID] := (TIME_TO_REAL(clock_ms()) / 1000) - shuttlePlans[pWorkstation.par.tempShuttleID].startTimeAtWorkstation[pWorkstation.par.workstationID];
 				
-				// Make current shuttle move to the next workstation and make workstation go back to wait for new shuttle
+				cm.state := 50;
+			END_IF
+			
+			
+		50:
+			IF pWorkstation.par.cameraID <> -1 THEN
+				IF NOT gCameraStations[pWorkstation.par.cameraID].reserved THEN
+					gCameraStations[pWorkstation.par.cameraID].reserved := TRUE;
+					moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
+					cm.state := 60;
+				END_IF
+			ELSE
 				moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
 				cm.state := 60;
 			END_IF
-			
 			
 //		50:
 //			cm.description := 'Leviate shuttle if landed before process';
@@ -179,8 +191,6 @@ ACTION smartLabWorkstationOperation:
 			
 			// Go back to wait for shuttle at workstation if the current shuttle has begun moving (avoids bugs)
 			IF gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].State = mcACP6D_SH_STATE_MOTION THEN
-				
-				gShuttles[pWorkstation.par.tempShuttleID].par.tempCameraStationID := pWorkstation.par.cameraID;
 				
 				// We set flag to acquire image if upcoming path has a camera station and if the shuttle is active (has been assigned an order)
 				IF shuttlePlans[pWorkstation.par.tempShuttleID].isActive AND pWorkstation.par.cameraID <> -1 THEN
@@ -221,6 +231,8 @@ ACTION smartLabShuttleMovement:
 				pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
 				pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Execute := TRUE;
 				IF pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Done THEN
+					pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Execute := FALSE;
+					
 					pShuttlePlan.currentProductWeight := (pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Payload * 1000) - pShuttle.par.initialWeight;
 					
 					IF moveShuttle[pShuttle.par.shuttleID] THEN
@@ -282,7 +294,7 @@ ACTION smartLabShuttleMovement:
 		11:
 			cm.description := 'Determine the next state, depending on where the next workstation is';
 			
-			IF pShuttle.par.tempWorkstationID = 0 THEN
+			IF pShuttle.par.tempCameraStationID <> -1 THEN
 				cm.state := 20;
 			// If the workstations are opposite each other, go directly to the approach point of next workstation (no need to occupy column when it only moves in row)
 			ELSIF AreWorkstationsOpposite(workstationID1 := pShuttle.par.tempWorkstationID, workstationID2 := pShuttle.par.tempNextWorkstationID) THEN
@@ -359,28 +371,26 @@ ACTION smartLabShuttleMovement:
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; // X THEN Y
 			
-			// If the position is on the highway set occupied positions on the highway around shuttle
-			IF 0 < PosToQuadrantIdx(awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].xPos) OR PosToQuadrantIdx(awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].xPos) < 5 THEN
-				ShuttleTouchQuadrantPos_0.shuttlePos := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID];
-				ShuttleTouchQuadrantPos_0();
+				// If the position is on the highway set occupied positions on the highway around shuttle
+				IF 0 < PosToQuadrantIdx(awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].xPos) OR PosToQuadrantIdx(awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].xPos) < 5 THEN
+					ShuttleTouchQuadrantPos_0.shuttlePos := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID];
+					ShuttleTouchQuadrantPos_0();
+					
+					FOR j := 0 TO ShuttleTouchQuadrantPos_0.numTouches DO
+						occupiedPosition[ShuttleTouchQuadrantPos_0.quadrantPosX[j] - 1, ShuttleTouchQuadrantPos_0.quadrantPosY[j]] := TRUE;
+					END_FOR
+					// NOTE: Should maybe also occupy positions for the movement itself
+				END_IF
 				
-				FOR j := 0 TO ShuttleTouchQuadrantPos_0.numTouches DO
-					occupiedPosition[ShuttleTouchQuadrantPos_0.quadrantPosX[j] - 1, ShuttleTouchQuadrantPos_0.quadrantPosY[j]] := TRUE;
-				END_FOR
-				// NOTE: Should maybe also occupy positions for the movement itself
-			END_IF
-			
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].xPos;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].yPos;
-			
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
-			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Done THEN
-				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].xPos;
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].yPos;
 				
-				IF pShuttle.par.tempCameraStationID <> -1 THEN
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
+				IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Done THEN
+					pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
+					
 					cm.state := 26;
 				END_IF
-			END_IF
 		
 		26:
 			cm.description := 'Perform camera specific operation';
@@ -542,7 +552,8 @@ ACTION smartLabCameraProcess:
 						
 				END_CASE
 				
-				// Send request if no error occurred in parabolic blend calculation. (Implement error handling in the future)
+				// Send request if no error occurred in parabolic blend calculation. (Implement error handling in the future),
+				// and if the shuttle still has time to arrive at the camera
 				IF ParabolicBlend_0.durationAtEvalDist <> -1 THEN
 					requestImage[pShuttle.par.tempCameraStationID] := TRUE;
 					cm.state := 10;

@@ -26,7 +26,7 @@ PROGRAM _INIT
 	mappView.imageFormat 		:= BRDKVIIMG_IMG_TYPE_JPEG;
 	mappView.jpegQuality 		:= 50;
 	mappView.timeout 			:= 3000;
-	mappView.wsPort 			:= 18000;
+	mappView.wsPort 			:= 8084;
 	mappView();	
 	
 END_PROGRAM
@@ -127,10 +127,10 @@ PROGRAM _CYCLIC
 								
 									brdkViGeom_drawSvgCircle(blobCenterPoint, 50, ADR(overlay), ADR(additionArguments));
 									
-									// Display image for camera 0 via mappView server, since we know that image has been acquired and processing completed
-									mappView.updateImage := TRUE;
-									
 								END_IF
+							
+								// Display image for camera 0 via mappView server, since we know that image has been acquired and processing completed
+								mappView.updateImage := TRUE;
 									
 						END_CASE
 						

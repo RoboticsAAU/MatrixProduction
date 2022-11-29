@@ -68,6 +68,7 @@ TYPE
 		camPosX : REAL;
 		camPosY : REAL;
 		TON : TON;
+		reserved : BOOL;
 	END_STRUCT;
 	shuttle_typ : 	STRUCT 
 		cm : brdkCM;
