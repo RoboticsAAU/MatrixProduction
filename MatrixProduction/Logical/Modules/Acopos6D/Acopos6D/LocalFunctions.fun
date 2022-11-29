@@ -16,18 +16,21 @@ END_FUNCTION_BLOCK
 {REDUND_ERROR} FUNCTION_BLOCK MovementColumnSelection
 	VAR_INPUT
 		occupiedPosition : REFERENCE TO ARRAY[0..3,0..7] OF BOOL; (*4 highway columns and 8 highway rows*)
-		startWorkstation : workStation_typ;
-		endWorkstation : workStation_typ;
+		startPosY : REAL;
+		endPosY : REAL;
+		prioritiseLowColumns : BOOL;
 		opt_movementDone : BOOL; (*Reset the positions that were occupied by the movement*)
 		opt_resetColumn : SINT;
 	END_VAR
 	VAR_OUTPUT
-		selectedColumn : SINT;
+		selectedHighwayColumn : SINT;
 	END_VAR
 	VAR
+		columnIsPossible : BOOL;
 		startRowLevel : USINT;
 		endRowLevel : USINT;
-		columnIsPossible : BOOL;
+		bottomRowLevel : USINT;
+		topRowLevel : USINT;
 		i : USINT;
 		k : USINT;
 	END_VAR

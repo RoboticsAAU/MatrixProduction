@@ -40,6 +40,7 @@ TYPE
 		tempDestinationPos : shuttlePos;
 		tempHighwayColumn : SINT;
 		initialWeight : REAL;
+		cameraOperationDone : BOOL;
 	END_STRUCT;
 	shuttle_function_typ : 	STRUCT 
 		MC_BR_Move6D_Acp6D_0 : MC_BR_Move6D_Acp6D;

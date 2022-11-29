@@ -125,5 +125,93 @@
 <Source xsi:type="opcUa" refId="::Acopos6D:amountProductsFinished" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput2" attribute="value" />
 </Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput30" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Line14" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Line12" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Label43" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Line15" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Label46" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Line13" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Label41" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput29" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Rectangle2" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput27" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput31" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Label39" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Line11" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Label44" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Label42" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Line16" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Label45" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Label40" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Line17" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput28" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput26" attribute="visible" />
+</Binding>
 </Bindings>
 </BindingsSet>

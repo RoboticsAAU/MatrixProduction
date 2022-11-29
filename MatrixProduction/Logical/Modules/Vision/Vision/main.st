@@ -56,7 +56,7 @@ PROGRAM _CYCLIC
 	hwCam[0].out.par.exposureTime			:= 1000; 	// SUSCEPTIBLE TO CHANGE
 	hwCam[0].out.par.flashColor				:= 4; 		// 4: LIME (See help function "Image acquisition parameters (cyclic write)" for other alternatives)
 	hwCam[0].out.par.flashSegment			:= 15; 		// Binary 1111 (all segments are turned on)
-	hwCam[0].out.par.focus					:= 460; 	// Camera FocusScale is defined in mm
+	hwCam[0].out.par.focus					:= 437; 	// Camera FocusScale is defined in mm
 	hwCam[0].out.par.gainLevel				:= 1; 		// Gain factor	
 	
 	//// Capturing image if requested and compensating for network delay ////

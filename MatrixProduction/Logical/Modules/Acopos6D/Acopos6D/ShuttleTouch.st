@@ -9,7 +9,7 @@ FUNCTION_BLOCK ShuttleTouchQuadrantPos
 	minY := shuttlePos.yPos - shuttleLength/2;
 	maxY := shuttlePos.yPos + shuttleLength/2;
 	
-	
+	// Convert the postions to touched quadrants
 	xQuadrantTouched[0] := PosToQuadrantIdx(minX);
 	xQuadrantTouched[1] := PosToQuadrantIdx(maxX);
 	yQuadrantTouched[0] := PosToQuadrantIdx(minY);

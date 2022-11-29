@@ -116,7 +116,6 @@ ACTION smartLabSetup:
 	positionContainerSmartLabProgram[7].initYPos := gWorkstations[5].par.yLocation;
 	
 	
-	
 	CASE em.substate OF
 		17000:
 			em.description := 'Resetting parameters';
