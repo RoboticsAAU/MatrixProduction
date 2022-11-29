@@ -109,9 +109,8 @@ END_FUNCTION_BLOCK
 		maxX : REAL;
 		minY : REAL;
 		maxY : REAL;
-		xQuadrantsTouched : ARRAY[0..1] OF USINT;
-		yQuadrantsTouched : ARRAY[0..1] OF USINT;
-		tempIndex : USINT;
+		xQuadrantTouched : ARRAY[0..1] OF USINT;
+		yQuadrantTouched : ARRAY[0..1] OF USINT;
 	END_VAR
 END_FUNCTION_BLOCK
 

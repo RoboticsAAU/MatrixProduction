@@ -301,7 +301,7 @@ ACTION smartLabShuttleMovement:
 			// Else move using original method (find free column to use)
 			ELSE
 				cm.state := 20;
-			END_IF	
+			END_IF
 			
 			
 		20:
@@ -360,8 +360,8 @@ ACTION smartLabShuttleMovement:
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; // X THEN Y
 			
 			// If the position is on the highway set occupied positions on the highway around shuttle
-			IF 0 < PosToQuadrantIdx(cameraOperationPosition[pShuttle.par.tempCameraStationID].xPos) OR PosToQuadrantIdx(cameraOperationPosition[pShuttle.par.tempCameraStationID].xPos) < 5 THEN
-				ShuttleTouchQuadrantPos_0.shuttlePos := cameraOperationPosition[pShuttle.par.tempCameraStationID];
+			IF 0 < PosToQuadrantIdx(awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].xPos) OR PosToQuadrantIdx(awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].xPos) < 5 THEN
+				ShuttleTouchQuadrantPos_0.shuttlePos := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID];
 				ShuttleTouchQuadrantPos_0();
 				
 				FOR j := 0 TO ShuttleTouchQuadrantPos_0.numTouches DO
@@ -370,8 +370,8 @@ ACTION smartLabShuttleMovement:
 				// NOTE: Should maybe also occupy positions for the movement itself
 			END_IF
 			
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := cameraOperationPosition[pShuttle.par.tempCameraStationID].xPos;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := cameraOperationPosition[pShuttle.par.tempCameraStationID].yPos;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].xPos;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].yPos;
 			
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Done THEN
@@ -389,7 +389,7 @@ ACTION smartLabShuttleMovement:
 				// Rotate shuttle
 				0:
 					// Determine the touches again to make the columns available after done using them
-					ShuttleTouchQuadrantPos_0.shuttlePos := cameraOperationPosition[pShuttle.par.tempCameraStationID];
+					ShuttleTouchQuadrantPos_0.shuttlePos := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID];
 					ShuttleTouchQuadrantPos_0();
 					
 					IF pShuttlePlan.isFlipped THEN

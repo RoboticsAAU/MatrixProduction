@@ -87,8 +87,8 @@ ACTION smartLabSetup:
 	smartLabWorkstationSetup; // Setup workstations	
 	smartLabCameraStationSetup; // Setup cameras
 	
-	cameraOperationPosition[0].xPos := QuadrantIdxToPos(2) + 0.060;
-	cameraOperationPosition[0].yPos := QuadrantIdxToPos(2) + 0.060;
+	awaitingCameraResultPosition[0].xPos := QuadrantIdxToPos(2) + 0.060;
+	awaitingCameraResultPosition[0].yPos := QuadrantIdxToPos(2) + 0.060;
 	
 	positionContainerSmartLabProgram[0].initXPos := gWorkstations[0].par.xLocation;
 	positionContainerSmartLabProgram[0].initYPos := gWorkstations[0].par.yLocation;

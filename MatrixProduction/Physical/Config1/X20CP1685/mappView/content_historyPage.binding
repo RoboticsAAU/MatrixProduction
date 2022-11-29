@@ -1,34 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet id="content_historyPage_binding" xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Bindings>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:amountProductsFinished" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput2" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:amountOrdersFinished" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput3" attribute="value" />
-</Binding>
+	<Bindings>
+
+
 <Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIorderID" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericInput1" attribute="value" />
 </Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.productOrder.amount" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput4" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.productOrder.Holes" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput6" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.productOrder.PCB" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput7" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.productOrder.Fuses" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput8" attribute="value" />
-</Binding>
+
+
+
+
 		<Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.routingSheet[5]" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput15" attribute="value" />
@@ -37,26 +19,11 @@
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.routingSheet[4]" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput14" attribute="value" />
 </Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.routingSheet[3]" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput13" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.routingSheet[2]" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput12" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.routingSheet[1]" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput11" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.routingSheet[0]" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput10" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.finishedProductCount" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput16" attribute="value" />
-</Binding>
+
+
+
+
+
 		
 <Binding mode="oneWay"> 
 	<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.status" attribute="value" /> 
@@ -83,30 +50,80 @@
 	<Target xsi:type="brease" widgetRefId="TextOutput3" contentRefId="content_historyPage" attribute="value" /> 
 </Binding>
 				
-		<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:HMIproductHistory.weight" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput21" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:HMIproductHistory.flipped" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput18" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:HMIproductHistory.finishTime" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput22" attribute="value" />
-</Binding>
+		
 
-<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.orderStartingTime" attribute="value" />
+
+
+
+
+
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.productOrder.amount" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput4" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.finishedProductCount" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput16" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.productOrder.Holes" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput6" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.productOrder.PCB" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput7" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.productOrder.Fuses" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput8" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.routingSheet[0]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput10" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.routingSheet[1]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput11" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.routingSheet[2]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput12" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.routingSheet[3]" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput13" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.orderStartingTime" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="DateTimeOutput1" attribute="value" />
 </Binding>
-<Binding mode="twoWay">
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.orderFinishTime" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="DateTimeOutput2" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.orderDuration" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput23" attribute="value" />
 </Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.orderFinishTime" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="DateTimeOutput2" attribute="value" />
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:HMIproductHistory.finishTime" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput22" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:HMIproductHistory.flipped" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput18" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:HMIproductHistory.weight" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput21" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:amountOrdersFinished" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput3" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:amountProductsFinished" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput2" attribute="value" />
 </Binding>
 </Bindings>
 </BindingsSet>

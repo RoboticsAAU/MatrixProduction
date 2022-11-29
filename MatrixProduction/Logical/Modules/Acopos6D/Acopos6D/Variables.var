@@ -80,10 +80,10 @@ VAR
 	activeShuttles : USINT;
 	amountOrdersFinished : USINT;
 	amountProductsFinished : USINT;
+	awaitingCameraResultPosition : ARRAY[0..NUM_CAMS] OF shuttlePos;
 	bufferEmpty : BOOL := TRUE;
 	bufferFull : BOOL := FALSE;
 	bufferSize : {REDUND_UNREPLICABLE} USINT;
-	cameraOperationPosition : ARRAY[0..NUM_CAMS] OF shuttlePos;
 	CreateRouteSheet_0 : {REDUND_UNREPLICABLE} CreateRouteSheet;
 	executeOrder : BOOL := FALSE;
 	HMIorderID : USINT;
