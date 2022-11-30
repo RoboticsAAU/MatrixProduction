@@ -198,27 +198,33 @@
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIproductID" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericInput2" attribute="value" />
 </Binding>
-<Binding mode="twoWay">
+
+
+
+
+
+
+<Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.avgCycleTime[0]" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput26" attribute="value" />
 </Binding>
-<Binding mode="twoWay">
+<Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.avgCycleTime[1]" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput27" attribute="value" />
 </Binding>
-<Binding mode="twoWay">
+<Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.avgCycleTime[2]" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput28" attribute="value" />
 </Binding>
-<Binding mode="twoWay">
+<Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.avgCycleTime[3]" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput29" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput29" attribute="value" />
 </Binding>
-<Binding mode="twoWay">
+<Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.avgCycleTime[4]" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput30" attribute="value" />
 </Binding>
-<Binding mode="twoWay">
+<Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.avgCycleTime[5]" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput31" attribute="value" />
 </Binding>

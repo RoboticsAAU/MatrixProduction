@@ -95,7 +95,7 @@
           <Variable Name="wsPort" />
         </Variable>
         <Variable Name="hwCam" RecursiveEnable="2" />
-        <Variable Name="hwBlob" RecursiveEnable="2" />
+        <Variable Name="hwMatch" RecursiveEnable="2" />
       </Task>
       <Task Name="KUKA">
         <Variable Name="robotVelocity" />

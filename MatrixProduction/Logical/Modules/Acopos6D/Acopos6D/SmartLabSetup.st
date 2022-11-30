@@ -74,6 +74,7 @@ ACTION smartLabCameraStationSetup:
 		gCameraStations[i].camPosY := 0;
 		gCameraStations[i].tempShuttleID := -1;
 		gCameraStations[i].cm.state := 0;
+		gCameraStations[i].reserved := FALSE;
 		gCameraStations[i].TON.IN := FALSE;
 	END_FOR
 	
@@ -87,8 +88,8 @@ ACTION smartLabSetup:
 	smartLabWorkstationSetup; // Setup workstations	
 	smartLabCameraStationSetup; // Setup cameras
 	
-	cameraOperationPosition[0].xPos := QuadrantIdxToPos(2) + 0.060;
-	cameraOperationPosition[0].yPos := QuadrantIdxToPos(2) + 0.060;
+	awaitingCameraResultPosition[0].xPos := QuadrantIdxToPos(2) + 0.060;
+	awaitingCameraResultPosition[0].yPos := QuadrantIdxToPos(2) + 0.060;
 	
 	positionContainerSmartLabProgram[0].initXPos := gWorkstations[0].par.xLocation;
 	positionContainerSmartLabProgram[0].initYPos := gWorkstations[0].par.yLocation;
@@ -113,7 +114,6 @@ ACTION smartLabSetup:
 	
 	positionContainerSmartLabProgram[7].initXPos := gWorkstations[5].par.xLocation;
 	positionContainerSmartLabProgram[7].initYPos := gWorkstations[5].par.yLocation;
-	
 	
 	
 	CASE em.substate OF
