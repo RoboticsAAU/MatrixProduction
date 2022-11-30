@@ -24,23 +24,14 @@ ACTION RobotProcess :
 						// Seen from ACOPOS 6D frame: Bottom right -> bottom left -> top left -> top right
 						CASE numDoneHoles OF
 							0, 1 : // Simply default approach position
-//								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
 
 								IF isProductFlipped[i] THEN
 									pKuka.tempPosition.Status := 2; // 010
 									pKuka.tempPosition.Turn := 35; // 10011
 								END_IF
 
-//							1:
-//								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
-//
-//								IF isProductFlipped[i] THEN
-//									pKuka.tempPosition.Status := 2; // 010
-//									pKuka.tempPosition.Turn := 35; // 10011
-//								END_IF
-//
+
 							2, 3 :
-//								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
 								pKuka.tempPosition.Y := pKuka.tempPosition.Y + drillYOffset;
 
 								// Configuration changes here (after first two holes)
@@ -49,13 +40,6 @@ ACTION RobotProcess :
 									pKuka.tempPosition.Turn := 51; // 110011
 								END_IF
 
-//							3:
-//								pKuka.tempPosition.Y := pKuka.tempPosition.Y + drillYOffset;
-//								IF NOT isProductFlipped[i] THEN
-//									pKuka.tempPosition.Status := 6; // 110
-//									pKuka.tempPosition.Turn := 51; // 110011
-//								END_IF
-//
 						END_CASE
 
 				END_CASE
@@ -148,7 +132,10 @@ ACTION RobotProcess :
 					CASE numDoneHoles OF
 						1 :
 							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := - (drillXOffset / 1000);
-							cm.state := 1037;
+							IF NOT occupiedPosition[3,3] THEN 
+								occupiedPosition[3,3] := TRUE;
+								cm.state := 1037;
+							END_IF
 
 						3 :
 							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := (drillXOffset / 1000);
@@ -166,6 +153,14 @@ ACTION RobotProcess :
 			MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF MC_BR_MoveInPlane_Acp6D_0.Done THEN
 				MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
+				
+				IF numDoneHoles = 3 OR (numDoneHoles = 2 AND SINT_TO_USINT(orderSpec[i]) = 2) THEN // After the 3'rd hole or the 2'nd hole (order of 2 holes)  and the shuttle is moved back, release the highway.   
+					IF occupiedPosition[3,3] THEN 
+						occupiedPosition[3,3] := FALSE;
+					END_IF
+				END_IF
+				
+				
 				cm.state := 1040;
 				
 				

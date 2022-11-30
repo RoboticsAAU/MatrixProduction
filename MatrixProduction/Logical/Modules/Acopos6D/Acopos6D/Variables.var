@@ -92,7 +92,6 @@ VAR
 	HMIproductHistory : product_history;
 	MovementColumnSelection_0 : MovementColumnSelection;
 	moveShuttle : ARRAY[0..NUM_SHUTTLES] OF BOOL;
-	occupiedPosition : {REDUND_UNREPLICABLE} ARRAY[0..3,0..7] OF BOOL; (*4 highway columns and 8 highway rows*)
 	orderBuffer : ARRAY[0..9] OF product_order := [10((amount:=0,bottomCover:=noCover,topCover:=noCover,PCB:=FALSE,Fuses:=0,ID:=0))];
 	orderHistory : ARRAY[0..99] OF order_history;
 	positionContainerSmartLabProgram : ARRAY[0..7] OF shuttleStartup_typ;

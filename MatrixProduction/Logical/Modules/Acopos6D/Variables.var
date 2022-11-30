@@ -1,13 +1,12 @@
 VAR
 	cmdBoxProgram : box_typ;
 	gAcp6DCtrl : Acp6DCtrlType;
+	ShuttleYPos_m : LREAL;
+	shuttleStartupInfo : ARRAY[0..NUM_SHUTTLES] OF shuttleStartup_typ;
+	occupiedPosition : {REDUND_UNREPLICABLE} ARRAY[0..3,0..7] OF BOOL; (*4 highway columns and 8 highway rows*)
 END_VAR
+(*Constants*)
 VAR CONSTANT
 	NR_OF_WORKSTATIONS : USINT := 9; (*10[0..9]*)
 	NUM_SHUTTLES : USINT := 7; (*8[0..7]*)
-END_VAR
-(*Constants*)
-VAR
-	shuttleStartupInfo : ARRAY[0..NUM_SHUTTLES] OF shuttleStartup_typ;
-	ShuttleYPos_m : LREAL;
 END_VAR
