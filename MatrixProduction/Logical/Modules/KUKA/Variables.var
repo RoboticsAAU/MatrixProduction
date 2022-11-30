@@ -15,4 +15,5 @@ END_VAR
 VAR
 	robotEnabled : ARRAY[0..5] OF BOOL := [5(TRUE),FALSE];
 	robotEnabledPrev : ARRAY[0..5] OF BOOL;
+	MC_BR_MoveInPlane_Acp6D_0 : MC_BR_MoveInPlane_Acp6D;
 END_VAR

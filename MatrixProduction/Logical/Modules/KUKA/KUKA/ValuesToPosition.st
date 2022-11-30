@@ -67,8 +67,8 @@ FUNCTION_BLOCK ValuesToPosition
 					baseNo := 0;
 				
 				APPROACH_WORKSTATION:
-					outputPos.X := 660 + 27; //Last term is x offset of bottom right hole
-					outputPos.Y := 420 - 53; //Last term is y offset of bottom right hole
+					outputPos.X := 660 - 27; //Last term is x offset of the bottom left hole
+					outputPos.Y := 420 - 53; //Last term is y offset of bottom left hole
 					outputPos.Z := (1 + 9.85 + 5 + 13) + relativeDrillDistance; 
 					outputPos.A := 0;
 					outputPos.B := 0;
