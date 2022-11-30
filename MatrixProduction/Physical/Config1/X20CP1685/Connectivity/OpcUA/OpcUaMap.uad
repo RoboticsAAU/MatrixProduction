@@ -89,8 +89,6 @@
         <Variable Name="HMIproductID" />
       </Task>
       <Task Name="Vision">
-        <Variable Name="visionResults" />
-        <Variable Name="imageSvg" />
         <Variable Name="overlay" />
         <Variable Name="mappView">
           <Variable Name="wsPort" />
