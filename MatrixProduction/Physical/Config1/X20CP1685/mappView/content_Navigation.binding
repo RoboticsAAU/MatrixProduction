@@ -227,6 +227,6 @@
 <Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.avgCycleTime[5]" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput31" attribute="value" />
-</Binding>
+	</Binding>
 </Bindings>
 </BindingsSet>

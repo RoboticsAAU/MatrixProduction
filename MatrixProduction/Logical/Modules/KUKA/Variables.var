@@ -17,3 +17,7 @@ VAR
 	robotEnabledPrev : ARRAY[0..5] OF BOOL;
 	MC_BR_MoveInPlane_Acp6D_0 : MC_BR_MoveInPlane_Acp6D;
 END_VAR
+(*Emergency Stop*)
+VAR
+	emergencyStop : BOOL;
+END_VAR

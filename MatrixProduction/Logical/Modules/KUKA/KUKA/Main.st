@@ -58,6 +58,12 @@ PROGRAM _CYCLIC
 		
 		pKuka.read.KRC_ReadAxisGroup();
 		
+		// Stops the robots if pressed on the HMI. 
+		IF emergencyStop THEN 
+			pKuka.start.KRC_AutomaticExternal.ENABLE_EXT 			:= FALSE;
+			pKuka.start.KRC_AutoStart.ExecuteReset 					:= TRUE;
+		END_IF
+		
 		// RobotStart contains FB calls associated with initialization of the robots and diagnosis
 		RobotStart;
 		
