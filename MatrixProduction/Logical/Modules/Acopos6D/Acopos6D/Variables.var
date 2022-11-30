@@ -136,4 +136,5 @@ VAR
 	requestImage : ARRAY[0..NUM_CAMS] OF BOOL := [FALSE];
 	durationStartToCamera : DINT;
 	durationStartToCurrent : DINT;
+	imgCoverType : USINT;
 END_VAR

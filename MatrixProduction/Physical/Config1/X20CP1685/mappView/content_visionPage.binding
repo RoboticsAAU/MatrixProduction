@@ -26,14 +26,8 @@
 </Binding>
 
 
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Vision:mappView.wsPort" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="VisionImage1" attribute="PLCWebsocketPort" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Vision:overlay" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="VisionImage1" attribute="svgOverlay" />
-</Binding>
+
+
 <Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Vision:hwMatch.in.common.numResults" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput7" attribute="value" />
@@ -45,6 +39,17 @@
 <Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Vision:hwMatch.in.common.functionProcessingTime" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput8" attribute="value" />
+</Binding>
+
+
+
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vision:mappView.wsPort" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="VisionImage1" attribute="PLCWebsocketPort" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vision:overlay" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="VisionImage1" attribute="svgOverlay" />
 </Binding>
 </Bindings>
 </BindingsSet>

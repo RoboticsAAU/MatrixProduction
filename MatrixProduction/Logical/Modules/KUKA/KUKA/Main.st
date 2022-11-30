@@ -31,7 +31,7 @@ PROGRAM _INIT
 	
 	robotVelocity := 100;
 	robotAcceleration := 50;
-	robotVelocityOverride := 10;
+	robotVelocityOverride := 20;
 	
 END_PROGRAM
 

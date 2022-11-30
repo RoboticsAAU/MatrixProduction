@@ -566,6 +566,7 @@ ACTION smartLabCameraProcess:
 				// Send request if no error occurred in parabolic blend calculation. (Implement error handling in the future),
 				// and if the shuttle still has time to arrive at the camera
 				IF ParabolicBlend_0.durationAtEvalDist <> -1 THEN
+					imgCoverType := COVER_TYPE_TO_USINT(pShuttlePlan.productOrder.bottomCover);
 					requestImage[pShuttle.par.tempCameraStationID] := TRUE;
 					cm.state := 10;
 					

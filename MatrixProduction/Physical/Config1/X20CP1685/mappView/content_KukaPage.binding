@@ -52,10 +52,7 @@
 
 
 
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::KUKA:robotVelocityOverride" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_kukaPage" widgetRefId="NumericInput3" attribute="value" />
-</Binding>
+
 <Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::KUKA:robotVelocity" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_kukaPage" widgetRefId="NumericInput1" attribute="value" />
@@ -63,6 +60,10 @@
 <Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::KUKA:robotAcceleration" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_kukaPage" widgetRefId="NumericInput2" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::KUKA:robotVelocityOverride" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_kukaPage" widgetRefId="NumericInput3" attribute="value" />
 </Binding>
 </Bindings>
 </BindingsSet>
