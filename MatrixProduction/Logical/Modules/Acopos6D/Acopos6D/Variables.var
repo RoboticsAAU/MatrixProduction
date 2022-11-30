@@ -137,4 +137,5 @@ VAR
 	durationStartToCamera : DINT;
 	durationStartToCurrent : DINT;
 	imgCoverType : USINT;
+	drillStationShuttleID : USINT;
 END_VAR

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BindingsSet id="content_Navi_w_stop_binding" xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Bindings>
+		
+<Binding mode="oneWay"> 
+	<Source xsi:type="opcUa" refId="::AsGlobalPV:emergencyStop" attribute="value" /> 
+	<Target xsi:type="snippet" refId="emergency" attribute="value" /> 
+</Binding>
+<Binding mode="oneWay"> 
+	<Source xsi:type="snippet" refId="emergency" attribute="value" /> 
+	<Target xsi:type="brease" widgetRefId="emergencyStop" contentRefId="content_Navi_w_stop" attribute="text" /> 
+		</Binding>
+		
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:emergencyStop" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_Navi_w_stop" widgetRefId="emergencyStop" attribute="value" />
+</Binding>
+</Bindings>
+</BindingsSet>

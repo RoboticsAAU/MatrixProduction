@@ -21,5 +21,6 @@
     <Object Type="File">content_kukaPage.eventbinding</Object>
     <Object Type="File">content_historyPage.binding</Object>
     <Object Type="File">content_historyPage.eventbinding</Object>
+    <Object Type="File">content_Navi_w_stop.binding</Object>
   </Objects>
 </Package>

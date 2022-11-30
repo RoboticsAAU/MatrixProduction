@@ -17,7 +17,7 @@
 <Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput4" attribute="value" />
 </Binding>
 <Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Vision:hwCam[0].out.par.gainLevel" attribute="value" />
+			<Source xsi:type="opcUa" refId="::Vision:hwCam[0].out.par.gainLevel" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput3" attribute="value" />
 </Binding>
 <Binding mode="oneWay">

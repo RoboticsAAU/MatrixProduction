@@ -91,4 +91,5 @@ VAR
 	robotDone : ARRAY[0..5] OF BOOL;
 	robotBusy : ARRAY[0..5] OF BOOL;
 	isProductFlipped : ARRAY[0..5] OF BOOL;
+	drillStationShuttleID : USINT;
 END_VAR

@@ -59,6 +59,7 @@
         </Variable>
         <Variable Name="gVisionSensor" RecursiveEnable="1" />
         <Variable Name="robotEnabled" RecursiveEnable="2" />
+        <Variable Name="emergencyStop" />
       </GlobalVariables>
       <Task Name="Main">
         <Variable Name="modeSelectorOldValue" />

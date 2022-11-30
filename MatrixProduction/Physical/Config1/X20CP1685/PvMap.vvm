@@ -1,4 +1,5 @@
 VAR_CONFIG
+	::Acopos6D:drillStationShuttleID AT %Q.::KUKA:drillStationShuttleID; (*Insert your comment here...*)
 	::Acopos6D:robotExecute AT %Q.::KUKA:robotExecute; (*Insert your comment here...*)
 	::Acopos6D:orderSpec AT %Q.::KUKA:orderSpec; (*Insert your comment here...*)
 	::Acopos6D:orderAmount AT %Q.::KUKA:orderAmount; (*Insert your comment here...*)

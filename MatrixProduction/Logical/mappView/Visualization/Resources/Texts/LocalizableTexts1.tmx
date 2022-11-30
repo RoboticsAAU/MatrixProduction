@@ -65,5 +65,15 @@
         <seg>Yes</seg>
       </tuv>
     </tu>
+    <tu tuid="EmergencyText.0">
+      <tuv xml:lang="en">
+        <seg>STOP</seg>
+      </tuv>
+    </tu>
+    <tu tuid="EmergencyText.1">
+      <tuv xml:lang="en">
+        <seg>START</seg>
+      </tuv>
+    </tu>
   </body>
 </tmx>
