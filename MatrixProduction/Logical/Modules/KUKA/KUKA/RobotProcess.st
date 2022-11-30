@@ -24,7 +24,7 @@ ACTION RobotProcess :
 						// Seen from ACOPOS 6D frame: Bottom right -> bottom left -> top left -> top right
 						CASE numDoneHoles OF
 							0, 1 : // Simply default approach position
-								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
+//								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
 
 								IF isProductFlipped[i] THEN
 									pKuka.tempPosition.Status := 2; // 010
@@ -40,7 +40,7 @@ ACTION RobotProcess :
 //								END_IF
 //
 							2, 3 :
-								// pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
+//								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
 								pKuka.tempPosition.Y := pKuka.tempPosition.Y + drillYOffset;
 
 								// Configuration changes here (after first two holes)
@@ -128,23 +128,8 @@ ACTION RobotProcess :
 			pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := TRUE;
 			IF pKuka.motion.KRC_MoveLinearRelative.Done THEN
 				pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := FALSE;
-
-				CASE pKuka.axisGroupIdx OF
-					2 : // Drilling robot
-						numDoneHoles := numDoneHoles + 1;
-
-						// Check if more holes are needed for the specific order
-						IF numDoneHoles < SINT_TO_USINT(orderSpec[i]) THEN
-							// Define next order-specific approach point
-							cm.state := 1000;
-						ELSE
-							// Order is completed, we move back to mint approach point (APPROACH_WORKSTATION)
-							numDoneHoles := 0;
-							robotDone[i] := TRUE;
-							cm.state := 1050;
-						END_IF
-				END_CASE
-
+				numDoneHoles := numDoneHoles + 1;
+				cm.state := 1035;
 			END_IF
 
 		1035 :
@@ -162,20 +147,15 @@ ACTION RobotProcess :
 
 					CASE numDoneHoles OF
 						1 :
-							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := - drillXOffset;
-							cm.state := 1037;
-
-						2 :
-							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0;
+							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := - (drillXOffset / 1000);
 							cm.state := 1037;
 
 						3 :
-							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := drillXOffset;
+							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := (drillXOffset / 1000);
 							cm.state := 1037;
 
-						4 :
-							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0;
-							cm.state := 1050;
+						2,4 :
+							cm.state := 1040;
 
 
 					END_CASE
@@ -186,10 +166,30 @@ ACTION RobotProcess :
 			MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF MC_BR_MoveInPlane_Acp6D_0.Done THEN
 				MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
+				cm.state := 1040;
+				
+				
 			END_IF
 
 
+		1040:
+			cm.description := 'Check if the drill has performed the correct number of holes';
+			CASE pKuka.axisGroupIdx OF
+				2 : // Drilling robot
 
+					// Check if more holes are needed for the specific order
+					IF numDoneHoles < SINT_TO_USINT(orderSpec[i]) THEN
+						// Define next order-specific approach point
+						cm.state := 1000;
+					ELSE
+						// Order is completed, we move back to mint approach point (APPROACH_WORKSTATION)
+						numDoneHoles := 0;
+						robotDone[i] := TRUE;
+						cm.state := 1050;
+					END_IF
+			END_CASE
+			
+			
 
 		1050 :
 			cm.description := 'Move back to home position';
@@ -197,6 +197,6 @@ ACTION RobotProcess :
 			RobotHoming;
 
 	END_CASE
-
+	MC_BR_MoveInPlane_Acp6D_0();
 
 END_ACTION
