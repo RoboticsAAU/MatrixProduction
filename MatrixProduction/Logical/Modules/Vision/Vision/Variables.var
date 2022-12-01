@@ -6,11 +6,7 @@ VAR
 	TOF_Light : ARRAY[0..NUM_CAMS] OF TOF;
 	PowerlinkCycle_us : DINT; (*Powerlink cycletime in microseconds*)
 	NettimeLastCycle_us : DINT; (*Old nettime used to calculate Powerlink cycle time*)
-	AxisPositionNow : LREAL; (*Calculated positon of the axis position, acopos and network delay times are compensated*)
 	TriggerTimeDelta_us : ARRAY[0..NUM_CAMS] OF DINT; (*Delta time in microseconds to the next trigger*)
-	visionResults : ARRAY[0..254] OF USINT;
-	imageSvg : STRING[6000000];
-	oldImageNettime : ARRAY[0..NUM_CAMS] OF DINT;
 	requestTimeStamp : ARRAY[0..NUM_CAMS] OF DINT;
 	visState : ARRAY[0..NUM_CAMS] OF USINT;
 END_VAR

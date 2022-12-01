@@ -117,13 +117,13 @@ PROGRAM _CYCLIC
 						CASE camIdx OF
 							
 							0: 
-								// Create empty svg contour of the found blob, which is used as overlay in the HMI page
+								// Create empty svg contour of the found shape, which is used as overlay in the HMI page
 								overlay := '';
 								additionArguments := '#FF8800'; // Maybe change back to nothing
 								
 								// Check if blobs were found
 								IF hwMatch.in.common.numResults <> 0 THEN
-									// Assign bool depending on placement of BLOB
+									// Assign bool depending on placement of detected shape
 									flipProduct := (DINT_TO_INT(hwMatch.in.results[0].positionY/100) > cameraHeight/2);
 									
 									shapeCenterPoint.x := DINT_TO_LREAL(hwMatch.in.results[0].positionX/100);
