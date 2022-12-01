@@ -119,17 +119,30 @@ ACTION smartLabSetup:
 	CASE em.substate OF
 		17000:
 			em.description := 'Resetting parameters';
-			FOR i := 0 TO NUM_SHUTTLES DO
+			FOR i := 0 TO (smartLabNumWorkstations - 1) DO
 				gShuttles[i].cm.state := 0;
 				gWorkstations[i].cm.state := 0;
 				
-				gWorkstations[i].par.tempShuttleID := -1;
+				
 				gShuttles[i].par.tempHighwayColumn := -1;
 				gShuttles[i].par.tempWorkstationID := 0;
 				gShuttles[i].par.tempCameraStationID := -1;
 				gShuttles[i].par.acquireImage := FALSE;
 				shuttlePlans[i].isActive := FALSE;
 				moveShuttle[i] := FALSE;
+			END_FOR
+			
+			FOR i := 0 TO (smartLabNumWorkstations - 1) DO
+				gWorkstations[i].par.tempShuttleID := -1;
+				
+				// Robot variables
+				robotDone[i] := robotExecute[i] := robotBusy[i] := FALSE;
+				
+				IF i = 5 THEN
+					robotEnabled[i] := FALSE;
+				ELSE
+					robotEnabled[i] := TRUE;
+				END_IF
 			END_FOR
 			
 			FOR i := 0 TO 3 DO // Highway columns
@@ -139,11 +152,15 @@ ACTION smartLabSetup:
 			END_FOR
 			
 			TON_0.IN := FALSE;
+			readIndex := writeIndex := 0;
 			bufferSize := SIZEOF(orderBuffer)/SIZEOF(orderBuffer[0]);
 			activeShuttles := 0;
 			amountProductsFinished := 0;
 			amountOrdersFinished := 0;
 			tempProductOrder.ID := 0;
+			
+			
+			
 			em.substate := 17005;
 			
 		

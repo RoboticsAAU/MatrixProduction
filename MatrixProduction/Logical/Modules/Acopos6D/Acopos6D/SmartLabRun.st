@@ -293,7 +293,7 @@ ACTION smartLabShuttleMovement :
 			
 			// If the shuttle has a camera station set, always move to state 19
 			IF pShuttle.par.tempCameraStationID <> -1 THEN
-				// Do nothing
+				pShuttle.par.cameraOperationDone := FALSE;
 			// If the workstations are opposite each other, go directly to the approach point of next workstation (no need to occupy column when it only moves in row)
 			ELSIF AreWorkstationsOpposite(workstationID1 := pShuttle.par.tempWorkstationID, workstationID2 := pShuttle.par.tempNextWorkstationID) THEN
 				cm.state := 30;

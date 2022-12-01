@@ -9,6 +9,7 @@ PROGRAM _INIT
 		KUKAs[i].gripperAction();
 		KUKAs[i].cm.state := 0;
 		KUKAs[i].startState := 0;
+		KUKAs[i].atMaintenancePos := FALSE;
 	END_FOR
 	
 	// Setting end-effector type
@@ -58,19 +59,28 @@ PROGRAM _CYCLIC
 		
 		pKuka.read.KRC_ReadAxisGroup();
 		
-		// Stops the robots if pressed on the HMI. 
-		IF emergencyStop THEN 
-			pKuka.start.KRC_AutomaticExternal.ENABLE_EXT 			:= FALSE;
-			pKuka.start.KRC_AutoStart.ExecuteReset 					:= TRUE;
-		END_IF
-		
 		// RobotStart contains FB calls associated with initialization of the robots and diagnosis
 		RobotStart;
+		
+		// Stops the robots if pressed on the HMI. 
+		IF emergencyStop THEN 
+			pKuka.start.KRC_AutoStart.ExecuteReset := TRUE;
+			pKuka.cm.state := 0;
+		END_IF
+		
+		// Go to maintenance position if button is pressed
+		IF maintenance THEN
+			pKuka.cm.state := 600;
+		ELSIF BOOL_TO_INT(maintenance) <> BOOL_TO_INT(maintenancePrev[i]) THEN
+			pKuka.atMaintenancePos := FALSE;
+			pKuka.cm.state := 0;
+		END_IF
+		maintenancePrev[i] := maintenance;
 		
 		// If the robot is not enabled, tell Acopos that the robot is already done
 		IF NOT robotEnabled[i] THEN
 			robotDone[i] := TRUE;
-		ELSIF robotEnabled[i] <> robotEnabledPrev[i] THEN
+		ELSIF BOOL_TO_INT(robotEnabled[i]) <> BOOL_TO_INT(robotEnabledPrev[i]) THEN
 			robotDone[i] := FALSE;
 		END_IF
 		robotEnabledPrev[i] := robotEnabled[i];
@@ -88,7 +98,7 @@ PROGRAM _CYCLIC
 				0: // INITIALIZING
 					pKuka.convert.ValuesToCOORDSYS.Tool := 1;
 					pKuka.convert.ValuesToPosition.axisGroupIdx := pKuka.axisGroupIdx;
-			
+					
 					pKuka.motion.KRC_MoveDirectAbsolute.AxisGroupIdx := pKuka.motion.KRC_MoveLinearAbsolute.AxisGroupIdx := pKuka.motion.KRC_MoveLinearRelative.AxisGroupIdx
 						:=  pKuka.axisGroupIdx;
 					pKuka.motion.KRC_MoveDirectAbsolute.KRC_AxisGroupRefArr := pKuka.motion.KRC_MoveLinearAbsolute.KRC_AxisGroupRefArr := pKuka.motion.KRC_MoveLinearRelative.KRC_AxisGroupRefArr
@@ -107,8 +117,17 @@ PROGRAM _CYCLIC
 					WriteToolData; // 101..200
 					WriteBaseData; // 201..300
 					
-				500..999: // Move robot to home position (position depends on operation type)
-					RobotHoming;
+				500..999: // MOVE ROBOT TO HOME POSITION (position depends on operation type)
+					// Set slow speed
+					pKuka.start.KRC_SetOverride.Override := 20;
+					pKuka.start.KRC_SetOverride();
+					pKuka.motion.KRC_MoveDirectAbsolute.Velocity := 20;
+					
+					CASE cm.state OF
+						500: RobotHoming;
+						
+						600: RobotMaintenance;
+					END_CASE
 				
 				1000..1999: // RUNNING MANIPULATOR PROGRAMS
 					CASE pKuka.operationType OF

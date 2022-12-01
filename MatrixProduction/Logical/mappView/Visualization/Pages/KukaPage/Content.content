@@ -22,5 +22,7 @@
     <Widget xsi:type="widgets.brease.Line" id="Line3" zIndex="18" x1="320" x2="320" y1="440" y2="600" lineWidth="2px" />
     <Widget xsi:type="widgets.brease.Line" id="Line4" zIndex="19" x1="0" x2="320" y1="600" y2="600" lineWidth="2px" />
     <Widget xsi:type="widgets.brease.NavigationButton" id="NavigationButton1" top="705" left="1050" width="170" height="45" zIndex="20" pageId="page_smartLabPage" text="Order Config" borderStyle="solid" borderWidth="4px" cornerRadius="5px" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.Label" id="Label23" top="120" left="520" width="160" zIndex="21" text="Maintenance:" textAlign="left" fontSize="25px" padding="0px 15px 0px 0px" />
+    <Widget xsi:type="widgets.brease.ToggleSwitch" id="ToggleSwitch1" top="120" left="700" zIndex="22" mouseDownText="ON" text="OFF" />
   </Widgets>
 </Content>

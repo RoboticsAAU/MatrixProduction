@@ -100,6 +100,7 @@
         <Variable Name="robotVelocity" />
         <Variable Name="robotVelocityOverride" />
         <Variable Name="robotAcceleration" />
+        <Variable Name="maintenance" />
       </Task>
     </Module>
   </DefaultView>

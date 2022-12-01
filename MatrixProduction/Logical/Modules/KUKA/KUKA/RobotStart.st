@@ -58,6 +58,8 @@ ACTION RobotStart:
 				pKuka.start.KRC_Error.MessageReset := FALSE;
 				pKuka.start.KRC_AutoStart.ExecuteReset := FALSE;
 				pKuka.startState := 3;
+			ELSIF pKuka.start.KRC_AutoStart.Error THEN
+				pKuka.start.KRC_AutoStart.ExecuteReset := FALSE;
 			END_IF
 		
 		3: // Check if any error occurred  
@@ -67,10 +69,15 @@ ACTION RobotStart:
 				NOT pKuka.status.R_ OR
 				NOT pKuka.status.I_ THEN
 				
-				pKuka.startState := 0;
+				pKuka.startState := 4;
 			
 			END_IF
-		
+	
+		4: 
+			IF NOT emergencyStop THEN
+				pKuka.startState := 0;
+			END_IF
+				
 	END_CASE
 	
 

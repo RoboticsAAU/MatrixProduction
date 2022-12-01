@@ -117,8 +117,8 @@ VAR
 	tempProductOrder : product_order := (amount:=1,bottomCover:=blackCover,topCover:=blackCover,PCB:=TRUE,Fuses:=2,Holes:=4);
 	tempShuttleIndex : USINT;
 	TON_0 : TON;
-	readIndex : USINT := 0;
-	writeIndex : USINT := 0;
+	readIndex : USINT;
+	writeIndex : USINT;
 	ParabolicBlend_0 : ParabolicBlend;
 END_VAR
 (*Variable mapping*)

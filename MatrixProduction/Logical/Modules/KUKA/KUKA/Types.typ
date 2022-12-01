@@ -3,6 +3,7 @@ TYPE
 	KUKA : 	STRUCT 
 		axisGroupIdx : USINT;
 		startState : USINT;
+		atMaintenancePos : BOOL;
 		cm : brdkCM;
 		start : start_function;
 		motion : motion_function;

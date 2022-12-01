@@ -14,7 +14,7 @@ FUNCTION_BLOCK MovementColumnSelection
 	END_IF
 	
 	IF opt_movementDone THEN
-		FOR k := startRowLevel TO endRowLevel DO
+		FOR k := bottomRowLevel TO topRowLevel DO
 			tempOccupiedPosition[opt_resetColumn, k] := FALSE;
 		END_FOR
 		
