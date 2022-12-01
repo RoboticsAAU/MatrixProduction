@@ -36,11 +36,10 @@ END_ACTION
 
 ACTION RobotMaintenance:
 	
-	IF NOT atMaintenancePos THEN
+	IF NOT pKuka.atMaintenancePos THEN
 		pKuka.convert.ValuesToPosition.posType := DEFAULT; 
 		pKuka.convert.ValuesToPosition();
 		
-		pKuka.convert.ValuesToCOORDSYS.Tool := 0;
 		pKuka.convert.ValuesToCOORDSYS.Base := pKuka.convert.ValuesToPosition.baseNo;
 		pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 0; // #BASE
 		pKuka.convert.ValuesToCOORDSYS();

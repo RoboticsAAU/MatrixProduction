@@ -73,7 +73,6 @@ VAR
 	orderCounter : ARRAY[0..1,0..1] OF INT := [4(0)];
 	maintenancePrev : ARRAY[0..5] OF BOOL;
 	maintenance : BOOL;
-	atMaintenancePos : BOOL;
 END_VAR
 (*References*)
 VAR

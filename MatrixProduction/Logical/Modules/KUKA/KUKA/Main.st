@@ -69,11 +69,11 @@ PROGRAM _CYCLIC
 		END_IF
 		
 		// Go to maintenance position if button is pressed
-		IF maintenance THEN
+		IF maintenance AND BOOL_TO_INT(maintenance) <> BOOL_TO_INT(maintenancePrev[i]) THEN
 			pKuka.cm.state := 600;
-		ELSIF BOOL_TO_INT(maintenance) <> BOOL_TO_INT(maintenancePrev[i]) THEN
+		ELSIF NOT maintenance AND BOOL_TO_INT(maintenance) <> BOOL_TO_INT(maintenancePrev[i]) THEN
 			pKuka.atMaintenancePos := FALSE;
-			pKuka.cm.state := 0;
+			pKuka.cm.state := 500;
 		END_IF
 		maintenancePrev[i] := maintenance;
 		
@@ -124,9 +124,13 @@ PROGRAM _CYCLIC
 					pKuka.motion.KRC_MoveDirectAbsolute.Velocity := 20;
 					
 					CASE cm.state OF
-						500: RobotHoming;
+						500: 
+							pKuka.convert.ValuesToCOORDSYS.Tool := 1;
+							RobotHoming;
 						
-						600: RobotMaintenance;
+						600: 
+							pKuka.convert.ValuesToCOORDSYS.Tool := 0;
+							RobotMaintenance;
 					END_CASE
 				
 				1000..1999: // RUNNING MANIPULATOR PROGRAMS

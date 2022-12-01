@@ -78,6 +78,6 @@
     <Widget xsi:type="widgets.brease.Label" id="Label46" top="710" left="130" width="20" zIndex="76" text="[s]" textAlign="center" fontSize="20px" padding="0px 0px 3px 0px" visible="false" />
     <Widget xsi:type="widgets.brease.TextOutput" id="TextOutput4" top="420" left="340" width="80" zIndex="77" value="$IAT/BoolState.0" borderWidth="3px" cornerRadius="5px" borderColor="rgba(85, 85, 85, 1)" borderStyle="solid" textAlign="center" fontSize="16px" bold="true" padding="0px 0px 0px 0px" visible="false" />
     <Widget xsi:type="widgets.brease.TextOutput" id="TextOutput5" top="520" left="940" width="80" zIndex="78" value="$IAT/BoolState.0" borderWidth="3px" cornerRadius="5px" borderColor="rgba(85, 85, 85, 1)" borderStyle="solid" textAlign="center" fontSize="16px" bold="true" padding="0px 0px 0px 0px" visible="false" />
-    <Widget xsi:type="widgets.brease.Line" id="Line4" zIndex="79" x1="660" x2="1020" y1="440" y2="440" lineWidth="2px" />
+    <Widget xsi:type="widgets.brease.Line" id="Line4" zIndex="79" x1="660" x2="1020" y1="440" y2="440" lineWidth="2px" visible="false" />
   </Widgets>
 </Content>

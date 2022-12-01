@@ -151,17 +151,26 @@ ACTION smartLabWorkstationOperation :
 
 		40:
 			cm.description := 'Wait for robot to finish operation';
-
-			IF robotDone[i] THEN
-				robotExecute[i] := FALSE;
-
-				// Calculate the workstation cycle time
-				IF robotEnabled[i] THEN
+			
+			IF robotEnabled[i] THEN
+				IF robotDone[i] THEN
+					robotExecute[i] := FALSE;
+					
+					// Calculate the workstation cycle time
 					shuttlePlans[pWorkstation.par.tempShuttleID].workstationCycleTime[pWorkstation.par.workstationID] := (TIME_TO_REAL(clock_ms()) / 1000) - shuttlePlans[pWorkstation.par.tempShuttleID].startTimeAtWorkstation[pWorkstation.par.workstationID];
+					
+					moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
+					cm.state := 60;
 				END_IF
-
-				moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
-				cm.state := 60;
+			ELSE
+				pWorkstation.TON_0.PT := T#1S;
+				pWorkstation.TON_0.IN := TRUE;
+				IF pWorkstation.TON_0.Q THEN
+					pWorkstation.TON_0.IN := FALSE;
+					
+					moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
+					cm.state := 60;
+				END_IF
 			END_IF
 
 

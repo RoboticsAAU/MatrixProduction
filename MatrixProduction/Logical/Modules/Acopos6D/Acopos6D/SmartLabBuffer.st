@@ -21,7 +21,7 @@ ACTION writeOrder:
 		bufferFull := FALSE;
 		
 	END_IF
-				
+	
 END_ACTION
 
 ACTION readOrder: 

@@ -123,7 +123,6 @@ ACTION smartLabSetup:
 				gShuttles[i].cm.state := 0;
 				gWorkstations[i].cm.state := 0;
 				
-				
 				gShuttles[i].par.tempHighwayColumn := -1;
 				gShuttles[i].par.tempWorkstationID := 0;
 				gShuttles[i].par.tempCameraStationID := -1;
@@ -151,15 +150,13 @@ ACTION smartLabSetup:
 				END_FOR
 			END_FOR
 			
+			executeOrder := FALSE;
+			requestImage := FALSE;
 			TON_0.IN := FALSE;
-			readIndex := writeIndex := 0;
 			bufferSize := SIZEOF(orderBuffer)/SIZEOF(orderBuffer[0]);
 			activeShuttles := 0;
 			amountProductsFinished := 0;
 			amountOrdersFinished := 0;
-			tempProductOrder.ID := 0;
-			
-			
 			
 			em.substate := 17005;
 			

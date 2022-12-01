@@ -83,15 +83,15 @@ VAR
 	awaitingCameraResultPosition : ARRAY[0..NUM_CAMS] OF shuttlePos;
 	bufferEmpty : BOOL := TRUE;
 	bufferFull : BOOL := FALSE;
-	bufferSize : {REDUND_UNREPLICABLE} USINT;
-	CreateRouteSheet_0 : {REDUND_UNREPLICABLE} CreateRouteSheet;
-	executeOrder : BOOL := FALSE;
+	bufferSize : USINT;
+	CreateRouteSheet_0 : CreateRouteSheet;
+	executeOrder : BOOL;
 	HMIorderID : USINT;
 	HMIproductID : USINT;
 	HMIorderHistory : order_history;
 	HMIproductHistory : product_history;
 	moveShuttle : ARRAY[0..NUM_SHUTTLES] OF BOOL;
-	occupiedPosition : {REDUND_UNREPLICABLE} ARRAY[0..3,0..7] OF BOOL; (*4 highway columns and 8 highway rows*)
+	occupiedPosition : ARRAY[0..3,0..7] OF BOOL; (*4 highway columns and 8 highway rows*)
 	orderBuffer : ARRAY[0..9] OF product_order := [10((amount:=0,bottomCover:=noCover,topCover:=noCover,PCB:=FALSE,Fuses:=0,ID:=0))];
 	orderHistory : ARRAY[0..99] OF order_history;
 	positionContainerSmartLabProgram : ARRAY[0..7] OF shuttleStartup_typ;
@@ -114,11 +114,11 @@ VAR CONSTANT
 END_VAR
 VAR
 	smartLabNumCamStations : USINT := 1;
-	tempProductOrder : product_order := (amount:=1,bottomCover:=blackCover,topCover:=blackCover,PCB:=TRUE,Fuses:=2,Holes:=4);
+	tempProductOrder : product_order := (amount:=1,bottomCover:=blackCover,Holes:=4,PCB:=TRUE,Fuses:=2,topCover:=blackCover,ID:=0);
 	tempShuttleIndex : USINT;
 	TON_0 : TON;
-	readIndex : USINT;
-	writeIndex : USINT;
+	readIndex : USINT := 0;
+	writeIndex : USINT := 0;
 	ParabolicBlend_0 : ParabolicBlend;
 END_VAR
 (*Variable mapping*)
@@ -132,7 +132,7 @@ VAR
 	flipProduct : BOOL;
 	durationToCamera : ARRAY[0..NUM_CAMS] OF DINT;
 	visionResultReady : ARRAY[0..NUM_CAMS] OF BOOL;
-	requestImage : ARRAY[0..NUM_CAMS] OF BOOL := [FALSE];
+	requestImage : ARRAY[0..NUM_CAMS] OF BOOL;
 	durationStartToCamera : DINT;
 	durationStartToCurrent : DINT;
 	imgCoverType : USINT;
