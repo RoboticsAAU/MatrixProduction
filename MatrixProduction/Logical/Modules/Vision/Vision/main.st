@@ -39,9 +39,9 @@ PROGRAM _CYCLIC
 	hwMatch.out.common.alignment := 0; // Alignment is not supported with smart sensor
 	hwMatch.out.common.offsetROI.x := 0;
 	hwMatch.out.common.offsetROI.y := 0;
-	hwMatch.out.minScore := 70; // In percent
+	hwMatch.out.minScore := 90; // In percent
 	hwMatch.out.maxOverlap := 0; // In percent
-	hwMatch.out.timeout := 150; // Limit in milliseconds for match search 
+	hwMatch.out.timeout := 110; // Limit in milliseconds for match search 
 	
 	//// Camera configuration ////
 	gVisionImage.CFG.EthDevice				:= 'IF2';			// Ethernet interface for the PLC, this is the IF where you go online
@@ -119,7 +119,7 @@ PROGRAM _CYCLIC
 							0: 
 								// Create empty svg contour of the found shape, which is used as overlay in the HMI page
 								overlay := '';
-								additionArguments := '#FF8800'; // Maybe change back to nothing
+								additionArguments := ''; // Maybe change back to nothing
 								
 								// Check if blobs were found
 								IF hwMatch.in.common.numResults <> 0 THEN
@@ -129,7 +129,7 @@ PROGRAM _CYCLIC
 									shapeCenterPoint.x := DINT_TO_LREAL(hwMatch.in.results[0].positionX/100);
 									shapeCenterPoint.y := DINT_TO_LREAL(hwMatch.in.results[0].positionY/100);
 								
-									brdkViGeom_drawSvgCircle(shapeCenterPoint, 20, ADR(overlay), ADR(additionArguments));
+									brdkViGeom_drawSvgCircle(shapeCenterPoint, 15, ADR(overlay), ADR(additionArguments));
 									
 								END_IF
 									

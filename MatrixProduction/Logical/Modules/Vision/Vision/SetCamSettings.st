@@ -23,12 +23,12 @@ FUNCTION_BLOCK SetCamSettings
 					
 				2: // White
 					hwCamRef.out.par.exposureTime := 900; 
-					hwCamRef.out.par.flashColor := 2; // Green
+					hwCamRef.out.par.flashColor := 3; // Blue
 					hwCamRef.out.par.flashSegment := 15; // All segments
 					
 				3: // Blue
-					tempRef.out.par.exposureTime := 1600; 
-					tempRef.out.par.flashColor := 3; // Blue
+					tempRef.out.par.exposureTime := 1000; 
+					tempRef.out.par.flashColor := 1; // Red
 					tempRef.out.par.flashSegment := 15; // All segments
 				
 			END_CASE

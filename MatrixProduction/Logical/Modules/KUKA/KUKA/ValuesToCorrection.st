@@ -26,7 +26,7 @@ FUNCTION_BLOCK ValuesToCorrection
 			CASE baseNo OF
 				1: // w.r.t acopos frame
 					posCorrections.X := -0.1;
-					posCorrections.Z := -3;
+					posCorrections.Z := -2.6;
 				
 			END_CASE
 			
