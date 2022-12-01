@@ -3,7 +3,7 @@ ACTION RobotProcess :
 
 	CASE cm.state OF
 
-		1000 :
+		1000:
 			cm.description := 'Define order-specific approach point at magazine';
 
 			IF robotExecute[i] THEN
@@ -15,7 +15,7 @@ ACTION RobotProcess :
 				pKuka.tempPosition := pKuka.convert.ValuesToPosition.outputPos;
 
 				CASE pKuka.axisGroupIdx OF
-					2 : // Drilling robot
+					2: // Drilling robot
 						// Make it go backwards if order is flipped
 						IF isProductFlipped[i] THEN
 							drillYOffset := - drillYOffset;
@@ -23,7 +23,7 @@ ACTION RobotProcess :
 
 						// Seen from ACOPOS 6D frame: Bottom right -> bottom left -> top left -> top right
 						CASE numDoneHoles OF
-							0, 1 : // Simply default approach position
+							0, 1: // Simply default approach position
 //								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
 
 								IF isProductFlipped[i] THEN
@@ -39,7 +39,7 @@ ACTION RobotProcess :
 //									pKuka.tempPosition.Turn := 35; // 10011
 //								END_IF
 //
-							2, 3 :
+							2, 3:
 //								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
 								pKuka.tempPosition.Y := pKuka.tempPosition.Y + drillYOffset;
 
@@ -65,7 +65,7 @@ ACTION RobotProcess :
 			END_IF
 
 
-		1010 :
+		1010:
 			cm.description := 'Move to order-specific approach point';
 
 			pKuka.convert.ValuesToCOORDSYS.Base := pKuka.convert.ValuesToPosition.baseNo;
@@ -83,7 +83,7 @@ ACTION RobotProcess :
 			END_IF
 
 
-		1020 :
+		1020:
 			cm.description := 'Perform order-specific motion with relative linear movement';
 
 			// Relative movement w.r.t tool does not require defining base
@@ -106,11 +106,9 @@ ACTION RobotProcess :
 				pKuka.motion.KRC_MoveLinearRelative.ExecuteCmd := FALSE;
 				cm.state := 1030;
 			END_IF
+			
 
-
-
-
-		1030 :
+		1030:
 			cm.description := 'Move back to approach point with relative linear movement';
 
 			pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 1; // #TOOL
@@ -132,11 +130,11 @@ ACTION RobotProcess :
 				cm.state := 1035;
 			END_IF
 
-		1035 :
+		1035:
 			cm.description := 'Assign movements to the shuttle at the drilling workstation';
 
 			CASE pKuka.axisGroupIdx OF
-				2 :
+				2:
 					MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[drillStationShuttleID].shuttleRef);
 					MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 0; // Direct
 
@@ -146,36 +144,38 @@ ACTION RobotProcess :
 					MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := 0;
 
 					CASE numDoneHoles OF
-						1 :
-							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := - (drillXOffset / 1000);
-							cm.state := 1037;
+						1:
+							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := - (drillXOffset / 1000); // Converted to m
+							cm.state := 1036;
+						
+						2: // No shuttle movement
+							cm.state := 1040;
+							
+						3:
+							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := (drillXOffset / 1000); // Converted to m
+							cm.state := 1036;
 
-						3 :
-							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := (drillXOffset / 1000);
-							cm.state := 1037;
-
-						2,4 :
+						4: // No shuttle movement
 							cm.state := 1040;
 
 
 					END_CASE
 			END_CASE
 
-		1037 :
+		1036:
 			cm.description := 'Move the shuttle at the drilling workstation';
 			MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF MC_BR_MoveInPlane_Acp6D_0.Done THEN
 				MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
+				
 				cm.state := 1040;
-				
-				
 			END_IF
 
 
 		1040:
 			cm.description := 'Check if the drill has performed the correct number of holes';
 			CASE pKuka.axisGroupIdx OF
-				2 : // Drilling robot
+				2: // Drilling robot
 
 					// Check if more holes are needed for the specific order
 					IF numDoneHoles < SINT_TO_USINT(orderSpec[i]) THEN
@@ -190,13 +190,13 @@ ACTION RobotProcess :
 			END_CASE
 			
 			
-
 		1050 :
 			cm.description := 'Move back to home position';
 
 			RobotHoming;
 
 	END_CASE
+	
 	MC_BR_MoveInPlane_Acp6D_0();
 
 END_ACTION

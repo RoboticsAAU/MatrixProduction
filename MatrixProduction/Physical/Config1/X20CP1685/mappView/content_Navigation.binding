@@ -88,10 +88,6 @@
 </Binding>
 <Binding mode="twoWay">
 <Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput7" attribute="visible" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="DateTimeOutput1" attribute="visible" />
 </Binding>
 <Binding mode="twoWay">
@@ -186,10 +182,6 @@
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Label33" attribute="visible" />
 </Binding>
 
-<Binding mode="twoWay">
-<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput22" attribute="visible" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput18" attribute="visible" />
-</Binding>
 <Binding mode="twoWay">
 <Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput22" attribute="visible" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Label34" attribute="visible" />

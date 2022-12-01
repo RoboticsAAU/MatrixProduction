@@ -1,19 +1,19 @@
 
 ACTION smartLabWorkstationOperation :
+	
 	CASE cm.state OF
-		0 :
+		0:
 			cm.description := 'Setting parameters for the workstations'; // None right now
 
 			// Function block reference information
 			ShuttlesAtPositions_0.shuttleInfo := ADR(gAcp6DCtrl.Status.ShuttleInfo); // Maybe need to run FB?
 			ShuttlesInRange_0.shuttleInfo := ADR(gAcp6DCtrl.Status.ShuttleInfo);
 			ShuttlesInWorkstationBuffer_0.shuttleInfo := ADR(gAcp6DCtrl.Status.ShuttleInfo);
-			MovementColumnSelection_0.occupiedPosition := ADR(occupiedPosition);
-
+			
 			cm.state := 10;
 
 
-		10 :
+		10:
 			cm.description := 'Check what shuttle is on top of workstation';
 
 			// Workstation position
@@ -27,7 +27,8 @@ ACTION smartLabWorkstationOperation :
 			IF ShuttlesAtPositions_0.isAtCheckPos THEN
 				pWorkstation.par.tempShuttleID := ShuttlesAtPositions_0.shuttleID;
 				gShuttles[pWorkstation.par.tempShuttleID].par.tempWorkstationID := pWorkstation.par.workstationID;
-
+				gShuttles[pWorkstation.par.tempShuttleID].par.tempCameraStationID := -1; // Set no camera as default
+				
 				// If the shuttle is active, perform the operation
 				IF shuttlePlans[pWorkstation.par.tempShuttleID].isActive THEN
 					cm.state := 20;
@@ -38,7 +39,7 @@ ACTION smartLabWorkstationOperation :
 			END_IF
 
 
-		15 :
+		15:
 			cm.description := 'Wait for other shuttle to arrive at approach point or shuttle at workstation becomes part of new order';
 
 			// Check if the shuttle should become part of a new order
@@ -61,7 +62,7 @@ ACTION smartLabWorkstationOperation :
 
 			// Move to next workstation if another shuttle has arrived in the buffer of the workstation
 			CASE pWorkstation.par.workstationID OF // For different workstations, you should look at differen positions
-				0 : // See if more than 2 shuttles are in queue
+				0: // See if more than 2 shuttles are in queue
 					// Position where at least 3 shuttles are in queue
 					ShuttlesAtPositions_0.checkPosX[0] := pWorkstation.par.approachPosX - 0.240;
 					ShuttlesAtPositions_0.checkPosY[0] := pWorkstation.par.approachPosY;
@@ -71,11 +72,11 @@ ACTION smartLabWorkstationOperation :
 
 					IF ShuttlesAtPositions_0.isAtCheckPos THEN
 						// Set shuttle state to move to next workstation and go back to wait for new shuttle at workstation
-						gShuttles[pWorkstation.par.tempShuttleID].cm.state := 10;
+						moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
 						cm.state := 60;
 					END_IF
 
-				1..5 : // See if any shuttles are in the buffer
+				1..5: // See if any shuttles are in the buffer
 					ShuttlesInWorkstationBuffer_0.workstation := pWorkstation;
 					ShuttlesInWorkstationBuffer_0();
 
@@ -87,7 +88,7 @@ ACTION smartLabWorkstationOperation :
 			END_CASE
 
 
-		20 :
+		20:
 			cm.description := 'Send data to robot through mapping and begin robot operation';
 
 			gShuttles[pWorkstation.par.tempShuttleID].par.tempCameraStationID := pWorkstation.par.cameraID;
@@ -95,24 +96,24 @@ ACTION smartLabWorkstationOperation :
 			IF NOT robotBusy[i] THEN
 				CASE pWorkstation.par.workstationID OF
 					// Send type of bottom cover (converted to int)
-					0 : orderSpec[0] := COVER_TYPE_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.bottomCover);
+					0: orderSpec[0] := COVER_TYPE_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.bottomCover);
 
 					// Send amount of holes
-					1 :  orderSpec[1] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.Holes;
+					1:  orderSpec[1] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.Holes;
 						drillStationShuttleID := pWorkstation.par.tempShuttleID;  // Send ID of the shuttle currently at the drilling station.
 
 
 					// Send whether a PCB is specified or not (converted to int)
-					2 : orderSpec[2] := BOOL_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.PCB);
+					2: orderSpec[2] := BOOL_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.PCB);
 
 					// Send amount of fuses
-					3 : orderSpec[3] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.Fuses;
+					3: orderSpec[3] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.Fuses;
 
 					// Send type of top cover (converted to int)
-					4 : orderSpec[4] := COVER_TYPE_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.topCover);
+					4: orderSpec[4] := COVER_TYPE_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.topCover);
 
 					// Send ID of order
-					5 :
+					5:
 						orderSpec[5] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.ID;
 						orderAmount := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.amount;
 
@@ -148,7 +149,7 @@ ACTION smartLabWorkstationOperation :
 //			END_IF
 
 
-		40 :
+		40:
 			cm.description := 'Wait for robot to finish operation';
 
 			IF robotDone[i] THEN
@@ -179,19 +180,17 @@ ACTION smartLabWorkstationOperation :
 //			END_IF
 
 
-		60 :
+		60:
 			cm.description := 'Wait for shuttle to start moving before going back to wait for new shuttle';
 
 			// Go back to wait for shuttle at workstation if the current shuttle has begun moving (avoids bugs)
 			IF gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].State = mcACP6D_SH_STATE_MOTION THEN
 
 				// We set flag to acquire image if upcoming path has a camera station and if the shuttle is active (has been assigned an order)
-				IF shuttlePlans[pWorkstation.par.tempShuttleID].isActive AND pWorkstation.par.cameraID <> - 1 THEN
-
+				IF shuttlePlans[pWorkstation.par.tempShuttleID].isActive AND pWorkstation.par.cameraID <> -1 THEN
 					gShuttles[pWorkstation.par.tempShuttleID].par.acquireImage := TRUE;
-
 				END_IF
-
+				
 				cm.state := 10;
 
 			END_IF
@@ -209,8 +208,10 @@ END_ACTION
 ACTION smartLabShuttleMovement :
 
 	CASE cm.state OF
-		0 :
+		0:
 			cm.description := 'Set parameters for the shuttles and wait for workstation to set new state';
+			pShuttle.function.MovementColumnSelection.occupiedPosition := ADR(occupiedPosition);
+			
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0; // Absolute
@@ -240,7 +241,7 @@ ACTION smartLabShuttleMovement :
 			END_IF
 
 
-		10 :
+		10:
 			cm.description := 'Determine the next workstation and set parameters based on this';
 
 			// Set the next workstation ID (either from routing sheet for active shuttles and next in row for inactive shuttles)
@@ -250,7 +251,7 @@ ACTION smartLabShuttleMovement :
 
 				CASE pShuttle.par.tempNextWorkstationID OF
 					// If the next workstation is 0 (first workstation), reset the progress index and set the shuttleplan to be inactive
-					0 :
+					0:
 						pShuttlePlan.progressIndex := 0;
 						pShuttlePlan.isActive := FALSE;
 						activeShuttles := activeShuttles - 1;
@@ -271,11 +272,11 @@ ACTION smartLabShuttleMovement :
 							pOrderHistory.orderFinishTime := DTGetTime_0.DT1;
 							pOrderHistory.status := FINISHED;
 						END_IF
-
-					// If the next workstation is 5 (last workstation), set the final weight of the product
-					5 :
-						orderHistory[pShuttlePlan.productOrder.ID].product[pShuttlePlan.productID].weight := pShuttlePlan.currentProductWeight;
-
+					
+					// If the next workstation is not 0 (last workstation), set the final weight of the product
+					1..5:
+						pOrderHistory.product[pShuttlePlan.productID].weight := pShuttlePlan.currentProductWeight;
+					
 				END_CASE
 			ELSE
 				pShuttle.par.tempNextWorkstationID := (pShuttle.par.tempWorkstationID + 1) MOD smartLabNumWorkstations;
@@ -284,11 +285,15 @@ ACTION smartLabShuttleMovement :
 			cm.state := 11;
 
 
-		11 :
+		11:
 			cm.description := 'Determine the next state, depending on where the next workstation is';
-
-			IF pShuttle.par.tempCameraStationID <> - 1 THEN
-				cm.state := 20;
+			
+			// Set state to move using original method (find free column to use)
+			cm.state := 19;
+			
+			// If the shuttle has a camera station set, always move to state 19
+			IF pShuttle.par.tempCameraStationID <> -1 THEN
+				// Do nothing
 			// If the workstations are opposite each other, go directly to the approach point of next workstation (no need to occupy column when it only moves in row)
 			ELSIF AreWorkstationsOpposite(workstationID1 := pShuttle.par.tempWorkstationID, workstationID2 := pShuttle.par.tempNextWorkstationID) THEN
 				cm.state := 30;
@@ -297,117 +302,113 @@ ACTION smartLabShuttleMovement :
 				// Define the next workstation
 				ShuttlesInWorkstationBuffer_0.workstation := gWorkstations[pShuttle.par.tempNextWorkstationID];
 				ShuttlesInWorkstationBuffer_0();
-
-				IF ShuttlesInWorkstationBuffer_0.isInBuffer THEN
-					cm.state := 20;
-				ELSE
+				
+				IF NOT ShuttlesInWorkstationBuffer_0.isInBuffer THEN
 					cm.state := 40;
 				END_IF
-			// Else move using original method (find free column to use)
-			ELSE
+			END_IF
+			
+			
+		19:
+			cm.description := 'Determine a free column to move along from the starting and ending positions';
+			
+			// Select the closest column that is available (no other shuttles using positions in column)
+			pShuttle.function.MovementColumnSelection.startPosY := gWorkstations[pShuttle.par.tempWorkstationID].par.departPosY;
+			pShuttle.function.MovementColumnSelection.endPosY := gWorkstations[pShuttle.par.tempNextWorkstationID].par.approachPosY;
+			pShuttle.function.MovementColumnSelection.prioritiseLowColumns := (gWorkstations[pShuttle.par.tempWorkstationID].par.workstationID >= 3);
+			
+			// If the shuttle is connected to a camera adjust the position according to whether camera operation is done or not
+			IF pShuttle.par.tempCameraStationID <> -1 THEN
+				IF NOT pShuttle.par.cameraOperationDone THEN
+					pShuttle.function.MovementColumnSelection.endPosY := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].yPos;
+				ELSE
+					pShuttle.function.MovementColumnSelection.startPosY := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].yPos;
+					pShuttle.function.MovementColumnSelection.prioritiseLowColumns := (gWorkstations[pShuttle.par.tempNextWorkstationID].par.workstationID >= 3);
+				END_IF
+			END_IF
+			pShuttle.function.MovementColumnSelection();
+			
+			// Set highway column
+			pShuttle.par.tempHighwayColumn := pShuttle.function.MovementColumnSelection.selectedHighwayColumn;
+			
+			// If a highway column was available for use
+			IF pShuttle.par.tempHighwayColumn <> -1 THEN
+				// Set destination position
+				pShuttle.par.tempDestinationPos.xPos := QuadrantIdxToPos(quadrantIdx := (1 + pShuttle.par.tempHighwayColumn)); // Add 1 because the first column is not a highway
+				pShuttle.par.tempDestinationPos.yPos := pShuttle.function.MovementColumnSelection.startPosY;
+				
 				cm.state := 20;
 			END_IF
-
-
-		20 :
-			cm.description := 'Move from workstation to depart point (or next free column)';
+		
+		20:
+			cm.description := 'Move from workstation to selected column';
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 2; // Y THEN X
-
-			// If the workstation is connected with a camera station, set the column to the workstations depart position
-			IF pShuttle.par.tempCameraStationID <> - 1 AND pShuttle.par.tempHighwayColumn = - 1 THEN
-				IF pShuttle.par.tempWorkstationID <= 2 THEN
-					pShuttle.par.tempHighwayColumn := 3;
+			
+			// Start position is set to current position
+			pShuttle.par.tempStartPos.xPos := gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.X;
+			pShuttle.par.tempStartPos.yPos := gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y;
+			
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := pShuttle.par.tempDestinationPos.xPos;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := pShuttle.par.tempDestinationPos.yPos;
+			
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
+			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Done THEN
+				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
+				
+				IF pShuttle.par.tempCameraStationID <> -1 AND NOT pShuttle.par.cameraOperationDone THEN
+					cm.state := 25;
 				ELSE
-					pShuttle.par.tempHighwayColumn := 0;
+					cm.state := 30;
 				END_IF
 			END_IF
+		
 
-			// If a column has not been selected yet
-			IF pShuttle.par.tempHighwayColumn = - 1 THEN
-				// Select the closest column that is available (no other shuttles using column or movement direction is opposite)
-				MovementColumnSelection_0.startPosY := gWorkstations[pShuttle.par.tempWorkstationID].par.departPosY;
-				MovementColumnSelection_0.endPosY := gWorkstations[pShuttle.par.tempNextWorkstationID].par.approachPosY;
-				IF pShuttle.par.cameraOperationDone THEN
-					MovementColumnSelection_0.prioritiseLowColumns := (gWorkstations[pShuttle.par.tempWorkstationID].par.workstationID >= 3);
-				ELSE
-					MovementColumnSelection_0.prioritiseLowColumns := (gWorkstations[pShuttle.par.tempNextWorkstationID].par.workstationID >= 3);
-				END_IF
-				MovementColumnSelection_0();
-
-				pShuttle.par.tempHighwayColumn := MovementColumnSelection_0.selectedHighwayColumn;
-
-			// Move to the specified column if any is available (-1 if no column is available)
-			ELSE
-				// Start position is set to current position
-				pShuttle.par.tempStartPos.xPos := gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.X;
-				pShuttle.par.tempStartPos.yPos := gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y;
-
-				// Position of the selected column
-				pShuttle.par.tempDestinationPos.xPos := QuadrantIdxToPos(quadrantIdx := (1 + pShuttle.par.tempHighwayColumn)); // Add 1 because the first column is not a highway
-				IF pShuttle.par.cameraOperationDone THEN
-					pShuttle.par.cameraOperationDone := FALSE;
-					pShuttle.par.tempDestinationPos.yPos := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].yPos;
-				ELSE
-					pShuttle.par.tempDestinationPos.yPos := gWorkstations[pShuttle.par.tempWorkstationID].par.departPosY;
-				END_IF
-
-				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := pShuttle.par.tempDestinationPos.xPos;
-				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := pShuttle.par.tempDestinationPos.yPos;
-
-				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
-				IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Done THEN
-					pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
-
-					IF pShuttle.par.tempCameraStationID <> - 1 THEN
-						cm.state := 25;
-					ELSE
-						cm.state := 30;
-					END_IF
-				END_IF
-			END_IF
-
-
-		25 :
+		25:
 			cm.description := 'Move to position for operation correlated to camera';
-
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; // X THEN Y
+			
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].xPos;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].yPos;
+			
 			// If the camera station is not reserved, move to it
 			IF NOT gCameraStations[pShuttle.par.tempCameraStationID].reserved THEN
-
-
-				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
-				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; // X THEN Y
-
-				// If the position is on the highway set occupied positions on the highway around shuttle
-				IF 0 < PosToQuadrantIdx(awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].xPos) OR PosToQuadrantIdx(awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].xPos) < 5 THEN
-					ShuttleTouchQuadrantPos_0.shuttlePos := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID];
-					ShuttleTouchQuadrantPos_0();
-
-					FOR j := 0 TO ShuttleTouchQuadrantPos_0.numTouches DO
+				// Set occupied positions on the highway around shuttle
+				ShuttleTouchQuadrantPos_0.shuttlePos := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID];
+				ShuttleTouchQuadrantPos_0();
+				
+				FOR j := 0 TO ShuttleTouchQuadrantPos_0.numTouches DO
+					// If the quadrant is on the highway
+					IF 0 < ShuttleTouchQuadrantPos_0.quadrantPosX[j] AND ShuttleTouchQuadrantPos_0.quadrantPosX[j] < 5 THEN 
 						occupiedPosition[ShuttleTouchQuadrantPos_0.quadrantPosX[j] - 1, ShuttleTouchQuadrantPos_0.quadrantPosY[j]] := TRUE;
-					END_FOR
-					// NOTE: Should maybe also occupy positions for the movement itself
-				END_IF
-
-				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].xPos;
-				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.Y := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].yPos;
-
+					END_IF
+				END_FOR
+				
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 				IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Done THEN
 					pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
-
+					
+					// Reset column since movement is done
+//					pShuttle.function.MovementColumnSelection.startPosY := gWorkstations[pShuttle.par.tempWorkstationID].par.departPosY;
+//					pShuttle.function.MovementColumnSelection.endPosY := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].yPos;
+					pShuttle.function.MovementColumnSelection.opt_movementDone := TRUE;
+					pShuttle.function.MovementColumnSelection.opt_resetColumn := pShuttle.par.tempHighwayColumn;
+					pShuttle.function.MovementColumnSelection();
+					
+					// Set the camera station to be reserved
 					gCameraStations[pWorkstation.par.cameraID].reserved := TRUE;
 
 					cm.state := 26;
 				END_IF
 			END_IF
 
-		26 :
+		26:
 			cm.description := 'Perform camera specific operation';
 
 			CASE pShuttle.par.tempCameraStationID OF
 				// Rotate shuttle
-				0 :
+				0:
 					IF pShuttlePlan.isFlipped THEN
 						pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
 
@@ -425,25 +426,28 @@ ACTION smartLabShuttleMovement :
 
 			END_CASE
 
-		27 :
+		27:
 			cm.description := 'Reset occupied positions and go back to column selection';
-
-			// Make occupied positioons available for use again
+			
+			// Make occupied positions available for use again
 			ShuttleTouchQuadrantPos_0.shuttlePos := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID];
 			ShuttleTouchQuadrantPos_0();
 
 			FOR j := 0 TO ShuttleTouchQuadrantPos_0.numTouches DO
-				occupiedPosition[ShuttleTouchQuadrantPos_0.quadrantPosX[j] - 1, ShuttleTouchQuadrantPos_0.quadrantPosY[j]] := FALSE;
+				// If the quadrant is on the highway
+				IF 0 < ShuttleTouchQuadrantPos_0.quadrantPosX[j] AND ShuttleTouchQuadrantPos_0.quadrantPosX[j] < 5 THEN 
+					occupiedPosition[ShuttleTouchQuadrantPos_0.quadrantPosX[j] - 1, ShuttleTouchQuadrantPos_0.quadrantPosY[j]] := FALSE;
+				END_IF
 			END_FOR
-
-			pShuttle.par.tempCameraStationID := - 1;
-			pShuttle.par.tempHighwayColumn := - 1;
+			
 			pShuttle.par.cameraOperationDone := TRUE;
 			gCameraStations[pWorkstation.par.cameraID].reserved := FALSE;
-
-			cm.state := 20;
-
-		30 :
+			
+			// Go back to select a new column for movement to next workstation
+			cm.state := 19;
+			
+			
+		30:
 			cm.description := 'Move from depart point (or free row) of current workstation to approach point of next workstation';
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 2; // Y THEN X
@@ -465,20 +469,18 @@ ACTION smartLabShuttleMovement :
 
 				// Make the positions available for use again if any were occupied by the movement
 				IF NOT AreWorkstationsOpposite(workstationID1 := pShuttle.par.tempWorkstationID, workstationID2 := pShuttle.par.tempNextWorkstationID) THEN
-					MovementColumnSelection_0.startPosY := gWorkstations[pShuttle.par.tempWorkstationID].par.departPosY;
-					MovementColumnSelection_0.endPosY := gWorkstations[pShuttle.par.tempNextWorkstationID].par.approachPosY;
-					MovementColumnSelection_0.opt_movementDone := TRUE;
-					MovementColumnSelection_0.opt_resetColumn := pShuttle.par.tempHighwayColumn;
-					MovementColumnSelection_0();
-
-					pShuttle.par.tempHighwayColumn := - 1;
+//					pShuttle.function.MovementColumnSelection.startPosY := gWorkstations[pShuttle.par.tempWorkstationID].par.departPosY;
+//					pShuttle.function.MovementColumnSelection.endPosY := gWorkstations[pShuttle.par.tempNextWorkstationID].par.approachPosY;
+					pShuttle.function.MovementColumnSelection.opt_movementDone := TRUE;
+					pShuttle.function.MovementColumnSelection.opt_resetColumn := pShuttle.par.tempHighwayColumn;
+					pShuttle.function.MovementColumnSelection();
 				END_IF
 
 				cm.state := 40;
 			END_IF
 
 
-		40 :
+		40:
 			cm.description := 'Move from approach point to workstation';
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 1; // X THEN Y
@@ -525,13 +527,13 @@ ACTION smartLabCameraProcess :
 
 		CASE cm.state OF
 
-			0 : // Calculate and send the time it takes for the shuttle to go from current to camera position. This is used by vision program to account for network delay
+			0: // Calculate and send the time it takes for the shuttle to go from current to camera position. This is used by vision program to account for network delay
 
 				pCameraStation.tempShuttleID := USINT_TO_SINT(pShuttle.par.shuttleID);
 
 				CASE pShuttle.par.tempCameraStationID OF
 
-					0 : // Camera after workstation 0, so the distances are specified in y-direction
+					0: // Camera after workstation 0, so the distances are specified in y-direction
 
 						// The assumption behind these calculations is that the camera is located on the path until the first direction change in the Manhattan path
 						ParabolicBlend_0.absAcceleration 	:= gAcp6DCtrl.Par.Acceleration;
@@ -552,8 +554,6 @@ ACTION smartLabCameraProcess :
 						ELSE // The shuttle has an offset from start position and the new current position must be accounted for
 
 							// Calculate how far in time the shuttle has moved from the starting point. Start and end must be set again since ParabolicBlend can manipulate these inputs
-							ParabolicBlend_0.startPos 	:= pShuttle.par.tempStartPos.yPos;
-							ParabolicBlend_0.endPos 	:= pShuttle.par.tempDestinationPos.yPos;
 							ParabolicBlend_0.evalPos 	:= gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y;
 							ParabolicBlend_0();
 
@@ -571,15 +571,12 @@ ACTION smartLabCameraProcess :
 					imgCoverType := COVER_TYPE_TO_USINT(pShuttlePlan.productOrder.bottomCover);
 					requestImage[pShuttle.par.tempCameraStationID] := TRUE;
 					cm.state := 10;
-
 				ELSE
-
 					pShuttle.par.acquireImage := FALSE;
-
 				END_IF
 
-			// Currently implemented as if all cameras follow the same visionResultReady implementation. However, camera-specific approach is possible with multiple cameras are used
-			10 : // Wait for request from vision program, indicated by rising edge
+			// Currently implemented as if all cameras follow the same visionResultReady implementation. However, camera-specific approach is possible if multiple cameras are used
+			10: // Wait for request from vision program, indicated by rising edge
 				IF EDGEPOS(visionResultReady[pShuttle.par.tempCameraStationID]) AND pCameraStation.tempShuttleID = USINT_TO_SINT(pShuttle.par.shuttleID) THEN
 					requestImage[pShuttle.par.tempCameraStationID] := FALSE;
 					pShuttle.par.acquireImage := FALSE;

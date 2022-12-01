@@ -49,8 +49,23 @@
 	<Source xsi:type="snippet" refId="topCoverType" attribute="value" /> 
 	<Target xsi:type="brease" widgetRefId="TextOutput3" contentRefId="content_historyPage" attribute="value" /> 
 </Binding>
-				
-		
+<Binding mode="oneWay"> 
+	<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.productOrder.PCB" attribute="value" /> 
+	<Target xsi:type="snippet" refId="PCB" attribute="value" /> 
+</Binding>
+<Binding mode="oneWay"> 
+	<Source xsi:type="snippet" refId="PCB" attribute="value" /> 
+	<Target xsi:type="brease" widgetRefId="TextOutput4" contentRefId="content_historyPage" attribute="value" /> 
+</Binding>
+<Binding mode="oneWay"> 
+	<Source xsi:type="opcUa" refId="::Acopos6D:HMIproductHistory.flipped" attribute="value" /> 
+	<Target xsi:type="snippet" refId="productFlipped" attribute="value" /> 
+</Binding>
+<Binding mode="oneWay"> 
+	<Source xsi:type="snippet" refId="productFlipped" attribute="value" /> 
+	<Target xsi:type="brease" widgetRefId="TextOutput5" contentRefId="content_historyPage" attribute="value" /> 
+</Binding>
+
 
 
 
@@ -68,10 +83,6 @@
 <Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.productOrder.Holes" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput6" attribute="value" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.productOrder.PCB" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput7" attribute="value" />
 </Binding>
 <Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.productOrder.Fuses" attribute="value" />
@@ -108,10 +119,6 @@
 <Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIproductHistory.finishTime" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput22" attribute="value" />
-</Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Acopos6D:HMIproductHistory.flipped" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput18" attribute="value" />
 </Binding>
 <Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIproductHistory.weight" attribute="value" />
@@ -212,6 +219,14 @@
 <Binding mode="twoWay">
 <Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput26" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput4" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput22" attribute="visible" />
+<Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput5" attribute="visible" />
 </Binding>
 </Bindings>
 </BindingsSet>
