@@ -19,6 +19,7 @@
   </Navigations>  
   <BindingsSets>
 		<BindingsSet refId="content_Navigation_binding" />
+		<BindingsSet refId="content_Navi_w_stop_binding" />
 		<BindingsSet refId="content_MainPage_binding" />
 		<BindingsSet refId="content_configPage_binding" />
 		<BindingsSet refId="content_weightPage_binding" />

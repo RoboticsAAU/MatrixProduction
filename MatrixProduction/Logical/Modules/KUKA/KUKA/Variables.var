@@ -71,6 +71,8 @@ VAR
 	xIdxTemp : INT := -1;
 	yIdxTemp : INT := -1;
 	orderCounter : ARRAY[0..1,0..1] OF INT := [4(0)];
+	maintenancePrev : ARRAY[0..5] OF BOOL;
+	maintenance : BOOL;
 END_VAR
 (*References*)
 VAR

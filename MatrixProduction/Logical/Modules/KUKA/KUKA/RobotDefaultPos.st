@@ -8,7 +8,7 @@ ACTION RobotHoming:
 		
 		PROCESS, HANDLING:
 			pKuka.convert.ValuesToPosition.posType := APPROACH_WORKSTATION;
-			pKuka.convert.ValuesToPosition.opt_isFlipped := isProductFlipped[i]; // Determine if product is flipped
+		pKuka.convert.ValuesToPosition.opt_isFlipped := isProductFlipped[i]; // Determine if product is flipped
 		
 	END_CASE
 	
@@ -31,4 +31,29 @@ ACTION RobotHoming:
 		cm.state := 1000; 
 	END_IF
 	
+END_ACTION
+
+
+ACTION RobotMaintenance:
+	
+	IF NOT pKuka.atMaintenancePos THEN
+		pKuka.convert.ValuesToPosition.posType := DEFAULT; 
+		pKuka.convert.ValuesToPosition();
+		
+		pKuka.convert.ValuesToCOORDSYS.Base := pKuka.convert.ValuesToPosition.baseNo;
+		pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 0; // #BASE
+		pKuka.convert.ValuesToCOORDSYS();
+		
+		pKuka.tempPosition := pKuka.convert.ValuesToPosition.outputPos;
+		
+		pKuka.motion.KRC_MoveDirectAbsolute.CoordinateSystem := pKuka.convert.ValuesToCOORDSYS.COORDSYS;
+		pKuka.motion.KRC_MoveDirectAbsolute.Position := pKuka.tempPosition;
+		
+		pKuka.motion.KRC_MoveDirectAbsolute.ExecuteCmd := TRUE;
+		IF pKuka.motion.KRC_MoveDirectAbsolute.Done THEN 
+			pKuka.motion.KRC_MoveDirectAbsolute.ExecuteCmd := FALSE;
+			pKuka.atMaintenancePos := TRUE;
+		END_IF
+	END_IF
+		
 END_ACTION

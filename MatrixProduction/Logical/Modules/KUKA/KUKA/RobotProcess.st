@@ -24,14 +24,23 @@ ACTION RobotProcess :
 						// Seen from ACOPOS 6D frame: Bottom right -> bottom left -> top left -> top right
 						CASE numDoneHoles OF
 							0, 1 : // Simply default approach position
+//								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
 
 								IF isProductFlipped[i] THEN
 									pKuka.tempPosition.Status := 2; // 010
 									pKuka.tempPosition.Turn := 35; // 10011
 								END_IF
 
-
+//							1:
+//								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
+//
+//								IF isProductFlipped[i] THEN
+//									pKuka.tempPosition.Status := 2; // 010
+//									pKuka.tempPosition.Turn := 35; // 10011
+//								END_IF
+//
 							2, 3 :
+//								pKuka.tempPosition.X := pKuka.tempPosition.X - drillXOffset;
 								pKuka.tempPosition.Y := pKuka.tempPosition.Y + drillYOffset;
 
 								// Configuration changes here (after first two holes)
@@ -92,8 +101,6 @@ ACTION RobotProcess :
 			END_IF
 
 
-
-
 		1030 :
 			cm.description := 'Move back to approach point with relative linear movement';
 
@@ -132,42 +139,43 @@ ACTION RobotProcess :
 					CASE numDoneHoles OF
 						1 :
 							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := - (drillXOffset / 1000);
-							IF NOT occupiedPosition[3,3] THEN 
-								occupiedPosition[3,3] := TRUE;
-								cm.state := 1037;
+							IF NOT occupiedPosition[3, 3] THEN
+								occupiedPosition[3, 3] := TRUE;
+								cm.state := 1036;
 							END_IF
 
-						3 :
-							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := (drillXOffset / 1000);
-							cm.state := 1037;
+						2 : // No shuttle movement
+							cm.state := 1040;
 
-						2,4 :
+						3 :
+							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := (drillXOffset / 1000); // Converted to m
+							cm.state := 1036;
+
+						4 : // No shuttle movement
 							cm.state := 1040;
 
 
 					END_CASE
 			END_CASE
 
-		1037 :
+		1036 :
 			cm.description := 'Move the shuttle at the drilling workstation';
 			MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF MC_BR_MoveInPlane_Acp6D_0.Done THEN
 				MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
-				
-				IF numDoneHoles = 3 OR (numDoneHoles = 2 AND SINT_TO_USINT(orderSpec[i]) = 2) THEN // After the 3'rd hole or the 2'nd hole (order of 2 holes)  and the shuttle is moved back, release the highway.   
-					IF occupiedPosition[3,3] THEN 
-						occupiedPosition[3,3] := FALSE;
+
+				IF numDoneHoles = 3 OR (numDoneHoles = 2 AND SINT_TO_USINT(orderSpec[i]) = 2) THEN // After the 3'rd hole or the 2'nd hole (order of 2 holes)  and the shuttle is moved back, release the highway.
+					IF occupiedPosition[3, 3] THEN
+						occupiedPosition[3, 3] := FALSE;
 					END_IF
 				END_IF
-				
-				
+
+
 				cm.state := 1040;
-				
-				
 			END_IF
 
 
-		1040:
+		1040 :
 			cm.description := 'Check if the drill has performed the correct number of holes';
 			CASE pKuka.axisGroupIdx OF
 				2 : // Drilling robot
@@ -183,8 +191,7 @@ ACTION RobotProcess :
 						cm.state := 1050;
 					END_IF
 			END_CASE
-			
-			
+
 
 		1050 :
 			cm.description := 'Move back to home position';
@@ -192,6 +199,7 @@ ACTION RobotProcess :
 			RobotHoming;
 
 	END_CASE
+
 	MC_BR_MoveInPlane_Acp6D_0();
 
 END_ACTION

@@ -2,7 +2,7 @@
 FUNCTION_BLOCK MovementColumnSelection
 	
 	// Accessing the address
-	occupiedPosition ACCESS ADR(occupiedPosition);
+	tempOccupiedPosition ACCESS ADR(occupiedPosition);
 	
 	// Set parameters for setting occupied positions
 	bottomRowLevel := startRowLevel := PosToQuadrantIdx(startPosY);
@@ -14,8 +14,8 @@ FUNCTION_BLOCK MovementColumnSelection
 	END_IF
 	
 	IF opt_movementDone THEN
-		FOR k := startRowLevel TO endRowLevel DO
-			occupiedPosition[opt_resetColumn, k] := FALSE;
+		FOR k := bottomRowLevel TO topRowLevel DO
+			tempOccupiedPosition[opt_resetColumn, k] := FALSE;
 		END_FOR
 		
 		opt_resetColumn := FALSE;
@@ -37,7 +37,7 @@ FUNCTION_BLOCK MovementColumnSelection
 		
 		// Going trough the rows the movement would go through and seing if it is possible
 		FOR k := bottomRowLevel TO topRowLevel DO
-			IF occupiedPosition[selectedHighwayColumn, k] THEN
+			IF tempOccupiedPosition[selectedHighwayColumn, k] THEN
 				columnIsPossible := FALSE;
 				EXIT;
 			END_IF
@@ -46,7 +46,7 @@ FUNCTION_BLOCK MovementColumnSelection
 		// If movement in the column is possible, occupy this column (selected column is already set)
 		IF columnIsPossible THEN
 			FOR k := bottomRowLevel TO topRowLevel DO
-				occupiedPosition[selectedHighwayColumn, k] := TRUE;
+				tempOccupiedPosition[selectedHighwayColumn, k] := TRUE;
 			END_FOR
 			RETURN;
 		END_IF

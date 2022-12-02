@@ -453,7 +453,7 @@ PROGRAM _CYCLIC
 						pShuttle.par.shuttleID := i;
 						
 						pShuttlePlan ACCESS ADR(shuttlePlans[pShuttle.par.shuttleID]);
-						pOrderHistory ACCESS ADR(orderHistory[pShuttlePlan.productOrder.ID]);
+						pOrderHistory ACCESS ADR(orderHistory[pShuttlePlan.productOrder.ID MOD 100]);
 						
 						IF pShuttlePlan.isActive THEN
 							pOrderHistory.orderDuration := DT_TO_REAL(DTGetTime_0.DT1) - DT_TO_REAL(pOrderHistory.orderStartingTime);

@@ -26,6 +26,7 @@ END_FUNCTION_BLOCK
 		selectedHighwayColumn : SINT;
 	END_VAR
 	VAR
+		tempOccupiedPosition : REFERENCE TO ARRAY[0..3,0..7] OF BOOL;
 		columnIsPossible : BOOL;
 		startRowLevel : USINT;
 		endRowLevel : USINT;

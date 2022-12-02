@@ -12,7 +12,7 @@
     <File>RobotAssembly.st</File>
     <File>RobotProcess.st</File>
     <File>RobotHandling.st</File>
-    <File>RobotHoming.st</File>
+    <File>RobotDefaultPos.st</File>
     <File>JointMovement.st</File>
     <File>LinearMovement.st</File>
     <File Private="true">LocalFunctions.fun</File>

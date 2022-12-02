@@ -39,9 +39,9 @@ PROGRAM _CYCLIC
 	hwMatch.out.common.alignment := 0; // Alignment is not supported with smart sensor
 	hwMatch.out.common.offsetROI.x := 0;
 	hwMatch.out.common.offsetROI.y := 0;
-	hwMatch.out.minScore := 80; // In percent
+	hwMatch.out.minScore := 90; // In percent
 	hwMatch.out.maxOverlap := 0; // In percent
-	hwMatch.out.timeout := 30; // Limit in milliseconds for match search 
+	hwMatch.out.timeout := 110; // Limit in milliseconds for match search 
 	
 	//// Camera configuration ////
 	gVisionImage.CFG.EthDevice				:= 'IF2';			// Ethernet interface for the PLC, this is the IF where you go online
@@ -50,14 +50,6 @@ PROGRAM _CYCLIC
 	gVisionSensor[0].CFG.PowerlinkNode		:= 8;				// Powerlink node number
 	gVisionSensor[0].CFG.DataStructure		:= ADR(gMatch);		// Global structures that holds all data related to this function
 	gVisionSensor[0].CFG.ComponentLink		:= gCamera;			// Vision component name defined under mappVision in the configuration view
-	
-	
-	//// Camera data (output from PLC) ////
-	hwCam[0].out.par.exposureTime			:= 1000; 	// SUSCEPTIBLE TO CHANGE
-	hwCam[0].out.par.flashColor				:= 4; 		// 4: LIME (See help function "Image acquisition parameters (cyclic write)" for other alternatives)
-	hwCam[0].out.par.flashSegment			:= 15; 		// Binary 1111 (all segments are turned on)
-	hwCam[0].out.par.focus					:= 437; 	// Camera FocusScale is defined in mm
-	hwCam[0].out.par.gainLevel				:= 1; 		// Gain factor	
 	
 	//// Capturing image if requested and compensating for network delay ////
 	PowerlinkCycle_us 		:= NettimeCurrent_us - NettimeLastCycle_us;
@@ -70,13 +62,25 @@ PROGRAM _CYCLIC
 			
 			imgTrigger[camIdx].pCameraHw := ADR(hwCam[camIdx]);
 			
+			//// Camera data (output from PLC) ////
+			SetCamSettings_0.hwCamRef := ADR(hwCam[camIdx]);
+			SetCamSettings_0.camIdx := camIdx;
+			
+			
 			CASE visState[camIdx] OF 
 							
 				0: // Check if new image has been requested, indicated by rising edge
 					IF EDGEPOS(imageRequested[camIdx]) THEN
+						
 						requestTimeStamp[camIdx] := NettimeCurrent_us;
+						
+
+						SetCamSettings_0.coverType := imgCoverType;
+						
 						resultReady[camIdx] := FALSE;
+						
 						visState[camIdx] := 10;
+						
 					END_IF
 						
 				10: // Capture image at the right time window, which is determined by pretrigger cycles using current estimation of PowerlinkCycle_us
@@ -113,24 +117,21 @@ PROGRAM _CYCLIC
 						CASE camIdx OF
 							
 							0: 
-								// Create empty svg contour of the found blob, which is used as overlay in the HMI page
+								// Create empty svg contour of the found shape, which is used as overlay in the HMI page
 								overlay := '';
-								additionArguments := '';
+								additionArguments := ''; // Maybe change back to nothing
 								
 								// Check if blobs were found
 								IF hwMatch.in.common.numResults <> 0 THEN
-									// Assign bool depending on placement of BLOB
-									flipProduct := (DINT_TO_INT(hwMatch.in.results[0].positionX/100) > cameraWidth/2);
+									// Assign bool depending on placement of detected shape
+									flipProduct := (DINT_TO_INT(hwMatch.in.results[0].positionY/100) > cameraHeight/2);
 									
-									shapeCenterPoint.x := DINT_TO_LREAL(hwMatch.in.results[0].positionX);
-									shapeCenterPoint.y := DINT_TO_LREAL(hwMatch.in.results[0].positionY);
+									shapeCenterPoint.x := DINT_TO_LREAL(hwMatch.in.results[0].positionX/100);
+									shapeCenterPoint.y := DINT_TO_LREAL(hwMatch.in.results[0].positionY/100);
 								
-									brdkViGeom_drawSvgCircle(shapeCenterPoint, 50, ADR(overlay), ADR(additionArguments));
+									brdkViGeom_drawSvgCircle(shapeCenterPoint, 15, ADR(overlay), ADR(additionArguments));
 									
 								END_IF
-							
-								// Display image for camera 0 via mappView server, since we know that image has been acquired and processing completed
-								mappView.updateImage := TRUE;
 									
 						END_CASE
 						
@@ -140,6 +141,11 @@ PROGRAM _CYCLIC
 					END_IF
 					
 			END_CASE
+			
+			IF imgTrigger[camIdx].newImage AND camIdx = 0 THEN
+				// Display image for camera 0 via mappView server
+				mappView.updateImage := TRUE;
+			END_IF
 			
 			// -----------------------------------------------------------------------------------------------------------
 			// Display camera status in hex - documentation is also in hex
@@ -187,9 +193,10 @@ PROGRAM _CYCLIC
 				
 			END_IF
 			
+			// FB calls
 			TOF_Light[camIdx]();
-			
 			imgTrigger[camIdx]();
+			SetCamSettings_0();
 			
 			mappView.pMappLink := ADR(gCamera);
 			mappView();
