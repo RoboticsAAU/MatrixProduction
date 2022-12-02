@@ -5,8 +5,6 @@ PROGRAM _INIT
 		KUKAs[i].axisGroupIdx := i + 1;
 		KUKAs[i].gripperAction.whitePin := ADR(gripperWhitePins[i]);
 		KUKAs[i].gripperAction.blackPin := ADR(gripperBlackPins[i]);
-		KUKAs[i].gripperAction.action := OPEN;
-		KUKAs[i].gripperAction();
 		KUKAs[i].cm.state := 0;
 		KUKAs[i].startState := 0;
 		KUKAs[i].atMaintenancePos := FALSE;
@@ -63,7 +61,7 @@ PROGRAM _CYCLIC
 		RobotStart;
 		
 		// Stops the robots if pressed on the HMI. 
-		IF emergencyStop THEN 
+		IF emergencyStop THEN
 			pKuka.start.KRC_AutoStart.ExecuteReset := TRUE;
 			pKuka.cm.state := 0;
 		END_IF
@@ -96,6 +94,9 @@ PROGRAM _CYCLIC
 			
 			CASE cm.state OF
 				0: // INITIALIZING
+					pKuka.gripperAction.action := OPEN;
+					pKuka.gripperAction();
+					
 					pKuka.convert.ValuesToCOORDSYS.Tool := 1;
 					pKuka.convert.ValuesToPosition.axisGroupIdx := pKuka.axisGroupIdx;
 					
@@ -118,10 +119,11 @@ PROGRAM _CYCLIC
 					WriteBaseData; // 201..300
 					
 				500..999: // MOVE ROBOT TO HOME POSITION (position depends on operation type)
-					// Set slow speed
+					// Set slow speed and acceleration
 					pKuka.start.KRC_SetOverride.Override := 20;
 					pKuka.start.KRC_SetOverride();
 					pKuka.motion.KRC_MoveDirectAbsolute.Velocity := 20;
+					pKuka.motion.KRC_MoveDirectAbsolute.Acceleration := 50;
 					
 					CASE cm.state OF
 						500: 

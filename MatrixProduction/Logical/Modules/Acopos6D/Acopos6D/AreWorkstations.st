@@ -1,5 +1,6 @@
 
 (* TODO: Add your comment here *)
+
 FUNCTION AreWorkstationsOpposite
 	
 	IF (workstationID1 + workstationID2 = 5) THEN

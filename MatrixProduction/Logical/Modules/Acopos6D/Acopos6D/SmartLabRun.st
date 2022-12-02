@@ -399,8 +399,6 @@ ACTION smartLabShuttleMovement :
 					pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
 					
 					// Reset column since movement is done
-//					pShuttle.function.MovementColumnSelection.startPosY := gWorkstations[pShuttle.par.tempWorkstationID].par.departPosY;
-//					pShuttle.function.MovementColumnSelection.endPosY := awaitingCameraResultPosition[pShuttle.par.tempCameraStationID].yPos;
 					pShuttle.function.MovementColumnSelection.opt_movementDone := TRUE;
 					pShuttle.function.MovementColumnSelection.opt_resetColumn := pShuttle.par.tempHighwayColumn;
 					pShuttle.function.MovementColumnSelection();
@@ -477,9 +475,8 @@ ACTION smartLabShuttleMovement :
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
 
 				// Make the positions available for use again if any were occupied by the movement
-				IF NOT AreWorkstationsOpposite(workstationID1 := pShuttle.par.tempWorkstationID, workstationID2 := pShuttle.par.tempNextWorkstationID) THEN
-//					pShuttle.function.MovementColumnSelection.startPosY := gWorkstations[pShuttle.par.tempWorkstationID].par.departPosY;
-//					pShuttle.function.MovementColumnSelection.endPosY := gWorkstations[pShuttle.par.tempNextWorkstationID].par.approachPosY;
+				IF NOT AreWorkstationsOpposite(workstationID1 := pShuttle.par.tempWorkstationID, workstationID2 := pShuttle.par.tempNextWorkstationID) OR
+					pShuttle.par.tempCameraStationID <> -1 THEN
 					pShuttle.function.MovementColumnSelection.opt_movementDone := TRUE;
 					pShuttle.function.MovementColumnSelection.opt_resetColumn := pShuttle.par.tempHighwayColumn;
 					pShuttle.function.MovementColumnSelection();
