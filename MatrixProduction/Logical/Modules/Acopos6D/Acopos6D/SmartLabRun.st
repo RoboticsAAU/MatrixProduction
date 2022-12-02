@@ -418,8 +418,17 @@ ACTION smartLabShuttleMovement :
 				0:
 					IF pShuttlePlan.isFlipped THEN
 						pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
-
-						pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Parameters.Angle := brmPI; // 180 degrees (try pShuttlePlan.isFlipped * brmPI)
+						
+						// Check if shuttle already has been rotated
+						IF gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Rz > brmPI_2 THEN
+							
+							pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Parameters.Angle := 0; // 0 degrees because shuttle already is rotated by 180
+						
+						ELSE 
+							
+							pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Parameters.Angle := brmPI; // 180 degrees
+							
+						END_IF
 
 						pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Execute := TRUE;
 						IF pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Done THEN

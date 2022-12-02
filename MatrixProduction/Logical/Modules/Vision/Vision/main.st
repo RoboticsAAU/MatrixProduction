@@ -26,7 +26,7 @@ PROGRAM _INIT
 	mappView.imageFormat 		:= BRDKVIIMG_IMG_TYPE_JPEG;
 	mappView.jpegQuality 		:= 50;
 	mappView.timeout 			:= 3000;
-	mappView.wsPort 			:= 8084;
+	mappView.wsPort 			:= 6000;
 	mappView();	
 	
 END_PROGRAM
@@ -39,9 +39,9 @@ PROGRAM _CYCLIC
 	hwMatch.out.common.alignment := 0; // Alignment is not supported with smart sensor
 	hwMatch.out.common.offsetROI.x := 0;
 	hwMatch.out.common.offsetROI.y := 0;
-	hwMatch.out.minScore := 90; // In percent
+	hwMatch.out.minScore := 80; // In percent
 	hwMatch.out.maxOverlap := 0; // In percent
-	hwMatch.out.timeout := 110; // Limit in milliseconds for match search 
+	hwMatch.out.timeout := 150; // Limit in milliseconds for match search 
 	
 	//// Camera configuration ////
 	gVisionImage.CFG.EthDevice				:= 'IF2';			// Ethernet interface for the PLC, this is the IF where you go online
@@ -73,11 +73,12 @@ PROGRAM _CYCLIC
 					IF EDGEPOS(imageRequested[camIdx]) THEN
 						
 						requestTimeStamp[camIdx] := NettimeCurrent_us;
-						
 
 						SetCamSettings_0.coverType := imgCoverType;
 						
 						resultReady[camIdx] := FALSE;
+						
+						flipProduct := FALSE;
 						
 						visState[camIdx] := 10;
 						
@@ -194,13 +195,13 @@ PROGRAM _CYCLIC
 			END_IF
 			
 			// FB calls
+			mappView.pMappLink 		:= ADR(gCamera);
+			mappView();
+			
 			TOF_Light[camIdx]();
 			imgTrigger[camIdx]();
 			SetCamSettings_0();
 			
-			mappView.pMappLink := ADR(gCamera);
-			mappView();
-
 		END_FOR
 	
 	END_IF	

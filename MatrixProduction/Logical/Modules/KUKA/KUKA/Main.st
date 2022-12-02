@@ -57,9 +57,6 @@ PROGRAM _CYCLIC
 		
 		pKuka.read.KRC_ReadAxisGroup();
 		
-		// RobotStart contains FB calls associated with initialization of the robots and diagnosis
-		RobotStart;
-		
 		// Stops the robots if pressed on the HMI. 
 		IF emergencyStop THEN
 			pKuka.start.KRC_AutoStart.ExecuteReset := TRUE;
@@ -83,8 +80,11 @@ PROGRAM _CYCLIC
 		END_IF
 		robotEnabledPrev[i] := robotEnabled[i];
 		
+		// RobotStart contains FB calls associated with initialization of the robots and diagnosis
+		RobotStart;
+		
 		// If the robot is ready, begin actual program
-		IF 	pKuka.status.P_ AND pKuka.status.S_ AND pKuka.status.R_ AND pKuka.status.I_ AND pKuka.status.EXT_ THEN
+		IF pKuka.status.P_ AND pKuka.status.S_ AND pKuka.status.R_ AND pKuka.status.I_ AND pKuka.status.EXT_ THEN
 			// Changeable parameters in the HMI
 			pKuka.motion.KRC_MoveDirectAbsolute.Velocity := pKuka.motion.KRC_MoveLinearAbsolute.Velocity := pKuka.motion.KRC_MoveLinearRelative.Velocity
 				:= robotVelocity; // Velocity in percent		
