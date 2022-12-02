@@ -145,7 +145,14 @@ ACTION RobotProcess :
 							END_IF
 
 						2 : // No shuttle movement
-							cm.state := 1040;
+							IF SINT_TO_USINT(orderSpec[i]) = 2 THEN
+								MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := (drillXOffset / 1000); // Converted to m
+								cm.state := 1036;
+							ELSE
+								cm.state := 1040;
+							END_IF
+							
+							
 
 						3 :
 							MC_BR_MoveInPlane_Acp6D_0.Parameters.Position.X := (drillXOffset / 1000); // Converted to m
