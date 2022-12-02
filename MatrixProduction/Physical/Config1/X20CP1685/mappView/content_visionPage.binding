@@ -35,7 +35,7 @@
 
 
 
-<Binding mode="oneWay">
+		<Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Vision:hwMatch.in.common.numResults" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput7" attribute="value" />
 </Binding>
@@ -43,10 +43,7 @@
 <Source xsi:type="opcUa" refId="::Vision:hwMatch.in.results[0].modelNumber" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput6" attribute="value" />
 </Binding>
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Vision:hwMatch.in.common.functionProcessingTime" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput8" attribute="value" />
-</Binding>
+
 
 
 
@@ -65,10 +62,7 @@
 
 
 
-<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Vision:hwMatch.in.results[0].score" attribute="node" />
-<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput10" attribute="node" />
-</Binding>
+
 
 
 <Binding mode="oneWay">
@@ -80,6 +74,18 @@
 <Binding mode="twoWay">
 <Source xsi:type="opcUa" refId="::Vision:mappView.wsPort" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="VisionImage1" attribute="PLCWebsocketPort" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vision:hwMatch.in.common.functionProcessingTime" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput8" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vision:hwMatch.in.common.functionProcessingTime" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput9" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vision:hwMatch.in.results[0].score" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput10" attribute="value" />
 </Binding>
 </Bindings>
 </BindingsSet>
