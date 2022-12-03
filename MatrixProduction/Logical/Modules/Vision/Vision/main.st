@@ -26,7 +26,7 @@ PROGRAM _INIT
 	mappView.imageFormat 		:= BRDKVIIMG_IMG_TYPE_JPEG;
 	mappView.jpegQuality 		:= 50;
 	mappView.timeout 			:= 3000;
-	mappView.wsPort 			:= 6000;
+	mappView.wsPort 			:= 18000;
 	mappView();	
 	
 END_PROGRAM
