@@ -120,7 +120,7 @@ PROGRAM _CYCLIC
 							0: 
 								// Create empty svg contour of the found shape, which is used as overlay in the HMI page
 								overlay := '';
-								additionArguments := ''; // Maybe change back to nothing
+								additionArguments := 'fill="white" stroke="red" stroke-width="8px"';
 								
 								// Check if blobs were found
 								IF hwMatch.in.common.numResults <> 0 THEN
@@ -205,7 +205,6 @@ PROGRAM _CYCLIC
 		END_FOR
 	
 	END_IF	
-
 	
 END_PROGRAM
 
