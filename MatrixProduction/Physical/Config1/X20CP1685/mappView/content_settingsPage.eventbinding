@@ -1,48 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<EventBindingSet id="content_kukaPage_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<EventBindingSet id="content_settingsPage_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Bindings>
     <EventBinding id="EventBinding_8">
-      <Source xsi:type="widgets.brease.ToggleButton.Event" contentRefId="content_kukaPage" widgetRefId="ToggleButton1" event="ValueChanged" />
+      <Source xsi:type="widgets.brease.ToggleButton.Event" contentRefId="content_settingsPage" widgetRefId="ToggleButton1" event="ValueChanged" />
       <EventHandler>
         <Sequence>
           <Step order="0">
             <Action>
-              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_kukaPage" widgetRefId="CheckBox1">
+              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_settingsPage" widgetRefId="CheckBox1">
                 <Method xsi:type="widgets.brease.CheckBox.Action.SetValueBool" value="=newValueBool" />
               </Target>
             </Action>
           </Step>
           <Step order="1">
             <Action>
-              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_kukaPage" widgetRefId="CheckBox2">
+              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_settingsPage" widgetRefId="CheckBox2">
                 <Method xsi:type="widgets.brease.CheckBox.Action.SetValueBool" value="=newValueBool" />
               </Target>
             </Action>
           </Step>
           <Step order="2">
             <Action>
-              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_kukaPage" widgetRefId="CheckBox3">
+              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_settingsPage" widgetRefId="CheckBox3">
                 <Method xsi:type="widgets.brease.CheckBox.Action.SetValueBool" value="=newValueBool" />
               </Target>
             </Action>
           </Step>
           <Step order="3">
             <Action>
-              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_kukaPage" widgetRefId="CheckBox4">
+              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_settingsPage" widgetRefId="CheckBox4">
                 <Method xsi:type="widgets.brease.CheckBox.Action.SetValueBool" value="=newValueBool" />
               </Target>
             </Action>
           </Step>
           <Step order="4">
             <Action>
-              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_kukaPage" widgetRefId="CheckBox5">
+              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_settingsPage" widgetRefId="CheckBox5">
                 <Method xsi:type="widgets.brease.CheckBox.Action.SetValueBool" value="=newValueBool" />
               </Target>
             </Action>
           </Step>
           <Step order="5">
             <Action>
-              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_kukaPage" widgetRefId="CheckBox6">
+              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_settingsPage" widgetRefId="CheckBox6">
                 <Method xsi:type="widgets.brease.CheckBox.Action.SetValueBool" value="=newValueBool" />
               </Target>
             </Action>
@@ -54,7 +54,7 @@
       <Source xsi:type="opcUa.Event" refId="::Acopos6D:activeShuttles" event="ValueChanged" />
       <EventHandler>
         <Action>
-          <Target xsi:type="widgets.brease.ToggleButton.Action" contentRefId="content_kukaPage" widgetRefId="ToggleButton1">
+          <Target xsi:type="widgets.brease.ToggleButton.Action" contentRefId="content_settingsPage" widgetRefId="ToggleButton1">
             <Method xsi:type="widgets.brease.ToggleButton.Action.SetEnable" value="=(newValue=0)" />
           </Target>
         </Action>

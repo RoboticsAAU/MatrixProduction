@@ -155,12 +155,13 @@ ACTION smartLabSetup:
 			TON_0.IN := FALSE;
 			bufferSize := SIZEOF(orderBuffer)/SIZEOF(orderBuffer[0]);
 			activeShuttles := 0;
-			amountProductsFinished := 0;
-			amountOrdersFinished := 0;
+			setWeight := TRUE;
 			
 			// Reset shuttle speed and acceleration
-			shuttleSmartLabVelocity := 2.0;
-			shuttleSmartLabAcceleration := 10.0;
+			shuttleSmartLabVelocity := 2; // in m/s
+			shuttleSmartLabAcceleration := 10; // in m/s^2
+			shuttleSmartLabRotVelocity := 200; // in rpm
+			shuttleSmartLabRotAcceleration := 40;
 			
 			em.substate := 17005;
 			
@@ -208,8 +209,8 @@ ACTION smartLabSetup:
 					em.substate := 17009;
 				END_IF
 			END_IF
-			
-			
+		
+		
 		17009:
 			em.description := 'Move shuttle 2 and 3 towards workstation 0';
 			gShuttles[tempShuttleIndex].function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[tempShuttleIndex].shuttleRef);

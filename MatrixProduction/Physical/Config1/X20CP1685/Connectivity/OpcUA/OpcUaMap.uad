@@ -87,6 +87,10 @@
         </Variable>
         <Variable Name="HMIproductHistory" RecursiveEnable="2" />
         <Variable Name="HMIproductID" />
+        <Variable Name="shuttleSmartLabVelocity" />
+        <Variable Name="shuttleSmartLabRotVelocity" />
+        <Variable Name="shuttleSmartLabRotAcceleration" />
+        <Variable Name="shuttleSmartLabAcceleration" />
       </Task>
       <Task Name="Vision">
         <Variable Name="overlay" />

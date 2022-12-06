@@ -152,6 +152,7 @@ ACTION smartLabWorkstationOperation :
 		40:
 			cm.description := 'Wait for robot to finish operation';
 			
+			// If the robot is enabled, move on when robotDone signal is received
 			IF robotEnabled[i] THEN
 				IF robotDone[i] THEN
 					robotExecute[i] := FALSE;
@@ -163,17 +164,55 @@ ACTION smartLabWorkstationOperation :
 					cm.state := 60;
 				END_IF
 			ELSE
-				pWorkstation.TON_0.PT := T#1S;
-				pWorkstation.TON_0.IN := TRUE;
-				IF pWorkstation.TON_0.Q THEN
-					pWorkstation.TON_0.IN := FALSE;
-					
-					moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
-					cm.state := 60;
+				// For the last workstation, wait until product has been removed
+				IF pWorkstation.par.workstationID = 5 THEN
+					cm.state := 46;
+				ELSE
+					pWorkstation.TON_0.PT := T#1S;
+					pWorkstation.TON_0.IN := TRUE;
+					IF pWorkstation.TON_0.Q THEN
+						pWorkstation.TON_0.IN := FALSE;
+						
+						moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
+						cm.state := 60;
+					END_IF
 				END_IF
 			END_IF
 
-
+		45:
+			cm.description := 'Measure weight to see if final product has been removed from shuttle';
+				
+			MC_BR_ShGetPayload_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].shuttleRef);
+			MC_BR_ShGetPayload_Acp6D_0.Execute := TRUE;
+			IF MC_BR_ShGetPayload_Acp6D_0.Done THEN
+				MC_BR_ShGetPayload_Acp6D_0.Execute := FALSE;
+				
+				IF setWeight THEN
+					setWeight := FALSE;
+					shuttlePlans[pWorkstation.par.tempShuttleID].currentProductWeight := (MC_BR_ShGetPayload_Acp6D_0.Payload * 1000) - pShuttle.par.initialWeight;
+				END_IF
+				
+				IF (MC_BR_ShGetPayload_Acp6D_0.Payload * 1000 - pShuttle.par.initialWeight) < 30 THEN
+					setWeight := TRUE;
+					moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
+					cm.state := 60;
+				ELSE
+					cm.state := 46;
+				END_IF
+			END_IF
+		
+		46:
+			cm.description := 'Wait before getting new weight';
+			
+			pWorkstation.TON_0.PT := T#1S;
+			pWorkstation.TON_0.IN := TRUE;
+			IF pWorkstation.TON_0.Q THEN
+				pWorkstation.TON_0.IN := FALSE;
+				
+				cm.state := 45;
+			END_IF
+		
+		
 //		50:
 //			cm.description := 'Leviate shuttle if landed before process';
 //
@@ -221,35 +260,18 @@ ACTION smartLabShuttleMovement :
 			cm.description := 'Set parameters for the shuttles and wait for workstation to set new state';
 			pShuttle.function.MovementColumnSelection.occupiedPosition := ADR(occupiedPosition);
 			
-			gAcp6DCtrl.Par.Velocity := shuttleSmartLabVelocity;
-			gAcp6DCtrl.Par.Acceleration := shuttleSmartLabAcceleration;
-			
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.Velocity;
-			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.Acceleration;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Velocity := shuttleSmartLabVelocity;
+			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := shuttleSmartLabAcceleration;
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0; // Absolute
 
-			pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Parameters.Acceleration := gAcp6DCtrl.Par.rotationAcceleration;
-			pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Parameters.Velocity := gAcp6DCtrl.Par.rotationVelocity; // in rpm
+			pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Parameters.Velocity := shuttleSmartLabRotVelocity; // in rpm
+			pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Parameters.Acceleration := shuttleSmartLabRotAcceleration;
 			pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Parameters.Mode := 1; // CCW
-
 
 			// If the shuttlePlan is active, get the shuttle payload
 			IF moveShuttle[pShuttle.par.shuttleID] THEN
-				IF pShuttlePlan.isActive AND robotEnabled[pShuttle.par.tempWorkstationID] THEN
-					pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
-					pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Execute := TRUE;
-					IF pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Done THEN
-						pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Execute := FALSE;
-
-						pShuttlePlan.currentProductWeight := (pShuttle.function.MC_BR_ShGetPayload_Acp6D_0.Payload * 1000) - pShuttle.par.initialWeight;
-
-						moveShuttle[pShuttle.par.shuttleID] := FALSE;
-						cm.state := 10;
-					END_IF
-				ELSE
-					moveShuttle[pShuttle.par.shuttleID] := FALSE;
-					cm.state := 10;
-				END_IF
+				moveShuttle[pShuttle.par.shuttleID] := FALSE;
+				cm.state := 10;
 			END_IF
 
 
@@ -275,20 +297,18 @@ ACTION smartLabShuttleMovement :
 							pOrderHistory.avgCycleTime[j] := (pOrderHistory.avgCycleTime[j] * USINT_TO_REAL(pOrderHistory.finishedProductCount - 1) + pShuttlePlan.workstationCycleTime[j]) / USINT_TO_REAL(pOrderHistory.finishedProductCount);
 							pShuttlePlan.workstationCycleTime[j] := pShuttlePlan.startTimeAtWorkstation[j] := 0.0;
 						END_FOR
-
+						
 						// Set the product time and determine if order is finished
 						pOrderHistory.product[pShuttlePlan.productID].finishTime := DT_TO_REAL(DTGetTime_0.DT1) - DT_TO_REAL(orderHistory[pShuttlePlan.productOrder.ID].orderStartingTime);
-
+						
+						// Set the weight of the product
+						pOrderHistory.product[pShuttlePlan.productID].weight := pShuttlePlan.currentProductWeight;
+						
 						IF pOrderHistory.finishedProductCount = pOrderHistory.productOrder.amount THEN
 							amountOrdersFinished := amountOrdersFinished + 1;
 							pOrderHistory.orderFinishTime := DTGetTime_0.DT1;
 							pOrderHistory.status := FINISHED;
 						END_IF
-					
-					// If the next workstation is not 0 (last workstation), set the final weight of the product
-					1..5:
-						pOrderHistory.product[pShuttlePlan.productID].weight := pShuttlePlan.currentProductWeight;
-					
 				END_CASE
 			ELSE
 				pShuttle.par.tempNextWorkstationID := (pShuttle.par.tempWorkstationID + 1) MOD smartLabNumWorkstations;
@@ -604,8 +624,8 @@ ACTION smartLabCameraProcess:
 					0: // Camera after workstation 0, so the distances are specified in y-direction
 
 						// The assumption behind these calculations is that the camera is located on the path until the first direction change in the Manhattan path
-						ParabolicBlend_0.absAcceleration 	:= gAcp6DCtrl.Par.Acceleration;
-						ParabolicBlend_0.absVelocity 		:= gAcp6DCtrl.Par.Velocity;
+						ParabolicBlend_0.absVelocity 		:= shuttleSmartLabVelocity;
+						ParabolicBlend_0.absAcceleration 	:= shuttleSmartLabAcceleration;
 						ParabolicBlend_0.startPos 			:= pShuttle.par.tempStartPos.yPos;
 						ParabolicBlend_0.endPos 			:= pShuttle.par.tempDestinationPos.yPos;
 						ParabolicBlend_0.evalPos 			:= pCameraStation.camPosY;

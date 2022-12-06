@@ -9,7 +9,7 @@
 		<Page refId="page_workStation"/>
 		<Page refId="page_fixture"/>
 		<Page refId="page_smartLabPage"/>
-		<Page refId="page_kukaPage"/>
+		<Page refId="page_settingsPage"/>
 		<Page refId="page_visionPage"/>
 		<Page refId="page_historyPage"/>
 		
@@ -27,7 +27,7 @@
 		<BindingsSet refId="content_workStation_binding" />
 		<BindingsSet refId="content_fixture_binding" />
 		<BindingsSet refId="content_smartLabPage_binding" />
-		<BindingsSet refId="content_kukaPage_binding" />
+		<BindingsSet refId="content_settingsPage_binding" />
 		<BindingsSet refId="content_visionPage_binding" />
 		<BindingsSet refId="content_historyPage_binding" />
 	</BindingsSets>
@@ -36,7 +36,7 @@
 		<EventBindingsSet refId="content_MainPage_eventbinding" />
 		<EventBindingsSet refId="content_configPage_eventbinding" />
 		<EventBindingsSet refId="content_smartLabPage_eventbinding" />
-		<EventBindingsSet refId="content_kukaPage_eventbinding" />
+		<EventBindingsSet refId="content_settingsPage_eventbinding" />
 		<EventBindingsSet refId="content_historyPage_eventbinding" />
 	</EventBindingsSets>
   <Dialogs>

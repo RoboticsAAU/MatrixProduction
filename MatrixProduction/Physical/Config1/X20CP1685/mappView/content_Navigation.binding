@@ -219,18 +219,11 @@
 <Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Acopos6D:HMIorderHistory.avgCycleTime[5]" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="NumericOutput31" attribute="value" />
-	</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::KUKA:maintenance" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_kukaPage" widgetRefId="ToggleSwitch1" attribute="value" />
 </Binding>
-<Binding mode="twoWay">
-<Source xsi:type="brease" contentRefId="content_kukaPage" widgetRefId="ToggleButton1" attribute="enable" />
-<Target xsi:type="brease" contentRefId="content_kukaPage" widgetRefId="ToggleSwitch1" attribute="enable" />
-</Binding>
+			
 <Binding mode="twoWay">
 <Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Line4" attribute="visible" />
 </Binding>
-</Bindings>
+	</Bindings>
 </BindingsSet>

@@ -85,7 +85,7 @@
     <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle36" top="187" left="998" width="60" height="60" zIndex="81" borderStyle="solid" cornerRadius="5px" backColor="rgba(245, 245, 245, 1)" opacity="0.8" visible="false" />
     <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle06" top="187" left="792" width="60" height="60" zIndex="82" borderStyle="solid" cornerRadius="5px" backColor="rgba(245, 245, 245, 1)" opacity="0.8" visible="false" />
     <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle16" top="187" left="863" width="60" height="60" zIndex="83" borderStyle="solid" cornerRadius="5px" backColor="rgba(245, 245, 245, 1)" opacity="0.8" visible="false" />
-    <Widget xsi:type="widgets.brease.NavigationButton" id="NavigationButton2" top="705" left="670" width="170" height="45" zIndex="84" pageId="page_kukaPage" text="KUKA Settings" borderStyle="solid" borderWidth="4px" cornerRadius="5px" fontSize="20px" bold="true" />
+    <Widget xsi:type="widgets.brease.NavigationButton" id="NavigationButton2" top="705" left="670" width="170" height="45" zIndex="84" pageId="page_settingsPage" text="Settings" borderStyle="solid" borderWidth="4px" cornerRadius="5px" fontSize="20px" bold="true" />
     <Widget xsi:type="widgets.brease.NavigationButton" id="NavigationButton3" top="705" left="1050" width="170" height="45" zIndex="85" pageId="page_historyPage" text="Order History" borderStyle="solid" borderWidth="4px" cornerRadius="5px" fontSize="20px" bold="true" />
   </Widgets>
 </Content>

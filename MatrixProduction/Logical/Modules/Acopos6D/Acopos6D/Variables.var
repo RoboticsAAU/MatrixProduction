@@ -116,6 +116,8 @@ VAR
 	smartLabNumCamStations : USINT := 1;
 	shuttleSmartLabVelocity : REAL;
 	shuttleSmartLabAcceleration : REAL;
+	shuttleSmartLabRotVelocity : REAL;
+	shuttleSmartLabRotAcceleration : REAL;
 	tempProductOrder : product_order := (amount:=1,bottomCover:=blackCover,Holes:=4,PCB:=TRUE,Fuses:=2,topCover:=blackCover,ID:=0);
 	tempShuttleIndex : USINT;
 	TON_0 : TON;
@@ -139,4 +141,5 @@ VAR
 	durationStartToCurrent : DINT;
 	imgCoverType : USINT;
 	drillStationShuttleID : USINT;
+	setWeight : BOOL;
 END_VAR
