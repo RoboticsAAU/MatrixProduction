@@ -77,10 +77,6 @@
 <Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput8" attribute="value" />
 </Binding>
 <Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::Vision:hwMatch.in.common.functionProcessingTime" attribute="value" />
-<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput9" attribute="value" />
-</Binding>
-<Binding mode="oneWay">
 <Source xsi:type="opcUa" refId="::Vision:hwMatch.in.results[0].score" attribute="value" />
 <Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput10" attribute="value" />
 </Binding>
