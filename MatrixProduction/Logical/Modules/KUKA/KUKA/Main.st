@@ -5,6 +5,8 @@ PROGRAM _INIT
 		KUKAs[i].axisGroupIdx := i + 1;
 		KUKAs[i].gripperAction.whitePin := ADR(gripperWhitePins[i]);
 		KUKAs[i].gripperAction.blackPin := ADR(gripperBlackPins[i]);
+		KUKAs[i].gripperAction.action := IDLE;
+		KUKAs[i].gripperAction();
 		KUKAs[i].cm.state := 0;
 		KUKAs[i].startState := 0;
 		KUKAs[i].atMaintenancePos := FALSE;
@@ -43,7 +45,7 @@ PROGRAM _CYCLIC
 		cm ACCESS ADR(KUKAs[i].cm);	
 		
 		// Logic to transform USINT (Input) to BYTE (FUBS)
-		brsmemcpy(ADR(KRC_Input[0]), ADR(InputVariables[i,0]), 254);
+		brsmemcpy(ADR(KRC_Input[0]), ADR(InputVariables[i, 0]), 254);
 		
 		/////////////////////////////////////////////////////
 		// KRC_ReadAxisGroup has to be called at the Begin //
@@ -57,11 +59,17 @@ PROGRAM _CYCLIC
 		
 		pKuka.read.KRC_ReadAxisGroup();
 		
-		// Stops the robots if pressed on the HMI. 
-		IF emergencyStop THEN
-			pKuka.start.KRC_AutoStart.ExecuteReset := TRUE;
-			pKuka.cm.state := 0;
+				
+		///////////////////////
+		// Mappings from HMI //
+		///////////////////////
+		// If the robot is not enabled, tell Acopos that the robot is already done
+		IF NOT robotEnabled[i] THEN
+			robotDone[i] := TRUE;
+		ELSIF BOOL_TO_INT(robotEnabled[i]) <> BOOL_TO_INT(robotEnabledPrev[i]) THEN
+			robotDone[i] := FALSE;
 		END_IF
+		robotEnabledPrev[i] := robotEnabled[i];
 		
 		// Go to maintenance position if button is pressed
 		IF maintenance AND BOOL_TO_INT(maintenance) <> BOOL_TO_INT(maintenancePrev[i]) THEN
@@ -72,17 +80,18 @@ PROGRAM _CYCLIC
 		END_IF
 		maintenancePrev[i] := maintenance;
 		
-		// If the robot is not enabled, tell Acopos that the robot is already done
-		IF NOT robotEnabled[i] THEN
-			robotDone[i] := TRUE;
-		ELSIF BOOL_TO_INT(robotEnabled[i]) <> BOOL_TO_INT(robotEnabledPrev[i]) THEN
-			robotDone[i] := FALSE;
+		// Stops the robots if pressed on the HMI. 
+		IF emergencyStop THEN
+			pKuka.start.KRC_AutoStart.ExecuteReset := TRUE;
 		END_IF
-		robotEnabledPrev[i] := robotEnabled[i];
 		
 		// RobotStart contains FB calls associated with initialization of the robots and diagnosis
 		RobotStart;
 		
+		///////////////////////////////////////////////////
+		// The actual program that is run when the robot //
+		// is ready 									 //
+		///////////////////////////////////////////////////
 		// If the robot is ready, begin actual program
 		IF pKuka.status.P_ AND pKuka.status.S_ AND pKuka.status.R_ AND pKuka.status.I_ AND pKuka.status.EXT_ THEN
 			// Changeable parameters in the HMI
@@ -113,11 +122,13 @@ PROGRAM _CYCLIC
 						:= FALSE;
 					
 					cm.state := 101;
-					
+				
+				
 				100..499: // SETTING TOOL AND BASE DATA
 					WriteToolData; // 101..200
 					WriteBaseData; // 201..300
-					
+				
+				
 				500..999: // MOVE ROBOT TO HOME POSITION (position depends on operation type)
 					// Set slow speed and acceleration
 					pKuka.start.KRC_SetOverride.Override := 20;
@@ -135,16 +146,14 @@ PROGRAM _CYCLIC
 							RobotMaintenance;
 					END_CASE
 				
+				
 				1000..1999: // RUNNING MANIPULATOR PROGRAMS
 					CASE pKuka.operationType OF
-						ASSEMBLY:
-							RobotAssembly;
+						ASSEMBLY: RobotAssembly;
 							
-						PROCESS:
-							RobotProcess;
+						PROCESS: RobotProcess;
 							
-						HANDLING:
-							RobotHandling;
+						HANDLING: RobotHandling;
 					END_CASE
 				
 			END_CASE
@@ -169,7 +178,7 @@ PROGRAM _CYCLIC
 		pKuka.write.KRC_WriteAxisGroup();
 		
 		// Logic to transform BYTE (FUBS) to USINT (Input)
-		brsmemcpy(ADR(OutputVariables[i,0]), ADR(KRC_Output[0]), 254);
+		brsmemcpy(ADR(OutputVariables[i, 0]), ADR(KRC_Output[0]), 254);
 		
 	END_FOR
 	

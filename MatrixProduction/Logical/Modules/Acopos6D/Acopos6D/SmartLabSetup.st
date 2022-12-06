@@ -158,6 +158,10 @@ ACTION smartLabSetup:
 			amountProductsFinished := 0;
 			amountOrdersFinished := 0;
 			
+			// Reset shuttle speed and acceleration
+			shuttleSmartLabVelocity := 2.0;
+			shuttleSmartLabAcceleration := 10.0;
+			
 			em.substate := 17005;
 			
 		

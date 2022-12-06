@@ -76,8 +76,9 @@ ACTION RobotStart:
 		4: 
 			IF NOT emergencyStop THEN
 				pKuka.startState := 0;
+				cm.state := 0;
 			END_IF
-				
+			
 	END_CASE
 	
 

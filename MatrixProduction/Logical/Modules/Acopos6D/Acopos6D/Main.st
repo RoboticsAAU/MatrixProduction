@@ -23,6 +23,7 @@ PROGRAM _INIT
 	//MC_BR_AsmGetInfo_Acp6D_0.Execute := TRUE;
 	 
 	MC_BR_AsmReadStatus_Acp6D_0();
+	
 END_PROGRAM
 
 PROGRAM _CYCLIC

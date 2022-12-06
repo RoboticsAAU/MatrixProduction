@@ -18,7 +18,7 @@ FUNCTION_BLOCK MovementColumnSelection
 			tempOccupiedPosition[opt_resetColumn, k] := FALSE;
 		END_FOR
 		
-		opt_resetColumn := FALSE;
+		opt_resetColumn := -1;
 		opt_movementDone := FALSE;
 		RETURN;
 	END_IF

@@ -54,6 +54,7 @@ END_FUNCTION_BLOCK
 		k : USINT;
 		MARGIN : REAL := 0.005;
 		numShuttles : USINT := 8;
+		tempShuttleInfo : REFERENCE TO ARRAY[0..NUM_SHUTTLES] OF ShuttleInfoType;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -79,6 +80,9 @@ END_FUNCTION_BLOCK
 		MARGIN : REAL := 0.005;
 		numShuttles : USINT := 8;
 	END_VAR
+	VAR
+		tempShuttleInfo : REFERENCE TO ARRAY[0..NUM_SHUTTLES] OF ShuttleInfoType;
+	END_VAR
 END_FUNCTION_BLOCK
 
 FUNCTION_BLOCK ShuttlesInWorkstationBuffer
@@ -95,6 +99,9 @@ FUNCTION_BLOCK ShuttlesInWorkstationBuffer
 	END_VAR
 	VAR CONSTANT
 		MARGIN : REAL := 0.005;
+	END_VAR
+	VAR
+		tempShuttleInfo : REFERENCE TO ARRAY[0..NUM_SHUTTLES] OF ShuttleInfoType;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -148,6 +155,28 @@ END_FUNCTION
 	VAR_INPUT
 		workstationID1 : INT;
 		workstationID2 : INT;
+	END_VAR
+END_FUNCTION
+
+{REDUND_ERROR} FUNCTION ArePositionsOnSameRow : BOOL
+	VAR_INPUT
+		yPos1 : REAL;
+		yPos2 : REAL;
+	END_VAR
+	VAR
+		yQuadrantPos1 : SINT;
+		yQuadrantPos2 : SINT;
+	END_VAR
+END_FUNCTION
+
+{REDUND_ERROR} FUNCTION ArePositionsOnSameColumn : BOOL
+	VAR_INPUT
+		xPos1 : REAL;
+		xPos2 : REAL;
+	END_VAR
+	VAR
+		xQuadrantPos1 : SINT;
+		xQuadrantPos2 : SINT;
 	END_VAR
 END_FUNCTION
 

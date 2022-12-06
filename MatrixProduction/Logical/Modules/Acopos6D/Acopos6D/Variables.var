@@ -100,6 +100,7 @@ VAR
 	pShuttlePlan : REFERENCE TO shuttle_plan;
 	pWorkstation : REFERENCE TO workStation_typ;
 	pCameraStation : REFERENCE TO cameraStation_typ;
+	tempAwaitingCamPosOccupied : BOOL;
 	remainingOrderAmount : USINT;
 	ShuttlesAtPositions_0 : ShuttlesAtPositions;
 	ShuttlesInRange_0 : ShuttlesInRange;
@@ -113,6 +114,8 @@ VAR CONSTANT
 END_VAR
 VAR
 	smartLabNumCamStations : USINT := 1;
+	shuttleSmartLabVelocity : REAL;
+	shuttleSmartLabAcceleration : REAL;
 	tempProductOrder : product_order := (amount:=1,bottomCover:=blackCover,Holes:=4,PCB:=TRUE,Fuses:=2,topCover:=blackCover,ID:=0);
 	tempShuttleIndex : USINT;
 	TON_0 : TON;

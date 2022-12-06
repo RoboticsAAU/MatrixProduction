@@ -6,6 +6,6 @@
 		coverType : {REDUND_UNREPLICABLE} USINT;
 	END_VAR
 	VAR
-		tempRef : REFERENCE TO brdkViBase_cam_hw_typ;
+		tempHwCamRef : REFERENCE TO brdkViBase_cam_hw_typ;
 	END_VAR
 END_FUNCTION_BLOCK

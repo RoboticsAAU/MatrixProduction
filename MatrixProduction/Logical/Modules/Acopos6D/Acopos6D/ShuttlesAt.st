@@ -2,7 +2,7 @@
 FUNCTION_BLOCK ShuttlesAtPositions
 	
 	// Access the shuttle information
-	shuttleInfo ACCESS ADR(shuttleInfo); 
+	tempShuttleInfo ACCESS ADR(shuttleInfo); 
 	
 	// Shuttle is not at checkPos by default
 	isAtCheckPos := FALSE;
@@ -10,9 +10,9 @@ FUNCTION_BLOCK ShuttlesAtPositions
 	// Check if a shuttle is at any of the positions
 	FOR k := 0 TO (numCheckedPos - 1) DO
 		FOR i := 0 TO (numShuttles - 1) DO
-			IF ((shuttleInfo[i].Position.X > checkPosX[k] - MARGIN AND shuttleInfo[i].Position.X < checkPosX[k] + MARGIN) AND
-				(shuttleInfo[i].Position.Y > checkPosY[k] - MARGIN AND shuttleInfo[i].Position.Y < checkPosY[k] + MARGIN)) AND
-				(opt_checkShuttleState[k] = 0 OR shuttleInfo[i].State = opt_checkShuttleState[k]) THEN // Shuttle state 0 corresponds to any state being accepted
+			IF ((tempShuttleInfo[i].Position.X > checkPosX[k] - MARGIN AND tempShuttleInfo[i].Position.X < checkPosX[k] + MARGIN) AND
+				(tempShuttleInfo[i].Position.Y > checkPosY[k] - MARGIN AND tempShuttleInfo[i].Position.Y < checkPosY[k] + MARGIN)) AND
+				(opt_checkShuttleState[k] = 0 OR tempShuttleInfo[i].State = opt_checkShuttleState[k]) THEN // Shuttle state 0 corresponds to any state being accepted
 				isAtCheckPos := TRUE;
 				shuttleID := i;
 				EXIT;
@@ -35,7 +35,7 @@ END_FUNCTION_BLOCK
 FUNCTION_BLOCK ShuttlesInRange
 	
 	// Access the shuttle information
-	shuttleInfo ACCESS ADR(shuttleInfo);
+	tempShuttleInfo ACCESS ADR(shuttleInfo);
 	
 	// Setting start and end range of X
 	IF checkRangeX1 < checkRangeX2 THEN
@@ -60,8 +60,8 @@ FUNCTION_BLOCK ShuttlesInRange
 	
 	// Check if the shuttle is in the rectangular range
 	FOR i := 0 TO (numShuttles - 1) DO
-		IF (shuttleInfo[i].Position.X > checkRangeStartX - MARGIN AND shuttleInfo[i].Position.X < checkRangeEndX + MARGIN) AND
-			(shuttleInfo[i].Position.Y > checkRangeStartY - MARGIN AND shuttleInfo[i].Position.Y < checkRangeEndY + MARGIN) THEN
+		IF (tempShuttleInfo[i].Position.X > checkRangeStartX - MARGIN AND tempShuttleInfo[i].Position.X < checkRangeEndX + MARGIN) AND
+			(tempShuttleInfo[i].Position.Y > checkRangeStartY - MARGIN AND tempShuttleInfo[i].Position.Y < checkRangeEndY + MARGIN) THEN
 			isInRange := TRUE;
 			EXIT;
 		END_IF
@@ -70,9 +70,6 @@ FUNCTION_BLOCK ShuttlesInRange
 END_FUNCTION_BLOCK
 
 FUNCTION_BLOCK ShuttlesInWorkstationBuffer
-	
-	// Access the shuttle information
-	shuttleInfo ACCESS ADR(shuttleInfo);
 	
 	// Set the address of shuttleinfo to the function blocks
 	ShuttlesAtPositions_0.shuttleInfo := ADR(shuttleInfo);

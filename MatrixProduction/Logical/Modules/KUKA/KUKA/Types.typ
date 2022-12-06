@@ -32,6 +32,7 @@ TYPE
 		KRC_MoveLinearAbsolute : KRC_MoveLinearAbsolute; (*LIN absolute motion*)
 		KRC_MoveLinearRelative : KRC_MoveLinearRelative; (*LIN relative motion*)
 		KRC_MoveAxisAbsolute : KRC_MoveAxisAbsolute; (*JOINT absolute motion*)
+		MC_BR_MoveInPlane_Acp6D : MC_BR_MoveInPlane_Acp6D;
 	END_STRUCT;
 	convert_function : 	STRUCT 
 		ValuesToCOORDSYS : mxa_ValuesToCOORDSYS;
@@ -70,8 +71,9 @@ TYPE
 		);
 	gripper_action_type : 
 		(
-		OPEN := 0,
-		CLOSE := 1
+		IDLE := 0,
+		OPEN := 1,
+		CLOSE := 2
 		);
 	robot_position_type : 
 		(

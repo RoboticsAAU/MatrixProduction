@@ -5,6 +5,10 @@
 		blackPin : REFERENCE TO BOOL;
 		action : gripper_action_type;
 	END_VAR
+	VAR
+		tempWhitePin : REFERENCE TO BOOL;
+		tempBlackPin : REFERENCE TO BOOL;
+	END_VAR
 END_FUNCTION_BLOCK
 
 {REDUND_ERROR} FUNCTION_BLOCK ValuesToMagazineFrame (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
