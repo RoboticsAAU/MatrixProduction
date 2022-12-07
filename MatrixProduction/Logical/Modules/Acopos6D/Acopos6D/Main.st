@@ -407,16 +407,29 @@ PROGRAM _CYCLIC
 					IF executeOrder THEN
 						// Generate random order if specified
 						IF generateRandomOrder THEN
-							RandomOrderGeneration_0.refOrder := ADR(tempRandomProductOrder);
-							RandomOrderGeneration_0();
+							
+							IF NOT randomGenerated THEN
+								
+								RandomOrderGeneration_0.refOrder := ADR(tempRandomProductOrder);
+								RandomOrderGeneration_0();
+								randomGenerated := TRUE;
+				
+							END_IF
+							
+							TON_0.PT := REAL_TO_TIME(600);
+							
+						ELSE
+							
+							TON_0.PT := REAL_TO_TIME(200);
+							
 						END_IF
 						
-						TON_0.PT := REAL_TO_TIME(200);
 						TON_0.IN := TRUE;
+						
 						IF TON_0.Q THEN
 							TON_0.IN := FALSE;
 							executeOrder := FALSE;
-							
+							randomGenerated := FALSE;
 							// Write the order if the buffer is not full
 							IF NOT bufferFull THEN
 								writeOrder;

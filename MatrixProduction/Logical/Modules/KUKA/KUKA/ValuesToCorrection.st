@@ -14,12 +14,12 @@ FUNCTION_BLOCK ValuesToCorrection
 		1:	
 			CASE baseNo OF
 				1: // w.r.t acopos frame
-					posCorrections.Y := 1.4;
+					posCorrections.Y := -2;
 					
 				2: // w.r.t magazine frame
-					posCorrections.X := -4;
-					posCorrections.Y := 2;
-					posCorrections.Z := 2;
+					posCorrections.X := -4.1;
+					posCorrections.Y := -1.5;
+					posCorrections.Z := 5.5;
 			END_CASE
 		
 		2:

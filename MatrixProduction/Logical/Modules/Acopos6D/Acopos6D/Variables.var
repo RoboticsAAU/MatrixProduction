@@ -145,4 +145,5 @@ VAR
 	drillStationShuttleID : USINT;
 	setWeight : BOOL;
 	generateRandomOrder : BOOL;
+	randomGenerated : BOOL;
 END_VAR

@@ -151,6 +151,7 @@ ACTION smartLabSetup:
 			END_FOR
 			
 			executeOrder := FALSE;
+			randomGenerated := FALSE;
 			requestImage[0] := FALSE;
 			TON_0.IN := FALSE;
 			bufferSize := SIZEOF(orderBuffer)/SIZEOF(orderBuffer[0]);
