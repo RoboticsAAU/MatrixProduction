@@ -225,5 +225,9 @@
 <Source xsi:type="brease" contentRefId="content_historyPage" widgetRefId="TextOutput1" attribute="visible" />
 <Target xsi:type="brease" contentRefId="content_historyPage" widgetRefId="Line4" attribute="visible" />
 </Binding>
-	</Bindings>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::Acopos6D:generateRandomOrder" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="CheckBox2" attribute="value" />
+</Binding>
+</Bindings>
 </BindingsSet>

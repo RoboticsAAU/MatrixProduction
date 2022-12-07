@@ -91,6 +91,8 @@
         <Variable Name="shuttleSmartLabRotVelocity" />
         <Variable Name="shuttleSmartLabRotAcceleration" />
         <Variable Name="shuttleSmartLabAcceleration" />
+        <Variable Name="generateRandomOrder" />
+        <Variable Name="tempRandomProductOrder" RecursiveEnable="2" />
       </Task>
       <Task Name="Vision">
         <Variable Name="overlay" />

@@ -30,5 +30,6 @@
     <File>MovementColumnSelection.st</File>
     <File>ParabolicBlend.st</File>
     <File>ShuttleTouch.st</File>
+    <File>RandomOrder.st</File>
   </Files>
 </Program>

@@ -35,5 +35,6 @@
     <Object Type="Library" Language="Binary" Description="[mapp Safety] SafeDOMAIN management library">SfDomain</Object>
     <Object Type="Library" Language="Binary" Description="Core library for mapp components">MpBase</Object>
     <Object Type="Library" Language="binary" Description="[mapp 6D] Technology package for Acopos 6D ">McAcp6D</Object>
+    <Object Type="Library" Language="ANSIC">RandomLib</Object>
   </Objects>
 </Package>

@@ -15,8 +15,8 @@
       <Group ID="Limits">
         <Group ID="InPlaneLimits">
           <Property ID="InPlaneVelLim" Value="2" />
-          <Property ID="InPlaneAccLim" Value="10" />
-          <Property ID="InPlaneEmergDec" Value="1" />
+          <Property ID="InPlaneAccLim" Value="20" />
+          <Property ID="InPlaneEmergDec" Value="10" />
         </Group>
         <Group ID="ShortAxLim">
           <Group ID="ShortAxAccLim">

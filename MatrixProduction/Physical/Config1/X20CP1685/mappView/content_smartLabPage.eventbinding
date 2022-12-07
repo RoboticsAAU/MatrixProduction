@@ -197,5 +197,72 @@
         </Action>
       </EventHandler>
     </EventBinding>
+    <EventBinding id="EventBinding_12">
+      <Source xsi:type="opcUa.Event" refId="::Acopos6D:tempRandomProductOrder.ID" event="ValueChanged" />
+      <Operand datatype="ANY_INT" name="randBottomCover">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Acopos6D:tempRandomProductOrder.bottomCover">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <Operand datatype="ANY_INT" name="randHoles">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Acopos6D:tempRandomProductOrder.Holes">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <Operand datatype="BOOL" name="randPCB">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Acopos6D:tempRandomProductOrder.PCB">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <Operand datatype="ANY_INT" name="randFuses">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Acopos6D:tempRandomProductOrder.Fuses">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <Operand datatype="ANY_INT" name="randTopCover">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Acopos6D:tempRandomProductOrder.topCover">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler>
+        <Sequence>
+          <Step order="0">
+            <Action>
+              <Target xsi:type="widgets.brease.DropDownBox.Action" contentRefId="content_smartLabPage" widgetRefId="DropDownBox1">
+                <Method xsi:type="widgets.brease.DropDownBox.Action.SetSelectedIndex" index="=randBottomCover" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="1">
+            <Action>
+              <Target xsi:type="widgets.brease.DropDownBox.Action" contentRefId="content_smartLabPage" widgetRefId="DropDownBox3">
+                <Method xsi:type="widgets.brease.DropDownBox.Action.SetSelectedIndex" index="=randHoles / 2" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="2">
+            <Action>
+              <Target xsi:type="widgets.brease.NumericInput.Action" contentRefId="content_smartLabPage" widgetRefId="NumericInput5">
+                <Method xsi:type="widgets.brease.NumericInput.Action.SetValue" value="=randFuses" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="3">
+            <Action>
+              <Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="content_smartLabPage" widgetRefId="CheckBox1">
+                <Method xsi:type="widgets.brease.CheckBox.Action.SetValueBool" value="=randPCB" />
+              </Target>
+            </Action>
+          </Step>
+          <Step order="4">
+            <Action>
+              <Target xsi:type="widgets.brease.DropDownBox.Action" contentRefId="content_smartLabPage" widgetRefId="DropDownBox2">
+                <Method xsi:type="widgets.brease.DropDownBox.Action.SetSelectedIndex" index="=randTopCover" />
+              </Target>
+            </Action>
+          </Step>
+        </Sequence>
+      </EventHandler>
+    </EventBinding>
   </Bindings>
 </EventBindingSet>

@@ -85,7 +85,7 @@ END_FUNCTION_BLOCK
 	END_VAR
 END_FUNCTION_BLOCK
 
-FUNCTION_BLOCK ShuttlesInWorkstationBuffer
+{REDUND_ERROR} FUNCTION_BLOCK ShuttlesInWorkstationBuffer
 	VAR_INPUT
 		shuttleInfo : REFERENCE TO ARRAY[0..NUM_SHUTTLES] OF ShuttleInfoType;
 		workstation : workStation_typ;
@@ -144,6 +144,16 @@ END_FUNCTION_BLOCK
 	END_VAR
 END_FUNCTION_BLOCK
 
+{REDUND_ERROR} FUNCTION_BLOCK RandomOrderGeneration
+	VAR_INPUT
+		refOrder : REFERENCE TO product_order;
+		opt_randOrderAmount : USINT;
+	END_VAR
+	VAR
+		tempRefOrder : REFERENCE TO product_order;
+	END_VAR
+END_FUNCTION_BLOCK
+
 {REDUND_ERROR} FUNCTION AreWorkstationsOpposite : BOOL (* *) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
 	VAR_INPUT
 		workstationID1 : INT;
@@ -186,7 +196,7 @@ END_FUNCTION
 	END_VAR
 END_FUNCTION
 
-FUNCTION PosToQuadrantIdx : USINT
+{REDUND_ERROR} FUNCTION PosToQuadrantIdx : USINT
 	VAR_INPUT
 		pos : REAL;
 	END_VAR

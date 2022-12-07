@@ -46,11 +46,11 @@ ACTION smartLabWorkstationOperation :
 			IF pWorkstation.par.workstationID = 0 THEN
 				// New order has been read and must begin execution
 				IF remainingOrderAmount > 0 THEN
-					shuttlePlans[pWorkstation.par.tempShuttleID].isActive := TRUE;
-					shuttlePlans[pWorkstation.par.tempShuttleID].progressIndex := 0;
-					shuttlePlans[pWorkstation.par.tempShuttleID].routingSheet := CreateRouteSheet_0.outputRouteSheet;
-					shuttlePlans[pWorkstation.par.tempShuttleID].productOrder := productOrder;
-					shuttlePlans[pWorkstation.par.tempShuttleID].productID := productOrder.amount - remainingOrderAmount;
+					pShuttlePlan.isActive := TRUE;
+					pShuttlePlan.progressIndex := 0;
+					pShuttlePlan.routingSheet := CreateRouteSheet_0.outputRouteSheet;
+					pShuttlePlan.productOrder := productOrder;
+					pShuttlePlan.productID := productOrder.amount - remainingOrderAmount;
 
 					remainingOrderAmount := remainingOrderAmount - 1;
 					cm.state := 20;
@@ -96,27 +96,27 @@ ACTION smartLabWorkstationOperation :
 			IF NOT robotBusy[i] THEN
 				CASE pWorkstation.par.workstationID OF
 					// Send type of bottom cover (converted to int)
-					0: orderSpec[0] := COVER_TYPE_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.bottomCover);
+					0: orderSpec[0] := COVER_TYPE_TO_USINT(pShuttlePlan.productOrder.bottomCover);
 
 					// Send amount of holes
-					1:  orderSpec[1] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.Holes;
+					1:  orderSpec[1] := pShuttlePlan.productOrder.Holes;
 						drillStationShuttleID := pWorkstation.par.tempShuttleID;  // Send ID of the shuttle currently at the drilling station.
 
 
 					// Send whether a PCB is specified or not (converted to int)
-					2: orderSpec[2] := BOOL_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.PCB);
+					2: orderSpec[2] := BOOL_TO_USINT(pShuttlePlan.productOrder.PCB);
 
 					// Send amount of fuses
-					3: orderSpec[3] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.Fuses;
+					3: orderSpec[3] := pShuttlePlan.productOrder.Fuses;
 
 					// Send type of top cover (converted to int)
-					4: orderSpec[4] := COVER_TYPE_TO_USINT(shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.topCover);
+					4: orderSpec[4] := COVER_TYPE_TO_USINT(pShuttlePlan.productOrder.topCover);
 
 					// Send ID of order
 					5:
-						orderSpec[5] := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.ID;
-						orderAmount := shuttlePlans[pWorkstation.par.tempShuttleID].productOrder.amount;
-
+						orderSpec[5] := pShuttlePlan.productOrder.ID;
+						orderAmount := pShuttlePlan.productOrder.amount;
+				
 				END_CASE
 
 				// Send if order is flipped or not (not sent to robots - fixed on ACOPOS side instead)
@@ -125,7 +125,7 @@ ACTION smartLabWorkstationOperation :
 				// If robot is enabled, begin robot operation
 				IF robotEnabled[i] THEN
 					robotExecute[i] := TRUE;
-					shuttlePlans[pWorkstation.par.tempShuttleID].startTimeAtWorkstation[pWorkstation.par.workstationID] := TIME_TO_REAL(clock_ms()) / 1000;
+					pShuttlePlan.startTimeAtWorkstation[pWorkstation.par.workstationID] := TIME_TO_REAL(clock_ms()) / 1000;
 				ELSE
 					robotExecute[i] := FALSE;
 				END_IF
@@ -158,15 +158,20 @@ ACTION smartLabWorkstationOperation :
 					robotExecute[i] := FALSE;
 					
 					// Calculate the workstation cycle time
-					shuttlePlans[pWorkstation.par.tempShuttleID].workstationCycleTime[pWorkstation.par.workstationID] := (TIME_TO_REAL(clock_ms()) / 1000) - shuttlePlans[pWorkstation.par.tempShuttleID].startTimeAtWorkstation[pWorkstation.par.workstationID];
+					pShuttlePlan.workstationCycleTime[pWorkstation.par.workstationID] := (TIME_TO_REAL(clock_ms()) / 1000) - pShuttlePlan.startTimeAtWorkstation[pWorkstation.par.workstationID];
 					
-					moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
-					cm.state := 60;
+					// If it is the last workstation, go set a lot of parameters for the order history
+					IF pWorkstation.par.workstationID = 5 THEN
+						cm.state := 45;
+					ELSE
+						moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
+						cm.state := 60;
+					END_IF
 				END_IF
 			ELSE
-				// For the last workstation, wait until product has been removed
+				// If it is the last workstation, go set a lot of parameters for the order history
 				IF pWorkstation.par.workstationID = 5 THEN
-					cm.state := 46;
+					cm.state := 45;
 				ELSE
 					pWorkstation.TON_0.PT := T#1S;
 					pWorkstation.TON_0.IN := TRUE;
@@ -179,9 +184,9 @@ ACTION smartLabWorkstationOperation :
 				END_IF
 			END_IF
 
-		45:
+		42:
 			cm.description := 'Measure weight to see if final product has been removed from shuttle';
-				
+			
 			MC_BR_ShGetPayload_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pWorkstation.par.tempShuttleID].shuttleRef);
 			MC_BR_ShGetPayload_Acp6D_0.Execute := TRUE;
 			IF MC_BR_ShGetPayload_Acp6D_0.Done THEN
@@ -189,7 +194,10 @@ ACTION smartLabWorkstationOperation :
 				
 				IF setWeight THEN
 					setWeight := FALSE;
-					shuttlePlans[pWorkstation.par.tempShuttleID].currentProductWeight := (MC_BR_ShGetPayload_Acp6D_0.Payload * 1000) - pShuttle.par.initialWeight;
+					pShuttlePlan.currentProductWeight := (MC_BR_ShGetPayload_Acp6D_0.Payload * 1000) - pShuttle.par.initialWeight;
+					
+					// Set the weight of the product
+					pOrderHistory.product[pShuttlePlan.productID].weight := pShuttlePlan.currentProductWeight;
 				END_IF
 				
 				IF (MC_BR_ShGetPayload_Acp6D_0.Payload * 1000 - pShuttle.par.initialWeight) < 30 THEN
@@ -197,11 +205,11 @@ ACTION smartLabWorkstationOperation :
 					moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
 					cm.state := 60;
 				ELSE
-					cm.state := 46;
+					cm.state := 43;
 				END_IF
 			END_IF
 		
-		46:
+		43:
 			cm.description := 'Wait before getting new weight';
 			
 			pWorkstation.TON_0.PT := T#1S;
@@ -209,10 +217,39 @@ ACTION smartLabWorkstationOperation :
 			IF pWorkstation.TON_0.Q THEN
 				pWorkstation.TON_0.IN := FALSE;
 				
-				cm.state := 45;
+				cm.state := 42;
 			END_IF
 		
-		
+		45:
+			cm.description := 'Set data since product is finished';
+
+			amountProductsFinished := amountProductsFinished + 1;
+			pOrderHistory.finishedProductCount := pOrderHistory.finishedProductCount + 1;
+	
+			// Update the average workstation cycle times of the order (and reset for the shuttlePlan)
+			FOR j := 0 TO (smartLabNumWorkstations - 1) DO
+				pOrderHistory.avgCycleTime[j] := (pOrderHistory.avgCycleTime[j] * USINT_TO_REAL(pOrderHistory.finishedProductCount - 1) + pShuttlePlan.workstationCycleTime[j]) / USINT_TO_REAL(pOrderHistory.finishedProductCount);
+				pShuttlePlan.workstationCycleTime[j] := pShuttlePlan.startTimeAtWorkstation[j] := 0.0;
+			END_FOR
+			
+			// Set the product time and determine if order is finished
+			pOrderHistory.product[pShuttlePlan.productID].finishTime := DT_TO_REAL(DTGetTime_0.DT1) - DT_TO_REAL(pOrderHistory.orderStartingTime);
+			
+			IF pOrderHistory.finishedProductCount = pOrderHistory.productOrder.amount THEN
+				amountOrdersFinished := amountOrdersFinished + 1;
+				pOrderHistory.orderFinishTime := DTGetTime_0.DT1; 
+				pOrderHistory.status := FINISHED;
+			END_IF
+			
+			// If KUKA6 is not enabled, go to wait for shuttle to be removed
+			IF robotEnabled[5] THEN
+				moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
+				cm.state := 60;
+			ELSE
+				cm.state := 43;
+			END_IF
+			
+			
 //		50:
 //			cm.description := 'Leviate shuttle if landed before process';
 //
@@ -282,34 +319,13 @@ ACTION smartLabShuttleMovement :
 			IF pShuttlePlan.isActive THEN
 				pShuttle.par.tempNextWorkstationID := pShuttlePlan.routingSheet[pShuttlePlan.progressIndex];
 				pShuttlePlan.progressIndex := pShuttlePlan.progressIndex + 1;
-
-				CASE pShuttle.par.tempNextWorkstationID OF
-					// If the next workstation is 0 (first workstation), reset the progress index and set the shuttleplan to be inactive
-					0:
-						pShuttlePlan.progressIndex := 0;
-						pShuttlePlan.isActive := FALSE;
-						activeShuttles := activeShuttles - 1;
-						amountProductsFinished := amountProductsFinished + 1;
-						pOrderHistory.finishedProductCount := pOrderHistory.finishedProductCount + 1;
-
-						// Update the average workstation cycle times of the order (and reset for the shuttlePlan)
-						FOR j := 0 TO (smartLabNumWorkstations - 1) DO
-							pOrderHistory.avgCycleTime[j] := (pOrderHistory.avgCycleTime[j] * USINT_TO_REAL(pOrderHistory.finishedProductCount - 1) + pShuttlePlan.workstationCycleTime[j]) / USINT_TO_REAL(pOrderHistory.finishedProductCount);
-							pShuttlePlan.workstationCycleTime[j] := pShuttlePlan.startTimeAtWorkstation[j] := 0.0;
-						END_FOR
-						
-						// Set the product time and determine if order is finished
-						pOrderHistory.product[pShuttlePlan.productID].finishTime := DT_TO_REAL(DTGetTime_0.DT1) - DT_TO_REAL(orderHistory[pShuttlePlan.productOrder.ID].orderStartingTime);
-						
-						// Set the weight of the product
-						pOrderHistory.product[pShuttlePlan.productID].weight := pShuttlePlan.currentProductWeight;
-						
-						IF pOrderHistory.finishedProductCount = pOrderHistory.productOrder.amount THEN
-							amountOrdersFinished := amountOrdersFinished + 1;
-							pOrderHistory.orderFinishTime := DTGetTime_0.DT1;
-							pOrderHistory.status := FINISHED;
-						END_IF
-				END_CASE
+				
+				// If the next workstation is 0 (first workstation), reset the progress index and set the shuttleplan to be inactive
+				IF pShuttle.par.tempNextWorkstationID = 0 THEN
+					pShuttlePlan.progressIndex := 0;
+					pShuttlePlan.isActive := FALSE;
+					activeShuttles := activeShuttles - 1;
+				END_IF
 			ELSE
 				pShuttle.par.tempNextWorkstationID := (pShuttle.par.tempWorkstationID + 1) MOD smartLabNumWorkstations;
 			END_IF

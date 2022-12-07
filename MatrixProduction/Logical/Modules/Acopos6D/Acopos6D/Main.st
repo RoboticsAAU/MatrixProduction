@@ -402,8 +402,14 @@ PROGRAM _CYCLIC
 					
 				17010..17014:
 					em.description := 'Smart Lab Program - Write order if it has been placed';
+					
 					// The user has requested an order which is added to the buffer
 					IF executeOrder THEN
+						// Generate random order if specified
+						IF generateRandomOrder THEN
+							RandomOrderGeneration_0.refOrder := ADR(tempRandomProductOrder);
+							RandomOrderGeneration_0();
+						END_IF
 						
 						TON_0.PT := REAL_TO_TIME(200);
 						TON_0.IN := TRUE;
@@ -443,6 +449,11 @@ PROGRAM _CYCLIC
 						pWorkstation.cm.setup.parent.name := 'main';
 						pWorkstation.par.workstationID := i;
 						
+						IF cm.state > 10 THEN // A shuttle must have arrived at the workstation before we can set the pointers
+							pShuttlePlan ACCESS ADR(shuttlePlans[pWorkstation.par.tempShuttleID]);
+							pOrderHistory ACCESS ADR(orderHistory[pShuttlePlan.productOrder.ID MOD 100]);
+						END_IF
+						
 						smartLabWorkstationOperation;
 					END_FOR
 					
@@ -456,7 +467,7 @@ PROGRAM _CYCLIC
 						pShuttlePlan ACCESS ADR(shuttlePlans[pShuttle.par.shuttleID]);
 						pOrderHistory ACCESS ADR(orderHistory[pShuttlePlan.productOrder.ID MOD 100]);
 						
-						IF pShuttlePlan.isActive THEN
+						IF pOrderHistory.status <> FINISHED THEN
 							pOrderHistory.orderDuration := DT_TO_REAL(DTGetTime_0.DT1) - DT_TO_REAL(pOrderHistory.orderStartingTime);
 						END_IF
 						
