@@ -395,65 +395,13 @@ PROGRAM _CYCLIC
 				
 					
 					
+					
 				17000..17009:
 					em.description := 'Smart Lab program - Setup';
 					smartLabSetup;
-					
-					
-				17010..17014:
-					em.description := 'Smart Lab Program - Write order if it has been placed';
-					
-					// The user has requested an order which is added to the buffer
-					IF executeOrder THEN
-						// Generate random order if specified
-						IF generateRandomOrder THEN
-							
-							IF NOT randomGenerated THEN
-								
-								RandomOrderGeneration_0.refOrder := ADR(tempRandomProductOrder);
-								RandomOrderGeneration_0();
-								randomGenerated := TRUE;
 				
-							END_IF
-							
-							TON_0.PT := REAL_TO_TIME(600);
-							
-						ELSE
-							
-							TON_0.PT := REAL_TO_TIME(200);
-							
-						END_IF
-						
-						TON_0.IN := TRUE;
-						
-						IF TON_0.Q THEN
-							TON_0.IN := FALSE;
-							executeOrder := FALSE;
-							randomGenerated := FALSE;
-							// Write the order if the buffer is not full
-							IF NOT bufferFull THEN
-								writeOrder;
-							END_IF
-							
-							em.substate := 17015;
-						END_IF
-					END_IF
-					
 				
-				17015..17019:
-					em.description := 'Smart Lab Program - Read order if the shuttles are ready to';
-					// Read a new order if the entire other order has been initiated and the buffer is not empty
-					IF remainingOrderAmount = 0 AND NOT bufferEmpty THEN
-						readOrder;
-						
-						remainingOrderAmount := productOrder.amount;
-						activeShuttles := activeShuttles + productOrder.amount;
-					END_IF
-					
-					em.substate := 17020;
-					
-					
-				17020..17999:
+				17010..17019:
 					em.description := 'Smart Lab program - Workstation movement';
 					// Go through the workstations and run program for these
 					FOR i := 0 TO (smartLabNumWorkstations - 1) DO
@@ -494,8 +442,47 @@ PROGRAM _CYCLIC
 					
 					// Go to write order if a new order is made or there are no active orders
 					IF executeOrder THEN
-						em.substate := 17010;
+						// Generate random order if specified first time this is run 
+						IF EDGEPOS(executeOrder) THEN
+							RandomOrderGeneration_0.refOrder := ADR(tempRandomProductOrder);
+							RandomOrderGeneration_0.generate := generateRandomOrder;
+							RandomOrderGeneration_0();
+						END_IF
+						
+						TON_0.PT := REAL_TO_TIME(400); // Has to be 400 for random order (only 200 for non-random)
+						TON_0.IN := TRUE;
+						IF TON_0.Q THEN
+							TON_0.IN := FALSE;
+							
+							// The user has requested an order which is added to the buffer
+							executeOrder := FALSE;
+							em.substate := 17020;
+						END_IF
 					END_IF
+				
+					
+				17020..17024:
+					em.description := 'Smart Lab Program - Write order if it has been placed';
+					
+					// Write the order if the buffer is not full
+					IF NOT bufferFull THEN
+						writeOrder;
+					END_IF
+					
+					em.substate := 17025;
+					
+				
+				17025..17029:
+					em.description := 'Smart Lab Program - Read order if the shuttles are ready to';
+					// Read a new order if the entire other order has been initiated and the buffer is not empty
+					IF remainingOrderAmount = 0 AND NOT bufferEmpty THEN
+						readOrder;
+						
+						remainingOrderAmount := productOrder.amount;
+						activeShuttles := activeShuttles + productOrder.amount;
+					END_IF
+					
+					em.substate := 17010;
 				
 			END_CASE
 			

@@ -7,7 +7,7 @@ FUNCTION_BLOCK ParabolicBlend
 		tempPos := endPos;
 		endPos := startPos;
 		startPos := tempPos;
-		evalPos := endPos - evalPos; 
+		evalPos := endPos - evalPos;
 	END_IF
 	
 	// Compute the blend distance (distance covered during acceleration)

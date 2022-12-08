@@ -14,7 +14,7 @@ FUNCTION_BLOCK EETypeToFrame
 	CASE eeType OF
 		
 		COVER_EE: // Should probably separate top cover and bottom cover
-			frame.Z := SchunkLength + 29.40;
+			frame.Z := SchunkLength + 32.5;
 			
 		DRILL_EE:
 			frame.Z := 57.2;

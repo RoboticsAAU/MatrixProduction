@@ -147,6 +147,7 @@ END_FUNCTION_BLOCK
 {REDUND_ERROR} FUNCTION_BLOCK RandomOrderGeneration
 	VAR_INPUT
 		refOrder : REFERENCE TO product_order;
+		generate : BOOL;
 		opt_randOrderAmount : USINT;
 	END_VAR
 	VAR

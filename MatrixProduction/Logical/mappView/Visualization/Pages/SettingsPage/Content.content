@@ -32,7 +32,7 @@
     <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput5" top="180" left="860" width="120" zIndex="28" maxValue="20" unit="{'metric':'MSK','imperial':'MSK','imperial-us':'MSK'}" unitAlign="right" value="10" />
     <Widget xsi:type="widgets.brease.Label" id="Label26" top="280" left="680" width="240" zIndex="29" text="Rotational Velocity:" textAlign="left" fontSize="25px" padding="0px 15px 0px 0px" />
     <Widget xsi:type="widgets.brease.Label" id="Label27" top="340" left="680" width="280" zIndex="30" text="Rotational Acceleration:" textAlign="left" fontSize="25px" padding="0px 15px 0px 0px" />
-    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput6" top="280" left="980" width="120" zIndex="31" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="200" unit="{'metric':'RPM','imperial':'RPM','imperial-us':'RPM'}" unitAlign="right" value="200" />
-    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput7" top="340" left="980" width="120" zIndex="32" maxValue="40" unitAlign="right" value="40" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput6" top="280" left="980" width="140" zIndex="31" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" maxValue="800" unit="{'metric':'RPM','imperial':'RPM','imperial-us':'RPM'}" unitAlign="right" value="200" />
+    <Widget xsi:type="widgets.brease.NumericInput" id="NumericInput7" top="340" left="980" width="140" zIndex="32" maxValue="120" unit="{'metric':'2B','imperial':'2B','imperial-us':'2B'}" unitAlign="right" value="40" />
   </Widgets>
 </Content>

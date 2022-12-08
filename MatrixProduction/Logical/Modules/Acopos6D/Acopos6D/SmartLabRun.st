@@ -102,8 +102,7 @@ ACTION smartLabWorkstationOperation :
 					1:  orderSpec[1] := pShuttlePlan.productOrder.Holes;
 						drillStationShuttleID := pWorkstation.par.tempShuttleID;  // Send ID of the shuttle currently at the drilling station.
 
-
-					// Send whether a PCB is specified or not (converted to int)
+						// Send whether a PCB is specified or not (converted to int)
 					2: orderSpec[2] := BOOL_TO_USINT(pShuttlePlan.productOrder.PCB);
 
 					// Send amount of fuses
@@ -301,7 +300,7 @@ ACTION smartLabShuttleMovement :
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Acceleration := shuttleSmartLabAcceleration;
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Mode := 0; // Absolute
 
-			pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Parameters.Velocity := shuttleSmartLabRotVelocity; // in rpm
+			pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Parameters.Velocity := shuttleSmartLabRotVelocity;
 			pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Parameters.Acceleration := shuttleSmartLabRotAcceleration;
 			pShuttle.function.MC_BR_RotaryMotion_Acp6D_0.Parameters.Mode := 1; // CCW
 

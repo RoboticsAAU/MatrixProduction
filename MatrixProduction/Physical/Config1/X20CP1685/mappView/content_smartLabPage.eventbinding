@@ -26,6 +26,16 @@
         </Action>
       </EventHandler>
     </EventBinding>
+    <EventBinding id="EventBinding_13">
+      <Source xsi:type="opcUa.Event" refId="::Acopos6D:executeOrder" event="ValueChanged" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="widgets.brease.PushButton.Action" contentRefId="content_smartLabPage" widgetRefId="PushButton1">
+            <Method xsi:type="widgets.brease.PushButton.Action.SetEnable" value="=NOT newValue" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
     <EventBinding id="EventBinding_3">
       <Source xsi:type="widgets.brease.DropDownBox.Event" contentRefId="content_smartLabPage" widgetRefId="DropDownBox3" event="SelectedIndexChanged" />
       <Operand datatype="ANY_INT" name="idxToHoles">

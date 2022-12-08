@@ -4,7 +4,7 @@
     <Widget xsi:type="widgets.brease.Label" id="Label14" top="40" left="370" width="890" height="90" zIndex="2" text="Camera 1 - Bottom Cover Inspection" textAlign="center" fontSize="40px" bold="true" />
     <Widget xsi:type="widgets.brease.Label" id="Label1" top="40" left="20" width="330" height="60" zIndex="3" text="Camera Settings" fontSize="30px" bold="true" />
     <Widget xsi:type="widgets.brease.NavigationButton" id="NavigationButton1" top="700" left="80" width="170" height="45" zIndex="4" pageId="page_smartLabPage" text="Order Config" borderStyle="solid" borderWidth="4px" cornerRadius="5px" fontSize="20px" bold="true" />
-    <Widget xsi:type="widgets.brdk.VisionImage" id="VisionImage1" top="125" left="375" width="860" height="569" zIndex="5" cornerRadius="10px" />
+    <Widget xsi:type="widgets.brdk.VisionImage" id="VisionImage1" top="125" left="375" width="860" height="570" zIndex="5" cornerRadius="10px" />
     <Widget xsi:type="widgets.brease.Rectangle" id="Rectangle101" top="0" left="0" width="1280" height="770" zIndex="0" backColor="rgba(224, 224, 224, 1)" />
     <Widget xsi:type="widgets.brease.Label" id="Label3" top="350" left="25" width="330" height="60" zIndex="6" text="Vision Data" fontSize="30px" bold="true" />
     <Widget xsi:type="widgets.brease.NumericOutput" id="NumericOutput2" top="125" left="190" width="150" zIndex="7" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':1,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':1,'minimumIntegerDigits':1}}" unit="{'metric':'B98','imperial':'B98','imperial-us':'B98'}" unitWidth="40" backColor="rgba(192, 192, 192, 1)" borderStyle="none" textAlign="left" fontSize="25px" unitFontSize="25px" padding="0px 0px 0px 0px" />
