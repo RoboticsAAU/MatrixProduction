@@ -1,0 +1,5 @@
+VAR
+	gMain : gMain_typ;
+	modeSelector : USINT;
+	DTGetTime_0 : DTGetTime;
+END_VAR

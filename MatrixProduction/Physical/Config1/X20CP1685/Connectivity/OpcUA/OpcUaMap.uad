@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<OpcUaSource FileVersion="9" ArVersion="B4.91">
+  <Aliases>
+    <ACLAliases />
+    <EURangeViolationAliases />
+    <EURangesAliases />
+    <EngineeringUnitAliases>
+      <EngineeringUnit Id="1" UnitId="5067858" NameSpaceUri="http://www.opcfoundation.org/UA/units/un/cefact" Name="metre" Symbol="m" />
+    </EngineeringUnitAliases>
+  </Aliases>
+  <DefaultView>
+    <Module Name="&lt;Default&gt;">
+      <GlobalVariables Name="Global Variables">
+        <Variable Name="gMain">
+          <Variable Name="cmd">
+            <Variable Name="powerOff" />
+            <Variable Name="powerOn" />
+            <Variable Name="start" />
+            <Variable Name="pause" />
+            <Variable Name="reset" />
+            <Variable Name="stop" />
+            <Variable Name="restartCtrl" />
+          </Variable>
+          <Variable Name="status">
+            <Variable Name="powerOff" />
+            <Variable Name="running" />
+            <Variable Name="powerOn" />
+            <Variable Name="itemsPrHour" />
+            <Variable Name="itemsPrMin" />
+            <Variable Name="error" />
+          </Variable>
+          <Variable Name="par">
+            <Variable Name="controlLight" />
+          </Variable>
+        </Variable>
+        <Variable Name="modeSelector" />
+        <Variable Name="cmdBoxProgram">
+          <Variable Name="smallBox" />
+          <Variable Name="bigBox" />
+          <Variable Name="bottle" />
+        </Variable>
+        <Variable Name="gAcp6DCtrl">
+          <Variable Name="Cmd">
+            <Variable Name="PowerOn" />
+            <Variable Name="PowerOff" />
+            <Variable Name="ErrorReset" />
+            <Variable Name="Init" />
+            <Variable Name="StartProcess" />
+            <Variable Name="StopProcess" />
+            <Variable Name="Stop" />
+            <Variable Name="gameProgramDeleteShuttle" />
+          </Variable>
+          <Variable Name="Par">
+            <Variable Name="Acceleration" />
+            <Variable Name="Velocity" />
+            <Variable Name="modeSelector" />
+          </Variable>
+        </Variable>
+        <Variable Name="gVisionSensor" RecursiveEnable="1" />
+        <Variable Name="robotEnabled" RecursiveEnable="2" />
+        <Variable Name="occupiedPosition" RecursiveEnable="2" />
+        <Variable Name="emergencyStop" />
+      </GlobalVariables>
+      <Task Name="Main">
+        <Variable Name="modeSelectorOldValue" />
+      </Task>
+      <Task Name="Acopos6D">
+        <Variable Name="createShGroup" />
+        <Variable Name="enableButtons" />
+        <Variable Name="flaskProgramAcceleration" />
+        <Variable Name="flaskProgramVelocity" />
+        <Variable Name="shuttlePayload" />
+        <Variable Name="weightProgramFlyingHight" />
+        <Variable Name="steelSheetFlyingHeight" EngineeringUnitId="1" />
+        <Variable Name="executeOrder" />
+        <Variable Name="amountProductsFinished" />
+        <Variable Name="tempProductOrder" RecursiveEnable="2" />
+        <Variable Name="bufferFull" />
+        <Variable Name="activeShuttles" />
+        <Variable Name="amountOrdersFinished" />
+        <Variable Name="orderHistory" RecursiveEnable="2" />
+        <Variable Name="HMIorderID" />
+        <Variable Name="HMIorderHistory" RecursiveEnable="2">
+          <Variable Name="routingSheet" RecursiveEnable="2" />
+          <Variable Name="avgCycleTime" RecursiveEnable="2" />
+        </Variable>
+        <Variable Name="HMIproductHistory" RecursiveEnable="2" />
+        <Variable Name="HMIproductID" />
+        <Variable Name="shuttleSmartLabVelocity" />
+        <Variable Name="shuttleSmartLabRotVelocity" />
+        <Variable Name="shuttleSmartLabRotAcceleration" />
+        <Variable Name="shuttleSmartLabAcceleration" />
+        <Variable Name="generateRandomOrder" />
+        <Variable Name="tempRandomProductOrder" RecursiveEnable="2" />
+      </Task>
+      <Task Name="Vision">
+        <Variable Name="overlay" />
+        <Variable Name="mappView">
+          <Variable Name="wsPort" />
+        </Variable>
+        <Variable Name="hwCam" RecursiveEnable="2" />
+        <Variable Name="hwMatch" RecursiveEnable="2" />
+        <Variable Name="flipProduct" />
+      </Task>
+      <Task Name="KUKA">
+        <Variable Name="robotVelocity" />
+        <Variable Name="robotVelocityOverride" />
+        <Variable Name="robotAcceleration" />
+        <Variable Name="maintenance" />
+      </Task>
+    </Module>
+  </DefaultView>
+</OpcUaSource>

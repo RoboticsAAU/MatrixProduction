@@ -1,0 +1,95 @@
+VAR
+	KUKAs : ARRAY[0..5] OF KUKA;
+END_VAR
+(*AxisStructure*)
+VAR
+	AxisRef : AXIS_GROUP_REF_ARR; (*Axis Reference of the Robot*)
+END_VAR
+(*Instance of FB*)
+VAR
+	mxa_ValuesToCOORDSYS_0 : mxa_ValuesToCOORDSYS;
+	EETypeToFrame_0 : EETypeToFrame;
+END_VAR
+(*Variables for UDP-communication*)
+VAR
+	i : USINT; (*IndexVariable for ErrorMessages*)
+	InputUDPString : STRING[255]; (*Variable with Message from KRC*)
+	counterMsg : INT;
+	WorkAroundCounter : INT;
+	step_UDPConnect : INT; (*State-Variable for Errorhandling*)
+	TextArray : ARRAY[0..15] OF STRING[255]; (*TextArray contains Messages from KRC*)
+	UdpOpen_0 : UdpOpen; (*FunctionBlock to Open Port*)
+	UdpOpen_1 : UdpOpen; (*FunctionBlock to Open Port*)
+	UdpRecv_0 : UdpRecv; (*FunctionBlock to Receive Message*)
+	UdpSend_0 : UdpSend; (*FunctionBlock to Send Message*)
+	MsgToKrc : STRING[17]; (*Contains the Message which is send to KRC for getting all Messages*)
+	ReloadMsg : BOOL; (*Variable triggers the Sequence to get Messages*)
+END_VAR
+VAR CONSTANT
+	STATE_DISPLAY : INT := 5; (*STATE to display the Message*)
+	STATE_RECEIVE : INT := 3; (*STATE to receive a new Message*)
+	STATE_OPEN : INT := 0; (*STATE for opening the Ports*)
+	STATE_SEND : INT := 2; (*STATE for sending a request to KRC*)
+	STATE_WAIT : INT := 1; (*STATE for Waiting to trigger a new Request*)
+END_VAR
+VAR
+	TON_0 : TON;
+END_VAR
+(*Frames and positions*)
+VAR
+	acoposBase : FRAME;
+	coordSys : COORDSYS;
+	endPOS : E6POS;
+	position1 : E6AXIS;
+	position2 : E6AXIS;
+END_VAR
+(*For robot operations*)
+VAR
+	gripperWaitTime : INT;
+END_VAR
+VAR CONSTANT
+	relativeDistance : REAL := 80.0;
+	relativeDrillDistance : REAL := 10.0;
+END_VAR
+VAR
+	drillXOffset : REAL := 27*2;
+	drillYOffset : REAL := 53*2;
+	numDoneHoles : USINT := 0;
+	fusePickOffset : REAL := 13; (*Distance between fuses*)
+	k : INT;
+END_VAR
+VAR CONSTANT
+	unloadSizeX : INT := 3;
+	unloadSizeY : INT := 2;
+	unloadSizeZ : INT := 4;
+END_VAR
+VAR
+	xIdx : INT;
+	yIdx : INT;
+	xIdxTemp : INT := -1;
+	yIdxTemp : INT := -1;
+	orderCounter : ARRAY[0..1,0..1] OF INT := [4(0)];
+	maintenancePrev : ARRAY[0..5] OF BOOL;
+	maintenance : BOOL;
+END_VAR
+(*References*)
+VAR
+	pKuka : REFERENCE TO KUKA;
+	cm : REFERENCE TO brdkCM;
+END_VAR
+(*OPC UA*)
+VAR
+	robotVelocityOverride : USINT;
+	robotVelocity : USINT;
+	robotAcceleration : USINT;
+END_VAR
+(*Variable mapping*)
+VAR
+	orderAmount : SINT;
+	orderSpec : ARRAY[0..5] OF SINT;
+	robotExecute : ARRAY[0..5] OF BOOL;
+	robotDone : ARRAY[0..5] OF BOOL;
+	robotBusy : ARRAY[0..5] OF BOOL;
+	isProductFlipped : ARRAY[0..5] OF BOOL;
+	drillStationShuttleID : USINT;
+END_VAR

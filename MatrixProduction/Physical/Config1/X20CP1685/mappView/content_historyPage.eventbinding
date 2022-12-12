@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EventBindingSet id="content_historyPage_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Bindings>
+    <EventBinding id="EventBinding_2">
+      <Source xsi:type="opcUa.Event" refId="::Acopos6D:HMIorderHistory.status" event="ValueChanged" />
+      <EventHandler>
+        <Action>
+          <Target xsi:type="widgets.brease.TextOutput.Action" contentRefId="content_historyPage" widgetRefId="TextOutput1">
+            <Method xsi:type="widgets.brease.TextOutput.Action.SetVisible" value="=newValue &lt;&gt; 0" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_10">
+      <Source xsi:type="opcUa.Event" refId="::Acopos6D:HMIorderHistory.finishedProductCount" event="ValueChanged" />
+      <Operand datatype="ANY_INT" name="selectedProductID">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Acopos6D:HMIproductID">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="widgets.brease.NumericOutput.Action" contentRefId="content_historyPage" widgetRefId="NumericOutput22">
+            <Method xsi:type="widgets.brease.NumericOutput.Action.SetVisible" value="=newValue &gt; selectedProductID" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+    <EventBinding id="EventBinding_11">
+      <Source xsi:type="opcUa.Event" refId="::Acopos6D:HMIproductID" event="ValueChanged" />
+      <Operand datatype="ANY_INT" name="finishedProducts">
+        <ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::Acopos6D:HMIorderHistory.finishedProductCount">
+          <Method xsi:type="opcUa.NodeAction.GetValue" />
+        </ReadTarget>
+      </Operand>
+      <EventHandler>
+        <Action>
+          <Target xsi:type="widgets.brease.NumericOutput.Action" contentRefId="content_historyPage" widgetRefId="NumericOutput22">
+            <Method xsi:type="widgets.brease.NumericOutput.Action.SetVisible" value="=newValue &lt; finishedProducts" />
+          </Target>
+        </Action>
+      </EventHandler>
+    </EventBinding>
+  </Bindings>
+</EventBindingSet>

@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BindingsSet id="content_visionPage_binding" xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Bindings>
+
+
+<Binding mode="oneWay"> 
+	<Source xsi:type="opcUa" refId="::Vision:flipProduct" attribute="value" /> 
+	<Target xsi:type="snippet" refId="visionFlipped" attribute="value" /> 
+</Binding>
+<Binding mode="oneWay"> 
+	<Source xsi:type="snippet" refId="visionFlipped" attribute="value" /> 
+	<Target xsi:type="brease" widgetRefId="TextOutput1" contentRefId="content_visionPage" attribute="value" /> 
+</Binding>
+
+
+
+
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vision:hwCam[0].in.common.moduleOk" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput5" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vision:hwCam[0].in.status.focus" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput4" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::Vision:hwCam[0].out.par.gainLevel" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput3" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vision:hwCam[0].in.status.exposureTime" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput2" attribute="value" />
+</Binding>
+
+
+
+
+		<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vision:hwMatch.in.common.numResults" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput7" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vision:hwMatch.in.results[0].modelNumber" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput6" attribute="value" />
+</Binding>
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vision:overlay" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="VisionImage1" attribute="svgOverlay" />
+</Binding>
+
+
+
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vision:hwMatch.in.common.functionProcessingTime" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput8" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vision:hwMatch.in.results[0].score" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="NumericOutput10" attribute="value" />
+</Binding>
+<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::Vision:mappView.wsPort" attribute="value" />
+<Target xsi:type="brease" contentRefId="content_visionPage" widgetRefId="VisionImage1" attribute="PLCWebsocketPort" />
+</Binding>
+</Bindings>
+</BindingsSet>

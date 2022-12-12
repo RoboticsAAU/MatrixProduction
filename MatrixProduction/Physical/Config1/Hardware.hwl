@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?AutomationStudio FileVersion="4.9"?>
+<BR.AS.HardwareTopology>
+  <TimeStamps>
+    <TimeStamp LogicalPath="Config1.Hardware.hw" LastWriteTime="11/25/2022 09:05:30" />
+  </TimeStamps>
+  <Modules>
+    <Module Name="8YFLM01.0000.00I-1" Type="8YFLM01.0000.00I-1" X="311" Y="222" />
+    <Module Name="X20CP1685" Type="X20CP1685" X="100" Y="100" />
+    <Module Name="X20IF10E1_1" Type="X20IF10E1-1" X="212" Y="100" />
+    <Module Name="X20BM11" Type="X20BM11" X="250" Y="100" />
+    <Module Name="X20DI8371" Type="X20DI8371" X="250" Y="100" />
+    <Module Name="X20TB12" Type="X20TB12" X="250" Y="127" />
+    <Module Name="X20BM11a" Type="X20BM11" X="263" Y="100" />
+    <Module Name="X20DI8371a" Type="X20DI8371" X="263" Y="100" />
+    <Module Name="X20TB12a" Type="X20TB12" X="263" Y="127" />
+    <Module Name="X20BM11b" Type="X20BM11" X="276" Y="100" />
+    <Module Name="X20DO9322" Type="X20DO9322" X="276" Y="100" />
+    <Module Name="X20TB12b" Type="X20TB12" X="276" Y="127" />
+    <Module Name="X20BM33" Type="X20BM33" X="289" Y="100" />
+    <Module Name="X20SLX806" Type="X20SLX806" X="289" Y="100" />
+    <Module Name="X20TB52a" Type="X20TB52" X="302" Y="126" />
+    <Module Name="X20TB52" Type="X20TB52" X="289" Y="126" />
+    <Module Name="X20BM13" Type="X20BM13" X="315" Y="100" />
+    <Module Name="X20SI8110" Type="X20SI8110" X="315" Y="100" />
+    <Module Name="X20TB52b" Type="X20TB52" X="315" Y="126" />
+    <Module Name="X20BM33a" Type="X20BM33" X="328" Y="100" />
+    <Module Name="X20SO6530" Type="X20SO6530" X="328" Y="100" />
+    <Module Name="X20TB72" Type="X20TB72" X="328" Y="126" />
+    <Module Name="VSS122Q25.061P-000" Type="VSS122Q25.061P-000" X="453" Y="100" />
+    <Module Name="KUKA1_KRC5_ProfiNet_6_0" Type="FBD.Hilscher.PNIOGenDevDTM2.KUKA.PROFINET 6.0" X="354" Y="299" />
+    <Module Name="KUKA2_KRC4_ProfiNet_5_0" Type="FBD.Hilscher.PNIOGenDevDTM2.KRC4-ProfiNet_5.0" X="494" Y="299" />
+    <Module Name="KUKA3_KRC4_ProfiNet_5_0" Type="FBD.Hilscher.PNIOGenDevDTM2.KRC4-ProfiNet_5.0" X="634" Y="299" />
+    <Module Name="KUKA4_KRC4_ProfiNet_5_0" Type="FBD.Hilscher.PNIOGenDevDTM2.KRC4-ProfiNet_5.0" X="774" Y="299" />
+    <Module Name="KUKA5_KRC4_ProfiNet_5_0" Type="FBD.Hilscher.PNIOGenDevDTM2.KRC4-ProfiNet_5.0" X="914" Y="299" />
+    <Module Name="KUKA6_KRC5_ProfiNet_6_0" Type="FBD.Hilscher.PNIOGenDevDTM2.KUKA.PROFINET 6.0" X="1054" Y="299" />
+  </Modules>
+  <Links>
+    <Link From="8YFLM01.0000.00I-1" To="X20CP1685" FromPort="PLK1" ToPort="IF3" IsRoutedByUser="False">
+      <Point X="344" Y="266" />
+      <Point X="344" Y="266" />
+      <Point X="344" Y="273" />
+      <Point X="344" Y="285" />
+      <Point X="156" Y="285" />
+      <Point X="156" Y="200" />
+      <Point X="156" Y="187" />
+      <Point X="156" Y="187" />
+    </Link>
+    <Link From="8YFLM01.0000.00I-1" To="VSS122Q25.061P-000" FromPort="PLK2" ToPort="PLK1" IsRoutedByUser="False">
+      <Point X="369" Y="266" />
+      <Point X="369" Y="266" />
+      <Point X="369" Y="273" />
+      <Point X="369" Y="285" />
+      <Point X="471" Y="285" />
+      <Point X="471" Y="223" />
+      <Point X="471" Y="218" />
+      <Point X="471" Y="218" />
+    </Link>
+    <Link From="KUKA1_KRC5_ProfiNet_6_0" To="X20IF10E1_1" FromPort="PN1" ToPort="IF1" IsRoutedByUser="False">
+      <Point X="373" Y="338" />
+      <Point X="373" Y="338" />
+      <Point X="353" Y="338" />
+      <Point X="226" Y="338" />
+      <Point X="226" Y="200" />
+      <Point X="226" Y="191" />
+      <Point X="226" Y="191" />
+    </Link>
+    <Link From="KUKA1_KRC5_ProfiNet_6_0" To="KUKA2_KRC4_ProfiNet_5_0" FromPort="PN2" ToPort="PN1" IsRoutedByUser="False">
+      <Point X="388" Y="338" />
+      <Point X="388" Y="338" />
+      <Point X="388" Y="350" />
+      <Point X="388" Y="355" />
+      <Point X="455" Y="355" />
+      <Point X="455" Y="338" />
+      <Point X="493" Y="338" />
+      <Point X="513" Y="338" />
+      <Point X="513" Y="338" />
+    </Link>
+    <Link From="KUKA2_KRC4_ProfiNet_5_0" To="KUKA3_KRC4_ProfiNet_5_0" FromPort="PN2" ToPort="PN1" IsRoutedByUser="False">
+      <Point X="528" Y="338" />
+      <Point X="528" Y="338" />
+      <Point X="528" Y="350" />
+      <Point X="528" Y="355" />
+      <Point X="595" Y="355" />
+      <Point X="595" Y="338" />
+      <Point X="633" Y="338" />
+      <Point X="653" Y="338" />
+      <Point X="653" Y="338" />
+    </Link>
+    <Link From="KUKA3_KRC4_ProfiNet_5_0" To="KUKA4_KRC4_ProfiNet_5_0" FromPort="PN2" ToPort="PN1" IsRoutedByUser="False">
+      <Point X="668" Y="338" />
+      <Point X="668" Y="338" />
+      <Point X="668" Y="350" />
+      <Point X="668" Y="355" />
+      <Point X="735" Y="355" />
+      <Point X="735" Y="338" />
+      <Point X="773" Y="338" />
+      <Point X="793" Y="338" />
+      <Point X="793" Y="338" />
+    </Link>
+    <Link From="KUKA4_KRC4_ProfiNet_5_0" To="KUKA5_KRC4_ProfiNet_5_0" FromPort="PN2" ToPort="PN1" IsRoutedByUser="False">
+      <Point X="808" Y="338" />
+      <Point X="808" Y="338" />
+      <Point X="808" Y="350" />
+      <Point X="808" Y="355" />
+      <Point X="875" Y="355" />
+      <Point X="875" Y="338" />
+      <Point X="913" Y="338" />
+      <Point X="933" Y="338" />
+      <Point X="933" Y="338" />
+    </Link>
+    <Link From="KUKA5_KRC4_ProfiNet_5_0" To="KUKA6_KRC5_ProfiNet_6_0" FromPort="PN2" ToPort="PN1" IsRoutedByUser="False">
+      <Point X="948" Y="338" />
+      <Point X="948" Y="338" />
+      <Point X="948" Y="350" />
+      <Point X="948" Y="355" />
+      <Point X="1015" Y="355" />
+      <Point X="1015" Y="338" />
+      <Point X="1053" Y="338" />
+      <Point X="1073" Y="338" />
+      <Point X="1073" Y="338" />
+    </Link>
+  </Links>
+  <InfoElements />
+</BR.AS.HardwareTopology>

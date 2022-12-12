@@ -1,0 +1,42 @@
+VAR
+	hwMatch : brdkViBase_hw_match_10_typ;
+	hwCam : ARRAY[0..NUM_CAMS] OF brdkViBase_cam_hw_typ;
+	imgTrigger : ARRAY[0..NUM_CAMS] OF brdkViBase_imgTrigger;
+	mappView : brdkViImg_mappView;
+	TOF_Light : ARRAY[0..NUM_CAMS] OF TOF;
+	PowerlinkCycle_us : DINT; (*Powerlink cycletime in microseconds*)
+	NettimeLastCycle_us : DINT; (*Old nettime used to calculate Powerlink cycle time*)
+	TriggerTimeDelta_us : ARRAY[0..NUM_CAMS] OF DINT; (*Delta time in microseconds to the next trigger*)
+	requestTimeStamp : ARRAY[0..NUM_CAMS] OF DINT;
+	visState : ARRAY[0..NUM_CAMS] OF USINT;
+END_VAR
+VAR CONSTANT
+	cameraWidth : INT := 1280;
+	cameraHeight : INT := 1024;
+END_VAR
+VAR
+	camIdx : USINT;
+	shapeCenterPoint : brdkViBase_2d_typ;
+END_VAR
+(*PV Mapping*)
+VAR
+	imageRequested : ARRAY[0..NUM_CAMS] OF BOOL;
+	resultReady : ARRAY[0..NUM_CAMS] OF BOOL;
+	flipProduct : BOOL;
+	durationToCamera : ARRAY[0..NUM_CAMS] OF DINT;
+	imgCoverType : USINT;
+	overlay : STRING[6000000];
+END_VAR
+(*Image, crosshair data and constants*)
+VAR
+	tmpStr1 : STRING[1000];
+	i : UINT;
+END_VAR
+VAR CONSTANT
+	HexTab : STRING[16] := '0123456789ABCDEF';
+END_VAR
+VAR
+	additionArguments : STRING[80];
+	statusText : ARRAY[0..NUM_CAMS] OF STRING[80];
+	SetCamSettings_0 : SetCamSettings;
+END_VAR

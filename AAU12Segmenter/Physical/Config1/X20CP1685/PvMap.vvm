@@ -1,7 +1,0 @@
-VAR_CONFIG
-	::Acopos6D:orderSpec AT %Q.::KUKA:orderSpec; (*Insert your comment here...*)
-	::Acopos6D:orderAmount AT %Q.::KUKA:orderAmount; (*Insert your comment here...*)
-	::Acopos6D:robotExecute AT %Q.::KUKA:robotExecute; (*Insert your comment here...*)
-	::KUKA:robotBusy AT %Q.::Acopos6D:robotBusy; (*Insert your comment here...*)
-	::KUKA:robotDone AT %Q.::Acopos6D:robotDone; (*Insert your comment here...*)
-END_VAR

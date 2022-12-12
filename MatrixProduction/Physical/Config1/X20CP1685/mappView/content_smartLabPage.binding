@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BindingsSet id="content_smartLabPage_binding" xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Bindings>
+
+
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.PCB" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="CheckBox1" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.Fuses" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericInput5" attribute="value" />
+		</Binding>
+
+
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.bottomCover" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="DropDownBox1" attribute="selectedIndex" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.topCover" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="DropDownBox2" attribute="selectedIndex" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Image1" attribute="visible" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="DropDownBox3" attribute="enable" />
+		</Binding>
+
+		<Binding mode="oneWay">
+			<Source xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Image1" attribute="visible" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="CheckBox1" attribute="enable" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Image1" attribute="visible" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="DropDownBox2" attribute="enable" />
+		</Binding>
+
+		<Binding mode="oneWay">
+			<Source xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Image3" attribute="visible" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericInput5" attribute="enable" />
+		</Binding>
+
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[0,0]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle00" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[1,0]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle10" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[0,1]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle01" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[0,2]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle02" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[0,3]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle03" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[0,4]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle04" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[0,5]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle05" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[0,6]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle06" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[0,7]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle07" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[1,1]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle11" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[1,2]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle12" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[1,3]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle13" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[1,4]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle14" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[1,5]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle15" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[1,6]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle16" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[1,7]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle17" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[2,0]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle20" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[2,2]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle22" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[2,1]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle21" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[2,3]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle23" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[2,4]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle24" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[2,5]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle25" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[2,6]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle26" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[2,7]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle27" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[3,0]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle30" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[3,1]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle31" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[3,2]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle32" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[3,3]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle33" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[3,4]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle34" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[3,5]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle35" attribute="visible" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[3,6]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle36" attribute="visible" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:occupiedPosition[3,7]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="Rectangle37" attribute="visible" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.amount" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericInput1" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::Acopos6D:tempProductOrder.ID" attribute="value" />
+			<Target xsi:type="brease" contentRefId="content_smartLabPage" widgetRefId="NumericOutput1" attribute="value" />
+		</Binding>
+	</Bindings>
+</BindingsSet>

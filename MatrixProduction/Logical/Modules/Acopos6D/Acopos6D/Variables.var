@@ -1,0 +1,149 @@
+VAR
+	cm : REFERENCE TO brdkCM;
+	createShGroup : USINT;
+	em : brdkEM;
+	enableButtons : BOOL;
+	fbPayload : REAL;
+	flaskProgramAcceleration : REAL := 0.2;
+	flaskProgramVelocity : REAL := 2;
+	gShuttles : ARRAY[0..NUM_SHUTTLES] OF shuttle_typ;
+	gCameraStations : ARRAY[0..NUM_CAMS] OF cameraStation_typ;
+	gWorkstations : ARRAY[0..NR_OF_WORKSTATIONS] OF workStation_typ;
+	i : USINT;
+	j : USINT;
+	k : USINT;
+	localCurrentNumShuttles : UINT;
+	macroCreater : USINT;
+	MARGIN : REAL := 0.0059;
+	MC_BR_AsmGetInfo_Acp6D_0 : MC_BR_AsmGetInfo_Acp6D;
+	MC_BR_AsmGetShuttle_Acp6D_0 : MC_BR_AsmGetShuttle_Acp6D;
+	MC_BR_AsmLevitation_Acp6D_0 : MC_BR_AsmLevitation_Acp6D;
+	MC_BR_AsmPowerOff_Acp6D_0 : MC_BR_AsmPowerOff_Acp6D;
+	MC_BR_AsmPowerOn_Acp6D_0 : MC_BR_AsmPowerOn_Acp6D;
+	MC_BR_AsmReadStatus_Acp6D_0 : MC_BR_AsmReadStatus_Acp6D;
+	MC_BR_AsmStop_Acp6D_0 : MC_BR_AsmStop_Acp6D;
+	MC_BR_MacroCreate_Acp6D_0 : MC_BR_MacroCreate_Acp6D;
+	MC_BR_MacroRun_Acp6D_0 : MC_BR_MacroRun_Acp6D;
+	MC_BR_MacroSave_Acp6D_0 : MC_BR_MacroSave_Acp6D;
+	MC_BR_Move6D_Acp6D_0 : MC_BR_Move6D_Acp6D;
+	MC_BR_MoveArc_Acp6D_0 : MC_BR_MoveArc_Acp6D;
+	MC_BR_MoveInPlaneAsync_Acp6D_0 : MC_BR_MoveInPlaneAsync_Acp6D;
+	MC_BR_MoveInPlane_Acp6D_0 : MC_BR_MoveInPlane_Acp6D;
+	MC_BR_MoveShortAxis_Acp6D_0 : ARRAY[0..3] OF MC_BR_MoveShortAxis_Acp6D;
+	MC_BR_ReadCyclicPosition_Acp6D_0 : MC_BR_ReadCyclicPosition_Acp6D;
+	MC_BR_ReadCyclicPosition_Acp6D_1 : MC_BR_ReadCyclicPosition_Acp6D;
+	MC_BR_ReadCyclicPosition_Acp6D_2 : MC_BR_ReadCyclicPosition_Acp6D;
+	MC_BR_ReadCyclicPosition_Acp6D_3 : MC_BR_ReadCyclicPosition_Acp6D;
+	MC_BR_RotaryMotionSpin_Acp6D_0 : MC_BR_RotaryMotionSpin_Acp6D;
+	MC_BR_RotaryMotion_Acp6D_0 : MC_BR_RotaryMotion_Acp6D;
+	MC_BR_ShGroupAddShuttle_Acp6D_0 : MC_BR_ShGroupAddShuttle_Acp6D;
+	MC_BR_ShGroupCoupleCtrl_Acp6D_0 : MC_BR_ShGroupCoupleCtrl_Acp6D;
+	MC_BR_ShGroupCreate_Acp6D_0 : MC_BR_ShGroupCreate_Acp6D;
+	MC_BR_ShGroupCreate_Acp6D_1 : MC_BR_ShGroupCreate_Acp6D;
+	MC_BR_ShGroupCreate_Acp6D_2 : MC_BR_ShGroupCreate_Acp6D;
+	MC_BR_ShGroupCreate_Acp6D_3 : MC_BR_ShGroupCreate_Acp6D;
+	MC_BR_ShGroupCreate_Acp6D_4 : MC_BR_ShGroupCreate_Acp6D;
+	MC_BR_ShGroupGetInfo_Acp6D_0 : MC_BR_ShGroupGetInfo_Acp6D;
+	MC_BR_ShLevitation_Acp6D_0 : MC_BR_ShLevitation_Acp6D;
+	MC_BR_ShGetPayload_Acp6D_0 : MC_BR_ShGetPayload_Acp6D;
+	MC_BR_ShReadInfo_Acp6D_0 : ARRAY[0..NUM_SHUTTLES] OF MC_BR_ShReadInfo_Acp6D;
+	positionContainerBoxProgram : ARRAY[0..9] OF shuttleStartup_typ;
+	positionContainerFlaskProgram : ARRAY[0..9] OF shuttleStartup_typ;
+	positionContainerLinkMovement : ARRAY[0..7] OF thisShuttleSetup;
+	positionContainerLinkMovementNew : ARRAY[0..9] OF shuttleStartup_typ;
+	positionContainerRotation : ARRAY[0..9] OF shuttleStartup_typ;
+	positionContainerSteelSheet : ARRAY[0..9] OF shuttleStartup_typ;
+	positionContainerTestProgram : ARRAY[0..7] OF shuttleStartup_typ;
+	positionContainerWorkstationMov : ARRAY[0..9] OF shuttleStartup_typ;
+	shGroupShuttle1_2 : UDINT;
+	shGroupShuttle1_4 : UDINT;
+	shGroupShuttle2_3 : UDINT;
+	shGroupShuttle3_4 : UDINT;
+	shGroupShuttle5_6_7_8 : UDINT;
+	shuttlePayload : REAL;
+	shuttleToTakePictureOf : USINT;
+	steelSheetFlyingHeight : REAL := 0.002;
+	tempCounter : USINT;
+	tempShuttleCnt : USINT;
+	tempShuttleCounter : USINT;
+	testObj : test_typ;
+	TON_watchdog : TON;
+	weightCalibration : REAL;
+END_VAR
+VAR RETAIN
+	weightProgramFlyingHight : REAL := 1.3;
+END_VAR
+(*-----------------------------------*)
+(*////////// SMART LAB \\\\\\\\\\*)
+(*-----------------------------------*)
+VAR
+	activeShuttles : USINT;
+	amountOrdersFinished : USINT;
+	amountProductsFinished : USINT;
+	awaitingCameraResultPosition : ARRAY[0..NUM_CAMS] OF shuttlePos;
+	bufferEmpty : BOOL := TRUE;
+	bufferFull : BOOL := FALSE;
+	bufferSize : USINT;
+	CreateRouteSheet_0 : CreateRouteSheet;
+	executeOrder : BOOL;
+	HMIorderID : USINT;
+	HMIproductID : USINT;
+	HMIorderHistory : order_history;
+	HMIproductHistory : product_history;
+	moveShuttle : ARRAY[0..NUM_SHUTTLES] OF BOOL;
+	orderBuffer : ARRAY[0..29] OF product_order := [30((amount:=0,bottomCover:=noCover,topCover:=noCover,PCB:=FALSE,Fuses:=0,ID:=0))];
+	orderHistory : ARRAY[0..99] OF order_history;
+	positionContainerSmartLabProgram : ARRAY[0..7] OF shuttleStartup_typ;
+	productOrder : product_order := (amount:=1,topCover:=blackCover,bottomCover:=blackCover,PCB:=TRUE,Fuses:=2);
+	pOrderHistory : REFERENCE TO order_history;
+	pShuttle : REFERENCE TO shuttle_typ;
+	pShuttlePlan : REFERENCE TO shuttle_plan;
+	pWorkstation : REFERENCE TO workStation_typ;
+	pCameraStation : REFERENCE TO cameraStation_typ;
+	tempAwaitingCamPosOccupied : BOOL;
+	RandomOrderGeneration_0 : RandomOrderGeneration;
+	randomGenerated : BOOL;
+	remainingOrderAmount : USINT;
+	ShuttlesAtPositions_0 : ShuttlesAtPositions;
+	ShuttlesInRange_0 : ShuttlesInRange;
+	ShuttlesInWorkstationBuffer_0 : ShuttlesInWorkstationBuffer;
+	ShuttleTouchQuadrantPos_0 : ShuttleTouchQuadrantPos;
+	shuttlePlans : ARRAY[0..7] OF shuttle_plan;
+END_VAR
+VAR CONSTANT
+	smartLabNumShuttles : USINT := 8;
+	smartLabNumWorkstations : USINT := 6;
+END_VAR
+VAR
+	smartLabNumCamStations : USINT := 1;
+	shuttleSmartLabVelocity : REAL;
+	shuttleSmartLabAcceleration : REAL;
+	shuttleSmartLabRotVelocity : REAL;
+	shuttleSmartLabRotAcceleration : REAL;
+	tempProductOrder : product_order := (amount:=1,bottomCover:=blackCover,Holes:=4,PCB:=TRUE,Fuses:=2,topCover:=blackCover,ID:=0);
+	tempRandomProductOrder : product_order := (amount:=0,bottomCover:=blackCover,Holes:=4,PCB:=TRUE,Fuses:=2,topCover:=blackCover,ID:=0);
+	tempShuttleIndex : USINT;
+	TON_0 : TON;
+	readIndex : USINT := 0;
+	writeIndex : USINT := 0;
+	ParabolicBlend_0 : ParabolicBlend;
+END_VAR
+(*Variable mapping*)
+VAR
+	orderSpec : ARRAY[0..5] OF SINT;
+	orderAmount : SINT;
+	robotExecute : ARRAY[0..5] OF BOOL;
+	robotDone : ARRAY[0..5] OF BOOL;
+	robotBusy : ARRAY[0..5] OF BOOL;
+	isProductFlipped : ARRAY[0..5] OF BOOL;
+	flipProduct : BOOL;
+	durationToCamera : ARRAY[0..NUM_CAMS] OF DINT;
+	visionResultReady : ARRAY[0..NUM_CAMS] OF BOOL;
+	requestImage : ARRAY[0..NUM_CAMS] OF BOOL;
+	durationStartToCamera : DINT;
+	durationStartToCurrent : DINT;
+	imgCoverType : USINT;
+	drillStationShuttleID : USINT;
+	setWeight : BOOL;
+	generateRandomOrder : BOOL;
+END_VAR

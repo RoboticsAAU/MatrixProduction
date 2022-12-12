@@ -1,0 +1,27 @@
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Global variables for sensor hardware and vision functions*)
+VAR
+	gBlob : typBlobMain; (*Data that is specific for the blob function*)
+	gCodeReader : typCodeReaderMain; (*Data that is specific for the code reader*)
+	gMatch : typMatchMain; (*Data that is specific for the match function*)
+	gMT : typMTMain; (*Data that is specific for the measurement function*)
+	gOCR : typOCRMain; (*Data that is specific for the OCR function*)
+	gVisionImage : typVisionImage; (*Data for image handling*)
+	gVisionLight : ARRAY[0..NUM_LIGHTS] OF typLightMain; (*General Light  functions that are independent from the inspection function*)
+	gVisionNettime : typVisionNettime; (*Data for nettime calculation*)
+	gVisionSensor : ARRAY[0..NUM_CAMS] OF typVisionMain; (*General vision functions that are independent from the inspection function*)
+	NettimeCurrent_us : DINT; (*Current Powerlink nettime. Mapped to "X20CP1685".SystemTime under IOMappings*)
+END_VAR
+VAR RETAIN
+	RecipeData : recVariable; (*Structure that contains the recipe variables*)
+END_VAR
+(*-----------------------------------------------------------------------------------------------------------------------------------------*)
+(*Global constants*)
+VAR CONSTANT
+	NUM_CAMS : USINT := 0; (*Number of cameras 1[0..0]*)
+	NUM_LIGHTS : UINT := 0; (*Number of lights 1[0..0]*)
+	NUM_RESULTS : UINT := 9; (*Number of results 10[0..9]*)
+	NUM_IDX_VA_LIST : UINT := 18; (*Number of entrys in the Vision Application list 19[0..18]*)
+	DEVICE_NAME : STRING[40] := 'VisionFileDevice'; (*File device where the images and recipes are stored*)
+	NETTIME_DEFAULT_DELAY : UDINT := 30000; (*This delay is used when software trigger is used and nettime is enabled*)
+END_VAR

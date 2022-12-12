@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Content id="content_Navi_w_stop" height="768" width="120" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Widgets>
+    <Widget xsi:type="widgets.brease.NavigationButton" id="NavigationButton1" top="660" left="20" width="80" height="80" zIndex="0" image="Media/Buttons/Home.svg" pageId="page_MainPage" imageHeight="50" imageWidth="50" cornerRadius="9px" borderColor="rgba(91, 124, 112, 0)" />
+    <Widget xsi:type="widgets.brease.NavigationButton" id="NavigationButton3" top="560" left="20" width="80" height="80" zIndex="1" image="Media/Buttons/settings.svg" pageId="page_configPage" imageHeight="50" imageWidth="50" cornerRadius="9px" backColor="rgba(219, 219, 219, 1)" borderColor="rgba(91, 124, 112, 0)" mouseDownBorderWidth="2px" mouseDownBackColor="rgba(255, 255, 255, 0)" checkedBackColor="rgba(219, 219, 219, 1)" />
+    <Widget xsi:type="widgets.brease.ToggleButton" id="emergencyStop" top="460" left="20" width="80" height="80" zIndex="2" text="$IAT/EmergencyText.0" borderStyle="none" borderWidth="4px" cornerRadius="9px" backColor="rgba(255, 0, 0, 1)" textColor="rgba(255, 255, 255, 1)" fontSize="18px" bold="true" checkedBackColor="rgba(0, 255, 0, 1)" checkedTextColor="rgba(255, 255, 255, 1)" />
+  </Widgets>
+</Content>
