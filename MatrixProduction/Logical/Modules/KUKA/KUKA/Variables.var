@@ -64,13 +64,13 @@ VAR CONSTANT
 	unloadSizeZ : INT := 4;
 END_VAR
 VAR
-	stackCounter : ARRAY[0..1,0..1] OF INT := [4(0)];
-	idAtStack : ARRAY[0..1,0..1] OF INT := [4(-1)];
 	xIdx : INT;
 	yIdx : INT;
 	xIdxTemp : INT := -1;
 	yIdxTemp : INT := -1;
-	orderCounter : ARRAY[0..1,0..1] OF INT := [4(0)];
+	idAtStack : ARRAY[0..2,0..1] OF INT := [6(-1)];
+	stackCounter : ARRAY[0..2,0..1] OF INT := [6(0)];
+	orderCounter : ARRAY[0..2,0..1] OF INT := [6(0)];
 	maintenancePrev : ARRAY[0..5] OF BOOL;
 	maintenance : BOOL;
 END_VAR
