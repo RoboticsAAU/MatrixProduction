@@ -113,7 +113,7 @@ ACTION smartLabWorkstationOperation :
 
 					// Send ID of order
 					5:
-						orderSpec[5] := pShuttlePlan.productOrder.ID;
+						orderSpec[5] := UINT_TO_SINT(pShuttlePlan.productOrder.ID);
 						orderAmount := pShuttlePlan.productOrder.amount;
 				
 				END_CASE
