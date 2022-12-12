@@ -13,12 +13,12 @@ PROGRAM _INIT
 	END_FOR
 	
 	// Setting end-effector type
-	KUKAs[0].eeType := COVER_EE;
+	KUKAs[0].eeType := BOTTOM_COVER_EE;
 	KUKAs[1].eeType := DRILL_EE;
 	KUKAs[2].eeType := PCB_EE;
 	KUKAs[3].eeType := FUSE_EE;
-	KUKAs[4].eeType := COVER_EE;
-	KUKAs[5].eeType := COVER_EE;
+	KUKAs[4].eeType := TOP_COVER_EE;
+	KUKAs[5].eeType := BOTTOM_COVER_EE;
 	
 	// Setting the operation type
 	KUKAs[0].operationType := ASSEMBLY;

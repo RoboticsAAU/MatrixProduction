@@ -443,10 +443,14 @@ PROGRAM _CYCLIC
 					// Go to write order if a new order is made or there are no active orders
 					IF executeOrder THEN
 						// Generate random order if specified first time this is run 
-						IF EDGEPOS(executeOrder) THEN
-							RandomOrderGeneration_0.refOrder := ADR(tempRandomProductOrder);
-							RandomOrderGeneration_0.generate := generateRandomOrder;
-							RandomOrderGeneration_0();
+						IF generateRandomOrder THEN
+							IF NOT randomGenerated THEN
+								RandomOrderGeneration_0.refOrder := ADR(tempRandomProductOrder);
+								RandomOrderGeneration_0.generate := generateRandomOrder;
+								RandomOrderGeneration_0();
+								
+								randomGenerated := TRUE;
+							END_IF
 						END_IF
 						
 						TON_0.PT := REAL_TO_TIME(400); // Has to be 400 for random order (only 200 for non-random)
@@ -455,6 +459,7 @@ PROGRAM _CYCLIC
 							TON_0.IN := FALSE;
 							
 							// The user has requested an order which is added to the buffer
+							randomGenerated := FALSE;
 							executeOrder := FALSE;
 							em.substate := 17020;
 						END_IF

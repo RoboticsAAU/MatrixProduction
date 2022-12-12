@@ -56,7 +56,7 @@ ACTION smartLabWorkstationOperation :
 					cm.state := 20;
 				ELSIF NOT bufferEmpty THEN
 					// Go back to read new order in read state
-					em.substate := 17015;
+					em.substate := 17025;
 				END_IF
 			END_IF
 			
@@ -602,7 +602,7 @@ ACTION smartLabShuttleMovement :
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := TRUE;
 			IF pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Acknowledge THEN
 				pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Execute := FALSE;
-
+				
 				// Go back to wait for new workstation to send the shuttle on
 				cm.state := 0;
 			END_IF

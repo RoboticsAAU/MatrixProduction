@@ -91,7 +91,7 @@ VAR
 	HMIorderHistory : order_history;
 	HMIproductHistory : product_history;
 	moveShuttle : ARRAY[0..NUM_SHUTTLES] OF BOOL;
-	orderBuffer : ARRAY[0..9] OF product_order := [10((amount:=0,bottomCover:=noCover,topCover:=noCover,PCB:=FALSE,Fuses:=0,ID:=0))];
+	orderBuffer : ARRAY[0..29] OF product_order := [30((amount:=0,bottomCover:=noCover,topCover:=noCover,PCB:=FALSE,Fuses:=0,ID:=0))];
 	orderHistory : ARRAY[0..99] OF order_history;
 	positionContainerSmartLabProgram : ARRAY[0..7] OF shuttleStartup_typ;
 	productOrder : product_order := (amount:=1,topCover:=blackCover,bottomCover:=blackCover,PCB:=TRUE,Fuses:=2);
@@ -102,6 +102,7 @@ VAR
 	pCameraStation : REFERENCE TO cameraStation_typ;
 	tempAwaitingCamPosOccupied : BOOL;
 	RandomOrderGeneration_0 : RandomOrderGeneration;
+	randomGenerated : BOOL;
 	remainingOrderAmount : USINT;
 	ShuttlesAtPositions_0 : ShuttlesAtPositions;
 	ShuttlesInRange_0 : ShuttlesInRange;

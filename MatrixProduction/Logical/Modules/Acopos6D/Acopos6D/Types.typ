@@ -123,7 +123,7 @@ TYPE
 		PCB : BOOL;
 		Fuses : USINT;
 		topCover : cover_types;
-		ID : USINT;
+		ID : UINT;
 	END_STRUCT;
 	order_status : 
 		(

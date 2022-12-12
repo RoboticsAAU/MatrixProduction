@@ -64,10 +64,11 @@ TYPE
 		);
 	end_effector_type : 
 		(
-		COVER_EE := 1,
-		PCB_EE := 2,
-		FUSE_EE := 3,
-		DRILL_EE := 4
+		BOTTOM_COVER_EE := 0,
+		PCB_EE := 1,
+		FUSE_EE := 2,
+		DRILL_EE := 3,
+		TOP_COVER_EE := 4
 		);
 	gripper_action_type : 
 		(
