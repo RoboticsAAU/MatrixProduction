@@ -115,8 +115,8 @@ ACTION RobotHandling:
 					pKuka.convert.ValuesToPosition();
 					pKuka.tempPosition := pKuka.convert.ValuesToPosition.outputPos;
 					
-					pKuka.tempPosition.X := pKuka.tempPosition.X + xIdx*120;
-					pKuka.tempPosition.Y := pKuka.tempPosition.Y - yIdx*80;
+					pKuka.tempPosition.X := pKuka.tempPosition.X + xIdx * 120;
+					pKuka.tempPosition.Y := pKuka.tempPosition.Y - yIdx * 80;
 				
 			END_CASE
 			
@@ -200,12 +200,16 @@ ACTION RobotHandling:
 		1090:
 			cm.description := 'Move back to home position';
 			
-			orderCounter[xIdx, yIdx] := orderCounter[xIdx, yIdx] + 1;
-			stackCounter[xIdx, yIdx] := stackCounter[xIdx, yIdx] + 1;
-			IF orderCounter[xIdx, yIdx] = orderAmount THEN 
-				idAtStack[xIdx, yIdx] := -1;
-				orderCounter[xIdx, yIdx] := 0;
-			END_IF
+			CASE pKuka.axisGroupIdx OF
+				6:
+					orderCounter[xIdx, yIdx] := orderCounter[xIdx, yIdx] + 1;
+					stackCounter[xIdx, yIdx] := stackCounter[xIdx, yIdx] + 1;
+					IF orderCounter[xIdx, yIdx] = orderAmount THEN 
+						idAtStack[xIdx, yIdx] := -1;
+						orderCounter[xIdx, yIdx] := 0;
+					END_IF
+				
+			END_CASE
 			
 			RobotHoming;
 		
