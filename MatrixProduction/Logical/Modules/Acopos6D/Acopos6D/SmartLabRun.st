@@ -42,40 +42,37 @@ ACTION smartLabWorkstationOperation :
 		15:
 			cm.description := 'Wait for other shuttle to arrive at approach point or shuttle at workstation becomes part of new order';
 			
-			// Check if the shuttle should become part of a new order
-			IF pWorkstation.par.workstationID = 0 THEN
-				// New order has been read and must begin execution
-				IF remainingOrderAmount > 0 THEN
-					pShuttlePlan.isActive := TRUE;
-					pShuttlePlan.progressIndex := 0;
-					pShuttlePlan.routingSheet := CreateRouteSheet_0.outputRouteSheet;
-					pShuttlePlan.productOrder := productOrder;
-					pShuttlePlan.productID := productOrder.amount - remainingOrderAmount;
+			CASE pWorkstation.par.workstationID OF
+				0: // See if shuttle should move or begin execution
+					// New order has been read and must begin execution
+					IF remainingOrderAmount > 0 THEN
+						pShuttlePlan.isActive := TRUE;
+						pShuttlePlan.progressIndex := 0;
+						pShuttlePlan.routingSheet := CreateRouteSheet_0.outputRouteSheet;
+						pShuttlePlan.productOrder := productOrder;
+						pShuttlePlan.productID := productOrder.amount - remainingOrderAmount;
 
-					remainingOrderAmount := remainingOrderAmount - 1;
-					cm.state := 20;
-				ELSIF NOT bufferEmpty THEN
-					// Go back to read new order in read state
-					em.substate := 17025;
-				END_IF
-			END_IF
-			
-			// Move to next workstation if another shuttle has arrived in the buffer of the workstation
-			CASE pWorkstation.par.workstationID OF // For different workstations, you should look at differen positions
-				0: // See if more than 2 shuttles are in queue
-					// Position where at least 3 shuttles are in queue
-					ShuttlesAtPositions_0.checkPosX[0] := pWorkstation.par.approachPosX - 0.240;
-					ShuttlesAtPositions_0.checkPosY[0] := pWorkstation.par.approachPosY;
-					ShuttlesAtPositions_0.opt_checkShuttleState[0] := mcACP6D_SH_STATE_OBSTACLE;
-					ShuttlesAtPositions_0.numCheckedPos := 1;
-					ShuttlesAtPositions_0();
+						remainingOrderAmount := remainingOrderAmount - 1;
+						cm.state := 20;
+					// If there is still an order in the buffer, go read it in read state
+					ELSIF NOT bufferEmpty THEN
+						em.substate := 17025;
+					// Move to next workstation if more than 2 shuttles are in queue
+					ELSE
+						// Position where at least 3 shuttles are in queue
+						ShuttlesAtPositions_0.checkPosX[0] := pWorkstation.par.approachPosX - 0.240;
+						ShuttlesAtPositions_0.checkPosY[0] := pWorkstation.par.approachPosY;
+						ShuttlesAtPositions_0.opt_checkShuttleState[0] := mcACP6D_SH_STATE_OBSTACLE;
+						ShuttlesAtPositions_0.numCheckedPos := 1;
+						ShuttlesAtPositions_0();
 
-					IF ShuttlesAtPositions_0.isAtCheckPos THEN
-						// Set shuttle state to move to next workstation and go back to wait for new shuttle at workstation
-						moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
-						cm.state := 60;
+						IF ShuttlesAtPositions_0.isAtCheckPos THEN
+							// Set shuttle state to move to next workstation and go back to wait for new shuttle at workstation
+							moveShuttle[pWorkstation.par.tempShuttleID] := TRUE;
+							cm.state := 60;
+						END_IF
 					END_IF
-
+					
 				1..5: // See if any shuttles are in the buffer
 					ShuttlesInWorkstationBuffer_0.workstation := pWorkstation;
 					ShuttlesInWorkstationBuffer_0();
@@ -86,8 +83,8 @@ ACTION smartLabWorkstationOperation :
 						cm.state := 60;
 					END_IF
 			END_CASE
-
-
+			
+		
 		20:
 			cm.description := 'Send data to robot through mapping and begin robot operation';
 
@@ -341,9 +338,6 @@ ACTION smartLabShuttleMovement :
 			// If the shuttle has a camera station set, always move to state 20
 			IF pShuttle.par.tempCameraStationID <> -1 THEN
 				// Do nothing
-			// If workstation and next approach point is on the same row, move straight to it
-			ELSIF ArePositionsOnSameRow(yPos1 := gWorkstations[pShuttle.par.tempWorkstationID].par.xLocation, yPos2 := gWorkstations[pShuttle.par.tempNextWorkstationID].par.approachPosX) THEN
-				cm.state := 40;
 			// If the workstations are on the same column and the buffer to the next workstation is empty, move directly to the workstation
 			ELSIF ArePositionsOnSameColumn(xPos1 := gWorkstations[pShuttle.par.tempWorkstationID].par.xLocation, xPos2 := gWorkstations[pShuttle.par.tempNextWorkstationID].par.xLocation) THEN
 				// Define the next workstation
