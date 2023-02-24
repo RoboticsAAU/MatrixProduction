@@ -135,11 +135,12 @@ ACTION RobotProcess :
 								cm.state := 1036;
 							END_IF
 
-						2 : // No shuttle movement
+						2 : 
+							// Move back to workstation position
 							IF orderSpec[i] = 2 THEN
 								pKuka.motion.MC_BR_MoveInPlane_Acp6D.Parameters.Position.X := (drillXOffset / 1000); // Converted to m
 								cm.state := 1036;
-							ELSE
+							ELSE // No shuttle movement
 								cm.state := 1040;
 							END_IF
 

@@ -543,7 +543,7 @@ ACTION smartLabShuttleMovement :
 			cm.state := 38;
 			
 		38:
-			cm.description := 'Move to column depending on next workstation';	
+			cm.description := 'Move to row depending on next workstation';	
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].shuttleRef);
 			pShuttle.function.MC_BR_MoveInPlane_Acp6D_0.Parameters.Path := 2; // Y THEN X
 			
@@ -614,7 +614,7 @@ END_ACTION
 
 ACTION smartLabCameraProcess:
 
-	// The following approach assumes that the shuttle is not obstructed throughout its path, and allows more than one shuttle to be "queued" based on FIFO.
+	// The following approach assumes that the shuttle is not obstructed throughout its path, and allows more than one shuttle to be "queued".
 
 	IF pShuttle.par.acquireImage THEN
 
@@ -650,19 +650,19 @@ ACTION smartLabCameraProcess:
 
 						ELSE // The shuttle has an offset from start position and the new current position must be accounted for
 
-							// Calculate how far in time the shuttle has moved from the starting point. Start and end must be set again since ParabolicBlend can manipulate these inputs
+							// Calculate how far in time the shuttle has moved from the starting point.
 							ParabolicBlend_0.evalPos 	:= gAcp6DCtrl.Status.ShuttleInfo[pShuttle.par.shuttleID].Position.Y;
 							ParabolicBlend_0();
 
 							durationStartToCurrent := REAL_TO_DINT(ParabolicBlend_0.durationAtEvalDist * 1000000); // Converted to microseconds
 
-							durationToCamera[pShuttle.par.tempCameraStationID] := durationStartToCamera - durationStartToCurrent; // Converted to microseconds
+							durationToCamera[pShuttle.par.tempCameraStationID] := durationStartToCamera - durationStartToCurrent;
 
 						END_IF
 
 				END_CASE
 
-				// Send request if no error occurred in parabolic blend calculation. (Implement error handling in the future),
+				// Send request if no error occurred in parabolic blend calculation (Implement error handling in the future),
 				// and if the shuttle still has time to arrive at the camera
 				IF ParabolicBlend_0.durationAtEvalDist <> -1 THEN
 					imgCoverType := COVER_TYPE_TO_USINT(pShuttlePlan.productOrder.bottomCover);

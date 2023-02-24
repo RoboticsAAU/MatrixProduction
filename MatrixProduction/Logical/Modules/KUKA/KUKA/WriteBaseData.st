@@ -1,5 +1,5 @@
-// For now each robot knows all bases even though it only needs to now the ACOPOS6D base and its own magazine base
-ACTION WriteBaseData: // Relative to world (can only be used when each robots world has been changed)
+
+ACTION WriteBaseData: // Relative to world 
 		
 	CASE cm.state OF
 		201: // ACOPOS6D base (BaseNo = 1)
