@@ -55,10 +55,13 @@ VAR
 	positionContainerSteelSheet : ARRAY[0..9] OF shuttleStartup_typ;
 	positionContainerTestProgram : ARRAY[0..7] OF shuttleStartup_typ;
 	positionContainerWorkstationMov : ARRAY[0..9] OF shuttleStartup_typ;
+	positionContainerShuttleConvoy : ARRAY[0..7] OF shuttleStartup_typ;
 	shGroupShuttle1_2 : UDINT;
-	shGroupShuttle1_4 : UDINT;
-	shGroupShuttle2_3 : UDINT;
 	shGroupShuttle3_4 : UDINT;
+	shGroupShuttle5_6 : UDINT;
+	shGroupShuttle7_8 : UDINT;
+	shGroupShuttle2_3 : UDINT;
+	shGroupShuttle1_4 : UDINT;
 	shGroupShuttle5_6_7_8 : UDINT;
 	shuttlePayload : REAL;
 	shuttleToTakePictureOf : USINT;
@@ -146,4 +149,5 @@ VAR
 	drillStationShuttleID : USINT;
 	setWeight : BOOL;
 	generateRandomOrder : BOOL;
+	MC_BR_ShGroup_Aco6D_1 : type;
 END_VAR

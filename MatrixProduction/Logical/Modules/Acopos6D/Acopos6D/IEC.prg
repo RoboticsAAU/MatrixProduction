@@ -31,5 +31,6 @@
     <File>ParabolicBlend.st</File>
     <File>ShuttleTouch.st</File>
     <File>RandomOrder.st</File>
+    <File>ShuttleConvoy.st</File>
   </Files>
 </Program>

@@ -48,8 +48,53 @@ ACTION shuttleGroups:
 			MC_BR_ShGroupAddShuttle_Acp6D_0.Execute := TRUE;
 			IF MC_BR_ShGroupAddShuttle_Acp6D_0.Done THEN
 				MC_BR_ShGroupAddShuttle_Acp6D_0.Execute := FALSE;
+				createShGroup := 32;
+			END_IF
+			
+		32: 
+			// Create shuttlegroup 5_6
+			MC_BR_ShGroup_Aco6D_1.Execute := TRUE; 
+			IF MC_BR_ShGroupCreate_Acp6D_1.Done THEN
+				shGroupShuttle3_4 := ADR(MC_BR_ShGroupCreate_Acp6D_1.ShuttleGroup);
+				MC_BR_ShGroupCreate_Acp6D_1.Execute := FALSE;
+				createShGroup := 34;
+			END_IF
+			
+		34:
+			//Add shuttles to new group
+			MC_BR_ShGroupAddShuttle_Acp6D_0.ShuttleGroup := shGroupShuttle5_6;
+			MC_BR_ShGroupAddShuttle_Acp6D_0.Parameters.ShuttleList[0].Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[4].shuttleRef);
+			MC_BR_ShGroupAddShuttle_Acp6D_0.Parameters.ShuttleList[1].Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[5].shuttleRef);
+			MC_BR_ShGroupAddShuttle_Acp6D_0.Parameters.ShuttleList[2].Shuttle := 0;
+			MC_BR_ShGroupAddShuttle_Acp6D_0.Parameters.ShuttleList[3].Shuttle := 0;
+			MC_BR_ShGroupAddShuttle_Acp6D_0.Execute := TRUE;
+			IF MC_BR_ShGroupAddShuttle_Acp6D_0.Done THEN
+				MC_BR_ShGroupAddShuttle_Acp6D_0.Execute := FALSE;
+				createShGroup := 36;
+			END_IF
+			
+		36: 
+			//Create shuttlegroup 7_8
+			MC_BR_ShGroup_Aco6D_1.Execute := TRUE; 
+			IF MC_BR_ShGroupCreate_Acp6D_1.Done THEN
+				shGroupShuttle3_4 := ADR(MC_BR_ShGroupCreate_Acp6D_1.ShuttleGroup);
+				MC_BR_ShGroupCreate_Acp6D_1.Execute := FALSE;
+				createShGroup := 38;
+			END_IF
+			
+		38:
+			//Add shuttles to new group
+			MC_BR_ShGroupAddShuttle_Acp6D_0.ShuttleGroup := shGroupShuttle7_8;
+			MC_BR_ShGroupAddShuttle_Acp6D_0.Parameters.ShuttleList[0].Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[6].shuttleRef);
+			MC_BR_ShGroupAddShuttle_Acp6D_0.Parameters.ShuttleList[1].Shuttle := ADR(gAcp6DCtrl.Status.ShuttleInfo[7].shuttleRef);
+			MC_BR_ShGroupAddShuttle_Acp6D_0.Parameters.ShuttleList[2].Shuttle := 0;
+			MC_BR_ShGroupAddShuttle_Acp6D_0.Parameters.ShuttleList[3].Shuttle := 0;
+			MC_BR_ShGroupAddShuttle_Acp6D_0.Execute := TRUE;
+			IF MC_BR_ShGroupAddShuttle_Acp6D_0.Done THEN
+				MC_BR_ShGroupAddShuttle_Acp6D_0.Execute := FALSE;
 				createShGroup := 40;
 			END_IF
+			
 		
 		40:
 			//Create third shuttle Group
