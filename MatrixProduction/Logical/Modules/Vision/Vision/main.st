@@ -125,7 +125,7 @@ PROGRAM _CYCLIC
 								// Check if blobs were found
 								IF hwMatch.in.common.numResults <> 0 THEN
 									// Assign bool depending on placement of detected shape
-									flipProduct := (DINT_TO_INT(hwMatch.in.results[0].positionY/100) > cameraHeight/2);
+									flipProduct := DINT_TO_INT(hwMatch.in.results[0].positionY/100) > cameraHeight/2;
 									
 									shapeCenterPoint.x := DINT_TO_LREAL(hwMatch.in.results[0].positionX/100);
 									shapeCenterPoint.y := DINT_TO_LREAL(hwMatch.in.results[0].positionY/100);
