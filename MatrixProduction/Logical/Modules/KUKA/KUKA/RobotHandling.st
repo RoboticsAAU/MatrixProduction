@@ -175,7 +175,7 @@ ACTION RobotHandling:
 			
 			
 		1080:
-			cm.description := 'Move to place point at magazine with relative movement';
+			cm.description := 'Move back to order-specific approach point at magazine';
 			
 			pKuka.convert.ValuesToCOORDSYS.IPO_Mode := 1; // #TOOL
 			pKuka.convert.ValuesToCOORDSYS();

@@ -15,8 +15,8 @@
     <File>conveyourStationMovement.st</File>
     <File>workStationMovement.st</File>
     <File>flaskProgram.st</File>
-    <File>boxProgram.st</File>
     <File>rotationProgram.st</File>
+    <File>boxProgram.st</File>
     <File>steelSheet.st</File>
     <File>Test.st</File>
     <File>SmartLabSetup.st</File>
